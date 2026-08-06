@@ -1,4 +1,4 @@
-/* ========================================
+/* =======================================
  *
  * Copyright YOUR COMPANY, THE YEAR
  * All Rights Reserved
@@ -17,6 +17,8 @@ int main(void)
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
+    PWM_1_Start();
+    
     for(;;)
     {
         /* Place your application code here. */
