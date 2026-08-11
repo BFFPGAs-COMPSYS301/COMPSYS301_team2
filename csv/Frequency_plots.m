@@ -83,7 +83,6 @@ ylabel('Voltage (V)');
 title('Voltage Filtered vs Time');
 grid on;
 
-v_filt_freq = fft(v_filt)
 % figure;
 % plot(v_filt_freq, );
 % xlabel('Time (ms)');
