@@ -2,8 +2,10 @@
 % Assumes each CSV has frequency in column 1, magnitude in column 2, no header row.
 % If there IS a header row, add 'NumHeaderLines', 1 to readmatrix, or use readtable instead.
 
-dataOff = readmatrix('off_line_volt.csv');
-dataOn  = readmatrix('on_line_volt.csv');
+dataOff = readmatrix('d_lo_33k.csv');
+dataOn  = readmatrix('w_lo_33k.csv');
+
+
 
 freqOff = dataOff(:,3);
 magOff  = dataOff(:,4);
@@ -46,9 +48,6 @@ yline(0, '--'); % reference line at zero difference
 %% Import data
 % Assumes each CSV has frequency in column 1, magnitude in column 2, no header row.
 % If there IS a header row, add 'NumHeaderLines', 1 to readmatrix, or use readtable instead.
-
-dataOff = readmatrix('off_line_volt.csv');
-dataOn  = readmatrix('on_line_volt.csv');
 
 timeOFF = dataOff(:,1);
 voltOFF  = dataOff(:,2);
