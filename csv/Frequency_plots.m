@@ -19,7 +19,7 @@ magOn   = dataOn(:,4);
 %% Plot off line vs on line
 figure;
 plot(timeOFF, voltOFF, 'b-', 'LineWidth', 1.2); hold on;
-plot(timeON, voltON, 'r-', 'LineWidth', 1.2);
+plot(timeOFF, voltON, 'r-', 'LineWidth', 1.2);
 xlabel('Time (ms)');
 ylabel('Voltage (V)');
 title('Voltage vs Time: Off Line vs On Line');
