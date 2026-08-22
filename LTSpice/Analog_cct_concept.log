@@ -1,15 +1,9 @@
 LTspice 26.0.2 for MacOS
-Circuit: /Users/kk/Desktop/301/COMPSYS301_team2/LTSpice/Analog_cct_concept.net
-Start Time: Wed Aug 19 16:56:31 2026
-solver = Normal
-Maximum thread count: 10
-tnom = 27
-temp = 27
-method = trap
-Direct Newton iteration succeeded in finding operating point.
-Total elapsed time: 0.289 seconds.
-
-Files loaded:
-/Users/kk/Desktop/301/COMPSYS301_team2/LTSpice/Analog_cct_concept.net
-/Users/kk/Library/Application Support/LTspice/Bottles/ltspice/drive_c/users/crossover/AppData/Local/LTspice/lib/sub/UniversalOpAmp2.lib
-
+Circuit: /Users/madi/Desktop/COMPSYS301_team2/LTSpice/Analog_cct_concept.net
+Start Time: Thu Aug 20 17:02:38 2026
+Y:\Desktop\COMPSYS301_team2\LTSpice\Analog_cct_concept.net(3): File "Y:\Desktop\301\COMPSYS301_team2\csv\LTspice_Files\d_lo_33k - PWL import1.txt" not found.
+V1 Vd 0 PWL file="Y:/Desktop/301/COMPSYS301_team2/csv/LTspice_Files/d_lo_33k - PWL import1.txt"
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Y:\Desktop\COMPSYS301_team2\LTSpice\Analog_cct_concept.net(16): File "Y:\Desktop\301\COMPSYS301_team2\csv\LTspice_Files\w_lo_33k - import.txt" not found.
+V4 Vw 0 PWL file="Y:/Desktop/301/COMPSYS301_team2/csv/LTspice_Files/w_lo_33k - import.txt"
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
