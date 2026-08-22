@@ -1,0 +1,32 @@
+--------------- Rebuild Started: 08/22/2026 13:17:28 Project: Design01, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+Deleting file ".\Design01.rpt"
+cydsfit.exe -.appdatapath "C:\Users\mtay770\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\Design01.cyprj" -d CY8C5888LTI-LP097 -s "C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+Elaborating Design...
+ADD: sdb.M0012: error: Terminals "Pin_1.fb_0,ADC_SAR_1.vplus" connected to signal "Net_98" have mismatching types.
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Signal: Net_98)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_1.2)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (vplus)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_50)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_51)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (fb_0)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_7.2)
+ADD: sdb.M0018: error: Multiple drivers on signal "Net_98", bit(s) "0".
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Signal: Net_98)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_1.2)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_50)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_51)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_7.2)
+ADD: sdb.M0018: error: Multiple drivers on signal "Net_76", bit(s) "0".
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Signal: Net_76)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_1.6)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_40)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_41)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_42)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_9.19)
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch (Shape_9.9)
+ADD: fit.M0031: error: Clock Error: (The ILO must be set to 100 kHz for USB bus reset interrupts to function correctly.).
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\Design01.cydwr (ILO)
+ADD: fit.M0031: error: Clock Error: (Invalid configuration. The USB clock must run at 48 MHz.).
+ * C:\TEMP\COMPSYS301_team2\madi\hardware task 1\Workspace01\Design01.cydsn\Design01.cydwr (USB_CLK)
+Error: fit.M0050: The fitter aborted due to errors, please address all errors and rebuild. (App=cydsfit)
+--------------- Rebuild Failed: 08/22/2026 13:17:30 ---------------
