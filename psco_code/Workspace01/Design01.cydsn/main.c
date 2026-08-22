@@ -13,14 +13,15 @@
 #include <stdio.h>
 
 #define SAMPLE_SIZE     10
-#define THRESHOLD       2448u
+#define THRESHOLD       500
 
 int main(void)
 {
     uint8 i;
     int16 adcResult;
+    int16 adc_mV;
     int32 total;
-    int32 average;
+    int32 average_mV;
     char uartBuffer[64];
 
     CyGlobalIntEnable;
@@ -46,16 +47,17 @@ int main(void)
 
             /* Read ADC result */
             adcResult = ADC_1_GetResult16();
+            adc_mV = ADC_1_CountsTo_mVolts(adcResult);
 
             /* Add to total */
-            total += adcResult;
+            total += adc_mV;
         }
 
         /* Calculate average */
-        average = total / SAMPLE_SIZE;
+        average_mV = total / SAMPLE_SIZE;
 
         /* Software comparator */
-        if(average > THRESHOLD)
+        if(average_mV > THRESHOLD)
         {
             LED_Write(1);
         }
@@ -63,21 +65,5 @@ int main(void)
         {
             LED_Write(0);
         }
-
-        /* Send average over USB */
-        if(USBUART_1_GetConfiguration())
-        {
-            if(USBUART_1_CDCIsReady())
-            {
-                sprintf(uartBuffer,
-                        "ADC Average: %ld\r\n",
-                        average);
-
-                USBUART_1_PutString(uartBuffer);
-            }
-        }
-
-        /* Wait before next group of samples */
-        CyDelay(200);
     }
 }
