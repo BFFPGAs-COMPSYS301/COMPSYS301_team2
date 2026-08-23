@@ -1,0 +1,29 @@
+Removed Pin From Net: NetName=+5 Pin=R1-1
+Removed Pin From Net: NetName=GND Pin=R1-2
+Removed Pin From Net: NetName=+5V Pin=R35-1
+Removed Pin From Net: NetName=GND Pin=R35-2
+Removed Pin From Net: NetName=+5 Pin=R39-1
+Removed Pin From Net: NetName=GND Pin=R39-2
+Removed Pin From Net: NetName=+5 Pin=R43-1
+Removed Pin From Net: NetName=GND Pin=R43-2
+Removed Pin From Net: NetName=+5V Pin=R48-1
+Removed Pin From Net: NetName=GND Pin=R48-2
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=R1
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=R35
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=R39
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=R43
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=R48
+Added Component: Designator=C_DAC(0805 CAP)
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=C_DAC-2
+Added Pin To Net: NetName=Vref_DAC Pin=C_DAC-1
+Added Pin To Net: NetName=Vref_DAC Pin=P0-1
+Added Pin To Net: NetName=Vref_DAC Pin=U2-2
+Added Pin To Net: NetName=Vref_DAC Pin=U3-2
+Added Pin To Net: NetName=Vref_DAC Pin=U4-2
+Added Pin To Net: NetName=Vref_DAC Pin=U5-2
+Added Pin To Net: NetName=Vref_DAC Pin=U6-2
+Added Net: Name=Vref_DAC
+Added Member To Class: ClassName=CS301_YOURGROUPNUM Member=Component C_DAC 0.1uF
+Added Member To Class: ClassName=CS301_YOURGROUPNUM Member=Component R50 50k
+Added Rule: Name=Schematic Supply Nets_9
