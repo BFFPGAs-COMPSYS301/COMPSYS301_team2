@@ -26,9 +26,6 @@ int main(void)
 
     CyGlobalIntEnable;
 
-    /* Start USB UART */
-    USBUART_1_Start(0, USBUART_1_5V_OPERATION);
-
     /* Start ADC */
     ADC_1_Start();
 

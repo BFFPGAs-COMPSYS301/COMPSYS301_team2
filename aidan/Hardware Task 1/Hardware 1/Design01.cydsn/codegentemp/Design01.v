@@ -1,6 +1,6 @@
 // ======================================================================
 // Design01.v generated from TopDesign.cysch
-// 08/24/2026 at 12:51
+// 08/24/2026 at 13:38
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -902,7 +902,7 @@ module top ;
           wire  Net_41;
           wire  Net_40;
           wire  Net_39;
-          wire  Net_95;
+          wire  Net_128;
           wire  Net_20;
           wire  Net_19;
           wire [7:0] Net_9;
