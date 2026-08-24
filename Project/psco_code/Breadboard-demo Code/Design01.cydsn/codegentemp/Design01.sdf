@@ -1,0 +1,23 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2026-08-24T01:52:00Z")
+ (DESIGN "Design01")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.2")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "Design01")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT ClockBlock.clk_bus_glb \\ADC_1\:IRQ\\.clock (0.000:0.000:0.000))
+    (INTERCONNECT \\ADC_1\:ADC_SAR\\.eof_udb \\ADC_1\:IRQ\\.interrupt (9.844:9.844:9.844))
+    (INTERCONNECT ClockBlock.aclk_glb_ff_0 \\ADC_1\:ADC_SAR\\.clock (0.000:0.000:0.000))
+    (INTERCONNECT ClockBlock.aclk_glb_ff_0 \\ADC_1\:ADC_SAR\\.pump_clock (0.000:0.000:0.000))
+    (INTERCONNECT LED\(0\)_PAD LED\(0\).pad_in (0.000:0.000:0.000))
+   )
+  )
+ )
+)
