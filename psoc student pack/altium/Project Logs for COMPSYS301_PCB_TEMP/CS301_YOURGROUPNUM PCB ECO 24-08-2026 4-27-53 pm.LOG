@@ -1,0 +1,73 @@
+Removed Pin From Net: NetName=Vb2 Pin=U2s-1
+Removed Pin From Net: NetName=NetRs5_2 Pin=U2s-2
+Removed Pin From Net: NetName=NetRs6_2 Pin=U2s-3
+Removed Pin From Net: NetName=5V Pin=U2s-4
+Removed Pin From Net: NetName=GND Pin=U2s-11
+Removed Pin From Net: NetName=Vout2 Pin=U3-1
+Removed Pin From Net: NetName=Vref_DAC Pin=U3-2
+Removed Pin From Net: NetName=NetR36_2 Pin=U3-3
+Removed Pin From Net: NetName=Vb3 Pin=U3s-1
+Removed Pin From Net: NetName=NetRs9_2 Pin=U3s-2
+Removed Pin From Net: NetName=NetRs10_2 Pin=U3s-3
+Removed Pin From Net: NetName=5V Pin=U3s-4
+Removed Pin From Net: NetName=GND Pin=U3s-11
+Removed Pin From Net: NetName=Vout3 Pin=U4-1
+Removed Pin From Net: NetName=Vref_DAC Pin=U4-2
+Removed Pin From Net: NetName=NetR40_2 Pin=U4-3
+Removed Pin From Net: NetName=Vb4 Pin=U4s-1
+Removed Pin From Net: NetName=NetRs13_2 Pin=U4s-2
+Removed Pin From Net: NetName=NetRs14_2 Pin=U4s-3
+Removed Pin From Net: NetName=5V Pin=U4s-4
+Removed Pin From Net: NetName=GND Pin=U4s-11
+Removed Pin From Net: NetName=Vout4 Pin=U5-1
+Removed Pin From Net: NetName=Vref_DAC Pin=U5-2
+Removed Pin From Net: NetName=NetR44_2 Pin=U5-3
+Removed Pin From Net: NetName=Vb5 Pin=U5s-1
+Removed Pin From Net: NetName=NetRs17_2 Pin=U5s-2
+Removed Pin From Net: NetName=NetRs18_2 Pin=U5s-3
+Removed Pin From Net: NetName=5V Pin=U5s-4
+Removed Pin From Net: NetName=GND Pin=U5s-11
+Removed Pin From Net: NetName=Vout5 Pin=U6-1
+Removed Pin From Net: NetName=Vref_DAC Pin=U6-2
+Removed Pin From Net: NetName=NetR47_2 Pin=U6-3
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=U3
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=U4
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=U5
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=U6
+Change Component Comment : Designator=U3 Old Comment=comparator1 New Comment=LM324DR2G
+Change Component Comment : Designator=U4 Old Comment=comparator2 New Comment=LM324DR2G
+Change Component Comment : Designator=U5 Old Comment=comparator3 New Comment=LM324DR2G
+Change Component Comment : Designator=U6 Old Comment=comparator4 New Comment=LM324DR2G
+Change Component Designator: OldDesignator=U3 NewDesignator=U2s
+Change Component Designator: OldDesignator=U4 NewDesignator=U3s
+Change Component Designator: OldDesignator=U5 NewDesignator=U4s
+Change Component Designator: OldDesignator=U6 NewDesignator=U5s
+Change Component Library : Designator=U2s Old Library=EE209_Library.IntLib New Library=EE209_SchLib.SchLib
+Change Component Library : Designator=U3s Old Library=EE209_Library.IntLib New Library=EE209_SchLib.SchLib
+Change Component Library : Designator=U4s Old Library=EE209_Library.IntLib New Library=EE209_SchLib.SchLib
+Change Component Library : Designator=U5s Old Library=EE209_Library.IntLib New Library=EE209_SchLib.SchLib
+Added Pin To Net: NetName=Vb2 Pin=U2s-1
+Added Pin To Net: NetName=NetRs5_2 Pin=U2s-2
+Added Pin To Net: NetName=NetRs6_2 Pin=U2s-3
+Added Pin To Net: NetName=NetR36_2 Pin=U2s-5
+Added Pin To Net: NetName=Vref_DAC Pin=U2s-6
+Added Pin To Net: NetName=Vout2 Pin=U2s-7
+Added Pin To Net: NetName=Vb3 Pin=U3s-1
+Added Pin To Net: NetName=NetRs9_2 Pin=U3s-2
+Added Pin To Net: NetName=NetRs10_2 Pin=U3s-3
+Added Pin To Net: NetName=NetR40_2 Pin=U3s-5
+Added Pin To Net: NetName=Vref_DAC Pin=U3s-6
+Added Pin To Net: NetName=Vout3 Pin=U3s-7
+Added Pin To Net: NetName=Vb4 Pin=U4s-1
+Added Pin To Net: NetName=NetRs13_2 Pin=U4s-2
+Added Pin To Net: NetName=NetRs14_2 Pin=U4s-3
+Added Pin To Net: NetName=NetR44_2 Pin=U4s-5
+Added Pin To Net: NetName=Vref_DAC Pin=U4s-6
+Added Pin To Net: NetName=Vout4 Pin=U4s-7
+Added Pin To Net: NetName=Vb5 Pin=U5s-1
+Added Pin To Net: NetName=NetRs17_2 Pin=U5s-2
+Added Pin To Net: NetName=NetRs18_2 Pin=U5s-3
+Added Pin To Net: NetName=NetR47_2 Pin=U5s-5
+Added Pin To Net: NetName=Vref_DAC Pin=U5s-6
+Added Pin To Net: NetName=Vout5 Pin=U5s-7
+Added Member To Class: ClassName=CS301_YOURGROUPNUM Member=Component U1s LM324DR2G
