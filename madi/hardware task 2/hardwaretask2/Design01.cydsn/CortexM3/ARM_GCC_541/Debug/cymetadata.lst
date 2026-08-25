@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 1
 
 
    1              		.syntax unified
@@ -27,600 +27,1708 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 1
   24              		.section	.cyconfigecc,"a",%progbits
   25              		.align	2
   26              		.type	cy_meta_configecc, %object
-  27              		.size	cy_meta_configecc, 140
+  27              		.size	cy_meta_configecc, 1168
   28              	cy_meta_configecc:
   29 0000 01       		.byte	1
-  30 0001 4F       		.byte	79
+  30 0001 45       		.byte	69
   31 0002 00       		.byte	0
   32 0003 40       		.byte	64
-  33 0004 02       		.byte	2
-  34 0005 52       		.byte	82
+  33 0004 04       		.byte	4
+  34 0005 4F       		.byte	79
   35 0006 00       		.byte	0
   36 0007 40       		.byte	64
-  37 0008 02       		.byte	2
-  38 0009 07       		.byte	7
-  39 000a 01       		.byte	1
+  37 0008 05       		.byte	5
+  38 0009 52       		.byte	82
+  39 000a 00       		.byte	0
   40 000b 40       		.byte	64
-  41 000c 06       		.byte	6
-  42 000d 14       		.byte	20
-  43 000e 01       		.byte	1
+  41 000c 03       		.byte	3
+  42 000d 64       		.byte	100
+  43 000e 00       		.byte	0
   44 000f 40       		.byte	64
-  45 0010 08       		.byte	8
-  46 0011 15       		.byte	21
+  45 0010 43       		.byte	67
+  46 0011 00       		.byte	0
   47 0012 01       		.byte	1
   48 0013 40       		.byte	64
-  49 0014 01       		.byte	1
-  50 0015 17       		.byte	23
+  49 0014 2E       		.byte	46
+  50 0015 01       		.byte	1
   51 0016 01       		.byte	1
   52 0017 40       		.byte	64
-  53 0018 04       		.byte	4
-  54 0019 41       		.byte	65
+  53 0018 54       		.byte	84
+  54 0019 02       		.byte	2
   55 001a 01       		.byte	1
   56 001b 40       		.byte	64
-  57 001c 02       		.byte	2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 2
+  57 001c 3E       		.byte	62
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 2
 
 
-  58 001d 42       		.byte	66
+  58 001d 03       		.byte	3
   59 001e 01       		.byte	1
   60 001f 40       		.byte	64
-  61 0020 05       		.byte	5
-  62 0021 43       		.byte	67
+  61 0020 4E       		.byte	78
+  62 0021 04       		.byte	4
   63 0022 01       		.byte	1
   64 0023 40       		.byte	64
-  65 0024 03       		.byte	3
-  66 0025 48       		.byte	72
+  65 0024 45       		.byte	69
+  66 0025 05       		.byte	5
   67 0026 01       		.byte	1
   68 0027 40       		.byte	64
   69 0028 05       		.byte	5
-  70 0029 49       		.byte	73
+  70 0029 07       		.byte	7
   71 002a 01       		.byte	1
   72 002b 40       		.byte	64
-  73 002c 0A       		.byte	10
-  74 002d 36       		.byte	54
-  75 002e 00       		.byte	0
-  76 002f 01       		.byte	1
-  77 0030 01       		.byte	1
-  78 0031 01       		.byte	1
-  79 0032 8B       		.byte	-117
-  80 0033 08       		.byte	8
-  81 0034 E2       		.byte	-30
-  82 0035 20       		.byte	32
-  83 0036 A8       		.byte	-88
-  84 0037 01       		.byte	1
-  85 0038 B2       		.byte	-78
-  86 0039 01       		.byte	1
-  87 003a B8       		.byte	-72
-  88 003b 20       		.byte	32
-  89 003c BE       		.byte	-66
-  90 003d 14       		.byte	20
-  91 003e D8       		.byte	-40
-  92 003f 04       		.byte	4
-  93 0040 DF       		.byte	-33
-  94 0041 01       		.byte	1
-  95 0042 17       		.byte	23
-  96 0043 10       		.byte	16
-  97 0044 1E       		.byte	30
-  98 0045 04       		.byte	4
-  99 0046 1F       		.byte	31
- 100 0047 08       		.byte	8
- 101 0048 86       		.byte	-122
- 102 0049 04       		.byte	4
- 103 004a 8F       		.byte	-113
- 104 004b 10       		.byte	16
- 105 004c A7       		.byte	-89
- 106 004d 08       		.byte	8
- 107 004e C4       		.byte	-60
+  73 002c 03       		.byte	3
+  74 002d 09       		.byte	9
+  75 002e 01       		.byte	1
+  76 002f 40       		.byte	64
+  77 0030 04       		.byte	4
+  78 0031 0A       		.byte	10
+  79 0032 01       		.byte	1
+  80 0033 40       		.byte	64
+  81 0034 01       		.byte	1
+  82 0035 0B       		.byte	11
+  83 0036 01       		.byte	1
+  84 0037 40       		.byte	64
+  85 0038 01       		.byte	1
+  86 0039 0F       		.byte	15
+  87 003a 01       		.byte	1
+  88 003b 40       		.byte	64
+  89 003c 01       		.byte	1
+  90 003d 17       		.byte	23
+  91 003e 01       		.byte	1
+  92 003f 40       		.byte	64
+  93 0040 01       		.byte	1
+  94 0041 19       		.byte	25
+  95 0042 01       		.byte	1
+  96 0043 40       		.byte	64
+  97 0044 0A       		.byte	10
+  98 0045 40       		.byte	64
+  99 0046 01       		.byte	1
+ 100 0047 40       		.byte	64
+ 101 0048 12       		.byte	18
+ 102 0049 41       		.byte	65
+ 103 004a 01       		.byte	1
+ 104 004b 40       		.byte	64
+ 105 004c 0F       		.byte	15
+ 106 004d 42       		.byte	66
+ 107 004e 01       		.byte	1
  108 004f 40       		.byte	64
- 109 0050 E4       		.byte	-28
- 110 0051 40       		.byte	64
- 111 0052 A7       		.byte	-89
- 112 0053 08       		.byte	8
- 113 0054 50       		.byte	80
- 114 0055 10       		.byte	16
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 3
+ 109 0050 0F       		.byte	15
+ 110 0051 43       		.byte	67
+ 111 0052 01       		.byte	1
+ 112 0053 40       		.byte	64
+ 113 0054 01       		.byte	1
+ 114 0055 44       		.byte	68
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 3
 
 
- 115 0056 5E       		.byte	94
- 116 0057 80       		.byte	-128
- 117 0058 D4       		.byte	-44
- 118 0059 20       		.byte	32
- 119 005a D6       		.byte	-42
- 120 005b 20       		.byte	32
- 121 005c 94       		.byte	-108
- 122 005d 20       		.byte	32
- 123 005e A6       		.byte	-90
+ 115 0056 01       		.byte	1
+ 116 0057 40       		.byte	64
+ 117 0058 01       		.byte	1
+ 118 0059 45       		.byte	69
+ 119 005a 01       		.byte	1
+ 120 005b 40       		.byte	64
+ 121 005c 01       		.byte	1
+ 122 005d 46       		.byte	70
+ 123 005e 01       		.byte	1
  124 005f 40       		.byte	64
- 125 0060 18       		.byte	24
- 126 0061 20       		.byte	32
- 127 0062 8A       		.byte	-118
+ 125 0060 05       		.byte	5
+ 126 0061 47       		.byte	71
+ 127 0062 01       		.byte	1
  128 0063 40       		.byte	64
- 129 0064 94       		.byte	-108
- 130 0065 20       		.byte	32
- 131 0066 A6       		.byte	-90
+ 129 0064 02       		.byte	2
+ 130 0065 48       		.byte	72
+ 131 0066 01       		.byte	1
  132 0067 40       		.byte	64
- 133 0068 C6       		.byte	-58
- 134 0069 10       		.byte	16
- 135 006a 67       		.byte	103
- 136 006b 04       		.byte	4
- 137 006c 90       		.byte	-112
- 138 006d 20       		.byte	32
- 139 006e D8       		.byte	-40
- 140 006f 80       		.byte	-128
- 141 0070 87       		.byte	-121
- 142 0071 04       		.byte	4
- 143 0072 8C       		.byte	-116
- 144 0073 10       		.byte	16
- 145 0074 90       		.byte	-112
- 146 0075 20       		.byte	32
- 147 0076 97       		.byte	-105
- 148 0077 04       		.byte	4
- 149 0078 E2       		.byte	-30
- 150 0079 40       		.byte	64
- 151 007a 00       		.byte	0
- 152 007b 00       		.byte	0
- 153 007c 00       		.byte	0
- 154 007d 03       		.byte	3
- 155 007e 03       		.byte	3
- 156 007f 00       		.byte	0
- 157 0080 03       		.byte	3
- 158 0081 00       		.byte	0
- 159 0082 00       		.byte	0
- 160 0083 00       		.byte	0
- 161 0084 00       		.byte	0
- 162 0085 0B       		.byte	11
- 163 0086 0B       		.byte	11
- 164 0087 00       		.byte	0
- 165 0088 00       		.byte	0
- 166 0089 00       		.byte	0
- 167 008a 00       		.byte	0
- 168 008b 00       		.byte	0
- 169              		.section	.cywolatch,"a",%progbits
- 170              		.align	2
- 171              		.type	cy_meta_wonvl, %object
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 4
+ 133 0068 01       		.byte	1
+ 134 0069 4C       		.byte	76
+ 135 006a 01       		.byte	1
+ 136 006b 40       		.byte	64
+ 137 006c 03       		.byte	3
+ 138 006d 50       		.byte	80
+ 139 006e 01       		.byte	1
+ 140 006f 40       		.byte	64
+ 141 0070 01       		.byte	1
+ 142 0071 51       		.byte	81
+ 143 0072 01       		.byte	1
+ 144 0073 40       		.byte	64
+ 145 0074 7E       		.byte	126
+ 146 0075 02       		.byte	2
+ 147 0076 01       		.byte	1
+ 148 0077 10       		.byte	16
+ 149 0078 0A       		.byte	10
+ 150 0079 4B       		.byte	75
+ 151 007a 0D       		.byte	13
+ 152 007b 10       		.byte	16
+ 153 007c 16       		.byte	22
+ 154 007d 4B       		.byte	75
+ 155 007e 00       		.byte	0
+ 156 007f 86       		.byte	-122
+ 157 0080 01       		.byte	1
+ 158 0081 8A       		.byte	-118
+ 159 0082 60       		.byte	96
+ 160 0083 04       		.byte	4
+ 161 0084 61       		.byte	97
+ 162 0085 0C       		.byte	12
+ 163 0086 7C       		.byte	124
+ 164 0087 40       		.byte	64
+ 165 0088 80       		.byte	-128
+ 166 0089 0F       		.byte	15
+ 167 008a 83       		.byte	-125
+ 168 008b 0D       		.byte	13
+ 169 008c 84       		.byte	-124
+ 170 008d 6F       		.byte	111
+ 171 008e 02       		.byte	2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 4
 
 
- 172              		.size	cy_meta_wonvl, 4
- 173              	cy_meta_wonvl:
- 174 0000 BC       		.byte	-68
- 175 0001 90       		.byte	-112
- 176 0002 AC       		.byte	-84
- 177 0003 AF       		.byte	-81
- 178              		.section	.cycustnvl,"a",%progbits
- 179              		.align	2
- 180              		.type	cy_meta_custnvl, %object
- 181              		.size	cy_meta_custnvl, 4
- 182              	cy_meta_custnvl:
- 183 0000 00       		.byte	0
- 184 0001 00       		.byte	0
- 185 0002 40       		.byte	64
- 186 0003 05       		.byte	5
- 187              		.section	.cymeta,"a",%progbits
- 188              		.align	2
- 189              		.type	cy_metadata, %object
- 190              		.size	cy_metadata, 12
- 191              	cy_metadata:
- 192 0000 00       		.byte	0
- 193 0001 01       		.byte	1
- 194 0002 2E       		.byte	46
- 195 0003 16       		.byte	22
- 196 0004 10       		.byte	16
- 197 0005 69       		.byte	105
- 198 0006 00       		.byte	0
- 199 0007 01       		.byte	1
- 200 0008 00       		.byte	0
- 201 0009 00       		.byte	0
- 202 000a 00       		.byte	0
- 203 000b 00       		.byte	0
- 204              		.section	.cyflashprotect,"a",%progbits
- 205              		.align	2
- 206              		.type	cy_meta_flashprotect, %object
- 207              		.size	cy_meta_flashprotect, 256
- 208              	cy_meta_flashprotect:
- 209 0000 00000000 		.space	256
- 209      00000000 
- 209      00000000 
- 209      00000000 
- 209      00000000 
- 210              		.text
- 211              	.Letext0:
- 212              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
- 213              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
- 214              		.file 3 "Generated_Source\\PSoC5\\cymetadata.c"
- 215              		.section	.debug_info,"",%progbits
- 216              	.Ldebug_info0:
- 217 0000 30010000 		.4byte	0x130
- 218 0004 0400     		.2byte	0x4
- 219 0006 00000000 		.4byte	.Ldebug_abbrev0
- 220 000a 04       		.byte	0x4
- 221 000b 01       		.uleb128 0x1
- 222 000c 24000000 		.4byte	.LASF17
- 223 0010 0C       		.byte	0xc
- 224 0011 C9010000 		.4byte	.LASF18
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 5
+ 172 008f 10       		.byte	16
+ 173 0090 04       		.byte	4
+ 174 0091 01       		.byte	1
+ 175 0092 05       		.byte	5
+ 176 0093 FD       		.byte	-3
+ 177 0094 06       		.byte	6
+ 178 0095 02       		.byte	2
+ 179 0096 07       		.byte	7
+ 180 0097 02       		.byte	2
+ 181 0098 08       		.byte	8
+ 182 0099 07       		.byte	7
+ 183 009a 09       		.byte	9
+ 184 009b CF       		.byte	-49
+ 185 009c 0B       		.byte	11
+ 186 009d 30       		.byte	48
+ 187 009e 0C       		.byte	12
+ 188 009f 10       		.byte	16
+ 189 00a0 0D       		.byte	13
+ 190 00a1 94       		.byte	-108
+ 191 00a2 0F       		.byte	15
+ 192 00a3 60       		.byte	96
+ 193 00a4 11       		.byte	17
+ 194 00a5 30       		.byte	48
+ 195 00a6 12       		.byte	18
+ 196 00a7 17       		.byte	23
+ 197 00a8 13       		.byte	19
+ 198 00a9 C9       		.byte	-55
+ 199 00aa 15       		.byte	21
+ 200 00ab 73       		.byte	115
+ 201 00ac 16       		.byte	22
+ 202 00ad 04       		.byte	4
+ 203 00ae 19       		.byte	25
+ 204 00af 9E       		.byte	-98
+ 205 00b0 1A       		.byte	26
+ 206 00b1 08       		.byte	8
+ 207 00b2 1B       		.byte	27
+ 208 00b3 60       		.byte	96
+ 209 00b4 1C       		.byte	28
+ 210 00b5 01       		.byte	1
+ 211 00b6 1E       		.byte	30
+ 212 00b7 02       		.byte	2
+ 213 00b8 20       		.byte	32
+ 214 00b9 04       		.byte	4
+ 215 00ba 24       		.byte	36
+ 216 00bb 07       		.byte	7
+ 217 00bc 2E       		.byte	46
+ 218 00bd 20       		.byte	32
+ 219 00be 2F       		.byte	47
+ 220 00bf 0F       		.byte	15
+ 221 00c0 30       		.byte	48
+ 222 00c1 0F       		.byte	15
+ 223 00c2 34       		.byte	52
+ 224 00c3 20       		.byte	32
+ 225 00c4 35       		.byte	53
+ 226 00c5 FF       		.byte	-1
+ 227 00c6 36       		.byte	54
+ 228 00c7 10       		.byte	16
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 5
 
 
- 225 0015 69010000 		.4byte	.LASF19
- 226 0019 00000000 		.4byte	.Ldebug_line0
- 227 001d 02       		.uleb128 0x2
- 228 001e 01       		.byte	0x1
- 229 001f 06       		.byte	0x6
- 230 0020 BD010000 		.4byte	.LASF0
- 231 0024 03       		.uleb128 0x3
- 232 0025 00000000 		.4byte	.LASF9
- 233 0029 01       		.byte	0x1
- 234 002a 1D       		.byte	0x1d
- 235 002b 2F000000 		.4byte	0x2f
- 236 002f 02       		.uleb128 0x2
- 237 0030 01       		.byte	0x1
- 238 0031 08       		.byte	0x8
- 239 0032 16000000 		.4byte	.LASF1
- 240 0036 02       		.uleb128 0x2
- 241 0037 02       		.byte	0x2
- 242 0038 05       		.byte	0x5
- 243 0039 5F010000 		.4byte	.LASF2
- 244 003d 02       		.uleb128 0x2
- 245 003e 02       		.byte	0x2
- 246 003f 07       		.byte	0x7
- 247 0040 C4000000 		.4byte	.LASF3
- 248 0044 02       		.uleb128 0x2
- 249 0045 04       		.byte	0x4
- 250 0046 05       		.byte	0x5
- 251 0047 B4010000 		.4byte	.LASF4
- 252 004b 02       		.uleb128 0x2
- 253 004c 04       		.byte	0x4
- 254 004d 07       		.byte	0x7
- 255 004e B2000000 		.4byte	.LASF5
- 256 0052 02       		.uleb128 0x2
- 257 0053 08       		.byte	0x8
- 258 0054 05       		.byte	0x5
- 259 0055 51010000 		.4byte	.LASF6
- 260 0059 02       		.uleb128 0x2
- 261 005a 08       		.byte	0x8
- 262 005b 07       		.byte	0x7
- 263 005c 06010000 		.4byte	.LASF7
- 264 0060 04       		.uleb128 0x4
- 265 0061 04       		.byte	0x4
- 266 0062 05       		.byte	0x5
- 267 0063 696E7400 		.ascii	"int\000"
- 268 0067 02       		.uleb128 0x2
- 269 0068 04       		.byte	0x4
- 270 0069 07       		.byte	0x7
- 271 006a F9000000 		.4byte	.LASF8
- 272 006e 03       		.uleb128 0x3
- 273 006f 1D010000 		.4byte	.LASF10
- 274 0073 02       		.byte	0x2
- 275 0074 18       		.byte	0x18
- 276 0075 24000000 		.4byte	0x24
- 277 0079 05       		.uleb128 0x5
- 278 007a 90000000 		.4byte	0x90
- 279 007e 89000000 		.4byte	0x89
- 280 0082 06       		.uleb128 0x6
- 281 0083 89000000 		.4byte	0x89
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 6
+ 229 00c8 3E       		.byte	62
+ 230 00c9 40       		.byte	64
+ 231 00ca 3F       		.byte	63
+ 232 00cb 10       		.byte	16
+ 233 00cc 54       		.byte	84
+ 234 00cd 0F       		.byte	15
+ 235 00ce 58       		.byte	88
+ 236 00cf 04       		.byte	4
+ 237 00d0 59       		.byte	89
+ 238 00d1 04       		.byte	4
+ 239 00d2 5B       		.byte	91
+ 240 00d3 04       		.byte	4
+ 241 00d4 5F       		.byte	95
+ 242 00d5 01       		.byte	1
+ 243 00d6 81       		.byte	-127
+ 244 00d7 03       		.byte	3
+ 245 00d8 82       		.byte	-126
+ 246 00d9 04       		.byte	4
+ 247 00da 83       		.byte	-125
+ 248 00db 0C       		.byte	12
+ 249 00dc 85       		.byte	-123
+ 250 00dd 20       		.byte	32
+ 251 00de 87       		.byte	-121
+ 252 00df 40       		.byte	64
+ 253 00e0 89       		.byte	-119
+ 254 00e1 07       		.byte	7
+ 255 00e2 8F       		.byte	-113
+ 256 00e3 10       		.byte	16
+ 257 00e4 91       		.byte	-111
+ 258 00e5 45       		.byte	69
+ 259 00e6 93       		.byte	-109
+ 260 00e7 2A       		.byte	42
+ 261 00e8 95       		.byte	-107
+ 262 00e9 0F       		.byte	15
+ 263 00ea 96       		.byte	-106
+ 264 00eb 02       		.byte	2
+ 265 00ec 99       		.byte	-103
+ 266 00ed 0A       		.byte	10
+ 267 00ee 9A       		.byte	-102
+ 268 00ef 01       		.byte	1
+ 269 00f0 9B       		.byte	-101
+ 270 00f1 05       		.byte	5
+ 271 00f2 A5       		.byte	-91
+ 272 00f3 0C       		.byte	12
+ 273 00f4 A7       		.byte	-89
+ 274 00f5 03       		.byte	3
+ 275 00f6 A9       		.byte	-87
+ 276 00f7 20       		.byte	32
+ 277 00f8 AB       		.byte	-85
+ 278 00f9 40       		.byte	64
+ 279 00fa AD       		.byte	-83
+ 280 00fb 20       		.byte	32
+ 281 00fc AF       		.byte	-81
+ 282 00fd 40       		.byte	64
+ 283 00fe B0       		.byte	-80
+ 284 00ff 01       		.byte	1
+ 285 0100 B1       		.byte	-79
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 6
 
 
- 282 0087 8B       		.byte	0x8b
- 283 0088 00       		.byte	0
- 284 0089 02       		.uleb128 0x2
- 285 008a 04       		.byte	0x4
- 286 008b 07       		.byte	0x7
- 287 008c 48010000 		.4byte	.LASF11
- 288 0090 07       		.uleb128 0x7
- 289 0091 6E000000 		.4byte	0x6e
- 290 0095 08       		.uleb128 0x8
- 291 0096 E7000000 		.4byte	.LASF12
- 292 009a 03       		.byte	0x3
- 293 009b 1F       		.byte	0x1f
- 294 009c A6000000 		.4byte	0xa6
- 295 00a0 05       		.uleb128 0x5
- 296 00a1 03       		.byte	0x3
- 297 00a2 00000000 		.4byte	cy_meta_configecc
- 298 00a6 07       		.uleb128 0x7
- 299 00a7 79000000 		.4byte	0x79
- 300 00ab 05       		.uleb128 0x5
- 301 00ac 90000000 		.4byte	0x90
- 302 00b0 BB000000 		.4byte	0xbb
- 303 00b4 06       		.uleb128 0x6
- 304 00b5 89000000 		.4byte	0x89
- 305 00b9 03       		.byte	0x3
- 306 00ba 00       		.byte	0
- 307 00bb 08       		.uleb128 0x8
- 308 00bc D7000000 		.4byte	.LASF13
- 309 00c0 03       		.byte	0x3
- 310 00c1 3E       		.byte	0x3e
- 311 00c2 CC000000 		.4byte	0xcc
- 312 00c6 05       		.uleb128 0x5
- 313 00c7 03       		.byte	0x3
- 314 00c8 00000000 		.4byte	cy_meta_custnvl
- 315 00cc 07       		.uleb128 0x7
- 316 00cd AB000000 		.4byte	0xab
- 317 00d1 08       		.uleb128 0x8
- 318 00d2 3A010000 		.4byte	.LASF14
- 319 00d6 03       		.byte	0x3
- 320 00d7 4C       		.byte	0x4c
- 321 00d8 E2000000 		.4byte	0xe2
- 322 00dc 05       		.uleb128 0x5
- 323 00dd 03       		.byte	0x3
- 324 00de 00000000 		.4byte	cy_meta_wonvl
- 325 00e2 07       		.uleb128 0x7
- 326 00e3 AB000000 		.4byte	0xab
- 327 00e7 05       		.uleb128 0x5
- 328 00e8 90000000 		.4byte	0x90
- 329 00ec F7000000 		.4byte	0xf7
- 330 00f0 06       		.uleb128 0x6
- 331 00f1 89000000 		.4byte	0x89
- 332 00f5 FF       		.byte	0xff
- 333 00f6 00       		.byte	0
- 334 00f7 08       		.uleb128 0x8
- 335 00f8 25010000 		.4byte	.LASF15
- 336 00fc 03       		.byte	0x3
- 337 00fd 5A       		.byte	0x5a
- 338 00fe 08010000 		.4byte	0x108
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 7
+ 286 0101 60       		.byte	96
+ 287 0102 B2       		.byte	-78
+ 288 0103 04       		.byte	4
+ 289 0104 B4       		.byte	-76
+ 290 0105 02       		.byte	2
+ 291 0106 B5       		.byte	-75
+ 292 0107 0F       		.byte	15
+ 293 0108 B7       		.byte	-73
+ 294 0109 10       		.byte	16
+ 295 010a BB       		.byte	-69
+ 296 010b 02       		.byte	2
+ 297 010c D8       		.byte	-40
+ 298 010d 04       		.byte	4
+ 299 010e D9       		.byte	-39
+ 300 010f 04       		.byte	4
+ 301 0110 DB       		.byte	-37
+ 302 0111 04       		.byte	4
+ 303 0112 DF       		.byte	-33
+ 304 0113 01       		.byte	1
+ 305 0114 00       		.byte	0
+ 306 0115 A2       		.byte	-94
+ 307 0116 02       		.byte	2
+ 308 0117 20       		.byte	32
+ 309 0118 07       		.byte	7
+ 310 0119 40       		.byte	64
+ 311 011a 09       		.byte	9
+ 312 011b 20       		.byte	32
+ 313 011c 0A       		.byte	10
+ 314 011d 41       		.byte	65
+ 315 011e 0B       		.byte	11
+ 316 011f 20       		.byte	32
+ 317 0120 0E       		.byte	14
+ 318 0121 28       		.byte	40
+ 319 0122 10       		.byte	16
+ 320 0123 02       		.byte	2
+ 321 0124 11       		.byte	17
+ 322 0125 02       		.byte	2
+ 323 0126 13       		.byte	19
+ 324 0127 08       		.byte	8
+ 325 0128 19       		.byte	25
+ 326 0129 40       		.byte	64
+ 327 012a 1A       		.byte	26
+ 328 012b 44       		.byte	68
+ 329 012c 1B       		.byte	27
+ 330 012d 01       		.byte	1
+ 331 012e 1C       		.byte	28
+ 332 012f 08       		.byte	8
+ 333 0130 1E       		.byte	30
+ 334 0131 28       		.byte	40
+ 335 0132 1F       		.byte	31
+ 336 0133 09       		.byte	9
+ 337 0134 21       		.byte	33
+ 338 0135 20       		.byte	32
+ 339 0136 24       		.byte	36
+ 340 0137 04       		.byte	4
+ 341 0138 25       		.byte	37
+ 342 0139 03       		.byte	3
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 7
 
 
- 339 0102 05       		.uleb128 0x5
- 340 0103 03       		.byte	0x3
- 341 0104 00000000 		.4byte	cy_meta_flashprotect
- 342 0108 07       		.uleb128 0x7
- 343 0109 E7000000 		.4byte	0xe7
- 344 010d 05       		.uleb128 0x5
- 345 010e 90000000 		.4byte	0x90
- 346 0112 1D010000 		.4byte	0x11d
- 347 0116 06       		.uleb128 0x6
- 348 0117 89000000 		.4byte	0x89
- 349 011b 0B       		.byte	0xb
- 350 011c 00       		.byte	0
- 351 011d 08       		.uleb128 0x8
- 352 011e 0A000000 		.4byte	.LASF16
- 353 0122 03       		.byte	0x3
- 354 0123 87       		.byte	0x87
- 355 0124 2E010000 		.4byte	0x12e
- 356 0128 05       		.uleb128 0x5
- 357 0129 03       		.byte	0x3
- 358 012a 00000000 		.4byte	cy_metadata
- 359 012e 07       		.uleb128 0x7
- 360 012f 0D010000 		.4byte	0x10d
- 361 0133 00       		.byte	0
- 362              		.section	.debug_abbrev,"",%progbits
- 363              	.Ldebug_abbrev0:
- 364 0000 01       		.uleb128 0x1
- 365 0001 11       		.uleb128 0x11
- 366 0002 01       		.byte	0x1
- 367 0003 25       		.uleb128 0x25
- 368 0004 0E       		.uleb128 0xe
- 369 0005 13       		.uleb128 0x13
- 370 0006 0B       		.uleb128 0xb
- 371 0007 03       		.uleb128 0x3
- 372 0008 0E       		.uleb128 0xe
- 373 0009 1B       		.uleb128 0x1b
- 374 000a 0E       		.uleb128 0xe
- 375 000b 10       		.uleb128 0x10
- 376 000c 17       		.uleb128 0x17
- 377 000d 00       		.byte	0
- 378 000e 00       		.byte	0
- 379 000f 02       		.uleb128 0x2
- 380 0010 24       		.uleb128 0x24
- 381 0011 00       		.byte	0
- 382 0012 0B       		.uleb128 0xb
- 383 0013 0B       		.uleb128 0xb
- 384 0014 3E       		.uleb128 0x3e
- 385 0015 0B       		.uleb128 0xb
- 386 0016 03       		.uleb128 0x3
- 387 0017 0E       		.uleb128 0xe
- 388 0018 00       		.byte	0
- 389 0019 00       		.byte	0
- 390 001a 03       		.uleb128 0x3
- 391 001b 16       		.uleb128 0x16
- 392 001c 00       		.byte	0
- 393 001d 03       		.uleb128 0x3
- 394 001e 0E       		.uleb128 0xe
- 395 001f 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 8
+ 343 013a 26       		.byte	38
+ 344 013b 02       		.byte	2
+ 345 013c 27       		.byte	39
+ 346 013d 09       		.byte	9
+ 347 013e 2B       		.byte	43
+ 348 013f 01       		.byte	1
+ 349 0140 2F       		.byte	47
+ 350 0141 19       		.byte	25
+ 351 0142 31       		.byte	49
+ 352 0143 0A       		.byte	10
+ 353 0144 32       		.byte	50
+ 354 0145 20       		.byte	32
+ 355 0146 36       		.byte	54
+ 356 0147 22       		.byte	34
+ 357 0148 37       		.byte	55
+ 358 0149 08       		.byte	8
+ 359 014a 38       		.byte	56
+ 360 014b 04       		.byte	4
+ 361 014c 3B       		.byte	59
+ 362 014d A0       		.byte	-96
+ 363 014e 3C       		.byte	60
+ 364 014f 28       		.byte	40
+ 365 0150 3E       		.byte	62
+ 366 0151 81       		.byte	-127
+ 367 0152 59       		.byte	89
+ 368 0153 41       		.byte	65
+ 369 0154 5A       		.byte	90
+ 370 0155 28       		.byte	40
+ 371 0156 6F       		.byte	111
+ 372 0157 06       		.byte	6
+ 373 0158 80       		.byte	-128
+ 374 0159 04       		.byte	4
+ 375 015a 81       		.byte	-127
+ 376 015b 01       		.byte	1
+ 377 015c 83       		.byte	-125
+ 378 015d 04       		.byte	4
+ 379 015e 87       		.byte	-121
+ 380 015f 02       		.byte	2
+ 381 0160 C0       		.byte	-64
+ 382 0161 1F       		.byte	31
+ 383 0162 C2       		.byte	-62
+ 384 0163 6F       		.byte	111
+ 385 0164 C4       		.byte	-60
+ 386 0165 0D       		.byte	13
+ 387 0166 CA       		.byte	-54
+ 388 0167 78       		.byte	120
+ 389 0168 CC       		.byte	-52
+ 390 0169 E7       		.byte	-25
+ 391 016a CE       		.byte	-50
+ 392 016b FE       		.byte	-2
+ 393 016c D6       		.byte	-42
+ 394 016d 0F       		.byte	15
+ 395 016e E6       		.byte	-26
+ 396 016f 04       		.byte	4
+ 397 0170 04       		.byte	4
+ 398 0171 2C       		.byte	44
+ 399 0172 06       		.byte	6
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 8
 
 
- 396 0020 0B       		.uleb128 0xb
- 397 0021 3B       		.uleb128 0x3b
- 398 0022 0B       		.uleb128 0xb
- 399 0023 49       		.uleb128 0x49
- 400 0024 13       		.uleb128 0x13
- 401 0025 00       		.byte	0
- 402 0026 00       		.byte	0
- 403 0027 04       		.uleb128 0x4
- 404 0028 24       		.uleb128 0x24
- 405 0029 00       		.byte	0
- 406 002a 0B       		.uleb128 0xb
- 407 002b 0B       		.uleb128 0xb
- 408 002c 3E       		.uleb128 0x3e
- 409 002d 0B       		.uleb128 0xb
- 410 002e 03       		.uleb128 0x3
- 411 002f 08       		.uleb128 0x8
- 412 0030 00       		.byte	0
- 413 0031 00       		.byte	0
- 414 0032 05       		.uleb128 0x5
- 415 0033 01       		.uleb128 0x1
- 416 0034 01       		.byte	0x1
- 417 0035 49       		.uleb128 0x49
- 418 0036 13       		.uleb128 0x13
- 419 0037 01       		.uleb128 0x1
- 420 0038 13       		.uleb128 0x13
- 421 0039 00       		.byte	0
- 422 003a 00       		.byte	0
- 423 003b 06       		.uleb128 0x6
- 424 003c 21       		.uleb128 0x21
- 425 003d 00       		.byte	0
- 426 003e 49       		.uleb128 0x49
- 427 003f 13       		.uleb128 0x13
- 428 0040 2F       		.uleb128 0x2f
- 429 0041 0B       		.uleb128 0xb
- 430 0042 00       		.byte	0
- 431 0043 00       		.byte	0
- 432 0044 07       		.uleb128 0x7
- 433 0045 26       		.uleb128 0x26
- 434 0046 00       		.byte	0
- 435 0047 49       		.uleb128 0x49
- 436 0048 13       		.uleb128 0x13
- 437 0049 00       		.byte	0
- 438 004a 00       		.byte	0
- 439 004b 08       		.uleb128 0x8
- 440 004c 34       		.uleb128 0x34
- 441 004d 00       		.byte	0
- 442 004e 03       		.uleb128 0x3
- 443 004f 0E       		.uleb128 0xe
- 444 0050 3A       		.uleb128 0x3a
- 445 0051 0B       		.uleb128 0xb
- 446 0052 3B       		.uleb128 0x3b
- 447 0053 0B       		.uleb128 0xb
- 448 0054 49       		.uleb128 0x49
- 449 0055 13       		.uleb128 0x13
- 450 0056 3F       		.uleb128 0x3f
- 451 0057 19       		.uleb128 0x19
- 452 0058 02       		.uleb128 0x2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 9
+ 400 0173 10       		.byte	16
+ 401 0174 08       		.byte	8
+ 402 0175 30       		.byte	48
+ 403 0176 0A       		.byte	10
+ 404 0177 04       		.byte	4
+ 405 0178 0C       		.byte	12
+ 406 0179 01       		.byte	1
+ 407 017a 0E       		.byte	14
+ 408 017b 02       		.byte	2
+ 409 017c 10       		.byte	16
+ 410 017d 20       		.byte	32
+ 411 017e 12       		.byte	18
+ 412 017f 04       		.byte	4
+ 413 0180 13       		.byte	19
+ 414 0181 02       		.byte	2
+ 415 0182 14       		.byte	20
+ 416 0183 01       		.byte	1
+ 417 0184 16       		.byte	22
+ 418 0185 02       		.byte	2
+ 419 0186 18       		.byte	24
+ 420 0187 30       		.byte	48
+ 421 0188 1A       		.byte	26
+ 422 0189 08       		.byte	8
+ 423 018a 1B       		.byte	27
+ 424 018b 01       		.byte	1
+ 425 018c 1C       		.byte	28
+ 426 018d 02       		.byte	2
+ 427 018e 1E       		.byte	30
+ 428 018f 3D       		.byte	61
+ 429 0190 20       		.byte	32
+ 430 0191 01       		.byte	1
+ 431 0192 22       		.byte	34
+ 432 0193 02       		.byte	2
+ 433 0194 24       		.byte	36
+ 434 0195 1C       		.byte	28
+ 435 0196 34       		.byte	52
+ 436 0197 3C       		.byte	60
+ 437 0198 35       		.byte	53
+ 438 0199 02       		.byte	2
+ 439 019a 36       		.byte	54
+ 440 019b 03       		.byte	3
+ 441 019c 37       		.byte	55
+ 442 019d 01       		.byte	1
+ 443 019e 3A       		.byte	58
+ 444 019f 80       		.byte	-128
+ 445 01a0 58       		.byte	88
+ 446 01a1 04       		.byte	4
+ 447 01a2 59       		.byte	89
+ 448 01a3 04       		.byte	4
+ 449 01a4 5F       		.byte	95
+ 450 01a5 01       		.byte	1
+ 451 01a6 80       		.byte	-128
+ 452 01a7 01       		.byte	1
+ 453 01a8 85       		.byte	-123
+ 454 01a9 14       		.byte	20
+ 455 01aa 89       		.byte	-119
+ 456 01ab 18       		.byte	24
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 9
 
 
- 453 0059 18       		.uleb128 0x18
- 454 005a 00       		.byte	0
- 455 005b 00       		.byte	0
- 456 005c 00       		.byte	0
- 457              		.section	.debug_aranges,"",%progbits
- 458 0000 14000000 		.4byte	0x14
- 459 0004 0200     		.2byte	0x2
- 460 0006 00000000 		.4byte	.Ldebug_info0
- 461 000a 04       		.byte	0x4
- 462 000b 00       		.byte	0
- 463 000c 0000     		.2byte	0
- 464 000e 0000     		.2byte	0
- 465 0010 00000000 		.4byte	0
- 466 0014 00000000 		.4byte	0
- 467              		.section	.debug_line,"",%progbits
- 468              	.Ldebug_line0:
- 469 0000 3D010000 		.section	.debug_str,"MS",%progbits,1
- 469      02003701 
- 469      00000201 
- 469      FB0E0D00 
- 469      01010101 
- 470              	.LASF9:
- 471 0000 5F5F7569 		.ascii	"__uint8_t\000"
- 471      6E74385F 
- 471      7400
- 472              	.LASF16:
- 473 000a 63795F6D 		.ascii	"cy_metadata\000"
- 473      65746164 
- 473      61746100 
- 474              	.LASF1:
- 475 0016 756E7369 		.ascii	"unsigned char\000"
- 475      676E6564 
- 475      20636861 
- 475      7200
- 476              	.LASF17:
- 477 0024 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 477      43313120 
- 477      352E342E 
- 477      31203230 
- 477      31363036 
- 478 0057 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 478      20726576 
- 478      6973696F 
- 478      6E203233 
- 478      37373135 
- 479 008a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 479      66756E63 
- 479      74696F6E 
- 479      2D736563 
- 479      74696F6E 
- 480              	.LASF5:
- 481 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
- 481      20756E73 
- 481      69676E65 
- 481      6420696E 
- 481      7400
- 482              	.LASF3:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 10
+ 457 01ac 8F       		.byte	-113
+ 458 01ad 02       		.byte	2
+ 459 01ae 91       		.byte	-111
+ 460 01af 02       		.byte	2
+ 461 01b0 92       		.byte	-110
+ 462 01b1 04       		.byte	4
+ 463 01b2 94       		.byte	-108
+ 464 01b3 01       		.byte	1
+ 465 01b4 95       		.byte	-107
+ 466 01b5 0C       		.byte	12
+ 467 01b6 98       		.byte	-104
+ 468 01b7 02       		.byte	2
+ 469 01b8 99       		.byte	-103
+ 470 01b9 18       		.byte	24
+ 471 01ba 9F       		.byte	-97
+ 472 01bb 01       		.byte	1
+ 473 01bc A6       		.byte	-90
+ 474 01bd 04       		.byte	4
+ 475 01be AC       		.byte	-84
+ 476 01bf 01       		.byte	1
+ 477 01c0 AD       		.byte	-83
+ 478 01c1 02       		.byte	2
+ 479 01c2 AE       		.byte	-82
+ 480 01c3 02       		.byte	2
+ 481 01c4 B0       		.byte	-80
+ 482 01c5 02       		.byte	2
+ 483 01c6 B1       		.byte	-79
+ 484 01c7 01       		.byte	1
+ 485 01c8 B2       		.byte	-78
+ 486 01c9 04       		.byte	4
+ 487 01ca B3       		.byte	-77
+ 488 01cb 1C       		.byte	28
+ 489 01cc B5       		.byte	-75
+ 490 01cd 02       		.byte	2
+ 491 01ce B6       		.byte	-74
+ 492 01cf 01       		.byte	1
+ 493 01d0 B8       		.byte	-72
+ 494 01d1 80       		.byte	-128
+ 495 01d2 B9       		.byte	-71
+ 496 01d3 08       		.byte	8
+ 497 01d4 BE       		.byte	-66
+ 498 01d5 41       		.byte	65
+ 499 01d6 BF       		.byte	-65
+ 500 01d7 10       		.byte	16
+ 501 01d8 C0       		.byte	-64
+ 502 01d9 61       		.byte	97
+ 503 01da C1       		.byte	-63
+ 504 01db 04       		.byte	4
+ 505 01dc C5       		.byte	-59
+ 506 01dd 40       		.byte	64
+ 507 01de C6       		.byte	-58
+ 508 01df C3       		.byte	-61
+ 509 01e0 C7       		.byte	-57
+ 510 01e1 2E       		.byte	46
+ 511 01e2 C8       		.byte	-56
+ 512 01e3 3E       		.byte	62
+ 513 01e4 C9       		.byte	-55
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 10
 
 
- 483 00c4 73686F72 		.ascii	"short unsigned int\000"
- 483      7420756E 
- 483      7369676E 
- 483      65642069 
- 483      6E7400
- 484              	.LASF13:
- 485 00d7 63795F6D 		.ascii	"cy_meta_custnvl\000"
- 485      6574615F 
- 485      63757374 
- 485      6E766C00 
- 486              	.LASF12:
- 487 00e7 63795F6D 		.ascii	"cy_meta_configecc\000"
- 487      6574615F 
- 487      636F6E66 
- 487      69676563 
- 487      6300
- 488              	.LASF8:
- 489 00f9 756E7369 		.ascii	"unsigned int\000"
- 489      676E6564 
- 489      20696E74 
- 489      00
- 490              	.LASF7:
- 491 0106 6C6F6E67 		.ascii	"long long unsigned int\000"
- 491      206C6F6E 
- 491      6720756E 
- 491      7369676E 
- 491      65642069 
- 492              	.LASF10:
- 493 011d 75696E74 		.ascii	"uint8_t\000"
- 493      385F7400 
- 494              	.LASF15:
- 495 0125 63795F6D 		.ascii	"cy_meta_flashprotect\000"
- 495      6574615F 
- 495      666C6173 
- 495      6870726F 
- 495      74656374 
- 496              	.LASF14:
- 497 013a 63795F6D 		.ascii	"cy_meta_wonvl\000"
- 497      6574615F 
- 497      776F6E76 
- 497      6C00
- 498              	.LASF11:
- 499 0148 73697A65 		.ascii	"sizetype\000"
- 499      74797065 
- 499      00
- 500              	.LASF6:
- 501 0151 6C6F6E67 		.ascii	"long long int\000"
- 501      206C6F6E 
- 501      6720696E 
- 501      7400
- 502              	.LASF2:
- 503 015f 73686F72 		.ascii	"short int\000"
- 503      7420696E 
- 503      7400
- 504              	.LASF19:
- 505 0169 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\hardware task 2\\"
- 505      454D505C 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccsOGAmu.s 			page 11
+ 514 01e5 FF       		.byte	-1
+ 515 01e6 CA       		.byte	-54
+ 516 01e7 FF       		.byte	-1
+ 517 01e8 CB       		.byte	-53
+ 518 01e9 FF       		.byte	-1
+ 519 01ea CD       		.byte	-51
+ 520 01eb A0       		.byte	-96
+ 521 01ec CF       		.byte	-49
+ 522 01ed 01       		.byte	1
+ 523 01ee D0       		.byte	-48
+ 524 01ef 18       		.byte	24
+ 525 01f0 D2       		.byte	-46
+ 526 01f1 80       		.byte	-128
+ 527 01f2 D4       		.byte	-44
+ 528 01f3 01       		.byte	1
+ 529 01f4 D6       		.byte	-42
+ 530 01f5 04       		.byte	4
+ 531 01f6 D8       		.byte	-40
+ 532 01f7 04       		.byte	4
+ 533 01f8 D9       		.byte	-39
+ 534 01f9 04       		.byte	4
+ 535 01fa DA       		.byte	-38
+ 536 01fb 04       		.byte	4
+ 537 01fc DB       		.byte	-37
+ 538 01fd 04       		.byte	4
+ 539 01fe DC       		.byte	-36
+ 540 01ff 02       		.byte	2
+ 541 0200 DD       		.byte	-35
+ 542 0201 20       		.byte	32
+ 543 0202 DF       		.byte	-33
+ 544 0203 01       		.byte	1
+ 545 0204 E0       		.byte	-32
+ 546 0205 40       		.byte	64
+ 547 0206 E2       		.byte	-30
+ 548 0207 80       		.byte	-128
+ 549 0208 E4       		.byte	-28
+ 550 0209 40       		.byte	64
+ 551 020a E5       		.byte	-27
+ 552 020b 40       		.byte	64
+ 553 020c E6       		.byte	-26
+ 554 020d 80       		.byte	-128
+ 555 020e E8       		.byte	-24
+ 556 020f 40       		.byte	64
+ 557 0210 EA       		.byte	-22
+ 558 0211 80       		.byte	-128
+ 559 0212 EC       		.byte	-20
+ 560 0213 40       		.byte	64
+ 561 0214 ED       		.byte	-19
+ 562 0215 20       		.byte	32
+ 563 0216 EE       		.byte	-18
+ 564 0217 80       		.byte	-128
+ 565 0218 02       		.byte	2
+ 566 0219 40       		.byte	64
+ 567 021a 04       		.byte	4
+ 568 021b 04       		.byte	4
+ 569 021c 07       		.byte	7
+ 570 021d 09       		.byte	9
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 11
 
 
- 505      434F4D50 
- 505      53595333 
- 505      30315F74 
- 506 0197 68617264 		.ascii	"hardwaretask2\\Design01.cydsn\000"
- 506      77617265 
- 506      7461736B 
- 506      325C4465 
- 506      7369676E 
- 507              	.LASF4:
- 508 01b4 6C6F6E67 		.ascii	"long int\000"
- 508      20696E74 
- 508      00
- 509              	.LASF0:
- 510 01bd 7369676E 		.ascii	"signed char\000"
- 510      65642063 
- 510      68617200 
- 511              	.LASF18:
- 512 01c9 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
- 512      72617465 
- 512      645F536F 
- 512      75726365 
- 512      5C50536F 
- 513              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 571 021e 09       		.byte	9
+ 572 021f 08       		.byte	8
+ 573 0220 0A       		.byte	10
+ 574 0221 04       		.byte	4
+ 575 0222 0B       		.byte	11
+ 576 0223 40       		.byte	64
+ 577 0224 0D       		.byte	13
+ 578 0225 02       		.byte	2
+ 579 0226 0E       		.byte	14
+ 580 0227 29       		.byte	41
+ 581 0228 10       		.byte	16
+ 582 0229 22       		.byte	34
+ 583 022a 15       		.byte	21
+ 584 022b 08       		.byte	8
+ 585 022c 17       		.byte	23
+ 586 022d 02       		.byte	2
+ 587 022e 18       		.byte	24
+ 588 022f 01       		.byte	1
+ 589 0230 19       		.byte	25
+ 590 0231 0A       		.byte	10
+ 591 0232 1E       		.byte	30
+ 592 0233 09       		.byte	9
+ 593 0234 1F       		.byte	31
+ 594 0235 50       		.byte	80
+ 595 0236 20       		.byte	32
+ 596 0237 A0       		.byte	-96
+ 597 0238 21       		.byte	33
+ 598 0239 0C       		.byte	12
+ 599 023a 22       		.byte	34
+ 600 023b 15       		.byte	21
+ 601 023c 26       		.byte	38
+ 602 023d 10       		.byte	16
+ 603 023e 27       		.byte	39
+ 604 023f 02       		.byte	2
+ 605 0240 2B       		.byte	43
+ 606 0241 01       		.byte	1
+ 607 0242 30       		.byte	48
+ 608 0243 80       		.byte	-128
+ 609 0244 31       		.byte	49
+ 610 0245 08       		.byte	8
+ 611 0246 32       		.byte	50
+ 612 0247 21       		.byte	33
+ 613 0248 36       		.byte	54
+ 614 0249 10       		.byte	16
+ 615 024a 37       		.byte	55
+ 616 024b 01       		.byte	1
+ 617 024c 38       		.byte	56
+ 618 024d 04       		.byte	4
+ 619 024e 39       		.byte	57
+ 620 024f 80       		.byte	-128
+ 621 0250 3B       		.byte	59
+ 622 0251 20       		.byte	32
+ 623 0252 40       		.byte	64
+ 624 0253 01       		.byte	1
+ 625 0254 42       		.byte	66
+ 626 0255 40       		.byte	64
+ 627 0256 48       		.byte	72
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 12
+
+
+ 628 0257 84       		.byte	-124
+ 629 0258 50       		.byte	80
+ 630 0259 02       		.byte	2
+ 631 025a 51       		.byte	81
+ 632 025b 01       		.byte	1
+ 633 025c 52       		.byte	82
+ 634 025d 58       		.byte	88
+ 635 025e 59       		.byte	89
+ 636 025f 85       		.byte	-123
+ 637 0260 63       		.byte	99
+ 638 0261 80       		.byte	-128
+ 639 0262 73       		.byte	115
+ 640 0263 40       		.byte	64
+ 641 0264 83       		.byte	-125
+ 642 0265 40       		.byte	64
+ 643 0266 85       		.byte	-123
+ 644 0267 21       		.byte	33
+ 645 0268 90       		.byte	-112
+ 646 0269 04       		.byte	4
+ 647 026a 92       		.byte	-110
+ 648 026b 44       		.byte	68
+ 649 026c 96       		.byte	-106
+ 650 026d 29       		.byte	41
+ 651 026e 97       		.byte	-105
+ 652 026f A0       		.byte	-96
+ 653 0270 9B       		.byte	-101
+ 654 0271 01       		.byte	1
+ 655 0272 9E       		.byte	-98
+ 656 0273 80       		.byte	-128
+ 657 0274 9F       		.byte	-97
+ 658 0275 40       		.byte	64
+ 659 0276 A1       		.byte	-95
+ 660 0277 03       		.byte	3
+ 661 0278 A3       		.byte	-93
+ 662 0279 01       		.byte	1
+ 663 027a A4       		.byte	-92
+ 664 027b 53       		.byte	83
+ 665 027c A5       		.byte	-91
+ 666 027d 08       		.byte	8
+ 667 027e A6       		.byte	-90
+ 668 027f 20       		.byte	32
+ 669 0280 C0       		.byte	-64
+ 670 0281 E8       		.byte	-24
+ 671 0282 C2       		.byte	-62
+ 672 0283 FE       		.byte	-2
+ 673 0284 C4       		.byte	-60
+ 674 0285 35       		.byte	53
+ 675 0286 CA       		.byte	-54
+ 676 0287 08       		.byte	8
+ 677 0288 CC       		.byte	-52
+ 678 0289 AF       		.byte	-81
+ 679 028a CE       		.byte	-50
+ 680 028b 0E       		.byte	14
+ 681 028c D0       		.byte	-48
+ 682 028d 09       		.byte	9
+ 683 028e D2       		.byte	-46
+ 684 028f 04       		.byte	4
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 13
+
+
+ 685 0290 D6       		.byte	-42
+ 686 0291 0B       		.byte	11
+ 687 0292 D8       		.byte	-40
+ 688 0293 01       		.byte	1
+ 689 0294 11       		.byte	17
+ 690 0295 01       		.byte	1
+ 691 0296 12       		.byte	18
+ 692 0297 02       		.byte	2
+ 693 0298 19       		.byte	25
+ 694 0299 04       		.byte	4
+ 695 029a 1C       		.byte	28
+ 696 029b 01       		.byte	1
+ 697 029c 22       		.byte	34
+ 698 029d 01       		.byte	1
+ 699 029e 26       		.byte	38
+ 700 029f 02       		.byte	2
+ 701 02a0 2D       		.byte	45
+ 702 02a1 01       		.byte	1
+ 703 02a2 2F       		.byte	47
+ 704 02a3 06       		.byte	6
+ 705 02a4 30       		.byte	48
+ 706 02a5 01       		.byte	1
+ 707 02a6 33       		.byte	51
+ 708 02a7 04       		.byte	4
+ 709 02a8 35       		.byte	53
+ 710 02a9 02       		.byte	2
+ 711 02aa 36       		.byte	54
+ 712 02ab 02       		.byte	2
+ 713 02ac 37       		.byte	55
+ 714 02ad 01       		.byte	1
+ 715 02ae 39       		.byte	57
+ 716 02af 80       		.byte	-128
+ 717 02b0 3E       		.byte	62
+ 718 02b1 41       		.byte	65
+ 719 02b2 3F       		.byte	63
+ 720 02b3 04       		.byte	4
+ 721 02b4 40       		.byte	64
+ 722 02b5 52       		.byte	82
+ 723 02b6 45       		.byte	69
+ 724 02b7 EC       		.byte	-20
+ 725 02b8 46       		.byte	70
+ 726 02b9 20       		.byte	32
+ 727 02ba 48       		.byte	72
+ 728 02bb 0B       		.byte	11
+ 729 02bc 49       		.byte	73
+ 730 02bd FF       		.byte	-1
+ 731 02be 4A       		.byte	74
+ 732 02bf FF       		.byte	-1
+ 733 02c0 4B       		.byte	75
+ 734 02c1 FF       		.byte	-1
+ 735 02c2 4F       		.byte	79
+ 736 02c3 01       		.byte	1
+ 737 02c4 50       		.byte	80
+ 738 02c5 18       		.byte	24
+ 739 02c6 54       		.byte	84
+ 740 02c7 0F       		.byte	15
+ 741 02c8 58       		.byte	88
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 14
+
+
+ 742 02c9 04       		.byte	4
+ 743 02ca 59       		.byte	89
+ 744 02cb 04       		.byte	4
+ 745 02cc 5A       		.byte	90
+ 746 02cd 04       		.byte	4
+ 747 02ce 5B       		.byte	91
+ 748 02cf 04       		.byte	4
+ 749 02d0 5D       		.byte	93
+ 750 02d1 02       		.byte	2
+ 751 02d2 5F       		.byte	95
+ 752 02d3 05       		.byte	5
+ 753 02d4 60       		.byte	96
+ 754 02d5 40       		.byte	64
+ 755 02d6 62       		.byte	98
+ 756 02d7 40       		.byte	64
+ 757 02d8 64       		.byte	100
+ 758 02d9 40       		.byte	64
+ 759 02da 65       		.byte	101
+ 760 02db 40       		.byte	64
+ 761 02dc 66       		.byte	102
+ 762 02dd 80       		.byte	-128
+ 763 02de 68       		.byte	104
+ 764 02df 80       		.byte	-128
+ 765 02e0 6A       		.byte	106
+ 766 02e1 80       		.byte	-128
+ 767 02e2 6C       		.byte	108
+ 768 02e3 80       		.byte	-128
+ 769 02e4 6E       		.byte	110
+ 770 02e5 80       		.byte	-128
+ 771 02e6 80       		.byte	-128
+ 772 02e7 08       		.byte	8
+ 773 02e8 83       		.byte	-125
+ 774 02e9 0F       		.byte	15
+ 775 02ea 84       		.byte	-124
+ 776 02eb 06       		.byte	6
+ 777 02ec 85       		.byte	-123
+ 778 02ed 0B       		.byte	11
+ 779 02ee 86       		.byte	-122
+ 780 02ef 01       		.byte	1
+ 781 02f0 87       		.byte	-121
+ 782 02f1 04       		.byte	4
+ 783 02f2 88       		.byte	-120
+ 784 02f3 05       		.byte	5
+ 785 02f4 89       		.byte	-119
+ 786 02f5 07       		.byte	7
+ 787 02f6 8A       		.byte	-118
+ 788 02f7 02       		.byte	2
+ 789 02f8 8C       		.byte	-116
+ 790 02f9 02       		.byte	2
+ 791 02fa 8D       		.byte	-115
+ 792 02fb 10       		.byte	16
+ 793 02fc 8E       		.byte	-114
+ 794 02fd 04       		.byte	4
+ 795 02fe 95       		.byte	-107
+ 796 02ff 0C       		.byte	12
+ 797 0300 96       		.byte	-106
+ 798 0301 19       		.byte	25
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 15
+
+
+ 799 0302 97       		.byte	-105
+ 800 0303 01       		.byte	1
+ 801 0304 98       		.byte	-104
+ 802 0305 07       		.byte	7
+ 803 0306 99       		.byte	-103
+ 804 0307 0C       		.byte	12
+ 805 0308 9B       		.byte	-101
+ 806 0309 02       		.byte	2
+ 807 030a 9C       		.byte	-100
+ 808 030b 06       		.byte	6
+ 809 030c 9D       		.byte	-99
+ 810 030d 20       		.byte	32
+ 811 030e A1       		.byte	-95
+ 812 030f 08       		.byte	8
+ 813 0310 A2       		.byte	-94
+ 814 0311 08       		.byte	8
+ 815 0312 A3       		.byte	-93
+ 816 0313 01       		.byte	1
+ 817 0314 A4       		.byte	-92
+ 818 0315 03       		.byte	3
+ 819 0316 B2       		.byte	-78
+ 820 0317 07       		.byte	7
+ 821 0318 B3       		.byte	-77
+ 822 0319 20       		.byte	32
+ 823 031a B4       		.byte	-76
+ 824 031b 08       		.byte	8
+ 825 031c B5       		.byte	-75
+ 826 031d 0F       		.byte	15
+ 827 031e B6       		.byte	-74
+ 828 031f 10       		.byte	16
+ 829 0320 B7       		.byte	-73
+ 830 0321 10       		.byte	16
+ 831 0322 BE       		.byte	-66
+ 832 0323 10       		.byte	16
+ 833 0324 BF       		.byte	-65
+ 834 0325 44       		.byte	68
+ 835 0326 D2       		.byte	-46
+ 836 0327 80       		.byte	-128
+ 837 0328 D8       		.byte	-40
+ 838 0329 04       		.byte	4
+ 839 032a D9       		.byte	-39
+ 840 032b 04       		.byte	4
+ 841 032c DB       		.byte	-37
+ 842 032d 04       		.byte	4
+ 843 032e DF       		.byte	-33
+ 844 032f 01       		.byte	1
+ 845 0330 04       		.byte	4
+ 846 0331 05       		.byte	5
+ 847 0332 06       		.byte	6
+ 848 0333 02       		.byte	2
+ 849 0334 07       		.byte	7
+ 850 0335 08       		.byte	8
+ 851 0336 0A       		.byte	10
+ 852 0337 02       		.byte	2
+ 853 0338 0B       		.byte	11
+ 854 0339 40       		.byte	64
+ 855 033a 0E       		.byte	14
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 16
+
+
+ 856 033b 29       		.byte	41
+ 857 033c 10       		.byte	16
+ 858 033d A0       		.byte	-96
+ 859 033e 15       		.byte	21
+ 860 033f 08       		.byte	8
+ 861 0340 16       		.byte	22
+ 862 0341 80       		.byte	-128
+ 863 0342 19       		.byte	25
+ 864 0343 80       		.byte	-128
+ 865 0344 1A       		.byte	26
+ 866 0345 40       		.byte	64
+ 867 0346 1C       		.byte	28
+ 868 0347 09       		.byte	9
+ 869 0348 1E       		.byte	30
+ 870 0349 20       		.byte	32
+ 871 034a 20       		.byte	32
+ 872 034b 02       		.byte	2
+ 873 034c 21       		.byte	33
+ 874 034d 40       		.byte	64
+ 875 034e 22       		.byte	34
+ 876 034f 14       		.byte	20
+ 877 0350 24       		.byte	36
+ 878 0351 20       		.byte	32
+ 879 0352 26       		.byte	38
+ 880 0353 20       		.byte	32
+ 881 0354 27       		.byte	39
+ 882 0355 09       		.byte	9
+ 883 0356 2A       		.byte	42
+ 884 0357 40       		.byte	64
+ 885 0358 2E       		.byte	46
+ 886 0359 01       		.byte	1
+ 887 035a 30       		.byte	48
+ 888 035b 02       		.byte	2
+ 889 035c 32       		.byte	50
+ 890 035d 10       		.byte	16
+ 891 035e 34       		.byte	52
+ 892 035f 80       		.byte	-128
+ 893 0360 36       		.byte	54
+ 894 0361 24       		.byte	36
+ 895 0362 3C       		.byte	60
+ 896 0363 24       		.byte	36
+ 897 0364 3D       		.byte	61
+ 898 0365 82       		.byte	-126
+ 899 0366 3E       		.byte	62
+ 900 0367 02       		.byte	2
+ 901 0368 41       		.byte	65
+ 902 0369 10       		.byte	16
+ 903 036a 49       		.byte	73
+ 904 036b 05       		.byte	5
+ 905 036c 4B       		.byte	75
+ 906 036d 40       		.byte	64
+ 907 036e 50       		.byte	80
+ 908 036f 20       		.byte	32
+ 909 0370 51       		.byte	81
+ 910 0371 10       		.byte	16
+ 911 0372 59       		.byte	89
+ 912 0373 22       		.byte	34
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 17
+
+
+ 913 0374 5A       		.byte	90
+ 914 0375 48       		.byte	72
+ 915 0376 62       		.byte	98
+ 916 0377 18       		.byte	24
+ 917 0378 76       		.byte	118
+ 918 0379 80       		.byte	-128
+ 919 037a 79       		.byte	121
+ 920 037b 08       		.byte	8
+ 921 037c 85       		.byte	-123
+ 922 037d 40       		.byte	64
+ 923 037e 90       		.byte	-112
+ 924 037f 04       		.byte	4
+ 925 0380 91       		.byte	-111
+ 926 0381 08       		.byte	8
+ 927 0382 92       		.byte	-110
+ 928 0383 03       		.byte	3
+ 929 0384 93       		.byte	-109
+ 930 0385 40       		.byte	64
+ 931 0386 95       		.byte	-107
+ 932 0387 80       		.byte	-128
+ 933 0388 99       		.byte	-103
+ 934 0389 22       		.byte	34
+ 935 038a 9A       		.byte	-102
+ 936 038b 50       		.byte	80
+ 937 038c 9D       		.byte	-99
+ 938 038d 85       		.byte	-123
+ 939 038e 9F       		.byte	-97
+ 940 038f 08       		.byte	8
+ 941 0390 A0       		.byte	-96
+ 942 0391 92       		.byte	-110
+ 943 0392 A1       		.byte	-95
+ 944 0393 01       		.byte	1
+ 945 0394 A2       		.byte	-94
+ 946 0395 0C       		.byte	12
+ 947 0396 A4       		.byte	-92
+ 948 0397 25       		.byte	37
+ 949 0398 A6       		.byte	-90
+ 950 0399 20       		.byte	32
+ 951 039a AB       		.byte	-85
+ 952 039b 40       		.byte	64
+ 953 039c B1       		.byte	-79
+ 954 039d 08       		.byte	8
+ 955 039e B6       		.byte	-74
+ 956 039f 80       		.byte	-128
+ 957 03a0 C0       		.byte	-64
+ 958 03a1 F0       		.byte	-16
+ 959 03a2 C2       		.byte	-62
+ 960 03a3 E9       		.byte	-23
+ 961 03a4 C4       		.byte	-60
+ 962 03a5 3C       		.byte	60
+ 963 03a6 CA       		.byte	-54
+ 964 03a7 88       		.byte	-120
+ 965 03a8 CC       		.byte	-52
+ 966 03a9 75       		.byte	117
+ 967 03aa CE       		.byte	-50
+ 968 03ab F0       		.byte	-16
+ 969 03ac D0       		.byte	-48
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 18
+
+
+ 970 03ad 04       		.byte	4
+ 971 03ae D2       		.byte	-46
+ 972 03af 08       		.byte	8
+ 973 03b0 D6       		.byte	-42
+ 974 03b1 0F       		.byte	15
+ 975 03b2 D8       		.byte	-40
+ 976 03b3 06       		.byte	6
+ 977 03b4 DE       		.byte	-34
+ 978 03b5 02       		.byte	2
+ 979 03b6 EA       		.byte	-22
+ 980 03b7 80       		.byte	-128
+ 981 03b8 EC       		.byte	-20
+ 982 03b9 10       		.byte	16
+ 983 03ba A8       		.byte	-88
+ 984 03bb 10       		.byte	16
+ 985 03bc AC       		.byte	-84
+ 986 03bd 80       		.byte	-128
+ 987 03be AF       		.byte	-81
+ 988 03bf 01       		.byte	1
+ 989 03c0 E2       		.byte	-30
+ 990 03c1 02       		.byte	2
+ 991 03c2 EE       		.byte	-18
+ 992 03c3 0C       		.byte	12
+ 993 03c4 AB       		.byte	-85
+ 994 03c5 20       		.byte	32
+ 995 03c6 AF       		.byte	-81
+ 996 03c7 20       		.byte	32
+ 997 03c8 E2       		.byte	-30
+ 998 03c9 02       		.byte	2
+ 999 03ca B8       		.byte	-72
+ 1000 03cb 20       		.byte	32
+ 1001 03cc BE       		.byte	-66
+ 1002 03cd 10       		.byte	16
+ 1003 03ce D8       		.byte	-40
+ 1004 03cf 04       		.byte	4
+ 1005 03d0 DF       		.byte	-33
+ 1006 03d1 01       		.byte	1
+ 1007 03d2 1F       		.byte	31
+ 1008 03d3 20       		.byte	32
+ 1009 03d4 E6       		.byte	-26
+ 1010 03d5 04       		.byte	4
+ 1011 03d6 EE       		.byte	-18
+ 1012 03d7 02       		.byte	2
+ 1013 03d8 EE       		.byte	-18
+ 1014 03d9 02       		.byte	2
+ 1015 03da 31       		.byte	49
+ 1016 03db 08       		.byte	8
+ 1017 03dc 33       		.byte	51
+ 1018 03dd 10       		.byte	16
+ 1019 03de 35       		.byte	53
+ 1020 03df 08       		.byte	8
+ 1021 03e0 36       		.byte	54
+ 1022 03e1 40       		.byte	64
+ 1023 03e2 81       		.byte	-127
+ 1024 03e3 08       		.byte	8
+ 1025 03e4 83       		.byte	-125
+ 1026 03e5 20       		.byte	32
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 19
+
+
+ 1027 03e6 87       		.byte	-121
+ 1028 03e7 40       		.byte	64
+ 1029 03e8 CC       		.byte	-52
+ 1030 03e9 F0       		.byte	-16
+ 1031 03ea E2       		.byte	-30
+ 1032 03eb 90       		.byte	-112
+ 1033 03ec E6       		.byte	-26
+ 1034 03ed 20       		.byte	32
+ 1035 03ee 0A       		.byte	10
+ 1036 03ef 80       		.byte	-128
+ 1037 03f0 0E       		.byte	14
+ 1038 03f1 10       		.byte	16
+ 1039 03f2 51       		.byte	81
+ 1040 03f3 02       		.byte	2
+ 1041 03f4 52       		.byte	82
+ 1042 03f5 80       		.byte	-128
+ 1043 03f6 57       		.byte	87
+ 1044 03f7 08       		.byte	8
+ 1045 03f8 5F       		.byte	95
+ 1046 03f9 20       		.byte	32
+ 1047 03fa 67       		.byte	103
+ 1048 03fb 80       		.byte	-128
+ 1049 03fc 83       		.byte	-125
+ 1050 03fd 10       		.byte	16
+ 1051 03fe 93       		.byte	-109
+ 1052 03ff 80       		.byte	-128
+ 1053 0400 9B       		.byte	-101
+ 1054 0401 20       		.byte	32
+ 1055 0402 9F       		.byte	-97
+ 1056 0403 10       		.byte	16
+ 1057 0404 A5       		.byte	-91
+ 1058 0405 08       		.byte	8
+ 1059 0406 A6       		.byte	-90
+ 1060 0407 40       		.byte	64
+ 1061 0408 C2       		.byte	-62
+ 1062 0409 30       		.byte	48
+ 1063 040a D4       		.byte	-44
+ 1064 040b E0       		.byte	-32
+ 1065 040c D6       		.byte	-42
+ 1066 040d 20       		.byte	32
+ 1067 040e D8       		.byte	-40
+ 1068 040f 80       		.byte	-128
+ 1069 0410 E2       		.byte	-30
+ 1070 0411 20       		.byte	32
+ 1071 0412 52       		.byte	82
+ 1072 0413 10       		.byte	16
+ 1073 0414 54       		.byte	84
+ 1074 0415 80       		.byte	-128
+ 1075 0416 63       		.byte	99
+ 1076 0417 02       		.byte	2
+ 1077 0418 67       		.byte	103
+ 1078 0419 02       		.byte	2
+ 1079 041a 85       		.byte	-123
+ 1080 041b 02       		.byte	2
+ 1081 041c A5       		.byte	-91
+ 1082 041d 0A       		.byte	10
+ 1083 041e A6       		.byte	-90
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 20
+
+
+ 1084 041f 40       		.byte	64
+ 1085 0420 A7       		.byte	-89
+ 1086 0421 08       		.byte	8
+ 1087 0422 AA       		.byte	-86
+ 1088 0423 40       		.byte	64
+ 1089 0424 B2       		.byte	-78
+ 1090 0425 80       		.byte	-128
+ 1091 0426 B6       		.byte	-74
+ 1092 0427 10       		.byte	16
+ 1093 0428 D4       		.byte	-44
+ 1094 0429 60       		.byte	96
+ 1095 042a D6       		.byte	-42
+ 1096 042b C0       		.byte	-64
+ 1097 042c E0       		.byte	-32
+ 1098 042d 40       		.byte	64
+ 1099 042e EC       		.byte	-20
+ 1100 042f 80       		.byte	-128
+ 1101 0430 1B       		.byte	27
+ 1102 0431 08       		.byte	8
+ 1103 0432 1D       		.byte	29
+ 1104 0433 02       		.byte	2
+ 1105 0434 85       		.byte	-123
+ 1106 0435 08       		.byte	8
+ 1107 0436 A5       		.byte	-91
+ 1108 0437 0A       		.byte	10
+ 1109 0438 A6       		.byte	-90
+ 1110 0439 40       		.byte	64
+ 1111 043a A7       		.byte	-89
+ 1112 043b 08       		.byte	8
+ 1113 043c A8       		.byte	-88
+ 1114 043d 80       		.byte	-128
+ 1115 043e AB       		.byte	-85
+ 1116 043f 01       		.byte	1
+ 1117 0440 AE       		.byte	-82
+ 1118 0441 10       		.byte	16
+ 1119 0442 AF       		.byte	-81
+ 1120 0443 09       		.byte	9
+ 1121 0444 C6       		.byte	-58
+ 1122 0445 30       		.byte	48
+ 1123 0446 E2       		.byte	-30
+ 1124 0447 40       		.byte	64
+ 1125 0448 EA       		.byte	-22
+ 1126 0449 60       		.byte	96
+ 1127 044a EC       		.byte	-20
+ 1128 044b 40       		.byte	64
+ 1129 044c EE       		.byte	-18
+ 1130 044d 30       		.byte	48
+ 1131 044e 83       		.byte	-125
+ 1132 044f 01       		.byte	1
+ 1133 0450 97       		.byte	-105
+ 1134 0451 02       		.byte	2
+ 1135 0452 97       		.byte	-105
+ 1136 0453 02       		.byte	2
+ 1137 0454 0B       		.byte	11
+ 1138 0455 42       		.byte	66
+ 1139 0456 0D       		.byte	13
+ 1140 0457 02       		.byte	2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 21
+
+
+ 1141 0458 85       		.byte	-123
+ 1142 0459 02       		.byte	2
+ 1143 045a 97       		.byte	-105
+ 1144 045b 02       		.byte	2
+ 1145 045c C2       		.byte	-62
+ 1146 045d 0E       		.byte	14
+ 1147 045e AE       		.byte	-82
+ 1148 045f 40       		.byte	64
+ 1149 0460 EE       		.byte	-18
+ 1150 0461 40       		.byte	64
+ 1151 0462 AF       		.byte	-81
+ 1152 0463 40       		.byte	64
+ 1153 0464 00       		.byte	0
+ 1154 0465 05       		.byte	5
+ 1155 0466 08       		.byte	8
+ 1156 0467 05       		.byte	5
+ 1157 0468 0A       		.byte	10
+ 1158 0469 05       		.byte	5
+ 1159 046a 00       		.byte	0
+ 1160 046b AB       		.byte	-85
+ 1161 046c 30       		.byte	48
+ 1162 046d 8F       		.byte	-113
+ 1163 046e 8F       		.byte	-113
+ 1164 046f 00       		.byte	0
+ 1165 0470 8F       		.byte	-113
+ 1166 0471 00       		.byte	0
+ 1167 0472 00       		.byte	0
+ 1168 0473 00       		.byte	0
+ 1169 0474 00       		.byte	0
+ 1170 0475 0C       		.byte	12
+ 1171 0476 0C       		.byte	12
+ 1172 0477 00       		.byte	0
+ 1173 0478 0C       		.byte	12
+ 1174 0479 00       		.byte	0
+ 1175 047a 00       		.byte	0
+ 1176 047b 00       		.byte	0
+ 1177 047c 40       		.byte	64
+ 1178 047d 00       		.byte	0
+ 1179 047e 00       		.byte	0
+ 1180 047f 00       		.byte	0
+ 1181 0480 00       		.byte	0
+ 1182 0481 00       		.byte	0
+ 1183 0482 00       		.byte	0
+ 1184 0483 00       		.byte	0
+ 1185 0484 C0       		.byte	-64
+ 1186 0485 00       		.byte	0
+ 1187 0486 00       		.byte	0
+ 1188 0487 00       		.byte	0
+ 1189 0488 00       		.byte	0
+ 1190 0489 0B       		.byte	11
+ 1191 048a 0B       		.byte	11
+ 1192 048b 00       		.byte	0
+ 1193 048c 00       		.byte	0
+ 1194 048d 00       		.byte	0
+ 1195 048e 00       		.byte	0
+ 1196 048f 00       		.byte	0
+ 1197              		.section	.cywolatch,"a",%progbits
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 22
+
+
+ 1198              		.align	2
+ 1199              		.type	cy_meta_wonvl, %object
+ 1200              		.size	cy_meta_wonvl, 4
+ 1201              	cy_meta_wonvl:
+ 1202 0000 BC       		.byte	-68
+ 1203 0001 90       		.byte	-112
+ 1204 0002 AC       		.byte	-84
+ 1205 0003 AF       		.byte	-81
+ 1206              		.section	.cycustnvl,"a",%progbits
+ 1207              		.align	2
+ 1208              		.type	cy_meta_custnvl, %object
+ 1209              		.size	cy_meta_custnvl, 4
+ 1210              	cy_meta_custnvl:
+ 1211 0000 00       		.byte	0
+ 1212 0001 00       		.byte	0
+ 1213 0002 40       		.byte	64
+ 1214 0003 05       		.byte	5
+ 1215              		.section	.cymeta,"a",%progbits
+ 1216              		.align	2
+ 1217              		.type	cy_metadata, %object
+ 1218              		.size	cy_metadata, 12
+ 1219              	cy_metadata:
+ 1220 0000 00       		.byte	0
+ 1221 0001 01       		.byte	1
+ 1222 0002 2E       		.byte	46
+ 1223 0003 16       		.byte	22
+ 1224 0004 10       		.byte	16
+ 1225 0005 69       		.byte	105
+ 1226 0006 00       		.byte	0
+ 1227 0007 01       		.byte	1
+ 1228 0008 00       		.byte	0
+ 1229 0009 00       		.byte	0
+ 1230 000a 00       		.byte	0
+ 1231 000b 00       		.byte	0
+ 1232              		.section	.cyflashprotect,"a",%progbits
+ 1233              		.align	2
+ 1234              		.type	cy_meta_flashprotect, %object
+ 1235              		.size	cy_meta_flashprotect, 256
+ 1236              	cy_meta_flashprotect:
+ 1237 0000 00000000 		.space	256
+ 1237      00000000 
+ 1237      00000000 
+ 1237      00000000 
+ 1237      00000000 
+ 1238              		.text
+ 1239              	.Letext0:
+ 1240              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1241              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1242              		.file 3 "Generated_Source\\PSoC5\\cymetadata.c"
+ 1243              		.section	.debug_info,"",%progbits
+ 1244              	.Ldebug_info0:
+ 1245 0000 32010000 		.4byte	0x132
+ 1246 0004 0400     		.2byte	0x4
+ 1247 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1248 000a 04       		.byte	0x4
+ 1249 000b 01       		.uleb128 0x1
+ 1250 000c 24000000 		.4byte	.LASF17
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 23
+
+
+ 1251 0010 0C       		.byte	0xc
+ 1252 0011 C9010000 		.4byte	.LASF18
+ 1253 0015 69010000 		.4byte	.LASF19
+ 1254 0019 00000000 		.4byte	.Ldebug_line0
+ 1255 001d 02       		.uleb128 0x2
+ 1256 001e 01       		.byte	0x1
+ 1257 001f 06       		.byte	0x6
+ 1258 0020 BD010000 		.4byte	.LASF0
+ 1259 0024 03       		.uleb128 0x3
+ 1260 0025 00000000 		.4byte	.LASF9
+ 1261 0029 01       		.byte	0x1
+ 1262 002a 1D       		.byte	0x1d
+ 1263 002b 2F000000 		.4byte	0x2f
+ 1264 002f 02       		.uleb128 0x2
+ 1265 0030 01       		.byte	0x1
+ 1266 0031 08       		.byte	0x8
+ 1267 0032 16000000 		.4byte	.LASF1
+ 1268 0036 02       		.uleb128 0x2
+ 1269 0037 02       		.byte	0x2
+ 1270 0038 05       		.byte	0x5
+ 1271 0039 5F010000 		.4byte	.LASF2
+ 1272 003d 02       		.uleb128 0x2
+ 1273 003e 02       		.byte	0x2
+ 1274 003f 07       		.byte	0x7
+ 1275 0040 C4000000 		.4byte	.LASF3
+ 1276 0044 02       		.uleb128 0x2
+ 1277 0045 04       		.byte	0x4
+ 1278 0046 05       		.byte	0x5
+ 1279 0047 B4010000 		.4byte	.LASF4
+ 1280 004b 02       		.uleb128 0x2
+ 1281 004c 04       		.byte	0x4
+ 1282 004d 07       		.byte	0x7
+ 1283 004e B2000000 		.4byte	.LASF5
+ 1284 0052 02       		.uleb128 0x2
+ 1285 0053 08       		.byte	0x8
+ 1286 0054 05       		.byte	0x5
+ 1287 0055 51010000 		.4byte	.LASF6
+ 1288 0059 02       		.uleb128 0x2
+ 1289 005a 08       		.byte	0x8
+ 1290 005b 07       		.byte	0x7
+ 1291 005c 06010000 		.4byte	.LASF7
+ 1292 0060 04       		.uleb128 0x4
+ 1293 0061 04       		.byte	0x4
+ 1294 0062 05       		.byte	0x5
+ 1295 0063 696E7400 		.ascii	"int\000"
+ 1296 0067 02       		.uleb128 0x2
+ 1297 0068 04       		.byte	0x4
+ 1298 0069 07       		.byte	0x7
+ 1299 006a F9000000 		.4byte	.LASF8
+ 1300 006e 03       		.uleb128 0x3
+ 1301 006f 1D010000 		.4byte	.LASF10
+ 1302 0073 02       		.byte	0x2
+ 1303 0074 18       		.byte	0x18
+ 1304 0075 24000000 		.4byte	0x24
+ 1305 0079 05       		.uleb128 0x5
+ 1306 007a 91000000 		.4byte	0x91
+ 1307 007e 8A000000 		.4byte	0x8a
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 24
+
+
+ 1308 0082 06       		.uleb128 0x6
+ 1309 0083 8A000000 		.4byte	0x8a
+ 1310 0087 8F04     		.2byte	0x48f
+ 1311 0089 00       		.byte	0
+ 1312 008a 02       		.uleb128 0x2
+ 1313 008b 04       		.byte	0x4
+ 1314 008c 07       		.byte	0x7
+ 1315 008d 48010000 		.4byte	.LASF11
+ 1316 0091 07       		.uleb128 0x7
+ 1317 0092 6E000000 		.4byte	0x6e
+ 1318 0096 08       		.uleb128 0x8
+ 1319 0097 E7000000 		.4byte	.LASF12
+ 1320 009b 03       		.byte	0x3
+ 1321 009c 1F       		.byte	0x1f
+ 1322 009d A7000000 		.4byte	0xa7
+ 1323 00a1 05       		.uleb128 0x5
+ 1324 00a2 03       		.byte	0x3
+ 1325 00a3 00000000 		.4byte	cy_meta_configecc
+ 1326 00a7 07       		.uleb128 0x7
+ 1327 00a8 79000000 		.4byte	0x79
+ 1328 00ac 05       		.uleb128 0x5
+ 1329 00ad 91000000 		.4byte	0x91
+ 1330 00b1 BC000000 		.4byte	0xbc
+ 1331 00b5 09       		.uleb128 0x9
+ 1332 00b6 8A000000 		.4byte	0x8a
+ 1333 00ba 03       		.byte	0x3
+ 1334 00bb 00       		.byte	0
+ 1335 00bc 08       		.uleb128 0x8
+ 1336 00bd D7000000 		.4byte	.LASF13
+ 1337 00c1 03       		.byte	0x3
+ 1338 00c2 BE       		.byte	0xbe
+ 1339 00c3 CD000000 		.4byte	0xcd
+ 1340 00c7 05       		.uleb128 0x5
+ 1341 00c8 03       		.byte	0x3
+ 1342 00c9 00000000 		.4byte	cy_meta_custnvl
+ 1343 00cd 07       		.uleb128 0x7
+ 1344 00ce AC000000 		.4byte	0xac
+ 1345 00d2 08       		.uleb128 0x8
+ 1346 00d3 3A010000 		.4byte	.LASF14
+ 1347 00d7 03       		.byte	0x3
+ 1348 00d8 CC       		.byte	0xcc
+ 1349 00d9 E3000000 		.4byte	0xe3
+ 1350 00dd 05       		.uleb128 0x5
+ 1351 00de 03       		.byte	0x3
+ 1352 00df 00000000 		.4byte	cy_meta_wonvl
+ 1353 00e3 07       		.uleb128 0x7
+ 1354 00e4 AC000000 		.4byte	0xac
+ 1355 00e8 05       		.uleb128 0x5
+ 1356 00e9 91000000 		.4byte	0x91
+ 1357 00ed F8000000 		.4byte	0xf8
+ 1358 00f1 09       		.uleb128 0x9
+ 1359 00f2 8A000000 		.4byte	0x8a
+ 1360 00f6 FF       		.byte	0xff
+ 1361 00f7 00       		.byte	0
+ 1362 00f8 08       		.uleb128 0x8
+ 1363 00f9 25010000 		.4byte	.LASF15
+ 1364 00fd 03       		.byte	0x3
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 25
+
+
+ 1365 00fe DA       		.byte	0xda
+ 1366 00ff 09010000 		.4byte	0x109
+ 1367 0103 05       		.uleb128 0x5
+ 1368 0104 03       		.byte	0x3
+ 1369 0105 00000000 		.4byte	cy_meta_flashprotect
+ 1370 0109 07       		.uleb128 0x7
+ 1371 010a E8000000 		.4byte	0xe8
+ 1372 010e 05       		.uleb128 0x5
+ 1373 010f 91000000 		.4byte	0x91
+ 1374 0113 1E010000 		.4byte	0x11e
+ 1375 0117 09       		.uleb128 0x9
+ 1376 0118 8A000000 		.4byte	0x8a
+ 1377 011c 0B       		.byte	0xb
+ 1378 011d 00       		.byte	0
+ 1379 011e 0A       		.uleb128 0xa
+ 1380 011f 0A000000 		.4byte	.LASF16
+ 1381 0123 03       		.byte	0x3
+ 1382 0124 0701     		.2byte	0x107
+ 1383 0126 30010000 		.4byte	0x130
+ 1384 012a 05       		.uleb128 0x5
+ 1385 012b 03       		.byte	0x3
+ 1386 012c 00000000 		.4byte	cy_metadata
+ 1387 0130 07       		.uleb128 0x7
+ 1388 0131 0E010000 		.4byte	0x10e
+ 1389 0135 00       		.byte	0
+ 1390              		.section	.debug_abbrev,"",%progbits
+ 1391              	.Ldebug_abbrev0:
+ 1392 0000 01       		.uleb128 0x1
+ 1393 0001 11       		.uleb128 0x11
+ 1394 0002 01       		.byte	0x1
+ 1395 0003 25       		.uleb128 0x25
+ 1396 0004 0E       		.uleb128 0xe
+ 1397 0005 13       		.uleb128 0x13
+ 1398 0006 0B       		.uleb128 0xb
+ 1399 0007 03       		.uleb128 0x3
+ 1400 0008 0E       		.uleb128 0xe
+ 1401 0009 1B       		.uleb128 0x1b
+ 1402 000a 0E       		.uleb128 0xe
+ 1403 000b 10       		.uleb128 0x10
+ 1404 000c 17       		.uleb128 0x17
+ 1405 000d 00       		.byte	0
+ 1406 000e 00       		.byte	0
+ 1407 000f 02       		.uleb128 0x2
+ 1408 0010 24       		.uleb128 0x24
+ 1409 0011 00       		.byte	0
+ 1410 0012 0B       		.uleb128 0xb
+ 1411 0013 0B       		.uleb128 0xb
+ 1412 0014 3E       		.uleb128 0x3e
+ 1413 0015 0B       		.uleb128 0xb
+ 1414 0016 03       		.uleb128 0x3
+ 1415 0017 0E       		.uleb128 0xe
+ 1416 0018 00       		.byte	0
+ 1417 0019 00       		.byte	0
+ 1418 001a 03       		.uleb128 0x3
+ 1419 001b 16       		.uleb128 0x16
+ 1420 001c 00       		.byte	0
+ 1421 001d 03       		.uleb128 0x3
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 26
+
+
+ 1422 001e 0E       		.uleb128 0xe
+ 1423 001f 3A       		.uleb128 0x3a
+ 1424 0020 0B       		.uleb128 0xb
+ 1425 0021 3B       		.uleb128 0x3b
+ 1426 0022 0B       		.uleb128 0xb
+ 1427 0023 49       		.uleb128 0x49
+ 1428 0024 13       		.uleb128 0x13
+ 1429 0025 00       		.byte	0
+ 1430 0026 00       		.byte	0
+ 1431 0027 04       		.uleb128 0x4
+ 1432 0028 24       		.uleb128 0x24
+ 1433 0029 00       		.byte	0
+ 1434 002a 0B       		.uleb128 0xb
+ 1435 002b 0B       		.uleb128 0xb
+ 1436 002c 3E       		.uleb128 0x3e
+ 1437 002d 0B       		.uleb128 0xb
+ 1438 002e 03       		.uleb128 0x3
+ 1439 002f 08       		.uleb128 0x8
+ 1440 0030 00       		.byte	0
+ 1441 0031 00       		.byte	0
+ 1442 0032 05       		.uleb128 0x5
+ 1443 0033 01       		.uleb128 0x1
+ 1444 0034 01       		.byte	0x1
+ 1445 0035 49       		.uleb128 0x49
+ 1446 0036 13       		.uleb128 0x13
+ 1447 0037 01       		.uleb128 0x1
+ 1448 0038 13       		.uleb128 0x13
+ 1449 0039 00       		.byte	0
+ 1450 003a 00       		.byte	0
+ 1451 003b 06       		.uleb128 0x6
+ 1452 003c 21       		.uleb128 0x21
+ 1453 003d 00       		.byte	0
+ 1454 003e 49       		.uleb128 0x49
+ 1455 003f 13       		.uleb128 0x13
+ 1456 0040 2F       		.uleb128 0x2f
+ 1457 0041 05       		.uleb128 0x5
+ 1458 0042 00       		.byte	0
+ 1459 0043 00       		.byte	0
+ 1460 0044 07       		.uleb128 0x7
+ 1461 0045 26       		.uleb128 0x26
+ 1462 0046 00       		.byte	0
+ 1463 0047 49       		.uleb128 0x49
+ 1464 0048 13       		.uleb128 0x13
+ 1465 0049 00       		.byte	0
+ 1466 004a 00       		.byte	0
+ 1467 004b 08       		.uleb128 0x8
+ 1468 004c 34       		.uleb128 0x34
+ 1469 004d 00       		.byte	0
+ 1470 004e 03       		.uleb128 0x3
+ 1471 004f 0E       		.uleb128 0xe
+ 1472 0050 3A       		.uleb128 0x3a
+ 1473 0051 0B       		.uleb128 0xb
+ 1474 0052 3B       		.uleb128 0x3b
+ 1475 0053 0B       		.uleb128 0xb
+ 1476 0054 49       		.uleb128 0x49
+ 1477 0055 13       		.uleb128 0x13
+ 1478 0056 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 27
+
+
+ 1479 0057 19       		.uleb128 0x19
+ 1480 0058 02       		.uleb128 0x2
+ 1481 0059 18       		.uleb128 0x18
+ 1482 005a 00       		.byte	0
+ 1483 005b 00       		.byte	0
+ 1484 005c 09       		.uleb128 0x9
+ 1485 005d 21       		.uleb128 0x21
+ 1486 005e 00       		.byte	0
+ 1487 005f 49       		.uleb128 0x49
+ 1488 0060 13       		.uleb128 0x13
+ 1489 0061 2F       		.uleb128 0x2f
+ 1490 0062 0B       		.uleb128 0xb
+ 1491 0063 00       		.byte	0
+ 1492 0064 00       		.byte	0
+ 1493 0065 0A       		.uleb128 0xa
+ 1494 0066 34       		.uleb128 0x34
+ 1495 0067 00       		.byte	0
+ 1496 0068 03       		.uleb128 0x3
+ 1497 0069 0E       		.uleb128 0xe
+ 1498 006a 3A       		.uleb128 0x3a
+ 1499 006b 0B       		.uleb128 0xb
+ 1500 006c 3B       		.uleb128 0x3b
+ 1501 006d 05       		.uleb128 0x5
+ 1502 006e 49       		.uleb128 0x49
+ 1503 006f 13       		.uleb128 0x13
+ 1504 0070 3F       		.uleb128 0x3f
+ 1505 0071 19       		.uleb128 0x19
+ 1506 0072 02       		.uleb128 0x2
+ 1507 0073 18       		.uleb128 0x18
+ 1508 0074 00       		.byte	0
+ 1509 0075 00       		.byte	0
+ 1510 0076 00       		.byte	0
+ 1511              		.section	.debug_aranges,"",%progbits
+ 1512 0000 14000000 		.4byte	0x14
+ 1513 0004 0200     		.2byte	0x2
+ 1514 0006 00000000 		.4byte	.Ldebug_info0
+ 1515 000a 04       		.byte	0x4
+ 1516 000b 00       		.byte	0
+ 1517 000c 0000     		.2byte	0
+ 1518 000e 0000     		.2byte	0
+ 1519 0010 00000000 		.4byte	0
+ 1520 0014 00000000 		.4byte	0
+ 1521              		.section	.debug_line,"",%progbits
+ 1522              	.Ldebug_line0:
+ 1523 0000 3D010000 		.section	.debug_str,"MS",%progbits,1
+ 1523      02003701 
+ 1523      00000201 
+ 1523      FB0E0D00 
+ 1523      01010101 
+ 1524              	.LASF9:
+ 1525 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1525      6E74385F 
+ 1525      7400
+ 1526              	.LASF16:
+ 1527 000a 63795F6D 		.ascii	"cy_metadata\000"
+ 1527      65746164 
+ 1527      61746100 
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 28
+
+
+ 1528              	.LASF1:
+ 1529 0016 756E7369 		.ascii	"unsigned char\000"
+ 1529      676E6564 
+ 1529      20636861 
+ 1529      7200
+ 1530              	.LASF17:
+ 1531 0024 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1531      43313120 
+ 1531      352E342E 
+ 1531      31203230 
+ 1531      31363036 
+ 1532 0057 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1532      20726576 
+ 1532      6973696F 
+ 1532      6E203233 
+ 1532      37373135 
+ 1533 008a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1533      66756E63 
+ 1533      74696F6E 
+ 1533      2D736563 
+ 1533      74696F6E 
+ 1534              	.LASF5:
+ 1535 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1535      20756E73 
+ 1535      69676E65 
+ 1535      6420696E 
+ 1535      7400
+ 1536              	.LASF3:
+ 1537 00c4 73686F72 		.ascii	"short unsigned int\000"
+ 1537      7420756E 
+ 1537      7369676E 
+ 1537      65642069 
+ 1537      6E7400
+ 1538              	.LASF13:
+ 1539 00d7 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 1539      6574615F 
+ 1539      63757374 
+ 1539      6E766C00 
+ 1540              	.LASF12:
+ 1541 00e7 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 1541      6574615F 
+ 1541      636F6E66 
+ 1541      69676563 
+ 1541      6300
+ 1542              	.LASF8:
+ 1543 00f9 756E7369 		.ascii	"unsigned int\000"
+ 1543      676E6564 
+ 1543      20696E74 
+ 1543      00
+ 1544              	.LASF7:
+ 1545 0106 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1545      206C6F6E 
+ 1545      6720756E 
+ 1545      7369676E 
+ 1545      65642069 
+ 1546              	.LASF10:
+ 1547 011d 75696E74 		.ascii	"uint8_t\000"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccElnLJi.s 			page 29
+
+
+ 1547      385F7400 
+ 1548              	.LASF15:
+ 1549 0125 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 1549      6574615F 
+ 1549      666C6173 
+ 1549      6870726F 
+ 1549      74656374 
+ 1550              	.LASF14:
+ 1551 013a 63795F6D 		.ascii	"cy_meta_wonvl\000"
+ 1551      6574615F 
+ 1551      776F6E76 
+ 1551      6C00
+ 1552              	.LASF11:
+ 1553 0148 73697A65 		.ascii	"sizetype\000"
+ 1553      74797065 
+ 1553      00
+ 1554              	.LASF6:
+ 1555 0151 6C6F6E67 		.ascii	"long long int\000"
+ 1555      206C6F6E 
+ 1555      6720696E 
+ 1555      7400
+ 1556              	.LASF2:
+ 1557 015f 73686F72 		.ascii	"short int\000"
+ 1557      7420696E 
+ 1557      7400
+ 1558              	.LASF19:
+ 1559 0169 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\hardware task 2\\"
+ 1559      454D505C 
+ 1559      434F4D50 
+ 1559      53595333 
+ 1559      30315F74 
+ 1560 0197 68617264 		.ascii	"hardwaretask2\\Design01.cydsn\000"
+ 1560      77617265 
+ 1560      7461736B 
+ 1560      325C4465 
+ 1560      7369676E 
+ 1561              	.LASF4:
+ 1562 01b4 6C6F6E67 		.ascii	"long int\000"
+ 1562      20696E74 
+ 1562      00
+ 1563              	.LASF0:
+ 1564 01bd 7369676E 		.ascii	"signed char\000"
+ 1564      65642063 
+ 1564      68617200 
+ 1565              	.LASF18:
+ 1566 01c9 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
+ 1566      72617465 
+ 1566      645F536F 
+ 1566      75726365 
+ 1566      5C50536F 
+ 1567              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
