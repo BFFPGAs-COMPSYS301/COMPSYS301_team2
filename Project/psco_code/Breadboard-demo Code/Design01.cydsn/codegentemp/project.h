@@ -24,8 +24,16 @@
 #include "Pin_1.h"
 #include "LED_aliases.h"
 #include "LED.h"
+#include "LED_1_aliases.h"
+#include "LED_1.h"
+#include "ADC_2.h"
+#include "Pin_2_aliases.h"
+#include "Pin_2.h"
 #include "ADC_1_IRQ.h"
 #include "ADC_1_theACLK.h"
+#include "ADC_2_IRQ.h"
+#include "ADC_2_theACLK.h"
+#include "cy_em_eeprom.h"
 #include "core_cm3_psoc5.h"
 #include "CyDmac.h"
 #include "CyFlash.h"
@@ -34,7 +42,6 @@
 #include "cyPm.h"
 #include "CySpc.h"
 #include "cytypes.h"
-#include "cy_em_eeprom.h"
 
 /*[]*/
 
