@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
   28:Generated_Source\PSoC5/USBUART_1_pm.c **** /***************************************
   29:Generated_Source\PSoC5/USBUART_1_pm.c **** * Local data allocation
   30:Generated_Source\PSoC5/USBUART_1_pm.c **** ***************************************/
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 2
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 2
 
 
   31:Generated_Source\PSoC5/USBUART_1_pm.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
   62:Generated_Source\PSoC5/USBUART_1_pm.c **** /*******************************************************************************
   63:Generated_Source\PSoC5/USBUART_1_pm.c **** * Function Name: USBUART_1_SaveConfig
   64:Generated_Source\PSoC5/USBUART_1_pm.c **** ****************************************************************************//**
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 3
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 3
 
 
   65:Generated_Source\PSoC5/USBUART_1_pm.c **** *
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
   79 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
   80 0006 13F0FF0F 		tst	r3, #255
   81 000a 03D0     		beq	.L4
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 4
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 4
 
 
   91:Generated_Source\PSoC5/USBUART_1_pm.c ****     {
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  122:Generated_Source\PSoC5/USBUART_1_pm.c **** *******************************************************************************/
  123:Generated_Source\PSoC5/USBUART_1_pm.c **** void USBUART_1_Suspend(void) 
  124:Generated_Source\PSoC5/USBUART_1_pm.c **** {
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 5
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 5
 
 
  105              		.loc 1 124 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  131              		.loc 1 152 0
  132 0018 264A     		ldr	r2, .L13+8
  133 001a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 6
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 6
 
 
  134 001c 03F07F03 		and	r3, r3, #127
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  170 005e 2B70     		strb	r3, [r5]
  171:Generated_Source\PSoC5/USBUART_1_pm.c **** 
  172:Generated_Source\PSoC5/USBUART_1_pm.c ****         /* Switch DP and DM terminals to GPIO mode and disconnect 1.5k pull-up. */
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 7
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 7
 
 
  173:Generated_Source\PSoC5/USBUART_1_pm.c ****         USBUART_1_USBIO_CR1_REG |= USBUART_1_USBIO_CR1_IOMODE;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  193:Generated_Source\PSoC5/USBUART_1_pm.c ****     CyIntClearPending(USBUART_1_DP_INTC_VECT_NUM);
  205              		.loc 1 193 0
  206 009a 4FF48053 		mov	r3, #4096
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 8
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 8
 
 
  207 009e 094A     		ldr	r2, .L13+24
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  220:Generated_Source\PSoC5/USBUART_1_pm.c **** * \globalvars
  221:Generated_Source\PSoC5/USBUART_1_pm.c **** *  USBUART_1_backup - checked.
  222:Generated_Source\PSoC5/USBUART_1_pm.c **** *
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 9
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 9
 
 
  223:Generated_Source\PSoC5/USBUART_1_pm.c **** * \reentrant
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  253:Generated_Source\PSoC5/USBUART_1_pm.c ****             USBUART_1_ARB_CFG_REG = USBUART_1_DEFAULT_ARB_CFG;
  254:Generated_Source\PSoC5/USBUART_1_pm.c ****         #endif /* (USBUART_1_EP_MANAGEMENT_DMA) */
  255:Generated_Source\PSoC5/USBUART_1_pm.c **** 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 10
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 10
 
 
  256:Generated_Source\PSoC5/USBUART_1_pm.c ****         /* Restore level (hi, lo, med) for each interrupt source. */
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  289:Generated_Source\PSoC5/USBUART_1_pm.c ****         CyDelayUs(USBUART_1_WAIT_VREF_RESTORE);
  280              		.loc 1 289 0
  281 0044 2820     		movs	r0, #40
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 11
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 11
 
 
  282 0046 FFF7FEFF 		bl	CyDelayUs
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  315:Generated_Source\PSoC5/USBUART_1_pm.c **** 
  316:Generated_Source\PSoC5/USBUART_1_pm.c ****         /* Enable the USB IP to respond to USB traffic with the last address. */
  317:Generated_Source\PSoC5/USBUART_1_pm.c ****         USBUART_1_CR0_REG |= USBUART_1_CR0_ENABLE;
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 12
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 12
 
 
  311              		.loc 1 317 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  354 0000 0000     		.space	2
  355              		.text
  356              	.Letext0:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 13
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 13
 
 
  357              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
@@ -736,14 +736,14 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  369 000c D3000000 		.4byte	.LASF34
  370 0010 0C       		.byte	0xc
  371 0011 82000000 		.4byte	.LASF35
- 372 0015 83020000 		.4byte	.LASF36
+ 372 0015 A9020000 		.4byte	.LASF36
  373 0019 00000000 		.4byte	.Ldebug_ranges0+0
  374 001d 00000000 		.4byte	0
  375 0021 00000000 		.4byte	.Ldebug_line0
  376 0025 02       		.uleb128 0x2
  377 0026 01       		.byte	0x1
  378 0027 06       		.byte	0x6
- 379 0028 F4020000 		.4byte	.LASF0
+ 379 0028 07030000 		.4byte	.LASF0
  380 002c 02       		.uleb128 0x2
  381 002d 01       		.byte	0x1
  382 002e 08       		.byte	0x8
@@ -759,7 +759,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  392 0041 02       		.uleb128 0x2
  393 0042 04       		.byte	0x4
  394 0043 05       		.byte	0x5
- 395 0044 CE020000 		.4byte	.LASF4
+ 395 0044 83020000 		.4byte	.LASF4
  396 0048 02       		.uleb128 0x2
  397 0049 04       		.byte	0x4
  398 004a 07       		.byte	0x7
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  411 0060 696E7400 		.ascii	"int\000"
  412 0064 02       		.uleb128 0x2
  413 0065 04       		.byte	0x4
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 14
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 14
 
 
  414 0066 07       		.byte	0x7
@@ -822,7 +822,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  452 00ba 02       		.uleb128 0x2
  453 00bb 08       		.byte	0x8
  454 00bc 04       		.byte	0x4
- 455 00bd E8020000 		.4byte	.LASF16
+ 455 00bd 9D020000 		.4byte	.LASF16
  456 00c1 02       		.uleb128 0x2
  457 00c2 04       		.byte	0x4
  458 00c3 07       		.byte	0x7
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  468 00d6 BA       		.byte	0xba
  469 00d7 6B000000 		.4byte	0x6b
  470 00db 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 15
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 15
 
 
  471 00dc 07       		.uleb128 0x7
@@ -854,7 +854,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  481 00ef BF       		.byte	0xbf
  482 00f0 C8000000 		.4byte	0xc8
  483 00f4 09       		.uleb128 0x9
- 484 00f5 00030000 		.4byte	.LASF21
+ 484 00f5 13030000 		.4byte	.LASF21
  485 00f9 01       		.byte	0x1
  486 00fa 2B       		.byte	0x2b
  487 00fb 00000000 		.4byte	.LFB0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  525 0157 C8000000 		.4byte	.LFE3-.LFB3
  526 015b 01       		.uleb128 0x1
  527 015c 9C       		.byte	0x9c
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 16
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 16
 
 
  528 015d E5010000 		.4byte	0x1e5
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  582 01cc CD020000 		.4byte	0x2cd
  583 01d0 DB010000 		.4byte	0x1db
  584 01d4 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 17
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 17
 
 
  585 01d5 01       		.uleb128 0x1
@@ -972,7 +972,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  593 01e0 96020000 		.4byte	0x296
  594 01e4 00       		.byte	0
  595 01e5 09       		.uleb128 0x9
- 596 01e6 D7020000 		.4byte	.LASF24
+ 596 01e6 8C020000 		.4byte	.LASF24
  597 01ea 01       		.byte	0x1
  598 01eb E3       		.byte	0xe3
  599 01ec 00000000 		.4byte	.LFB4
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  639 0247 01       		.uleb128 0x1
  640 0248 50       		.byte	0x50
  641 0249 01       		.uleb128 0x1
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 18
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 18
 
 
  642 024a 32       		.byte	0x32
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  696 02b7 12       		.uleb128 0x12
  697 02b8 06020000 		.4byte	.LASF30
  698 02bc 06020000 		.4byte	.LASF30
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 19
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 19
 
 
  699 02c0 06       		.byte	0x6
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  753 0022 0B       		.uleb128 0xb
  754 0023 3E       		.uleb128 0x3e
  755 0024 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 20
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 20
 
 
  756 0025 03       		.uleb128 0x3
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  810 005b 00       		.byte	0
  811 005c 03       		.uleb128 0x3
  812 005d 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 21
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 21
 
 
  813 005e 3A       		.uleb128 0x3a
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  867 0097 19       		.uleb128 0x19
  868 0098 11       		.uleb128 0x11
  869 0099 01       		.uleb128 0x1
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 22
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 22
 
 
  870 009a 12       		.uleb128 0x12
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  924 00d8 00       		.byte	0
  925 00d9 03       		.uleb128 0x3
  926 00da 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 23
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 23
 
 
  927 00db 3A       		.uleb128 0x3a
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  981              	.LLST1:
  982 0013 08000000 		.4byte	.LVL13
  983 0017 9A000000 		.4byte	.LVL20
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 24
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 24
 
 
  984 001b 0100     		.2byte	0x1
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  1028      79636C65 
  1028      7300
  1029              	.LASF15:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 25
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 25
 
 
  1030 0026 72656733 		.ascii	"reg32\000"
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  1049      6973696F 
  1049      6E203233 
  1049      37373135 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 26
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 26
 
 
  1050 0139 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  1071              	.LASF10:
  1072 01f3 75696E74 		.ascii	"uint32\000"
  1072      333200
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 27
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 27
 
 
  1073              	.LASF18:
@@ -1607,40 +1607,40 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 1
  1092      315F4241 
  1092      434B5550 
  1092      5F535452 
- 1093              	.LASF36:
- 1094 0283 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\hardware task 2\\"
- 1094      454D505C 
- 1094      434F4D50 
- 1094      53595333 
- 1094      30315F74 
- 1095 02b1 68617264 		.ascii	"hardwaretask2\\Design01.cydsn\000"
- 1095      77617265 
- 1095      7461736B 
- 1095      325C4465 
- 1095      7369676E 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccvcKtCv.s 			page 28
+ 1093              	.LASF4:
+ 1094 0283 6C6F6E67 		.ascii	"long int\000"
+ 1094      20696E74 
+ 1094      00
+ 1095              	.LASF24:
+ 1096 028c 55534255 		.ascii	"USBUART_1_Resume\000"
+ 1096      4152545F 
+ 1096      315F5265 
+ 1096      73756D65 
+ 1096      00
+ 1097              	.LASF16:
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\cce1Sjx2.s 			page 28
 
 
- 1096              	.LASF4:
- 1097 02ce 6C6F6E67 		.ascii	"long int\000"
- 1097      20696E74 
- 1097      00
- 1098              	.LASF24:
- 1099 02d7 55534255 		.ascii	"USBUART_1_Resume\000"
- 1099      4152545F 
- 1099      315F5265 
- 1099      73756D65 
- 1099      00
- 1100              	.LASF16:
- 1101 02e8 6C6F6E67 		.ascii	"long double\000"
- 1101      20646F75 
- 1101      626C6500 
+ 1098 029d 6C6F6E67 		.ascii	"long double\000"
+ 1098      20646F75 
+ 1098      626C6500 
+ 1099              	.LASF36:
+ 1100 02a9 433A5C55 		.ascii	"C:\\Users\\kkau904\\Documents\\COMPSYS301_team2\\ma"
+ 1100      73657273 
+ 1100      5C6B6B61 
+ 1100      75393034 
+ 1100      5C446F63 
+ 1101 02d7 64695C68 		.ascii	"di\\hardware task 2\\hardwaretask2\\Design01.cydsn\000"
+ 1101      61726477 
+ 1101      61726520 
+ 1101      7461736B 
+ 1101      20325C68 
  1102              	.LASF0:
- 1103 02f4 7369676E 		.ascii	"signed char\000"
+ 1103 0307 7369676E 		.ascii	"signed char\000"
  1103      65642063 
  1103      68617200 
  1104              	.LASF21:
- 1105 0300 55534255 		.ascii	"USBUART_1_DP_ISR\000"
+ 1105 0313 55534255 		.ascii	"USBUART_1_DP_ISR\000"
  1105      4152545F 
  1105      315F4450 
  1105      5F495352 

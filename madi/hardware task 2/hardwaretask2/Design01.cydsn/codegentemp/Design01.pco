@@ -1,5 +1,5 @@
 # Design01
-# 2026-08-25 02:40:18Z
+# 2026-08-25 03:21:28Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -10,43 +10,43 @@ dont_use_io iocell 1 3
 set_location "ClockBlock" clockblockcell -1 -1 0
 set_io "M1_IN2(0)" iocell 12 2
 set_io "M1_IN1(0)" iocell 0 2
-set_io "M2_D1(0)" iocell 0 1
+set_io "M2_D1(0)" iocell 12 3
 set_io "M1_D1(0)" iocell 0 7
-set_io "M2_IN2_1(0)" iocell 12 3
+set_io "M2_IN2_1(0)" iocell 0 1
 set_io "M2_IN1_1(0)" iocell 0 3
-set_io "Pin_1(0)" iocell 0 5
-set_io "Pin_2(0)" iocell 0 4
+set_io "Quad_A(0)" iocell 0 4
+set_io "Quad_B(0)" iocell 0 5
 set_io "\USBUART_1:Dm(0)\" iocell 15 7
 set_location "\USBUART_1:Dp\" logicalport -1 -1 15
 set_io "\USBUART_1:Dp(0)\" iocell 15 6
 set_io "timer_pin(0)" iocell 0 0
-set_location "Net_94" 3 3 1 3
-set_location "Net_166" 3 3 1 2
-set_location "\QuadDec_1:Cnt8:CounterUDB:reload\" 2 4 0 0
-set_location "\QuadDec_1:Cnt8:CounterUDB:status_0\" 2 3 0 1
-set_location "\QuadDec_1:Cnt8:CounterUDB:status_2\" 2 3 1 2
-set_location "\QuadDec_1:Cnt8:CounterUDB:status_3\" 2 4 0 1
-set_location "\QuadDec_1:Cnt8:CounterUDB:count_enable\" 3 3 0 1
-set_location "\QuadDec_1:Net_530\" 2 5 0 1
-set_location "\QuadDec_1:Net_611\" 2 4 1 1
-set_location "\Timer_1:TimerUDB:status_tc\" 2 3 0 2
+set_location "Net_94" 3 3 0 3
+set_location "Net_166" 3 4 1 1
+set_location "\QuadDec_1:Cnt8:CounterUDB:reload\" 2 4 1 2
+set_location "\QuadDec_1:Cnt8:CounterUDB:status_0\" 2 3 0 0
+set_location "\QuadDec_1:Cnt8:CounterUDB:status_2\" 2 5 0 3
+set_location "\QuadDec_1:Cnt8:CounterUDB:status_3\" 2 3 0 2
+set_location "\QuadDec_1:Cnt8:CounterUDB:count_enable\" 2 3 1 1
+set_location "\QuadDec_1:Net_530\" 2 5 1 0
+set_location "\QuadDec_1:Net_611\" 2 5 0 2
+set_location "\Timer_1:TimerUDB:status_tc\" 3 4 0 1
 set_location "\PWM_1:PWMHW\" timercell -1 -1 0
-set_location "__ONE__" 1 3 0 1
-set_location "\CONTROL:Sync:ctrl_reg\" 3 5 6
+set_location "__ONE__" 1 2 1 0
+set_location "\CONTROL:Sync:ctrl_reg\" 3 3 6
 set_location "\PWM_2:PWMHW\" timercell -1 -1 1
-set_location "\QuadDec_1:Cnt8:CounterUDB:sCTRLReg:ctrlreg\" 3 3 6
+set_location "\QuadDec_1:Cnt8:CounterUDB:sCTRLReg:ctrlreg\" 2 3 6
 set_location "\QuadDec_1:Cnt8:CounterUDB:sSTSReg:stsreg\" 2 3 4
 set_location "\QuadDec_1:Cnt8:CounterUDB:sC8:counterdp:u0\" 2 4 2
-set_location "\QuadDec_1:bQuadDec:quad_A_delayed_0\" 3 5 1 1
-set_location "\QuadDec_1:bQuadDec:quad_A_delayed_1\" 3 4 1 3
-set_location "\QuadDec_1:bQuadDec:quad_A_delayed_2\" 3 4 1 1
-set_location "\QuadDec_1:bQuadDec:quad_B_delayed_0\" 3 5 0 3
-set_location "\QuadDec_1:bQuadDec:quad_B_delayed_1\" 3 5 0 2
-set_location "\QuadDec_1:bQuadDec:quad_B_delayed_2\" 3 5 0 1
+set_location "\QuadDec_1:bQuadDec:quad_A_delayed_0\" 3 5 0 3
+set_location "\QuadDec_1:bQuadDec:quad_A_delayed_1\" 3 5 1 0
+set_location "\QuadDec_1:bQuadDec:quad_A_delayed_2\" 3 5 0 1
+set_location "\QuadDec_1:bQuadDec:quad_B_delayed_0\" 3 4 1 3
+set_location "\QuadDec_1:bQuadDec:quad_B_delayed_1\" 3 5 1 2
+set_location "\QuadDec_1:bQuadDec:quad_B_delayed_2\" 2 5 1 1
 set_location "\QuadDec_1:bQuadDec:Stsreg\" 2 5 4
-set_location "\Timer_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 4 6
-set_location "\Timer_1:TimerUDB:rstSts:stsreg\" 2 4 4
-set_location "\Timer_1:TimerUDB:sT8:timerdp:u0\" 2 3 2
+set_location "\Timer_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 3 4 6
+set_location "\Timer_1:TimerUDB:rstSts:stsreg\" 3 4 4
+set_location "\Timer_1:TimerUDB:sT8:timerdp:u0\" 3 4 2
 set_location "ISR_QUAD" interrupt -1 -1 0
 set_location "\USBUART_1:dp_int\" interrupt -1 -1 12
 set_location "\USBUART_1:USB\" usbcell -1 -1 0
@@ -57,18 +57,18 @@ set_location "\USBUART_1:ep_0\" interrupt -1 -1 24
 set_location "\USBUART_1:bus_reset\" interrupt -1 -1 23
 set_location "\USBUART_1:arb_int\" interrupt -1 -1 22
 set_location "\USBUART_1:sof_int\" interrupt -1 -1 21
-set_location "\QuadDec_1:Net_1251\" 2 5 0 0
-set_location "\QuadDec_1:Cnt8:CounterUDB:overflow_reg_i\" 2 3 1 1
-set_location "\QuadDec_1:Cnt8:CounterUDB:underflow_reg_i\" 2 5 0 3
-set_location "\QuadDec_1:Net_1276\" 2 3 1 0
-set_location "\QuadDec_1:Cnt8:CounterUDB:prevCompare\" 2 4 1 0
-set_location "\QuadDec_1:Net_1251_split\" 2 5 1 0
-set_location "\QuadDec_1:Cnt8:CounterUDB:count_stored_i\" 3 3 0 2
-set_location "\QuadDec_1:Net_1203\" 3 3 0 0
-set_location "\QuadDec_1:bQuadDec:quad_A_filt\" 3 4 0 0
-set_location "\QuadDec_1:bQuadDec:quad_B_filt\" 3 5 1 3
-set_location "\QuadDec_1:Net_1260\" 2 4 1 3
-set_location "\QuadDec_1:bQuadDec:error\" 3 5 1 0
-set_location "\QuadDec_1:bQuadDec:state_1\" 3 4 0 1
-set_location "\QuadDec_1:bQuadDec:state_0\" 3 3 1 1
-set_location "Net_455" 2 4 0 2
+set_location "\QuadDec_1:Net_1251\" 2 4 1 3
+set_location "\QuadDec_1:Cnt8:CounterUDB:overflow_reg_i\" 2 5 0 1
+set_location "\QuadDec_1:Cnt8:CounterUDB:underflow_reg_i\" 2 3 1 3
+set_location "\QuadDec_1:Net_1276\" 2 5 1 2
+set_location "\QuadDec_1:Cnt8:CounterUDB:prevCompare\" 2 5 1 3
+set_location "\QuadDec_1:Net_1251_split\" 2 4 0 0
+set_location "\QuadDec_1:Cnt8:CounterUDB:count_stored_i\" 2 3 1 2
+set_location "\QuadDec_1:Net_1203\" 2 3 1 0
+set_location "\QuadDec_1:bQuadDec:quad_A_filt\" 3 5 0 0
+set_location "\QuadDec_1:bQuadDec:quad_B_filt\" 2 5 0 0
+set_location "\QuadDec_1:Net_1260\" 2 4 1 0
+set_location "\QuadDec_1:bQuadDec:error\" 3 3 1 0
+set_location "\QuadDec_1:bQuadDec:state_1\" 3 5 1 3
+set_location "\QuadDec_1:bQuadDec:state_0\" 2 3 0 1
+set_location "Net_455" 3 4 0 2

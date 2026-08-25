@@ -303,7 +303,9 @@
       <Data key="c0fb34bd-1044-4931-9788-16b01ce89812" value="timer_clock" />
     </Group>
     <Group key="Pin">
+      <Data key="7b502281-2352-466b-bbbe-39ccdc509efd" value="LED_1" />
       <Data key="039db05b-f294-4a01-8389-26f7b31aaac2/16a808f6-2e13-45b9-bce0-b001c8655113" value="ADC_1_Bypass" />
+      <Data key="77acd4f4-06dd-4a57-b2d4-73bf9d55fc48" value="Pin_2" />
       <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="Pin_1" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="LED" />
     </Group>
@@ -3392,9 +3394,19 @@
     </Group>
   </Group>
   <Group key="Pin2">
+    <Group key="7b502281-2352-466b-bbbe-39ccdc509efd">
+      <Group key="0">
+        <Data key="Port Format" value="0,0" />
+      </Group>
+    </Group>
     <Group key="039db05b-f294-4a01-8389-26f7b31aaac2/16a808f6-2e13-45b9-bce0-b001c8655113">
       <Group key="0">
         <Data key="Port Format" value="0,2" />
+      </Group>
+    </Group>
+    <Group key="77acd4f4-06dd-4a57-b2d4-73bf9d55fc48">
+      <Group key="0">
+        <Data key="Port Format" value="3,6" />
       </Group>
     </Group>
     <Group key="77715107-f8d5-47e5-a629-0fb83101ac6b">
@@ -3407,6 +3419,7 @@
         <Data key="Port Format" value="2,1" />
       </Group>
     </Group>
+    <Group key="UnAssigned Pins" />
   </Group>
   <Group key="PlaceDir">
     <Data key="count" value="0" />

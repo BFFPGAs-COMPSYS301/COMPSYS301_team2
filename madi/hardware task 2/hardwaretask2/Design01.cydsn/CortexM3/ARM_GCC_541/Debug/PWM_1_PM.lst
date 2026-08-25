@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
   28:Generated_Source\PSoC5/PWM_1_PM.c **** *  Saves the current user configuration of the component.
   29:Generated_Source\PSoC5/PWM_1_PM.c **** *
   30:Generated_Source\PSoC5/PWM_1_PM.c **** * Parameters:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 2
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 2
 
 
   31:Generated_Source\PSoC5/PWM_1_PM.c **** *  None
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
   68:Generated_Source\PSoC5/PWM_1_PM.c **** 
   69:Generated_Source\PSoC5/PWM_1_PM.c **** 
   70:Generated_Source\PSoC5/PWM_1_PM.c **** /*******************************************************************************
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 3
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 3
 
 
   71:Generated_Source\PSoC5/PWM_1_PM.c **** * Function Name: PWM_1_RestoreConfig
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  108:Generated_Source\PSoC5/PWM_1_PM.c ****             #endif /* (PWM_1_KillModeMinTime) */
  109:Generated_Source\PSoC5/PWM_1_PM.c **** 
  110:Generated_Source\PSoC5/PWM_1_PM.c ****             #if(PWM_1_UseControl)
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 4
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 4
 
 
  111:Generated_Source\PSoC5/PWM_1_PM.c ****                 PWM_1_WriteControlRegister(PWM_1_backup.PWMControlRegister);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  145:Generated_Source\PSoC5/PWM_1_PM.c ****         {
  146:Generated_Source\PSoC5/PWM_1_PM.c ****             /* Component is disabled */
  147:Generated_Source\PSoC5/PWM_1_PM.c ****             PWM_1_backup.PWMEnableState = 0u;
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 5
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 5
 
 
   82              		.loc 1 147 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  177:Generated_Source\PSoC5/PWM_1_PM.c **** *******************************************************************************/
  178:Generated_Source\PSoC5/PWM_1_PM.c **** void PWM_1_Wakeup(void) 
  179:Generated_Source\PSoC5/PWM_1_PM.c **** {
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 6
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 6
 
 
  107              		.loc 1 179 0
@@ -352,13 +352,13 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  148 000b 01       		.uleb128 0x1
  149 000c 46000000 		.4byte	.LASF23
  150 0010 0C       		.byte	0xc
- 151 0011 BB010000 		.4byte	.LASF24
- 152 0015 E2010000 		.4byte	.LASF25
+ 151 0011 19020000 		.4byte	.LASF24
+ 152 0015 A3010000 		.4byte	.LASF25
  153 0019 00000000 		.4byte	.Ldebug_ranges0+0
  154 001d 00000000 		.4byte	0
  155 0021 00000000 		.4byte	.Ldebug_line0
  156 0025 02       		.uleb128 0x2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 7
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 7
 
 
  157 0026 01       		.byte	0x1
@@ -418,10 +418,10 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  211 0087 08       		.byte	0x8
  212 0088 38010000 		.4byte	.LASF11
  213 008c 04       		.uleb128 0x4
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 8
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 8
 
 
- 214 008d DD010000 		.4byte	.LASF13
+ 214 008d 3B020000 		.4byte	.LASF13
  215 0091 02       		.byte	0x2
  216 0092 9102     		.2byte	0x291
  217 0094 98000000 		.4byte	0x98
@@ -430,11 +430,11 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  220 009d 02       		.uleb128 0x2
  221 009e 08       		.byte	0x8
  222 009f 04       		.byte	0x4
- 223 00a0 A3010000 		.4byte	.LASF14
+ 223 00a0 01020000 		.4byte	.LASF14
  224 00a4 02       		.uleb128 0x2
  225 00a5 04       		.byte	0x4
  226 00a6 07       		.byte	0x7
- 227 00a7 2D020000 		.4byte	.LASF15
+ 227 00a7 40020000 		.4byte	.LASF15
  228 00ab 06       		.uleb128 0x6
  229 00ac 01       		.byte	0x1
  230 00ad 03       		.byte	0x3
@@ -469,7 +469,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  259 00eb 01       		.uleb128 0x1
  260 00ec 9C       		.byte	0x9c
  261 00ed 0A       		.uleb128 0xa
- 262 00ee AF010000 		.4byte	.LASF19
+ 262 00ee 0D020000 		.4byte	.LASF19
  263 00f2 01       		.byte	0x1
  264 00f3 88       		.byte	0x88
  265 00f4 00000000 		.4byte	.LFB2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  268 00fd 9C       		.byte	0x9c
  269 00fe 0C010000 		.4byte	0x10c
  270 0102 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 9
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 9
 
 
  271 0103 1E000000 		.4byte	.LVL0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  325 0011 00       		.byte	0
  326 0012 00       		.byte	0
  327 0013 02       		.uleb128 0x2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 10
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 10
 
 
  328 0014 24       		.uleb128 0x24
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  382 004a 07       		.uleb128 0x7
  383 004b 0D       		.uleb128 0xd
  384 004c 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 11
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 11
 
 
  385 004d 03       		.uleb128 0x3
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  439 0084 0E       		.uleb128 0xe
  440 0085 3A       		.uleb128 0x3a
  441 0086 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 12
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 12
 
 
  442 0087 3B       		.uleb128 0x3b
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  496 00c0 0B       		.uleb128 0xb
  497 00c1 00       		.byte	0
  498 00c2 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 13
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 13
 
 
  499 00c3 00       		.byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  540      6E61626C 
  540      65537461 
  540      746500
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 14
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 14
 
 
  541              	.LASF17:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  560      20636861 
  560      7200
  561              	.LASF11:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 15
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 15
 
 
  562 0138 63686172 		.ascii	"char\000"
@@ -880,39 +880,39 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 1
  578      315F5761 
  578      6B657570 
  578      00
- 579              	.LASF14:
- 580 01a3 6C6F6E67 		.ascii	"long double\000"
- 580      20646F75 
- 580      626C6500 
- 581              	.LASF19:
- 582 01af 50574D5F 		.ascii	"PWM_1_Sleep\000"
- 582      315F536C 
- 582      65657000 
- 583              	.LASF24:
- 584 01bb 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_1_PM.c\000"
- 584      72617465 
- 584      645F536F 
- 584      75726365 
- 584      5C50536F 
- 585              	.LASF13:
- 586 01dd 72656738 		.ascii	"reg8\000"
- 586      00
- 587              	.LASF25:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccSsL89x.s 			page 16
+ 579              	.LASF25:
+ 580 01a3 433A5C55 		.ascii	"C:\\Users\\kkau904\\Documents\\COMPSYS301_team2\\ma"
+ 580      73657273 
+ 580      5C6B6B61 
+ 580      75393034 
+ 580      5C446F63 
+ 581 01d1 64695C68 		.ascii	"di\\hardware task 2\\hardwaretask2\\Design01.cydsn\000"
+ 581      61726477 
+ 581      61726520 
+ 581      7461736B 
+ 581      20325C68 
+ 582              	.LASF14:
+ 583 0201 6C6F6E67 		.ascii	"long double\000"
+ 583      20646F75 
+ 583      626C6500 
+ 584              	.LASF19:
+ 585 020d 50574D5F 		.ascii	"PWM_1_Sleep\000"
+ 585      315F536C 
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccaUaqZo.s 			page 16
 
 
- 588 01e2 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\hardware task 2\\"
- 588      454D505C 
- 588      434F4D50 
- 588      53595333 
- 588      30315F74 
- 589 0210 68617264 		.ascii	"hardwaretask2\\Design01.cydsn\000"
- 589      77617265 
- 589      7461736B 
- 589      325C4465 
- 589      7369676E 
+ 585      65657000 
+ 586              	.LASF24:
+ 587 0219 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_1_PM.c\000"
+ 587      72617465 
+ 587      645F536F 
+ 587      75726365 
+ 587      5C50536F 
+ 588              	.LASF13:
+ 589 023b 72656738 		.ascii	"reg8\000"
+ 589      00
  590              	.LASF15:
- 591 022d 73697A65 		.ascii	"sizetype\000"
+ 591 0240 73697A65 		.ascii	"sizetype\000"
  591      74797065 
  591      00
  592              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -2,7 +2,7 @@
 --	Conversion of Design01.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Aug 25 14:40:16 2026
+--	Tue Aug 25 15:21:27 2026
 --
 
 USE cypress.cypress.all;
@@ -365,14 +365,14 @@ SIGNAL \Timer_1:TimerUDB:sT8:timerdp:f1_blk_stat_reg\ : bit;
 ATTRIBUTE port_state_att of \Timer_1:TimerUDB:sT8:timerdp:f1_blk_stat_reg\:SIGNAL IS 2;
 SIGNAL \Timer_1:Net_102\ : bit;
 SIGNAL \Timer_1:Net_266\ : bit;
-SIGNAL tmpOE__Pin_1_net_0 : bit;
-SIGNAL tmpIO_0__Pin_1_net_0 : bit;
-TERMINAL tmpSIOVREF__Pin_1_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Pin_1_net_0 : bit;
-SIGNAL tmpOE__Pin_2_net_0 : bit;
-SIGNAL tmpIO_0__Pin_2_net_0 : bit;
-TERMINAL tmpSIOVREF__Pin_2_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Pin_2_net_0 : bit;
+SIGNAL tmpOE__Quad_A_net_0 : bit;
+SIGNAL tmpIO_0__Quad_A_net_0 : bit;
+TERMINAL tmpSIOVREF__Quad_A_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Quad_A_net_0 : bit;
+SIGNAL tmpOE__Quad_B_net_0 : bit;
+SIGNAL tmpIO_0__Quad_B_net_0 : bit;
+TERMINAL tmpSIOVREF__Quad_B_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Quad_B_net_0 : bit;
 SIGNAL \USBUART_1:Net_1010\ : bit;
 SIGNAL \USBUART_1:tmpOE__Dm_net_0\ : bit;
 SIGNAL \USBUART_1:tmpFB_0__Dm_net_0\ : bit;
@@ -1267,7 +1267,7 @@ ISR_QUAD:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_419);
-Pin_1:cy_psoc3_pins_v1_10
+Quad_A:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
 		drive_mode=>"001",
 		ibuf_enabled=>"1",
@@ -1327,8 +1327,8 @@ Pin_1:cy_psoc3_pins_v1_10
 		y=>(zero),
 		fb=>Net_406,
 		analog=>(open),
-		io=>(tmpIO_0__Pin_1_net_0),
-		siovref=>(tmpSIOVREF__Pin_1_net_0),
+		io=>(tmpIO_0__Quad_A_net_0),
+		siovref=>(tmpSIOVREF__Quad_A_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__M1_IN2_net_0,
@@ -1336,8 +1336,8 @@ Pin_1:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__M1_IN2_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Pin_1_net_0);
-Pin_2:cy_psoc3_pins_v1_10
+		interrupt=>tmpINTERRUPT_0__Quad_A_net_0);
+Quad_B:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"bdcbe1e7-7fca-481e-b2be-95e5102ffeb7",
 		drive_mode=>"001",
 		ibuf_enabled=>"1",
@@ -1397,8 +1397,8 @@ Pin_2:cy_psoc3_pins_v1_10
 		y=>(zero),
 		fb=>Net_407,
 		analog=>(open),
-		io=>(tmpIO_0__Pin_2_net_0),
-		siovref=>(tmpSIOVREF__Pin_2_net_0),
+		io=>(tmpIO_0__Quad_B_net_0),
+		siovref=>(tmpSIOVREF__Quad_B_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__M1_IN2_net_0,
@@ -1406,7 +1406,7 @@ Pin_2:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__M1_IN2_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Pin_2_net_0);
+		interrupt=>tmpINTERRUPT_0__Quad_B_net_0);
 Clock_1:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"7115ce75-a37c-40bf-8dca-f2f8ad430ec7",

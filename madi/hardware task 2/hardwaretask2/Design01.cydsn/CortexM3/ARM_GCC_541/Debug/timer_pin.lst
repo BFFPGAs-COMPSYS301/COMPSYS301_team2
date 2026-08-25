@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
   28:Generated_Source\PSoC5/timer_pin.c **** *
   29:Generated_Source\PSoC5/timer_pin.c **** * \brief Writes the value to the physical port (data output register), masking
   30:Generated_Source\PSoC5/timer_pin.c **** *  and shifting the bits appropriately. 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 2
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 2
 
 
   31:Generated_Source\PSoC5/timer_pin.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
   52              		.section	.text.timer_pin_SetDriveMode,"ax",%progbits
   53              		.align	2
   54              		.global	timer_pin_SetDriveMode
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 3
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 3
 
 
   55              		.thumb
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
   77              	.L5:
   78 0014 00500040 		.word	1073762304
   79              		.cfi_endproc
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 4
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 4
 
 
   80              	.LFE1:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  110              		.global	timer_pin_ReadDataReg
  111              		.thumb
  112              		.thumb_func
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 5
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 5
 
 
  113              		.type	timer_pin_ReadDataReg, %function
@@ -298,22 +298,22 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  139 0000 1B010000 		.4byte	0x11b
  140 0004 0400     		.2byte	0x4
  141 0006 00000000 		.4byte	.Ldebug_abbrev0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 6
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 6
 
 
  142 000a 04       		.byte	0x4
  143 000b 01       		.uleb128 0x1
  144 000c 25000000 		.4byte	.LASF20
  145 0010 0C       		.byte	0xc
- 146 0011 AB010000 		.4byte	.LASF21
- 147 0015 57010000 		.4byte	.LASF22
+ 146 0011 60010000 		.4byte	.LASF21
+ 147 0015 83010000 		.4byte	.LASF22
  148 0019 00000000 		.4byte	.Ldebug_ranges0+0
  149 001d 00000000 		.4byte	0
  150 0021 00000000 		.4byte	.Ldebug_line0
  151 0025 02       		.uleb128 0x2
  152 0026 01       		.byte	0x1
  153 0027 06       		.byte	0x6
- 154 0028 CE010000 		.4byte	.LASF0
+ 154 0028 E1010000 		.4byte	.LASF0
  155 002c 02       		.uleb128 0x2
  156 002d 01       		.byte	0x1
  157 002e 08       		.byte	0x8
@@ -329,7 +329,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  167 0041 02       		.uleb128 0x2
  168 0042 04       		.byte	0x4
  169 0043 05       		.byte	0x5
- 170 0044 A2010000 		.4byte	.LASF4
+ 170 0044 57010000 		.4byte	.LASF4
  171 0048 02       		.uleb128 0x2
  172 0049 04       		.byte	0x4
  173 004a 07       		.byte	0x7
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  196 0077 02       		.uleb128 0x2
  197 0078 04       		.byte	0x4
  198 0079 04       		.byte	0x4
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 7
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 7
 
 
  199 007a 11000000 		.4byte	.LASF9
@@ -417,8 +417,8 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  252 00ef 21000000 		.4byte	.LLST1
  253 00f3 00       		.byte	0
  254 00f4 09       		.uleb128 0x9
- 255 00f5 F0010000 		.4byte	.LASF18
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 8
+ 255 00f5 03020000 		.4byte	.LASF18
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 8
 
 
  256 00f9 01       		.byte	0x1
@@ -429,7 +429,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  261 0107 01       		.uleb128 0x1
  262 0108 9C       		.byte	0x9c
  263 0109 09       		.uleb128 0x9
- 264 010a DA010000 		.4byte	.LASF19
+ 264 010a ED010000 		.4byte	.LASF19
  265 010e 01       		.byte	0x1
  266 010f 8D       		.byte	0x8d
  267 0110 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  310 0023 3E       		.uleb128 0x3e
  311 0024 0B       		.uleb128 0xb
  312 0025 03       		.uleb128 0x3
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 9
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 9
 
 
  313 0026 08       		.uleb128 0x8
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  367 005d 0B       		.uleb128 0xb
  368 005e 3B       		.uleb128 0x3b
  369 005f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 10
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 10
 
 
  370 0060 49       		.uleb128 0x49
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  424 000b 0C000000 		.4byte	.LVL2
  425 000f 18000000 		.4byte	.LFE0
  426 0013 0400     		.2byte	0x4
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 11
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 11
 
 
  427 0015 F3       		.byte	0xf3
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  479      00000201 
  479      FB0E0D00 
  479      01010101 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 12
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 12
 
 
  480              	.LASF16:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  501      76654D6F 
  502              	.LASF8:
  503 00fb 756E7369 		.ascii	"unsigned int\000"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 13
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 13
 
 
  503      676E6564 
@@ -753,42 +753,42 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 1
  516              	.LASF12:
  517 0151 75696E74 		.ascii	"uint8\000"
  517      3800
- 518              	.LASF22:
- 519 0157 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\hardware task 2\\"
- 519      454D505C 
- 519      434F4D50 
- 519      53595333 
- 519      30315F74 
- 520 0185 68617264 		.ascii	"hardwaretask2\\Design01.cydsn\000"
- 520      77617265 
- 520      7461736B 
- 520      325C4465 
- 520      7369676E 
- 521              	.LASF4:
- 522 01a2 6C6F6E67 		.ascii	"long int\000"
- 522      20696E74 
- 522      00
- 523              	.LASF21:
- 524 01ab 47656E65 		.ascii	"Generated_Source\\PSoC5\\timer_pin.c\000"
- 524      72617465 
- 524      645F536F 
- 524      75726365 
- 524      5C50536F 
+ 518              	.LASF4:
+ 519 0157 6C6F6E67 		.ascii	"long int\000"
+ 519      20696E74 
+ 519      00
+ 520              	.LASF21:
+ 521 0160 47656E65 		.ascii	"Generated_Source\\PSoC5\\timer_pin.c\000"
+ 521      72617465 
+ 521      645F536F 
+ 521      75726365 
+ 521      5C50536F 
+ 522              	.LASF22:
+ 523 0183 433A5C55 		.ascii	"C:\\Users\\kkau904\\Documents\\COMPSYS301_team2\\ma"
+ 523      73657273 
+ 523      5C6B6B61 
+ 523      75393034 
+ 523      5C446F63 
+ 524 01b1 64695C68 		.ascii	"di\\hardware task 2\\hardwaretask2\\Design01.cydsn\000"
+ 524      61726477 
+ 524      61726520 
+ 524      7461736B 
+ 524      20325C68 
  525              	.LASF0:
- 526 01ce 7369676E 		.ascii	"signed char\000"
+ 526 01e1 7369676E 		.ascii	"signed char\000"
  526      65642063 
  526      68617200 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cc6ugiJy.s 			page 14
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccuIl8Bt.s 			page 14
 
 
  527              	.LASF19:
- 528 01da 74696D65 		.ascii	"timer_pin_ReadDataReg\000"
+ 528 01ed 74696D65 		.ascii	"timer_pin_ReadDataReg\000"
  528      725F7069 
  528      6E5F5265 
  528      61644461 
  528      74615265 
  529              	.LASF18:
- 530 01f0 74696D65 		.ascii	"timer_pin_Read\000"
+ 530 0203 74696D65 		.ascii	"timer_pin_Read\000"
  530      725F7069 
  530      6E5F5265 
  530      616400
