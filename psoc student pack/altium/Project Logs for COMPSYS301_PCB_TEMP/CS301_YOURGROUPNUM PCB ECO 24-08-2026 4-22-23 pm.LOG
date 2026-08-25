@@ -1,0 +1,19 @@
+Removed Pin From Net: NetName=Vb1 Pin=U1s-1
+Removed Pin From Net: NetName=NetRs1_2 Pin=U1s-2
+Removed Pin From Net: NetName=NetRs2_2 Pin=U1s-3
+Removed Pin From Net: NetName=5V Pin=U1s-4
+Removed Pin From Net: NetName=GND Pin=U1s-11
+Removed Pin From Net: NetName=Vout1 Pin=U2-1
+Removed Pin From Net: NetName=Vref_DAC Pin=U2-2
+Removed Pin From Net: NetName=NetR2_2 Pin=U2-3
+Removed Member From Class: ClassName=CS301_YOURGROUPNUM Member=U2
+Change Component Comment : Designator=U2 Old Comment=comparator New Comment=LM324DR2G
+Change Component Designator: OldDesignator=U2 NewDesignator=U1s
+Change Component Library : Designator=U1s Old Library=EE209_Library.IntLib New Library=EE209_SchLib.SchLib
+Added Pin To Net: NetName=Vb1 Pin=U1s-1
+Added Pin To Net: NetName=NetRs1_2 Pin=U1s-2
+Added Pin To Net: NetName=NetRs2_2 Pin=U1s-3
+Added Pin To Net: NetName=NetR2_2 Pin=U1s-5
+Added Pin To Net: NetName=Vref_DAC Pin=U1s-6
+Added Pin To Net: NetName=Vout1 Pin=U1s-7
+Added Member To Class: ClassName=CS301_YOURGROUPNUM Member=Component C19 100nF

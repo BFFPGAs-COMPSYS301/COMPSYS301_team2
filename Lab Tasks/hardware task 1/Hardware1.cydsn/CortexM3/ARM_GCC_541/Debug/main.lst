@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 1
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 1
 
 
    1              		.syntax unified
@@ -26,678 +26,1652 @@ ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 1
   23              		.thumb_func
   24              		.type	MyISR, %function
   25              	MyISR:
-  26              	.LFB63:
+  26              	.LFB64:
   27              		.file 1 "main.c"
    1:main.c        **** /* ========================================
    2:main.c        ****  *
-   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
-   4:main.c        ****  * All Rights Reserved
-   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
-   6:main.c        ****  *
-   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
-   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
-   9:main.c        ****  *
-  10:main.c        ****  * ========================================
-  11:main.c        **** */
-  12:main.c        **** #include "project.h"
-  13:main.c        **** void ISR_1_Start(void);
-  14:main.c        **** 
-  15:main.c        **** CY_ISR(MyISR)
-  16:main.c        **** {
-  28              		.loc 1 16 0
+   3:main.c        ****  * Hardware Task 1
+   4:main.c        ****  *
+   5:main.c        ****  * RC circuit -> ADC -> digital samples -> DAC
+   6:main.c        ****  *                         |
+   7:main.c        ****  *                         -> buffer -> USBUART
+   8:main.c        ****  *
+   9:main.c        ****  * ADC configuration:
+  10:main.c        ****  *   - 12-bit
+  11:main.c        ****  *   - 0 V to 2.048 V input range
+  12:main.c        ****  *   - Hardware triggered
+  13:main.c        ****  *
+  14:main.c        ****  * DAC configuration:
+  15:main.c        ****  *   - 8-bit
+  16:main.c        ****  *   - 0 V to 4.080 V output range
+  17:main.c        ****  *
+  18:main.c        ****  * Timer configuration:
+  19:main.c        ****  *   - 50 kHz terminal-count frequency
+  20:main.c        ****  *   - Timer TC connected to ADC SOC
+  21:main.c        ****  *
+  22:main.c        ****  * Interrupt connection:
+  23:main.c        ****  *   - ADC EOC connected to isr_1
+  24:main.c        ****  *
+  25:main.c        ****  * ========================================
+  26:main.c        ****  */
+  27:main.c        **** 
+  28:main.c        **** #include "project.h"
+  29:main.c        **** #include <stdio.h>
+  30:main.c        **** 
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 2
+
+
+  31:main.c        **** 
+  32:main.c        **** /*
+  33:main.c        ****  * Number of ADC samples captured before USB transmission.
+  34:main.c        ****  *
+  35:main.c        ****  * At 50 kSamples/s:
+  36:main.c        ****  *
+  37:main.c        ****  * capture time = 500 / 50000
+  38:main.c        ****  *              = 0.01 seconds
+  39:main.c        ****  *              = 10 milliseconds
+  40:main.c        ****  */
+  41:main.c        **** #define BUFFER_SIZE 500u
+  42:main.c        **** 
+  43:main.c        **** 
+  44:main.c        **** /*
+  45:main.c        ****  * Array used to store the ADC samples.
+  46:main.c        ****  *
+  47:main.c        ****  * The ADC produces a 12-bit result from 0 to 4095.
+  48:main.c        ****  * A uint16 variable can hold values from 0 to 65535,
+  49:main.c        ****  * so it is large enough for each ADC result.
+  50:main.c        ****  *
+  51:main.c        ****  * volatile is used because the interrupt writes to this
+  52:main.c        ****  * array while main() reads from it.
+  53:main.c        ****  */
+  54:main.c        **** volatile uint16 adcBuffer[BUFFER_SIZE];
+  55:main.c        **** 
+  56:main.c        **** 
+  57:main.c        **** /*
+  58:main.c        ****  * Index of the next available location in adcBuffer.
+  59:main.c        ****  *
+  60:main.c        ****  * It begins at zero and increases after every sample:
+  61:main.c        ****  *
+  62:main.c        ****  * 0, 1, 2, ..., BUFFER_SIZE - 1
+  63:main.c        ****  */
+  64:main.c        **** volatile uint16 bufferIndex = 0u;
+  65:main.c        **** 
+  66:main.c        **** 
+  67:main.c        **** /*
+  68:main.c        ****  * Flag indicating whether the ADC buffer is full.
+  69:main.c        ****  *
+  70:main.c        ****  * bufferFull = 0:
+  71:main.c        ****  *     The ISR may continue storing ADC samples.
+  72:main.c        ****  *
+  73:main.c        ****  * bufferFull = 1:
+  74:main.c        ****  *     The buffer contains a complete block and is
+  75:main.c        ****  *     ready to be sent through USBUART.
+  76:main.c        ****  */
+  77:main.c        **** volatile uint8 bufferFull = 0u;
+  78:main.c        **** 
+  79:main.c        **** 
+  80:main.c        **** /*
+  81:main.c        ****  * ADC End-of-Conversion interrupt service routine.
+  82:main.c        ****  *
+  83:main.c        ****  * This ISR runs every time the SAR ADC finishes
+  84:main.c        ****  * one conversion.
+  85:main.c        ****  *
+  86:main.c        ****  * Sequence:
+  87:main.c        ****  *
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 3
+
+
+  88:main.c        ****  * Timer TC
+  89:main.c        ****  *     -> ADC SOC
+  90:main.c        ****  *     -> ADC conversion
+  91:main.c        ****  *     -> ADC EOC
+  92:main.c        ****  *     -> isr_1
+  93:main.c        ****  *     -> MyISR
+  94:main.c        ****  */
+  95:main.c        **** CY_ISR(MyISR)
+  96:main.c        **** {
+  28              		.loc 1 96 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32 0000 08B5     		push	{r3, lr}
+  32 0000 10B5     		push	{r4, lr}
   33              		.cfi_def_cfa_offset 8
-  34              		.cfi_offset 3, -8
+  34              		.cfi_offset 4, -8
   35              		.cfi_offset 14, -4
-  17:main.c        ****     LED_Write(!LED_Read());
-  36              		.loc 1 17 0
-  37 0002 FFF7FEFF 		bl	LED_Read
+  97:main.c        ****     /*
+  98:main.c        ****      * Stores the completed 12-bit ADC result.
+  99:main.c        ****      */
+ 100:main.c        ****     uint16 adcValue;
+ 101:main.c        **** 
+ 102:main.c        ****     /*
+ 103:main.c        ****      * Stores the scaled 8-bit value written to the DAC.
+ 104:main.c        ****      */
+ 105:main.c        ****     uint8 dacValue;
+ 106:main.c        **** 
+ 107:main.c        **** 
+ 108:main.c        ****     /*
+ 109:main.c        ****      * Read the most recently completed ADC conversion.
+ 110:main.c        ****      *
+ 111:main.c        ****      * For a 12-bit ADC:
+ 112:main.c        ****      *
+ 113:main.c        ****      * ADC result range = 0 to 4095
+ 114:main.c        ****      */
+ 115:main.c        ****     adcValue = (uint16)ADC_SAR_1_GetResult16();
+  36              		.loc 1 115 0
+  37 0002 FFF7FEFF 		bl	ADC_SAR_1_GetResult16
   38              	.LVL0:
-  39 0006 B0FA80F0 		clz	r0, r0
-  40 000a 4009     		lsrs	r0, r0, #5
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 2
+  39 0006 84B2     		uxth	r4, r0
+  40              	.LVL1:
+ 116:main.c        **** 
+ 117:main.c        **** 
+ 118:main.c        ****     /*
+ 119:main.c        ****      * Scale the ADC result for the DAC.
+ 120:main.c        ****      *
+ 121:main.c        ****      * ADC configuration:
+ 122:main.c        ****      *     0 V to 2.048 V
+ 123:main.c        ****      *     4096 possible codes
+ 124:main.c        ****      *
+ 125:main.c        ****      * ADC step size:
+ 126:main.c        ****      *
+ 127:main.c        ****      *     2.048 V / 4096 = 0.0005 V
+ 128:main.c        ****      *                          = 0.5 mV/count
+ 129:main.c        ****      *
+ 130:main.c        ****      * DAC configuration:
+ 131:main.c        ****      *     0 V to 4.080 V
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 4
 
 
-  41 000c FFF7FEFF 		bl	LED_Write
-  42              	.LVL1:
-  18:main.c        ****     Timer_1_ReadStatusRegister();
-  43              		.loc 1 18 0
-  44 0010 FFF7FEFF 		bl	Timer_1_ReadStatusRegister
-  45              	.LVL2:
-  46 0014 08BD     		pop	{r3, pc}
-  47              		.cfi_endproc
-  48              	.LFE63:
-  49              		.size	MyISR, .-MyISR
-  50 0016 00BF     		.section	.text.main,"ax",%progbits
-  51              		.align	2
-  52              		.global	main
-  53              		.thumb
-  54              		.thumb_func
-  55              		.type	main, %function
-  56              	main:
-  57              	.LFB64:
-  19:main.c        **** }
-  20:main.c        **** CY_ISR_PROTO(MYISR);
-  21:main.c        **** 
-  22:main.c        **** int main(void)
-  23:main.c        **** {
-  58              		.loc 1 23 0
-  59              		.cfi_startproc
-  60              		@ Volatile: function does not return.
-  61              		@ args = 0, pretend = 0, frame = 0
-  62              		@ frame_needed = 0, uses_anonymous_args = 0
-  63 0000 08B5     		push	{r3, lr}
-  64              		.cfi_def_cfa_offset 8
-  65              		.cfi_offset 3, -8
-  66              		.cfi_offset 14, -4
-  24:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
-  67              		.loc 1 24 0
-  68              		.syntax unified
-  69              	@ 24 "main.c" 1
-  70 0002 62B6     		CPSIE   i
-  71              	@ 0 "" 2
-  25:main.c        **** 
-  26:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-  27:main.c        ****     
-  28:main.c        ****     Timer_1_Start();
-  72              		.loc 1 28 0
-  73              		.thumb
-  74              		.syntax unified
-  75 0004 FFF7FEFF 		bl	Timer_1_Start
-  76              	.LVL3:
-  29:main.c        ****     ADC_SAR_1_Start();
-  77              		.loc 1 29 0
-  78 0008 FFF7FEFF 		bl	ADC_SAR_1_Start
-  79              	.LVL4:
-  30:main.c        ****     VDAC8_1_Start();
-  80              		.loc 1 30 0
-  81 000c FFF7FEFF 		bl	VDAC8_1_Start
-  82              	.LVL5:
-  31:main.c        ****     //USBUART_1_Start();
-  32:main.c        ****     
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 3
+ 132:main.c        ****      *     16 mV/count
+ 133:main.c        ****      *
+ 134:main.c        ****      * Number of ADC counts per DAC count:
+ 135:main.c        ****      *
+ 136:main.c        ****      *     16 mV / 0.5 mV = 32
+ 137:main.c        ****      *
+ 138:main.c        ****      * Therefore:
+ 139:main.c        ****      *
+ 140:main.c        ****      *     DAC code = ADC code / 32
+ 141:main.c        ****      *
+ 142:main.c        ****      * Shifting right by five bits divides an unsigned
+ 143:main.c        ****      * integer by:
+ 144:main.c        ****      *
+ 145:main.c        ****      *     2^5 = 32
+ 146:main.c        ****      */
+ 147:main.c        ****     dacValue = (uint8)(adcValue >> 5);
+ 148:main.c        **** 
+ 149:main.c        **** 
+ 150:main.c        ****     /*
+ 151:main.c        ****      * Write the scaled value to the DAC.
+ 152:main.c        ****      *
+ 153:main.c        ****      * The DAC converts this digital value back into
+ 154:main.c        ****      * an analogue voltage on Pin_2.
+ 155:main.c        ****      */
+ 156:main.c        ****     VDAC8_1_SetValue(dacValue);
+  41              		.loc 1 156 0
+  42 0008 C4F34710 		ubfx	r0, r4, #5, #8
+  43 000c FFF7FEFF 		bl	VDAC8_1_SetValue
+  44              	.LVL2:
+ 157:main.c        **** 
+ 158:main.c        **** 
+ 159:main.c        ****     /*
+ 160:main.c        ****      * Store the ADC value only while the buffer has space.
+ 161:main.c        ****      *
+ 162:main.c        ****      * Once bufferFull becomes 1, this section is skipped.
+ 163:main.c        ****      * This prevents writing beyond the end of the array.
+ 164:main.c        ****      */
+ 165:main.c        ****     if (bufferFull == 0u)
+  45              		.loc 1 165 0
+  46 0010 0C4B     		ldr	r3, .L4
+  47 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  48 0014 13F0FF0F 		tst	r3, #255
+  49 0018 12D1     		bne	.L1
+ 166:main.c        ****     {
+ 167:main.c        ****         /*
+ 168:main.c        ****          * Store the current sample at the location selected
+ 169:main.c        ****          * by bufferIndex.
+ 170:main.c        ****          */
+ 171:main.c        ****         adcBuffer[bufferIndex] = adcValue;
+  50              		.loc 1 171 0
+  51 001a 0A4A     		ldr	r2, .L4
+  52 001c 5388     		ldrh	r3, [r2, #2]
+  53 001e 9BB2     		uxth	r3, r3
+  54 0020 0949     		ldr	r1, .L4+4
+  55 0022 21F81340 		strh	r4, [r1, r3, lsl #1]	@ movhi
+ 172:main.c        **** 
+ 173:main.c        **** 
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 5
 
 
-  33:main.c        ****     isr_1_StartEx(MyISR);
-  83              		.loc 1 33 0
-  84 0010 0148     		ldr	r0, .L6
-  85 0012 FFF7FEFF 		bl	isr_1_StartEx
-  86              	.LVL6:
-  87              	.L4:
-  88 0016 FEE7     		b	.L4
-  89              	.L7:
-  90              		.align	2
-  91              	.L6:
-  92 0018 00000000 		.word	MyISR
-  93              		.cfi_endproc
-  94              	.LFE64:
-  95              		.size	main, .-main
-  96              		.text
-  97              	.Letext0:
-  98              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
-  99              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
- 100              		.file 4 "Generated_Source\\PSoC5/LED.h"
- 101              		.file 5 "Generated_Source\\PSoC5/Timer_1.h"
- 102              		.file 6 "Generated_Source\\PSoC5/ADC_SAR_1.h"
- 103              		.file 7 "Generated_Source\\PSoC5/VDAC8_1.h"
- 104              		.file 8 "Generated_Source\\PSoC5/isr_1.h"
- 105              		.file 9 "Generated_Source\\PSoC5/core_cm3.h"
- 106              		.section	.debug_info,"",%progbits
- 107              	.Ldebug_info0:
- 108 0000 78010000 		.4byte	0x178
- 109 0004 0400     		.2byte	0x4
- 110 0006 00000000 		.4byte	.Ldebug_abbrev0
- 111 000a 04       		.byte	0x4
- 112 000b 01       		.uleb128 0x1
- 113 000c 59000000 		.4byte	.LASF23
- 114 0010 0C       		.byte	0xc
- 115 0011 44000000 		.4byte	.LASF24
- 116 0015 54010000 		.4byte	.LASF25
- 117 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 118 001d 00000000 		.4byte	0
- 119 0021 00000000 		.4byte	.Ldebug_line0
- 120 0025 02       		.uleb128 0x2
- 121 0026 01       		.byte	0x1
- 122 0027 06       		.byte	0x6
- 123 0028 CF010000 		.4byte	.LASF0
- 124 002c 02       		.uleb128 0x2
- 125 002d 01       		.byte	0x1
- 126 002e 08       		.byte	0x8
- 127 002f 41010000 		.4byte	.LASF1
- 128 0033 02       		.uleb128 0x2
- 129 0034 02       		.byte	0x2
- 130 0035 05       		.byte	0x5
- 131 0036 F7010000 		.4byte	.LASF2
- 132 003a 02       		.uleb128 0x2
- 133 003b 02       		.byte	0x2
- 134 003c 07       		.byte	0x7
- 135 003d 1A010000 		.4byte	.LASF3
- 136 0041 03       		.uleb128 0x3
- 137 0042 E7010000 		.4byte	.LASF9
- 138 0046 02       		.byte	0x2
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 4
+ 174:main.c        ****         /*
+ 175:main.c        ****          * Move to the next buffer location.
+ 176:main.c        ****          */
+ 177:main.c        ****         bufferIndex++;
+  56              		.loc 1 177 0
+  57 0026 5388     		ldrh	r3, [r2, #2]
+  58 0028 9BB2     		uxth	r3, r3
+  59 002a 0133     		adds	r3, r3, #1
+  60 002c 9BB2     		uxth	r3, r3
+  61 002e 5380     		strh	r3, [r2, #2]	@ movhi
+ 178:main.c        **** 
+ 179:main.c        **** 
+ 180:main.c        ****         /*
+ 181:main.c        ****          * Check whether BUFFER_SIZE samples have now
+ 182:main.c        ****          * been captured.
+ 183:main.c        ****          */
+ 184:main.c        ****         if (bufferIndex >= BUFFER_SIZE)
+  62              		.loc 1 184 0
+  63 0030 5388     		ldrh	r3, [r2, #2]
+  64 0032 9BB2     		uxth	r3, r3
+  65 0034 B3F5FA7F 		cmp	r3, #500
+  66 0038 02D3     		bcc	.L1
+ 185:main.c        ****         {
+ 186:main.c        ****             /*
+ 187:main.c        ****              * Tell main() that the sample buffer is full
+ 188:main.c        ****              * and ready for USB transmission.
+ 189:main.c        ****              */
+ 190:main.c        ****             bufferFull = 1u;
+  67              		.loc 1 190 0
+  68 003a 0122     		movs	r2, #1
+  69 003c 014B     		ldr	r3, .L4
+  70 003e 1A70     		strb	r2, [r3]
+  71              	.L1:
+  72 0040 10BD     		pop	{r4, pc}
+  73              	.LVL3:
+  74              	.L5:
+  75 0042 00BF     		.align	2
+  76              	.L4:
+  77 0044 00000000 		.word	.LANCHOR0
+  78 0048 00000000 		.word	adcBuffer
+  79              		.cfi_endproc
+  80              	.LFE64:
+  81              		.size	MyISR, .-MyISR
+  82              		.section	.text.main,"ax",%progbits
+  83              		.align	2
+  84              		.global	main
+  85              		.thumb
+  86              		.thumb_func
+  87              		.type	main, %function
+  88              	main:
+  89              	.LFB65:
+ 191:main.c        ****         }
+ 192:main.c        ****     }
+ 193:main.c        **** }
+ 194:main.c        **** 
+ 195:main.c        **** 
+ 196:main.c        **** int main(void)
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 6
 
 
- 139 0047 3F       		.byte	0x3f
- 140 0048 4C000000 		.4byte	0x4c
- 141 004c 02       		.uleb128 0x2
- 142 004d 04       		.byte	0x4
- 143 004e 05       		.byte	0x5
- 144 004f B9010000 		.4byte	.LASF4
- 145 0053 02       		.uleb128 0x2
- 146 0054 04       		.byte	0x4
- 147 0055 07       		.byte	0x7
- 148 0056 F1000000 		.4byte	.LASF5
- 149 005a 02       		.uleb128 0x2
- 150 005b 08       		.byte	0x8
- 151 005c 05       		.byte	0x5
- 152 005d 00000000 		.4byte	.LASF6
- 153 0061 02       		.uleb128 0x2
- 154 0062 08       		.byte	0x8
- 155 0063 07       		.byte	0x7
- 156 0064 03010000 		.4byte	.LASF7
- 157 0068 04       		.uleb128 0x4
- 158 0069 04       		.byte	0x4
- 159 006a 05       		.byte	0x5
- 160 006b 696E7400 		.ascii	"int\000"
- 161 006f 02       		.uleb128 0x2
- 162 0070 04       		.byte	0x4
- 163 0071 07       		.byte	0x7
- 164 0072 29000000 		.4byte	.LASF8
- 165 0076 03       		.uleb128 0x3
- 166 0077 01020000 		.4byte	.LASF10
- 167 007b 03       		.byte	0x3
- 168 007c 2C       		.byte	0x2c
- 169 007d 41000000 		.4byte	0x41
- 170 0081 02       		.uleb128 0x2
- 171 0082 04       		.byte	0x4
- 172 0083 04       		.byte	0x4
- 173 0084 F1010000 		.4byte	.LASF11
- 174 0088 02       		.uleb128 0x2
- 175 0089 08       		.byte	0x8
- 176 008a 04       		.byte	0x4
- 177 008b B2010000 		.4byte	.LASF12
- 178 008f 02       		.uleb128 0x2
- 179 0090 01       		.byte	0x1
- 180 0091 08       		.byte	0x8
- 181 0092 4F010000 		.4byte	.LASF13
- 182 0096 02       		.uleb128 0x2
- 183 0097 08       		.byte	0x8
- 184 0098 04       		.byte	0x4
- 185 0099 DB010000 		.4byte	.LASF14
- 186 009d 02       		.uleb128 0x2
- 187 009e 04       		.byte	0x4
- 188 009f 07       		.byte	0x7
- 189 00a0 19020000 		.4byte	.LASF15
- 190 00a4 05       		.uleb128 0x5
- 191 00a5 2D010000 		.4byte	.LASF26
- 192 00a9 01       		.byte	0x1
- 193 00aa 0F       		.byte	0xf
- 194 00ab 00000000 		.4byte	.LFB63
- 195 00af 16000000 		.4byte	.LFE63-.LFB63
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 5
+ 197:main.c        **** {
+  90              		.loc 1 197 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 24
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94 0000 10B5     		push	{r4, lr}
+  95              		.cfi_def_cfa_offset 8
+  96              		.cfi_offset 4, -8
+  97              		.cfi_offset 14, -4
+  98 0002 86B0     		sub	sp, sp, #24
+  99              		.cfi_def_cfa_offset 32
+ 198:main.c        ****     /*
+ 199:main.c        ****      * Counter used to move through the sample buffer
+ 200:main.c        ****      * during USB transmission.
+ 201:main.c        ****      */
+ 202:main.c        ****     uint16 i;
+ 203:main.c        **** 
+ 204:main.c        **** 
+ 205:main.c        ****     /*
+ 206:main.c        ****      * Character array used to hold one ADC value
+ 207:main.c        ****      * after it has been converted into text.
+ 208:main.c        ****      *
+ 209:main.c        ****      * For example:
+ 210:main.c        ****      *
+ 211:main.c        ****      * ADC value 2500 becomes "2500\r\n"
+ 212:main.c        ****      */
+ 213:main.c        ****     char usbText[20];
+ 214:main.c        **** 
+ 215:main.c        **** 
+ 216:main.c        ****     /*
+ 217:main.c        ****      * Enable interrupts globally.
+ 218:main.c        ****      *
+ 219:main.c        ****      * Without this instruction, isr_1 cannot execute
+ 220:main.c        ****      * MyISR when the ADC finishes a conversion.
+ 221:main.c        ****      */
+ 222:main.c        ****     CyGlobalIntEnable;
+ 100              		.loc 1 222 0
+ 101              		.syntax unified
+ 102              	@ 222 "main.c" 1
+ 103 0004 62B6     		CPSIE   i
+ 104              	@ 0 "" 2
+ 223:main.c        **** 
+ 224:main.c        **** 
+ 225:main.c        ****     /*
+ 226:main.c        ****      * Start and power the SAR ADC.
+ 227:main.c        ****      *
+ 228:main.c        ****      * Because the ADC is configured for hardware triggering,
+ 229:main.c        ****      * it waits for a pulse on its SOC input before beginning
+ 230:main.c        ****      * each conversion.
+ 231:main.c        ****      */
+ 232:main.c        ****     ADC_SAR_1_Start();
+ 105              		.loc 1 232 0
+ 106              		.thumb
+ 107              		.syntax unified
+ 108 0006 FFF7FEFF 		bl	ADC_SAR_1_Start
+ 109              	.LVL4:
+ 233:main.c        **** 
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 7
 
 
- 196 00b3 01       		.uleb128 0x1
- 197 00b4 9C       		.byte	0x9c
- 198 00b5 D5000000 		.4byte	0xd5
- 199 00b9 06       		.uleb128 0x6
- 200 00ba 06000000 		.4byte	.LVL0
- 201 00be 2E010000 		.4byte	0x12e
- 202 00c2 06       		.uleb128 0x6
- 203 00c3 10000000 		.4byte	.LVL1
- 204 00c7 39010000 		.4byte	0x139
- 205 00cb 06       		.uleb128 0x6
- 206 00cc 14000000 		.4byte	.LVL2
- 207 00d0 44010000 		.4byte	0x144
- 208 00d4 00       		.byte	0
- 209 00d5 07       		.uleb128 0x7
- 210 00d6 4B000000 		.4byte	.LASF27
- 211 00da 01       		.byte	0x1
- 212 00db 16       		.byte	0x16
- 213 00dc 68000000 		.4byte	0x68
- 214 00e0 00000000 		.4byte	.LFB64
- 215 00e4 1C000000 		.4byte	.LFE64-.LFB64
- 216 00e8 01       		.uleb128 0x1
- 217 00e9 9C       		.byte	0x9c
- 218 00ea 1D010000 		.4byte	0x11d
- 219 00ee 06       		.uleb128 0x6
- 220 00ef 08000000 		.4byte	.LVL3
- 221 00f3 4F010000 		.4byte	0x14f
- 222 00f7 06       		.uleb128 0x6
- 223 00f8 0C000000 		.4byte	.LVL4
- 224 00fc 5A010000 		.4byte	0x15a
- 225 0100 06       		.uleb128 0x6
- 226 0101 10000000 		.4byte	.LVL5
- 227 0105 65010000 		.4byte	0x165
- 228 0109 08       		.uleb128 0x8
- 229 010a 16000000 		.4byte	.LVL6
- 230 010e 70010000 		.4byte	0x170
- 231 0112 09       		.uleb128 0x9
- 232 0113 01       		.uleb128 0x1
- 233 0114 50       		.byte	0x50
- 234 0115 05       		.uleb128 0x5
- 235 0116 03       		.byte	0x3
- 236 0117 00000000 		.4byte	MyISR
- 237 011b 00       		.byte	0
- 238 011c 00       		.byte	0
- 239 011d 0A       		.uleb128 0xa
- 240 011e C2010000 		.4byte	.LASF28
- 241 0122 09       		.byte	0x9
- 242 0123 1207     		.2byte	0x712
- 243 0125 29010000 		.4byte	0x129
- 244 0129 0B       		.uleb128 0xb
- 245 012a 76000000 		.4byte	0x76
- 246 012e 0C       		.uleb128 0xc
- 247 012f 50000000 		.4byte	.LASF16
- 248 0133 50000000 		.4byte	.LASF16
- 249 0137 04       		.byte	0x4
- 250 0138 29       		.byte	0x29
- 251 0139 0C       		.uleb128 0xc
- 252 013a E7000000 		.4byte	.LASF17
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 6
+ 234:main.c        **** 
+ 235:main.c        ****     /*
+ 236:main.c        ****      * Start and power the 8-bit DAC.
+ 237:main.c        ****      *
+ 238:main.c        ****      * The DAC initially outputs its configured initial value.
+ 239:main.c        ****      * MyISR will update it after every ADC conversion.
+ 240:main.c        ****      */
+ 241:main.c        ****     VDAC8_1_Start();
+ 110              		.loc 1 241 0
+ 111 000a FFF7FEFF 		bl	VDAC8_1_Start
+ 112              	.LVL5:
+ 242:main.c        **** 
+ 243:main.c        **** 
+ 244:main.c        ****     /*
+ 245:main.c        ****      * Start the interrupt component and connect it
+ 246:main.c        ****      * to the MyISR interrupt function.
+ 247:main.c        ****      *
+ 248:main.c        ****      * The schematic connection is:
+ 249:main.c        ****      *
+ 250:main.c        ****      * ADC EOC -> isr_1
+ 251:main.c        ****      *
+ 252:main.c        ****      * This software instruction provides:
+ 253:main.c        ****      *
+ 254:main.c        ****      * isr_1 -> MyISR
+ 255:main.c        ****      */
+ 256:main.c        ****     isr_1_StartEx(MyISR);
+ 113              		.loc 1 256 0
+ 114 000e 1948     		ldr	r0, .L14
+ 115 0010 FFF7FEFF 		bl	isr_1_StartEx
+ 116              	.LVL6:
+ 257:main.c        **** 
+ 258:main.c        **** 
+ 259:main.c        ****     /*
+ 260:main.c        ****      * Start the USBUART hardware.
+ 261:main.c        ****      *
+ 262:main.c        ****      * 0u selects USB device number zero.
+ 263:main.c        ****      *
+ 264:main.c        ****      * USBUART_1_5V_OPERATION configures the USB component
+ 265:main.c        ****      * for the 5 V operating mode.
+ 266:main.c        ****      */
+ 267:main.c        ****     USBUART_1_Start(0u, USBUART_1_5V_OPERATION);
+ 117              		.loc 1 267 0
+ 118 0014 0121     		movs	r1, #1
+ 119 0016 0020     		movs	r0, #0
+ 120 0018 FFF7FEFF 		bl	USBUART_1_Start
+ 121              	.LVL7:
+ 122              	.L7:
+ 268:main.c        **** 
+ 269:main.c        **** 
+ 270:main.c        ****     /*
+ 271:main.c        ****      * Wait until the computer detects and configures
+ 272:main.c        ****      * the PSoC USB device.
+ 273:main.c        ****      *
+ 274:main.c        ****      * GetConfiguration() returns zero until the USB
+ 275:main.c        ****      * connection has been successfully configured.
+ 276:main.c        ****      *
+ 277:main.c        ****      * The program stays in this loop while USB is not ready.
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 8
 
 
- 253 013e E7000000 		.4byte	.LASF17
- 254 0142 04       		.byte	0x4
- 255 0143 26       		.byte	0x26
- 256 0144 0C       		.uleb128 0xc
- 257 0145 0E000000 		.4byte	.LASF18
- 258 0149 0E000000 		.4byte	.LASF18
- 259 014d 05       		.byte	0x5
- 260 014e 5E       		.byte	0x5e
- 261 014f 0C       		.uleb128 0xc
- 262 0150 33010000 		.4byte	.LASF19
- 263 0154 33010000 		.4byte	.LASF19
- 264 0158 05       		.byte	0x5
- 265 0159 5A       		.byte	0x5a
- 266 015a 0C       		.uleb128 0xc
- 267 015b 09020000 		.4byte	.LASF20
- 268 015f 09020000 		.4byte	.LASF20
- 269 0163 06       		.byte	0x6
- 270 0164 34       		.byte	0x34
- 271 0165 0C       		.uleb128 0xc
- 272 0166 36000000 		.4byte	.LASF21
- 273 016a 36000000 		.4byte	.LASF21
- 274 016e 07       		.byte	0x7
- 275 016f 33       		.byte	0x33
- 276 0170 0C       		.uleb128 0xc
- 277 0171 A4010000 		.4byte	.LASF22
- 278 0175 A4010000 		.4byte	.LASF22
- 279 0179 08       		.byte	0x8
- 280 017a 18       		.byte	0x18
- 281 017b 00       		.byte	0
- 282              		.section	.debug_abbrev,"",%progbits
- 283              	.Ldebug_abbrev0:
- 284 0000 01       		.uleb128 0x1
- 285 0001 11       		.uleb128 0x11
- 286 0002 01       		.byte	0x1
- 287 0003 25       		.uleb128 0x25
- 288 0004 0E       		.uleb128 0xe
- 289 0005 13       		.uleb128 0x13
- 290 0006 0B       		.uleb128 0xb
- 291 0007 03       		.uleb128 0x3
- 292 0008 0E       		.uleb128 0xe
- 293 0009 1B       		.uleb128 0x1b
- 294 000a 0E       		.uleb128 0xe
- 295 000b 55       		.uleb128 0x55
- 296 000c 17       		.uleb128 0x17
- 297 000d 11       		.uleb128 0x11
- 298 000e 01       		.uleb128 0x1
- 299 000f 10       		.uleb128 0x10
- 300 0010 17       		.uleb128 0x17
- 301 0011 00       		.byte	0
- 302 0012 00       		.byte	0
- 303 0013 02       		.uleb128 0x2
- 304 0014 24       		.uleb128 0x24
- 305 0015 00       		.byte	0
- 306 0016 0B       		.uleb128 0xb
- 307 0017 0B       		.uleb128 0xb
- 308 0018 3E       		.uleb128 0x3e
- 309 0019 0B       		.uleb128 0xb
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 7
+ 278:main.c        ****      */
+ 279:main.c        ****     while (USBUART_1_GetConfiguration() == 0u)
+ 123              		.loc 1 279 0 discriminator 1
+ 124 001c FFF7FEFF 		bl	USBUART_1_GetConfiguration
+ 125              	.LVL8:
+ 126 0020 0028     		cmp	r0, #0
+ 127 0022 FBD0     		beq	.L7
+ 280:main.c        ****     {
+ 281:main.c        ****         /* Wait for the computer to configure USB */
+ 282:main.c        ****     }
+ 283:main.c        **** 
+ 284:main.c        **** 
+ 285:main.c        ****     /*
+ 286:main.c        ****      * Initialise the USB CDC interface.
+ 287:main.c        ****      *
+ 288:main.c        ****      * CDC makes the USB connection operate like a
+ 289:main.c        ****      * virtual serial communication device.
+ 290:main.c        ****      */
+ 291:main.c        ****     USBUART_1_CDC_Init();
+ 128              		.loc 1 291 0
+ 129 0024 FFF7FEFF 		bl	USBUART_1_CDC_Init
+ 130              	.LVL9:
+ 292:main.c        ****     
+ 293:main.c        **** 
+ 294:main.c        **** 
+ 295:main.c        ****     /*
+ 296:main.c        ****      * Start Timer_1 last, after all other components
+ 297:main.c        ****      * are ready.
+ 298:main.c        ****      *
+ 299:main.c        ****      * Timer_1 produces a terminal-count pulse at 50 kHz.
+ 300:main.c        ****      *
+ 301:main.c        ****      * The schematic connection is:
+ 302:main.c        ****      *
+ 303:main.c        ****      * Timer TC -> ADC SOC
+ 304:main.c        ****      *
+ 305:main.c        ****      * Therefore, one ADC conversion begins every:
+ 306:main.c        ****      *
+ 307:main.c        ****      *     1 / 50000 = 20 microseconds
+ 308:main.c        ****      */
+ 309:main.c        ****     Timer_1_Start();
+ 131              		.loc 1 309 0
+ 132 0028 FFF7FEFF 		bl	Timer_1_Start
+ 133              	.LVL10:
+ 134              	.L8:
+ 310:main.c        **** 
+ 311:main.c        **** 
+ 312:main.c        ****     /*
+ 313:main.c        ****      * Main application loop.
+ 314:main.c        ****      *
+ 315:main.c        ****      * The program remains inside this loop indefinitely.
+ 316:main.c        ****      */
+ 317:main.c        ****     for (;;)
+ 318:main.c        ****     {
+ 319:main.c        ****         /*
+ 320:main.c        ****          * Check whether MyISR has captured a complete
+ 321:main.c        ****          * block of BUFFER_SIZE ADC samples.
+ 322:main.c        ****          */
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 9
 
 
- 310 001a 03       		.uleb128 0x3
- 311 001b 0E       		.uleb128 0xe
- 312 001c 00       		.byte	0
- 313 001d 00       		.byte	0
- 314 001e 03       		.uleb128 0x3
- 315 001f 16       		.uleb128 0x16
- 316 0020 00       		.byte	0
- 317 0021 03       		.uleb128 0x3
- 318 0022 0E       		.uleb128 0xe
- 319 0023 3A       		.uleb128 0x3a
- 320 0024 0B       		.uleb128 0xb
- 321 0025 3B       		.uleb128 0x3b
- 322 0026 0B       		.uleb128 0xb
- 323 0027 49       		.uleb128 0x49
- 324 0028 13       		.uleb128 0x13
- 325 0029 00       		.byte	0
- 326 002a 00       		.byte	0
- 327 002b 04       		.uleb128 0x4
- 328 002c 24       		.uleb128 0x24
- 329 002d 00       		.byte	0
- 330 002e 0B       		.uleb128 0xb
- 331 002f 0B       		.uleb128 0xb
- 332 0030 3E       		.uleb128 0x3e
- 333 0031 0B       		.uleb128 0xb
- 334 0032 03       		.uleb128 0x3
- 335 0033 08       		.uleb128 0x8
- 336 0034 00       		.byte	0
- 337 0035 00       		.byte	0
- 338 0036 05       		.uleb128 0x5
- 339 0037 2E       		.uleb128 0x2e
- 340 0038 01       		.byte	0x1
- 341 0039 3F       		.uleb128 0x3f
- 342 003a 19       		.uleb128 0x19
- 343 003b 03       		.uleb128 0x3
- 344 003c 0E       		.uleb128 0xe
- 345 003d 3A       		.uleb128 0x3a
- 346 003e 0B       		.uleb128 0xb
- 347 003f 3B       		.uleb128 0x3b
- 348 0040 0B       		.uleb128 0xb
- 349 0041 27       		.uleb128 0x27
- 350 0042 19       		.uleb128 0x19
- 351 0043 11       		.uleb128 0x11
- 352 0044 01       		.uleb128 0x1
- 353 0045 12       		.uleb128 0x12
- 354 0046 06       		.uleb128 0x6
- 355 0047 40       		.uleb128 0x40
- 356 0048 18       		.uleb128 0x18
- 357 0049 9742     		.uleb128 0x2117
- 358 004b 19       		.uleb128 0x19
- 359 004c 01       		.uleb128 0x1
- 360 004d 13       		.uleb128 0x13
- 361 004e 00       		.byte	0
- 362 004f 00       		.byte	0
- 363 0050 06       		.uleb128 0x6
- 364 0051 898201   		.uleb128 0x4109
- 365 0054 00       		.byte	0
- 366 0055 11       		.uleb128 0x11
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 8
+ 323:main.c        ****         if (bufferFull == 1u)
+ 135              		.loc 1 323 0
+ 136 002c 124B     		ldr	r3, .L14+4
+ 137 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 138 0030 DBB2     		uxtb	r3, r3
+ 139 0032 012B     		cmp	r3, #1
+ 140 0034 FAD1     		bne	.L8
+ 324:main.c        ****         {
+ 325:main.c        ****             /*
+ 326:main.c        ****              * Stop Timer_1.
+ 327:main.c        ****              *
+ 328:main.c        ****              * This stops new ADC hardware triggers while
+ 329:main.c        ****              * the captured samples are being transmitted.
+ 330:main.c        ****              *
+ 331:main.c        ****              * The DAC holds its most recently written voltage
+ 332:main.c        ****              * until the timer and ADC are started again.
+ 333:main.c        ****              */
+ 334:main.c        ****             Timer_1_Stop();
+ 141              		.loc 1 334 0
+ 142 0036 FFF7FEFF 		bl	Timer_1_Stop
+ 143              	.LVL11:
+ 335:main.c        **** 
+ 336:main.c        **** 
+ 337:main.c        ****             /*
+ 338:main.c        ****              * Send every stored ADC sample to the computer.
+ 339:main.c        ****              *
+ 340:main.c        ****              * For BUFFER_SIZE = 500, i takes the values:
+ 341:main.c        ****              *
+ 342:main.c        ****              * 0, 1, 2, ..., 499
+ 343:main.c        ****              */
+ 344:main.c        ****             for (i = 0u; i < BUFFER_SIZE; i++)
+ 144              		.loc 1 344 0
+ 145 003a 0024     		movs	r4, #0
+ 146 003c 10E0     		b	.L9
+ 147              	.LVL12:
+ 148              	.L11:
+ 345:main.c        ****             {
+ 346:main.c        ****                 /*
+ 347:main.c        ****                  * Convert the current ADC sample from a
+ 348:main.c        ****                  * binary integer into a text string.
+ 349:main.c        ****                  *
+ 350:main.c        ****                  * %u:
+ 351:main.c        ****                  *     Insert an unsigned integer.
+ 352:main.c        ****                  *
+ 353:main.c        ****                  * \r:
+ 354:main.c        ****                  *     Carriage return.
+ 355:main.c        ****                  *
+ 356:main.c        ****                  * \n:
+ 357:main.c        ****                  *     New line.
+ 358:main.c        ****                  *
+ 359:main.c        ****                  * Example:
+ 360:main.c        ****                  *
+ 361:main.c        ****                  * adcBuffer[i] = 2500
+ 362:main.c        ****                  *
+ 363:main.c        ****                  * usbText becomes:
+ 364:main.c        ****                  *
+ 365:main.c        ****                  * "2500\r\n"
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 10
 
 
- 367 0056 01       		.uleb128 0x1
- 368 0057 31       		.uleb128 0x31
- 369 0058 13       		.uleb128 0x13
- 370 0059 00       		.byte	0
- 371 005a 00       		.byte	0
- 372 005b 07       		.uleb128 0x7
- 373 005c 2E       		.uleb128 0x2e
- 374 005d 01       		.byte	0x1
- 375 005e 3F       		.uleb128 0x3f
- 376 005f 19       		.uleb128 0x19
- 377 0060 03       		.uleb128 0x3
- 378 0061 0E       		.uleb128 0xe
- 379 0062 3A       		.uleb128 0x3a
- 380 0063 0B       		.uleb128 0xb
- 381 0064 3B       		.uleb128 0x3b
- 382 0065 0B       		.uleb128 0xb
- 383 0066 27       		.uleb128 0x27
- 384 0067 19       		.uleb128 0x19
- 385 0068 49       		.uleb128 0x49
- 386 0069 13       		.uleb128 0x13
- 387 006a 8701     		.uleb128 0x87
- 388 006c 19       		.uleb128 0x19
- 389 006d 11       		.uleb128 0x11
- 390 006e 01       		.uleb128 0x1
- 391 006f 12       		.uleb128 0x12
- 392 0070 06       		.uleb128 0x6
- 393 0071 40       		.uleb128 0x40
- 394 0072 18       		.uleb128 0x18
- 395 0073 9742     		.uleb128 0x2117
- 396 0075 19       		.uleb128 0x19
- 397 0076 01       		.uleb128 0x1
- 398 0077 13       		.uleb128 0x13
- 399 0078 00       		.byte	0
- 400 0079 00       		.byte	0
- 401 007a 08       		.uleb128 0x8
- 402 007b 898201   		.uleb128 0x4109
- 403 007e 01       		.byte	0x1
- 404 007f 11       		.uleb128 0x11
- 405 0080 01       		.uleb128 0x1
- 406 0081 31       		.uleb128 0x31
- 407 0082 13       		.uleb128 0x13
- 408 0083 00       		.byte	0
- 409 0084 00       		.byte	0
- 410 0085 09       		.uleb128 0x9
- 411 0086 8A8201   		.uleb128 0x410a
- 412 0089 00       		.byte	0
- 413 008a 02       		.uleb128 0x2
- 414 008b 18       		.uleb128 0x18
- 415 008c 9142     		.uleb128 0x2111
- 416 008e 18       		.uleb128 0x18
- 417 008f 00       		.byte	0
- 418 0090 00       		.byte	0
- 419 0091 0A       		.uleb128 0xa
- 420 0092 34       		.uleb128 0x34
- 421 0093 00       		.byte	0
- 422 0094 03       		.uleb128 0x3
- 423 0095 0E       		.uleb128 0xe
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 9
+ 366:main.c        ****                  */
+ 367:main.c        ****                 sprintf(
+ 368:main.c        ****                     usbText,
+ 369:main.c        ****                     "%u\r\n",
+ 370:main.c        ****                     (unsigned int)adcBuffer[i]
+ 149              		.loc 1 370 0
+ 150 003e 0F4B     		ldr	r3, .L14+8
+ 151 0040 33F81420 		ldrh	r2, [r3, r4, lsl #1]
+ 367:main.c        ****                     usbText,
+ 152              		.loc 1 367 0
+ 153 0044 92B2     		uxth	r2, r2
+ 154 0046 0E49     		ldr	r1, .L14+12
+ 155 0048 01A8     		add	r0, sp, #4
+ 156 004a FFF7FEFF 		bl	sprintf
+ 157              	.LVL13:
+ 158              	.L10:
+ 371:main.c        ****                 );
+ 372:main.c        **** 
+ 373:main.c        **** 
+ 374:main.c        ****                 /*
+ 375:main.c        ****                  * Wait until the USB CDC interface is ready
+ 376:main.c        ****                  * to accept another transmission.
+ 377:main.c        ****                  *
+ 378:main.c        ****                  * CDCIsReady() returns zero while the previous
+ 379:main.c        ****                  * USB data is still being processed.
+ 380:main.c        ****                  */
+ 381:main.c        ****                 while (USBUART_1_CDCIsReady() == 0u)
+ 159              		.loc 1 381 0 discriminator 1
+ 160 004e FFF7FEFF 		bl	USBUART_1_CDCIsReady
+ 161              	.LVL14:
+ 162 0052 0028     		cmp	r0, #0
+ 163 0054 FBD0     		beq	.L10
+ 382:main.c        ****                 {
+ 383:main.c        ****                     /* Wait until USB is ready */
+ 384:main.c        ****                 }
+ 385:main.c        **** 
+ 386:main.c        **** 
+ 387:main.c        ****                 /*
+ 388:main.c        ****                  * Send the current ADC value to the computer
+ 389:main.c        ****                  * as a line of text.
+ 390:main.c        ****                  */
+ 391:main.c        ****                 USBUART_1_PutString(usbText);
+ 164              		.loc 1 391 0 discriminator 2
+ 165 0056 01A8     		add	r0, sp, #4
+ 166 0058 FFF7FEFF 		bl	USBUART_1_PutString
+ 167              	.LVL15:
+ 344:main.c        ****             {
+ 168              		.loc 1 344 0 discriminator 2
+ 169 005c 0134     		adds	r4, r4, #1
+ 170              	.LVL16:
+ 171 005e A4B2     		uxth	r4, r4
+ 172              	.LVL17:
+ 173              	.L9:
+ 344:main.c        ****             {
+ 174              		.loc 1 344 0 is_stmt 0 discriminator 1
+ 175 0060 B4F5FA7F 		cmp	r4, #500
+ 176 0064 EBD3     		bcc	.L11
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 11
 
 
- 424 0096 3A       		.uleb128 0x3a
- 425 0097 0B       		.uleb128 0xb
- 426 0098 3B       		.uleb128 0x3b
- 427 0099 05       		.uleb128 0x5
- 428 009a 49       		.uleb128 0x49
- 429 009b 13       		.uleb128 0x13
- 430 009c 3F       		.uleb128 0x3f
- 431 009d 19       		.uleb128 0x19
- 432 009e 3C       		.uleb128 0x3c
- 433 009f 19       		.uleb128 0x19
- 434 00a0 00       		.byte	0
- 435 00a1 00       		.byte	0
- 436 00a2 0B       		.uleb128 0xb
- 437 00a3 35       		.uleb128 0x35
- 438 00a4 00       		.byte	0
- 439 00a5 49       		.uleb128 0x49
- 440 00a6 13       		.uleb128 0x13
- 441 00a7 00       		.byte	0
- 442 00a8 00       		.byte	0
- 443 00a9 0C       		.uleb128 0xc
- 444 00aa 2E       		.uleb128 0x2e
- 445 00ab 00       		.byte	0
- 446 00ac 3F       		.uleb128 0x3f
- 447 00ad 19       		.uleb128 0x19
- 448 00ae 3C       		.uleb128 0x3c
- 449 00af 19       		.uleb128 0x19
- 450 00b0 6E       		.uleb128 0x6e
- 451 00b1 0E       		.uleb128 0xe
- 452 00b2 03       		.uleb128 0x3
- 453 00b3 0E       		.uleb128 0xe
- 454 00b4 3A       		.uleb128 0x3a
- 455 00b5 0B       		.uleb128 0xb
- 456 00b6 3B       		.uleb128 0x3b
- 457 00b7 0B       		.uleb128 0xb
- 458 00b8 00       		.byte	0
- 459 00b9 00       		.byte	0
- 460 00ba 00       		.byte	0
- 461              		.section	.debug_aranges,"",%progbits
- 462 0000 24000000 		.4byte	0x24
- 463 0004 0200     		.2byte	0x2
- 464 0006 00000000 		.4byte	.Ldebug_info0
- 465 000a 04       		.byte	0x4
- 466 000b 00       		.byte	0
- 467 000c 0000     		.2byte	0
- 468 000e 0000     		.2byte	0
- 469 0010 00000000 		.4byte	.LFB63
- 470 0014 16000000 		.4byte	.LFE63-.LFB63
- 471 0018 00000000 		.4byte	.LFB64
- 472 001c 1C000000 		.4byte	.LFE64-.LFB64
- 473 0020 00000000 		.4byte	0
- 474 0024 00000000 		.4byte	0
- 475              		.section	.debug_ranges,"",%progbits
- 476              	.Ldebug_ranges0:
- 477 0000 00000000 		.4byte	.LFB63
- 478 0004 16000000 		.4byte	.LFE63
- 479 0008 00000000 		.4byte	.LFB64
- 480 000c 1C000000 		.4byte	.LFE64
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 10
+ 392:main.c        ****             }
+ 393:main.c        **** 
+ 394:main.c        **** 
+ 395:main.c        ****             /*
+ 396:main.c        ****              * All 500 samples have now been transmitted.
+ 397:main.c        ****              *
+ 398:main.c        ****              * Reset bufferIndex to zero so the next capture
+ 399:main.c        ****              * starts again at adcBuffer[0].
+ 400:main.c        ****              */
+ 401:main.c        ****             bufferIndex = 0u;
+ 177              		.loc 1 401 0 is_stmt 1
+ 178 0066 044B     		ldr	r3, .L14+4
+ 179 0068 0022     		movs	r2, #0
+ 180 006a 5A80     		strh	r2, [r3, #2]	@ movhi
+ 402:main.c        **** 
+ 403:main.c        **** 
+ 404:main.c        ****             /*
+ 405:main.c        ****              * Mark the buffer as empty.
+ 406:main.c        ****              *
+ 407:main.c        ****              * This allows MyISR to begin storing new
+ 408:main.c        ****              * ADC samples.
+ 409:main.c        ****              */
+ 410:main.c        ****             bufferFull = 0u;
+ 181              		.loc 1 410 0
+ 182 006c 1A70     		strb	r2, [r3]
+ 411:main.c        **** 
+ 412:main.c        **** 
+ 413:main.c        ****             /*
+ 414:main.c        ****              * Restart Timer_1.
+ 415:main.c        ****              *
+ 416:main.c        ****              * The timer begins producing TC pulses again,
+ 417:main.c        ****              * so the ADC captures another block of samples.
+ 418:main.c        ****              */
+ 419:main.c        ****             Timer_1_Start();
+ 183              		.loc 1 419 0
+ 184 006e FFF7FEFF 		bl	Timer_1_Start
+ 185              	.LVL18:
+ 186 0072 DBE7     		b	.L8
+ 187              	.L15:
+ 188              		.align	2
+ 189              	.L14:
+ 190 0074 00000000 		.word	MyISR
+ 191 0078 00000000 		.word	.LANCHOR0
+ 192 007c 00000000 		.word	adcBuffer
+ 193 0080 00000000 		.word	.LC0
+ 194              		.cfi_endproc
+ 195              	.LFE65:
+ 196              		.size	main, .-main
+ 197              		.global	bufferFull
+ 198              		.global	bufferIndex
+ 199              		.comm	adcBuffer,1000,4
+ 200              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 201              		.align	2
+ 202              	.LC0:
+ 203 0000 25750D0A 		.ascii	"%u\015\012\000"
+ 203      00
+ 204              		.bss
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 12
 
 
- 481 0010 00000000 		.4byte	0
- 482 0014 00000000 		.4byte	0
- 483              		.section	.debug_line,"",%progbits
- 484              	.Ldebug_line0:
- 485 0000 A7010000 		.section	.debug_str,"MS",%progbits,1
- 485      02007C01 
- 485      00000201 
- 485      FB0E0D00 
- 485      01010101 
- 486              	.LASF6:
- 487 0000 6C6F6E67 		.ascii	"long long int\000"
- 487      206C6F6E 
- 487      6720696E 
- 487      7400
- 488              	.LASF18:
- 489 000e 54696D65 		.ascii	"Timer_1_ReadStatusRegister\000"
- 489      725F315F 
- 489      52656164 
- 489      53746174 
- 489      75735265 
- 490              	.LASF8:
- 491 0029 756E7369 		.ascii	"unsigned int\000"
- 491      676E6564 
- 491      20696E74 
- 491      00
- 492              	.LASF21:
- 493 0036 56444143 		.ascii	"VDAC8_1_Start\000"
- 493      385F315F 
- 493      53746172 
- 493      7400
- 494              	.LASF24:
- 495 0044 6D61696E 		.ascii	"main.c\000"
- 495      2E6300
- 496              	.LASF27:
- 497 004b 6D61696E 		.ascii	"main\000"
- 497      00
- 498              	.LASF16:
- 499 0050 4C45445F 		.ascii	"LED_Read\000"
- 499      52656164 
- 499      00
- 500              	.LASF23:
- 501 0059 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 501      43313120 
- 501      352E342E 
- 501      31203230 
- 501      31363036 
- 502 008c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 502      20726576 
- 502      6973696F 
- 502      6E203233 
- 502      37373135 
- 503 00bf 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 503      66756E63 
- 503      74696F6E 
- 503      2D736563 
- 503      74696F6E 
- 504              	.LASF17:
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 11
+ 205              		.align	1
+ 206              		.set	.LANCHOR0,. + 0
+ 207              		.type	bufferFull, %object
+ 208              		.size	bufferFull, 1
+ 209              	bufferFull:
+ 210 0000 00       		.space	1
+ 211 0001 00       		.space	1
+ 212              		.type	bufferIndex, %object
+ 213              		.size	bufferIndex, 2
+ 214              	bufferIndex:
+ 215 0002 0000     		.space	2
+ 216              		.text
+ 217              	.Letext0:
+ 218              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 219              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 220              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 221              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 222              		.file 6 "Generated_Source\\PSoC5/ADC_SAR_1.h"
+ 223              		.file 7 "Generated_Source\\PSoC5/VDAC8_1.h"
+ 224              		.file 8 "Generated_Source\\PSoC5/isr_1.h"
+ 225              		.file 9 "Generated_Source\\PSoC5/USBUART_1.h"
+ 226              		.file 10 "Generated_Source\\PSoC5/USBUART_1_cdc.h"
+ 227              		.file 11 "Generated_Source\\PSoC5/Timer_1.h"
+ 228              		.file 12 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4
+ 229              		.section	.debug_info,"",%progbits
+ 230              	.Ldebug_info0:
+ 231 0000 EE020000 		.4byte	0x2ee
+ 232 0004 0400     		.2byte	0x4
+ 233 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 234 000a 04       		.byte	0x4
+ 235 000b 01       		.uleb128 0x1
+ 236 000c BB000000 		.4byte	.LASF38
+ 237 0010 0C       		.byte	0xc
+ 238 0011 20020000 		.4byte	.LASF39
+ 239 0015 48000000 		.4byte	.LASF40
+ 240 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 241 001d 00000000 		.4byte	0
+ 242 0021 00000000 		.4byte	.Ldebug_line0
+ 243 0025 02       		.uleb128 0x2
+ 244 0026 01       		.byte	0x1
+ 245 0027 06       		.byte	0x6
+ 246 0028 93020000 		.4byte	.LASF0
+ 247 002c 02       		.uleb128 0x2
+ 248 002d 01       		.byte	0x1
+ 249 002e 08       		.byte	0x8
+ 250 002f AD000000 		.4byte	.LASF1
+ 251 0033 02       		.uleb128 0x2
+ 252 0034 02       		.byte	0x2
+ 253 0035 05       		.byte	0x5
+ 254 0036 2C020000 		.4byte	.LASF2
+ 255 003a 02       		.uleb128 0x2
+ 256 003b 02       		.byte	0x2
+ 257 003c 07       		.byte	0x7
+ 258 003d 5B010000 		.4byte	.LASF3
+ 259 0041 03       		.uleb128 0x3
+ 260 0042 3E000000 		.4byte	.LASF9
+ 261 0046 02       		.byte	0x2
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 13
 
 
- 505 00e7 4C45445F 		.ascii	"LED_Write\000"
- 505      57726974 
- 505      6500
- 506              	.LASF5:
- 507 00f1 6C6F6E67 		.ascii	"long unsigned int\000"
- 507      20756E73 
- 507      69676E65 
- 507      6420696E 
- 507      7400
- 508              	.LASF7:
- 509 0103 6C6F6E67 		.ascii	"long long unsigned int\000"
- 509      206C6F6E 
- 509      6720756E 
- 509      7369676E 
- 509      65642069 
- 510              	.LASF3:
- 511 011a 73686F72 		.ascii	"short unsigned int\000"
- 511      7420756E 
- 511      7369676E 
- 511      65642069 
- 511      6E7400
- 512              	.LASF26:
- 513 012d 4D794953 		.ascii	"MyISR\000"
- 513      5200
- 514              	.LASF19:
- 515 0133 54696D65 		.ascii	"Timer_1_Start\000"
- 515      725F315F 
- 515      53746172 
- 515      7400
- 516              	.LASF1:
- 517 0141 756E7369 		.ascii	"unsigned char\000"
- 517      676E6564 
- 517      20636861 
- 517      7200
- 518              	.LASF13:
- 519 014f 63686172 		.ascii	"char\000"
- 519      00
- 520              	.LASF25:
- 521 0154 433A5C55 		.ascii	"C:\\Users\\kkau904\\Documents\\301\\COMPSYS301_team"
- 521      73657273 
- 521      5C6B6B61 
- 521      75393034 
- 521      5C446F63 
- 522 0182 325C6861 		.ascii	"2\\hardware task 1\\Hardware1.cydsn\000"
- 522      72647761 
- 522      72652074 
- 522      61736B20 
- 522      315C4861 
- 523              	.LASF22:
- 524 01a4 6973725F 		.ascii	"isr_1_StartEx\000"
- 524      315F5374 
- 524      61727445 
- 524      7800
- 525              	.LASF12:
- 526 01b2 646F7562 		.ascii	"double\000"
- 526      6C6500
- 527              	.LASF4:
-ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccOIduCF.s 			page 12
+ 262 0047 3F       		.byte	0x3f
+ 263 0048 4C000000 		.4byte	0x4c
+ 264 004c 02       		.uleb128 0x2
+ 265 004d 04       		.byte	0x4
+ 266 004e 05       		.byte	0x5
+ 267 004f 9E000000 		.4byte	.LASF4
+ 268 0053 02       		.uleb128 0x2
+ 269 0054 04       		.byte	0x4
+ 270 0055 07       		.byte	0x7
+ 271 0056 49010000 		.4byte	.LASF5
+ 272 005a 02       		.uleb128 0x2
+ 273 005b 08       		.byte	0x8
+ 274 005c 05       		.byte	0x5
+ 275 005d 12020000 		.4byte	.LASF6
+ 276 0061 02       		.uleb128 0x2
+ 277 0062 08       		.byte	0x8
+ 278 0063 07       		.byte	0x7
+ 279 0064 A9010000 		.4byte	.LASF7
+ 280 0068 04       		.uleb128 0x4
+ 281 0069 04       		.byte	0x4
+ 282 006a 05       		.byte	0x5
+ 283 006b 696E7400 		.ascii	"int\000"
+ 284 006f 02       		.uleb128 0x2
+ 285 0070 04       		.byte	0x4
+ 286 0071 07       		.byte	0x7
+ 287 0072 9C010000 		.4byte	.LASF8
+ 288 0076 03       		.uleb128 0x3
+ 289 0077 EB010000 		.4byte	.LASF10
+ 290 007b 03       		.byte	0x3
+ 291 007c 2C       		.byte	0x2c
+ 292 007d 41000000 		.4byte	0x41
+ 293 0081 05       		.uleb128 0x5
+ 294 0082 3E020000 		.4byte	.LASF11
+ 295 0086 04       		.byte	0x4
+ 296 0087 E401     		.2byte	0x1e4
+ 297 0089 2C000000 		.4byte	0x2c
+ 298 008d 05       		.uleb128 0x5
+ 299 008e 95010000 		.4byte	.LASF12
+ 300 0092 04       		.byte	0x4
+ 301 0093 E501     		.2byte	0x1e5
+ 302 0095 3A000000 		.4byte	0x3a
+ 303 0099 02       		.uleb128 0x2
+ 304 009a 04       		.byte	0x4
+ 305 009b 04       		.byte	0x4
+ 306 009c A7000000 		.4byte	.LASF13
+ 307 00a0 02       		.uleb128 0x2
+ 308 00a1 08       		.byte	0x8
+ 309 00a2 04       		.byte	0x4
+ 310 00a3 89010000 		.4byte	.LASF14
+ 311 00a7 02       		.uleb128 0x2
+ 312 00a8 01       		.byte	0x1
+ 313 00a9 08       		.byte	0x8
+ 314 00aa 27020000 		.4byte	.LASF15
+ 315 00ae 06       		.uleb128 0x6
+ 316 00af 81000000 		.4byte	0x81
+ 317 00b3 06       		.uleb128 0x6
+ 318 00b4 8D000000 		.4byte	0x8d
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 14
 
 
- 528 01b9 6C6F6E67 		.ascii	"long int\000"
- 528      20696E74 
- 528      00
- 529              	.LASF28:
- 530 01c2 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 530      52784275 
- 530      66666572 
- 530      00
- 531              	.LASF0:
- 532 01cf 7369676E 		.ascii	"signed char\000"
- 532      65642063 
- 532      68617200 
- 533              	.LASF14:
- 534 01db 6C6F6E67 		.ascii	"long double\000"
- 534      20646F75 
- 534      626C6500 
- 535              	.LASF9:
- 536 01e7 5F5F696E 		.ascii	"__int32_t\000"
- 536      7433325F 
- 536      7400
- 537              	.LASF11:
- 538 01f1 666C6F61 		.ascii	"float\000"
- 538      7400
- 539              	.LASF2:
- 540 01f7 73686F72 		.ascii	"short int\000"
- 540      7420696E 
- 540      7400
- 541              	.LASF10:
- 542 0201 696E7433 		.ascii	"int32_t\000"
- 542      325F7400 
- 543              	.LASF20:
- 544 0209 4144435F 		.ascii	"ADC_SAR_1_Start\000"
- 544      5341525F 
- 544      315F5374 
- 544      61727400 
- 545              	.LASF15:
- 546 0219 73697A65 		.ascii	"sizetype\000"
- 546      74797065 
- 546      00
- 547              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 319 00b8 02       		.uleb128 0x2
+ 320 00b9 08       		.byte	0x8
+ 321 00ba 04       		.byte	0x4
+ 322 00bb 87020000 		.4byte	.LASF16
+ 323 00bf 02       		.uleb128 0x2
+ 324 00c0 04       		.byte	0x4
+ 325 00c1 07       		.byte	0x7
+ 326 00c2 F3010000 		.4byte	.LASF17
+ 327 00c6 07       		.uleb128 0x7
+ 328 00c7 E5010000 		.4byte	.LASF41
+ 329 00cb 01       		.byte	0x1
+ 330 00cc 5F       		.byte	0x5f
+ 331 00cd 00000000 		.4byte	.LFB64
+ 332 00d1 4C000000 		.4byte	.LFE64-.LFB64
+ 333 00d5 01       		.uleb128 0x1
+ 334 00d6 9C       		.byte	0x9c
+ 335 00d7 19010000 		.4byte	0x119
+ 336 00db 08       		.uleb128 0x8
+ 337 00dc 7E020000 		.4byte	.LASF18
+ 338 00e0 01       		.byte	0x1
+ 339 00e1 64       		.byte	0x64
+ 340 00e2 8D000000 		.4byte	0x8d
+ 341 00e6 00000000 		.4byte	.LLST0
+ 342 00ea 08       		.uleb128 0x8
+ 343 00eb 35000000 		.4byte	.LASF19
+ 344 00ef 01       		.byte	0x1
+ 345 00f0 69       		.byte	0x69
+ 346 00f1 81000000 		.4byte	0x81
+ 347 00f5 13000000 		.4byte	.LLST1
+ 348 00f9 09       		.uleb128 0x9
+ 349 00fa 06000000 		.4byte	.LVL0
+ 350 00fe 60020000 		.4byte	0x260
+ 351 0102 0A       		.uleb128 0xa
+ 352 0103 10000000 		.4byte	.LVL2
+ 353 0107 6B020000 		.4byte	0x26b
+ 354 010b 0B       		.uleb128 0xb
+ 355 010c 01       		.uleb128 0x1
+ 356 010d 50       		.byte	0x50
+ 357 010e 08       		.uleb128 0x8
+ 358 010f 74       		.byte	0x74
+ 359 0110 00       		.sleb128 0
+ 360 0111 09       		.byte	0x9
+ 361 0112 F7       		.byte	0xf7
+ 362 0113 24       		.byte	0x24
+ 363 0114 09       		.byte	0x9
+ 364 0115 FC       		.byte	0xfc
+ 365 0116 25       		.byte	0x25
+ 366 0117 00       		.byte	0
+ 367 0118 00       		.byte	0
+ 368 0119 0C       		.uleb128 0xc
+ 369 011a 90010000 		.4byte	.LASF42
+ 370 011e 01       		.byte	0x1
+ 371 011f C4       		.byte	0xc4
+ 372 0120 68000000 		.4byte	0x68
+ 373 0124 00000000 		.4byte	.LFB65
+ 374 0128 84000000 		.4byte	.LFE65-.LFB65
+ 375 012c 01       		.uleb128 0x1
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 15
+
+
+ 376 012d 9C       		.byte	0x9c
+ 377 012e F6010000 		.4byte	0x1f6
+ 378 0132 0D       		.uleb128 0xd
+ 379 0133 6900     		.ascii	"i\000"
+ 380 0135 01       		.byte	0x1
+ 381 0136 CA       		.byte	0xca
+ 382 0137 8D000000 		.4byte	0x8d
+ 383 013b 2E000000 		.4byte	.LLST2
+ 384 013f 0E       		.uleb128 0xe
+ 385 0140 36020000 		.4byte	.LASF20
+ 386 0144 01       		.byte	0x1
+ 387 0145 D5       		.byte	0xd5
+ 388 0146 F6010000 		.4byte	0x1f6
+ 389 014a 02       		.uleb128 0x2
+ 390 014b 91       		.byte	0x91
+ 391 014c 64       		.sleb128 -28
+ 392 014d 09       		.uleb128 0x9
+ 393 014e 0A000000 		.4byte	.LVL4
+ 394 0152 76020000 		.4byte	0x276
+ 395 0156 09       		.uleb128 0x9
+ 396 0157 0E000000 		.4byte	.LVL5
+ 397 015b 81020000 		.4byte	0x281
+ 398 015f 0F       		.uleb128 0xf
+ 399 0160 14000000 		.4byte	.LVL6
+ 400 0164 8C020000 		.4byte	0x28c
+ 401 0168 76010000 		.4byte	0x176
+ 402 016c 0B       		.uleb128 0xb
+ 403 016d 01       		.uleb128 0x1
+ 404 016e 50       		.byte	0x50
+ 405 016f 05       		.uleb128 0x5
+ 406 0170 03       		.byte	0x3
+ 407 0171 00000000 		.4byte	MyISR
+ 408 0175 00       		.byte	0
+ 409 0176 0F       		.uleb128 0xf
+ 410 0177 1C000000 		.4byte	.LVL7
+ 411 017b 97020000 		.4byte	0x297
+ 412 017f 8E010000 		.4byte	0x18e
+ 413 0183 0B       		.uleb128 0xb
+ 414 0184 01       		.uleb128 0x1
+ 415 0185 50       		.byte	0x50
+ 416 0186 01       		.uleb128 0x1
+ 417 0187 30       		.byte	0x30
+ 418 0188 0B       		.uleb128 0xb
+ 419 0189 01       		.uleb128 0x1
+ 420 018a 51       		.byte	0x51
+ 421 018b 01       		.uleb128 0x1
+ 422 018c 31       		.byte	0x31
+ 423 018d 00       		.byte	0
+ 424 018e 09       		.uleb128 0x9
+ 425 018f 20000000 		.4byte	.LVL8
+ 426 0193 A3020000 		.4byte	0x2a3
+ 427 0197 09       		.uleb128 0x9
+ 428 0198 28000000 		.4byte	.LVL9
+ 429 019c AF020000 		.4byte	0x2af
+ 430 01a0 09       		.uleb128 0x9
+ 431 01a1 2C000000 		.4byte	.LVL10
+ 432 01a5 BA020000 		.4byte	0x2ba
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 16
+
+
+ 433 01a9 09       		.uleb128 0x9
+ 434 01aa 3A000000 		.4byte	.LVL11
+ 435 01ae C5020000 		.4byte	0x2c5
+ 436 01b2 0F       		.uleb128 0xf
+ 437 01b3 4E000000 		.4byte	.LVL13
+ 438 01b7 D0020000 		.4byte	0x2d0
+ 439 01bb CF010000 		.4byte	0x1cf
+ 440 01bf 0B       		.uleb128 0xb
+ 441 01c0 01       		.uleb128 0x1
+ 442 01c1 50       		.byte	0x50
+ 443 01c2 02       		.uleb128 0x2
+ 444 01c3 91       		.byte	0x91
+ 445 01c4 64       		.sleb128 -28
+ 446 01c5 0B       		.uleb128 0xb
+ 447 01c6 01       		.uleb128 0x1
+ 448 01c7 51       		.byte	0x51
+ 449 01c8 05       		.uleb128 0x5
+ 450 01c9 03       		.byte	0x3
+ 451 01ca 00000000 		.4byte	.LC0
+ 452 01ce 00       		.byte	0
+ 453 01cf 09       		.uleb128 0x9
+ 454 01d0 52000000 		.4byte	.LVL14
+ 455 01d4 DB020000 		.4byte	0x2db
+ 456 01d8 0F       		.uleb128 0xf
+ 457 01d9 5C000000 		.4byte	.LVL15
+ 458 01dd E6020000 		.4byte	0x2e6
+ 459 01e1 EC010000 		.4byte	0x1ec
+ 460 01e5 0B       		.uleb128 0xb
+ 461 01e6 01       		.uleb128 0x1
+ 462 01e7 50       		.byte	0x50
+ 463 01e8 02       		.uleb128 0x2
+ 464 01e9 91       		.byte	0x91
+ 465 01ea 64       		.sleb128 -28
+ 466 01eb 00       		.byte	0
+ 467 01ec 09       		.uleb128 0x9
+ 468 01ed 72000000 		.4byte	.LVL18
+ 469 01f1 BA020000 		.4byte	0x2ba
+ 470 01f5 00       		.byte	0
+ 471 01f6 10       		.uleb128 0x10
+ 472 01f7 A7000000 		.4byte	0xa7
+ 473 01fb 06020000 		.4byte	0x206
+ 474 01ff 11       		.uleb128 0x11
+ 475 0200 BF000000 		.4byte	0xbf
+ 476 0204 13       		.byte	0x13
+ 477 0205 00       		.byte	0
+ 478 0206 12       		.uleb128 0x12
+ 479 0207 6E010000 		.4byte	.LASF21
+ 480 020b 05       		.byte	0x5
+ 481 020c 1207     		.2byte	0x712
+ 482 020e 12020000 		.4byte	0x212
+ 483 0212 06       		.uleb128 0x6
+ 484 0213 76000000 		.4byte	0x76
+ 485 0217 10       		.uleb128 0x10
+ 486 0218 B3000000 		.4byte	0xb3
+ 487 021c 28020000 		.4byte	0x228
+ 488 0220 13       		.uleb128 0x13
+ 489 0221 BF000000 		.4byte	0xbf
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 17
+
+
+ 490 0225 F301     		.2byte	0x1f3
+ 491 0227 00       		.byte	0
+ 492 0228 14       		.uleb128 0x14
+ 493 0229 74020000 		.4byte	.LASF22
+ 494 022d 01       		.byte	0x1
+ 495 022e 36       		.byte	0x36
+ 496 022f 39020000 		.4byte	0x239
+ 497 0233 05       		.uleb128 0x5
+ 498 0234 03       		.byte	0x3
+ 499 0235 00000000 		.4byte	adcBuffer
+ 500 0239 06       		.uleb128 0x6
+ 501 023a 17020000 		.4byte	0x217
+ 502 023e 14       		.uleb128 0x14
+ 503 023f 00000000 		.4byte	.LASF23
+ 504 0243 01       		.byte	0x1
+ 505 0244 40       		.byte	0x40
+ 506 0245 B3000000 		.4byte	0xb3
+ 507 0249 05       		.uleb128 0x5
+ 508 024a 03       		.byte	0x3
+ 509 024b 00000000 		.4byte	bufferIndex
+ 510 024f 14       		.uleb128 0x14
+ 511 0250 44020000 		.4byte	.LASF24
+ 512 0254 01       		.byte	0x1
+ 513 0255 4D       		.byte	0x4d
+ 514 0256 AE000000 		.4byte	0xae
+ 515 025a 05       		.uleb128 0x5
+ 516 025b 03       		.byte	0x3
+ 517 025c 00000000 		.4byte	bufferFull
+ 518 0260 15       		.uleb128 0x15
+ 519 0261 FC010000 		.4byte	.LASF25
+ 520 0265 FC010000 		.4byte	.LASF25
+ 521 0269 06       		.byte	0x6
+ 522 026a 3B       		.byte	0x3b
+ 523 026b 15       		.uleb128 0x15
+ 524 026c D4010000 		.4byte	.LASF26
+ 525 0270 D4010000 		.4byte	.LASF26
+ 526 0274 07       		.byte	0x7
+ 527 0275 37       		.byte	0x37
+ 528 0276 15       		.uleb128 0x15
+ 529 0277 9F020000 		.4byte	.LASF27
+ 530 027b 9F020000 		.4byte	.LASF27
+ 531 027f 06       		.byte	0x6
+ 532 0280 34       		.byte	0x34
+ 533 0281 15       		.uleb128 0x15
+ 534 0282 7B010000 		.4byte	.LASF28
+ 535 0286 7B010000 		.4byte	.LASF28
+ 536 028a 07       		.byte	0x7
+ 537 028b 33       		.byte	0x33
+ 538 028c 15       		.uleb128 0x15
+ 539 028d BC020000 		.4byte	.LASF29
+ 540 0291 BC020000 		.4byte	.LASF29
+ 541 0295 08       		.byte	0x8
+ 542 0296 18       		.byte	0x18
+ 543 0297 16       		.uleb128 0x16
+ 544 0298 4F020000 		.4byte	.LASF30
+ 545 029c 4F020000 		.4byte	.LASF30
+ 546 02a0 09       		.byte	0x9
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 18
+
+
+ 547 02a1 2A01     		.2byte	0x12a
+ 548 02a3 16       		.uleb128 0x16
+ 549 02a4 1A000000 		.4byte	.LASF31
+ 550 02a8 1A000000 		.4byte	.LASF31
+ 551 02ac 09       		.byte	0x9
+ 552 02ad 2D01     		.2byte	0x12d
+ 553 02af 15       		.uleb128 0x15
+ 554 02b0 D2020000 		.4byte	.LASF32
+ 555 02b4 D2020000 		.4byte	.LASF32
+ 556 02b8 0A       		.byte	0xa
+ 557 02b9 22       		.byte	0x22
+ 558 02ba 15       		.uleb128 0x15
+ 559 02bb 0C000000 		.4byte	.LASF33
+ 560 02bf 0C000000 		.4byte	.LASF33
+ 561 02c3 0B       		.byte	0xb
+ 562 02c4 5A       		.byte	0x5a
+ 563 02c5 15       		.uleb128 0x15
+ 564 02c6 AF020000 		.4byte	.LASF34
+ 565 02ca AF020000 		.4byte	.LASF34
+ 566 02ce 0B       		.byte	0xb
+ 567 02cf 5B       		.byte	0x5b
+ 568 02d0 15       		.uleb128 0x15
+ 569 02d1 CA020000 		.4byte	.LASF35
+ 570 02d5 CA020000 		.4byte	.LASF35
+ 571 02d9 0C       		.byte	0xc
+ 572 02da E7       		.byte	0xe7
+ 573 02db 15       		.uleb128 0x15
+ 574 02dc 5F020000 		.4byte	.LASF36
+ 575 02e0 5F020000 		.4byte	.LASF36
+ 576 02e4 0A       		.byte	0xa
+ 577 02e5 28       		.byte	0x28
+ 578 02e6 15       		.uleb128 0x15
+ 579 02e7 C0010000 		.4byte	.LASF37
+ 580 02eb C0010000 		.4byte	.LASF37
+ 581 02ef 0A       		.byte	0xa
+ 582 02f0 24       		.byte	0x24
+ 583 02f1 00       		.byte	0
+ 584              		.section	.debug_abbrev,"",%progbits
+ 585              	.Ldebug_abbrev0:
+ 586 0000 01       		.uleb128 0x1
+ 587 0001 11       		.uleb128 0x11
+ 588 0002 01       		.byte	0x1
+ 589 0003 25       		.uleb128 0x25
+ 590 0004 0E       		.uleb128 0xe
+ 591 0005 13       		.uleb128 0x13
+ 592 0006 0B       		.uleb128 0xb
+ 593 0007 03       		.uleb128 0x3
+ 594 0008 0E       		.uleb128 0xe
+ 595 0009 1B       		.uleb128 0x1b
+ 596 000a 0E       		.uleb128 0xe
+ 597 000b 55       		.uleb128 0x55
+ 598 000c 17       		.uleb128 0x17
+ 599 000d 11       		.uleb128 0x11
+ 600 000e 01       		.uleb128 0x1
+ 601 000f 10       		.uleb128 0x10
+ 602 0010 17       		.uleb128 0x17
+ 603 0011 00       		.byte	0
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 19
+
+
+ 604 0012 00       		.byte	0
+ 605 0013 02       		.uleb128 0x2
+ 606 0014 24       		.uleb128 0x24
+ 607 0015 00       		.byte	0
+ 608 0016 0B       		.uleb128 0xb
+ 609 0017 0B       		.uleb128 0xb
+ 610 0018 3E       		.uleb128 0x3e
+ 611 0019 0B       		.uleb128 0xb
+ 612 001a 03       		.uleb128 0x3
+ 613 001b 0E       		.uleb128 0xe
+ 614 001c 00       		.byte	0
+ 615 001d 00       		.byte	0
+ 616 001e 03       		.uleb128 0x3
+ 617 001f 16       		.uleb128 0x16
+ 618 0020 00       		.byte	0
+ 619 0021 03       		.uleb128 0x3
+ 620 0022 0E       		.uleb128 0xe
+ 621 0023 3A       		.uleb128 0x3a
+ 622 0024 0B       		.uleb128 0xb
+ 623 0025 3B       		.uleb128 0x3b
+ 624 0026 0B       		.uleb128 0xb
+ 625 0027 49       		.uleb128 0x49
+ 626 0028 13       		.uleb128 0x13
+ 627 0029 00       		.byte	0
+ 628 002a 00       		.byte	0
+ 629 002b 04       		.uleb128 0x4
+ 630 002c 24       		.uleb128 0x24
+ 631 002d 00       		.byte	0
+ 632 002e 0B       		.uleb128 0xb
+ 633 002f 0B       		.uleb128 0xb
+ 634 0030 3E       		.uleb128 0x3e
+ 635 0031 0B       		.uleb128 0xb
+ 636 0032 03       		.uleb128 0x3
+ 637 0033 08       		.uleb128 0x8
+ 638 0034 00       		.byte	0
+ 639 0035 00       		.byte	0
+ 640 0036 05       		.uleb128 0x5
+ 641 0037 16       		.uleb128 0x16
+ 642 0038 00       		.byte	0
+ 643 0039 03       		.uleb128 0x3
+ 644 003a 0E       		.uleb128 0xe
+ 645 003b 3A       		.uleb128 0x3a
+ 646 003c 0B       		.uleb128 0xb
+ 647 003d 3B       		.uleb128 0x3b
+ 648 003e 05       		.uleb128 0x5
+ 649 003f 49       		.uleb128 0x49
+ 650 0040 13       		.uleb128 0x13
+ 651 0041 00       		.byte	0
+ 652 0042 00       		.byte	0
+ 653 0043 06       		.uleb128 0x6
+ 654 0044 35       		.uleb128 0x35
+ 655 0045 00       		.byte	0
+ 656 0046 49       		.uleb128 0x49
+ 657 0047 13       		.uleb128 0x13
+ 658 0048 00       		.byte	0
+ 659 0049 00       		.byte	0
+ 660 004a 07       		.uleb128 0x7
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 20
+
+
+ 661 004b 2E       		.uleb128 0x2e
+ 662 004c 01       		.byte	0x1
+ 663 004d 3F       		.uleb128 0x3f
+ 664 004e 19       		.uleb128 0x19
+ 665 004f 03       		.uleb128 0x3
+ 666 0050 0E       		.uleb128 0xe
+ 667 0051 3A       		.uleb128 0x3a
+ 668 0052 0B       		.uleb128 0xb
+ 669 0053 3B       		.uleb128 0x3b
+ 670 0054 0B       		.uleb128 0xb
+ 671 0055 27       		.uleb128 0x27
+ 672 0056 19       		.uleb128 0x19
+ 673 0057 11       		.uleb128 0x11
+ 674 0058 01       		.uleb128 0x1
+ 675 0059 12       		.uleb128 0x12
+ 676 005a 06       		.uleb128 0x6
+ 677 005b 40       		.uleb128 0x40
+ 678 005c 18       		.uleb128 0x18
+ 679 005d 9742     		.uleb128 0x2117
+ 680 005f 19       		.uleb128 0x19
+ 681 0060 01       		.uleb128 0x1
+ 682 0061 13       		.uleb128 0x13
+ 683 0062 00       		.byte	0
+ 684 0063 00       		.byte	0
+ 685 0064 08       		.uleb128 0x8
+ 686 0065 34       		.uleb128 0x34
+ 687 0066 00       		.byte	0
+ 688 0067 03       		.uleb128 0x3
+ 689 0068 0E       		.uleb128 0xe
+ 690 0069 3A       		.uleb128 0x3a
+ 691 006a 0B       		.uleb128 0xb
+ 692 006b 3B       		.uleb128 0x3b
+ 693 006c 0B       		.uleb128 0xb
+ 694 006d 49       		.uleb128 0x49
+ 695 006e 13       		.uleb128 0x13
+ 696 006f 02       		.uleb128 0x2
+ 697 0070 17       		.uleb128 0x17
+ 698 0071 00       		.byte	0
+ 699 0072 00       		.byte	0
+ 700 0073 09       		.uleb128 0x9
+ 701 0074 898201   		.uleb128 0x4109
+ 702 0077 00       		.byte	0
+ 703 0078 11       		.uleb128 0x11
+ 704 0079 01       		.uleb128 0x1
+ 705 007a 31       		.uleb128 0x31
+ 706 007b 13       		.uleb128 0x13
+ 707 007c 00       		.byte	0
+ 708 007d 00       		.byte	0
+ 709 007e 0A       		.uleb128 0xa
+ 710 007f 898201   		.uleb128 0x4109
+ 711 0082 01       		.byte	0x1
+ 712 0083 11       		.uleb128 0x11
+ 713 0084 01       		.uleb128 0x1
+ 714 0085 31       		.uleb128 0x31
+ 715 0086 13       		.uleb128 0x13
+ 716 0087 00       		.byte	0
+ 717 0088 00       		.byte	0
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 21
+
+
+ 718 0089 0B       		.uleb128 0xb
+ 719 008a 8A8201   		.uleb128 0x410a
+ 720 008d 00       		.byte	0
+ 721 008e 02       		.uleb128 0x2
+ 722 008f 18       		.uleb128 0x18
+ 723 0090 9142     		.uleb128 0x2111
+ 724 0092 18       		.uleb128 0x18
+ 725 0093 00       		.byte	0
+ 726 0094 00       		.byte	0
+ 727 0095 0C       		.uleb128 0xc
+ 728 0096 2E       		.uleb128 0x2e
+ 729 0097 01       		.byte	0x1
+ 730 0098 3F       		.uleb128 0x3f
+ 731 0099 19       		.uleb128 0x19
+ 732 009a 03       		.uleb128 0x3
+ 733 009b 0E       		.uleb128 0xe
+ 734 009c 3A       		.uleb128 0x3a
+ 735 009d 0B       		.uleb128 0xb
+ 736 009e 3B       		.uleb128 0x3b
+ 737 009f 0B       		.uleb128 0xb
+ 738 00a0 27       		.uleb128 0x27
+ 739 00a1 19       		.uleb128 0x19
+ 740 00a2 49       		.uleb128 0x49
+ 741 00a3 13       		.uleb128 0x13
+ 742 00a4 8701     		.uleb128 0x87
+ 743 00a6 19       		.uleb128 0x19
+ 744 00a7 11       		.uleb128 0x11
+ 745 00a8 01       		.uleb128 0x1
+ 746 00a9 12       		.uleb128 0x12
+ 747 00aa 06       		.uleb128 0x6
+ 748 00ab 40       		.uleb128 0x40
+ 749 00ac 18       		.uleb128 0x18
+ 750 00ad 9742     		.uleb128 0x2117
+ 751 00af 19       		.uleb128 0x19
+ 752 00b0 01       		.uleb128 0x1
+ 753 00b1 13       		.uleb128 0x13
+ 754 00b2 00       		.byte	0
+ 755 00b3 00       		.byte	0
+ 756 00b4 0D       		.uleb128 0xd
+ 757 00b5 34       		.uleb128 0x34
+ 758 00b6 00       		.byte	0
+ 759 00b7 03       		.uleb128 0x3
+ 760 00b8 08       		.uleb128 0x8
+ 761 00b9 3A       		.uleb128 0x3a
+ 762 00ba 0B       		.uleb128 0xb
+ 763 00bb 3B       		.uleb128 0x3b
+ 764 00bc 0B       		.uleb128 0xb
+ 765 00bd 49       		.uleb128 0x49
+ 766 00be 13       		.uleb128 0x13
+ 767 00bf 02       		.uleb128 0x2
+ 768 00c0 17       		.uleb128 0x17
+ 769 00c1 00       		.byte	0
+ 770 00c2 00       		.byte	0
+ 771 00c3 0E       		.uleb128 0xe
+ 772 00c4 34       		.uleb128 0x34
+ 773 00c5 00       		.byte	0
+ 774 00c6 03       		.uleb128 0x3
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 22
+
+
+ 775 00c7 0E       		.uleb128 0xe
+ 776 00c8 3A       		.uleb128 0x3a
+ 777 00c9 0B       		.uleb128 0xb
+ 778 00ca 3B       		.uleb128 0x3b
+ 779 00cb 0B       		.uleb128 0xb
+ 780 00cc 49       		.uleb128 0x49
+ 781 00cd 13       		.uleb128 0x13
+ 782 00ce 02       		.uleb128 0x2
+ 783 00cf 18       		.uleb128 0x18
+ 784 00d0 00       		.byte	0
+ 785 00d1 00       		.byte	0
+ 786 00d2 0F       		.uleb128 0xf
+ 787 00d3 898201   		.uleb128 0x4109
+ 788 00d6 01       		.byte	0x1
+ 789 00d7 11       		.uleb128 0x11
+ 790 00d8 01       		.uleb128 0x1
+ 791 00d9 31       		.uleb128 0x31
+ 792 00da 13       		.uleb128 0x13
+ 793 00db 01       		.uleb128 0x1
+ 794 00dc 13       		.uleb128 0x13
+ 795 00dd 00       		.byte	0
+ 796 00de 00       		.byte	0
+ 797 00df 10       		.uleb128 0x10
+ 798 00e0 01       		.uleb128 0x1
+ 799 00e1 01       		.byte	0x1
+ 800 00e2 49       		.uleb128 0x49
+ 801 00e3 13       		.uleb128 0x13
+ 802 00e4 01       		.uleb128 0x1
+ 803 00e5 13       		.uleb128 0x13
+ 804 00e6 00       		.byte	0
+ 805 00e7 00       		.byte	0
+ 806 00e8 11       		.uleb128 0x11
+ 807 00e9 21       		.uleb128 0x21
+ 808 00ea 00       		.byte	0
+ 809 00eb 49       		.uleb128 0x49
+ 810 00ec 13       		.uleb128 0x13
+ 811 00ed 2F       		.uleb128 0x2f
+ 812 00ee 0B       		.uleb128 0xb
+ 813 00ef 00       		.byte	0
+ 814 00f0 00       		.byte	0
+ 815 00f1 12       		.uleb128 0x12
+ 816 00f2 34       		.uleb128 0x34
+ 817 00f3 00       		.byte	0
+ 818 00f4 03       		.uleb128 0x3
+ 819 00f5 0E       		.uleb128 0xe
+ 820 00f6 3A       		.uleb128 0x3a
+ 821 00f7 0B       		.uleb128 0xb
+ 822 00f8 3B       		.uleb128 0x3b
+ 823 00f9 05       		.uleb128 0x5
+ 824 00fa 49       		.uleb128 0x49
+ 825 00fb 13       		.uleb128 0x13
+ 826 00fc 3F       		.uleb128 0x3f
+ 827 00fd 19       		.uleb128 0x19
+ 828 00fe 3C       		.uleb128 0x3c
+ 829 00ff 19       		.uleb128 0x19
+ 830 0100 00       		.byte	0
+ 831 0101 00       		.byte	0
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 23
+
+
+ 832 0102 13       		.uleb128 0x13
+ 833 0103 21       		.uleb128 0x21
+ 834 0104 00       		.byte	0
+ 835 0105 49       		.uleb128 0x49
+ 836 0106 13       		.uleb128 0x13
+ 837 0107 2F       		.uleb128 0x2f
+ 838 0108 05       		.uleb128 0x5
+ 839 0109 00       		.byte	0
+ 840 010a 00       		.byte	0
+ 841 010b 14       		.uleb128 0x14
+ 842 010c 34       		.uleb128 0x34
+ 843 010d 00       		.byte	0
+ 844 010e 03       		.uleb128 0x3
+ 845 010f 0E       		.uleb128 0xe
+ 846 0110 3A       		.uleb128 0x3a
+ 847 0111 0B       		.uleb128 0xb
+ 848 0112 3B       		.uleb128 0x3b
+ 849 0113 0B       		.uleb128 0xb
+ 850 0114 49       		.uleb128 0x49
+ 851 0115 13       		.uleb128 0x13
+ 852 0116 3F       		.uleb128 0x3f
+ 853 0117 19       		.uleb128 0x19
+ 854 0118 02       		.uleb128 0x2
+ 855 0119 18       		.uleb128 0x18
+ 856 011a 00       		.byte	0
+ 857 011b 00       		.byte	0
+ 858 011c 15       		.uleb128 0x15
+ 859 011d 2E       		.uleb128 0x2e
+ 860 011e 00       		.byte	0
+ 861 011f 3F       		.uleb128 0x3f
+ 862 0120 19       		.uleb128 0x19
+ 863 0121 3C       		.uleb128 0x3c
+ 864 0122 19       		.uleb128 0x19
+ 865 0123 6E       		.uleb128 0x6e
+ 866 0124 0E       		.uleb128 0xe
+ 867 0125 03       		.uleb128 0x3
+ 868 0126 0E       		.uleb128 0xe
+ 869 0127 3A       		.uleb128 0x3a
+ 870 0128 0B       		.uleb128 0xb
+ 871 0129 3B       		.uleb128 0x3b
+ 872 012a 0B       		.uleb128 0xb
+ 873 012b 00       		.byte	0
+ 874 012c 00       		.byte	0
+ 875 012d 16       		.uleb128 0x16
+ 876 012e 2E       		.uleb128 0x2e
+ 877 012f 00       		.byte	0
+ 878 0130 3F       		.uleb128 0x3f
+ 879 0131 19       		.uleb128 0x19
+ 880 0132 3C       		.uleb128 0x3c
+ 881 0133 19       		.uleb128 0x19
+ 882 0134 6E       		.uleb128 0x6e
+ 883 0135 0E       		.uleb128 0xe
+ 884 0136 03       		.uleb128 0x3
+ 885 0137 0E       		.uleb128 0xe
+ 886 0138 3A       		.uleb128 0x3a
+ 887 0139 0B       		.uleb128 0xb
+ 888 013a 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 24
+
+
+ 889 013b 05       		.uleb128 0x5
+ 890 013c 00       		.byte	0
+ 891 013d 00       		.byte	0
+ 892 013e 00       		.byte	0
+ 893              		.section	.debug_loc,"",%progbits
+ 894              	.Ldebug_loc0:
+ 895              	.LLST0:
+ 896 0000 08000000 		.4byte	.LVL1
+ 897 0004 42000000 		.4byte	.LVL3
+ 898 0008 0100     		.2byte	0x1
+ 899 000a 54       		.byte	0x54
+ 900 000b 00000000 		.4byte	0
+ 901 000f 00000000 		.4byte	0
+ 902              	.LLST1:
+ 903 0013 08000000 		.4byte	.LVL1
+ 904 0017 42000000 		.4byte	.LVL3
+ 905 001b 0900     		.2byte	0x9
+ 906 001d 74       		.byte	0x74
+ 907 001e 00       		.sleb128 0
+ 908 001f 09       		.byte	0x9
+ 909 0020 F7       		.byte	0xf7
+ 910 0021 24       		.byte	0x24
+ 911 0022 09       		.byte	0x9
+ 912 0023 FC       		.byte	0xfc
+ 913 0024 25       		.byte	0x25
+ 914 0025 9F       		.byte	0x9f
+ 915 0026 00000000 		.4byte	0
+ 916 002a 00000000 		.4byte	0
+ 917              	.LLST2:
+ 918 002e 3A000000 		.4byte	.LVL11
+ 919 0032 3E000000 		.4byte	.LVL12
+ 920 0036 0200     		.2byte	0x2
+ 921 0038 30       		.byte	0x30
+ 922 0039 9F       		.byte	0x9f
+ 923 003a 3E000000 		.4byte	.LVL12
+ 924 003e 5E000000 		.4byte	.LVL16
+ 925 0042 0100     		.2byte	0x1
+ 926 0044 54       		.byte	0x54
+ 927 0045 60000000 		.4byte	.LVL17
+ 928 0049 84000000 		.4byte	.LFE65
+ 929 004d 0100     		.2byte	0x1
+ 930 004f 54       		.byte	0x54
+ 931 0050 00000000 		.4byte	0
+ 932 0054 00000000 		.4byte	0
+ 933              		.section	.debug_aranges,"",%progbits
+ 934 0000 24000000 		.4byte	0x24
+ 935 0004 0200     		.2byte	0x2
+ 936 0006 00000000 		.4byte	.Ldebug_info0
+ 937 000a 04       		.byte	0x4
+ 938 000b 00       		.byte	0
+ 939 000c 0000     		.2byte	0
+ 940 000e 0000     		.2byte	0
+ 941 0010 00000000 		.4byte	.LFB64
+ 942 0014 4C000000 		.4byte	.LFE64-.LFB64
+ 943 0018 00000000 		.4byte	.LFB65
+ 944 001c 84000000 		.4byte	.LFE65-.LFB65
+ 945 0020 00000000 		.4byte	0
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 25
+
+
+ 946 0024 00000000 		.4byte	0
+ 947              		.section	.debug_ranges,"",%progbits
+ 948              	.Ldebug_ranges0:
+ 949 0000 00000000 		.4byte	.LFB64
+ 950 0004 4C000000 		.4byte	.LFE64
+ 951 0008 00000000 		.4byte	.LFB65
+ 952 000c 84000000 		.4byte	.LFE65
+ 953 0010 00000000 		.4byte	0
+ 954 0014 00000000 		.4byte	0
+ 955              		.section	.debug_line,"",%progbits
+ 956              	.Ldebug_line0:
+ 957 0000 96020000 		.section	.debug_str,"MS",%progbits,1
+ 957      02001502 
+ 957      00000201 
+ 957      FB0E0D00 
+ 957      01010101 
+ 958              	.LASF23:
+ 959 0000 62756666 		.ascii	"bufferIndex\000"
+ 959      6572496E 
+ 959      64657800 
+ 960              	.LASF33:
+ 961 000c 54696D65 		.ascii	"Timer_1_Start\000"
+ 961      725F315F 
+ 961      53746172 
+ 961      7400
+ 962              	.LASF31:
+ 963 001a 55534255 		.ascii	"USBUART_1_GetConfiguration\000"
+ 963      4152545F 
+ 963      315F4765 
+ 963      74436F6E 
+ 963      66696775 
+ 964              	.LASF19:
+ 965 0035 64616356 		.ascii	"dacValue\000"
+ 965      616C7565 
+ 965      00
+ 966              	.LASF9:
+ 967 003e 5F5F696E 		.ascii	"__int32_t\000"
+ 967      7433325F 
+ 967      7400
+ 968              	.LASF40:
+ 969 0048 433A5C55 		.ascii	"C:\\Users\\kkau904\\Documents\\COMPSYS301_team2\\La"
+ 969      73657273 
+ 969      5C6B6B61 
+ 969      75393034 
+ 969      5C446F63 
+ 970 0076 62205461 		.ascii	"b Tasks\\hardware task 1\\Hardware1.cydsn\000"
+ 970      736B735C 
+ 970      68617264 
+ 970      77617265 
+ 970      20746173 
+ 971              	.LASF4:
+ 972 009e 6C6F6E67 		.ascii	"long int\000"
+ 972      20696E74 
+ 972      00
+ 973              	.LASF13:
+ 974 00a7 666C6F61 		.ascii	"float\000"
+ 974      7400
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 26
+
+
+ 975              	.LASF1:
+ 976 00ad 756E7369 		.ascii	"unsigned char\000"
+ 976      676E6564 
+ 976      20636861 
+ 976      7200
+ 977              	.LASF38:
+ 978 00bb 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 978      43313120 
+ 978      352E342E 
+ 978      31203230 
+ 978      31363036 
+ 979 00ee 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 979      20726576 
+ 979      6973696F 
+ 979      6E203233 
+ 979      37373135 
+ 980 0121 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 980      66756E63 
+ 980      74696F6E 
+ 980      2D736563 
+ 980      74696F6E 
+ 981              	.LASF5:
+ 982 0149 6C6F6E67 		.ascii	"long unsigned int\000"
+ 982      20756E73 
+ 982      69676E65 
+ 982      6420696E 
+ 982      7400
+ 983              	.LASF3:
+ 984 015b 73686F72 		.ascii	"short unsigned int\000"
+ 984      7420756E 
+ 984      7369676E 
+ 984      65642069 
+ 984      6E7400
+ 985              	.LASF21:
+ 986 016e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 986      52784275 
+ 986      66666572 
+ 986      00
+ 987              	.LASF28:
+ 988 017b 56444143 		.ascii	"VDAC8_1_Start\000"
+ 988      385F315F 
+ 988      53746172 
+ 988      7400
+ 989              	.LASF14:
+ 990 0189 646F7562 		.ascii	"double\000"
+ 990      6C6500
+ 991              	.LASF42:
+ 992 0190 6D61696E 		.ascii	"main\000"
+ 992      00
+ 993              	.LASF12:
+ 994 0195 75696E74 		.ascii	"uint16\000"
+ 994      313600
+ 995              	.LASF8:
+ 996 019c 756E7369 		.ascii	"unsigned int\000"
+ 996      676E6564 
+ 996      20696E74 
+ 996      00
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 27
+
+
+ 997              	.LASF7:
+ 998 01a9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 998      206C6F6E 
+ 998      6720756E 
+ 998      7369676E 
+ 998      65642069 
+ 999              	.LASF37:
+ 1000 01c0 55534255 		.ascii	"USBUART_1_PutString\000"
+ 1000      4152545F 
+ 1000      315F5075 
+ 1000      74537472 
+ 1000      696E6700 
+ 1001              	.LASF26:
+ 1002 01d4 56444143 		.ascii	"VDAC8_1_SetValue\000"
+ 1002      385F315F 
+ 1002      53657456 
+ 1002      616C7565 
+ 1002      00
+ 1003              	.LASF41:
+ 1004 01e5 4D794953 		.ascii	"MyISR\000"
+ 1004      5200
+ 1005              	.LASF10:
+ 1006 01eb 696E7433 		.ascii	"int32_t\000"
+ 1006      325F7400 
+ 1007              	.LASF17:
+ 1008 01f3 73697A65 		.ascii	"sizetype\000"
+ 1008      74797065 
+ 1008      00
+ 1009              	.LASF25:
+ 1010 01fc 4144435F 		.ascii	"ADC_SAR_1_GetResult16\000"
+ 1010      5341525F 
+ 1010      315F4765 
+ 1010      74526573 
+ 1010      756C7431 
+ 1011              	.LASF6:
+ 1012 0212 6C6F6E67 		.ascii	"long long int\000"
+ 1012      206C6F6E 
+ 1012      6720696E 
+ 1012      7400
+ 1013              	.LASF39:
+ 1014 0220 6D61696E 		.ascii	"main.c\000"
+ 1014      2E6300
+ 1015              	.LASF15:
+ 1016 0227 63686172 		.ascii	"char\000"
+ 1016      00
+ 1017              	.LASF2:
+ 1018 022c 73686F72 		.ascii	"short int\000"
+ 1018      7420696E 
+ 1018      7400
+ 1019              	.LASF20:
+ 1020 0236 75736254 		.ascii	"usbText\000"
+ 1020      65787400 
+ 1021              	.LASF11:
+ 1022 023e 75696E74 		.ascii	"uint8\000"
+ 1022      3800
+ 1023              	.LASF24:
+ 1024 0244 62756666 		.ascii	"bufferFull\000"
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccQNp8uc.s 			page 28
+
+
+ 1024      65724675 
+ 1024      6C6C00
+ 1025              	.LASF30:
+ 1026 024f 55534255 		.ascii	"USBUART_1_Start\000"
+ 1026      4152545F 
+ 1026      315F5374 
+ 1026      61727400 
+ 1027              	.LASF36:
+ 1028 025f 55534255 		.ascii	"USBUART_1_CDCIsReady\000"
+ 1028      4152545F 
+ 1028      315F4344 
+ 1028      43497352 
+ 1028      65616479 
+ 1029              	.LASF22:
+ 1030 0274 61646342 		.ascii	"adcBuffer\000"
+ 1030      75666665 
+ 1030      7200
+ 1031              	.LASF18:
+ 1032 027e 61646356 		.ascii	"adcValue\000"
+ 1032      616C7565 
+ 1032      00
+ 1033              	.LASF16:
+ 1034 0287 6C6F6E67 		.ascii	"long double\000"
+ 1034      20646F75 
+ 1034      626C6500 
+ 1035              	.LASF0:
+ 1036 0293 7369676E 		.ascii	"signed char\000"
+ 1036      65642063 
+ 1036      68617200 
+ 1037              	.LASF27:
+ 1038 029f 4144435F 		.ascii	"ADC_SAR_1_Start\000"
+ 1038      5341525F 
+ 1038      315F5374 
+ 1038      61727400 
+ 1039              	.LASF34:
+ 1040 02af 54696D65 		.ascii	"Timer_1_Stop\000"
+ 1040      725F315F 
+ 1040      53746F70 
+ 1040      00
+ 1041              	.LASF29:
+ 1042 02bc 6973725F 		.ascii	"isr_1_StartEx\000"
+ 1042      315F5374 
+ 1042      61727445 
+ 1042      7800
+ 1043              	.LASF35:
+ 1044 02ca 73707269 		.ascii	"sprintf\000"
+ 1044      6E746600 
+ 1045              	.LASF32:
+ 1046 02d2 55534255 		.ascii	"USBUART_1_CDC_Init\000"
+ 1046      4152545F 
+ 1046      315F4344 
+ 1046      435F496E 
+ 1046      697400
+ 1047              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
