@@ -1,63 +1,57 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
 #include "project.h"
 #include <stdio.h>
 
-#define BUFFER_SIZE 500u
-volatile uint8 speedReady;
-volatile uint16 speed;
+volatile uint8 speedReady = 0u;
+volatile int32 speed = 0;
 
-
-CY_ISR(ISR_QUAD)
+CY_ISR(MyISR)
 {
-    double k;
-    k = 0.001;
-    
-    uint16 quadValue;
+    int32 quadValue;
+
     quadValue = QuadDec_1_GetCounter();
     QuadDec_1_SetCounter(0);
-   
-    speed = quadValue/k;
-    
+
+    speed = quadValue / 0.001;
     speedReady = 1u;
+
+    Timer_1_ReadStatusRegister();
 }
 
 int main(void)
-
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
+    char usbText[20];
 
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+    CyGlobalIntEnable;
+
     Clock_PWM_Start();
     PWM_1_Start();
     PWM_2_Start();
-    Timer_1_Start();
     QuadDec_1_Start();
-    
-    ISR_QUAD_StartEx(ISR_QUAD);
 
-    for(;;)
+    USBUART_1_Start(0u, USBUART_1_5V_OPERATION);
+
+    while (USBUART_1_GetConfiguration() == 0u)
     {
-        if (speedReady)
-    {
-        char usbText[20];
-
-        speedReady = 0u;
-
-        sprintf(usbText, "%u\r\n", speed);
-
-        USBUART_1_PutString(usbText);
     }
+
+    USBUART_1_CDC_Init();
+
+    ISR_QUAD_StartEx(MyISR);
+    Timer_1_Start();
+
+    for (;;)
+    {
+        if (speedReady == 1u)
+        {
+            speedReady = 0u;
+
+            sprintf(usbText, "%ld\r\n", (long)speed);
+
+            while (USBUART_1_CDCIsReady() == 0u)
+            {
+            }
+
+            USBUART_1_PutString(usbText);
+        }
     }
 }
-
-/* [] END OF FILE */
