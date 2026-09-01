@@ -1,0 +1,58 @@
+%% Import data
+dataOff = readmatrix('og_online_lo.csv', 'NumHeaderLines', 1);
+dataOn  = readmatrix('og_offline_final', 'NumHeaderLines', 1);
+
+% Shift time to start at 0 (seconds)
+t_off_s = dataOff(:,1) - dataOff(1,1);
+t_on_s  = dataOn(:,1) - dataOn(1,1);
+
+% Time vectors in milliseconds for plotting
+timeOFF = t_off_s * 1000;
+voltOFF = dataOff(:,2);
+
+timeON  = t_on_s * 1000;
+voltON  = dataOn(:,2);
+
+%% Plot Time Domain (Voltage vs Time)
+figure(3);
+plot(timeOFF, voltOFF, 'b-', 'LineWidth', 1.2); hold on;
+plot(timeON, voltON, 'r-', 'LineWidth', 1.2);
+xlabel('Time (ms)');
+ylabel('Voltage (V)');
+title('Voltage vs Time: Off Line vs On Line');
+legend('Off Line', 'On Line');
+grid on;
+
+%% FFT Analysis (Frequency Spectrum)
+% Sampling interval (s) and Sampling Frequency (Hz)
+dt = mean(diff(t_off_s)); 
+fs = 1 / dt; 
+
+% Number of samples
+N_off = length(voltOFF);
+N_on  = length(voltON);
+
+% Compute FFT and single-sided magnitude spectrum for Off Line
+fft_off = fft(voltOFF);
+magOFF  = abs(fft_off / N_off);
+magOFF  = magOFF(1:floor(N_off/2)+1);
+magOFF(2:end-1) = 2 * magOFF(2:end-1);
+freqOFF = (0:floor(N_off/2)) * (fs / N_off);
+
+% Compute FFT and single-sided magnitude spectrum for On Line
+fft_on = fft(voltON);
+magON  = abs(fft_on / N_on);
+magON  = magON(1:floor(N_on/2)+1);
+magON(2:end-1) = 2 * magON(2:end-1);
+freqON = (0:floor(N_on/2)) * (fs / N_on);
+
+%% Plot Frequency Domain (Magnitude vs Frequency)
+figure(4);
+plot(freqOFF, magOFF, 'b-', 'LineWidth', 1.2); hold on;
+plot(freqON, magON, 'r-', 'LineWidth', 1.2);
+xlabel('Frequency (Hz)');
+ylabel('Magnitude (V)');
+title('Magnitude vs Frequency Spectrum');
+legend('Off Line', 'On Line');
+xlim([0 1000]); % Adjust frequency range limit as needed
+grid on;
