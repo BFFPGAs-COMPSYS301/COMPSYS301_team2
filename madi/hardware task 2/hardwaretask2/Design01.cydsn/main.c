@@ -25,8 +25,34 @@ static void MotorR_Back() {
     PWM_2_WriteCompare(85);
 }
 
+static void turnLeft() {
+    MotorL_Back();
+    MotorR_Forward();
+}    
+
+static void turnRight() {
+    MotorR_Back();
+    MotorL_Forward();
+}    
+
+static void goForward() {
+    MotorR_Forward();
+    MotorL_Forward();
+} 
+
+static void goBack() {
+    MotorR_Back();
+    MotorL_Back();
+}   
+
+static void stopMoving(){
+    PWM_1_WriteCompare(45);
+    PWM_2_WriteCompare(45);
+}    
+
 CY_ISR(MyISR)
 {
+    char usbText[20];
     int32 countL;
     int32 countR;
 
@@ -39,24 +65,34 @@ CY_ISR(MyISR)
     QuadDec_2_SetCounter(0);
 
     speedR = countR * 1000;
+    
     speedReady = 1u;
+    speedReady = 0u;
+
+    sprintf(usbText, "%ld,%ld\r\n", (long)speedL,(long)speedR);
+
+    while (USBUART_1_CDCIsReady() == 0u)
+    {
+    }
+
+    USBUART_1_PutString(usbText);
 
     Timer_1_ReadStatusRegister();
 }
 
 int main(void)
 {
-    char usbText[20];
+    
 
     CyGlobalIntEnable;
 
     Clock_PWM_Start();
+    Clock_1_Start();
     PWM_1_Start();
     PWM_2_Start();
     QuadDec_1_Start();
     QuadDec_2_Start();
-    MotorL_Back();
-    MotorR_Back();
+    goBack();
 
     USBUART_1_Start(0u, USBUART_1_5V_OPERATION);
 
@@ -73,15 +109,8 @@ int main(void)
     {
         if (speedReady == 1u)
         {
-            speedReady = 0u;
-
-            sprintf(usbText, "%ld,%ld\r\n", (long)speedL,(long)speedR);
-
-            while (USBUART_1_CDCIsReady() == 0u)
-            {
-            }
-
-            USBUART_1_PutString(usbText);
+            
         }
+        CyDelay(250);
     }
 }
