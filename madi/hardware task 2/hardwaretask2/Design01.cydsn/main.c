@@ -5,24 +5,24 @@ volatile uint8 speedReady = 0u;
 volatile int32 speedL = 0;
 volatile int32 speedR = 0;
 
-#define MOTOR_PWM_PERIOD 91
-#define MOTOR_MIDPOINT 45
+#define FORWARD_COMPARE 0
+#define period 90
 
 
 static void MotorL_Forward() {
-  PWM_1_WriteCompare(5);
+  PWM_1_WriteCompare(FORWARD_COMPARE);
 }
 
 static void MotorR_Forward() {
-    PWM_2_WriteCompare(5);
+    PWM_2_WriteCompare(FORWARD_COMPARE);
 }
 
 static void MotorL_Back() {
-  PWM_1_WriteCompare(85);
+  PWM_1_WriteCompare(period - FORWARD_COMPARE);
 }
 
 static void MotorR_Back() {
-    PWM_2_WriteCompare(85);
+    PWM_2_WriteCompare(period - FORWARD_COMPARE);
 }
 
 static void turnLeft() {
@@ -92,7 +92,7 @@ int main(void)
     PWM_2_Start();
     QuadDec_1_Start();
     QuadDec_2_Start();
-    goBack();
+    goForward();
 
     USBUART_1_Start(0u, USBUART_1_5V_OPERATION);
 
