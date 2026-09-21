@@ -539,7 +539,7 @@ function getElementsByClass(rootNode, elemName, className)
 <tr> <td class="prop"> Project :</td>
 <td class="proptext"> Sensor Validation</td></tr>
 <tr> <td class="prop"> Build Time :</td>
-<td class="proptext"> 09/18/26 17:26:43</td></tr>
+<td class="proptext"> 09/21/26 14:36:18</td></tr>
 <tr> <td class="prop"> Device :</td>
 <td class="proptext"> CY8C5888LTI-LP097</td></tr>
 <tr> <td class="prop"> Temperature :</td>
@@ -575,28 +575,7 @@ function getElementsByClass(rootNode, elemName, className)
 <span class="sec_head"><span style="font-family: monospace;">+</span>
 Timing Violation Section</span>
 </a>
-</div><div class="vio_sta_secbody"><div class="sta_sec_desc">Note: If your design will only ever run at typical room temperatures, selecting the narrower temperature range in the system DWR for your application helps the tool to find timing-compliant routing solutions.</div>
-<table class="sta_tpd">
- <thead> 
-<tr> 
-<th>Violation</th>
-<th>Source Clock</th>
-<th>Destination Clock</th>
-<th>Slack(ns)</th>
-</tr>
-</thead> 
-<tbody>
-<tr> 
- <td colspan="4" class = "text_info">Async</td>
-</tr>
-<tr class="sta_tv tv1">
- <td class = "text_info"> </td>
- <td class = "text_info">ClockBlock/clk_bus_glb_ff</td>
- <td class = "text_info">Clock_1</td>
- <td class = "text_info"> </td>
-</tr>
-</tbody>
- </table> 
+</div><div class="vio_sta_secbody"><div class="sta_sec_desc">No Timing Violations</div>
 </div>
 </div>
 <div class="sta_sec" id="clock_summary">
@@ -617,14 +596,6 @@ Clock Summary Section</span>
 </tr>
 </thead> 
 <tbody>
-<tr> 
- <td class = "text_info">ClockBlock/clk_bus_glb_ff</td>
- <td class = "text_info">ClockBlock/clk_bus_glb_ff</td>
- <td class = "number">UNKNOWN</td>
- <td class = "number">UNKNOWN</td>
- <td class = "number"> N/A </td>
- <td class = "text_info"> </td>
-</tr>
 <tr> 
  <td class = "text_info">CyILO</td>
  <td class = "text_info">CyILO</td>
@@ -652,17 +623,9 @@ Clock Summary Section</span>
 <tr> 
  <td class = "text_info">CyBUS_CLK</td>
  <td class = "text_info">CyMASTER_CLK</td>
- <td class = "number">2.000&nbsp;MHz</td>
- <td class = "number">2.000&nbsp;MHz</td>
- <td class = "number"> N/A </td>
- <td class = "text_info"> </td>
-</tr>
-<tr> 
- <td class = "text_info">Clock_1</td>
- <td class = "text_info">CyMASTER_CLK</td>
- <td class = "number">12.000&nbsp;MHz</td>
- <td class = "number">12.000&nbsp;MHz</td>
- <td class = "number">121.183&nbsp;MHz</td>
+ <td class = "number">6.000&nbsp;MHz</td>
+ <td class = "number">6.000&nbsp;MHz</td>
+ <td class = "number">62.708&nbsp;MHz</td>
  <td class = "text_info"></td>
 </tr>
 <tr> 
@@ -693,15 +656,15 @@ Setup Subsection</span>
 <div>
 <a href="#" style="text-decoration: none; color: inherit;">
 <span class="sec_head"><span style="font-family: monospace;">+</span>
-Source Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;MHz)</span>
+Source Clock : CyBUS_CLK : Positive edge(Required Frequency 6&nbsp;MHz)</span>
 </a>
 </div><div class="sta_secbody"><div class="sta_sec" >
 <div>
 <a href="#" style="text-decoration: none; color: inherit;">
 <span class="sec_head"><span style="font-family: monospace;">+</span>
-Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;MHz)</span>
+Destination Clock : CyBUS_CLK : Positive edge(Required Frequency 6&nbsp;MHz)</span>
 </a>
-</div><div class="sta_secbody"><div class="sta_sec_desc">Path Delay Requirement : 83.3333ns(12&nbsp;MHz)</div>
+</div><div class="sta_secbody"><div class="sta_sec_desc">Path Delay Requirement : 166.667ns(6&nbsp;MHz)</div>
 <table class="sta_tscs">
  <thead> 
 <tr> 
@@ -715,11 +678,11 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;MHz)</spa
 </thead> 
 <tbody>
 <tr> 
- <td class = "text_info">Net_87/q</td>
- <td class = "text_info">Net_87/main_0</td>
- <td class = "number">121.183&nbsp;MHz</td>
- <td class = "number">8.252</td>
- <td class = "number">75.081</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">62.708&nbsp;MHz</td>
+ <td class = "number">15.947</td>
+ <td class = "number">150.720</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -738,31 +701,67 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;MHz)</spa
 </thead> 
 <tbody>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">datapathcell7</td>
+ <td class = "text_info">U(1,4)</td>
  <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
- <td class = "text_info">Net_87/clock_0</td>
- <td class = "text_info">Net_87/q</td>
- <td class = "number">1.250</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "number">0.760</td>
 </tr>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
  <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
- <td class = "text_info">Net_87/q</td>
- <td class = "text_info">Net_87/main_0</td>
- <td class = "number">3.492</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0.z0__sig\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "number">0.000</td>
 </tr>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">datapathcell8</td>
+ <td class = "text_info">U(0,4)</td>
  <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.740</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">3.087</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell7</td>
+ <td class = "text_info">U(1,4)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell8</td>
+ <td class = "text_info">U(0,4)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\</td>
  <td class = "text_info"></td>
  <td class = "text_info">SETUP</td>
- <td class = "number">3.510</td>
+ <td class = "number">4.230</td>
 </tr>
 <tr> 
  <td class = "text_info">Clock</td>
@@ -778,11 +777,11 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;MHz)</spa
 </td>
 </tr>
 <tr> 
- <td class = "text_info">\EdgeDetect_1:last\/q</td>
- <td class = "text_info">Net_87/main_3</td>
- <td class = "number">141.663&nbsp;MHz</td>
- <td class = "number">7.059</td>
- <td class = "number">76.274</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">63.259&nbsp;MHz</td>
+ <td class = "number">15.808</td>
+ <td class = "number">150.859</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -801,31 +800,769 @@ Destination Clock : Clock_1 : Positive edge(Required Frequency 12&nbsp;MHz)</spa
 </thead> 
 <tbody>
 <tr> 
- <td class = "text_info">macrocell4</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">datapathcell1</td>
+ <td class = "text_info">U(3,1)</td>
  <td class = "number">1</td>
- <td class = "text_info">\EdgeDetect_1:last\</td>
- <td class = "text_info">\EdgeDetect_1:last\/clock_0</td>
- <td class = "text_info">\EdgeDetect_1:last\/q</td>
- <td class = "number">1.250</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "number">0.760</td>
 </tr>
 <tr> 
  <td class = "text_info">Route</td>
  <td class = "text_info"> </td>
  <td class = "number">1</td>
- <td class = "text_info">\EdgeDetect_1:last\</td>
- <td class = "text_info">\EdgeDetect_1:last\/q</td>
- <td class = "text_info">Net_87/main_3</td>
- <td class = "number">2.299</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0.z0__sig\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "number">0.000</td>
 </tr>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">datapathcell2</td>
+ <td class = "text_info">U(2,1)</td>
  <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.740</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">2.948</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell1</td>
+ <td class = "text_info">U(3,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell2</td>
+ <td class = "text_info">U(2,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\</td>
  <td class = "text_info"></td>
  <td class = "text_info">SETUP</td>
- <td class = "number">3.510</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">63.444&nbsp;MHz</td>
+ <td class = "number">15.762</td>
+ <td class = "number">150.905</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="6">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell5</td>
+ <td class = "text_info">U(1,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "number">0.760</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0.z0__sig\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell6</td>
+ <td class = "text_info">U(0,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.740</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">2.902</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell5</td>
+ <td class = "text_info">U(1,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell6</td>
+ <td class = "text_info">U(0,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"></td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">63.480&nbsp;MHz</td>
+ <td class = "number">15.753</td>
+ <td class = "number">150.914</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="6">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell3</td>
+ <td class = "text_info">U(0,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "number">0.760</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0.z0__sig\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell4</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.740</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">2.893</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell3</td>
+ <td class = "text_info">U(0,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell4</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"></td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">63.702&nbsp;MHz</td>
+ <td class = "number">15.698</td>
+ <td class = "number">150.969</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="6">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell9</td>
+ <td class = "text_info">U(2,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "number">0.760</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0.z0__sig\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/z0</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell10</td>
+ <td class = "text_info">U(3,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/z0i</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.740</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">2.838</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell9</td>
+ <td class = "text_info">U(2,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell10</td>
+ <td class = "text_info">U(3,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"></td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">67.856&nbsp;MHz</td>
+ <td class = "number">14.737</td>
+ <td class = "number">151.930</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="6">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell8</td>
+ <td class = "text_info">U(0,4)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/clock</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.290</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">3.087</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell7</td>
+ <td class = "text_info">U(1,4)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell8</td>
+ <td class = "text_info">U(0,4)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"></td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">68.503&nbsp;MHz</td>
+ <td class = "number">14.598</td>
+ <td class = "number">152.069</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="6">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell2</td>
+ <td class = "text_info">U(2,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/clock</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.290</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">2.948</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell1</td>
+ <td class = "text_info">U(3,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell2</td>
+ <td class = "text_info">U(2,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"></td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">68.719&nbsp;MHz</td>
+ <td class = "number">14.552</td>
+ <td class = "number">152.115</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="6">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell6</td>
+ <td class = "text_info">U(0,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/clock</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.290</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">2.902</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell5</td>
+ <td class = "text_info">U(1,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell6</td>
+ <td class = "text_info">U(0,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"></td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">68.762&nbsp;MHz</td>
+ <td class = "number">14.543</td>
+ <td class = "number">152.124</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="6">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell4</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/clock</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.290</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">2.893</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell3</td>
+ <td class = "text_info">U(0,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell4</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"></td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">69.023&nbsp;MHz</td>
+ <td class = "number">14.488</td>
+ <td class = "number">152.179</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="6">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell10</td>
+ <td class = "text_info">U(3,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/clock</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "number">2.290</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:per_zero\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/z0_comb</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "number">2.838</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell9</td>
+ <td class = "text_info">U(2,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/cs_addr_0</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"> </td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell10</td>
+ <td class = "text_info">U(3,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"></td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
 </tr>
 <tr> 
  <td class = "text_info">Clock</td>
@@ -858,13 +1595,13 @@ Hold Subsection</span>
 <div>
 <a href="#" style="text-decoration: none; color: inherit;">
 <span class="sec_head"><span style="font-family: monospace;">+</span>
-Source Clock : Clock_1 : Positive edge</span>
+Source Clock : CyBUS_CLK : Positive edge</span>
 </a>
 </div><div class="sta_secbody"><div class="sta_sec" >
 <div>
 <a href="#" style="text-decoration: none; color: inherit;">
 <span class="sec_head"><span style="font-family: monospace;">+</span>
-Destination Clock : Clock_1 : Positive edge</span>
+Destination Clock : CyBUS_CLK : Positive edge</span>
 </a>
 </div><div class="sta_secbody"><table class="sta_tscs">
  <thead> 
@@ -877,9 +1614,9 @@ Destination Clock : Clock_1 : Positive edge</span>
 </thead> 
 <tbody>
 <tr> 
- <td class = "text_info">\EdgeDetect_1:last\/q</td>
- <td class = "text_info">Net_87/main_3</td>
- <td class = "number">3.549</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">2.140</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -898,28 +1635,28 @@ Destination Clock : Clock_1 : Positive edge</span>
 </thead> 
 <tbody>
 <tr> 
- <td class = "text_info">macrocell4</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">datapathcell1</td>
+ <td class = "text_info">U(3,1)</td>
  <td class = "number">1</td>
- <td class = "text_info">\EdgeDetect_1:last\</td>
- <td class = "text_info">\EdgeDetect_1:last\/clock_0</td>
- <td class = "text_info">\EdgeDetect_1:last\/q</td>
- <td class = "number">1.250</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">2.140</td>
 </tr>
 <tr> 
  <td class = "text_info">Route</td>
  <td class = "text_info"></td>
  <td class = "number">1</td>
- <td class = "text_info">\EdgeDetect_1:last\</td>
- <td class = "text_info">\EdgeDetect_1:last\/q</td>
- <td class = "text_info">Net_87/main_3</td>
- <td class = "number">2.299</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
 </tr>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">datapathcell2</td>
+ <td class = "text_info">U(2,1)</td>
  <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\</td>
  <td class = "text_info"> </td>
  <td class = "text_info">HOLD</td>
  <td class = "number">0.000</td>
@@ -938,9 +1675,9 @@ Destination Clock : Clock_1 : Positive edge</span>
 </td>
 </tr>
 <tr> 
- <td class = "text_info">Net_87/q</td>
- <td class = "text_info">Net_87/main_0</td>
- <td class = "number">4.742</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">2.140</td>
  <td class = "text_info"></td>
 </tr>
 <tr class="sta_path">
@@ -959,28 +1696,516 @@ Destination Clock : Clock_1 : Positive edge</span>
 </thead> 
 <tbody>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">datapathcell3</td>
+ <td class = "text_info">U(0,5)</td>
  <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
- <td class = "text_info">Net_87/clock_0</td>
- <td class = "text_info">Net_87/q</td>
- <td class = "number">1.250</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">2.140</td>
 </tr>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
  <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
- <td class = "text_info">Net_87/q</td>
- <td class = "text_info">Net_87/main_0</td>
- <td class = "number">3.492</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
 </tr>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">datapathcell4</td>
+ <td class = "text_info">U(1,5)</td>
  <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">HOLD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">2.140</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="4">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell5</td>
+ <td class = "text_info">U(1,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">2.140</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell6</td>
+ <td class = "text_info">U(0,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">HOLD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">2.140</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="4">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell7</td>
+ <td class = "text_info">U(1,4)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">2.140</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell8</td>
+ <td class = "text_info">U(0,4)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">HOLD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">2.140</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="4">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">datapathcell9</td>
+ <td class = "text_info">U(2,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/clock</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">2.140</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell10</td>
+ <td class = "text_info">U(3,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">HOLD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/cs_addr_1</td>
+ <td class = "number">3.323</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="4">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">controlcell2</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/clock</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "number">0.360</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:control_7\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/cs_addr_1</td>
+ <td class = "number">2.963</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell3</td>
+ <td class = "text_info">U(0,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">HOLD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_4:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/cs_addr_1</td>
+ <td class = "number">3.327</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="4">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">controlcell3</td>
+ <td class = "text_info">U(0,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/clock</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "number">0.360</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:control_7\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/cs_addr_1</td>
+ <td class = "number">2.967</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell5</td>
+ <td class = "text_info">U(1,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">HOLD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/cs_addr_1</td>
+ <td class = "number">3.342</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="4">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">controlcell1</td>
+ <td class = "text_info">U(2,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/clock</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "number">0.360</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:control_7\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/cs_addr_1</td>
+ <td class = "number">2.982</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell1</td>
+ <td class = "text_info">U(3,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">HOLD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/cs_addr_1</td>
+ <td class = "number">3.439</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="4">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">controlcell2</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/clock</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "number">0.360</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:control_7\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/cs_addr_1</td>
+ <td class = "number">3.079</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell4</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">HOLD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Skew</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">Net_237/main_0</td>
+ <td class = "number">3.451</td>
+ <td class = "text_info"></td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="4">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">controlcell2</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/clock</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "number">0.360</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:control_7\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7</td>
+ <td class = "text_info">Net_237/main_0</td>
+ <td class = "number">3.091</td>
+</tr>
+<tr> 
+ <td class = "text_info">macrocell10</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_237</td>
  <td class = "text_info"> </td>
  <td class = "text_info">HOLD</td>
  <td class = "number">0.000</td>
@@ -1012,102 +2237,13 @@ Destination Clock : Clock_1 : Positive edge</span>
 <div>
 <a href="#" style="text-decoration: none; color: inherit;">
 <span class="sec_head"><span style="font-family: monospace;">+</span>
-Asynchronous Clock Crossing Section</span>
+Input To Clock Section</span>
 </a>
 </div><div class="sta_secbody"><div class="sta_sec" >
 <div>
 <a href="#" style="text-decoration: none; color: inherit;">
 <span class="sec_head"><span style="font-family: monospace;">+</span>
-Source Clock ClockBlock/clk_bus_glb_ff</span>
-</a>
-</div><div class="sta_secbody"><div class="sta_sec" >
-<div>
-<a href="#" style="text-decoration: none; color: inherit;">
-<span class="sec_head"><span style="font-family: monospace;">+</span>
-Destination Clock Clock_1</span>
-</a>
-</div><div class="sta_secbody"><table class="sta_tscs">
- <thead> 
-<tr> 
-<th>Source</th>
-<th>Destination</th>
-<th>Delay (ns)</th>
-</tr>
-</thead> 
-<tbody>
-<tr> 
- <td class = "text_info">\Counter_1:CounterHW\/tc</td>
- <td class = "text_info">Net_87/main_1</td>
- <td class = "number">9.756</td>
-</tr>
-<tr class="sta_path tv1">
-<td class="sta_path"  colspan="3">
-<table class="sta_path">
- <thead> 
-<tr> 
-<th>Type</th>
-<th>Location</th>
-<th>Fanout</th>
-<th>Instance/Net</th>
-<th>Source</th>
-<th>Dest</th>
-<th>Delay (ns)</th>
-</tr>
-</thead> 
-<tbody>
-<tr> 
- <td class = "text_info">timercell</td>
- <td class = "text_info">F(Timer,0)</td>
- <td class = "number">1</td>
- <td class = "text_info">\Counter_1:CounterHW\</td>
- <td class = "text_info">\Counter_1:CounterHW\/clock</td>
- <td class = "text_info">\Counter_1:CounterHW\/tc</td>
- <td class = "number">1.000</td>
-</tr>
-<tr> 
- <td class = "text_info">Route</td>
- <td class = "text_info"> </td>
- <td class = "number">1</td>
- <td class = "text_info">Net_93</td>
- <td class = "text_info">\Counter_1:CounterHW\/tc</td>
- <td class = "text_info">Net_87/main_1</td>
- <td class = "number">5.246</td>
-</tr>
-<tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
- <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
- <td class = "text_info"></td>
- <td class = "text_info">SETUP</td>
- <td class = "number">3.510</td>
-</tr>
-<tr> 
- <td class = "text_info">Clock</td>
- <td class = "text_info"> </td>
- <td class = "text_info"></td>
- <td class = "text_info"></td>
- <td class = "text_info"></td>
- <td class = "text_info">Skew</td>
- <td class = "number">0.000</td>
-</tr>
-</tbody>
- </table> 
-</td>
-</tr>
-</tbody>
- </table> 
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sta_sec" >
-<div>
-<a href="#" style="text-decoration: none; color: inherit;">
-<span class="sec_head"><span style="font-family: monospace;">+</span>
-Input To Output Section</span>
+CyBUS_CLK</span>
 </a>
 </div><div class="sta_secbody"><table class="sta_tscs">
  <thead> 
@@ -1120,8 +2256,8 @@ Input To Output Section</span>
 <tbody>
 <tr> 
  <td class = "text_info">Vout2(0)_PAD</td>
- <td class = "text_info">LED2(0)_PAD</td>
- <td class = "number">30.563</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">26.823</td>
 </tr>
 <tr class="sta_path">
 <td class="sta_path"  colspan="3">
@@ -1138,15 +2274,6 @@ Input To Output Section</span>
 </tr>
 </thead> 
 <tbody>
-<tr> 
- <td class = "text_info">\Sensor Validation\</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">Vout2(0)_PAD</td>
- <td class = "text_info">Vout2(0)_PAD</td>
- <td class = "text_info">Vout2(0)_PAD</td>
- <td class = "number">0.000</td>
-</tr>
 <tr> 
  <td class = "text_info">Route</td>
  <td class = "text_info"></td>
@@ -1169,27 +2296,45 @@ Input To Output Section</span>
  <td class = "text_info">Route</td>
  <td class = "text_info"></td>
  <td class = "number">1</td>
- <td class = "text_info">Net_91</td>
+ <td class = "text_info">Net_236</td>
  <td class = "text_info">Vout2(0)/fb</td>
- <td class = "text_info">LED2(0)/pin_input</td>
- <td class = "number">7.577</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "number">9.728</td>
 </tr>
 <tr> 
- <td class = "text_info">iocell2</td>
- <td class = "text_info">P0[0]</td>
+ <td class = "text_info">datapathcell3</td>
+ <td class = "text_info">U(0,5)</td>
  <td class = "number">1</td>
- <td class = "text_info">LED2(0)</td>
- <td class = "text_info">LED2(0)/pin_input</td>
- <td class = "text_info">LED2(0)/pad_out</td>
- <td class = "number">15.251</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
 </tr>
 <tr> 
  <td class = "text_info">Route</td>
  <td class = "text_info"></td>
  <td class = "number">1</td>
- <td class = "text_info">LED2(0)_PAD</td>
- <td class = "text_info">LED2(0)/pad_out</td>
- <td class = "text_info">LED2(0)_PAD</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell4</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_2:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Clock path delay</td>
  <td class = "number">0.000</td>
 </tr>
 </tbody>
@@ -1198,8 +2343,8 @@ Input To Output Section</span>
 </tr>
 <tr> 
  <td class = "text_info">Vout3(0)_PAD</td>
- <td class = "text_info">LED3(0)_PAD</td>
- <td class = "number">30.188</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">23.282</td>
 </tr>
 <tr class="sta_path">
 <td class="sta_path"  colspan="3">
@@ -1216,15 +2361,6 @@ Input To Output Section</span>
 </tr>
 </thead> 
 <tbody>
-<tr> 
- <td class = "text_info">\Sensor Validation\</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">Vout3(0)_PAD</td>
- <td class = "text_info">Vout3(0)_PAD</td>
- <td class = "text_info">Vout3(0)_PAD</td>
- <td class = "number">0.000</td>
-</tr>
 <tr> 
  <td class = "text_info">Route</td>
  <td class = "text_info"></td>
@@ -1247,218 +2383,55 @@ Input To Output Section</span>
  <td class = "text_info">Route</td>
  <td class = "text_info"></td>
  <td class = "number">1</td>
- <td class = "text_info">Net_90</td>
+ <td class = "text_info">Net_268</td>
  <td class = "text_info">Vout3(0)/fb</td>
- <td class = "text_info">LED3(0)/pin_input</td>
- <td class = "number">7.167</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "number">6.703</td>
 </tr>
 <tr> 
- <td class = "text_info">iocell3</td>
- <td class = "text_info">P0[1]</td>
+ <td class = "text_info">datapathcell7</td>
+ <td class = "text_info">U(1,4)</td>
  <td class = "number">1</td>
- <td class = "text_info">LED3(0)</td>
- <td class = "text_info">LED3(0)/pin_input</td>
- <td class = "text_info">LED3(0)/pad_out</td>
- <td class = "number">15.802</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
 </tr>
 <tr> 
  <td class = "text_info">Route</td>
  <td class = "text_info"></td>
  <td class = "number">1</td>
- <td class = "text_info">LED3(0)_PAD</td>
- <td class = "text_info">LED3(0)/pad_out</td>
- <td class = "text_info">LED3(0)_PAD</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell8</td>
+ <td class = "text_info">U(0,4)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_3:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Clock path delay</td>
  <td class = "number">0.000</td>
 </tr>
 </tbody>
  </table> 
 </td>
 </tr>
-<tr> 
- <td class = "text_info">Vout4(0)_PAD</td>
- <td class = "text_info">LED4(0)_PAD</td>
- <td class = "number">28.961</td>
-</tr>
-<tr class="sta_path">
-<td class="sta_path"  colspan="3">
-<table class="sta_path">
- <thead> 
-<tr> 
-<th>Type</th>
-<th>Location</th>
-<th>Fanout</th>
-<th>Instance/Net</th>
-<th>Source</th>
-<th>Dest</th>
-<th>Delay (ns)</th>
-</tr>
-</thead> 
-<tbody>
-<tr> 
- <td class = "text_info">\Sensor Validation\</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">Vout4(0)_PAD</td>
- <td class = "text_info">Vout4(0)_PAD</td>
- <td class = "text_info">Vout4(0)_PAD</td>
- <td class = "number">0.000</td>
-</tr>
-<tr> 
- <td class = "text_info">Route</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">Vout4(0)_PAD</td>
- <td class = "text_info">Vout4(0)_PAD</td>
- <td class = "text_info">Vout4(0)/pad_in</td>
- <td class = "number">0.000</td>
-</tr>
-<tr> 
- <td class = "text_info">iocell11</td>
- <td class = "text_info">P1[7]</td>
- <td class = "number">1</td>
- <td class = "text_info">Vout4(0)</td>
- <td class = "text_info">Vout4(0)/pad_in</td>
- <td class = "text_info">Vout4(0)/fb</td>
- <td class = "number">7.089</td>
-</tr>
-<tr> 
- <td class = "text_info">Route</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">Net_89</td>
- <td class = "text_info">Vout4(0)/fb</td>
- <td class = "text_info">LED4(0)/pin_input</td>
- <td class = "number">7.617</td>
-</tr>
-<tr> 
- <td class = "text_info">iocell4</td>
- <td class = "text_info">P15[0]</td>
- <td class = "number">1</td>
- <td class = "text_info">LED4(0)</td>
- <td class = "text_info">LED4(0)/pin_input</td>
- <td class = "text_info">LED4(0)/pad_out</td>
- <td class = "number">14.255</td>
-</tr>
-<tr> 
- <td class = "text_info">Route</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">LED4(0)_PAD</td>
- <td class = "text_info">LED4(0)/pad_out</td>
- <td class = "text_info">LED4(0)_PAD</td>
- <td class = "number">0.000</td>
-</tr>
-</tbody>
- </table> 
-</td>
-</tr>
-<tr> 
- <td class = "text_info">Vout5(0)_PAD</td>
- <td class = "text_info">LED5(0)_PAD</td>
- <td class = "number">23.705</td>
-</tr>
-<tr class="sta_path">
-<td class="sta_path"  colspan="3">
-<table class="sta_path">
- <thead> 
-<tr> 
-<th>Type</th>
-<th>Location</th>
-<th>Fanout</th>
-<th>Instance/Net</th>
-<th>Source</th>
-<th>Dest</th>
-<th>Delay (ns)</th>
-</tr>
-</thead> 
-<tbody>
-<tr> 
- <td class = "text_info">\Sensor Validation\</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">Vout5(0)_PAD</td>
- <td class = "text_info">Vout5(0)_PAD</td>
- <td class = "text_info">Vout5(0)_PAD</td>
- <td class = "number">0.000</td>
-</tr>
-<tr> 
- <td class = "text_info">Route</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">Vout5(0)_PAD</td>
- <td class = "text_info">Vout5(0)_PAD</td>
- <td class = "text_info">Vout5(0)/pad_in</td>
- <td class = "number">0.000</td>
-</tr>
-<tr> 
- <td class = "text_info">iocell12</td>
- <td class = "text_info">P3[0]</td>
- <td class = "number">1</td>
- <td class = "text_info">Vout5(0)</td>
- <td class = "text_info">Vout5(0)/pad_in</td>
- <td class = "text_info">Vout5(0)/fb</td>
- <td class = "number">6.324</td>
-</tr>
-<tr> 
- <td class = "text_info">Route</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">Net_88</td>
- <td class = "text_info">Vout5(0)/fb</td>
- <td class = "text_info">LED5(0)/pin_input</td>
- <td class = "number">2.952</td>
-</tr>
-<tr> 
- <td class = "text_info">iocell5</td>
- <td class = "text_info">P15[1]</td>
- <td class = "number">1</td>
- <td class = "text_info">LED5(0)</td>
- <td class = "text_info">LED5(0)/pin_input</td>
- <td class = "text_info">LED5(0)/pad_out</td>
- <td class = "number">14.429</td>
-</tr>
-<tr> 
- <td class = "text_info">Route</td>
- <td class = "text_info"></td>
- <td class = "number">1</td>
- <td class = "text_info">LED5(0)_PAD</td>
- <td class = "text_info">LED5(0)/pad_out</td>
- <td class = "text_info">LED5(0)_PAD</td>
- <td class = "number">0.000</td>
-</tr>
-</tbody>
- </table> 
-</td>
-</tr>
-</tbody>
- </table> 
-</div>
-</div>
-<div class="sta_sec" >
-<div>
-<a href="#" style="text-decoration: none; color: inherit;">
-<span class="sec_head"><span style="font-family: monospace;">+</span>
-Input To Clock Section</span>
-</a>
-</div><div class="sta_secbody"><div class="sta_sec" >
-<div>
-<a href="#" style="text-decoration: none; color: inherit;">
-<span class="sec_head"><span style="font-family: monospace;">+</span>
-Clock_1</span>
-</a>
-</div><div class="sta_secbody"><table class="sta_tscs">
- <thead> 
-<tr> 
-<th>Source</th>
-<th>Destination</th>
-<th>Delay (ns)</th>
-</tr>
-</thead> 
-<tbody>
 <tr> 
  <td class = "text_info">Vout1(0)_PAD</td>
- <td class = "text_info">Net_87/main_2</td>
- <td class = "number">17.048</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">22.495</td>
 </tr>
 <tr class="sta_path">
 <td class="sta_path"  colspan="3">
@@ -1497,19 +2470,211 @@ Clock_1</span>
  <td class = "text_info">Route</td>
  <td class = "text_info"></td>
  <td class = "number">1</td>
- <td class = "text_info">Net_133</td>
+ <td class = "text_info">Net_233</td>
  <td class = "text_info">Vout1(0)/fb</td>
- <td class = "text_info">Net_87/main_2</td>
- <td class = "number">7.279</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "number">6.876</td>
 </tr>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">datapathcell1</td>
+ <td class = "text_info">U(3,1)</td>
  <td class = "number">1</td>
- <td class = "text_info">Net_87</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell2</td>
+ <td class = "text_info">U(2,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_1:TimerUDB:sT16:timerdp:u1\</td>
  <td class = "text_info"> </td>
  <td class = "text_info">SETUP</td>
- <td class = "number">3.510</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Clock path delay</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">Vout4(0)_PAD</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">22.122</td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="3">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">Vout4(0)_PAD</td>
+ <td class = "text_info">Vout4(0)_PAD</td>
+ <td class = "text_info">Vout4(0)/pad_in</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">iocell11</td>
+ <td class = "text_info">P1[7]</td>
+ <td class = "number">1</td>
+ <td class = "text_info">Vout4(0)</td>
+ <td class = "text_info">Vout4(0)/pad_in</td>
+ <td class = "text_info">Vout4(0)/fb</td>
+ <td class = "number">7.089</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_252</td>
+ <td class = "text_info">Vout4(0)/fb</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "number">5.673</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell5</td>
+ <td class = "text_info">U(1,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell6</td>
+ <td class = "text_info">U(0,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_4:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Clock path delay</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">Vout5(0)_PAD</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">21.479</td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="3">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">Vout5(0)_PAD</td>
+ <td class = "text_info">Vout5(0)_PAD</td>
+ <td class = "text_info">Vout5(0)/pad_in</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">iocell12</td>
+ <td class = "text_info">P3[0]</td>
+ <td class = "number">1</td>
+ <td class = "text_info">Vout5(0)</td>
+ <td class = "text_info">Vout5(0)/pad_in</td>
+ <td class = "text_info">Vout5(0)/fb</td>
+ <td class = "number">6.324</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_307</td>
+ <td class = "text_info">Vout5(0)/fb</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "number">5.795</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell9</td>
+ <td class = "text_info">U(2,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/cs_addr_2</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "number">5.130</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0.co_msb__sig\</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u0\/co_msb</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\/ci</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">datapathcell10</td>
+ <td class = "text_info">U(3,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">\Timeout_5:TimerUDB:sT16:timerdp:u1\</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info">SETUP</td>
+ <td class = "number">4.230</td>
 </tr>
 <tr> 
  <td class = "text_info">Clock</td>
@@ -1540,7 +2705,7 @@ Clock To Output Section</span>
 <div>
 <a href="#" style="text-decoration: none; color: inherit;">
 <span class="sec_head"><span style="font-family: monospace;">+</span>
-Clock_1</span>
+CyBUS_CLK</span>
 </a>
 </div><div class="sta_secbody"><table class="sta_tscs">
  <thead> 
@@ -1552,9 +2717,9 @@ Clock_1</span>
 </thead> 
 <tbody>
 <tr> 
- <td class = "text_info">Net_87/q</td>
- <td class = "text_info">LED1(0)_PAD</td>
- <td class = "number">22.598</td>
+ <td class = "text_info">Net_271/q</td>
+ <td class = "text_info">LED3(0)_PAD</td>
+ <td class = "number">24.598</td>
 </tr>
 <tr class="sta_path">
 <td class="sta_path"  colspan="3">
@@ -1572,8 +2737,77 @@ Clock_1</span>
 </thead> 
 <tbody>
 <tr> 
- <td class = "text_info">macrocell3</td>
- <td class = "text_info">U(3,4)</td>
+ <td class = "text_info">macrocell12</td>
+ <td class = "text_info">U(0,4)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_271</td>
+ <td class = "text_info">Net_271/clock_0</td>
+ <td class = "text_info">Net_271/q</td>
+ <td class = "number">1.250</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_271</td>
+ <td class = "text_info">Net_271/q</td>
+ <td class = "text_info">LED3(0)/pin_input</td>
+ <td class = "number">7.546</td>
+</tr>
+<tr> 
+ <td class = "text_info">iocell3</td>
+ <td class = "text_info">P0[1]</td>
+ <td class = "number">1</td>
+ <td class = "text_info">LED3(0)</td>
+ <td class = "text_info">LED3(0)/pin_input</td>
+ <td class = "text_info">LED3(0)/pad_out</td>
+ <td class = "number">15.802</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">LED3(0)_PAD</td>
+ <td class = "text_info">LED3(0)/pad_out</td>
+ <td class = "text_info">LED3(0)_PAD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Clock path delay</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">Net_87/q</td>
+ <td class = "text_info">LED1(0)_PAD</td>
+ <td class = "number">24.483</td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="3">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">macrocell7</td>
+ <td class = "text_info">U(2,1)</td>
  <td class = "number">1</td>
  <td class = "text_info">Net_87</td>
  <td class = "text_info">Net_87/clock_0</td>
@@ -1587,7 +2821,7 @@ Clock_1</span>
  <td class = "text_info">Net_87</td>
  <td class = "text_info">Net_87/q</td>
  <td class = "text_info">LED1(0)/pin_input</td>
- <td class = "number">5.787</td>
+ <td class = "number">7.672</td>
 </tr>
 <tr> 
  <td class = "text_info">iocell1</td>
@@ -1605,6 +2839,213 @@ Clock_1</span>
  <td class = "text_info">LED1(0)_PAD</td>
  <td class = "text_info">LED1(0)/pad_out</td>
  <td class = "text_info">LED1(0)_PAD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Clock path delay</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">Net_235/q</td>
+ <td class = "text_info">LED2(0)_PAD</td>
+ <td class = "number">24.226</td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="3">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">macrocell9</td>
+ <td class = "text_info">U(1,5)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_235</td>
+ <td class = "text_info">Net_235/clock_0</td>
+ <td class = "text_info">Net_235/q</td>
+ <td class = "number">1.250</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_235</td>
+ <td class = "text_info">Net_235/q</td>
+ <td class = "text_info">LED2(0)/pin_input</td>
+ <td class = "number">7.725</td>
+</tr>
+<tr> 
+ <td class = "text_info">iocell2</td>
+ <td class = "text_info">P0[0]</td>
+ <td class = "number">1</td>
+ <td class = "text_info">LED2(0)</td>
+ <td class = "text_info">LED2(0)/pin_input</td>
+ <td class = "text_info">LED2(0)/pad_out</td>
+ <td class = "number">15.251</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">LED2(0)_PAD</td>
+ <td class = "text_info">LED2(0)/pad_out</td>
+ <td class = "text_info">LED2(0)_PAD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Clock path delay</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">Net_255/q</td>
+ <td class = "text_info">LED4(0)_PAD</td>
+ <td class = "number">22.930</td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="3">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">macrocell8</td>
+ <td class = "text_info">U(0,1)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_255</td>
+ <td class = "text_info">Net_255/clock_0</td>
+ <td class = "text_info">Net_255/q</td>
+ <td class = "number">1.250</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_255</td>
+ <td class = "text_info">Net_255/q</td>
+ <td class = "text_info">LED4(0)/pin_input</td>
+ <td class = "number">7.425</td>
+</tr>
+<tr> 
+ <td class = "text_info">iocell4</td>
+ <td class = "text_info">P15[0]</td>
+ <td class = "number">1</td>
+ <td class = "text_info">LED4(0)</td>
+ <td class = "text_info">LED4(0)/pin_input</td>
+ <td class = "text_info">LED4(0)/pad_out</td>
+ <td class = "number">14.255</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">LED4(0)_PAD</td>
+ <td class = "text_info">LED4(0)/pad_out</td>
+ <td class = "text_info">LED4(0)_PAD</td>
+ <td class = "number">0.000</td>
+</tr>
+<tr> 
+ <td class = "text_info">Clock</td>
+ <td class = "text_info"> </td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info"></td>
+ <td class = "text_info">Clock path delay</td>
+ <td class = "number">0.000</td>
+</tr>
+</tbody>
+ </table> 
+</td>
+</tr>
+<tr> 
+ <td class = "text_info">Net_310/q</td>
+ <td class = "text_info">LED5(0)_PAD</td>
+ <td class = "number">21.701</td>
+</tr>
+<tr class="sta_path">
+<td class="sta_path"  colspan="3">
+<table class="sta_path">
+ <thead> 
+<tr> 
+<th>Type</th>
+<th>Location</th>
+<th>Fanout</th>
+<th>Instance/Net</th>
+<th>Source</th>
+<th>Dest</th>
+<th>Delay (ns)</th>
+</tr>
+</thead> 
+<tbody>
+<tr> 
+ <td class = "text_info">macrocell14</td>
+ <td class = "text_info">U(3,0)</td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_310</td>
+ <td class = "text_info">Net_310/clock_0</td>
+ <td class = "text_info">Net_310/q</td>
+ <td class = "number">1.250</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">Net_310</td>
+ <td class = "text_info">Net_310/q</td>
+ <td class = "text_info">LED5(0)/pin_input</td>
+ <td class = "number">6.022</td>
+</tr>
+<tr> 
+ <td class = "text_info">iocell5</td>
+ <td class = "text_info">P15[1]</td>
+ <td class = "number">1</td>
+ <td class = "text_info">LED5(0)</td>
+ <td class = "text_info">LED5(0)/pin_input</td>
+ <td class = "text_info">LED5(0)/pad_out</td>
+ <td class = "number">14.429</td>
+</tr>
+<tr> 
+ <td class = "text_info">Route</td>
+ <td class = "text_info"></td>
+ <td class = "number">1</td>
+ <td class = "text_info">LED5(0)_PAD</td>
+ <td class = "text_info">LED5(0)/pad_out</td>
+ <td class = "text_info">LED5(0)_PAD</td>
  <td class = "number">0.000</td>
 </tr>
 <tr> 
