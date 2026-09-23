@@ -22,31 +22,6 @@ static void MotorR_Back() {
     PWM_2_WriteCompare(period - FORWARD_COMPARE);
 }
 
-/*
-static void rightNinety() {
-    PWM_1_WriteCompare(45);
-    PWM_2_WriteCompare(45);
-    CyDelay(1000);
-    PWM_1_WriteCompare(10);
-    PWM_2_WriteCompare(80);
-    CyDelay(370);
-    PWM_1_WriteCompare(45);
-    PWM_2_WriteCompare(45);
-    CyDelay(1000);
-}    
-
-static void leftNinety() {
-    PWM_1_WriteCompare(45);
-    PWM_2_WriteCompare(45);
-    CyDelay(1000);
-    PWM_1_WriteCompare(80);
-    PWM_2_WriteCompare(10);
-    CyDelay(370);
-    PWM_1_WriteCompare(45);
-    PWM_2_WriteCompare(45);
-    CyDelay(1000);
-}
-*/
 
 static void largeCorrectLeft() {
     PWM_2_WriteCompare(FORWARD_COMPARE - 3);
@@ -83,18 +58,7 @@ static void doSomething() {
     
     
     if (led_2 == 1 && led_3 == 1) {
-        if (overCount < 70) {
-            goBack();
-        } else {
-            largeCorrectLeft();
-            CyDelay(20);
-            if (led_2 == 1 && led_3 == 1) {
-                while(1) {
-                    stopMoving();
-                }
-            }
-        }
-        overCount++;
+        goBack();
     } else if (led_2 == 1) {
         largeCorrectLeft();
         overCount = 0;
@@ -124,8 +88,6 @@ int main(void)
     Timeout_3_Start();
     Timeout_4_Start();
     Timeout_5_Start();
-    
-    CyDelay(500); // Pause after turning on
 
     for(;;)
     {
