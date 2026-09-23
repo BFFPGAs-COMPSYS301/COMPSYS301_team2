@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
   29:main.c        **** 
   30:main.c        **** static void MotorR_Back() {
   27              		.loc 1 30 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 2
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 2
 
 
   28              		.cfi_startproc
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
   38:main.c        **** 
   39:main.c        **** static void turnRight() {
   40:main.c        ****     MotorR_Back();
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 3
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 3
 
 
   41:main.c        ****     MotorL_Forward();
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  104              		.cfi_offset 3, -8
  105              		.cfi_offset 14, -4
   45:main.c        ****     PWM_1_WriteCompare(90 - FORWARD_COMPARE + 2);
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 4
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 4
 
 
  106              		.loc 1 45 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  153              		.cfi_startproc
  154              		@ args = 0, pretend = 0, frame = 0
  155              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 5
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 5
 
 
  156 0000 08B5     		push	{r3, lr}
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  202 0012 0646     		mov	r6, r0
  203              	.LVL15:
   74:main.c        ****     uint8 led_4 = LED4_Read();
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 6
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 6
 
 
  204              		.loc 1 74 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  246              	.LVL22:
  247 0046 70BD     		pop	{r4, r5, r6, pc}
  248              	.LVL23:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 7
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 7
 
 
  249              	.L17:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  287              		.loc 1 102 0
  288 000c FFF7FEFF 		bl	VDAC8_1_Start
  289              	.LVL27:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 8
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 8
 
 
  103:main.c        ****     Timeout_1_Start();
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  333              		.file 16 "Generated_Source\\PSoC5/Timeout_4.h"
  334              		.file 17 "Generated_Source\\PSoC5/Timeout_5.h"
  335              		.file 18 "Generated_Source\\PSoC5/CyLib.h"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 9
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 9
 
 
  336              		.file 19 "Generated_Source\\PSoC5/core_cm3.h"
@@ -489,29 +489,29 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  341 0006 00000000 		.4byte	.Ldebug_abbrev0
  342 000a 04       		.byte	0x4
  343 000b 01       		.uleb128 0x1
- 344 000c 7F000000 		.4byte	.LASF45
+ 344 000c 82000000 		.4byte	.LASF45
  345 0010 0C       		.byte	0xc
- 346 0011 3D020000 		.4byte	.LASF46
- 347 0015 6F020000 		.4byte	.LASF47
+ 346 0011 8F020000 		.4byte	.LASF46
+ 347 0015 5A010000 		.4byte	.LASF47
  348 0019 00000000 		.4byte	.Ldebug_ranges0+0
  349 001d 00000000 		.4byte	0
  350 0021 00000000 		.4byte	.Ldebug_line0
  351 0025 02       		.uleb128 0x2
  352 0026 01       		.byte	0x1
  353 0027 06       		.byte	0x6
- 354 0028 D2020000 		.4byte	.LASF0
+ 354 0028 E5020000 		.4byte	.LASF0
  355 002c 02       		.uleb128 0x2
  356 002d 01       		.byte	0x1
  357 002e 08       		.byte	0x8
- 358 002f 71000000 		.4byte	.LASF1
+ 358 002f 74000000 		.4byte	.LASF1
  359 0033 02       		.uleb128 0x2
  360 0034 02       		.byte	0x2
  361 0035 05       		.byte	0x5
- 362 0036 59020000 		.4byte	.LASF2
+ 362 0036 AB020000 		.4byte	.LASF2
  363 003a 02       		.uleb128 0x2
  364 003b 02       		.byte	0x2
  365 003c 07       		.byte	0x7
- 366 003d 25000000 		.4byte	.LASF3
+ 366 003d 28000000 		.4byte	.LASF3
  367 0041 03       		.uleb128 0x3
  368 0042 15000000 		.4byte	.LASF9
  369 0046 02       		.byte	0x2
@@ -520,62 +520,62 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  372 004c 02       		.uleb128 0x2
  373 004d 04       		.byte	0x4
  374 004e 05       		.byte	0x5
- 375 004f 47010000 		.4byte	.LASF4
+ 375 004f 1F000000 		.4byte	.LASF4
  376 0053 02       		.uleb128 0x2
  377 0054 04       		.byte	0x4
  378 0055 07       		.byte	0x7
- 379 0056 67010000 		.4byte	.LASF5
+ 379 0056 B9010000 		.4byte	.LASF5
  380 005a 02       		.uleb128 0x2
  381 005b 08       		.byte	0x8
  382 005c 05       		.byte	0x5
- 383 005d 2F020000 		.4byte	.LASF6
+ 383 005d 81020000 		.4byte	.LASF6
  384 0061 02       		.uleb128 0x2
  385 0062 08       		.byte	0x8
  386 0063 07       		.byte	0x7
- 387 0064 CE010000 		.4byte	.LASF7
+ 387 0064 20020000 		.4byte	.LASF7
  388 0068 04       		.uleb128 0x4
  389 0069 04       		.byte	0x4
  390 006a 05       		.byte	0x5
  391 006b 696E7400 		.ascii	"int\000"
  392 006f 02       		.uleb128 0x2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 10
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 10
 
 
  393 0070 04       		.byte	0x4
  394 0071 07       		.byte	0x7
- 395 0072 C1010000 		.4byte	.LASF8
+ 395 0072 13020000 		.4byte	.LASF8
  396 0076 03       		.uleb128 0x3
- 397 0077 0B020000 		.4byte	.LASF10
+ 397 0077 5D020000 		.4byte	.LASF10
  398 007b 03       		.byte	0x3
  399 007c 2C       		.byte	0x2c
  400 007d 41000000 		.4byte	0x41
  401 0081 05       		.uleb128 0x5
- 402 0082 63020000 		.4byte	.LASF11
+ 402 0082 B5020000 		.4byte	.LASF11
  403 0086 04       		.byte	0x4
  404 0087 E701     		.2byte	0x1e7
  405 0089 2C000000 		.4byte	0x2c
  406 008d 02       		.uleb128 0x2
  407 008e 04       		.byte	0x4
  408 008f 04       		.byte	0x4
- 409 0090 52000000 		.4byte	.LASF12
+ 409 0090 55000000 		.4byte	.LASF12
  410 0094 02       		.uleb128 0x2
  411 0095 08       		.byte	0x8
  412 0096 04       		.byte	0x4
- 413 0097 38000000 		.4byte	.LASF13
+ 413 0097 3B000000 		.4byte	.LASF13
  414 009b 02       		.uleb128 0x2
  415 009c 01       		.byte	0x1
  416 009d 08       		.byte	0x8
- 417 009e 44020000 		.4byte	.LASF14
+ 417 009e 96020000 		.4byte	.LASF14
  418 00a2 02       		.uleb128 0x2
  419 00a3 08       		.byte	0x8
  420 00a4 04       		.byte	0x4
- 421 00a5 C6020000 		.4byte	.LASF15
+ 421 00a5 D9020000 		.4byte	.LASF15
  422 00a9 02       		.uleb128 0x2
  423 00aa 04       		.byte	0x4
  424 00ab 07       		.byte	0x7
- 425 00ac 13020000 		.4byte	.LASF16
+ 425 00ac 65020000 		.4byte	.LASF16
  426 00b0 06       		.uleb128 0x6
- 427 00b1 DE020000 		.4byte	.LASF17
+ 427 00b1 F1020000 		.4byte	.LASF17
  428 00b5 01       		.byte	0x1
  429 00b6 1E       		.byte	0x1e
  430 00b7 00000000 		.4byte	.LFB67
@@ -595,10 +595,10 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  444 00d4 00       		.byte	0
  445 00d5 00       		.byte	0
  446 00d6 06       		.uleb128 0x6
- 447 00d7 58000000 		.4byte	.LASF18
+ 447 00d7 5B000000 		.4byte	.LASF18
  448 00db 01       		.byte	0x1
  449 00dc 1A       		.byte	0x1a
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 11
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 11
 
 
  450 00dd 00000000 		.4byte	.LFB66
@@ -618,7 +618,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  464 00fa 00       		.byte	0
  465 00fb 00       		.byte	0
  466 00fc 06       		.uleb128 0x6
- 467 00fd 60010000 		.4byte	.LASF19
+ 467 00fd B2010000 		.4byte	.LASF19
  468 0101 01       		.byte	0x1
  469 0102 3C       		.byte	0x3c
  470 0103 00000000 		.4byte	.LFB73
@@ -634,7 +634,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  480 011f D6000000 		.4byte	0xd6
  481 0123 00       		.byte	0
  482 0124 06       		.uleb128 0x6
- 483 0125 17010000 		.4byte	.LASF20
+ 483 0125 1A010000 		.4byte	.LASF20
  484 0129 01       		.byte	0x1
  485 012a 2C       		.byte	0x2c
  486 012b 00000000 		.4byte	.LFB70
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  504 0155 08       		.uleb128 0x8
  505 0156 01       		.uleb128 0x1
  506 0157 50       		.byte	0x50
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 12
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 12
 
 
  507 0158 02       		.uleb128 0x2
@@ -667,7 +667,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  510 015b 00       		.byte	0
  511 015c 00       		.byte	0
  512 015d 06       		.uleb128 0x6
- 513 015e 64000000 		.4byte	.LASF21
+ 513 015e 67000000 		.4byte	.LASF21
  514 0162 01       		.byte	0x1
  515 0163 32       		.byte	0x32
  516 0164 00000000 		.4byte	.LFB71
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  561 01be 00       		.byte	0
  562 01bf 07       		.uleb128 0x7
  563 01c0 0E000000 		.4byte	.LVL9
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 13
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 13
 
 
  564 01c4 FF020000 		.4byte	0x2ff
@@ -731,7 +731,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  571 01ce 00       		.byte	0
  572 01cf 00       		.byte	0
  573 01d0 06       		.uleb128 0x6
- 574 01d1 FF010000 		.4byte	.LASF23
+ 574 01d1 51020000 		.4byte	.LASF23
  575 01d5 01       		.byte	0x1
  576 01d6 46       		.byte	0x46
  577 01d7 00000000 		.4byte	.LFB75
@@ -740,33 +740,33 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  580 01e0 9C       		.byte	0x9c
  581 01e1 74020000 		.4byte	0x274
  582 01e5 0B       		.uleb128 0xb
- 583 01e6 69020000 		.4byte	.LASF24
+ 583 01e6 BB020000 		.4byte	.LASF24
  584 01ea 01       		.byte	0x1
  585 01eb 47       		.byte	0x47
  586 01ec 81000000 		.4byte	0x81
  587 01f0 01       		.uleb128 0x1
  588 01f1 54       		.byte	0x54
  589 01f2 0B       		.uleb128 0xb
- 590 01f3 1F000000 		.4byte	.LASF25
+ 590 01f3 C1020000 		.4byte	.LASF25
  591 01f7 01       		.byte	0x1
  592 01f8 48       		.byte	0x48
  593 01f9 81000000 		.4byte	0x81
  594 01fd 01       		.uleb128 0x1
  595 01fe 55       		.byte	0x55
  596 01ff 0B       		.uleb128 0xb
- 597 0200 B4020000 		.4byte	.LASF26
+ 597 0200 C7020000 		.4byte	.LASF26
  598 0204 01       		.byte	0x1
  599 0205 49       		.byte	0x49
  600 0206 81000000 		.4byte	0x81
  601 020a 01       		.uleb128 0x1
  602 020b 56       		.byte	0x56
  603 020c 0C       		.uleb128 0xc
- 604 020d BA020000 		.4byte	.LASF27
+ 604 020d CD020000 		.4byte	.LASF27
  605 0211 01       		.byte	0x1
  606 0212 4A       		.byte	0x4a
  607 0213 81000000 		.4byte	0x81
  608 0217 0C       		.uleb128 0xc
- 609 0218 C0020000 		.4byte	.LASF28
+ 609 0218 D3020000 		.4byte	.LASF28
  610 021c 01       		.byte	0x1
  611 021d 4B       		.byte	0x4b
  612 021e 81000000 		.4byte	0x81
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  618 0230 20030000 		.4byte	0x320
  619 0234 09       		.uleb128 0x9
  620 0235 12000000 		.4byte	.LVL14
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 14
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 14
 
 
  621 0239 2B030000 		.4byte	0x32b
@@ -802,7 +802,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  639 026f 96010000 		.4byte	0x196
  640 0273 00       		.byte	0
  641 0274 0D       		.uleb128 0xd
- 642 0275 95010000 		.4byte	.LASF48
+ 642 0275 E7010000 		.4byte	.LASF48
  643 0279 01       		.byte	0x1
  644 027a 5F       		.byte	0x5f
  645 027b 68000000 		.4byte	0x68
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  675 02d5 09       		.uleb128 0x9
  676 02d6 28000000 		.4byte	.LVL33
  677 02da D0010000 		.4byte	0x1d0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 15
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 15
 
 
  678 02de 07       		.uleb128 0x7
@@ -852,30 +852,30 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  686 02ec 00       		.byte	0
  687 02ed 00       		.byte	0
  688 02ee 0E       		.uleb128 0xe
- 689 02ef AA010000 		.4byte	.LASF49
+ 689 02ef FC010000 		.4byte	.LASF49
  690 02f3 13       		.byte	0x13
  691 02f4 1207     		.2byte	0x712
  692 02f6 FA020000 		.4byte	0x2fa
  693 02fa 0F       		.uleb128 0xf
  694 02fb 76000000 		.4byte	0x76
  695 02ff 10       		.uleb128 0x10
- 696 0300 3F000000 		.4byte	.LASF29
- 697 0304 3F000000 		.4byte	.LASF29
+ 696 0300 42000000 		.4byte	.LASF29
+ 697 0304 42000000 		.4byte	.LASF29
  698 0308 05       		.byte	0x5
  699 0309 C3       		.byte	0xc3
  700 030a 10       		.uleb128 0x10
- 701 030b 1C020000 		.4byte	.LASF30
- 702 030f 1C020000 		.4byte	.LASF30
+ 701 030b 6E020000 		.4byte	.LASF30
+ 702 030f 6E020000 		.4byte	.LASF30
  703 0313 06       		.byte	0x6
  704 0314 C3       		.byte	0xc3
  705 0315 10       		.uleb128 0x10
- 706 0316 3D010000 		.4byte	.LASF31
- 707 031a 3D010000 		.4byte	.LASF31
+ 706 0316 40010000 		.4byte	.LASF31
+ 707 031a 40010000 		.4byte	.LASF31
  708 031e 07       		.byte	0x7
  709 031f 29       		.byte	0x29
  710 0320 10       		.uleb128 0x10
- 711 0321 E5010000 		.4byte	.LASF32
- 712 0325 E5010000 		.4byte	.LASF32
+ 711 0321 37020000 		.4byte	.LASF32
+ 712 0325 37020000 		.4byte	.LASF32
  713 0329 08       		.byte	0x8
  714 032a 29       		.byte	0x29
  715 032b 10       		.uleb128 0x10
@@ -884,61 +884,61 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  718 0334 09       		.byte	0x9
  719 0335 29       		.byte	0x29
  720 0336 10       		.uleb128 0x10
- 721 0337 0D010000 		.4byte	.LASF34
- 722 033b 0D010000 		.4byte	.LASF34
+ 721 0337 10010000 		.4byte	.LASF34
+ 722 033b 10010000 		.4byte	.LASF34
  723 033f 0A       		.byte	0xa
  724 0340 29       		.byte	0x29
  725 0341 10       		.uleb128 0x10
- 726 0342 B7010000 		.4byte	.LASF35
- 727 0346 B7010000 		.4byte	.LASF35
+ 726 0342 09020000 		.4byte	.LASF35
+ 727 0346 09020000 		.4byte	.LASF35
  728 034a 0B       		.byte	0xb
  729 034b 29       		.byte	0x29
  730 034c 10       		.uleb128 0x10
- 731 034d 23010000 		.4byte	.LASF36
- 732 0351 23010000 		.4byte	.LASF36
+ 731 034d 26010000 		.4byte	.LASF36
+ 732 0351 26010000 		.4byte	.LASF36
  733 0355 06       		.byte	0x6
  734 0356 92       		.byte	0x92
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 16
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 16
 
 
  735 0357 10       		.uleb128 0x10
- 736 0358 79010000 		.4byte	.LASF37
- 737 035c 79010000 		.4byte	.LASF37
+ 736 0358 CB010000 		.4byte	.LASF37
+ 737 035c CB010000 		.4byte	.LASF37
  738 0360 05       		.byte	0x5
  739 0361 92       		.byte	0x92
  740 0362 10       		.uleb128 0x10
- 741 0363 2F010000 		.4byte	.LASF38
- 742 0367 2F010000 		.4byte	.LASF38
+ 741 0363 32010000 		.4byte	.LASF38
+ 742 0367 32010000 		.4byte	.LASF38
  743 036b 0C       		.byte	0xc
  744 036c 33       		.byte	0x33
  745 036d 10       		.uleb128 0x10
- 746 036e 50010000 		.4byte	.LASF39
- 747 0372 50010000 		.4byte	.LASF39
+ 746 036e 4A010000 		.4byte	.LASF39
+ 747 0372 4A010000 		.4byte	.LASF39
  748 0376 0D       		.byte	0xd
  749 0377 5A       		.byte	0x5a
  750 0378 10       		.uleb128 0x10
- 751 0379 9A010000 		.4byte	.LASF40
- 752 037d 9A010000 		.4byte	.LASF40
+ 751 0379 EC010000 		.4byte	.LASF40
+ 752 037d EC010000 		.4byte	.LASF40
  753 0381 0E       		.byte	0xe
  754 0382 5A       		.byte	0x5a
  755 0383 10       		.uleb128 0x10
- 756 0384 85010000 		.4byte	.LASF41
- 757 0388 85010000 		.4byte	.LASF41
+ 756 0384 D7010000 		.4byte	.LASF41
+ 757 0388 D7010000 		.4byte	.LASF41
  758 038c 0F       		.byte	0xf
  759 038d 5A       		.byte	0x5a
  760 038e 10       		.uleb128 0x10
- 761 038f 49020000 		.4byte	.LASF42
- 762 0393 49020000 		.4byte	.LASF42
+ 761 038f 9B020000 		.4byte	.LASF42
+ 762 0393 9B020000 		.4byte	.LASF42
  763 0397 10       		.byte	0x10
  764 0398 5A       		.byte	0x5a
  765 0399 10       		.uleb128 0x10
- 766 039a EF010000 		.4byte	.LASF43
- 767 039e EF010000 		.4byte	.LASF43
+ 766 039a 41020000 		.4byte	.LASF43
+ 767 039e 41020000 		.4byte	.LASF43
  768 03a2 11       		.byte	0x11
  769 03a3 5A       		.byte	0x5a
  770 03a4 10       		.uleb128 0x10
- 771 03a5 EA020000 		.4byte	.LASF44
- 772 03a9 EA020000 		.4byte	.LASF44
+ 771 03a5 FD020000 		.4byte	.LASF44
+ 772 03a9 FD020000 		.4byte	.LASF44
  773 03ad 12       		.byte	0x12
  774 03ae 76       		.byte	0x76
  775 03af 00       		.byte	0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  789 000b 55       		.uleb128 0x55
  790 000c 17       		.uleb128 0x17
  791 000d 11       		.uleb128 0x11
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 17
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 17
 
 
  792 000e 01       		.uleb128 0x1
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  846 0044 2E       		.uleb128 0x2e
  847 0045 01       		.byte	0x1
  848 0046 03       		.uleb128 0x3
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 18
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 18
 
 
  849 0047 0E       		.uleb128 0xe
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  903 0087 00       		.byte	0
  904 0088 0B       		.uleb128 0xb
  905 0089 34       		.uleb128 0x34
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 19
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 19
 
 
  906 008a 00       		.byte	0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  960 00c2 00       		.byte	0
  961 00c3 0E       		.uleb128 0xe
  962 00c4 34       		.uleb128 0x34
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 20
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 20
 
 
  963 00c5 00       		.byte	0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  1017 0028 00000000 		.4byte	.LFB70
  1018 002c 10000000 		.4byte	.LFE70-.LFB70
  1019 0030 00000000 		.4byte	.LFB71
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 21
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 21
 
 
  1020 0034 10000000 		.4byte	.LFE71-.LFB71
@@ -1249,230 +1249,230 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
  1057 0015 5F5F696E 		.ascii	"__int32_t\000"
  1057      7433325F 
  1057      7400
- 1058              	.LASF25:
- 1059 001f 6C65645F 		.ascii	"led_2\000"
- 1059      3200
+ 1058              	.LASF4:
+ 1059 001f 6C6F6E67 		.ascii	"long int\000"
+ 1059      20696E74 
+ 1059      00
  1060              	.LASF3:
- 1061 0025 73686F72 		.ascii	"short unsigned int\000"
+ 1061 0028 73686F72 		.ascii	"short unsigned int\000"
  1061      7420756E 
  1061      7369676E 
  1061      65642069 
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 22
+
+
  1061      6E7400
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 22
-
-
  1062              	.LASF13:
- 1063 0038 646F7562 		.ascii	"double\000"
+ 1063 003b 646F7562 		.ascii	"double\000"
  1063      6C6500
  1064              	.LASF29:
- 1065 003f 50574D5F 		.ascii	"PWM_2_WriteCompare\000"
+ 1065 0042 50574D5F 		.ascii	"PWM_2_WriteCompare\000"
  1065      325F5772 
  1065      69746543 
  1065      6F6D7061 
  1065      726500
  1066              	.LASF12:
- 1067 0052 666C6F61 		.ascii	"float\000"
+ 1067 0055 666C6F61 		.ascii	"float\000"
  1067      7400
  1068              	.LASF18:
- 1069 0058 4D6F746F 		.ascii	"MotorL_Back\000"
+ 1069 005b 4D6F746F 		.ascii	"MotorL_Back\000"
  1069      724C5F42 
  1069      61636B00 
  1070              	.LASF21:
- 1071 0064 636F7272 		.ascii	"correctRight\000"
+ 1071 0067 636F7272 		.ascii	"correctRight\000"
  1071      65637452 
  1071      69676874 
  1071      00
  1072              	.LASF1:
- 1073 0071 756E7369 		.ascii	"unsigned char\000"
+ 1073 0074 756E7369 		.ascii	"unsigned char\000"
  1073      676E6564 
  1073      20636861 
  1073      7200
  1074              	.LASF45:
- 1075 007f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1075 0082 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  1075      43313120 
  1075      352E342E 
  1075      31203230 
  1075      31363036 
- 1076 00b2 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1076 00b5 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
  1076      20726576 
  1076      6973696F 
  1076      6E203233 
  1076      37373135 
- 1077 00e5 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1077 00e8 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  1077      66756E63 
  1077      74696F6E 
  1077      2D736563 
  1077      74696F6E 
  1078              	.LASF34:
- 1079 010d 4C454434 		.ascii	"LED4_Read\000"
+ 1079 0110 4C454434 		.ascii	"LED4_Read\000"
  1079      5F526561 
  1079      6400
  1080              	.LASF20:
- 1081 0117 636F7272 		.ascii	"correctLeft\000"
+ 1081 011a 636F7272 		.ascii	"correctLeft\000"
  1081      6563744C 
  1081      65667400 
  1082              	.LASF36:
- 1083 0123 50574D5F 		.ascii	"PWM_1_Start\000"
+ 1083 0126 50574D5F 		.ascii	"PWM_1_Start\000"
  1083      315F5374 
  1083      61727400 
  1084              	.LASF38:
- 1085 012f 56444143 		.ascii	"VDAC8_1_Start\000"
+ 1085 0132 56444143 		.ascii	"VDAC8_1_Start\000"
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 23
+
+
  1085      385F315F 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 23
-
-
  1085      53746172 
  1085      7400
  1086              	.LASF31:
- 1087 013d 4C454431 		.ascii	"LED1_Read\000"
+ 1087 0140 4C454431 		.ascii	"LED1_Read\000"
  1087      5F526561 
  1087      6400
- 1088              	.LASF4:
- 1089 0147 6C6F6E67 		.ascii	"long int\000"
- 1089      20696E74 
- 1089      00
- 1090              	.LASF39:
- 1091 0150 54696D65 		.ascii	"Timeout_1_Start\000"
- 1091      6F75745F 
- 1091      315F5374 
- 1091      61727400 
- 1092              	.LASF19:
- 1093 0160 676F4261 		.ascii	"goBack\000"
- 1093      636B00
- 1094              	.LASF5:
- 1095 0167 6C6F6E67 		.ascii	"long unsigned int\000"
- 1095      20756E73 
- 1095      69676E65 
- 1095      6420696E 
- 1095      7400
- 1096              	.LASF37:
- 1097 0179 50574D5F 		.ascii	"PWM_2_Start\000"
- 1097      325F5374 
- 1097      61727400 
- 1098              	.LASF41:
- 1099 0185 54696D65 		.ascii	"Timeout_3_Start\000"
- 1099      6F75745F 
- 1099      335F5374 
- 1099      61727400 
- 1100              	.LASF48:
- 1101 0195 6D61696E 		.ascii	"main\000"
- 1101      00
- 1102              	.LASF40:
- 1103 019a 54696D65 		.ascii	"Timeout_2_Start\000"
- 1103      6F75745F 
- 1103      325F5374 
- 1103      61727400 
- 1104              	.LASF49:
- 1105 01aa 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1105      52784275 
- 1105      66666572 
- 1105      00
- 1106              	.LASF35:
- 1107 01b7 4C454435 		.ascii	"LED5_Read\000"
- 1107      5F526561 
- 1107      6400
- 1108              	.LASF8:
- 1109 01c1 756E7369 		.ascii	"unsigned int\000"
- 1109      676E6564 
- 1109      20696E74 
- 1109      00
- 1110              	.LASF7:
- 1111 01ce 6C6F6E67 		.ascii	"long long unsigned int\000"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 24
+ 1088              	.LASF39:
+ 1089 014a 54696D65 		.ascii	"Timeout_1_Start\000"
+ 1089      6F75745F 
+ 1089      315F5374 
+ 1089      61727400 
+ 1090              	.LASF47:
+ 1091 015a 433A5C55 		.ascii	"C:\\Users\\kkau904\\Documents\\COMPSYS301_team2\\ma"
+ 1091      73657273 
+ 1091      5C6B6B61 
+ 1091      75393034 
+ 1091      5C446F63 
+ 1092 0188 64695C62 		.ascii	"di\\benchmark2\\benchmark2\\benchmark2.cydsn\000"
+ 1092      656E6368 
+ 1092      6D61726B 
+ 1092      325C6265 
+ 1092      6E63686D 
+ 1093              	.LASF19:
+ 1094 01b2 676F4261 		.ascii	"goBack\000"
+ 1094      636B00
+ 1095              	.LASF5:
+ 1096 01b9 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1096      20756E73 
+ 1096      69676E65 
+ 1096      6420696E 
+ 1096      7400
+ 1097              	.LASF37:
+ 1098 01cb 50574D5F 		.ascii	"PWM_2_Start\000"
+ 1098      325F5374 
+ 1098      61727400 
+ 1099              	.LASF41:
+ 1100 01d7 54696D65 		.ascii	"Timeout_3_Start\000"
+ 1100      6F75745F 
+ 1100      335F5374 
+ 1100      61727400 
+ 1101              	.LASF48:
+ 1102 01e7 6D61696E 		.ascii	"main\000"
+ 1102      00
+ 1103              	.LASF40:
+ 1104 01ec 54696D65 		.ascii	"Timeout_2_Start\000"
+ 1104      6F75745F 
+ 1104      325F5374 
+ 1104      61727400 
+ 1105              	.LASF49:
+ 1106 01fc 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1106      52784275 
+ 1106      66666572 
+ 1106      00
+ 1107              	.LASF35:
+ 1108 0209 4C454435 		.ascii	"LED5_Read\000"
+ 1108      5F526561 
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 24
 
 
- 1111      206C6F6E 
- 1111      6720756E 
- 1111      7369676E 
- 1111      65642069 
- 1112              	.LASF32:
- 1113 01e5 4C454432 		.ascii	"LED2_Read\000"
- 1113      5F526561 
- 1113      6400
- 1114              	.LASF43:
- 1115 01ef 54696D65 		.ascii	"Timeout_5_Start\000"
- 1115      6F75745F 
- 1115      355F5374 
- 1115      61727400 
- 1116              	.LASF23:
- 1117 01ff 646F536F 		.ascii	"doSomething\000"
- 1117      6D657468 
- 1117      696E6700 
- 1118              	.LASF10:
- 1119 020b 696E7433 		.ascii	"int32_t\000"
- 1119      325F7400 
- 1120              	.LASF16:
- 1121 0213 73697A65 		.ascii	"sizetype\000"
- 1121      74797065 
- 1121      00
- 1122              	.LASF30:
- 1123 021c 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
- 1123      315F5772 
- 1123      69746543 
- 1123      6F6D7061 
- 1123      726500
- 1124              	.LASF6:
- 1125 022f 6C6F6E67 		.ascii	"long long int\000"
- 1125      206C6F6E 
- 1125      6720696E 
- 1125      7400
- 1126              	.LASF46:
- 1127 023d 6D61696E 		.ascii	"main.c\000"
- 1127      2E6300
- 1128              	.LASF14:
- 1129 0244 63686172 		.ascii	"char\000"
- 1129      00
- 1130              	.LASF42:
- 1131 0249 54696D65 		.ascii	"Timeout_4_Start\000"
- 1131      6F75745F 
- 1131      345F5374 
- 1131      61727400 
- 1132              	.LASF2:
- 1133 0259 73686F72 		.ascii	"short int\000"
- 1133      7420696E 
- 1133      7400
- 1134              	.LASF11:
- 1135 0263 75696E74 		.ascii	"uint8\000"
- 1135      3800
- 1136              	.LASF24:
- 1137 0269 6C65645F 		.ascii	"led_1\000"
- 1137      3100
- 1138              	.LASF47:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 25
+ 1108      6400
+ 1109              	.LASF8:
+ 1110 0213 756E7369 		.ascii	"unsigned int\000"
+ 1110      676E6564 
+ 1110      20696E74 
+ 1110      00
+ 1111              	.LASF7:
+ 1112 0220 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1112      206C6F6E 
+ 1112      6720756E 
+ 1112      7369676E 
+ 1112      65642069 
+ 1113              	.LASF32:
+ 1114 0237 4C454432 		.ascii	"LED2_Read\000"
+ 1114      5F526561 
+ 1114      6400
+ 1115              	.LASF43:
+ 1116 0241 54696D65 		.ascii	"Timeout_5_Start\000"
+ 1116      6F75745F 
+ 1116      355F5374 
+ 1116      61727400 
+ 1117              	.LASF23:
+ 1118 0251 646F536F 		.ascii	"doSomething\000"
+ 1118      6D657468 
+ 1118      696E6700 
+ 1119              	.LASF10:
+ 1120 025d 696E7433 		.ascii	"int32_t\000"
+ 1120      325F7400 
+ 1121              	.LASF16:
+ 1122 0265 73697A65 		.ascii	"sizetype\000"
+ 1122      74797065 
+ 1122      00
+ 1123              	.LASF30:
+ 1124 026e 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 1124      315F5772 
+ 1124      69746543 
+ 1124      6F6D7061 
+ 1124      726500
+ 1125              	.LASF6:
+ 1126 0281 6C6F6E67 		.ascii	"long long int\000"
+ 1126      206C6F6E 
+ 1126      6720696E 
+ 1126      7400
+ 1127              	.LASF46:
+ 1128 028f 6D61696E 		.ascii	"main.c\000"
+ 1128      2E6300
+ 1129              	.LASF14:
+ 1130 0296 63686172 		.ascii	"char\000"
+ 1130      00
+ 1131              	.LASF42:
+ 1132 029b 54696D65 		.ascii	"Timeout_4_Start\000"
+ 1132      6F75745F 
+ 1132      345F5374 
+ 1132      61727400 
+ 1133              	.LASF2:
+ 1134 02ab 73686F72 		.ascii	"short int\000"
+ 1134      7420696E 
+ARM GAS  C:\Users\kkau904\AppData\Local\Temp\ccs81BGI.s 			page 25
 
 
- 1139 026f 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\benchmark2\\bench"
- 1139      454D505C 
- 1139      434F4D50 
- 1139      53595333 
- 1139      30315F74 
- 1140 029d 6D61726B 		.ascii	"mark2\\benchmark2.cydsn\000"
- 1140      325C6265 
- 1140      6E63686D 
- 1140      61726B32 
- 1140      2E637964 
+ 1134      7400
+ 1135              	.LASF11:
+ 1136 02b5 75696E74 		.ascii	"uint8\000"
+ 1136      3800
+ 1137              	.LASF24:
+ 1138 02bb 6C65645F 		.ascii	"led_1\000"
+ 1138      3100
+ 1139              	.LASF25:
+ 1140 02c1 6C65645F 		.ascii	"led_2\000"
+ 1140      3200
  1141              	.LASF26:
- 1142 02b4 6C65645F 		.ascii	"led_3\000"
+ 1142 02c7 6C65645F 		.ascii	"led_3\000"
  1142      3300
  1143              	.LASF27:
- 1144 02ba 6C65645F 		.ascii	"led_4\000"
+ 1144 02cd 6C65645F 		.ascii	"led_4\000"
  1144      3400
  1145              	.LASF28:
- 1146 02c0 6C65645F 		.ascii	"led_5\000"
+ 1146 02d3 6C65645F 		.ascii	"led_5\000"
  1146      3500
  1147              	.LASF15:
- 1148 02c6 6C6F6E67 		.ascii	"long double\000"
+ 1148 02d9 6C6F6E67 		.ascii	"long double\000"
  1148      20646F75 
  1148      626C6500 
  1149              	.LASF0:
- 1150 02d2 7369676E 		.ascii	"signed char\000"
+ 1150 02e5 7369676E 		.ascii	"signed char\000"
  1150      65642063 
  1150      68617200 
  1151              	.LASF17:
- 1152 02de 4D6F746F 		.ascii	"MotorR_Back\000"
+ 1152 02f1 4D6F746F 		.ascii	"MotorR_Back\000"
  1152      72525F42 
  1152      61636B00 
  1153              	.LASF44:
- 1154 02ea 43794465 		.ascii	"CyDelay\000"
+ 1154 02fd 43794465 		.ascii	"CyDelay\000"
  1154      6C617900 
  1155              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
