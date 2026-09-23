@@ -1,0 +1,21 @@
+--------------- Build Started: 09/23/2026 17:26:09 Project: Sensor Validation, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
+main.c: In function 'doSomething':
+main.c:57:11: warning: unused variable 'led_5' [-Wunused-variable]
+     uint8 led_5 = LED5_Read();  // Front left sensor
+           ^
+main.c:56:11: warning: unused variable 'led_4' [-Wunused-variable]
+     uint8 led_4 = LED4_Read();  // Front right sensor
+           ^
+arm-none-eabi-ar.exe -rs ".\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a" .\CortexM3\ARM_GCC_541\Debug\LED1.o .\CortexM3\ARM_GCC_541\Debug\LED2.o .\CortexM3\ARM_GCC_541\Debug\LED3.o .\CortexM3\ARM_GCC_541\Debug\LED4.o .\CortexM3\ARM_GCC_541\Debug\LED5.o .\CortexM3\ARM_GCC_541\Debug\PWM_1.o .\CortexM3\ARM_GCC_541\Debug\PWM_1_PM.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\VDAC8_1.o .\CortexM3\ARM_GCC_541\Debug\VDAC8_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Vref_DAC1.o .\CortexM3\ARM_GCC_541\Debug\Vref_DAC2.o .\CortexM3\ARM_GCC_541\Debug\Vout1.o .\CortexM3\ARM_GCC_541\Debug\Vout2.o .\CortexM3\ARM_GCC_541\Debug\Vout3.o .\CortexM3\ARM_GCC_541\Debug\Vout4.o .\CortexM3\ARM_GCC_541\Debug\Vout5.o .\CortexM3\ARM_GCC_541\Debug\Timeout_1.o .\CortexM3\ARM_GCC_541\Debug\Timeout_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_2.o .\CortexM3\ARM_GCC_541\Debug\Timeout_2_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_4.o .\CortexM3\ARM_GCC_541\Debug\Timeout_4_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_3.o .\CortexM3\ARM_GCC_541\Debug\Timeout_3_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_5.o .\CortexM3\ARM_GCC_541\Debug\Timeout_5_PM.o .\CortexM3\ARM_GCC_541\Debug\isr_1.o .\CortexM3\ARM_GCC_541\Debug\Clock_PWM.o .\CortexM3\ARM_GCC_541\Debug\M1_IN2.o .\CortexM3\ARM_GCC_541\Debug\M1_IN1.o .\CortexM3\ARM_GCC_541\Debug\PWM_2.o .\CortexM3\ARM_GCC_541\Debug\PWM_2_PM.o .\CortexM3\ARM_GCC_541\Debug\M2_IN2_1.o .\CortexM3\ARM_GCC_541\Debug\M2_IN1_1.o .\CortexM3\ARM_GCC_541\Debug\isr_2.o .\CortexM3\ARM_GCC_541\Debug\isr_3.o .\CortexM3\ARM_GCC_541\Debug\isr_4.o .\CortexM3\ARM_GCC_541\Debug\isr_5.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\aale517\Documents\COMPSYS301_team2\aidan\Sensor Validation\Sensor Validation.cydsn\CortexM3\ARM_GCC_541\Debug\Sensor Validation.elf" .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o ".\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a" "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 "-Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/Sensor Validation.map" -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C "C:\Users\aale517\Documents\COMPSYS301_team2\aidan\Sensor Validation\Sensor Validation.cydsn\CortexM3\ARM_GCC_541\Debug\Sensor Validation.elf" --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
+No ELF section .cychecksum found, creating one
+Application checksum calculated and stored in ELF section .cychecksum
+Checksum calculated and stored in ELF section .cymeta
+cyelftool.exe -S "C:\Users\aale517\Documents\COMPSYS301_team2\aidan\Sensor Validation\Sensor Validation.cydsn\CortexM3\ARM_GCC_541\Debug\Sensor Validation.elf"
+Flash used: 3318 of 262144 bytes (1.3%).
+SRAM used: 2529 of 65536 bytes (3.9%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 09/23/2026 17:26:11 ---------------

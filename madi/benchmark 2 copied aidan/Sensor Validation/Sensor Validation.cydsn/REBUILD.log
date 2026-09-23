@@ -1,0 +1,96 @@
+--------------- Rebuild Started: 09/23/2026 17:38:10 Project: Sensor Validation, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\main.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cymetadata.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\LED1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\LED2.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\LED3.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\LED4.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\LED5.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\PWM_1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\PWM_1_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Cm3Start.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CyDmac.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CyFlash.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CyLib.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cyPm.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CySpc.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cyutils.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\VDAC8_1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\VDAC8_1_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Vref_DAC1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Vref_DAC2.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Vout1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Vout2.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Vout3.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Vout4.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Vout5.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_1_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_2.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_2_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_4.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_4_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_3.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_3_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_5.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timeout_5_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\isr_1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Clock_PWM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\M1_IN2.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\M1_IN1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\PWM_2.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\PWM_2_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\M2_IN2_1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\M2_IN1_1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\isr_2.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\isr_3.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\isr_4.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\isr_5.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Sensor Validation.hex"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Sensor Validation.elf"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Sensor Validation.map"
+Deleting file ".\Sensor Validation.cycdx"
+Deleting file ".\Sensor Validation.svd"
+Deleting file ".\Sensor Validation.rpt"
+Deleting file ".\Sensor Validation_timing.html"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.P"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\.deps\SOURCE_ASM__ARM_GCC_GENERIC.P"
+cydsfit.exe -.appdatapath "C:\Users\kkau904\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "C:\Users\kkau904\Documents\COMPSYS301_team2\madi\benchmark 2 copied aidan\Sensor Validation\Sensor Validation.cydsn\Sensor Validation.cyprj" -d CY8C5888LTI-LP097 -s "C:\Users\kkau904\Documents\COMPSYS301_team2\madi\benchmark 2 copied aidan\Sensor Validation\Sensor Validation.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+Elaborating Design...
+HDL Generation...
+Synthesis...
+Tech Mapping...
+Analog Placement...
+Log: apr.M0058: The analog placement iterative improvement is 44% done. (App=cydsfit)
+Analog Routing...
+Analog Code Generation...
+Digital Placement...
+Digital Routing...
+Bitstream Generation...
+Bitstream Verification...
+Static timing analysis...
+API Generation...
+Dependency Generation...
+Cleanup...
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
+main.c: In function 'doSomething':
+main.c:62:11: warning: unused variable 'led_5' [-Wunused-variable]
+     uint8 led_5 = LED5_Read();  // Front left sensor
+           ^
+main.c:61:11: warning: unused variable 'led_4' [-Wunused-variable]
+     uint8 led_4 = LED4_Read();  // Front right sensor
+           ^
+main.c: In function 'adjustSpeed':
+main.c:85:5: error: 'newCMP' undeclared (first use in this function)
+     newCMP = (speed - 0.8911) / -0.0273;
+     ^
+main.c:85:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c: At top level:
+main.c:82:13: warning: 'adjustSpeed' defined but not used [-Wunused-function]
+ static void adjustSpeed(){
+             ^
+The command 'arm-none-eabi-gcc.exe' failed with exit code '1'.
+--------------- Rebuild Failed: 09/23/2026 17:38:30 ---------------
