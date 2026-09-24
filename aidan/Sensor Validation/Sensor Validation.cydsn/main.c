@@ -1,7 +1,7 @@
 #include "project.h"
 #include <stdio.h>
 
-#define FORWARD_COMPARE 20
+#define FORWARD_COMPARE 15
 #define period 90
 
 uint16 overCount = 0;
@@ -20,19 +20,7 @@ static void MotorL_Back() {
 
 static void MotorR_Back() {
     PWM_2_WriteCompare(period - FORWARD_COMPARE);
-}
-
-
-static void largeCorrectLeft() {
-    PWM_2_WriteCompare(FORWARD_COMPARE - 3);
-    PWM_1_WriteCompare(period - FORWARD_COMPARE + 3);
-    
-}    
-
-static void largeCorrectRight() {
-    PWM_1_WriteCompare(FORWARD_COMPARE - 3);
-    PWM_2_WriteCompare(period - FORWARD_COMPARE + 3);
-}    
+}   
 
 static void goForward() {
     MotorR_Forward();
@@ -49,6 +37,16 @@ static void stopMoving(){
     PWM_2_WriteCompare(45);
 }
 
+static void oneSensorForward() {
+    PWM_1_WriteCompare(FORWARD_COMPARE - 2);
+    PWM_2_WriteCompare(FORWARD_COMPARE);
+}
+
+static void oneSensorCorrect() {
+    PWM_1_WriteCompare(period - 20);
+    PWM_2_WriteCompare(20);
+}
+
 static void doSomething() {
     uint8 led_1 = LED1_Read();  // Front sensor
     uint8 led_2 = LED2_Read();  // Back left sensor
@@ -56,22 +54,12 @@ static void doSomething() {
     uint8 led_4 = LED4_Read();  // Front right sensor
     uint8 led_5 = LED5_Read();  // Front left sensor
     
-    
-    if (led_2 == 1 && led_3 == 1) {
-        goBack();
-    } else if (led_2 == 1) {
-        largeCorrectLeft();
-        overCount = 0;
-    } else if (led_3 == 1) {
-        largeCorrectRight();
-        overCount = 0;
-    } else if (led_1 == 1 && led_2 == 0 && led_3 == 0) {
-        goBack();
-    } else if (led_1 == 0 && led_2 == 0 && led_3 == 0) {
-        goForward();
+    if (led_1 == 1) {
+        oneSensorCorrect();
     } else {
-        stopMoving();
+        oneSensorForward();
     }
+
 }
 
 
