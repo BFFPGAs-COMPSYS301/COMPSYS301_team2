@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
   28:Generated_Source\PSoC5/Vout3.c **** *
   29:Generated_Source\PSoC5/Vout3.c **** * \brief Writes the value to the physical port (data output register), masking
   30:Generated_Source\PSoC5/Vout3.c **** *  and shifting the bits appropriately. 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 2
 
 
   31:Generated_Source\PSoC5/Vout3.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
   52              		.size	Vout3_Write, .-Vout3_Write
   53              		.section	.text.Vout3_SetDriveMode,"ax",%progbits
   54              		.align	2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 3
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 3
 
 
   55              		.global	Vout3_SetDriveMode
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
   77 0012 00BF     		.align	2
   78              	.L5:
   79 0014 11500040 		.word	1073762321
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 4
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 4
 
 
   80              		.cfi_endproc
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  110              		.align	2
  111              		.global	Vout3_ReadDataReg
  112              		.thumb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 5
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 5
 
 
  113              		.thumb_func
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  139              	.Ldebug_info0:
  140 0000 1B010000 		.4byte	0x11b
  141 0004 0400     		.2byte	0x4
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 6
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 6
 
 
  142 0006 00000000 		.4byte	.Ldebug_abbrev0
@@ -306,15 +306,15 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  144 000b 01       		.uleb128 0x1
  145 000c 31000000 		.4byte	.LASF20
  146 0010 0C       		.byte	0xc
- 147 0011 1B010000 		.4byte	.LASF21
- 148 0015 8B010000 		.4byte	.LASF22
+ 147 0011 5F010000 		.4byte	.LASF21
+ 148 0015 F4000000 		.4byte	.LASF22
  149 0019 00000000 		.4byte	.Ldebug_ranges0+0
  150 001d 00000000 		.4byte	0
  151 0021 00000000 		.4byte	.Ldebug_line0
  152 0025 02       		.uleb128 0x2
  153 0026 01       		.byte	0x1
  154 0027 06       		.byte	0x6
- 155 0028 D9010000 		.4byte	.LASF0
+ 155 0028 D8010000 		.4byte	.LASF0
  156 002c 02       		.uleb128 0x2
  157 002d 01       		.byte	0x1
  158 002e 08       		.byte	0x8
@@ -322,7 +322,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  160 0033 02       		.uleb128 0x2
  161 0034 02       		.byte	0x2
  162 0035 05       		.byte	0x5
- 163 0036 7B010000 		.4byte	.LASF2
+ 163 0036 BF010000 		.4byte	.LASF2
  164 003a 02       		.uleb128 0x2
  165 003b 02       		.byte	0x2
  166 003c 07       		.byte	0x7
@@ -330,7 +330,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  168 0041 02       		.uleb128 0x2
  169 0042 04       		.byte	0x4
  170 0043 05       		.byte	0x5
- 171 0044 D0010000 		.4byte	.LASF4
+ 171 0044 CF010000 		.4byte	.LASF4
  172 0048 02       		.uleb128 0x2
  173 0049 04       		.byte	0x4
  174 004a 07       		.byte	0x7
@@ -338,11 +338,11 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  176 004f 02       		.uleb128 0x2
  177 0050 08       		.byte	0x8
  178 0051 05       		.byte	0x5
- 179 0052 56010000 		.4byte	.LASF6
+ 179 0052 9A010000 		.4byte	.LASF6
  180 0056 02       		.uleb128 0x2
  181 0057 08       		.byte	0x8
  182 0058 07       		.byte	0x7
- 183 0059 3A010000 		.4byte	.LASF7
+ 183 0059 7E010000 		.4byte	.LASF7
  184 005d 03       		.uleb128 0x3
  185 005e 04       		.byte	0x4
  186 005f 05       		.byte	0x5
@@ -350,15 +350,15 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  188 0064 02       		.uleb128 0x2
  189 0065 04       		.byte	0x4
  190 0066 07       		.byte	0x7
- 191 0067 0E010000 		.4byte	.LASF8
+ 191 0067 52010000 		.4byte	.LASF8
  192 006b 04       		.uleb128 0x4
- 193 006c 85010000 		.4byte	.LASF12
+ 193 006c C9010000 		.4byte	.LASF12
  194 0070 02       		.byte	0x2
  195 0071 E701     		.2byte	0x1e7
  196 0073 2C000000 		.4byte	0x2c
  197 0077 02       		.uleb128 0x2
  198 0078 04       		.byte	0x4
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 7
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 7
 
 
  199 0079 04       		.byte	0x4
@@ -366,11 +366,11 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  201 007e 02       		.uleb128 0x2
  202 007f 08       		.byte	0x8
  203 0080 04       		.byte	0x4
- 204 0081 F4000000 		.4byte	.LASF10
+ 204 0081 38010000 		.4byte	.LASF10
  205 0085 02       		.uleb128 0x2
  206 0086 01       		.byte	0x1
  207 0087 08       		.byte	0x8
- 208 0088 64010000 		.4byte	.LASF11
+ 208 0088 A8010000 		.4byte	.LASF11
  209 008c 04       		.uleb128 0x4
  210 008d BF000000 		.4byte	.LASF13
  211 0091 02       		.byte	0x2
@@ -402,7 +402,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  237 00cd 53       		.byte	0x53
  238 00ce 00       		.byte	0
  239 00cf 06       		.uleb128 0x6
- 240 00d0 FB000000 		.4byte	.LASF15
+ 240 00d0 3F010000 		.4byte	.LASF15
  241 00d4 01       		.byte	0x1
  242 00d5 5A       		.byte	0x5a
  243 00d6 00000000 		.4byte	.LFB1
@@ -411,14 +411,14 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  246 00df 9C       		.byte	0x9c
  247 00e0 F4000000 		.4byte	0xf4
  248 00e4 07       		.uleb128 0x7
- 249 00e5 51010000 		.4byte	.LASF17
+ 249 00e5 95010000 		.4byte	.LASF17
  250 00e9 01       		.byte	0x1
  251 00ea 5A       		.byte	0x5a
  252 00eb 6B000000 		.4byte	0x6b
  253 00ef 21000000 		.4byte	.LLST1
  254 00f3 00       		.byte	0
  255 00f4 09       		.uleb128 0x9
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 8
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 8
 
 
  256 00f5 C4000000 		.4byte	.LASF18
@@ -430,7 +430,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  262 0107 01       		.uleb128 0x1
  263 0108 9C       		.byte	0x9c
  264 0109 09       		.uleb128 0x9
- 265 010a 69010000 		.4byte	.LASF19
+ 265 010a AD010000 		.4byte	.LASF19
  266 010e 01       		.byte	0x1
  267 010f 8D       		.byte	0x8d
  268 0110 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  310 0022 0B       		.uleb128 0xb
  311 0023 3E       		.uleb128 0x3e
  312 0024 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 9
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 9
 
 
  313 0025 03       		.uleb128 0x3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  367 005c 3A       		.uleb128 0x3a
  368 005d 0B       		.uleb128 0xb
  369 005e 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 10
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 10
 
 
  370 005f 0B       		.uleb128 0xb
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  424 000a 50       		.byte	0x50
  425 000b 0A000000 		.4byte	.LVL2
  426 000f 18000000 		.4byte	.LFE0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 11
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 11
 
 
  427 0013 0400     		.2byte	0x4
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  480      02004200 
  480      00000201 
  480      FB0E0D00 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 12
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 12
 
 
  480      01010101 
@@ -716,79 +716,79 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 1
  502      7369676E 
  502      65642069 
  502      6E7400
- 503              	.LASF10:
- 504 00f4 646F7562 		.ascii	"double\000"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 13
+ 503              	.LASF22:
+ 504 00f4 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\khushman\\benchmark2_kh"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 13
 
 
- 504      6C6500
- 505              	.LASF15:
- 506 00fb 566F7574 		.ascii	"Vout3_SetDriveMode\000"
- 506      335F5365 
- 506      74447269 
- 506      76654D6F 
- 506      646500
- 507              	.LASF8:
- 508 010e 756E7369 		.ascii	"unsigned int\000"
- 508      676E6564 
- 508      20696E74 
- 508      00
- 509              	.LASF21:
- 510 011b 47656E65 		.ascii	"Generated_Source\\PSoC5\\Vout3.c\000"
- 510      72617465 
- 510      645F536F 
- 510      75726365 
- 510      5C50536F 
- 511              	.LASF7:
- 512 013a 6C6F6E67 		.ascii	"long long unsigned int\000"
- 512      206C6F6E 
- 512      6720756E 
- 512      7369676E 
- 512      65642069 
- 513              	.LASF17:
- 514 0151 6D6F6465 		.ascii	"mode\000"
- 514      00
- 515              	.LASF6:
- 516 0156 6C6F6E67 		.ascii	"long long int\000"
- 516      206C6F6E 
- 516      6720696E 
- 516      7400
- 517              	.LASF11:
- 518 0164 63686172 		.ascii	"char\000"
- 518      00
- 519              	.LASF19:
- 520 0169 566F7574 		.ascii	"Vout3_ReadDataReg\000"
- 520      335F5265 
- 520      61644461 
- 520      74615265 
- 520      6700
- 521              	.LASF2:
- 522 017b 73686F72 		.ascii	"short int\000"
- 522      7420696E 
- 522      7400
- 523              	.LASF12:
- 524 0185 75696E74 		.ascii	"uint8\000"
- 524      3800
- 525              	.LASF22:
- 526 018b 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\benchmark2\\bench"
- 526      454D505C 
- 526      434F4D50 
- 526      53595333 
- 526      30315F74 
- 527 01b9 6D61726B 		.ascii	"mark2\\benchmark2.cydsn\000"
- 527      325C6265 
- 527      6E63686D 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbdin2z.s 			page 14
+ 504      454D505C 
+ 504      434F4D50 
+ 504      53595333 
+ 504      30315F74 
+ 505 0123 7573685C 		.ascii	"ush\\benchmark2.cydsn\000"
+ 505      62656E63 
+ 505      686D6172 
+ 505      6B322E63 
+ 505      7964736E 
+ 506              	.LASF10:
+ 507 0138 646F7562 		.ascii	"double\000"
+ 507      6C6500
+ 508              	.LASF15:
+ 509 013f 566F7574 		.ascii	"Vout3_SetDriveMode\000"
+ 509      335F5365 
+ 509      74447269 
+ 509      76654D6F 
+ 509      646500
+ 510              	.LASF8:
+ 511 0152 756E7369 		.ascii	"unsigned int\000"
+ 511      676E6564 
+ 511      20696E74 
+ 511      00
+ 512              	.LASF21:
+ 513 015f 47656E65 		.ascii	"Generated_Source\\PSoC5\\Vout3.c\000"
+ 513      72617465 
+ 513      645F536F 
+ 513      75726365 
+ 513      5C50536F 
+ 514              	.LASF7:
+ 515 017e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 515      206C6F6E 
+ 515      6720756E 
+ 515      7369676E 
+ 515      65642069 
+ 516              	.LASF17:
+ 517 0195 6D6F6465 		.ascii	"mode\000"
+ 517      00
+ 518              	.LASF6:
+ 519 019a 6C6F6E67 		.ascii	"long long int\000"
+ 519      206C6F6E 
+ 519      6720696E 
+ 519      7400
+ 520              	.LASF11:
+ 521 01a8 63686172 		.ascii	"char\000"
+ 521      00
+ 522              	.LASF19:
+ 523 01ad 566F7574 		.ascii	"Vout3_ReadDataReg\000"
+ 523      335F5265 
+ 523      61644461 
+ 523      74615265 
+ 523      6700
+ 524              	.LASF2:
+ 525 01bf 73686F72 		.ascii	"short int\000"
+ 525      7420696E 
+ 525      7400
+ 526              	.LASF12:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccTSelcS.s 			page 14
 
 
- 527      61726B32 
- 527      2E637964 
+ 527 01c9 75696E74 		.ascii	"uint8\000"
+ 527      3800
  528              	.LASF4:
- 529 01d0 6C6F6E67 		.ascii	"long int\000"
+ 529 01cf 6C6F6E67 		.ascii	"long int\000"
  529      20696E74 
  529      00
  530              	.LASF0:
- 531 01d9 7369676E 		.ascii	"signed char\000"
+ 531 01d8 7369676E 		.ascii	"signed char\000"
  531      65642063 
  531      68617200 
  532              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

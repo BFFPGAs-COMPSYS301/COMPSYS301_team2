@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
   28:Generated_Source\PSoC5/Timeout_3_PM.c **** * Summary:
   29:Generated_Source\PSoC5/Timeout_3_PM.c **** *     Save the current user configuration
   30:Generated_Source\PSoC5/Timeout_3_PM.c **** *
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 2
 
 
   31:Generated_Source\PSoC5/Timeout_3_PM.c **** * Parameters:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
   59              		.align	2
   60              		.global	Timeout_3_RestoreConfig
   61              		.thumb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 3
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 3
 
 
   62              		.thumb_func
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
   87:Generated_Source\PSoC5/Timeout_3_PM.c ****         #if(!Timeout_3_UDB_CONTROL_REG_REMOVED)
   88:Generated_Source\PSoC5/Timeout_3_PM.c ****             Timeout_3_WriteControlRegister(Timeout_3_backup.TimerControlRegister);
   83              		.loc 1 88 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 4
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 4
 
 
   84 0010 6079     		ldrb	r0, [r4, #5]	@ zero_extendqisi2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  115:Generated_Source\PSoC5/Timeout_3_PM.c ****         /* Save Counter's enable state */
  116:Generated_Source\PSoC5/Timeout_3_PM.c ****         if(Timeout_3_CTRL_ENABLE == (Timeout_3_CONTROL & Timeout_3_CTRL_ENABLE))
  112              		.loc 1 116 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 5
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 5
 
 
  113 0002 084B     		ldr	r3, .L13
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  133:Generated_Source\PSoC5/Timeout_3_PM.c **** * Function Name: Timeout_3_Wakeup
  134:Generated_Source\PSoC5/Timeout_3_PM.c **** ********************************************************************************
  135:Generated_Source\PSoC5/Timeout_3_PM.c **** *
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 6
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 6
 
 
  136:Generated_Source\PSoC5/Timeout_3_PM.c **** * Summary:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  184              	Timeout_3_backup:
  185 0000 00000000 		.space	6
  185      0000
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 7
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 7
 
 
  186              		.text
@@ -374,15 +374,15 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  196 000b 01       		.uleb128 0x1
  197 000c 9D000000 		.4byte	.LASF32
  198 0010 0C       		.byte	0xc
- 199 0011 89010000 		.4byte	.LASF33
- 200 0015 2C020000 		.4byte	.LASF34
+ 199 0011 CD010000 		.4byte	.LASF33
+ 200 0015 57010000 		.4byte	.LASF34
  201 0019 00000000 		.4byte	.Ldebug_ranges0+0
  202 001d 00000000 		.4byte	0
  203 0021 00000000 		.4byte	.Ldebug_line0
  204 0025 02       		.uleb128 0x2
  205 0026 01       		.byte	0x1
  206 0027 06       		.byte	0x6
- 207 0028 9D020000 		.4byte	.LASF0
+ 207 0028 9C020000 		.4byte	.LASF0
  208 002c 02       		.uleb128 0x2
  209 002d 01       		.byte	0x1
  210 002e 08       		.byte	0x8
@@ -390,7 +390,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  212 0033 02       		.uleb128 0x2
  213 0034 02       		.byte	0x2
  214 0035 05       		.byte	0x5
- 215 0036 22020000 		.4byte	.LASF2
+ 215 0036 66020000 		.4byte	.LASF2
  216 003a 02       		.uleb128 0x2
  217 003b 02       		.byte	0x2
  218 003c 07       		.byte	0x7
@@ -398,7 +398,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  220 0041 02       		.uleb128 0x2
  221 0042 04       		.byte	0x4
  222 0043 05       		.byte	0x5
- 223 0044 71020000 		.4byte	.LASF4
+ 223 0044 70020000 		.4byte	.LASF4
  224 0048 02       		.uleb128 0x2
  225 0049 04       		.byte	0x4
  226 004a 07       		.byte	0x7
@@ -406,11 +406,11 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  228 004f 02       		.uleb128 0x2
  229 0050 08       		.byte	0x8
  230 0051 05       		.byte	0x5
- 231 0052 0F020000 		.4byte	.LASF6
+ 231 0052 53020000 		.4byte	.LASF6
  232 0056 02       		.uleb128 0x2
  233 0057 08       		.byte	0x8
  234 0058 07       		.byte	0x7
- 235 0059 AF010000 		.4byte	.LASF7
+ 235 0059 F3010000 		.4byte	.LASF7
  236 005d 03       		.uleb128 0x3
  237 005e 04       		.byte	0x4
  238 005f 05       		.byte	0x5
@@ -418,17 +418,17 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  240 0064 02       		.uleb128 0x2
  241 0065 04       		.byte	0x4
  242 0066 07       		.byte	0x7
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 8
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 8
 
 
- 243 0067 7C010000 		.4byte	.LASF8
+ 243 0067 C0010000 		.4byte	.LASF8
  244 006b 04       		.uleb128 0x4
  245 006c 42010000 		.4byte	.LASF9
  246 0070 02       		.byte	0x2
  247 0071 E701     		.2byte	0x1e7
  248 0073 2C000000 		.4byte	0x2c
  249 0077 04       		.uleb128 0x4
- 250 0078 5E010000 		.4byte	.LASF10
+ 250 0078 A2010000 		.4byte	.LASF10
  251 007c 02       		.byte	0x2
  252 007d E801     		.2byte	0x1e8
  253 007f 3A000000 		.4byte	0x3a
@@ -439,11 +439,11 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  258 008a 02       		.uleb128 0x2
  259 008b 08       		.byte	0x8
  260 008c 04       		.byte	0x4
- 261 008d 57010000 		.4byte	.LASF12
+ 261 008d 9B010000 		.4byte	.LASF12
  262 0091 02       		.uleb128 0x2
  263 0092 01       		.byte	0x1
  264 0093 08       		.byte	0x8
- 265 0094 1D020000 		.4byte	.LASF13
+ 265 0094 61020000 		.4byte	.LASF13
  266 0098 04       		.uleb128 0x4
  267 0099 2B010000 		.4byte	.LASF14
  268 009d 02       		.byte	0x2
@@ -454,11 +454,11 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  273 00a9 02       		.uleb128 0x2
  274 00aa 08       		.byte	0x8
  275 00ab 04       		.byte	0x4
- 276 00ac 91020000 		.4byte	.LASF15
+ 276 00ac 90020000 		.4byte	.LASF15
  277 00b0 02       		.uleb128 0x2
  278 00b1 04       		.byte	0x4
  279 00b2 07       		.byte	0x7
- 280 00b3 06020000 		.4byte	.LASF16
+ 280 00b3 4A020000 		.4byte	.LASF16
  281 00b7 06       		.uleb128 0x6
  282 00b8 06       		.byte	0x6
  283 00b9 03       		.byte	0x3
@@ -477,8 +477,8 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  296 00d2 77000000 		.4byte	0x77
  297 00d6 02       		.byte	0x2
  298 00d7 07       		.uleb128 0x7
- 299 00d8 D0020000 		.4byte	.LASF19
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 9
+ 299 00d8 CF020000 		.4byte	.LASF19
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 9
 
 
  300 00dc 03       		.byte	0x3
@@ -486,14 +486,14 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  302 00de 6B000000 		.4byte	0x6b
  303 00e2 04       		.byte	0x4
  304 00e3 07       		.uleb128 0x7
- 305 00e4 E3020000 		.4byte	.LASF20
+ 305 00e4 E2020000 		.4byte	.LASF20
  306 00e8 03       		.byte	0x3
  307 00e9 4F       		.byte	0x4f
  308 00ea 6B000000 		.4byte	0x6b
  309 00ee 05       		.byte	0x5
  310 00ef 00       		.byte	0
  311 00f0 08       		.uleb128 0x8
- 312 00f1 7A020000 		.4byte	.LASF21
+ 312 00f1 79020000 		.4byte	.LASF21
  313 00f5 03       		.byte	0x3
  314 00f6 53       		.byte	0x53
  315 00f7 B7000000 		.4byte	0xb7
@@ -530,7 +530,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  346 0146 CD010000 		.4byte	0x1cd
  347 014a 00       		.byte	0
  348 014b 09       		.uleb128 0x9
- 349 014c F6010000 		.4byte	.LASF24
+ 349 014c 3A020000 		.4byte	.LASF24
  350 0150 01       		.byte	0x1
  351 0151 70       		.byte	0x70
  352 0152 00000000 		.4byte	.LFB2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  354 015a 01       		.uleb128 0x1
  355 015b 9C       		.byte	0x9c
  356 015c 73010000 		.4byte	0x173
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 10
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 10
 
 
  357 0160 0A       		.uleb128 0xa
@@ -565,7 +565,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  378 0196 E3010000 		.4byte	0x1e3
  379 019a 00       		.byte	0
  380 019b 0B       		.uleb128 0xb
- 381 019c BF020000 		.4byte	.LASF35
+ 381 019c BE020000 		.4byte	.LASF35
  382 01a0 01       		.byte	0x1
  383 01a1 15       		.byte	0x15
  384 01a2 F0000000 		.4byte	0xf0
@@ -573,8 +573,8 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  386 01a7 03       		.byte	0x3
  387 01a8 00000000 		.4byte	Timeout_3_backup
  388 01ac 0C       		.uleb128 0xc
- 389 01ad A9020000 		.4byte	.LASF26
- 390 01b1 A9020000 		.4byte	.LASF26
+ 389 01ad A8020000 		.4byte	.LASF26
+ 390 01b1 A8020000 		.4byte	.LASF26
  391 01b5 03       		.byte	0x3
  392 01b6 69       		.byte	0x69
  393 01b7 0C       		.uleb128 0xc
@@ -583,13 +583,13 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  396 01c0 03       		.byte	0x3
  397 01c1 63       		.byte	0x63
  398 01c2 0C       		.uleb128 0xc
- 399 01c3 65010000 		.4byte	.LASF28
- 400 01c7 65010000 		.4byte	.LASF28
+ 399 01c3 A9010000 		.4byte	.LASF28
+ 400 01c7 A9010000 		.4byte	.LASF28
  401 01cb 03       		.byte	0x3
  402 01cc 6A       		.byte	0x6a
  403 01cd 0C       		.uleb128 0xc
- 404 01ce D7010000 		.4byte	.LASF29
- 405 01d2 D7010000 		.4byte	.LASF29
+ 404 01ce 1B020000 		.4byte	.LASF29
+ 405 01d2 1B020000 		.4byte	.LASF29
  406 01d6 03       		.byte	0x3
  407 01d7 64       		.byte	0x64
  408 01d8 0C       		.uleb128 0xc
@@ -598,11 +598,11 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  411 01e1 03       		.byte	0x3
  412 01e2 5B       		.byte	0x5b
  413 01e3 0C       		.uleb128 0xc
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 11
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 11
 
 
- 414 01e4 C6010000 		.4byte	.LASF31
- 415 01e8 C6010000 		.4byte	.LASF31
+ 414 01e4 0A020000 		.4byte	.LASF31
+ 415 01e8 0A020000 		.4byte	.LASF31
  416 01ec 03       		.byte	0x3
  417 01ed 8B       		.byte	0x8b
  418 01ee 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  468 002f 0B       		.uleb128 0xb
  469 0030 3B       		.uleb128 0x3b
  470 0031 05       		.uleb128 0x5
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 12
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 12
 
 
  471 0032 49       		.uleb128 0x49
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  525 0068 01       		.byte	0x1
  526 0069 3F       		.uleb128 0x3f
  527 006a 19       		.uleb128 0x19
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 13
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 13
 
 
  528 006b 03       		.uleb128 0x3
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  582 00a4 0E       		.uleb128 0xe
  583 00a5 3A       		.uleb128 0x3a
  584 00a6 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 14
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 14
 
 
  585 00a7 3B       		.uleb128 0x3b
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  627              	.LASF3:
  628 002f 73686F72 		.ascii	"short unsigned int\000"
  628      7420756E 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 15
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 15
 
 
  628      7369676E 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  648      20756E73 
  648      69676E65 
  648      6420696E 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 16
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 16
 
 
  648      7400
@@ -910,115 +910,115 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  652      6F75745F 
  652      335F5374 
  652      6F7000
- 653              	.LASF12:
- 654 0157 646F7562 		.ascii	"double\000"
- 654      6C6500
- 655              	.LASF10:
- 656 015e 75696E74 		.ascii	"uint16\000"
- 656      313600
- 657              	.LASF28:
- 658 0165 54696D65 		.ascii	"Timeout_3_WriteCounter\000"
- 658      6F75745F 
- 658      335F5772 
- 658      69746543 
- 658      6F756E74 
- 659              	.LASF8:
- 660 017c 756E7369 		.ascii	"unsigned int\000"
- 660      676E6564 
- 660      20696E74 
- 660      00
- 661              	.LASF33:
- 662 0189 47656E65 		.ascii	"Generated_Source\\PSoC5\\Timeout_3_PM.c\000"
- 662      72617465 
- 662      645F536F 
- 662      75726365 
- 662      5C50536F 
- 663              	.LASF7:
- 664 01af 6C6F6E67 		.ascii	"long long unsigned int\000"
- 664      206C6F6E 
- 664      6720756E 
- 664      7369676E 
- 664      65642069 
- 665              	.LASF31:
- 666 01c6 54696D65 		.ascii	"Timeout_3_Enable\000"
- 666      6F75745F 
- 666      335F456E 
- 666      61626C65 
- 666      00
- 667              	.LASF29:
- 668 01d7 54696D65 		.ascii	"Timeout_3_WriteControlRegister\000"
- 668      6F75745F 
- 668      335F5772 
- 668      69746543 
- 668      6F6E7472 
- 669              	.LASF24:
- 670 01f6 54696D65 		.ascii	"Timeout_3_Sleep\000"
- 670      6F75745F 
- 670      335F536C 
- 670      65657000 
- 671              	.LASF16:
- 672 0206 73697A65 		.ascii	"sizetype\000"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 17
+ 653              	.LASF34:
+ 654 0157 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\khushman\\benchmark2_kh"
+ 654      454D505C 
+ 654      434F4D50 
+ 654      53595333 
+ 654      30315F74 
+ 655 0186 7573685C 		.ascii	"ush\\benchmark2.cydsn\000"
+ 655      62656E63 
+ 655      686D6172 
+ 655      6B322E63 
+ 655      7964736E 
+ 656              	.LASF12:
+ 657 019b 646F7562 		.ascii	"double\000"
+ 657      6C6500
+ 658              	.LASF10:
+ 659 01a2 75696E74 		.ascii	"uint16\000"
+ 659      313600
+ 660              	.LASF28:
+ 661 01a9 54696D65 		.ascii	"Timeout_3_WriteCounter\000"
+ 661      6F75745F 
+ 661      335F5772 
+ 661      69746543 
+ 661      6F756E74 
+ 662              	.LASF8:
+ 663 01c0 756E7369 		.ascii	"unsigned int\000"
+ 663      676E6564 
+ 663      20696E74 
+ 663      00
+ 664              	.LASF33:
+ 665 01cd 47656E65 		.ascii	"Generated_Source\\PSoC5\\Timeout_3_PM.c\000"
+ 665      72617465 
+ 665      645F536F 
+ 665      75726365 
+ 665      5C50536F 
+ 666              	.LASF7:
+ 667 01f3 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 667      206C6F6E 
+ 667      6720756E 
+ 667      7369676E 
+ 667      65642069 
+ 668              	.LASF31:
+ 669 020a 54696D65 		.ascii	"Timeout_3_Enable\000"
+ 669      6F75745F 
+ 669      335F456E 
+ 669      61626C65 
+ 669      00
+ 670              	.LASF29:
+ 671 021b 54696D65 		.ascii	"Timeout_3_WriteControlRegister\000"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 17
 
 
- 672      74797065 
- 672      00
- 673              	.LASF6:
- 674 020f 6C6F6E67 		.ascii	"long long int\000"
- 674      206C6F6E 
- 674      6720696E 
- 674      7400
- 675              	.LASF13:
- 676 021d 63686172 		.ascii	"char\000"
- 676      00
- 677              	.LASF2:
- 678 0222 73686F72 		.ascii	"short int\000"
- 678      7420696E 
- 678      7400
- 679              	.LASF34:
- 680 022c 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\benchmark2\\bench"
- 680      454D505C 
- 680      434F4D50 
- 680      53595333 
- 680      30315F74 
- 681 025a 6D61726B 		.ascii	"mark2\\benchmark2.cydsn\000"
- 681      325C6265 
- 681      6E63686D 
- 681      61726B32 
- 681      2E637964 
+ 671      6F75745F 
+ 671      335F5772 
+ 671      69746543 
+ 671      6F6E7472 
+ 672              	.LASF24:
+ 673 023a 54696D65 		.ascii	"Timeout_3_Sleep\000"
+ 673      6F75745F 
+ 673      335F536C 
+ 673      65657000 
+ 674              	.LASF16:
+ 675 024a 73697A65 		.ascii	"sizetype\000"
+ 675      74797065 
+ 675      00
+ 676              	.LASF6:
+ 677 0253 6C6F6E67 		.ascii	"long long int\000"
+ 677      206C6F6E 
+ 677      6720696E 
+ 677      7400
+ 678              	.LASF13:
+ 679 0261 63686172 		.ascii	"char\000"
+ 679      00
+ 680              	.LASF2:
+ 681 0266 73686F72 		.ascii	"short int\000"
+ 681      7420696E 
+ 681      7400
  682              	.LASF4:
- 683 0271 6C6F6E67 		.ascii	"long int\000"
+ 683 0270 6C6F6E67 		.ascii	"long int\000"
  683      20696E74 
  683      00
  684              	.LASF21:
- 685 027a 54696D65 		.ascii	"Timeout_3_backupStruct\000"
+ 685 0279 54696D65 		.ascii	"Timeout_3_backupStruct\000"
  685      6F75745F 
  685      335F6261 
  685      636B7570 
  685      53747275 
  686              	.LASF15:
- 687 0291 6C6F6E67 		.ascii	"long double\000"
+ 687 0290 6C6F6E67 		.ascii	"long double\000"
  687      20646F75 
  687      626C6500 
  688              	.LASF0:
- 689 029d 7369676E 		.ascii	"signed char\000"
+ 689 029c 7369676E 		.ascii	"signed char\000"
  689      65642063 
  689      68617200 
  690              	.LASF26:
- 691 02a9 54696D65 		.ascii	"Timeout_3_ReadCounter\000"
+ 691 02a8 54696D65 		.ascii	"Timeout_3_ReadCounter\000"
  691      6F75745F 
  691      335F5265 
  691      6164436F 
  691      756E7465 
  692              	.LASF35:
- 693 02bf 54696D65 		.ascii	"Timeout_3_backup\000"
+ 693 02be 54696D65 		.ascii	"Timeout_3_backup\000"
  693      6F75745F 
  693      335F6261 
  693      636B7570 
  693      00
  694              	.LASF19:
- 695 02d0 496E7465 		.ascii	"InterruptMaskValue\000"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 18
+ 695 02cf 496E7465 		.ascii	"InterruptMaskValue\000"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccXzPIcl.s 			page 18
 
 
  695      72727570 
@@ -1026,7 +1026,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccWWYoU9.s 			page 1
  695      6B56616C 
  695      756500
  696              	.LASF20:
- 697 02e3 54696D65 		.ascii	"TimerControlRegister\000"
+ 697 02e2 54696D65 		.ascii	"TimerControlRegister\000"
  697      72436F6E 
  697      74726F6C 
  697      52656769 
