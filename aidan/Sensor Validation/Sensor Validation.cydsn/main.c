@@ -1,10 +1,15 @@
 #include "project.h"
 #include <stdio.h>
+#include <stdbool.h>
 
 #define FORWARD_COMPARE 23
 #define period 90
 
 uint16 offLineCount = 0;
+uint16 onLineCount = 0;
+uint8 turnsComplete = 0;
+bool turnDetected = 0;
+bool onLine = 0;
 
 static void MotorL_Forward() {
   PWM_1_WriteCompare(FORWARD_COMPARE);
@@ -53,6 +58,9 @@ static void goForwardSlow() {
 }
 
 static void turnLeft() {
+    onLineCount = 0;
+    onLine = 0;
+    turnDetected = 1;
     goForwardSlow();
     CyDelay(142);
     stopMoving();
@@ -61,10 +69,13 @@ static void turnLeft() {
         PWM_2_WriteCompare(25);
     }
     goForwardSlow();
-    CyDelay(30);
+    CyDelay(10);
 }
 
 static void turnRight() {
+    onLineCount = 0;
+    onLine = 0;
+    turnDetected = 1;
     uint8 led_1 = LED1_Read();
     goForwardSlow();
     CyDelay(146);
@@ -94,8 +105,17 @@ static void doSomething() {
     uint8 led_5 = LED5_Read();  // Front left sensor
 
     if (led_1 == 1) { // Front sensor is off the line
+        if (turnsComplete == 11 && offLineCount > 20) {
+            while(1) {
+                stopMoving();
+            }
+        }
         if (offLineCount < 15) {
             oneSensorCorrect();
+        } else if (offLineCount > 80) {
+            while (1) {
+                stopMoving();
+            }
         } else {
             goForwardSlow();
             CyDelay(12);
@@ -112,8 +132,19 @@ static void doSomething() {
     } else { // Front sensor is on the line
         oneSensorForward();
         offLineCount = 0; // Reset the off-line counter
+        if (onLineCount > 100 && onLine == 0) {
+            turnDetected = 0;
+        }
+        if (led_2 == 0 || led_3 == 0) {
+            onLine = 1;
+        }
+        onLineCount++;
     }
 
+    if (turnDetected == 1 && onLine == 1) {
+        turnsComplete++;
+        turnDetected = 0;
+    }
 }
 
 

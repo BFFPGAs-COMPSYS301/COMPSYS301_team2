@@ -577,7 +577,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 [!provide]                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000      0xc5e
+.text           0x00000000      0xcc6
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -601,347 +601,347 @@ END GROUP
  .text.stopMoving
                 0x000000a4       0x10 .\CortexM3\ARM_GCC_541\Debug\main.o
  .text.turnLeft
-                0x000000b4       0x34 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000000b4       0x44 .\CortexM3\ARM_GCC_541\Debug\main.o
  .text.turnRight
-                0x000000e8       0x38 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000000f8       0x48 .\CortexM3\ARM_GCC_541\Debug\main.o
  .text.oneSensorForward
-                0x00000120       0x10 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000140       0x10 .\CortexM3\ARM_GCC_541\Debug\main.o
  .text.doSomething
-                0x00000130       0x84 .\CortexM3\ARM_GCC_541\Debug\main.o
- .text.main     0x000001b4       0x30 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x000001b4                main
+                0x00000150       0xcc .\CortexM3\ARM_GCC_541\Debug\main.o
+ .text.main     0x0000021c       0x30 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x0000021c                main
  .text.CyClockStartupError
-                0x000001e4        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x0000024c        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cfg_write_bytes32
-                0x000001e8       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000250       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.AnalogSetDefault
-                0x0000021c       0x40 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000284       0x40 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYMEMZERO
-                0x0000025c        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000002c4        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.ClockSetup
-                0x00000268       0xb8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000002d0       0xb8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYCONFIGCPY
-                0x00000320        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000388        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cyfitter_cfg
-                0x00000328      0x160 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                0x00000328                cyfitter_cfg
+                0x00000390      0x160 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000390                cyfitter_cfg
  .text.IntDefaultHandler
-                0x00000488       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000488                IntDefaultHandler
- .text.Start_c  0x00000498       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000498                Start_c
+                0x000004f0       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x000004f0                IntDefaultHandler
+ .text.Start_c  0x00000500       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000500                Start_c
  .text.initialize_psoc
-                0x000004e4       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x000004e4                initialize_psoc
+                0x0000054c       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0000054c                initialize_psoc
  .text.LED1_Read
-                0x0000054c       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
-                0x0000054c                LED1_Read
+                0x000005b4       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
+                0x000005b4                LED1_Read
  .text.LED2_Read
-                0x0000055c       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
-                0x0000055c                LED2_Read
+                0x000005c4       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
+                0x000005c4                LED2_Read
  .text.LED3_Read
-                0x0000056c       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
-                0x0000056c                LED3_Read
+                0x000005d4       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
+                0x000005d4                LED3_Read
  .text.LED4_Read
-                0x0000057c       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
-                0x0000057c                LED4_Read
+                0x000005e4       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
+                0x000005e4                LED4_Read
  .text.LED5_Read
-                0x0000058c       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
-                0x0000058c                LED5_Read
+                0x000005f4       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
+                0x000005f4                LED5_Read
  .text.PWM_1_Enable
-                0x0000059c       0x28 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
-                0x0000059c                PWM_1_Enable
+                0x00000604       0x28 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+                0x00000604                PWM_1_Enable
  .text.PWM_1_WritePeriod
-                0x000005c4        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
-                0x000005c4                PWM_1_WritePeriod
+                0x0000062c        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+                0x0000062c                PWM_1_WritePeriod
  .text.PWM_1_WriteCompare
-                0x000005d0        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
-                0x000005d0                PWM_1_WriteCompare
+                0x00000638        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+                0x00000638                PWM_1_WriteCompare
  .text.PWM_1_SetInterruptMode
-                0x000005dc        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
-                0x000005dc                PWM_1_SetInterruptMode
+                0x00000644        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+                0x00000644                PWM_1_SetInterruptMode
  .text.PWM_1_Init
-                0x000005e8       0x74 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
-                0x000005e8                PWM_1_Init
+                0x00000650       0x74 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+                0x00000650                PWM_1_Init
  .text.PWM_1_Start
-                0x0000065c       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
-                0x0000065c                PWM_1_Start
- .text.CyDelay  0x00000678       0x2c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
-                0x00000678                CyDelay
+                0x000006c4       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+                0x000006c4                PWM_1_Start
+ .text.CyDelay  0x000006e0       0x2c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
+                0x000006e0                CyDelay
  .text.VDAC8_1_Enable
-                0x000006a4       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
-                0x000006a4                VDAC8_1_Enable
+                0x0000070c       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+                0x0000070c                VDAC8_1_Enable
  .text.VDAC8_1_SetSpeed
-                0x000006c0       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
-                0x000006c0                VDAC8_1_SetSpeed
+                0x00000728       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+                0x00000728                VDAC8_1_SetSpeed
  .text.VDAC8_1_SetValue
-                0x000006dc        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
-                0x000006dc                VDAC8_1_SetValue
+                0x00000744        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+                0x00000744                VDAC8_1_SetValue
  .text.VDAC8_1_DacTrim
-                0x000006e8       0x24 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
-                0x000006e8                VDAC8_1_DacTrim
+                0x00000750       0x24 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+                0x00000750                VDAC8_1_DacTrim
  .text.VDAC8_1_SetRange
-                0x0000070c       0x20 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
-                0x0000070c                VDAC8_1_SetRange
+                0x00000774       0x20 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+                0x00000774                VDAC8_1_SetRange
  .text.VDAC8_1_Init
-                0x0000072c       0x20 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
-                0x0000072c                VDAC8_1_Init
+                0x00000794       0x20 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+                0x00000794                VDAC8_1_Init
  .text.VDAC8_1_Start
-                0x0000074c       0x24 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
-                0x0000074c                VDAC8_1_Start
+                0x000007b4       0x24 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+                0x000007b4                VDAC8_1_Start
  .text.Timeout_1_Enable
-                0x00000770       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x00000770                Timeout_1_Enable
+                0x000007d8       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x000007d8                Timeout_1_Enable
  .text.Timeout_1_SetInterruptMode
-                0x00000780        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x00000780                Timeout_1_SetInterruptMode
+                0x000007e8        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x000007e8                Timeout_1_SetInterruptMode
  .text.Timeout_1_ReadStatusRegister
-                0x0000078c        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x0000078c                Timeout_1_ReadStatusRegister
+                0x000007f4        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x000007f4                Timeout_1_ReadStatusRegister
  .text.Timeout_1_WritePeriod
-                0x00000798        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x00000798                Timeout_1_WritePeriod
+                0x00000800        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x00000800                Timeout_1_WritePeriod
  .text.Timeout_1_ReadCapture
-                0x000007a4        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x000007a4                Timeout_1_ReadCapture
+                0x0000080c        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x0000080c                Timeout_1_ReadCapture
  .text.Timeout_1_WriteCounter
-                0x000007b0        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x000007b0                Timeout_1_WriteCounter
+                0x00000818        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x00000818                Timeout_1_WriteCounter
  .text.Timeout_1_ClearFIFO
-                0x000007bc       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x000007bc                Timeout_1_ClearFIFO
+                0x00000824       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x00000824                Timeout_1_ClearFIFO
  .text.Timeout_1_Init
-                0x000007d0       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x000007d0                Timeout_1_Init
+                0x00000838       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x00000838                Timeout_1_Init
  .text.Timeout_1_Start
-                0x00000804       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x00000804                Timeout_1_Start
+                0x0000086c       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x0000086c                Timeout_1_Start
  .text.Timeout_2_Enable
-                0x00000820       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x00000820                Timeout_2_Enable
+                0x00000888       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x00000888                Timeout_2_Enable
  .text.Timeout_2_SetInterruptMode
-                0x00000830        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x00000830                Timeout_2_SetInterruptMode
+                0x00000898        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x00000898                Timeout_2_SetInterruptMode
  .text.Timeout_2_ReadStatusRegister
-                0x0000083c        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x0000083c                Timeout_2_ReadStatusRegister
+                0x000008a4        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x000008a4                Timeout_2_ReadStatusRegister
  .text.Timeout_2_WritePeriod
-                0x00000848        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x00000848                Timeout_2_WritePeriod
+                0x000008b0        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x000008b0                Timeout_2_WritePeriod
  .text.Timeout_2_ReadCapture
-                0x00000854        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x00000854                Timeout_2_ReadCapture
+                0x000008bc        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x000008bc                Timeout_2_ReadCapture
  .text.Timeout_2_WriteCounter
-                0x00000860        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x00000860                Timeout_2_WriteCounter
+                0x000008c8        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x000008c8                Timeout_2_WriteCounter
  .text.Timeout_2_ClearFIFO
-                0x0000086c       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x0000086c                Timeout_2_ClearFIFO
+                0x000008d4       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x000008d4                Timeout_2_ClearFIFO
  .text.Timeout_2_Init
-                0x00000880       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x00000880                Timeout_2_Init
+                0x000008e8       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x000008e8                Timeout_2_Init
  .text.Timeout_2_Start
-                0x000008b4       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x000008b4                Timeout_2_Start
+                0x0000091c       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x0000091c                Timeout_2_Start
  .text.Timeout_4_Enable
-                0x000008d0       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x000008d0                Timeout_4_Enable
+                0x00000938       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x00000938                Timeout_4_Enable
  .text.Timeout_4_SetInterruptMode
-                0x000008e0        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x000008e0                Timeout_4_SetInterruptMode
+                0x00000948        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x00000948                Timeout_4_SetInterruptMode
  .text.Timeout_4_ReadStatusRegister
-                0x000008ec        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x000008ec                Timeout_4_ReadStatusRegister
+                0x00000954        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x00000954                Timeout_4_ReadStatusRegister
  .text.Timeout_4_WritePeriod
-                0x000008f8        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x000008f8                Timeout_4_WritePeriod
+                0x00000960        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x00000960                Timeout_4_WritePeriod
  .text.Timeout_4_ReadCapture
-                0x00000904        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x00000904                Timeout_4_ReadCapture
+                0x0000096c        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x0000096c                Timeout_4_ReadCapture
  .text.Timeout_4_WriteCounter
-                0x00000910        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x00000910                Timeout_4_WriteCounter
+                0x00000978        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x00000978                Timeout_4_WriteCounter
  .text.Timeout_4_ClearFIFO
-                0x0000091c       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x0000091c                Timeout_4_ClearFIFO
+                0x00000984       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x00000984                Timeout_4_ClearFIFO
  .text.Timeout_4_Init
-                0x00000930       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x00000930                Timeout_4_Init
+                0x00000998       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x00000998                Timeout_4_Init
  .text.Timeout_4_Start
-                0x00000964       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x00000964                Timeout_4_Start
+                0x000009cc       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x000009cc                Timeout_4_Start
  .text.Timeout_3_Enable
-                0x00000980       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x00000980                Timeout_3_Enable
+                0x000009e8       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x000009e8                Timeout_3_Enable
  .text.Timeout_3_SetInterruptMode
-                0x00000990        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x00000990                Timeout_3_SetInterruptMode
+                0x000009f8        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x000009f8                Timeout_3_SetInterruptMode
  .text.Timeout_3_ReadStatusRegister
-                0x0000099c        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x0000099c                Timeout_3_ReadStatusRegister
+                0x00000a04        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x00000a04                Timeout_3_ReadStatusRegister
  .text.Timeout_3_WritePeriod
-                0x000009a8        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x000009a8                Timeout_3_WritePeriod
+                0x00000a10        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x00000a10                Timeout_3_WritePeriod
  .text.Timeout_3_ReadCapture
-                0x000009b4        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x000009b4                Timeout_3_ReadCapture
+                0x00000a1c        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x00000a1c                Timeout_3_ReadCapture
  .text.Timeout_3_WriteCounter
-                0x000009c0        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x000009c0                Timeout_3_WriteCounter
+                0x00000a28        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x00000a28                Timeout_3_WriteCounter
  .text.Timeout_3_ClearFIFO
-                0x000009cc       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x000009cc                Timeout_3_ClearFIFO
+                0x00000a34       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x00000a34                Timeout_3_ClearFIFO
  .text.Timeout_3_Init
-                0x000009e0       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x000009e0                Timeout_3_Init
+                0x00000a48       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x00000a48                Timeout_3_Init
  .text.Timeout_3_Start
-                0x00000a14       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x00000a14                Timeout_3_Start
+                0x00000a7c       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x00000a7c                Timeout_3_Start
  .text.Timeout_5_Enable
-                0x00000a30       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x00000a30                Timeout_5_Enable
+                0x00000a98       0x10 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x00000a98                Timeout_5_Enable
  .text.Timeout_5_SetInterruptMode
-                0x00000a40        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x00000a40                Timeout_5_SetInterruptMode
+                0x00000aa8        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x00000aa8                Timeout_5_SetInterruptMode
  .text.Timeout_5_ReadStatusRegister
-                0x00000a4c        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x00000a4c                Timeout_5_ReadStatusRegister
+                0x00000ab4        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x00000ab4                Timeout_5_ReadStatusRegister
  .text.Timeout_5_WritePeriod
-                0x00000a58        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x00000a58                Timeout_5_WritePeriod
+                0x00000ac0        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x00000ac0                Timeout_5_WritePeriod
  .text.Timeout_5_ReadCapture
-                0x00000a64        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x00000a64                Timeout_5_ReadCapture
+                0x00000acc        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x00000acc                Timeout_5_ReadCapture
  .text.Timeout_5_WriteCounter
-                0x00000a70        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x00000a70                Timeout_5_WriteCounter
+                0x00000ad8        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x00000ad8                Timeout_5_WriteCounter
  .text.Timeout_5_ClearFIFO
-                0x00000a7c       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x00000a7c                Timeout_5_ClearFIFO
+                0x00000ae4       0x14 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x00000ae4                Timeout_5_ClearFIFO
  .text.Timeout_5_Init
-                0x00000a90       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x00000a90                Timeout_5_Init
+                0x00000af8       0x34 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x00000af8                Timeout_5_Init
  .text.Timeout_5_Start
-                0x00000ac4       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x00000ac4                Timeout_5_Start
+                0x00000b2c       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x00000b2c                Timeout_5_Start
  .text.PWM_2_Enable
-                0x00000ae0       0x28 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
-                0x00000ae0                PWM_2_Enable
+                0x00000b48       0x28 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+                0x00000b48                PWM_2_Enable
  .text.PWM_2_WritePeriod
-                0x00000b08        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
-                0x00000b08                PWM_2_WritePeriod
+                0x00000b70        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+                0x00000b70                PWM_2_WritePeriod
  .text.PWM_2_WriteCompare
-                0x00000b14        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
-                0x00000b14                PWM_2_WriteCompare
+                0x00000b7c        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+                0x00000b7c                PWM_2_WriteCompare
  .text.PWM_2_SetInterruptMode
-                0x00000b20        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
-                0x00000b20                PWM_2_SetInterruptMode
+                0x00000b88        0xc .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+                0x00000b88                PWM_2_SetInterruptMode
  .text.PWM_2_Init
-                0x00000b2c       0x74 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
-                0x00000b2c                PWM_2_Init
+                0x00000b94       0x74 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+                0x00000b94                PWM_2_Init
  .text.PWM_2_Start
-                0x00000ba0       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
-                0x00000ba0                PWM_2_Start
- *fill*         0x00000bbc        0x4 
- .text          0x00000bc0       0x20 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyBootAsmGnu.o)
-                0x00000bc0                CyDelayCycles
-                0x00000bd0                CyEnterCriticalSection
-                0x00000bd8                CyExitCriticalSection
- .text.__errno  0x00000be0        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
-                0x00000be0                __errno
+                0x00000c08       0x1c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+                0x00000c08                PWM_2_Start
+ *fill*         0x00000c24        0x4 
+ .text          0x00000c28       0x20 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyBootAsmGnu.o)
+                0x00000c28                CyDelayCycles
+                0x00000c38                CyEnterCriticalSection
+                0x00000c40                CyExitCriticalSection
+ .text.__errno  0x00000c48        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00000c48                __errno
  .text.__libc_init_array
-                0x00000bec       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x00000bec                __libc_init_array
- .text.memcpy   0x00000c38       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x00000c38                memcpy
- .text.memset   0x00000c4e       0x10 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x00000c4e                memset
+                0x00000c54       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00000c54                __libc_init_array
+ .text.memcpy   0x00000ca0       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x00000ca0                memcpy
+ .text.memset   0x00000cb6       0x10 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00000cb6                memset
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x00000c5e        0x0 linker stubs
+ .glue_7t       0x00000cc6        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x00000c5e        0x0 linker stubs
+ .glue_7        0x00000cc6        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x00000c5e        0x0 linker stubs
+ .vfp11_veneer  0x00000cc6        0x0 linker stubs
  *(.bootloader)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x00000c60        0x0
- .v4_bx         0x00000c60        0x0 linker stubs
+.v4_bx          0x00000cc8        0x0
+ .v4_bx         0x00000cc8        0x0 linker stubs
 
-.iplt           0x00000c60        0x0
- .iplt          0x00000c60        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.iplt           0x00000cc8        0x0
+ .iplt          0x00000cc8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x00000c60        0x4
+.eh_frame       0x00000cc8        0x4
  *(.eh_frame)
- .eh_frame      0x00000c60        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .eh_frame      0x00000c60        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .eh_frame      0x00000cc8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .eh_frame      0x00000cc8        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
                 [!provide]                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00000c64                __exidx_end = .
+                0x00000ccc                __exidx_end = .
 
-.rodata         0x00000c64       0x64
+.rodata         0x00000ccc       0x64
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x00000c64       0x2a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .rodata        0x00000ccc       0x2a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .rodata.str1.1
-                0x00000c8e        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x00000c90                . = ALIGN (0x4)
+                0x00000cf6        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00000cf8                . = ALIGN (0x4)
  *(.init)
- .init          0x00000c90        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00000c90                _init
- .init          0x00000c94        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00000c9c                . = ALIGN (0x4)
-                0x00000c9c                __preinit_array_start = .
+ .init          0x00000cf8        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00000cf8                _init
+ .init          0x00000cfc        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00000d04                . = ALIGN (0x4)
+                0x00000d04                __preinit_array_start = .
  *(.preinit_array)
-                0x00000c9c                __preinit_array_end = .
-                0x00000c9c                . = ALIGN (0x4)
-                0x00000c9c                __init_array_start = .
+                0x00000d04                __preinit_array_end = .
+                0x00000d04                . = ALIGN (0x4)
+                0x00000d04                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00000c9c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .init_array    0x00000ca0        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000ca4                __init_array_end = .
-                0x00000ca4                . = ALIGN (0x4)
+ .init_array    0x00000d04        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x00000d08        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000d0c                __init_array_end = .
+                0x00000d0c                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00000ca4        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00000ca4                _fini
- .fini          0x00000ca8        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00000cb0                . = ALIGN (0x4)
-                0x00000cb0                __fini_array_start = .
+ .fini          0x00000d0c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00000d0c                _fini
+ .fini          0x00000d10        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00000d18                . = ALIGN (0x4)
+                0x00000d18                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00000cb0        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .fini_array    0x00000d18        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00000cb4                __fini_array_end = .
-                0x00000cb4                . = ALIGN (0x4)
+                0x00000d1c                __fini_array_end = .
+                0x00000d1c                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00000cb4                . = ALIGN (0x4)
+                0x00000d1c                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00000cb4                . = ALIGN (0x4)
-                0x00000cb4                __cy_regions = .
-                0x00000cb4        0x4 LONG 0xcc8 __cy_region_init_ram
-                0x00000cb8        0x4 LONG 0x1fff80c8 __cy_region_start_data
-                0x00000cbc        0x4 LONG 0x78 __cy_region_init_size_ram
-                0x00000cc0        0x4 LONG 0x28 __cy_region_zero_size_ram
-                0x00000cc4                __cy_regions_end = .
-                0x00000cc8                . = ALIGN (0x8)
- *fill*         0x00000cc4        0x4 
-                0x00000cc8                _etext = .
+                0x00000d1c                . = ALIGN (0x4)
+                0x00000d1c                __cy_regions = .
+                0x00000d1c        0x4 LONG 0xd30 __cy_region_init_ram
+                0x00000d20        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x00000d24        0x4 LONG 0x78 __cy_region_init_size_ram
+                0x00000d28        0x4 LONG 0x30 __cy_region_zero_size_ram
+                0x00000d2c                __cy_regions_end = .
+                0x00000d30                . = ALIGN (0x8)
+ *fill*         0x00000d2c        0x4 
+                0x00000d30                _etext = .
 
 .cy_checksum_exclude
-                0x00000cc8        0x0
+                0x00000d30        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000       0xc0
@@ -955,7 +955,7 @@ END GROUP
  .noinit        0x1fff80c0        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
                 0x1fff80c0                CyResetStatus
 
-.data           0x1fff80c8       0x78 load address 0x00000cc8
+.data           0x1fff80c8       0x78 load address 0x00000d30
                 0x1fff80c8                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff80c8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
@@ -978,49 +978,53 @@ END GROUP
  *(.ram)
                 0x1fff8140                _edata = .
 
-.igot.plt       0x1fff8140        0x0 load address 0x00000d40
+.igot.plt       0x1fff8140        0x0 load address 0x00000da8
  .igot.plt      0x1fff8140        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
-.bss            0x1fff8140       0x28 load address 0x00000d40
+.bss            0x1fff8140       0x30 load address 0x00000da8
                 0x1fff8140                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss           0x1fff8140       0x1c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .bss           0x1fff815c        0x4 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x1fff815c                turnCount
-                0x1fff815e                offLineCount
- .bss           0x1fff8160        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
-                0x1fff8160                PWM_1_initVar
- .bss           0x1fff8161        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
-                0x1fff8161                VDAC8_1_initVar
- .bss           0x1fff8162        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
-                0x1fff8162                Timeout_1_initVar
- .bss           0x1fff8163        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
-                0x1fff8163                Timeout_2_initVar
- .bss           0x1fff8164        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
-                0x1fff8164                Timeout_4_initVar
- .bss           0x1fff8165        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
-                0x1fff8165                Timeout_3_initVar
- .bss           0x1fff8166        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
-                0x1fff8166                Timeout_5_initVar
- .bss           0x1fff8167        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
-                0x1fff8167                PWM_2_initVar
+ .bss           0x1fff815c        0x8 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x1fff815c                onLineCount
+                0x1fff815e                onLine
+                0x1fff815f                turnDetected
+                0x1fff8160                turnsComplete
+                0x1fff8162                offLineCount
+ .bss           0x1fff8164        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+                0x1fff8164                PWM_1_initVar
+ .bss           0x1fff8165        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+                0x1fff8165                VDAC8_1_initVar
+ .bss           0x1fff8166        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+                0x1fff8166                Timeout_1_initVar
+ .bss           0x1fff8167        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+                0x1fff8167                Timeout_2_initVar
+ .bss           0x1fff8168        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+                0x1fff8168                Timeout_4_initVar
+ .bss           0x1fff8169        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+                0x1fff8169                Timeout_3_initVar
+ .bss           0x1fff816a        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+                0x1fff816a                Timeout_5_initVar
+ .bss           0x1fff816b        0x1 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+                0x1fff816b                PWM_2_initVar
  *(COMMON)
-                0x1fff8168                . = ALIGN (0x8)
+                0x1fff8170                . = ALIGN (0x8)
+ *fill*         0x1fff816c        0x4 
  *(.ram.b)
-                0x1fff8168                _end = .
-                0x1fff8168                __end = .
-                0x1fff8168                PROVIDE (end, .)
-                0x1fff8168                PROVIDE (__bss_end__, .)
-                0x00000cc8                __cy_region_init_ram = LOADADDR (.data)
+                0x1fff8170                _end = .
+                0x1fff8170                __end = .
+                0x1fff8170                PROVIDE (end, .)
+                0x1fff8170                PROVIDE (__bss_end__, .)
+                0x00000d30                __cy_region_init_ram = LOADADDR (.data)
                 0x00000078                __cy_region_init_size_ram = (_edata - ADDR (.data))
-                0x00000028                __cy_region_zero_size_ram = (_end - _edata)
+                0x00000030                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8168       0x80 load address 0x00000d40
-                0x1fff8168                . = _end
-                0x1fff81e8                . = (. + 0x80)
- *fill*         0x1fff8168       0x80 
-                0x1fff81e8                __cy_heap_limit = .
+.heap           0x1fff8170       0x80 load address 0x00000da8
+                0x1fff8170                . = _end
+                0x1fff81f0                . = (. + 0x80)
+ *fill*         0x1fff8170       0x80 
+                0x1fff81f0                __cy_heap_limit = .
 
 .stack          0x20007800      0x800
                 0x20007800                __cy_stack_limit = .
@@ -1067,8 +1071,8 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x00000d40        0x0 load address 0x9050000c
- .rel.iplt      0x00000d40        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.rel.dyn        0x00000da8        0x0 load address 0x9050000c
+ .rel.iplt      0x00000da8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .stab
  *(.stab)
@@ -1138,30 +1142,30 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x5430
+.debug_info     0x00000000     0x547b
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x4f1 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_info    0x000004f1      0x549 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x00000a3a      0x136 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x00000b70      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_info    0x00000f2b      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
- .debug_info    0x0000104a      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
- .debug_info    0x00001169      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
- .debug_info    0x00001288      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
- .debug_info    0x000013a7      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
- .debug_info    0x000014c6      0x27f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
- .debug_info    0x00001745     0x1374 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
- .debug_info    0x00002ab9      0xa2a .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
- .debug_info    0x000034e3      0x1df .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
- .debug_info    0x000036c2      0x2ee .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
- .debug_info    0x000039b0      0x2ee .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
- .debug_info    0x00003c9e      0x2ee .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
- .debug_info    0x00003f8c      0x2f0 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
- .debug_info    0x0000427c      0x2ee .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
- .debug_info    0x0000456a      0x27f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
- .debug_info    0x000047e9       0xaa .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyBootAsmGnu.o)
- .debug_info    0x00004893      0x64d .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
- .debug_info    0x00004ee0      0x550 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
+ .debug_info    0x00000000      0x53c .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_info    0x0000053c      0x549 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00000a85      0x136 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x00000bbb      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x00000f76      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
+ .debug_info    0x00001095      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
+ .debug_info    0x000011b4      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
+ .debug_info    0x000012d3      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
+ .debug_info    0x000013f2      0x11f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
+ .debug_info    0x00001511      0x27f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+ .debug_info    0x00001790     0x1374 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
+ .debug_info    0x00002b04      0xa2a .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
+ .debug_info    0x0000352e      0x1df .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+ .debug_info    0x0000370d      0x2ee .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+ .debug_info    0x000039fb      0x2ee .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+ .debug_info    0x00003ce9      0x2ee .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+ .debug_info    0x00003fd7      0x2f0 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+ .debug_info    0x000042c7      0x2ee .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+ .debug_info    0x000045b5      0x27f .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+ .debug_info    0x00004834       0xaa .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyBootAsmGnu.o)
+ .debug_info    0x000048de      0x64d .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
+ .debug_info    0x00004f2b      0x550 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
 
 .debug_abbrev   0x00000000     0x18a1
  *(.debug_abbrev)
@@ -1188,126 +1192,126 @@ END GROUP
  .debug_abbrev  0x00001566      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
  .debug_abbrev  0x0000170d      0x194 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
 
-.debug_line     0x00000000     0x25d8
+.debug_line     0x00000000     0x260a
  *(.debug_line)
- .debug_line    0x00000000      0x2c0 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_line    0x000002c0      0x1e3 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x000004a3      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x000005e4      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_line    0x00000818       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
- .debug_line    0x000008a9       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
- .debug_line    0x0000093a       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
- .debug_line    0x000009cb       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
- .debug_line    0x00000a5c       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
- .debug_line    0x00000aed      0x133 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
- .debug_line    0x00000c20      0x816 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
- .debug_line    0x00001436      0x367 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
- .debug_line    0x0000179d       0xe4 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
- .debug_line    0x00001881      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
- .debug_line    0x000019f5      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
- .debug_line    0x00001b69      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
- .debug_line    0x00001cdd      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
- .debug_line    0x00001e51      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
- .debug_line    0x00001fc5      0x133 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
- .debug_line    0x000020f8       0x66 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyBootAsmGnu.o)
- .debug_line    0x0000215e      0x21a .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
- .debug_line    0x00002378      0x260 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
+ .debug_line    0x00000000      0x2f2 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_line    0x000002f2      0x1e3 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x000004d5      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00000616      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x0000084a       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
+ .debug_line    0x000008db       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
+ .debug_line    0x0000096c       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
+ .debug_line    0x000009fd       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
+ .debug_line    0x00000a8e       0x91 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
+ .debug_line    0x00000b1f      0x133 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+ .debug_line    0x00000c52      0x816 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
+ .debug_line    0x00001468      0x367 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
+ .debug_line    0x000017cf       0xe4 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+ .debug_line    0x000018b3      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+ .debug_line    0x00001a27      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+ .debug_line    0x00001b9b      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+ .debug_line    0x00001d0f      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+ .debug_line    0x00001e83      0x174 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+ .debug_line    0x00001ff7      0x133 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+ .debug_line    0x0000212a       0x66 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyBootAsmGnu.o)
+ .debug_line    0x00002190      0x21a .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
+ .debug_line    0x000023aa      0x260 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
 
-.debug_frame    0x00000000     0x1958
+.debug_frame    0x00000000     0x1960
  *(.debug_frame)
- .debug_frame   0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_frame   0x000000f4       0xe4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_frame   0x000001d8       0xb8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_frame   0x00000290       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
- .debug_frame   0x000002e0       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
- .debug_frame   0x00000330       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
- .debug_frame   0x00000380       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
- .debug_frame   0x000003d0       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
- .debug_frame   0x00000420       0xe8 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
- .debug_frame   0x00000508      0x738 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
- .debug_frame   0x00000c40      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
- .debug_frame   0x00000e38       0xb4 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
- .debug_frame   0x00000eec      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
- .debug_frame   0x00001010      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
- .debug_frame   0x00001134      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
- .debug_frame   0x00001258      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
- .debug_frame   0x0000137c      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
- .debug_frame   0x000014a0       0xe8 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
- .debug_frame   0x00001588      0x194 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
- .debug_frame   0x0000171c      0x180 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
- .debug_frame   0x0000189c       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x000018bc       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x000018e4       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
- .debug_frame   0x00001910       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x00001938       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x00000000       0xfc .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_frame   0x000000fc       0xe4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_frame   0x000001e0       0xb8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_frame   0x00000298       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
+ .debug_frame   0x000002e8       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
+ .debug_frame   0x00000338       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
+ .debug_frame   0x00000388       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
+ .debug_frame   0x000003d8       0x50 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
+ .debug_frame   0x00000428       0xe8 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+ .debug_frame   0x00000510      0x738 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
+ .debug_frame   0x00000c48      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
+ .debug_frame   0x00000e40       0xb4 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+ .debug_frame   0x00000ef4      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+ .debug_frame   0x00001018      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+ .debug_frame   0x0000113c      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+ .debug_frame   0x00001260      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+ .debug_frame   0x00001384      0x124 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+ .debug_frame   0x000014a8       0xe8 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+ .debug_frame   0x00001590      0x194 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
+ .debug_frame   0x00001724      0x180 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
+ .debug_frame   0x000018a4       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x000018c4       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x000018ec       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00001918       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00001940       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x2033
+.debug_str      0x00000000     0x205d
  *(.debug_str)
- .debug_str     0x00000000      0x2ea .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x332 (size before relaxing)
- .debug_str     0x000002ea      0x180 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_str     0x00000000      0x314 .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x35c (size before relaxing)
+ .debug_str     0x00000314      0x180 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x32f (size before relaxing)
- .debug_str     0x0000046a       0x7f .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_str     0x00000494       0x7f .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                                 0x1fe (size before relaxing)
- .debug_str     0x000004e9      0x13e .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_str     0x00000513      0x13e .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
                                 0x324 (size before relaxing)
- .debug_str     0x00000627       0x5c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
+ .debug_str     0x00000651       0x5c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
                                 0x1f7 (size before relaxing)
- .debug_str     0x00000683       0x4c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
+ .debug_str     0x000006ad       0x4c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
                                 0x1f7 (size before relaxing)
- .debug_str     0x000006cf       0x4c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
+ .debug_str     0x000006f9       0x4c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
                                 0x1f7 (size before relaxing)
- .debug_str     0x0000071b       0x4c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
+ .debug_str     0x00000745       0x4c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
                                 0x1f7 (size before relaxing)
- .debug_str     0x00000767       0x4c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
+ .debug_str     0x00000791       0x4c .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
                                 0x1f7 (size before relaxing)
- .debug_str     0x000007b3      0x11b .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+ .debug_str     0x000007dd      0x11b .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
                                 0x2e7 (size before relaxing)
- .debug_str     0x000008ce      0x838 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
+ .debug_str     0x000008f8      0x838 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
                                 0xa61 (size before relaxing)
- .debug_str     0x00001106      0x365 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
+ .debug_str     0x00001130      0x365 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
                                 0x74d (size before relaxing)
- .debug_str     0x0000146b       0xa9 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+ .debug_str     0x00001495       0xa9 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
                                 0x24d (size before relaxing)
- .debug_str     0x00001514      0x196 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+ .debug_str     0x0000153e      0x196 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
                                 0x39d (size before relaxing)
- .debug_str     0x000016aa      0x18e .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+ .debug_str     0x000016d4      0x18e .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
                                 0x39d (size before relaxing)
- .debug_str     0x00001838      0x18e .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+ .debug_str     0x00001862      0x18e .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
                                 0x39d (size before relaxing)
- .debug_str     0x000019c6      0x18e .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+ .debug_str     0x000019f0      0x18e .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
                                 0x39d (size before relaxing)
- .debug_str     0x00001b54      0x18e .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+ .debug_str     0x00001b7e      0x18e .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
                                 0x39d (size before relaxing)
- .debug_str     0x00001ce2       0xea .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+ .debug_str     0x00001d0c       0xea .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
                                 0x2e7 (size before relaxing)
- .debug_str     0x00001dcc      0x1bb .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
+ .debug_str     0x00001df6      0x1bb .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
                                 0x3da (size before relaxing)
- .debug_str     0x00001f87       0xac .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
+ .debug_str     0x00001fb1       0xac .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
                                 0x352 (size before relaxing)
 
-.debug_loc      0x00000000     0x1c48
+.debug_loc      0x00000000     0x1c9a
  *(.debug_loc)
- .debug_loc     0x00000000       0x39 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_loc     0x00000039      0x1d7 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_loc     0x00000210      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_loc     0x00000354       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
- .debug_loc     0x00000396       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
- .debug_loc     0x000003d8       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
- .debug_loc     0x0000041a       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
- .debug_loc     0x0000045c       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
- .debug_loc     0x0000049e       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
- .debug_loc     0x000004b1      0xa11 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
- .debug_loc     0x00000ec2      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
- .debug_loc     0x000010a6       0x79 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
- .debug_loc     0x0000111f       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
- .debug_loc     0x00001132       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
- .debug_loc     0x00001145       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
- .debug_loc     0x00001158       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
- .debug_loc     0x0000116b       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
- .debug_loc     0x0000117e       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
- .debug_loc     0x00001191      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
- .debug_loc     0x00001543      0x705 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
+ .debug_loc     0x00000000       0x8b .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_loc     0x0000008b      0x1d7 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x00000262      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_loc     0x000003a6       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED1.o)
+ .debug_loc     0x000003e8       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED2.o)
+ .debug_loc     0x0000042a       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED3.o)
+ .debug_loc     0x0000046c       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED4.o)
+ .debug_loc     0x000004ae       0x42 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(LED5.o)
+ .debug_loc     0x000004f0       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_1.o)
+ .debug_loc     0x00000503      0xa11 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyLib.o)
+ .debug_loc     0x00000f14      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(cyPm.o)
+ .debug_loc     0x000010f8       0x79 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(VDAC8_1.o)
+ .debug_loc     0x00001171       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_1.o)
+ .debug_loc     0x00001184       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_2.o)
+ .debug_loc     0x00001197       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_4.o)
+ .debug_loc     0x000011aa       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_3.o)
+ .debug_loc     0x000011bd       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(Timeout_5.o)
+ .debug_loc     0x000011d0       0x13 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(PWM_2.o)
+ .debug_loc     0x000011e3      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CyFlash.o)
+ .debug_loc     0x00001595      0x705 .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a(CySpc.o)
 
 .debug_macinfo
  *(.debug_macinfo)
