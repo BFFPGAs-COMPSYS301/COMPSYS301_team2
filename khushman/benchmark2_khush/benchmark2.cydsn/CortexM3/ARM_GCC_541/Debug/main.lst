@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 1
 
 
    1              		.syntax unified
@@ -19,48 +19,63 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.section	.text.MotorR_Back,"ax",%progbits
+  19              		.section	.text.oneSensorCorrect,"ax",%progbits
   20              		.align	2
   21              		.thumb
   22              		.thumb_func
-  23              		.type	MotorR_Back, %function
-  24              	MotorR_Back:
-  25              	.LFB67:
+  23              		.type	oneSensorCorrect, %function
+  24              	oneSensorCorrect:
+  25              	.LFB72:
   26              		.file 1 "main.c"
-   1:main.c        **** /* ========================================
-   2:main.c        ****  *
-   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
-   4:main.c        ****  * All Rights Reserved
-   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
-   6:main.c        ****  *
-   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
-   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
-   9:main.c        ****  *
-  10:main.c        ****  * ========================================
-  11:main.c        **** */
-  12:main.c        **** #include "project.h"
-  13:main.c        **** #include <stdio.h>
-  14:main.c        **** 
-  15:main.c        **** #define FORWARD_COMPARE 20
-  16:main.c        **** #define period 90
-  17:main.c        **** 
-  18:main.c        **** static void MotorL_Forward() {
-  19:main.c        ****   PWM_1_WriteCompare(FORWARD_COMPARE);
-  20:main.c        **** }
-  21:main.c        **** 
-  22:main.c        **** static void MotorR_Forward() {
-  23:main.c        ****    PWM_2_WriteCompare(FORWARD_COMPARE);
-  24:main.c        **** }
-  25:main.c        **** 
-  26:main.c        **** static void MotorL_Back() {
-  27:main.c        ****   PWM_1_WriteCompare(period - FORWARD_COMPARE);
+   1:main.c        **** #include "project.h"
+   2:main.c        **** #include <stdio.h>
+   3:main.c        **** 
+   4:main.c        **** #define FORWARD_COMPARE 15
+   5:main.c        **** #define period 90
+   6:main.c        **** 
+   7:main.c        **** uint16 overCount = 0;
+   8:main.c        **** 
+   9:main.c        **** static void MotorL_Forward() {
+  10:main.c        ****   PWM_1_WriteCompare(FORWARD_COMPARE);
+  11:main.c        **** }
+  12:main.c        **** 
+  13:main.c        **** static void MotorR_Forward() {
+  14:main.c        ****    PWM_2_WriteCompare(FORWARD_COMPARE);
+  15:main.c        **** }
+  16:main.c        **** 
+  17:main.c        **** static void MotorL_Back() {
+  18:main.c        ****   PWM_1_WriteCompare(period - FORWARD_COMPARE);
+  19:main.c        **** }
+  20:main.c        **** 
+  21:main.c        **** static void MotorR_Back() {
+  22:main.c        ****     PWM_2_WriteCompare(period - FORWARD_COMPARE);
+  23:main.c        **** }   
+  24:main.c        **** 
+  25:main.c        **** static void goForward() {
+  26:main.c        ****     MotorR_Forward();
+  27:main.c        ****     MotorL_Forward();
   28:main.c        **** }
   29:main.c        **** 
-  30:main.c        **** static void MotorR_Back() {
-  27              		.loc 1 30 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 2
+  30:main.c        **** static void goBack() {
+  31:main.c        ****     MotorR_Back();
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 2
 
 
+  32:main.c        ****     MotorL_Back();
+  33:main.c        **** }   
+  34:main.c        **** 
+  35:main.c        **** static void stopMoving(){
+  36:main.c        ****     PWM_1_WriteCompare(45);
+  37:main.c        ****     PWM_2_WriteCompare(45);
+  38:main.c        **** }
+  39:main.c        **** 
+  40:main.c        **** static void oneSensorForward() {
+  41:main.c        ****     PWM_1_WriteCompare(FORWARD_COMPARE - 2);
+  42:main.c        ****     PWM_2_WriteCompare(FORWARD_COMPARE);
+  43:main.c        **** }
+  44:main.c        **** 
+  45:main.c        **** static void oneSensorCorrect() {
+  27              		.loc 1 45 0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -68,1411 +83,1132 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 1
   32              		.cfi_def_cfa_offset 8
   33              		.cfi_offset 3, -8
   34              		.cfi_offset 14, -4
-  31:main.c        ****     PWM_2_WriteCompare(period - FORWARD_COMPARE);
-  35              		.loc 1 31 0
+  46:main.c        ****     PWM_1_WriteCompare(period - 20);
+  35              		.loc 1 46 0
   36 0002 4620     		movs	r0, #70
-  37 0004 FFF7FEFF 		bl	PWM_2_WriteCompare
+  37 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
   38              	.LVL0:
-  39 0008 08BD     		pop	{r3, pc}
-  40              		.cfi_endproc
-  41              	.LFE67:
-  42              		.size	MotorR_Back, .-MotorR_Back
-  43 000a 00BF     		.section	.text.MotorL_Back,"ax",%progbits
-  44              		.align	2
-  45              		.thumb
-  46              		.thumb_func
-  47              		.type	MotorL_Back, %function
-  48              	MotorL_Back:
-  49              	.LFB66:
-  26:main.c        ****   PWM_1_WriteCompare(period - FORWARD_COMPARE);
-  50              		.loc 1 26 0
-  51              		.cfi_startproc
-  52              		@ args = 0, pretend = 0, frame = 0
-  53              		@ frame_needed = 0, uses_anonymous_args = 0
-  54 0000 08B5     		push	{r3, lr}
-  55              		.cfi_def_cfa_offset 8
-  56              		.cfi_offset 3, -8
-  57              		.cfi_offset 14, -4
-  27:main.c        **** }
-  58              		.loc 1 27 0
-  59 0002 4620     		movs	r0, #70
-  60 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
-  61              	.LVL1:
-  62 0008 08BD     		pop	{r3, pc}
-  63              		.cfi_endproc
-  64              	.LFE66:
-  65              		.size	MotorL_Back, .-MotorL_Back
-  66 000a 00BF     		.section	.text.goBack,"ax",%progbits
-  67              		.align	2
-  68              		.thumb
-  69              		.thumb_func
-  70              		.type	goBack, %function
-  71              	goBack:
-  72              	.LFB73:
-  32:main.c        **** }
-  33:main.c        **** 
-  34:main.c        **** static void turnLeft() {
-  35:main.c        ****     MotorL_Back();
-  36:main.c        ****     MotorR_Forward();
-  37:main.c        **** }    
-  38:main.c        **** 
-  39:main.c        **** static void turnRight() {
-  40:main.c        ****     MotorR_Back();
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 3
+  47:main.c        ****     PWM_2_WriteCompare(20);
+  39              		.loc 1 47 0
+  40 0008 1420     		movs	r0, #20
+  41 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+  42              	.LVL1:
+  43 000e 08BD     		pop	{r3, pc}
+  44              		.cfi_endproc
+  45              	.LFE72:
+  46              		.size	oneSensorCorrect, .-oneSensorCorrect
+  47              		.section	.text.oneSensorForward,"ax",%progbits
+  48              		.align	2
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	oneSensorForward, %function
+  52              	oneSensorForward:
+  53              	.LFB71:
+  40:main.c        ****     PWM_1_WriteCompare(FORWARD_COMPARE - 2);
+  54              		.loc 1 40 0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58 0000 08B5     		push	{r3, lr}
+  59              		.cfi_def_cfa_offset 8
+  60              		.cfi_offset 3, -8
+  61              		.cfi_offset 14, -4
+  41:main.c        ****     PWM_2_WriteCompare(FORWARD_COMPARE);
+  62              		.loc 1 41 0
+  63 0002 0D20     		movs	r0, #13
+  64 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+  65              	.LVL2:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 3
 
 
-  41:main.c        ****     MotorL_Forward();
-  42:main.c        **** }    
-  43:main.c        **** 
-  44:main.c        **** static void correctLeft() {
-  45:main.c        ****     PWM_2_WriteCompare(FORWARD_COMPARE - 2);
-  46:main.c        ****     PWM_1_WriteCompare(90 - FORWARD_COMPARE + 2);
-  47:main.c        ****     
-  48:main.c        **** }    
+  42:main.c        **** }
+  66              		.loc 1 42 0
+  67 0008 0F20     		movs	r0, #15
+  68 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+  69              	.LVL3:
+  70 000e 08BD     		pop	{r3, pc}
+  71              		.cfi_endproc
+  72              	.LFE71:
+  73              		.size	oneSensorForward, .-oneSensorForward
+  74              		.section	.text.doSomething,"ax",%progbits
+  75              		.align	2
+  76              		.thumb
+  77              		.thumb_func
+  78              		.type	doSomething, %function
+  79              	doSomething:
+  80              	.LFB73:
+  48:main.c        **** }
   49:main.c        **** 
-  50:main.c        **** static void correctRight() {
-  51:main.c        ****     PWM_1_WriteCompare(FORWARD_COMPARE - 2);
-  52:main.c        ****     PWM_2_WriteCompare(90 - FORWARD_COMPARE + 2);
-  53:main.c        **** }    
-  54:main.c        **** 
-  55:main.c        **** static void goForward() {
-  56:main.c        ****     MotorR_Forward();
-  57:main.c        ****     MotorL_Forward();
-  58:main.c        **** } 
-  59:main.c        **** 
-  60:main.c        **** static void goBack() {
-  73              		.loc 1 60 0
-  74              		.cfi_startproc
-  75              		@ args = 0, pretend = 0, frame = 0
-  76              		@ frame_needed = 0, uses_anonymous_args = 0
-  77 0000 08B5     		push	{r3, lr}
-  78              		.cfi_def_cfa_offset 8
-  79              		.cfi_offset 3, -8
-  80              		.cfi_offset 14, -4
-  61:main.c        ****     MotorR_Back();
-  81              		.loc 1 61 0
-  82 0002 FFF7FEFF 		bl	MotorR_Back
-  83              	.LVL2:
-  62:main.c        ****     MotorL_Back();
-  84              		.loc 1 62 0
-  85 0006 FFF7FEFF 		bl	MotorL_Back
-  86              	.LVL3:
-  87 000a 08BD     		pop	{r3, pc}
-  88              		.cfi_endproc
-  89              	.LFE73:
-  90              		.size	goBack, .-goBack
-  91              		.section	.text.correctLeft,"ax",%progbits
-  92              		.align	2
-  93              		.thumb
-  94              		.thumb_func
-  95              		.type	correctLeft, %function
-  96              	correctLeft:
-  97              	.LFB70:
-  44:main.c        ****     PWM_2_WriteCompare(FORWARD_COMPARE - 2);
-  98              		.loc 1 44 0
-  99              		.cfi_startproc
- 100              		@ args = 0, pretend = 0, frame = 0
- 101              		@ frame_needed = 0, uses_anonymous_args = 0
- 102 0000 08B5     		push	{r3, lr}
- 103              		.cfi_def_cfa_offset 8
- 104              		.cfi_offset 3, -8
- 105              		.cfi_offset 14, -4
-  45:main.c        ****     PWM_1_WriteCompare(90 - FORWARD_COMPARE + 2);
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 4
+  50:main.c        **** static void doSomething() {
+  81              		.loc 1 50 0
+  82              		.cfi_startproc
+  83              		@ args = 0, pretend = 0, frame = 0
+  84              		@ frame_needed = 0, uses_anonymous_args = 0
+  85 0000 10B5     		push	{r4, lr}
+  86              		.cfi_def_cfa_offset 8
+  87              		.cfi_offset 4, -8
+  88              		.cfi_offset 14, -4
+  51:main.c        ****     uint8 led_1 = LED1_Read();  // Front sensor
+  89              		.loc 1 51 0
+  90 0002 FFF7FEFF 		bl	LED1_Read
+  91              	.LVL4:
+  92 0006 0446     		mov	r4, r0
+  93              	.LVL5:
+  52:main.c        ****     uint8 led_2 = LED2_Read();  // Back left sensor
+  94              		.loc 1 52 0
+  95 0008 FFF7FEFF 		bl	LED2_Read
+  96              	.LVL6:
+  53:main.c        ****     uint8 led_3 = LED3_Read();  // Back right sensor
+  97              		.loc 1 53 0
+  98 000c FFF7FEFF 		bl	LED3_Read
+  99              	.LVL7:
+  54:main.c        ****     uint8 led_4 = LED4_Read();  // Front right sensor
+ 100              		.loc 1 54 0
+ 101 0010 FFF7FEFF 		bl	LED4_Read
+ 102              	.LVL8:
+  55:main.c        ****     uint8 led_5 = LED5_Read();  // Front left sensor
+ 103              		.loc 1 55 0
+ 104 0014 FFF7FEFF 		bl	LED5_Read
+ 105              	.LVL9:
+  56:main.c        ****     
+  57:main.c        ****     if (led_1 == 1) {
+ 106              		.loc 1 57 0
+ 107 0018 012C     		cmp	r4, #1
+ 108 001a 02D1     		bne	.L6
+  58:main.c        ****         oneSensorCorrect();
+ 109              		.loc 1 58 0
+ 110 001c FFF7FEFF 		bl	oneSensorCorrect
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 4
 
 
- 106              		.loc 1 45 0
- 107 0002 1220     		movs	r0, #18
- 108 0004 FFF7FEFF 		bl	PWM_2_WriteCompare
- 109              	.LVL4:
-  46:main.c        ****     
- 110              		.loc 1 46 0
- 111 0008 4820     		movs	r0, #72
- 112 000a FFF7FEFF 		bl	PWM_1_WriteCompare
- 113              	.LVL5:
- 114 000e 08BD     		pop	{r3, pc}
- 115              		.cfi_endproc
- 116              	.LFE70:
- 117              		.size	correctLeft, .-correctLeft
- 118              		.section	.text.correctRight,"ax",%progbits
- 119              		.align	2
- 120              		.thumb
- 121              		.thumb_func
- 122              		.type	correctRight, %function
- 123              	correctRight:
- 124              	.LFB71:
-  50:main.c        ****     PWM_1_WriteCompare(FORWARD_COMPARE - 2);
- 125              		.loc 1 50 0
- 126              		.cfi_startproc
- 127              		@ args = 0, pretend = 0, frame = 0
- 128              		@ frame_needed = 0, uses_anonymous_args = 0
- 129 0000 08B5     		push	{r3, lr}
- 130              		.cfi_def_cfa_offset 8
- 131              		.cfi_offset 3, -8
- 132              		.cfi_offset 14, -4
-  51:main.c        ****     PWM_2_WriteCompare(90 - FORWARD_COMPARE + 2);
- 133              		.loc 1 51 0
- 134 0002 1220     		movs	r0, #18
- 135 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
- 136              	.LVL6:
-  52:main.c        **** }    
- 137              		.loc 1 52 0
- 138 0008 4820     		movs	r0, #72
- 139 000a FFF7FEFF 		bl	PWM_2_WriteCompare
- 140              	.LVL7:
- 141 000e 08BD     		pop	{r3, pc}
- 142              		.cfi_endproc
- 143              	.LFE71:
- 144              		.size	correctRight, .-correctRight
- 145              		.section	.text.stopMoving,"ax",%progbits
- 146              		.align	2
- 147              		.thumb
- 148              		.thumb_func
- 149              		.type	stopMoving, %function
- 150              	stopMoving:
- 151              	.LFB74:
-  63:main.c        **** }   
+ 111              	.LVL10:
+ 112 0020 10BD     		pop	{r4, pc}
+ 113              	.LVL11:
+ 114              	.L6:
+  59:main.c        ****     } else {
+  60:main.c        ****         oneSensorForward();
+ 115              		.loc 1 60 0
+ 116 0022 FFF7FEFF 		bl	oneSensorForward
+ 117              	.LVL12:
+ 118 0026 10BD     		pop	{r4, pc}
+ 119              		.cfi_endproc
+ 120              	.LFE73:
+ 121              		.size	doSomething, .-doSomething
+ 122              		.section	.text.main,"ax",%progbits
+ 123              		.align	2
+ 124              		.global	main
+ 125              		.thumb
+ 126              		.thumb_func
+ 127              		.type	main, %function
+ 128              	main:
+ 129              	.LFB74:
+  61:main.c        ****     }
+  62:main.c        **** 
+  63:main.c        **** }
   64:main.c        **** 
-  65:main.c        **** static void stopMoving(){
- 152              		.loc 1 65 0
- 153              		.cfi_startproc
- 154              		@ args = 0, pretend = 0, frame = 0
- 155              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 5
+  65:main.c        **** 
+  66:main.c        **** int main(void)
+  67:main.c        **** {
+ 130              		.loc 1 67 0
+ 131              		.cfi_startproc
+ 132              		@ Volatile: function does not return.
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135 0000 08B5     		push	{r3, lr}
+ 136              		.cfi_def_cfa_offset 8
+ 137              		.cfi_offset 3, -8
+ 138              		.cfi_offset 14, -4
+  68:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 139              		.loc 1 68 0
+ 140              		.syntax unified
+ 141              	@ 68 "main.c" 1
+ 142 0002 62B6     		CPSIE   i
+ 143              	@ 0 "" 2
+  69:main.c        ****     PWM_1_Start();
+ 144              		.loc 1 69 0
+ 145              		.thumb
+ 146              		.syntax unified
+ 147 0004 FFF7FEFF 		bl	PWM_1_Start
+ 148              	.LVL13:
+  70:main.c        ****     PWM_2_Start();
+ 149              		.loc 1 70 0
+ 150 0008 FFF7FEFF 		bl	PWM_2_Start
+ 151              	.LVL14:
+  71:main.c        **** 
+  72:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  73:main.c        ****     VDAC8_1_Start();
+ 152              		.loc 1 73 0
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 5
 
 
- 156 0000 08B5     		push	{r3, lr}
- 157              		.cfi_def_cfa_offset 8
- 158              		.cfi_offset 3, -8
- 159              		.cfi_offset 14, -4
-  66:main.c        ****     PWM_1_WriteCompare(45);
- 160              		.loc 1 66 0
- 161 0002 2D20     		movs	r0, #45
- 162 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
- 163              	.LVL8:
-  67:main.c        ****     PWM_2_WriteCompare(45);
- 164              		.loc 1 67 0
- 165 0008 2D20     		movs	r0, #45
- 166 000a FFF7FEFF 		bl	PWM_2_WriteCompare
- 167              	.LVL9:
- 168 000e 08BD     		pop	{r3, pc}
- 169              		.cfi_endproc
- 170              	.LFE74:
- 171              		.size	stopMoving, .-stopMoving
- 172              		.section	.text.doSomething,"ax",%progbits
- 173              		.align	2
- 174              		.thumb
- 175              		.thumb_func
- 176              		.type	doSomething, %function
- 177              	doSomething:
- 178              	.LFB75:
-  68:main.c        **** }    
-  69:main.c        **** 
-  70:main.c        **** static void doSomething() {
- 179              		.loc 1 70 0
- 180              		.cfi_startproc
- 181              		@ args = 0, pretend = 0, frame = 0
- 182              		@ frame_needed = 0, uses_anonymous_args = 0
- 183 0000 70B5     		push	{r4, r5, r6, lr}
- 184              		.cfi_def_cfa_offset 16
- 185              		.cfi_offset 4, -16
- 186              		.cfi_offset 5, -12
- 187              		.cfi_offset 6, -8
- 188              		.cfi_offset 14, -4
-  71:main.c        ****     uint8 led_1 = LED1_Read();
- 189              		.loc 1 71 0
- 190 0002 FFF7FEFF 		bl	LED1_Read
- 191              	.LVL10:
- 192 0006 0446     		mov	r4, r0
- 193              	.LVL11:
-  72:main.c        ****     uint8 led_2 = LED2_Read();
- 194              		.loc 1 72 0
- 195 0008 FFF7FEFF 		bl	LED2_Read
- 196              	.LVL12:
- 197 000c 0546     		mov	r5, r0
- 198              	.LVL13:
-  73:main.c        ****     uint8 led_3 = LED3_Read();
- 199              		.loc 1 73 0
- 200 000e FFF7FEFF 		bl	LED3_Read
- 201              	.LVL14:
- 202 0012 0646     		mov	r6, r0
- 203              	.LVL15:
-  74:main.c        ****     uint8 led_4 = LED4_Read();
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 6
+ 153 000c FFF7FEFF 		bl	VDAC8_1_Start
+ 154              	.LVL15:
+  74:main.c        ****     Timeout_1_Start();
+ 155              		.loc 1 74 0
+ 156 0010 FFF7FEFF 		bl	Timeout_1_Start
+ 157              	.LVL16:
+  75:main.c        ****     Timeout_2_Start();
+ 158              		.loc 1 75 0
+ 159 0014 FFF7FEFF 		bl	Timeout_2_Start
+ 160              	.LVL17:
+  76:main.c        ****     Timeout_3_Start();
+ 161              		.loc 1 76 0
+ 162 0018 FFF7FEFF 		bl	Timeout_3_Start
+ 163              	.LVL18:
+  77:main.c        ****     Timeout_4_Start();
+ 164              		.loc 1 77 0
+ 165 001c FFF7FEFF 		bl	Timeout_4_Start
+ 166              	.LVL19:
+  78:main.c        ****     Timeout_5_Start();
+ 167              		.loc 1 78 0
+ 168 0020 FFF7FEFF 		bl	Timeout_5_Start
+ 169              	.LVL20:
+ 170              	.L10:
+  79:main.c        **** 
+  80:main.c        ****     for(;;)
+  81:main.c        ****     {
+  82:main.c        ****         doSomething();
+ 171              		.loc 1 82 0 discriminator 1
+ 172 0024 FFF7FEFF 		bl	doSomething
+ 173              	.LVL21:
+  83:main.c        ****         CyDelay(5);
+ 174              		.loc 1 83 0 discriminator 1
+ 175 0028 0520     		movs	r0, #5
+ 176 002a FFF7FEFF 		bl	CyDelay
+ 177              	.LVL22:
+ 178 002e F9E7     		b	.L10
+ 179              		.cfi_endproc
+ 180              	.LFE74:
+ 181              		.size	main, .-main
+ 182              		.global	overCount
+ 183              		.bss
+ 184              		.align	1
+ 185              		.type	overCount, %object
+ 186              		.size	overCount, 2
+ 187              	overCount:
+ 188 0000 0000     		.space	2
+ 189              		.text
+ 190              	.Letext0:
+ 191              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 192              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 193              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 194              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 195              		.file 6 "Generated_Source\\PSoC5/PWM_1.h"
+ 196              		.file 7 "Generated_Source\\PSoC5/PWM_2.h"
+ 197              		.file 8 "Generated_Source\\PSoC5/LED1.h"
+ 198              		.file 9 "Generated_Source\\PSoC5/LED2.h"
+ 199              		.file 10 "Generated_Source\\PSoC5/LED3.h"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 6
 
 
- 204              		.loc 1 74 0
- 205 0014 FFF7FEFF 		bl	LED4_Read
- 206              	.LVL16:
-  75:main.c        ****     uint8 led_5 = LED5_Read();
- 207              		.loc 1 75 0
- 208 0018 FFF7FEFF 		bl	LED5_Read
- 209              	.LVL17:
-  76:main.c        ****     
-  77:main.c        ****     if (led_1 == 0 && led_2 == 1 && led_3 == 1) {
- 210              		.loc 1 77 0
- 211 001c 34B9     		cbnz	r4, .L14
- 212              		.loc 1 77 0 is_stmt 0 discriminator 1
- 213 001e 012D     		cmp	r5, #1
- 214 0020 04D1     		bne	.L14
- 215              		.loc 1 77 0 discriminator 2
- 216 0022 012E     		cmp	r6, #1
- 217 0024 02D1     		bne	.L14
-  78:main.c        ****         goBack();  
- 218              		.loc 1 78 0 is_stmt 1
- 219 0026 FFF7FEFF 		bl	goBack
- 220              	.LVL18:
- 221 002a 70BD     		pop	{r4, r5, r6, pc}
- 222              	.LVL19:
- 223              	.L14:
-  79:main.c        ****     }
-  80:main.c        ****     
-  81:main.c        ****     else if (led_1 == 0 && led_2 == 1 && led_3 == 0) {
- 224              		.loc 1 81 0
- 225 002c 2CB9     		cbnz	r4, .L16
- 226              		.loc 1 81 0 is_stmt 0 discriminator 1
- 227 002e 012D     		cmp	r5, #1
- 228 0030 03D1     		bne	.L16
- 229              		.loc 1 81 0 discriminator 2
- 230 0032 16B9     		cbnz	r6, .L16
-  82:main.c        ****             correctLeft();
- 231              		.loc 1 82 0 is_stmt 1
- 232 0034 FFF7FEFF 		bl	correctLeft
- 233              	.LVL20:
- 234 0038 70BD     		pop	{r4, r5, r6, pc}
- 235              	.LVL21:
- 236              	.L16:
-  83:main.c        ****     }
-  84:main.c        ****     
-  85:main.c        ****     else if (led_1 == 0 && led_2 == 0 && led_3 == 1) {
- 237              		.loc 1 85 0
- 238 003a 2CB9     		cbnz	r4, .L17
- 239              		.loc 1 85 0 is_stmt 0 discriminator 1
- 240 003c 25B9     		cbnz	r5, .L17
- 241              		.loc 1 85 0 discriminator 2
- 242 003e 012E     		cmp	r6, #1
- 243 0040 02D1     		bne	.L17
-  86:main.c        ****             correctRight();
- 244              		.loc 1 86 0 is_stmt 1
- 245 0042 FFF7FEFF 		bl	correctRight
- 246              	.LVL22:
- 247 0046 70BD     		pop	{r4, r5, r6, pc}
- 248              	.LVL23:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 7
+ 200              		.file 11 "Generated_Source\\PSoC5/LED4.h"
+ 201              		.file 12 "Generated_Source\\PSoC5/LED5.h"
+ 202              		.file 13 "Generated_Source\\PSoC5/VDAC8_1.h"
+ 203              		.file 14 "Generated_Source\\PSoC5/Timeout_1.h"
+ 204              		.file 15 "Generated_Source\\PSoC5/Timeout_2.h"
+ 205              		.file 16 "Generated_Source\\PSoC5/Timeout_3.h"
+ 206              		.file 17 "Generated_Source\\PSoC5/Timeout_4.h"
+ 207              		.file 18 "Generated_Source\\PSoC5/Timeout_5.h"
+ 208              		.file 19 "Generated_Source\\PSoC5/CyLib.h"
+ 209              		.section	.debug_info,"",%progbits
+ 210              	.Ldebug_info0:
+ 211 0000 04030000 		.4byte	0x304
+ 212 0004 0400     		.2byte	0x4
+ 213 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 214 000a 04       		.byte	0x4
+ 215 000b 01       		.uleb128 0x1
+ 216 000c 68000000 		.4byte	.LASF43
+ 217 0010 0C       		.byte	0xc
+ 218 0011 77020000 		.4byte	.LASF44
+ 219 0015 46010000 		.4byte	.LASF45
+ 220 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 221 001d 00000000 		.4byte	0
+ 222 0021 00000000 		.4byte	.Ldebug_line0
+ 223 0025 02       		.uleb128 0x2
+ 224 0026 01       		.byte	0x1
+ 225 0027 06       		.byte	0x6
+ 226 0028 CD020000 		.4byte	.LASF0
+ 227 002c 02       		.uleb128 0x2
+ 228 002d 01       		.byte	0x1
+ 229 002e 08       		.byte	0x8
+ 230 002f 5A000000 		.4byte	.LASF1
+ 231 0033 02       		.uleb128 0x2
+ 232 0034 02       		.byte	0x2
+ 233 0035 05       		.byte	0x5
+ 234 0036 93020000 		.4byte	.LASF2
+ 235 003a 02       		.uleb128 0x2
+ 236 003b 02       		.byte	0x2
+ 237 003c 07       		.byte	0x7
+ 238 003d 1D000000 		.4byte	.LASF3
+ 239 0041 03       		.uleb128 0x3
+ 240 0042 0A000000 		.4byte	.LASF9
+ 241 0046 02       		.byte	0x2
+ 242 0047 3F       		.byte	0x3f
+ 243 0048 4C000000 		.4byte	0x4c
+ 244 004c 02       		.uleb128 0x2
+ 245 004d 04       		.byte	0x4
+ 246 004e 05       		.byte	0x5
+ 247 004f 14000000 		.4byte	.LASF4
+ 248 0053 02       		.uleb128 0x2
+ 249 0054 04       		.byte	0x4
+ 250 0055 07       		.byte	0x7
+ 251 0056 00010000 		.4byte	.LASF5
+ 252 005a 02       		.uleb128 0x2
+ 253 005b 08       		.byte	0x8
+ 254 005c 05       		.byte	0x5
+ 255 005d 69020000 		.4byte	.LASF6
+ 256 0061 02       		.uleb128 0x2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 7
 
 
- 249              	.L17:
-  87:main.c        ****     }
-  88:main.c        ****     
-  89:main.c        ****     else {
-  90:main.c        ****         stopMoving();
- 250              		.loc 1 90 0
- 251 0048 FFF7FEFF 		bl	stopMoving
- 252              	.LVL24:
- 253 004c 70BD     		pop	{r4, r5, r6, pc}
- 254              		.cfi_endproc
- 255              	.LFE75:
- 256              		.size	doSomething, .-doSomething
- 257 004e 00BF     		.section	.text.main,"ax",%progbits
- 258              		.align	2
- 259              		.global	main
- 260              		.thumb
- 261              		.thumb_func
- 262              		.type	main, %function
- 263              	main:
- 264              	.LFB76:
-  91:main.c        ****     }
-  92:main.c        **** }
-  93:main.c        **** 
-  94:main.c        **** 
-  95:main.c        **** int main(void)
-  96:main.c        **** {
- 265              		.loc 1 96 0
- 266              		.cfi_startproc
- 267              		@ Volatile: function does not return.
- 268              		@ args = 0, pretend = 0, frame = 0
- 269              		@ frame_needed = 0, uses_anonymous_args = 0
- 270 0000 08B5     		push	{r3, lr}
- 271              		.cfi_def_cfa_offset 8
- 272              		.cfi_offset 3, -8
- 273              		.cfi_offset 14, -4
-  97:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
- 274              		.loc 1 97 0
- 275              		.syntax unified
- 276              	@ 97 "main.c" 1
- 277 0002 62B6     		CPSIE   i
- 278              	@ 0 "" 2
-  98:main.c        ****     PWM_1_Start();
- 279              		.loc 1 98 0
- 280              		.thumb
- 281              		.syntax unified
- 282 0004 FFF7FEFF 		bl	PWM_1_Start
- 283              	.LVL25:
-  99:main.c        ****     PWM_2_Start();
- 284              		.loc 1 99 0
- 285 0008 FFF7FEFF 		bl	PWM_2_Start
- 286              	.LVL26:
- 100:main.c        **** 
- 101:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
- 102:main.c        ****     VDAC8_1_Start();
- 287              		.loc 1 102 0
- 288 000c FFF7FEFF 		bl	VDAC8_1_Start
- 289              	.LVL27:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 8
+ 257 0062 08       		.byte	0x8
+ 258 0063 07       		.byte	0x7
+ 259 0064 14020000 		.4byte	.LASF7
+ 260 0068 04       		.uleb128 0x4
+ 261 0069 04       		.byte	0x4
+ 262 006a 05       		.byte	0x5
+ 263 006b 696E7400 		.ascii	"int\000"
+ 264 006f 02       		.uleb128 0x2
+ 265 0070 04       		.byte	0x4
+ 266 0071 07       		.byte	0x7
+ 267 0072 07020000 		.4byte	.LASF8
+ 268 0076 03       		.uleb128 0x3
+ 269 0077 45020000 		.4byte	.LASF10
+ 270 007b 03       		.byte	0x3
+ 271 007c 2C       		.byte	0x2c
+ 272 007d 41000000 		.4byte	0x41
+ 273 0081 05       		.uleb128 0x5
+ 274 0082 9D020000 		.4byte	.LASF11
+ 275 0086 04       		.byte	0x4
+ 276 0087 E701     		.2byte	0x1e7
+ 277 0089 2C000000 		.4byte	0x2c
+ 278 008d 05       		.uleb128 0x5
+ 279 008e E4010000 		.4byte	.LASF12
+ 280 0092 04       		.byte	0x4
+ 281 0093 E801     		.2byte	0x1e8
+ 282 0095 3A000000 		.4byte	0x3a
+ 283 0099 02       		.uleb128 0x2
+ 284 009a 04       		.byte	0x4
+ 285 009b 04       		.byte	0x4
+ 286 009c 54000000 		.4byte	.LASF13
+ 287 00a0 02       		.uleb128 0x2
+ 288 00a1 08       		.byte	0x8
+ 289 00a2 04       		.byte	0x4
+ 290 00a3 A7010000 		.4byte	.LASF14
+ 291 00a7 02       		.uleb128 0x2
+ 292 00a8 01       		.byte	0x1
+ 293 00a9 08       		.byte	0x8
+ 294 00aa 7E020000 		.4byte	.LASF15
+ 295 00ae 02       		.uleb128 0x2
+ 296 00af 08       		.byte	0x8
+ 297 00b0 04       		.byte	0x4
+ 298 00b1 C1020000 		.4byte	.LASF16
+ 299 00b5 02       		.uleb128 0x2
+ 300 00b6 04       		.byte	0x4
+ 301 00b7 07       		.byte	0x7
+ 302 00b8 4D020000 		.4byte	.LASF17
+ 303 00bc 06       		.uleb128 0x6
+ 304 00bd 96010000 		.4byte	.LASF18
+ 305 00c1 01       		.byte	0x1
+ 306 00c2 2D       		.byte	0x2d
+ 307 00c3 00000000 		.4byte	.LFB72
+ 308 00c7 10000000 		.4byte	.LFE72-.LFB72
+ 309 00cb 01       		.uleb128 0x1
+ 310 00cc 9C       		.byte	0x9c
+ 311 00cd F5000000 		.4byte	0xf5
+ 312 00d1 07       		.uleb128 0x7
+ 313 00d2 08000000 		.4byte	.LVL0
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 8
 
 
- 103:main.c        ****     Timeout_1_Start();
- 290              		.loc 1 103 0
- 291 0010 FFF7FEFF 		bl	Timeout_1_Start
- 292              	.LVL28:
- 104:main.c        ****     Timeout_2_Start();
- 293              		.loc 1 104 0
- 294 0014 FFF7FEFF 		bl	Timeout_2_Start
- 295              	.LVL29:
- 105:main.c        ****     Timeout_3_Start();
- 296              		.loc 1 105 0
- 297 0018 FFF7FEFF 		bl	Timeout_3_Start
- 298              	.LVL30:
- 106:main.c        ****     Timeout_4_Start();
- 299              		.loc 1 106 0
- 300 001c FFF7FEFF 		bl	Timeout_4_Start
- 301              	.LVL31:
- 107:main.c        ****     Timeout_5_Start();
- 302              		.loc 1 107 0
- 303 0020 FFF7FEFF 		bl	Timeout_5_Start
- 304              	.LVL32:
- 305              	.L20:
- 108:main.c        ****     
- 109:main.c        **** 
- 110:main.c        ****     for(;;)
- 111:main.c        ****     {
- 112:main.c        ****         doSomething();
- 306              		.loc 1 112 0 discriminator 1
- 307 0024 FFF7FEFF 		bl	doSomething
- 308              	.LVL33:
- 113:main.c        ****         CyDelay(5);
- 309              		.loc 1 113 0 discriminator 1
- 310 0028 0520     		movs	r0, #5
- 311 002a FFF7FEFF 		bl	CyDelay
- 312              	.LVL34:
- 313 002e F9E7     		b	.L20
- 314              		.cfi_endproc
- 315              	.LFE76:
- 316              		.size	main, .-main
- 317              		.text
- 318              	.Letext0:
- 319              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
- 320              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
- 321              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 322              		.file 5 "Generated_Source\\PSoC5/PWM_2.h"
- 323              		.file 6 "Generated_Source\\PSoC5/PWM_1.h"
- 324              		.file 7 "Generated_Source\\PSoC5/LED1.h"
- 325              		.file 8 "Generated_Source\\PSoC5/LED2.h"
- 326              		.file 9 "Generated_Source\\PSoC5/LED3.h"
- 327              		.file 10 "Generated_Source\\PSoC5/LED4.h"
- 328              		.file 11 "Generated_Source\\PSoC5/LED5.h"
- 329              		.file 12 "Generated_Source\\PSoC5/VDAC8_1.h"
- 330              		.file 13 "Generated_Source\\PSoC5/Timeout_1.h"
- 331              		.file 14 "Generated_Source\\PSoC5/Timeout_2.h"
- 332              		.file 15 "Generated_Source\\PSoC5/Timeout_3.h"
- 333              		.file 16 "Generated_Source\\PSoC5/Timeout_4.h"
- 334              		.file 17 "Generated_Source\\PSoC5/Timeout_5.h"
- 335              		.file 18 "Generated_Source\\PSoC5/CyLib.h"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 9
+ 314 00d6 57020000 		.4byte	0x257
+ 315 00da E5000000 		.4byte	0xe5
+ 316 00de 08       		.uleb128 0x8
+ 317 00df 01       		.uleb128 0x1
+ 318 00e0 50       		.byte	0x50
+ 319 00e1 02       		.uleb128 0x2
+ 320 00e2 08       		.byte	0x8
+ 321 00e3 46       		.byte	0x46
+ 322 00e4 00       		.byte	0
+ 323 00e5 09       		.uleb128 0x9
+ 324 00e6 0E000000 		.4byte	.LVL1
+ 325 00ea 62020000 		.4byte	0x262
+ 326 00ee 08       		.uleb128 0x8
+ 327 00ef 01       		.uleb128 0x1
+ 328 00f0 50       		.byte	0x50
+ 329 00f1 01       		.uleb128 0x1
+ 330 00f2 44       		.byte	0x44
+ 331 00f3 00       		.byte	0
+ 332 00f4 00       		.byte	0
+ 333 00f5 06       		.uleb128 0x6
+ 334 00f6 30000000 		.4byte	.LASF19
+ 335 00fa 01       		.byte	0x1
+ 336 00fb 28       		.byte	0x28
+ 337 00fc 00000000 		.4byte	.LFB71
+ 338 0100 10000000 		.4byte	.LFE71-.LFB71
+ 339 0104 01       		.uleb128 0x1
+ 340 0105 9C       		.byte	0x9c
+ 341 0106 2D010000 		.4byte	0x12d
+ 342 010a 07       		.uleb128 0x7
+ 343 010b 08000000 		.4byte	.LVL2
+ 344 010f 57020000 		.4byte	0x257
+ 345 0113 1D010000 		.4byte	0x11d
+ 346 0117 08       		.uleb128 0x8
+ 347 0118 01       		.uleb128 0x1
+ 348 0119 50       		.byte	0x50
+ 349 011a 01       		.uleb128 0x1
+ 350 011b 3D       		.byte	0x3d
+ 351 011c 00       		.byte	0
+ 352 011d 09       		.uleb128 0x9
+ 353 011e 0E000000 		.4byte	.LVL3
+ 354 0122 62020000 		.4byte	0x262
+ 355 0126 08       		.uleb128 0x8
+ 356 0127 01       		.uleb128 0x1
+ 357 0128 50       		.byte	0x50
+ 358 0129 01       		.uleb128 0x1
+ 359 012a 3F       		.byte	0x3f
+ 360 012b 00       		.byte	0
+ 361 012c 00       		.byte	0
+ 362 012d 06       		.uleb128 0x6
+ 363 012e 8A010000 		.4byte	.LASF20
+ 364 0132 01       		.byte	0x1
+ 365 0133 32       		.byte	0x32
+ 366 0134 00000000 		.4byte	.LFB73
+ 367 0138 28000000 		.4byte	.LFE73-.LFB73
+ 368 013c 01       		.uleb128 0x1
+ 369 013d 9C       		.byte	0x9c
+ 370 013e BB010000 		.4byte	0x1bb
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 9
 
 
- 336              		.file 19 "Generated_Source\\PSoC5/core_cm3.h"
- 337              		.section	.debug_info,"",%progbits
- 338              	.Ldebug_info0:
- 339 0000 AC030000 		.4byte	0x3ac
- 340 0004 0400     		.2byte	0x4
- 341 0006 00000000 		.4byte	.Ldebug_abbrev0
- 342 000a 04       		.byte	0x4
- 343 000b 01       		.uleb128 0x1
- 344 000c 7F000000 		.4byte	.LASF45
- 345 0010 0C       		.byte	0xc
- 346 0011 3D020000 		.4byte	.LASF46
- 347 0015 6F020000 		.4byte	.LASF47
- 348 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 349 001d 00000000 		.4byte	0
- 350 0021 00000000 		.4byte	.Ldebug_line0
- 351 0025 02       		.uleb128 0x2
- 352 0026 01       		.byte	0x1
- 353 0027 06       		.byte	0x6
- 354 0028 D2020000 		.4byte	.LASF0
- 355 002c 02       		.uleb128 0x2
- 356 002d 01       		.byte	0x1
- 357 002e 08       		.byte	0x8
- 358 002f 71000000 		.4byte	.LASF1
- 359 0033 02       		.uleb128 0x2
- 360 0034 02       		.byte	0x2
- 361 0035 05       		.byte	0x5
- 362 0036 59020000 		.4byte	.LASF2
- 363 003a 02       		.uleb128 0x2
- 364 003b 02       		.byte	0x2
- 365 003c 07       		.byte	0x7
- 366 003d 25000000 		.4byte	.LASF3
- 367 0041 03       		.uleb128 0x3
- 368 0042 15000000 		.4byte	.LASF9
- 369 0046 02       		.byte	0x2
- 370 0047 3F       		.byte	0x3f
- 371 0048 4C000000 		.4byte	0x4c
- 372 004c 02       		.uleb128 0x2
- 373 004d 04       		.byte	0x4
- 374 004e 05       		.byte	0x5
- 375 004f 47010000 		.4byte	.LASF4
- 376 0053 02       		.uleb128 0x2
- 377 0054 04       		.byte	0x4
- 378 0055 07       		.byte	0x7
- 379 0056 67010000 		.4byte	.LASF5
- 380 005a 02       		.uleb128 0x2
- 381 005b 08       		.byte	0x8
- 382 005c 05       		.byte	0x5
- 383 005d 2F020000 		.4byte	.LASF6
- 384 0061 02       		.uleb128 0x2
- 385 0062 08       		.byte	0x8
- 386 0063 07       		.byte	0x7
- 387 0064 CE010000 		.4byte	.LASF7
- 388 0068 04       		.uleb128 0x4
- 389 0069 04       		.byte	0x4
- 390 006a 05       		.byte	0x5
- 391 006b 696E7400 		.ascii	"int\000"
- 392 006f 02       		.uleb128 0x2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 10
+ 371 0142 0A       		.uleb128 0xa
+ 372 0143 A3020000 		.4byte	.LASF46
+ 373 0147 01       		.byte	0x1
+ 374 0148 33       		.byte	0x33
+ 375 0149 81000000 		.4byte	0x81
+ 376 014d 01       		.uleb128 0x1
+ 377 014e 54       		.byte	0x54
+ 378 014f 0B       		.uleb128 0xb
+ 379 0150 A9020000 		.4byte	.LASF21
+ 380 0154 01       		.byte	0x1
+ 381 0155 34       		.byte	0x34
+ 382 0156 81000000 		.4byte	0x81
+ 383 015a 0B       		.uleb128 0xb
+ 384 015b AF020000 		.4byte	.LASF22
+ 385 015f 01       		.byte	0x1
+ 386 0160 35       		.byte	0x35
+ 387 0161 81000000 		.4byte	0x81
+ 388 0165 0B       		.uleb128 0xb
+ 389 0166 B5020000 		.4byte	.LASF23
+ 390 016a 01       		.byte	0x1
+ 391 016b 36       		.byte	0x36
+ 392 016c 81000000 		.4byte	0x81
+ 393 0170 0B       		.uleb128 0xb
+ 394 0171 BB020000 		.4byte	.LASF24
+ 395 0175 01       		.byte	0x1
+ 396 0176 37       		.byte	0x37
+ 397 0177 81000000 		.4byte	0x81
+ 398 017b 0C       		.uleb128 0xc
+ 399 017c 06000000 		.4byte	.LVL4
+ 400 0180 6D020000 		.4byte	0x26d
+ 401 0184 0C       		.uleb128 0xc
+ 402 0185 0C000000 		.4byte	.LVL6
+ 403 0189 78020000 		.4byte	0x278
+ 404 018d 0C       		.uleb128 0xc
+ 405 018e 10000000 		.4byte	.LVL7
+ 406 0192 83020000 		.4byte	0x283
+ 407 0196 0C       		.uleb128 0xc
+ 408 0197 14000000 		.4byte	.LVL8
+ 409 019b 8E020000 		.4byte	0x28e
+ 410 019f 0C       		.uleb128 0xc
+ 411 01a0 18000000 		.4byte	.LVL9
+ 412 01a4 99020000 		.4byte	0x299
+ 413 01a8 0C       		.uleb128 0xc
+ 414 01a9 20000000 		.4byte	.LVL10
+ 415 01ad BC000000 		.4byte	0xbc
+ 416 01b1 0C       		.uleb128 0xc
+ 417 01b2 26000000 		.4byte	.LVL12
+ 418 01b6 F5000000 		.4byte	0xf5
+ 419 01ba 00       		.byte	0
+ 420 01bb 0D       		.uleb128 0xd
+ 421 01bc F8010000 		.4byte	.LASF47
+ 422 01c0 01       		.byte	0x1
+ 423 01c1 42       		.byte	0x42
+ 424 01c2 68000000 		.4byte	0x68
+ 425 01c6 00000000 		.4byte	.LFB74
+ 426 01ca 30000000 		.4byte	.LFE74-.LFB74
+ 427 01ce 01       		.uleb128 0x1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 10
 
 
- 393 0070 04       		.byte	0x4
- 394 0071 07       		.byte	0x7
- 395 0072 C1010000 		.4byte	.LASF8
- 396 0076 03       		.uleb128 0x3
- 397 0077 0B020000 		.4byte	.LASF10
- 398 007b 03       		.byte	0x3
- 399 007c 2C       		.byte	0x2c
- 400 007d 41000000 		.4byte	0x41
- 401 0081 05       		.uleb128 0x5
- 402 0082 63020000 		.4byte	.LASF11
- 403 0086 04       		.byte	0x4
- 404 0087 E701     		.2byte	0x1e7
- 405 0089 2C000000 		.4byte	0x2c
- 406 008d 02       		.uleb128 0x2
- 407 008e 04       		.byte	0x4
- 408 008f 04       		.byte	0x4
- 409 0090 52000000 		.4byte	.LASF12
- 410 0094 02       		.uleb128 0x2
- 411 0095 08       		.byte	0x8
- 412 0096 04       		.byte	0x4
- 413 0097 38000000 		.4byte	.LASF13
- 414 009b 02       		.uleb128 0x2
- 415 009c 01       		.byte	0x1
- 416 009d 08       		.byte	0x8
- 417 009e 44020000 		.4byte	.LASF14
- 418 00a2 02       		.uleb128 0x2
- 419 00a3 08       		.byte	0x8
- 420 00a4 04       		.byte	0x4
- 421 00a5 C6020000 		.4byte	.LASF15
- 422 00a9 02       		.uleb128 0x2
- 423 00aa 04       		.byte	0x4
- 424 00ab 07       		.byte	0x7
- 425 00ac 13020000 		.4byte	.LASF16
- 426 00b0 06       		.uleb128 0x6
- 427 00b1 DE020000 		.4byte	.LASF17
- 428 00b5 01       		.byte	0x1
- 429 00b6 1E       		.byte	0x1e
- 430 00b7 00000000 		.4byte	.LFB67
- 431 00bb 0A000000 		.4byte	.LFE67-.LFB67
- 432 00bf 01       		.uleb128 0x1
- 433 00c0 9C       		.byte	0x9c
- 434 00c1 D6000000 		.4byte	0xd6
- 435 00c5 07       		.uleb128 0x7
- 436 00c6 08000000 		.4byte	.LVL0
- 437 00ca FF020000 		.4byte	0x2ff
- 438 00ce 08       		.uleb128 0x8
- 439 00cf 01       		.uleb128 0x1
- 440 00d0 50       		.byte	0x50
- 441 00d1 02       		.uleb128 0x2
- 442 00d2 08       		.byte	0x8
- 443 00d3 46       		.byte	0x46
- 444 00d4 00       		.byte	0
- 445 00d5 00       		.byte	0
- 446 00d6 06       		.uleb128 0x6
- 447 00d7 58000000 		.4byte	.LASF18
- 448 00db 01       		.byte	0x1
- 449 00dc 1A       		.byte	0x1a
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 11
+ 428 01cf 9C       		.byte	0x9c
+ 429 01d0 35020000 		.4byte	0x235
+ 430 01d4 0C       		.uleb128 0xc
+ 431 01d5 08000000 		.4byte	.LVL13
+ 432 01d9 A4020000 		.4byte	0x2a4
+ 433 01dd 0C       		.uleb128 0xc
+ 434 01de 0C000000 		.4byte	.LVL14
+ 435 01e2 AF020000 		.4byte	0x2af
+ 436 01e6 0C       		.uleb128 0xc
+ 437 01e7 10000000 		.4byte	.LVL15
+ 438 01eb BA020000 		.4byte	0x2ba
+ 439 01ef 0C       		.uleb128 0xc
+ 440 01f0 14000000 		.4byte	.LVL16
+ 441 01f4 C5020000 		.4byte	0x2c5
+ 442 01f8 0C       		.uleb128 0xc
+ 443 01f9 18000000 		.4byte	.LVL17
+ 444 01fd D0020000 		.4byte	0x2d0
+ 445 0201 0C       		.uleb128 0xc
+ 446 0202 1C000000 		.4byte	.LVL18
+ 447 0206 DB020000 		.4byte	0x2db
+ 448 020a 0C       		.uleb128 0xc
+ 449 020b 20000000 		.4byte	.LVL19
+ 450 020f E6020000 		.4byte	0x2e6
+ 451 0213 0C       		.uleb128 0xc
+ 452 0214 24000000 		.4byte	.LVL20
+ 453 0218 F1020000 		.4byte	0x2f1
+ 454 021c 0C       		.uleb128 0xc
+ 455 021d 28000000 		.4byte	.LVL21
+ 456 0221 2D010000 		.4byte	0x12d
+ 457 0225 09       		.uleb128 0x9
+ 458 0226 2E000000 		.4byte	.LVL22
+ 459 022a FC020000 		.4byte	0x2fc
+ 460 022e 08       		.uleb128 0x8
+ 461 022f 01       		.uleb128 0x1
+ 462 0230 50       		.byte	0x50
+ 463 0231 01       		.uleb128 0x1
+ 464 0232 35       		.byte	0x35
+ 465 0233 00       		.byte	0
+ 466 0234 00       		.byte	0
+ 467 0235 0E       		.uleb128 0xe
+ 468 0236 EB010000 		.4byte	.LASF25
+ 469 023a 05       		.byte	0x5
+ 470 023b 1207     		.2byte	0x712
+ 471 023d 41020000 		.4byte	0x241
+ 472 0241 0F       		.uleb128 0xf
+ 473 0242 76000000 		.4byte	0x76
+ 474 0246 10       		.uleb128 0x10
+ 475 0247 CA010000 		.4byte	.LASF26
+ 476 024b 01       		.byte	0x1
+ 477 024c 07       		.byte	0x7
+ 478 024d 8D000000 		.4byte	0x8d
+ 479 0251 05       		.uleb128 0x5
+ 480 0252 03       		.byte	0x3
+ 481 0253 00000000 		.4byte	overCount
+ 482 0257 11       		.uleb128 0x11
+ 483 0258 56020000 		.4byte	.LASF27
+ 484 025c 56020000 		.4byte	.LASF27
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 11
 
 
- 450 00dd 00000000 		.4byte	.LFB66
- 451 00e1 0A000000 		.4byte	.LFE66-.LFB66
- 452 00e5 01       		.uleb128 0x1
- 453 00e6 9C       		.byte	0x9c
- 454 00e7 FC000000 		.4byte	0xfc
- 455 00eb 07       		.uleb128 0x7
- 456 00ec 08000000 		.4byte	.LVL1
- 457 00f0 0A030000 		.4byte	0x30a
- 458 00f4 08       		.uleb128 0x8
- 459 00f5 01       		.uleb128 0x1
- 460 00f6 50       		.byte	0x50
- 461 00f7 02       		.uleb128 0x2
- 462 00f8 08       		.byte	0x8
- 463 00f9 46       		.byte	0x46
- 464 00fa 00       		.byte	0
- 465 00fb 00       		.byte	0
- 466 00fc 06       		.uleb128 0x6
- 467 00fd 60010000 		.4byte	.LASF19
- 468 0101 01       		.byte	0x1
- 469 0102 3C       		.byte	0x3c
- 470 0103 00000000 		.4byte	.LFB73
- 471 0107 0C000000 		.4byte	.LFE73-.LFB73
- 472 010b 01       		.uleb128 0x1
- 473 010c 9C       		.byte	0x9c
- 474 010d 24010000 		.4byte	0x124
- 475 0111 09       		.uleb128 0x9
- 476 0112 06000000 		.4byte	.LVL2
- 477 0116 B0000000 		.4byte	0xb0
- 478 011a 09       		.uleb128 0x9
- 479 011b 0A000000 		.4byte	.LVL3
- 480 011f D6000000 		.4byte	0xd6
- 481 0123 00       		.byte	0
- 482 0124 06       		.uleb128 0x6
- 483 0125 17010000 		.4byte	.LASF20
- 484 0129 01       		.byte	0x1
- 485 012a 2C       		.byte	0x2c
- 486 012b 00000000 		.4byte	.LFB70
- 487 012f 10000000 		.4byte	.LFE70-.LFB70
- 488 0133 01       		.uleb128 0x1
- 489 0134 9C       		.byte	0x9c
- 490 0135 5D010000 		.4byte	0x15d
- 491 0139 0A       		.uleb128 0xa
- 492 013a 08000000 		.4byte	.LVL4
- 493 013e FF020000 		.4byte	0x2ff
- 494 0142 4C010000 		.4byte	0x14c
- 495 0146 08       		.uleb128 0x8
- 496 0147 01       		.uleb128 0x1
- 497 0148 50       		.byte	0x50
- 498 0149 01       		.uleb128 0x1
- 499 014a 42       		.byte	0x42
- 500 014b 00       		.byte	0
- 501 014c 07       		.uleb128 0x7
- 502 014d 0E000000 		.4byte	.LVL5
- 503 0151 0A030000 		.4byte	0x30a
- 504 0155 08       		.uleb128 0x8
- 505 0156 01       		.uleb128 0x1
- 506 0157 50       		.byte	0x50
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 12
+ 485 0260 06       		.byte	0x6
+ 486 0261 C3       		.byte	0xc3
+ 487 0262 11       		.uleb128 0x11
+ 488 0263 41000000 		.4byte	.LASF28
+ 489 0267 41000000 		.4byte	.LASF28
+ 490 026b 07       		.byte	0x7
+ 491 026c C3       		.byte	0xc3
+ 492 026d 11       		.uleb128 0x11
+ 493 026e 2C010000 		.4byte	.LASF29
+ 494 0272 2C010000 		.4byte	.LASF29
+ 495 0276 08       		.byte	0x8
+ 496 0277 29       		.byte	0x29
+ 497 0278 11       		.uleb128 0x11
+ 498 0279 2B020000 		.4byte	.LASF30
+ 499 027d 2B020000 		.4byte	.LASF30
+ 500 0281 09       		.byte	0x9
+ 501 0282 29       		.byte	0x29
+ 502 0283 11       		.uleb128 0x11
+ 503 0284 00000000 		.4byte	.LASF31
+ 504 0288 00000000 		.4byte	.LASF31
+ 505 028c 0A       		.byte	0xa
+ 506 028d 29       		.byte	0x29
+ 507 028e 11       		.uleb128 0x11
+ 508 028f F6000000 		.4byte	.LASF32
+ 509 0293 F6000000 		.4byte	.LASF32
+ 510 0297 0B       		.byte	0xb
+ 511 0298 29       		.byte	0x29
+ 512 0299 11       		.uleb128 0x11
+ 513 029a FD010000 		.4byte	.LASF33
+ 514 029e FD010000 		.4byte	.LASF33
+ 515 02a2 0C       		.byte	0xc
+ 516 02a3 29       		.byte	0x29
+ 517 02a4 11       		.uleb128 0x11
+ 518 02a5 12010000 		.4byte	.LASF34
+ 519 02a9 12010000 		.4byte	.LASF34
+ 520 02ad 06       		.byte	0x6
+ 521 02ae 92       		.byte	0x92
+ 522 02af 11       		.uleb128 0x11
+ 523 02b0 AE010000 		.4byte	.LASF35
+ 524 02b4 AE010000 		.4byte	.LASF35
+ 525 02b8 07       		.byte	0x7
+ 526 02b9 92       		.byte	0x92
+ 527 02ba 11       		.uleb128 0x11
+ 528 02bb 1E010000 		.4byte	.LASF36
+ 529 02bf 1E010000 		.4byte	.LASF36
+ 530 02c3 0D       		.byte	0xd
+ 531 02c4 33       		.byte	0x33
+ 532 02c5 11       		.uleb128 0x11
+ 533 02c6 36010000 		.4byte	.LASF37
+ 534 02ca 36010000 		.4byte	.LASF37
+ 535 02ce 0E       		.byte	0xe
+ 536 02cf 5A       		.byte	0x5a
+ 537 02d0 11       		.uleb128 0x11
+ 538 02d1 D4010000 		.4byte	.LASF38
+ 539 02d5 D4010000 		.4byte	.LASF38
+ 540 02d9 0F       		.byte	0xf
+ 541 02da 5A       		.byte	0x5a
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 12
 
 
- 507 0158 02       		.uleb128 0x2
- 508 0159 08       		.byte	0x8
- 509 015a 48       		.byte	0x48
- 510 015b 00       		.byte	0
- 511 015c 00       		.byte	0
- 512 015d 06       		.uleb128 0x6
- 513 015e 64000000 		.4byte	.LASF21
- 514 0162 01       		.byte	0x1
- 515 0163 32       		.byte	0x32
- 516 0164 00000000 		.4byte	.LFB71
- 517 0168 10000000 		.4byte	.LFE71-.LFB71
- 518 016c 01       		.uleb128 0x1
- 519 016d 9C       		.byte	0x9c
- 520 016e 96010000 		.4byte	0x196
- 521 0172 0A       		.uleb128 0xa
- 522 0173 08000000 		.4byte	.LVL6
- 523 0177 0A030000 		.4byte	0x30a
- 524 017b 85010000 		.4byte	0x185
- 525 017f 08       		.uleb128 0x8
- 526 0180 01       		.uleb128 0x1
- 527 0181 50       		.byte	0x50
- 528 0182 01       		.uleb128 0x1
- 529 0183 42       		.byte	0x42
- 530 0184 00       		.byte	0
- 531 0185 07       		.uleb128 0x7
- 532 0186 0E000000 		.4byte	.LVL7
- 533 018a FF020000 		.4byte	0x2ff
- 534 018e 08       		.uleb128 0x8
- 535 018f 01       		.uleb128 0x1
- 536 0190 50       		.byte	0x50
- 537 0191 02       		.uleb128 0x2
- 538 0192 08       		.byte	0x8
- 539 0193 48       		.byte	0x48
- 540 0194 00       		.byte	0
- 541 0195 00       		.byte	0
- 542 0196 06       		.uleb128 0x6
- 543 0197 00000000 		.4byte	.LASF22
- 544 019b 01       		.byte	0x1
- 545 019c 41       		.byte	0x41
- 546 019d 00000000 		.4byte	.LFB74
- 547 01a1 10000000 		.4byte	.LFE74-.LFB74
- 548 01a5 01       		.uleb128 0x1
- 549 01a6 9C       		.byte	0x9c
- 550 01a7 D0010000 		.4byte	0x1d0
- 551 01ab 0A       		.uleb128 0xa
- 552 01ac 08000000 		.4byte	.LVL8
- 553 01b0 0A030000 		.4byte	0x30a
- 554 01b4 BF010000 		.4byte	0x1bf
- 555 01b8 08       		.uleb128 0x8
- 556 01b9 01       		.uleb128 0x1
- 557 01ba 50       		.byte	0x50
- 558 01bb 02       		.uleb128 0x2
- 559 01bc 08       		.byte	0x8
- 560 01bd 2D       		.byte	0x2d
- 561 01be 00       		.byte	0
- 562 01bf 07       		.uleb128 0x7
- 563 01c0 0E000000 		.4byte	.LVL9
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 13
+ 542 02db 11       		.uleb128 0x11
+ 543 02dc BA010000 		.4byte	.LASF39
+ 544 02e0 BA010000 		.4byte	.LASF39
+ 545 02e4 10       		.byte	0x10
+ 546 02e5 5A       		.byte	0x5a
+ 547 02e6 11       		.uleb128 0x11
+ 548 02e7 83020000 		.4byte	.LASF40
+ 549 02eb 83020000 		.4byte	.LASF40
+ 550 02ef 11       		.byte	0x11
+ 551 02f0 5A       		.byte	0x5a
+ 552 02f1 11       		.uleb128 0x11
+ 553 02f2 35020000 		.4byte	.LASF41
+ 554 02f6 35020000 		.4byte	.LASF41
+ 555 02fa 12       		.byte	0x12
+ 556 02fb 5A       		.byte	0x5a
+ 557 02fc 11       		.uleb128 0x11
+ 558 02fd D9020000 		.4byte	.LASF42
+ 559 0301 D9020000 		.4byte	.LASF42
+ 560 0305 13       		.byte	0x13
+ 561 0306 76       		.byte	0x76
+ 562 0307 00       		.byte	0
+ 563              		.section	.debug_abbrev,"",%progbits
+ 564              	.Ldebug_abbrev0:
+ 565 0000 01       		.uleb128 0x1
+ 566 0001 11       		.uleb128 0x11
+ 567 0002 01       		.byte	0x1
+ 568 0003 25       		.uleb128 0x25
+ 569 0004 0E       		.uleb128 0xe
+ 570 0005 13       		.uleb128 0x13
+ 571 0006 0B       		.uleb128 0xb
+ 572 0007 03       		.uleb128 0x3
+ 573 0008 0E       		.uleb128 0xe
+ 574 0009 1B       		.uleb128 0x1b
+ 575 000a 0E       		.uleb128 0xe
+ 576 000b 55       		.uleb128 0x55
+ 577 000c 17       		.uleb128 0x17
+ 578 000d 11       		.uleb128 0x11
+ 579 000e 01       		.uleb128 0x1
+ 580 000f 10       		.uleb128 0x10
+ 581 0010 17       		.uleb128 0x17
+ 582 0011 00       		.byte	0
+ 583 0012 00       		.byte	0
+ 584 0013 02       		.uleb128 0x2
+ 585 0014 24       		.uleb128 0x24
+ 586 0015 00       		.byte	0
+ 587 0016 0B       		.uleb128 0xb
+ 588 0017 0B       		.uleb128 0xb
+ 589 0018 3E       		.uleb128 0x3e
+ 590 0019 0B       		.uleb128 0xb
+ 591 001a 03       		.uleb128 0x3
+ 592 001b 0E       		.uleb128 0xe
+ 593 001c 00       		.byte	0
+ 594 001d 00       		.byte	0
+ 595 001e 03       		.uleb128 0x3
+ 596 001f 16       		.uleb128 0x16
+ 597 0020 00       		.byte	0
+ 598 0021 03       		.uleb128 0x3
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 13
 
 
- 564 01c4 FF020000 		.4byte	0x2ff
- 565 01c8 08       		.uleb128 0x8
- 566 01c9 01       		.uleb128 0x1
- 567 01ca 50       		.byte	0x50
- 568 01cb 02       		.uleb128 0x2
- 569 01cc 08       		.byte	0x8
- 570 01cd 2D       		.byte	0x2d
- 571 01ce 00       		.byte	0
- 572 01cf 00       		.byte	0
- 573 01d0 06       		.uleb128 0x6
- 574 01d1 FF010000 		.4byte	.LASF23
- 575 01d5 01       		.byte	0x1
- 576 01d6 46       		.byte	0x46
- 577 01d7 00000000 		.4byte	.LFB75
- 578 01db 4E000000 		.4byte	.LFE75-.LFB75
- 579 01df 01       		.uleb128 0x1
- 580 01e0 9C       		.byte	0x9c
- 581 01e1 74020000 		.4byte	0x274
- 582 01e5 0B       		.uleb128 0xb
- 583 01e6 69020000 		.4byte	.LASF24
- 584 01ea 01       		.byte	0x1
- 585 01eb 47       		.byte	0x47
- 586 01ec 81000000 		.4byte	0x81
- 587 01f0 01       		.uleb128 0x1
- 588 01f1 54       		.byte	0x54
- 589 01f2 0B       		.uleb128 0xb
- 590 01f3 1F000000 		.4byte	.LASF25
- 591 01f7 01       		.byte	0x1
- 592 01f8 48       		.byte	0x48
- 593 01f9 81000000 		.4byte	0x81
- 594 01fd 01       		.uleb128 0x1
- 595 01fe 55       		.byte	0x55
- 596 01ff 0B       		.uleb128 0xb
- 597 0200 B4020000 		.4byte	.LASF26
- 598 0204 01       		.byte	0x1
- 599 0205 49       		.byte	0x49
- 600 0206 81000000 		.4byte	0x81
- 601 020a 01       		.uleb128 0x1
- 602 020b 56       		.byte	0x56
- 603 020c 0C       		.uleb128 0xc
- 604 020d BA020000 		.4byte	.LASF27
- 605 0211 01       		.byte	0x1
- 606 0212 4A       		.byte	0x4a
- 607 0213 81000000 		.4byte	0x81
- 608 0217 0C       		.uleb128 0xc
- 609 0218 C0020000 		.4byte	.LASF28
- 610 021c 01       		.byte	0x1
- 611 021d 4B       		.byte	0x4b
- 612 021e 81000000 		.4byte	0x81
- 613 0222 09       		.uleb128 0x9
- 614 0223 06000000 		.4byte	.LVL10
- 615 0227 15030000 		.4byte	0x315
- 616 022b 09       		.uleb128 0x9
- 617 022c 0C000000 		.4byte	.LVL12
- 618 0230 20030000 		.4byte	0x320
- 619 0234 09       		.uleb128 0x9
- 620 0235 12000000 		.4byte	.LVL14
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 14
+ 599 0022 0E       		.uleb128 0xe
+ 600 0023 3A       		.uleb128 0x3a
+ 601 0024 0B       		.uleb128 0xb
+ 602 0025 3B       		.uleb128 0x3b
+ 603 0026 0B       		.uleb128 0xb
+ 604 0027 49       		.uleb128 0x49
+ 605 0028 13       		.uleb128 0x13
+ 606 0029 00       		.byte	0
+ 607 002a 00       		.byte	0
+ 608 002b 04       		.uleb128 0x4
+ 609 002c 24       		.uleb128 0x24
+ 610 002d 00       		.byte	0
+ 611 002e 0B       		.uleb128 0xb
+ 612 002f 0B       		.uleb128 0xb
+ 613 0030 3E       		.uleb128 0x3e
+ 614 0031 0B       		.uleb128 0xb
+ 615 0032 03       		.uleb128 0x3
+ 616 0033 08       		.uleb128 0x8
+ 617 0034 00       		.byte	0
+ 618 0035 00       		.byte	0
+ 619 0036 05       		.uleb128 0x5
+ 620 0037 16       		.uleb128 0x16
+ 621 0038 00       		.byte	0
+ 622 0039 03       		.uleb128 0x3
+ 623 003a 0E       		.uleb128 0xe
+ 624 003b 3A       		.uleb128 0x3a
+ 625 003c 0B       		.uleb128 0xb
+ 626 003d 3B       		.uleb128 0x3b
+ 627 003e 05       		.uleb128 0x5
+ 628 003f 49       		.uleb128 0x49
+ 629 0040 13       		.uleb128 0x13
+ 630 0041 00       		.byte	0
+ 631 0042 00       		.byte	0
+ 632 0043 06       		.uleb128 0x6
+ 633 0044 2E       		.uleb128 0x2e
+ 634 0045 01       		.byte	0x1
+ 635 0046 03       		.uleb128 0x3
+ 636 0047 0E       		.uleb128 0xe
+ 637 0048 3A       		.uleb128 0x3a
+ 638 0049 0B       		.uleb128 0xb
+ 639 004a 3B       		.uleb128 0x3b
+ 640 004b 0B       		.uleb128 0xb
+ 641 004c 11       		.uleb128 0x11
+ 642 004d 01       		.uleb128 0x1
+ 643 004e 12       		.uleb128 0x12
+ 644 004f 06       		.uleb128 0x6
+ 645 0050 40       		.uleb128 0x40
+ 646 0051 18       		.uleb128 0x18
+ 647 0052 9742     		.uleb128 0x2117
+ 648 0054 19       		.uleb128 0x19
+ 649 0055 01       		.uleb128 0x1
+ 650 0056 13       		.uleb128 0x13
+ 651 0057 00       		.byte	0
+ 652 0058 00       		.byte	0
+ 653 0059 07       		.uleb128 0x7
+ 654 005a 898201   		.uleb128 0x4109
+ 655 005d 01       		.byte	0x1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 14
 
 
- 621 0239 2B030000 		.4byte	0x32b
- 622 023d 09       		.uleb128 0x9
- 623 023e 18000000 		.4byte	.LVL16
- 624 0242 36030000 		.4byte	0x336
- 625 0246 09       		.uleb128 0x9
- 626 0247 1C000000 		.4byte	.LVL17
- 627 024b 41030000 		.4byte	0x341
- 628 024f 09       		.uleb128 0x9
- 629 0250 2A000000 		.4byte	.LVL18
- 630 0254 FC000000 		.4byte	0xfc
- 631 0258 09       		.uleb128 0x9
- 632 0259 38000000 		.4byte	.LVL20
- 633 025d 24010000 		.4byte	0x124
- 634 0261 09       		.uleb128 0x9
- 635 0262 46000000 		.4byte	.LVL22
- 636 0266 5D010000 		.4byte	0x15d
- 637 026a 09       		.uleb128 0x9
- 638 026b 4C000000 		.4byte	.LVL24
- 639 026f 96010000 		.4byte	0x196
- 640 0273 00       		.byte	0
- 641 0274 0D       		.uleb128 0xd
- 642 0275 95010000 		.4byte	.LASF48
- 643 0279 01       		.byte	0x1
- 644 027a 5F       		.byte	0x5f
- 645 027b 68000000 		.4byte	0x68
- 646 027f 00000000 		.4byte	.LFB76
- 647 0283 30000000 		.4byte	.LFE76-.LFB76
- 648 0287 01       		.uleb128 0x1
- 649 0288 9C       		.byte	0x9c
- 650 0289 EE020000 		.4byte	0x2ee
- 651 028d 09       		.uleb128 0x9
- 652 028e 08000000 		.4byte	.LVL25
- 653 0292 4C030000 		.4byte	0x34c
- 654 0296 09       		.uleb128 0x9
- 655 0297 0C000000 		.4byte	.LVL26
- 656 029b 57030000 		.4byte	0x357
- 657 029f 09       		.uleb128 0x9
- 658 02a0 10000000 		.4byte	.LVL27
- 659 02a4 62030000 		.4byte	0x362
- 660 02a8 09       		.uleb128 0x9
- 661 02a9 14000000 		.4byte	.LVL28
- 662 02ad 6D030000 		.4byte	0x36d
- 663 02b1 09       		.uleb128 0x9
- 664 02b2 18000000 		.4byte	.LVL29
- 665 02b6 78030000 		.4byte	0x378
- 666 02ba 09       		.uleb128 0x9
- 667 02bb 1C000000 		.4byte	.LVL30
- 668 02bf 83030000 		.4byte	0x383
- 669 02c3 09       		.uleb128 0x9
- 670 02c4 20000000 		.4byte	.LVL31
- 671 02c8 8E030000 		.4byte	0x38e
- 672 02cc 09       		.uleb128 0x9
- 673 02cd 24000000 		.4byte	.LVL32
- 674 02d1 99030000 		.4byte	0x399
- 675 02d5 09       		.uleb128 0x9
- 676 02d6 28000000 		.4byte	.LVL33
- 677 02da D0010000 		.4byte	0x1d0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 15
+ 656 005e 11       		.uleb128 0x11
+ 657 005f 01       		.uleb128 0x1
+ 658 0060 31       		.uleb128 0x31
+ 659 0061 13       		.uleb128 0x13
+ 660 0062 01       		.uleb128 0x1
+ 661 0063 13       		.uleb128 0x13
+ 662 0064 00       		.byte	0
+ 663 0065 00       		.byte	0
+ 664 0066 08       		.uleb128 0x8
+ 665 0067 8A8201   		.uleb128 0x410a
+ 666 006a 00       		.byte	0
+ 667 006b 02       		.uleb128 0x2
+ 668 006c 18       		.uleb128 0x18
+ 669 006d 9142     		.uleb128 0x2111
+ 670 006f 18       		.uleb128 0x18
+ 671 0070 00       		.byte	0
+ 672 0071 00       		.byte	0
+ 673 0072 09       		.uleb128 0x9
+ 674 0073 898201   		.uleb128 0x4109
+ 675 0076 01       		.byte	0x1
+ 676 0077 11       		.uleb128 0x11
+ 677 0078 01       		.uleb128 0x1
+ 678 0079 31       		.uleb128 0x31
+ 679 007a 13       		.uleb128 0x13
+ 680 007b 00       		.byte	0
+ 681 007c 00       		.byte	0
+ 682 007d 0A       		.uleb128 0xa
+ 683 007e 34       		.uleb128 0x34
+ 684 007f 00       		.byte	0
+ 685 0080 03       		.uleb128 0x3
+ 686 0081 0E       		.uleb128 0xe
+ 687 0082 3A       		.uleb128 0x3a
+ 688 0083 0B       		.uleb128 0xb
+ 689 0084 3B       		.uleb128 0x3b
+ 690 0085 0B       		.uleb128 0xb
+ 691 0086 49       		.uleb128 0x49
+ 692 0087 13       		.uleb128 0x13
+ 693 0088 02       		.uleb128 0x2
+ 694 0089 18       		.uleb128 0x18
+ 695 008a 00       		.byte	0
+ 696 008b 00       		.byte	0
+ 697 008c 0B       		.uleb128 0xb
+ 698 008d 34       		.uleb128 0x34
+ 699 008e 00       		.byte	0
+ 700 008f 03       		.uleb128 0x3
+ 701 0090 0E       		.uleb128 0xe
+ 702 0091 3A       		.uleb128 0x3a
+ 703 0092 0B       		.uleb128 0xb
+ 704 0093 3B       		.uleb128 0x3b
+ 705 0094 0B       		.uleb128 0xb
+ 706 0095 49       		.uleb128 0x49
+ 707 0096 13       		.uleb128 0x13
+ 708 0097 00       		.byte	0
+ 709 0098 00       		.byte	0
+ 710 0099 0C       		.uleb128 0xc
+ 711 009a 898201   		.uleb128 0x4109
+ 712 009d 00       		.byte	0
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 15
 
 
- 678 02de 07       		.uleb128 0x7
- 679 02df 2E000000 		.4byte	.LVL34
- 680 02e3 A4030000 		.4byte	0x3a4
- 681 02e7 08       		.uleb128 0x8
- 682 02e8 01       		.uleb128 0x1
- 683 02e9 50       		.byte	0x50
- 684 02ea 01       		.uleb128 0x1
- 685 02eb 35       		.byte	0x35
- 686 02ec 00       		.byte	0
- 687 02ed 00       		.byte	0
- 688 02ee 0E       		.uleb128 0xe
- 689 02ef AA010000 		.4byte	.LASF49
- 690 02f3 13       		.byte	0x13
- 691 02f4 1207     		.2byte	0x712
- 692 02f6 FA020000 		.4byte	0x2fa
- 693 02fa 0F       		.uleb128 0xf
- 694 02fb 76000000 		.4byte	0x76
- 695 02ff 10       		.uleb128 0x10
- 696 0300 3F000000 		.4byte	.LASF29
- 697 0304 3F000000 		.4byte	.LASF29
- 698 0308 05       		.byte	0x5
- 699 0309 C3       		.byte	0xc3
- 700 030a 10       		.uleb128 0x10
- 701 030b 1C020000 		.4byte	.LASF30
- 702 030f 1C020000 		.4byte	.LASF30
- 703 0313 06       		.byte	0x6
- 704 0314 C3       		.byte	0xc3
- 705 0315 10       		.uleb128 0x10
- 706 0316 3D010000 		.4byte	.LASF31
- 707 031a 3D010000 		.4byte	.LASF31
- 708 031e 07       		.byte	0x7
- 709 031f 29       		.byte	0x29
- 710 0320 10       		.uleb128 0x10
- 711 0321 E5010000 		.4byte	.LASF32
- 712 0325 E5010000 		.4byte	.LASF32
- 713 0329 08       		.byte	0x8
- 714 032a 29       		.byte	0x29
- 715 032b 10       		.uleb128 0x10
- 716 032c 0B000000 		.4byte	.LASF33
- 717 0330 0B000000 		.4byte	.LASF33
- 718 0334 09       		.byte	0x9
- 719 0335 29       		.byte	0x29
- 720 0336 10       		.uleb128 0x10
- 721 0337 0D010000 		.4byte	.LASF34
- 722 033b 0D010000 		.4byte	.LASF34
- 723 033f 0A       		.byte	0xa
- 724 0340 29       		.byte	0x29
- 725 0341 10       		.uleb128 0x10
- 726 0342 B7010000 		.4byte	.LASF35
- 727 0346 B7010000 		.4byte	.LASF35
- 728 034a 0B       		.byte	0xb
- 729 034b 29       		.byte	0x29
- 730 034c 10       		.uleb128 0x10
- 731 034d 23010000 		.4byte	.LASF36
- 732 0351 23010000 		.4byte	.LASF36
- 733 0355 06       		.byte	0x6
- 734 0356 92       		.byte	0x92
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 16
+ 713 009e 11       		.uleb128 0x11
+ 714 009f 01       		.uleb128 0x1
+ 715 00a0 31       		.uleb128 0x31
+ 716 00a1 13       		.uleb128 0x13
+ 717 00a2 00       		.byte	0
+ 718 00a3 00       		.byte	0
+ 719 00a4 0D       		.uleb128 0xd
+ 720 00a5 2E       		.uleb128 0x2e
+ 721 00a6 01       		.byte	0x1
+ 722 00a7 3F       		.uleb128 0x3f
+ 723 00a8 19       		.uleb128 0x19
+ 724 00a9 03       		.uleb128 0x3
+ 725 00aa 0E       		.uleb128 0xe
+ 726 00ab 3A       		.uleb128 0x3a
+ 727 00ac 0B       		.uleb128 0xb
+ 728 00ad 3B       		.uleb128 0x3b
+ 729 00ae 0B       		.uleb128 0xb
+ 730 00af 27       		.uleb128 0x27
+ 731 00b0 19       		.uleb128 0x19
+ 732 00b1 49       		.uleb128 0x49
+ 733 00b2 13       		.uleb128 0x13
+ 734 00b3 8701     		.uleb128 0x87
+ 735 00b5 19       		.uleb128 0x19
+ 736 00b6 11       		.uleb128 0x11
+ 737 00b7 01       		.uleb128 0x1
+ 738 00b8 12       		.uleb128 0x12
+ 739 00b9 06       		.uleb128 0x6
+ 740 00ba 40       		.uleb128 0x40
+ 741 00bb 18       		.uleb128 0x18
+ 742 00bc 9742     		.uleb128 0x2117
+ 743 00be 19       		.uleb128 0x19
+ 744 00bf 01       		.uleb128 0x1
+ 745 00c0 13       		.uleb128 0x13
+ 746 00c1 00       		.byte	0
+ 747 00c2 00       		.byte	0
+ 748 00c3 0E       		.uleb128 0xe
+ 749 00c4 34       		.uleb128 0x34
+ 750 00c5 00       		.byte	0
+ 751 00c6 03       		.uleb128 0x3
+ 752 00c7 0E       		.uleb128 0xe
+ 753 00c8 3A       		.uleb128 0x3a
+ 754 00c9 0B       		.uleb128 0xb
+ 755 00ca 3B       		.uleb128 0x3b
+ 756 00cb 05       		.uleb128 0x5
+ 757 00cc 49       		.uleb128 0x49
+ 758 00cd 13       		.uleb128 0x13
+ 759 00ce 3F       		.uleb128 0x3f
+ 760 00cf 19       		.uleb128 0x19
+ 761 00d0 3C       		.uleb128 0x3c
+ 762 00d1 19       		.uleb128 0x19
+ 763 00d2 00       		.byte	0
+ 764 00d3 00       		.byte	0
+ 765 00d4 0F       		.uleb128 0xf
+ 766 00d5 35       		.uleb128 0x35
+ 767 00d6 00       		.byte	0
+ 768 00d7 49       		.uleb128 0x49
+ 769 00d8 13       		.uleb128 0x13
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 16
 
 
- 735 0357 10       		.uleb128 0x10
- 736 0358 79010000 		.4byte	.LASF37
- 737 035c 79010000 		.4byte	.LASF37
- 738 0360 05       		.byte	0x5
- 739 0361 92       		.byte	0x92
- 740 0362 10       		.uleb128 0x10
- 741 0363 2F010000 		.4byte	.LASF38
- 742 0367 2F010000 		.4byte	.LASF38
- 743 036b 0C       		.byte	0xc
- 744 036c 33       		.byte	0x33
- 745 036d 10       		.uleb128 0x10
- 746 036e 50010000 		.4byte	.LASF39
- 747 0372 50010000 		.4byte	.LASF39
- 748 0376 0D       		.byte	0xd
- 749 0377 5A       		.byte	0x5a
- 750 0378 10       		.uleb128 0x10
- 751 0379 9A010000 		.4byte	.LASF40
- 752 037d 9A010000 		.4byte	.LASF40
- 753 0381 0E       		.byte	0xe
- 754 0382 5A       		.byte	0x5a
- 755 0383 10       		.uleb128 0x10
- 756 0384 85010000 		.4byte	.LASF41
- 757 0388 85010000 		.4byte	.LASF41
- 758 038c 0F       		.byte	0xf
- 759 038d 5A       		.byte	0x5a
- 760 038e 10       		.uleb128 0x10
- 761 038f 49020000 		.4byte	.LASF42
- 762 0393 49020000 		.4byte	.LASF42
- 763 0397 10       		.byte	0x10
- 764 0398 5A       		.byte	0x5a
- 765 0399 10       		.uleb128 0x10
- 766 039a EF010000 		.4byte	.LASF43
- 767 039e EF010000 		.4byte	.LASF43
- 768 03a2 11       		.byte	0x11
- 769 03a3 5A       		.byte	0x5a
- 770 03a4 10       		.uleb128 0x10
- 771 03a5 EA020000 		.4byte	.LASF44
- 772 03a9 EA020000 		.4byte	.LASF44
- 773 03ad 12       		.byte	0x12
- 774 03ae 76       		.byte	0x76
- 775 03af 00       		.byte	0
- 776              		.section	.debug_abbrev,"",%progbits
- 777              	.Ldebug_abbrev0:
- 778 0000 01       		.uleb128 0x1
- 779 0001 11       		.uleb128 0x11
- 780 0002 01       		.byte	0x1
- 781 0003 25       		.uleb128 0x25
- 782 0004 0E       		.uleb128 0xe
- 783 0005 13       		.uleb128 0x13
- 784 0006 0B       		.uleb128 0xb
- 785 0007 03       		.uleb128 0x3
- 786 0008 0E       		.uleb128 0xe
- 787 0009 1B       		.uleb128 0x1b
- 788 000a 0E       		.uleb128 0xe
- 789 000b 55       		.uleb128 0x55
- 790 000c 17       		.uleb128 0x17
- 791 000d 11       		.uleb128 0x11
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 17
+ 770 00d9 00       		.byte	0
+ 771 00da 00       		.byte	0
+ 772 00db 10       		.uleb128 0x10
+ 773 00dc 34       		.uleb128 0x34
+ 774 00dd 00       		.byte	0
+ 775 00de 03       		.uleb128 0x3
+ 776 00df 0E       		.uleb128 0xe
+ 777 00e0 3A       		.uleb128 0x3a
+ 778 00e1 0B       		.uleb128 0xb
+ 779 00e2 3B       		.uleb128 0x3b
+ 780 00e3 0B       		.uleb128 0xb
+ 781 00e4 49       		.uleb128 0x49
+ 782 00e5 13       		.uleb128 0x13
+ 783 00e6 3F       		.uleb128 0x3f
+ 784 00e7 19       		.uleb128 0x19
+ 785 00e8 02       		.uleb128 0x2
+ 786 00e9 18       		.uleb128 0x18
+ 787 00ea 00       		.byte	0
+ 788 00eb 00       		.byte	0
+ 789 00ec 11       		.uleb128 0x11
+ 790 00ed 2E       		.uleb128 0x2e
+ 791 00ee 00       		.byte	0
+ 792 00ef 3F       		.uleb128 0x3f
+ 793 00f0 19       		.uleb128 0x19
+ 794 00f1 3C       		.uleb128 0x3c
+ 795 00f2 19       		.uleb128 0x19
+ 796 00f3 6E       		.uleb128 0x6e
+ 797 00f4 0E       		.uleb128 0xe
+ 798 00f5 03       		.uleb128 0x3
+ 799 00f6 0E       		.uleb128 0xe
+ 800 00f7 3A       		.uleb128 0x3a
+ 801 00f8 0B       		.uleb128 0xb
+ 802 00f9 3B       		.uleb128 0x3b
+ 803 00fa 0B       		.uleb128 0xb
+ 804 00fb 00       		.byte	0
+ 805 00fc 00       		.byte	0
+ 806 00fd 00       		.byte	0
+ 807              		.section	.debug_aranges,"",%progbits
+ 808 0000 34000000 		.4byte	0x34
+ 809 0004 0200     		.2byte	0x2
+ 810 0006 00000000 		.4byte	.Ldebug_info0
+ 811 000a 04       		.byte	0x4
+ 812 000b 00       		.byte	0
+ 813 000c 0000     		.2byte	0
+ 814 000e 0000     		.2byte	0
+ 815 0010 00000000 		.4byte	.LFB72
+ 816 0014 10000000 		.4byte	.LFE72-.LFB72
+ 817 0018 00000000 		.4byte	.LFB71
+ 818 001c 10000000 		.4byte	.LFE71-.LFB71
+ 819 0020 00000000 		.4byte	.LFB73
+ 820 0024 28000000 		.4byte	.LFE73-.LFB73
+ 821 0028 00000000 		.4byte	.LFB74
+ 822 002c 30000000 		.4byte	.LFE74-.LFB74
+ 823 0030 00000000 		.4byte	0
+ 824 0034 00000000 		.4byte	0
+ 825              		.section	.debug_ranges,"",%progbits
+ 826              	.Ldebug_ranges0:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 17
 
 
- 792 000e 01       		.uleb128 0x1
- 793 000f 10       		.uleb128 0x10
- 794 0010 17       		.uleb128 0x17
- 795 0011 00       		.byte	0
- 796 0012 00       		.byte	0
- 797 0013 02       		.uleb128 0x2
- 798 0014 24       		.uleb128 0x24
- 799 0015 00       		.byte	0
- 800 0016 0B       		.uleb128 0xb
- 801 0017 0B       		.uleb128 0xb
- 802 0018 3E       		.uleb128 0x3e
- 803 0019 0B       		.uleb128 0xb
- 804 001a 03       		.uleb128 0x3
- 805 001b 0E       		.uleb128 0xe
- 806 001c 00       		.byte	0
- 807 001d 00       		.byte	0
- 808 001e 03       		.uleb128 0x3
- 809 001f 16       		.uleb128 0x16
- 810 0020 00       		.byte	0
- 811 0021 03       		.uleb128 0x3
- 812 0022 0E       		.uleb128 0xe
- 813 0023 3A       		.uleb128 0x3a
- 814 0024 0B       		.uleb128 0xb
- 815 0025 3B       		.uleb128 0x3b
- 816 0026 0B       		.uleb128 0xb
- 817 0027 49       		.uleb128 0x49
- 818 0028 13       		.uleb128 0x13
- 819 0029 00       		.byte	0
- 820 002a 00       		.byte	0
- 821 002b 04       		.uleb128 0x4
- 822 002c 24       		.uleb128 0x24
- 823 002d 00       		.byte	0
- 824 002e 0B       		.uleb128 0xb
- 825 002f 0B       		.uleb128 0xb
- 826 0030 3E       		.uleb128 0x3e
- 827 0031 0B       		.uleb128 0xb
- 828 0032 03       		.uleb128 0x3
- 829 0033 08       		.uleb128 0x8
- 830 0034 00       		.byte	0
- 831 0035 00       		.byte	0
- 832 0036 05       		.uleb128 0x5
- 833 0037 16       		.uleb128 0x16
- 834 0038 00       		.byte	0
- 835 0039 03       		.uleb128 0x3
- 836 003a 0E       		.uleb128 0xe
- 837 003b 3A       		.uleb128 0x3a
- 838 003c 0B       		.uleb128 0xb
- 839 003d 3B       		.uleb128 0x3b
- 840 003e 05       		.uleb128 0x5
- 841 003f 49       		.uleb128 0x49
- 842 0040 13       		.uleb128 0x13
- 843 0041 00       		.byte	0
- 844 0042 00       		.byte	0
- 845 0043 06       		.uleb128 0x6
- 846 0044 2E       		.uleb128 0x2e
- 847 0045 01       		.byte	0x1
- 848 0046 03       		.uleb128 0x3
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 18
+ 827 0000 00000000 		.4byte	.LFB72
+ 828 0004 10000000 		.4byte	.LFE72
+ 829 0008 00000000 		.4byte	.LFB71
+ 830 000c 10000000 		.4byte	.LFE71
+ 831 0010 00000000 		.4byte	.LFB73
+ 832 0014 28000000 		.4byte	.LFE73
+ 833 0018 00000000 		.4byte	.LFB74
+ 834 001c 30000000 		.4byte	.LFE74
+ 835 0020 00000000 		.4byte	0
+ 836 0024 00000000 		.4byte	0
+ 837              		.section	.debug_line,"",%progbits
+ 838              	.Ldebug_line0:
+ 839 0000 59020000 		.section	.debug_str,"MS",%progbits,1
+ 839      0200F701 
+ 839      00000201 
+ 839      FB0E0D00 
+ 839      01010101 
+ 840              	.LASF31:
+ 841 0000 4C454433 		.ascii	"LED3_Read\000"
+ 841      5F526561 
+ 841      6400
+ 842              	.LASF9:
+ 843 000a 5F5F696E 		.ascii	"__int32_t\000"
+ 843      7433325F 
+ 843      7400
+ 844              	.LASF4:
+ 845 0014 6C6F6E67 		.ascii	"long int\000"
+ 845      20696E74 
+ 845      00
+ 846              	.LASF3:
+ 847 001d 73686F72 		.ascii	"short unsigned int\000"
+ 847      7420756E 
+ 847      7369676E 
+ 847      65642069 
+ 847      6E7400
+ 848              	.LASF19:
+ 849 0030 6F6E6553 		.ascii	"oneSensorForward\000"
+ 849      656E736F 
+ 849      72466F72 
+ 849      77617264 
+ 849      00
+ 850              	.LASF28:
+ 851 0041 50574D5F 		.ascii	"PWM_2_WriteCompare\000"
+ 851      325F5772 
+ 851      69746543 
+ 851      6F6D7061 
+ 851      726500
+ 852              	.LASF13:
+ 853 0054 666C6F61 		.ascii	"float\000"
+ 853      7400
+ 854              	.LASF1:
+ 855 005a 756E7369 		.ascii	"unsigned char\000"
+ 855      676E6564 
+ 855      20636861 
+ 855      7200
+ 856              	.LASF43:
+ 857 0068 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 18
 
 
- 849 0047 0E       		.uleb128 0xe
- 850 0048 3A       		.uleb128 0x3a
- 851 0049 0B       		.uleb128 0xb
- 852 004a 3B       		.uleb128 0x3b
- 853 004b 0B       		.uleb128 0xb
- 854 004c 11       		.uleb128 0x11
- 855 004d 01       		.uleb128 0x1
- 856 004e 12       		.uleb128 0x12
- 857 004f 06       		.uleb128 0x6
- 858 0050 40       		.uleb128 0x40
- 859 0051 18       		.uleb128 0x18
- 860 0052 9742     		.uleb128 0x2117
- 861 0054 19       		.uleb128 0x19
- 862 0055 01       		.uleb128 0x1
- 863 0056 13       		.uleb128 0x13
- 864 0057 00       		.byte	0
- 865 0058 00       		.byte	0
- 866 0059 07       		.uleb128 0x7
- 867 005a 898201   		.uleb128 0x4109
- 868 005d 01       		.byte	0x1
- 869 005e 11       		.uleb128 0x11
- 870 005f 01       		.uleb128 0x1
- 871 0060 31       		.uleb128 0x31
- 872 0061 13       		.uleb128 0x13
- 873 0062 00       		.byte	0
- 874 0063 00       		.byte	0
- 875 0064 08       		.uleb128 0x8
- 876 0065 8A8201   		.uleb128 0x410a
- 877 0068 00       		.byte	0
- 878 0069 02       		.uleb128 0x2
- 879 006a 18       		.uleb128 0x18
- 880 006b 9142     		.uleb128 0x2111
- 881 006d 18       		.uleb128 0x18
- 882 006e 00       		.byte	0
- 883 006f 00       		.byte	0
- 884 0070 09       		.uleb128 0x9
- 885 0071 898201   		.uleb128 0x4109
- 886 0074 00       		.byte	0
- 887 0075 11       		.uleb128 0x11
- 888 0076 01       		.uleb128 0x1
- 889 0077 31       		.uleb128 0x31
- 890 0078 13       		.uleb128 0x13
- 891 0079 00       		.byte	0
- 892 007a 00       		.byte	0
- 893 007b 0A       		.uleb128 0xa
- 894 007c 898201   		.uleb128 0x4109
- 895 007f 01       		.byte	0x1
- 896 0080 11       		.uleb128 0x11
- 897 0081 01       		.uleb128 0x1
- 898 0082 31       		.uleb128 0x31
- 899 0083 13       		.uleb128 0x13
- 900 0084 01       		.uleb128 0x1
- 901 0085 13       		.uleb128 0x13
- 902 0086 00       		.byte	0
- 903 0087 00       		.byte	0
- 904 0088 0B       		.uleb128 0xb
- 905 0089 34       		.uleb128 0x34
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 19
+ 857      43313120 
+ 857      352E342E 
+ 857      31203230 
+ 857      31363036 
+ 858 009b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 858      20726576 
+ 858      6973696F 
+ 858      6E203233 
+ 858      37373135 
+ 859 00ce 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 859      66756E63 
+ 859      74696F6E 
+ 859      2D736563 
+ 859      74696F6E 
+ 860              	.LASF32:
+ 861 00f6 4C454434 		.ascii	"LED4_Read\000"
+ 861      5F526561 
+ 861      6400
+ 862              	.LASF5:
+ 863 0100 6C6F6E67 		.ascii	"long unsigned int\000"
+ 863      20756E73 
+ 863      69676E65 
+ 863      6420696E 
+ 863      7400
+ 864              	.LASF34:
+ 865 0112 50574D5F 		.ascii	"PWM_1_Start\000"
+ 865      315F5374 
+ 865      61727400 
+ 866              	.LASF36:
+ 867 011e 56444143 		.ascii	"VDAC8_1_Start\000"
+ 867      385F315F 
+ 867      53746172 
+ 867      7400
+ 868              	.LASF29:
+ 869 012c 4C454431 		.ascii	"LED1_Read\000"
+ 869      5F526561 
+ 869      6400
+ 870              	.LASF37:
+ 871 0136 54696D65 		.ascii	"Timeout_1_Start\000"
+ 871      6F75745F 
+ 871      315F5374 
+ 871      61727400 
+ 872              	.LASF45:
+ 873 0146 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\khushman\\benchmark2_kh"
+ 873      454D505C 
+ 873      434F4D50 
+ 873      53595333 
+ 873      30315F74 
+ 874 0175 7573685C 		.ascii	"ush\\benchmark2.cydsn\000"
+ 874      62656E63 
+ 874      686D6172 
+ 874      6B322E63 
+ 874      7964736E 
+ 875              	.LASF20:
+ 876 018a 646F536F 		.ascii	"doSomething\000"
+ 876      6D657468 
+ 876      696E6700 
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 19
 
 
- 906 008a 00       		.byte	0
- 907 008b 03       		.uleb128 0x3
- 908 008c 0E       		.uleb128 0xe
- 909 008d 3A       		.uleb128 0x3a
- 910 008e 0B       		.uleb128 0xb
- 911 008f 3B       		.uleb128 0x3b
- 912 0090 0B       		.uleb128 0xb
- 913 0091 49       		.uleb128 0x49
- 914 0092 13       		.uleb128 0x13
- 915 0093 02       		.uleb128 0x2
- 916 0094 18       		.uleb128 0x18
- 917 0095 00       		.byte	0
- 918 0096 00       		.byte	0
- 919 0097 0C       		.uleb128 0xc
- 920 0098 34       		.uleb128 0x34
- 921 0099 00       		.byte	0
- 922 009a 03       		.uleb128 0x3
- 923 009b 0E       		.uleb128 0xe
- 924 009c 3A       		.uleb128 0x3a
- 925 009d 0B       		.uleb128 0xb
- 926 009e 3B       		.uleb128 0x3b
- 927 009f 0B       		.uleb128 0xb
- 928 00a0 49       		.uleb128 0x49
- 929 00a1 13       		.uleb128 0x13
- 930 00a2 00       		.byte	0
- 931 00a3 00       		.byte	0
- 932 00a4 0D       		.uleb128 0xd
- 933 00a5 2E       		.uleb128 0x2e
- 934 00a6 01       		.byte	0x1
- 935 00a7 3F       		.uleb128 0x3f
- 936 00a8 19       		.uleb128 0x19
- 937 00a9 03       		.uleb128 0x3
- 938 00aa 0E       		.uleb128 0xe
- 939 00ab 3A       		.uleb128 0x3a
- 940 00ac 0B       		.uleb128 0xb
- 941 00ad 3B       		.uleb128 0x3b
- 942 00ae 0B       		.uleb128 0xb
- 943 00af 27       		.uleb128 0x27
- 944 00b0 19       		.uleb128 0x19
- 945 00b1 49       		.uleb128 0x49
- 946 00b2 13       		.uleb128 0x13
- 947 00b3 8701     		.uleb128 0x87
- 948 00b5 19       		.uleb128 0x19
- 949 00b6 11       		.uleb128 0x11
- 950 00b7 01       		.uleb128 0x1
- 951 00b8 12       		.uleb128 0x12
- 952 00b9 06       		.uleb128 0x6
- 953 00ba 40       		.uleb128 0x40
- 954 00bb 18       		.uleb128 0x18
- 955 00bc 9742     		.uleb128 0x2117
- 956 00be 19       		.uleb128 0x19
- 957 00bf 01       		.uleb128 0x1
- 958 00c0 13       		.uleb128 0x13
- 959 00c1 00       		.byte	0
- 960 00c2 00       		.byte	0
- 961 00c3 0E       		.uleb128 0xe
- 962 00c4 34       		.uleb128 0x34
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 20
+ 877              	.LASF18:
+ 878 0196 6F6E6553 		.ascii	"oneSensorCorrect\000"
+ 878      656E736F 
+ 878      72436F72 
+ 878      72656374 
+ 878      00
+ 879              	.LASF14:
+ 880 01a7 646F7562 		.ascii	"double\000"
+ 880      6C6500
+ 881              	.LASF35:
+ 882 01ae 50574D5F 		.ascii	"PWM_2_Start\000"
+ 882      325F5374 
+ 882      61727400 
+ 883              	.LASF39:
+ 884 01ba 54696D65 		.ascii	"Timeout_3_Start\000"
+ 884      6F75745F 
+ 884      335F5374 
+ 884      61727400 
+ 885              	.LASF26:
+ 886 01ca 6F766572 		.ascii	"overCount\000"
+ 886      436F756E 
+ 886      7400
+ 887              	.LASF38:
+ 888 01d4 54696D65 		.ascii	"Timeout_2_Start\000"
+ 888      6F75745F 
+ 888      325F5374 
+ 888      61727400 
+ 889              	.LASF12:
+ 890 01e4 75696E74 		.ascii	"uint16\000"
+ 890      313600
+ 891              	.LASF25:
+ 892 01eb 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 892      52784275 
+ 892      66666572 
+ 892      00
+ 893              	.LASF47:
+ 894 01f8 6D61696E 		.ascii	"main\000"
+ 894      00
+ 895              	.LASF33:
+ 896 01fd 4C454435 		.ascii	"LED5_Read\000"
+ 896      5F526561 
+ 896      6400
+ 897              	.LASF8:
+ 898 0207 756E7369 		.ascii	"unsigned int\000"
+ 898      676E6564 
+ 898      20696E74 
+ 898      00
+ 899              	.LASF7:
+ 900 0214 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 900      206C6F6E 
+ 900      6720756E 
+ 900      7369676E 
+ 900      65642069 
+ 901              	.LASF30:
+ 902 022b 4C454432 		.ascii	"LED2_Read\000"
+ 902      5F526561 
+ 902      6400
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 20
 
 
- 963 00c5 00       		.byte	0
- 964 00c6 03       		.uleb128 0x3
- 965 00c7 0E       		.uleb128 0xe
- 966 00c8 3A       		.uleb128 0x3a
- 967 00c9 0B       		.uleb128 0xb
- 968 00ca 3B       		.uleb128 0x3b
- 969 00cb 05       		.uleb128 0x5
- 970 00cc 49       		.uleb128 0x49
- 971 00cd 13       		.uleb128 0x13
- 972 00ce 3F       		.uleb128 0x3f
- 973 00cf 19       		.uleb128 0x19
- 974 00d0 3C       		.uleb128 0x3c
- 975 00d1 19       		.uleb128 0x19
- 976 00d2 00       		.byte	0
- 977 00d3 00       		.byte	0
- 978 00d4 0F       		.uleb128 0xf
- 979 00d5 35       		.uleb128 0x35
- 980 00d6 00       		.byte	0
- 981 00d7 49       		.uleb128 0x49
- 982 00d8 13       		.uleb128 0x13
- 983 00d9 00       		.byte	0
- 984 00da 00       		.byte	0
- 985 00db 10       		.uleb128 0x10
- 986 00dc 2E       		.uleb128 0x2e
- 987 00dd 00       		.byte	0
- 988 00de 3F       		.uleb128 0x3f
- 989 00df 19       		.uleb128 0x19
- 990 00e0 3C       		.uleb128 0x3c
- 991 00e1 19       		.uleb128 0x19
- 992 00e2 6E       		.uleb128 0x6e
- 993 00e3 0E       		.uleb128 0xe
- 994 00e4 03       		.uleb128 0x3
- 995 00e5 0E       		.uleb128 0xe
- 996 00e6 3A       		.uleb128 0x3a
- 997 00e7 0B       		.uleb128 0xb
- 998 00e8 3B       		.uleb128 0x3b
- 999 00e9 0B       		.uleb128 0xb
- 1000 00ea 00       		.byte	0
- 1001 00eb 00       		.byte	0
- 1002 00ec 00       		.byte	0
- 1003              		.section	.debug_aranges,"",%progbits
- 1004 0000 54000000 		.4byte	0x54
- 1005 0004 0200     		.2byte	0x2
- 1006 0006 00000000 		.4byte	.Ldebug_info0
- 1007 000a 04       		.byte	0x4
- 1008 000b 00       		.byte	0
- 1009 000c 0000     		.2byte	0
- 1010 000e 0000     		.2byte	0
- 1011 0010 00000000 		.4byte	.LFB67
- 1012 0014 0A000000 		.4byte	.LFE67-.LFB67
- 1013 0018 00000000 		.4byte	.LFB66
- 1014 001c 0A000000 		.4byte	.LFE66-.LFB66
- 1015 0020 00000000 		.4byte	.LFB73
- 1016 0024 0C000000 		.4byte	.LFE73-.LFB73
- 1017 0028 00000000 		.4byte	.LFB70
- 1018 002c 10000000 		.4byte	.LFE70-.LFB70
- 1019 0030 00000000 		.4byte	.LFB71
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 21
+ 903              	.LASF41:
+ 904 0235 54696D65 		.ascii	"Timeout_5_Start\000"
+ 904      6F75745F 
+ 904      355F5374 
+ 904      61727400 
+ 905              	.LASF10:
+ 906 0245 696E7433 		.ascii	"int32_t\000"
+ 906      325F7400 
+ 907              	.LASF17:
+ 908 024d 73697A65 		.ascii	"sizetype\000"
+ 908      74797065 
+ 908      00
+ 909              	.LASF27:
+ 910 0256 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 910      315F5772 
+ 910      69746543 
+ 910      6F6D7061 
+ 910      726500
+ 911              	.LASF6:
+ 912 0269 6C6F6E67 		.ascii	"long long int\000"
+ 912      206C6F6E 
+ 912      6720696E 
+ 912      7400
+ 913              	.LASF44:
+ 914 0277 6D61696E 		.ascii	"main.c\000"
+ 914      2E6300
+ 915              	.LASF15:
+ 916 027e 63686172 		.ascii	"char\000"
+ 916      00
+ 917              	.LASF40:
+ 918 0283 54696D65 		.ascii	"Timeout_4_Start\000"
+ 918      6F75745F 
+ 918      345F5374 
+ 918      61727400 
+ 919              	.LASF2:
+ 920 0293 73686F72 		.ascii	"short int\000"
+ 920      7420696E 
+ 920      7400
+ 921              	.LASF11:
+ 922 029d 75696E74 		.ascii	"uint8\000"
+ 922      3800
+ 923              	.LASF46:
+ 924 02a3 6C65645F 		.ascii	"led_1\000"
+ 924      3100
+ 925              	.LASF21:
+ 926 02a9 6C65645F 		.ascii	"led_2\000"
+ 926      3200
+ 927              	.LASF22:
+ 928 02af 6C65645F 		.ascii	"led_3\000"
+ 928      3300
+ 929              	.LASF23:
+ 930 02b5 6C65645F 		.ascii	"led_4\000"
+ 930      3400
+ 931              	.LASF24:
+ 932 02bb 6C65645F 		.ascii	"led_5\000"
+ 932      3500
+ 933              	.LASF16:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccFWnNLL.s 			page 21
 
 
- 1020 0034 10000000 		.4byte	.LFE71-.LFB71
- 1021 0038 00000000 		.4byte	.LFB74
- 1022 003c 10000000 		.4byte	.LFE74-.LFB74
- 1023 0040 00000000 		.4byte	.LFB75
- 1024 0044 4E000000 		.4byte	.LFE75-.LFB75
- 1025 0048 00000000 		.4byte	.LFB76
- 1026 004c 30000000 		.4byte	.LFE76-.LFB76
- 1027 0050 00000000 		.4byte	0
- 1028 0054 00000000 		.4byte	0
- 1029              		.section	.debug_ranges,"",%progbits
- 1030              	.Ldebug_ranges0:
- 1031 0000 00000000 		.4byte	.LFB67
- 1032 0004 0A000000 		.4byte	.LFE67
- 1033 0008 00000000 		.4byte	.LFB66
- 1034 000c 0A000000 		.4byte	.LFE66
- 1035 0010 00000000 		.4byte	.LFB73
- 1036 0014 0C000000 		.4byte	.LFE73
- 1037 0018 00000000 		.4byte	.LFB70
- 1038 001c 10000000 		.4byte	.LFE70
- 1039 0020 00000000 		.4byte	.LFB71
- 1040 0024 10000000 		.4byte	.LFE71
- 1041 0028 00000000 		.4byte	.LFB74
- 1042 002c 10000000 		.4byte	.LFE74
- 1043 0030 00000000 		.4byte	.LFB75
- 1044 0034 4E000000 		.4byte	.LFE75
- 1045 0038 00000000 		.4byte	.LFB76
- 1046 003c 30000000 		.4byte	.LFE76
- 1047 0040 00000000 		.4byte	0
- 1048 0044 00000000 		.4byte	0
- 1049              		.section	.debug_line,"",%progbits
- 1050              	.Ldebug_line0:
- 1051 0000 C5020000 		.section	.debug_str,"MS",%progbits,1
- 1051      0200F701 
- 1051      00000201 
- 1051      FB0E0D00 
- 1051      01010101 
- 1052              	.LASF22:
- 1053 0000 73746F70 		.ascii	"stopMoving\000"
- 1053      4D6F7669 
- 1053      6E6700
- 1054              	.LASF33:
- 1055 000b 4C454433 		.ascii	"LED3_Read\000"
- 1055      5F526561 
- 1055      6400
- 1056              	.LASF9:
- 1057 0015 5F5F696E 		.ascii	"__int32_t\000"
- 1057      7433325F 
- 1057      7400
- 1058              	.LASF25:
- 1059 001f 6C65645F 		.ascii	"led_2\000"
- 1059      3200
- 1060              	.LASF3:
- 1061 0025 73686F72 		.ascii	"short unsigned int\000"
- 1061      7420756E 
- 1061      7369676E 
- 1061      65642069 
- 1061      6E7400
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 22
-
-
- 1062              	.LASF13:
- 1063 0038 646F7562 		.ascii	"double\000"
- 1063      6C6500
- 1064              	.LASF29:
- 1065 003f 50574D5F 		.ascii	"PWM_2_WriteCompare\000"
- 1065      325F5772 
- 1065      69746543 
- 1065      6F6D7061 
- 1065      726500
- 1066              	.LASF12:
- 1067 0052 666C6F61 		.ascii	"float\000"
- 1067      7400
- 1068              	.LASF18:
- 1069 0058 4D6F746F 		.ascii	"MotorL_Back\000"
- 1069      724C5F42 
- 1069      61636B00 
- 1070              	.LASF21:
- 1071 0064 636F7272 		.ascii	"correctRight\000"
- 1071      65637452 
- 1071      69676874 
- 1071      00
- 1072              	.LASF1:
- 1073 0071 756E7369 		.ascii	"unsigned char\000"
- 1073      676E6564 
- 1073      20636861 
- 1073      7200
- 1074              	.LASF45:
- 1075 007f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1075      43313120 
- 1075      352E342E 
- 1075      31203230 
- 1075      31363036 
- 1076 00b2 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1076      20726576 
- 1076      6973696F 
- 1076      6E203233 
- 1076      37373135 
- 1077 00e5 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1077      66756E63 
- 1077      74696F6E 
- 1077      2D736563 
- 1077      74696F6E 
- 1078              	.LASF34:
- 1079 010d 4C454434 		.ascii	"LED4_Read\000"
- 1079      5F526561 
- 1079      6400
- 1080              	.LASF20:
- 1081 0117 636F7272 		.ascii	"correctLeft\000"
- 1081      6563744C 
- 1081      65667400 
- 1082              	.LASF36:
- 1083 0123 50574D5F 		.ascii	"PWM_1_Start\000"
- 1083      315F5374 
- 1083      61727400 
- 1084              	.LASF38:
- 1085 012f 56444143 		.ascii	"VDAC8_1_Start\000"
- 1085      385F315F 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 23
-
-
- 1085      53746172 
- 1085      7400
- 1086              	.LASF31:
- 1087 013d 4C454431 		.ascii	"LED1_Read\000"
- 1087      5F526561 
- 1087      6400
- 1088              	.LASF4:
- 1089 0147 6C6F6E67 		.ascii	"long int\000"
- 1089      20696E74 
- 1089      00
- 1090              	.LASF39:
- 1091 0150 54696D65 		.ascii	"Timeout_1_Start\000"
- 1091      6F75745F 
- 1091      315F5374 
- 1091      61727400 
- 1092              	.LASF19:
- 1093 0160 676F4261 		.ascii	"goBack\000"
- 1093      636B00
- 1094              	.LASF5:
- 1095 0167 6C6F6E67 		.ascii	"long unsigned int\000"
- 1095      20756E73 
- 1095      69676E65 
- 1095      6420696E 
- 1095      7400
- 1096              	.LASF37:
- 1097 0179 50574D5F 		.ascii	"PWM_2_Start\000"
- 1097      325F5374 
- 1097      61727400 
- 1098              	.LASF41:
- 1099 0185 54696D65 		.ascii	"Timeout_3_Start\000"
- 1099      6F75745F 
- 1099      335F5374 
- 1099      61727400 
- 1100              	.LASF48:
- 1101 0195 6D61696E 		.ascii	"main\000"
- 1101      00
- 1102              	.LASF40:
- 1103 019a 54696D65 		.ascii	"Timeout_2_Start\000"
- 1103      6F75745F 
- 1103      325F5374 
- 1103      61727400 
- 1104              	.LASF49:
- 1105 01aa 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1105      52784275 
- 1105      66666572 
- 1105      00
- 1106              	.LASF35:
- 1107 01b7 4C454435 		.ascii	"LED5_Read\000"
- 1107      5F526561 
- 1107      6400
- 1108              	.LASF8:
- 1109 01c1 756E7369 		.ascii	"unsigned int\000"
- 1109      676E6564 
- 1109      20696E74 
- 1109      00
- 1110              	.LASF7:
- 1111 01ce 6C6F6E67 		.ascii	"long long unsigned int\000"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 24
-
-
- 1111      206C6F6E 
- 1111      6720756E 
- 1111      7369676E 
- 1111      65642069 
- 1112              	.LASF32:
- 1113 01e5 4C454432 		.ascii	"LED2_Read\000"
- 1113      5F526561 
- 1113      6400
- 1114              	.LASF43:
- 1115 01ef 54696D65 		.ascii	"Timeout_5_Start\000"
- 1115      6F75745F 
- 1115      355F5374 
- 1115      61727400 
- 1116              	.LASF23:
- 1117 01ff 646F536F 		.ascii	"doSomething\000"
- 1117      6D657468 
- 1117      696E6700 
- 1118              	.LASF10:
- 1119 020b 696E7433 		.ascii	"int32_t\000"
- 1119      325F7400 
- 1120              	.LASF16:
- 1121 0213 73697A65 		.ascii	"sizetype\000"
- 1121      74797065 
- 1121      00
- 1122              	.LASF30:
- 1123 021c 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
- 1123      315F5772 
- 1123      69746543 
- 1123      6F6D7061 
- 1123      726500
- 1124              	.LASF6:
- 1125 022f 6C6F6E67 		.ascii	"long long int\000"
- 1125      206C6F6E 
- 1125      6720696E 
- 1125      7400
- 1126              	.LASF46:
- 1127 023d 6D61696E 		.ascii	"main.c\000"
- 1127      2E6300
- 1128              	.LASF14:
- 1129 0244 63686172 		.ascii	"char\000"
- 1129      00
- 1130              	.LASF42:
- 1131 0249 54696D65 		.ascii	"Timeout_4_Start\000"
- 1131      6F75745F 
- 1131      345F5374 
- 1131      61727400 
- 1132              	.LASF2:
- 1133 0259 73686F72 		.ascii	"short int\000"
- 1133      7420696E 
- 1133      7400
- 1134              	.LASF11:
- 1135 0263 75696E74 		.ascii	"uint8\000"
- 1135      3800
- 1136              	.LASF24:
- 1137 0269 6C65645F 		.ascii	"led_1\000"
- 1137      3100
- 1138              	.LASF47:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccoR4n1l.s 			page 25
-
-
- 1139 026f 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\benchmark2\\bench"
- 1139      454D505C 
- 1139      434F4D50 
- 1139      53595333 
- 1139      30315F74 
- 1140 029d 6D61726B 		.ascii	"mark2\\benchmark2.cydsn\000"
- 1140      325C6265 
- 1140      6E63686D 
- 1140      61726B32 
- 1140      2E637964 
- 1141              	.LASF26:
- 1142 02b4 6C65645F 		.ascii	"led_3\000"
- 1142      3300
- 1143              	.LASF27:
- 1144 02ba 6C65645F 		.ascii	"led_4\000"
- 1144      3400
- 1145              	.LASF28:
- 1146 02c0 6C65645F 		.ascii	"led_5\000"
- 1146      3500
- 1147              	.LASF15:
- 1148 02c6 6C6F6E67 		.ascii	"long double\000"
- 1148      20646F75 
- 1148      626C6500 
- 1149              	.LASF0:
- 1150 02d2 7369676E 		.ascii	"signed char\000"
- 1150      65642063 
- 1150      68617200 
- 1151              	.LASF17:
- 1152 02de 4D6F746F 		.ascii	"MotorR_Back\000"
- 1152      72525F42 
- 1152      61636B00 
- 1153              	.LASF44:
- 1154 02ea 43794465 		.ascii	"CyDelay\000"
- 1154      6C617900 
- 1155              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 934 02c1 6C6F6E67 		.ascii	"long double\000"
+ 934      20646F75 
+ 934      626C6500 
+ 935              	.LASF0:
+ 936 02cd 7369676E 		.ascii	"signed char\000"
+ 936      65642063 
+ 936      68617200 
+ 937              	.LASF42:
+ 938 02d9 43794465 		.ascii	"CyDelay\000"
+ 938      6C617900 
+ 939              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

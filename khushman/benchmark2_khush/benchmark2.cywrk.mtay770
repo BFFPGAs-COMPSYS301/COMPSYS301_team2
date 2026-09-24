@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="benchmark2\benchmark2\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="benchmark2\benchmark2\TopDesign">
 <ExpandedNodeIds>
 <v>benchmark2</v>
 <v>benchmark2\benchmark2</v>
@@ -75,6 +75,15 @@
 <v>benchmark2\benchmark2\Generated_Source\PSoC5\PWM_1</v>
 <v>benchmark2\benchmark2\Generated_Source\PSoC5\PWM_2</v>
 <v>benchmark2\benchmark2\Generated_Source\PSoC5\Timeout_1</v>
+<v>benchmark2\benchmark2\Generated_Source\PSoC5\Timeout_2</v>
+<v>benchmark2\benchmark2\Generated_Source\PSoC5\Timeout_3</v>
+<v>benchmark2\benchmark2\Generated_Source\PSoC5\Timeout_4</v>
+<v>benchmark2\benchmark2\Generated_Source\PSoC5\Timeout_5</v>
+<v>benchmark2\benchmark2\Generated_Source\PSoC5\VDAC8_1</v>
+<v>benchmark2\benchmark2\Generated_Source\PSoC5\Vout1</v>
+<v>benchmark2\benchmark2\Generated_Source\PSoC5\Vout2</v>
+<v>benchmark2\benchmark2\Generated_Source\PSoC5\Vout3</v>
+<v>benchmark2\benchmark2\Generated_Source\PSoC5\Vout4</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -159,8 +168,52 @@
 <VisibleNodeIds>
 <v>benchmark2</v>
 <v>benchmark2\benchmark2</v>
-<v>benchmark2\benchmark2\benchmark2.rpt</v>
-<v>benchmark2\benchmark2\benchmark2_timing.html</v>
+<v>benchmark2\benchmark2\CortexM3</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_PWM.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_1.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_2.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_3.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_4.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_5.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\LED1.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\LED2.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\LED3.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\LED4.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\LED5.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\M1_IN1.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\M1_IN2.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\M2_IN1_1.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\M2_IN2_1.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_1.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_1_PM.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_2.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_2_PM.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_1.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_1_PM.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_2.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_2_PM.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_3.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_3_PM.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_4.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_4_PM.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_5.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\Timeout_5_PM.lst</v>
+<v>benchmark2\benchmark2\CortexM3\ARM_GCC_541\Debug\Listing Files\VDAC8_1.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -226,7 +279,17 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\benchmark2.cydsn\main.c" />
+<name v=".\benchmark2.cydsn\TopDesign\TopDesign.cysch" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1282, 703" SelectedTabbedMdiWindow="55c64699-c8bf-4dc0-82cb-fed5ed4f2a11"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="da1c77f6-aa37-442c-833f-6dcac0dc1175" /><DocumentWindow Key="C:\TEMP\COMPSYS301_team2\khushman\benchmark2_khush\benchmark2.cydsn\main.c" Guid="55c64699-c8bf-4dc0-82cb-fed5ed4f2a11" /><DocumentWindow Key="C:\TEMP\COMPSYS301_team2\khushman\benchmark2_khush\benchmark2.cydsn\TopDesign\TopDesign.cysch" Guid="930d4cb7-4ca2-413c-8291-6bbb8c37c22f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

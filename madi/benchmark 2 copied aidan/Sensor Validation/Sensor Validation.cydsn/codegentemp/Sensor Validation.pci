@@ -1,5 +1,5 @@
 # Sensor Validation
-# 2026-09-23 05:38:25Z
+# 2026-09-24 05:00:30Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -23,4 +23,6 @@ set_io "M1_IN2(0)" iocell 3 6
 set_io "M1_IN1(0)" iocell 3 7
 set_io "M2_IN2_1(0)" iocell 12 0
 set_io "M2_IN1_1(0)" iocell 12 1
+set_io "Pin_1(0)" iocell 15 2
+set_io "Pin_2(0)" iocell 15 5
 set_location "\VDAC8_1:viDAC8\" vidaccell -1 -1 1
