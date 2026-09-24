@@ -1,28 +1,26 @@
---------------- Build Started: 09/24/2026 13:30:41 Project: Sensor Validation, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 09/24/2026 16:05:25 Project: Sensor Validation, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
+main.c: In function 'turnRight':
+main.c:69:11: warning: unused variable 'led_1' [-Wunused-variable]
+     uint8 led_1 = LED1_Read();
+           ^
 main.c: In function 'doSomething':
-main.c:64:11: warning: unused variable 'led_5' [-Wunused-variable]
-     uint8 led_5 = LED5_Read();  // Front left sensor
-           ^
-main.c:63:11: warning: unused variable 'led_4' [-Wunused-variable]
-     uint8 led_4 = LED4_Read();  // Front right sensor
-           ^
-main.c:62:11: warning: unused variable 'led_3' [-Wunused-variable]
+main.c:93:11: warning: unused variable 'led_3' [-Wunused-variable]
      uint8 led_3 = LED3_Read();  // Back right sensor
            ^
-main.c:61:11: warning: unused variable 'led_2' [-Wunused-variable]
+main.c:92:11: warning: unused variable 'led_2' [-Wunused-variable]
      uint8 led_2 = LED2_Read();  // Back left sensor
            ^
 main.c: At top level:
-main.c:25:13: warning: 'goForward' defined but not used [-Wunused-function]
+main.c:26:13: warning: 'goForward' defined but not used [-Wunused-function]
  static void goForward() {
              ^
-main.c:30:13: warning: 'goBack' defined but not used [-Wunused-function]
+main.c:31:13: warning: 'goBack' defined but not used [-Wunused-function]
  static void goBack() {
              ^
-main.c:35:13: warning: 'stopMoving' defined but not used [-Wunused-function]
- static void stopMoving(){
+main.c:81:13: warning: 'Dance' defined but not used [-Wunused-function]
+ static void Dance() { // Shaking movement used to debug
              ^
 arm-none-eabi-ar.exe -rs ".\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a" .\CortexM3\ARM_GCC_541\Debug\LED1.o .\CortexM3\ARM_GCC_541\Debug\LED2.o .\CortexM3\ARM_GCC_541\Debug\LED3.o .\CortexM3\ARM_GCC_541\Debug\LED4.o .\CortexM3\ARM_GCC_541\Debug\LED5.o .\CortexM3\ARM_GCC_541\Debug\PWM_1.o .\CortexM3\ARM_GCC_541\Debug\PWM_1_PM.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\VDAC8_1.o .\CortexM3\ARM_GCC_541\Debug\VDAC8_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Vref_DAC1.o .\CortexM3\ARM_GCC_541\Debug\Vref_DAC2.o .\CortexM3\ARM_GCC_541\Debug\Vout1.o .\CortexM3\ARM_GCC_541\Debug\Vout2.o .\CortexM3\ARM_GCC_541\Debug\Vout3.o .\CortexM3\ARM_GCC_541\Debug\Vout4.o .\CortexM3\ARM_GCC_541\Debug\Vout5.o .\CortexM3\ARM_GCC_541\Debug\Timeout_1.o .\CortexM3\ARM_GCC_541\Debug\Timeout_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_2.o .\CortexM3\ARM_GCC_541\Debug\Timeout_2_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_4.o .\CortexM3\ARM_GCC_541\Debug\Timeout_4_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_3.o .\CortexM3\ARM_GCC_541\Debug\Timeout_3_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_5.o .\CortexM3\ARM_GCC_541\Debug\Timeout_5_PM.o .\CortexM3\ARM_GCC_541\Debug\isr_1.o .\CortexM3\ARM_GCC_541\Debug\Clock_PWM.o .\CortexM3\ARM_GCC_541\Debug\M1_IN2.o .\CortexM3\ARM_GCC_541\Debug\M1_IN1.o .\CortexM3\ARM_GCC_541\Debug\PWM_2.o .\CortexM3\ARM_GCC_541\Debug\PWM_2_PM.o .\CortexM3\ARM_GCC_541\Debug\M2_IN2_1.o .\CortexM3\ARM_GCC_541\Debug\M2_IN1_1.o .\CortexM3\ARM_GCC_541\Debug\isr_2.o .\CortexM3\ARM_GCC_541\Debug\isr_3.o .\CortexM3\ARM_GCC_541\Debug\isr_4.o .\CortexM3\ARM_GCC_541\Debug\isr_5.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
 arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\Sensor Validation.a
@@ -32,6 +30,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S "C:\Users\aale517\Documents\COMPSYS301_team2\aidan\Sensor Validation\Sensor Validation.cydsn\CortexM3\ARM_GCC_541\Debug\Sensor Validation.elf"
-Flash used: 3230 of 262144 bytes (1.2%).
+Flash used: 3390 of 262144 bytes (1.3%).
 SRAM used: 2529 of 65536 bytes (3.9%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 09/24/2026 13:30:42 ---------------
+--------------- Build Succeeded: 09/24/2026 16:05:26 ---------------
