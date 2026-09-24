@@ -4,7 +4,7 @@
 #define FORWARD_COMPARE 15
 #define period 90
 
-uint16 overCount = 0;
+uint16 offLineCount = 0;
 
 static void MotorL_Forward() {
   PWM_1_WriteCompare(FORWARD_COMPARE);
@@ -47,6 +47,15 @@ static void oneSensorCorrect() {
     PWM_2_WriteCompare(20);
 }
 
+static void Dance() { // Shaking movement used to debug
+    PWM_1_WriteCompare(period - 20);
+    PWM_2_WriteCompare(20);
+    CyDelay(50);
+    PWM_2_WriteCompare(period - 20);
+    PWM_1_WriteCompare(20);
+    CyDelay(50);
+}
+
 static void doSomething() {
     uint8 led_1 = LED1_Read();  // Front sensor
     uint8 led_2 = LED2_Read();  // Back left sensor
@@ -54,10 +63,16 @@ static void doSomething() {
     uint8 led_4 = LED4_Read();  // Front right sensor
     uint8 led_5 = LED5_Read();  // Front left sensor
     
-    if (led_1 == 1) {
-        oneSensorCorrect();
-    } else {
+    if (led_1 == 1) { // Front sensor is off the line
+        if (offLineCount < 15) {
+            oneSensorCorrect();
+        } else {
+            Dance();
+        }
+        offLineCount++; // Count to know how long front sensor has been off for
+    } else { // Front sensor is on the line
         oneSensorForward();
+        offLineCount = 0; // Reset the off-line counter
     }
 
 }

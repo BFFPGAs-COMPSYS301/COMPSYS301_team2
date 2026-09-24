@@ -1,17 +1,17 @@
---------------- Build Started: 09/24/2026 13:18:55 Project: Sensor Validation, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 09/24/2026 13:30:41 Project: Sensor Validation, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
 main.c: In function 'doSomething':
-main.c:55:11: warning: unused variable 'led_5' [-Wunused-variable]
+main.c:64:11: warning: unused variable 'led_5' [-Wunused-variable]
      uint8 led_5 = LED5_Read();  // Front left sensor
            ^
-main.c:54:11: warning: unused variable 'led_4' [-Wunused-variable]
+main.c:63:11: warning: unused variable 'led_4' [-Wunused-variable]
      uint8 led_4 = LED4_Read();  // Front right sensor
            ^
-main.c:53:11: warning: unused variable 'led_3' [-Wunused-variable]
+main.c:62:11: warning: unused variable 'led_3' [-Wunused-variable]
      uint8 led_3 = LED3_Read();  // Back right sensor
            ^
-main.c:52:11: warning: unused variable 'led_2' [-Wunused-variable]
+main.c:61:11: warning: unused variable 'led_2' [-Wunused-variable]
      uint8 led_2 = LED2_Read();  // Back left sensor
            ^
 main.c: At top level:
@@ -32,6 +32,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S "C:\Users\aale517\Documents\COMPSYS301_team2\aidan\Sensor Validation\Sensor Validation.cydsn\CortexM3\ARM_GCC_541\Debug\Sensor Validation.elf"
-Flash used: 3158 of 262144 bytes (1.2%).
+Flash used: 3230 of 262144 bytes (1.2%).
 SRAM used: 2529 of 65536 bytes (3.9%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 09/24/2026 13:18:56 ---------------
+--------------- Build Succeeded: 09/24/2026 13:30:42 ---------------
