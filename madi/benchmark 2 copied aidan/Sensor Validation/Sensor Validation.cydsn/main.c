@@ -1,9 +1,9 @@
 #include "project.h"
 #include <stdio.h>
 
-#define FORWARD_COMPARE 15
+#define FORWARD_COMPARE 20
 #define period 90
-#define STOP_COUNTS 963   /* stop after this many encoder counts; set very high to disable */
+#define STOP_COUNTS 700   /* stop after this many encoder counts; set very high to disable */
 
 uint16 overCount = 0;
 
