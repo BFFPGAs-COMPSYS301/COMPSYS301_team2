@@ -70,6 +70,9 @@ static void turnLeft() {
     }
     goForwardSlow();
     CyDelay(10);
+    PWM_1_WriteCompare(25);
+    PWM_2_WriteCompare(period - 25);
+    CyDelay(50);
 }
 
 static void turnRight() {
