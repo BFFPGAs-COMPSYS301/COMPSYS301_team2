@@ -1,119 +1,270 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <math.h>
+#include "astar.h"
 
 
-#define ROWS 15
-#define COLS 19
+/* =========================================================
+ * MANHATTAN DISTANCE
+ * ========================================================= */
 
-
-typedef struct {
-    int row;
-    int col;
-} Position;
-
-
-/*
-    Robot directions
-
-    0 = UP
-    1 = RIGHT
-    2 = DOWN
-    3 = LEFT
-*/
-typedef enum {
-    UP = 0,
-    RIGHT = 1,
-    DOWN = 2,
-    LEFT = 3
-} Direction;
-
-
-/*
-    Complete path
-*/
-typedef struct {
-    Position *cells;
-    int length;
-} Path;
-
-
-/*
-    Manhattan distance
-*/
-int heuristic(Position a, Position b)
+static uint16_t Heuristic(
+    Position a,
+    Position b
+)
 {
-    return abs(a.row - b.row) +
-           abs(a.col - b.col);
+    uint16_t rowDistance;
+    uint16_t colDistance;
+
+
+    if (a.row > b.row)
+        rowDistance = a.row - b.row;
+    else
+        rowDistance = b.row - a.row;
+
+
+    if (a.col > b.col)
+        colDistance = a.col - b.col;
+    else
+        colDistance = b.col - a.col;
+
+
+    return rowDistance + colDistance;
 }
 
 
-/*
-    Run A*
-*/
-Path astar(
-    int map[ROWS][COLS],
-    Position start,
-    Position target
+/* =========================================================
+ * GET DIRECTION BETWEEN TWO ADJACENT CELLS
+ * ========================================================= */
+
+static Direction GetDirection(
+    Position from,
+    Position to
 )
 {
-    double gScore[ROWS][COLS];
-    double fScore[ROWS][COLS];
-    bool visited[ROWS][COLS];
-    Position parent[ROWS][COLS];
+    if (to.row < from.row)
+        return DIR_UP;
+
+    if (to.col > from.col)
+        return DIR_RIGHT;
+
+    if (to.row > from.row)
+        return DIR_DOWN;
+
+    return DIR_LEFT;
+}
+
+
+/* =========================================================
+ * ADD COMMAND TO ROUTE
+ * ========================================================= */
+
+static bool AddCommand(
+    Route *route,
+    Command command
+)
+{
+    if (route->length >= MAX_COMMANDS)
+        return false;
+
+
+    route->commands[route->length] =
+        command;
+
+    route->length++;
+
+    return true;
+}
+
+
+/* =========================================================
+ * ADD TURN TO ROUTE
+ *
+ * Turning does NOT move the robot.
+ * ========================================================= */
+
+static bool AddTurn(
+    Route *route,
+    Direction *currentDirection,
+    Direction requiredDirection
+)
+{
+    int turn;
 
 
     /*
-        Initialise arrays
-    */
+     * Calculate clockwise difference.
+     *
+     * 0 = straight
+     * 1 = right
+     * 2 = U-turn
+     * 3 = left
+     */
 
-    for (int r = 0; r < ROWS; r++) {
+    turn =
+        ((int)requiredDirection -
+         (int)(*currentDirection) +
+         4) % 4;
 
-        for (int c = 0; c < COLS; c++) {
 
-            gScore[r][c] = INFINITY;
-            fScore[r][c] = INFINITY;
-            visited[r][c] = false;
+    /*
+     * Already facing the correct direction.
+     */
 
-            parent[r][c] =
-                (Position){-1, -1};
+    if (turn == 0)
+    {
+        return true;
+    }
+
+
+    /*
+     * Right turn.
+     */
+
+    if (turn == 1)
+    {
+        if (!AddCommand(
+                route,
+                CMD_RIGHT))
+        {
+            return false;
         }
     }
 
 
     /*
-        Starting cell
-    */
+     * U-turn.
+     *
+     * Two right turns.
+     */
+
+    else if (turn == 2)
+    {
+        if (!AddCommand(
+                route,
+                CMD_RIGHT))
+        {
+            return false;
+        }
+
+
+        if (!AddCommand(
+                route,
+                CMD_RIGHT))
+        {
+            return false;
+        }
+    }
+
+
+    /*
+     * Left turn.
+     */
+
+    else
+    {
+        if (!AddCommand(
+                route,
+                CMD_LEFT))
+        {
+            return false;
+        }
+    }
+
+
+    /*
+     * Robot is now facing the required
+     * direction.
+
+     * It has not moved yet.
+     */
+
+    *currentDirection =
+        requiredDirection;
+
+
+    return true;
+}
+
+
+/* =========================================================
+ * A* FOR ONE SECTION OF THE ROUTE
+ *
+ * Calculates:
+ *
+ *     start -> target
+ *
+ * and appends the commands to route.
+ *
+ * finalDirection receives the direction the
+ * robot is facing when it reaches target.
+ * ========================================================= */
+
+static bool AStarSegment(
+    const uint8_t map[MAP_ROWS][MAP_COLS],
+    Position start,
+    Position target,
+    Direction startingDirection,
+    Route *route,
+    Direction *finalDirection
+)
+{
+    uint16_t gScore[MAP_ROWS][MAP_COLS];
+    uint16_t fScore[MAP_ROWS][MAP_COLS];
+
+    bool visited[MAP_ROWS][MAP_COLS];
+
+    Position parent[MAP_ROWS][MAP_COLS];
+
+    Position openSet[MAX_CELLS];
+
+    uint16_t openSize = 0;
+
+
+    /*
+     * Initialise arrays.
+     */
+
+    for (uint8_t row = 0;
+         row < MAP_ROWS;
+         row++)
+    {
+        for (uint8_t col = 0;
+             col < MAP_COLS;
+             col++)
+        {
+            gScore[row][col] = 65535;
+            fScore[row][col] = 65535;
+
+            visited[row][col] = false;
+
+            parent[row][col].row = 255;
+            parent[row][col].col = 255;
+        }
+    }
+
+
+    /*
+     * Starting position.
+     */
 
     gScore[start.row][start.col] = 0;
 
     fScore[start.row][start.col] =
-        heuristic(start, target);
+        Heuristic(start, target);
 
-
-    /*
-        Open set
-    */
-
-    Position openSet[ROWS * COLS];
-
-    int openSize = 0;
 
     openSet[openSize++] = start;
 
 
     /*
-        Directions
+     * Directions:
+     *
+     * 0 = UP
+     * 1 = RIGHT
+     * 2 = DOWN
+     * 3 = LEFT
+     */
 
-        UP
-        RIGHT
-        DOWN
-        LEFT
-    */
-
-    int directions[4][2] = {
-
+    static const int8_t directions[4][2] =
+    {
         {-1,  0},
         { 0,  1},
         { 1,  0},
@@ -121,50 +272,56 @@ Path astar(
     };
 
 
-    /*
-        A*
-    */
+    /* =====================================================
+     * A* SEARCH
+     * ===================================================== */
 
-    while (openSize > 0) {
+    while (openSize > 0)
+    {
+        uint16_t bestIndex = 0;
+
 
         /*
-            Find lowest fScore
-        */
+         * Find the cell with the lowest fScore.
+         */
 
-        int bestIndex = 0;
-
-        for (int i = 1; i < openSize; i++) {
-
-            Position p =
-                openSet[i];
-
-            Position best =
-                openSet[bestIndex];
+        for (uint16_t i = 1;
+             i < openSize;
+             i++)
+        {
+            Position a = openSet[i];
+            Position b = openSet[bestIndex];
 
 
-            if (fScore[p.row][p.col] <
-                fScore[best.row][best.col]) {
-
+            if (fScore[a.row][a.col] <
+                fScore[b.row][b.col])
+            {
                 bestIndex = i;
             }
         }
 
+
+        /*
+         * Get current cell.
+         */
 
         Position current =
             openSet[bestIndex];
 
 
         /*
-            Remove current from open set
-        */
+         * Remove current cell from open set.
+         */
 
         openSet[bestIndex] =
-            openSet[--openSize];
+            openSet[openSize - 1];
+
+        openSize--;
 
 
         /*
-            Skip if already visited
-        */
+         * Ignore if already processed.
+         */
 
         if (visited[current.row][current.col])
             continue;
@@ -174,381 +331,382 @@ Path astar(
 
 
         /*
-            Target reached
-        */
+         * Have we reached the target?
+         */
 
         if (current.row == target.row &&
-            current.col == target.col) {
-
+            current.col == target.col)
+        {
             break;
         }
 
 
         /*
-            Check neighbours
-        */
+         * Check all four neighbouring cells.
+         */
 
-        for (int i = 0; i < 4; i++) {
-
-            int row =
+        for (uint8_t d = 0;
+             d < 4;
+             d++)
+        {
+            int16_t newRow =
                 current.row +
-                directions[i][0];
+                directions[d][0];
 
-            int col =
+            int16_t newCol =
                 current.col +
-                directions[i][1];
+                directions[d][1];
 
 
             /*
-                Outside map
-            */
+             * Check map boundaries.
+             */
 
-            if (row < 0 || row >= ROWS ||
-                col < 0 || col >= COLS)
+            if (newRow < 0 ||
+                newRow >= MAP_ROWS ||
+                newCol < 0 ||
+                newCol >= MAP_COLS)
+            {
+                continue;
+            }
 
+
+            /*
+             * Check for wall.
+             *
+             * 1 = wall
+             * 0 = open
+             */
+
+            if (map[newRow][newCol] != 0)
                 continue;
 
 
             /*
-                Wall
-            */
+             * Already processed.
+             */
 
-            if (map[row][col] == 1)
+            if (visited[newRow][newCol])
                 continue;
 
 
             /*
-                Already visited
-            */
+             * Every cell movement costs 1.
+             */
 
-            if (visited[row][col])
-                continue;
-
-
-            /*
-                New cost
-            */
-
-            double newGScore =
-                gScore[current.row][current.col]
-                + 1;
+            uint16_t newGScore =
+                gScore[current.row][current.col] + 1;
 
 
             /*
-                Better path found
-            */
+             * Is this a better path?
+             */
 
-            if (newGScore < gScore[row][col]) {
+            if (newGScore <
+                gScore[newRow][newCol])
+            {
+                Position neighbour;
 
-                gScore[row][col] =
+
+                neighbour.row = newRow;
+                neighbour.col = newCol;
+
+
+                gScore[newRow][newCol] =
                     newGScore;
 
-                parent[row][col] =
+
+                parent[newRow][newCol] =
                     current;
 
-                fScore[row][col] =
+
+                fScore[newRow][newCol] =
                     newGScore +
-                    heuristic(
-                        (Position){row, col},
+                    Heuristic(
+                        neighbour,
                         target
                     );
 
 
+                /*
+                 * Add neighbour to open set.
+                 */
+
+                if (openSize >= MAX_CELLS)
+                    return false;
+
+
                 openSet[openSize++] =
-                    (Position){row, col};
+                    neighbour;
             }
         }
     }
 
 
     /*
-        Create path
-    */
+     * If target was never visited,
+     * there is no route.
+     */
 
-    Path path;
-
-    path.cells = NULL;
-    path.length = 0;
-
-
-    /*
-        No path
-    */
-
-    if (gScore[target.row][target.col] ==
-        INFINITY) {
-
-        return path;
-    }
+    if (!visited[target.row][target.col])
+        return false;
 
 
-    /*
-        Build path backwards
-    */
+    /* =====================================================
+     * RECONSTRUCT PATH
+     *
+     * Initially creates:
+     *
+     *     TARGET
+     *     CELL
+     *     CELL
+     *     START
+     * ===================================================== */
 
-    Position reversePath[ROWS * COLS];
+    Position reversePath[MAX_CELLS];
 
-    int pathLength = 0;
+    uint16_t pathLength = 0;
 
     Position current = target;
 
 
-    while (1) {
+    while (1)
+    {
+        if (pathLength >= MAX_CELLS)
+            return false;
+
 
         reversePath[pathLength++] =
             current;
 
 
-        if (current.row == start.row &&
-            current.col == start.col) {
+        /*
+         * Reached start.
+         */
 
+        if (current.row == start.row &&
+            current.col == start.col)
+        {
             break;
         }
 
 
         current =
             parent[current.row][current.col];
+
+
+        /*
+         * Invalid parent.
+         */
+
+        if (current.row == 255)
+            return false;
     }
 
 
-    /*
-        Allocate final path
-    */
+    /* =====================================================
+     * CONVERT PATH TO ROBOT COMMANDS
+     * ===================================================== */
 
-    path.cells =
-        malloc(pathLength *
-               sizeof(Position));
-
-    path.length =
-        pathLength;
-
-
-    /*
-        Reverse path
-
-        START -> TARGET
-    */
-
-    for (int i = 0; i < pathLength; i++) {
-
-        path.cells[i] =
-            reversePath[
-                pathLength - 1 - i
-            ];
-    }
-
-
-    return path;
-}
-
-
-/*
-    Determine direction between two cells
-*/
-Direction getDirection(
-    Position from,
-    Position to
-)
-{
-    if (to.row < from.row)
-        return UP;
-
-    if (to.col > from.col)
-        return RIGHT;
-
-    if (to.row > from.row)
-        return DOWN;
-
-    return LEFT;
-}
-
-
-/*
-    Convert path into robot commands
-*/
-void printCommands(
-    Path path,
-    Direction startingDirection
-)
-{
-    Direction facing =
+    Direction direction =
         startingDirection;
 
 
-    for (int i = 1;
-         i < path.length;
-         i++) {
+    /*
+     * Walk backwards through reversePath
+     * so that we process:
+     *
+     *     START -> TARGET
+     */
 
-        Direction required =
-            getDirection(
-                path.cells[i - 1],
-                path.cells[i]
+    for (int16_t i = pathLength - 1;
+         i > 0;
+         i--)
+    {
+        Position from =
+            reversePath[i];
+
+        Position to =
+            reversePath[i - 1];
+
+
+        /*
+         * Direction required to move
+         * from this cell to the next.
+         */
+
+        Direction requiredDirection =
+            GetDirection(
+                from,
+                to
             );
 
 
         /*
-            Calculate required turn
+         * Turn if necessary.
+         *
+         * Turning does NOT move.
+         */
 
-            0 = straight
-            1 = right
-            2 = U-turn
-            3 = left
-        */
-
-        int turn =
-            (required - facing + 4) % 4;
-
-
-        if (turn == 1) {
-
-            printf("RIGHT\n");
-        }
-
-        else if (turn == 2) {
-
-            printf("RIGHT\n");
-            printf("RIGHT\n");
-        }
-
-        else if (turn == 3) {
-
-            printf("LEFT\n");
+        if (!AddTurn(
+                route,
+                &direction,
+                requiredDirection))
+        {
+            return false;
         }
 
 
         /*
-            Turning does NOT move.
+         * Move forward one cell.
+         */
 
-            FORWARD actually moves
-            into the next cell.
-        */
-
-        printf("FORWARD\n");
-
-
-        /*
-            Robot is now facing
-            the direction it moved.
-        */
-
-        facing = required;
+        if (!AddCommand(
+                route,
+                CMD_FORWARD))
+        {
+            return false;
+        }
     }
+
+
+    /*
+     * Return the final direction.
+     */
+
+    *finalDirection =
+        direction;
+
+
+    return true;
 }
 
 
-int main(void)
+/* =========================================================
+ * BUILD COMPLETE ROUTE
+ *
+ * Runs A* once for every pair of checkpoints.
+ *
+ * Example:
+ *
+ *     Point 0 -> Point 1
+ *     Point 1 -> Point 2
+ *     Point 2 -> Point 3
+ *     Point 3 -> Point 4
+ *
+ * The resulting commands are combined into
+ * one complete command array.
+ * ========================================================= */
+
+bool AStar_BuildRoute(
+    const uint8_t map[MAP_ROWS][MAP_COLS],
+    const Checkpoints *checkpoints,
+    Direction startingDirection,
+    Route *route
+)
 {
-    /*
-        =========================================
-        PASTE YOUR MAP HERE
-        =========================================
-    */
-
-    const char *mapInput[ROWS] = {
-
-        "1111111111111111111",
-        "1010001000001000001",
-        "1011101011101011101",
-        "1000100000100000101",
-        "1110111111111111101",
-        "1010000010000000001",
-        "1011111010111111101",
-        "1000001000100000101",
-        "1010101111101110101",
-        "1010101000101010101",
-        "1110101010101010101",
-        "1000101010001010101",
-        "1011111011111010101",
-        "1000000000000010001",
-        "1111111111111111111"
-    };
+    Direction currentDirection =
+        startingDirection;
 
 
     /*
-        Convert text map into
-        integer map
-    */
+     * Need at least two points:
+     *
+     * START -> END
+     */
 
-    int map[ROWS][COLS];
+    if (checkpoints->count < 2)
+        return false;
 
 
-    for (int r = 0; r < ROWS; r++) {
+    /*
+     * Make sure checkpoint count is valid.
+     */
 
-        for (int c = 0; c < COLS; c++) {
-
-            map[r][c] =
-                mapInput[r][c] - '0';
-        }
+    if (checkpoints->count >
+        MAX_CHECKPOINTS)
+    {
+        return false;
     }
 
 
     /*
-        =========================================
-        SET START AND TARGET HERE
-        =========================================
-    */
+     * Initialise route.
+     */
 
-    Position start = {
-        1,
-        1
-    };
+    route->length = 0;
 
-    Position target = {
-        13,
-        17
-    };
+    route->checkpointCount =
+        checkpoints->count;
+
+    route->finalDirection =
+        startingDirection;
 
 
     /*
-        =========================================
-        SET INITIAL ROBOT DIRECTION HERE
-        =========================================
-    */
+     * Starting point is checkpoint 0.
+     *
+     * No commands have been executed yet.
+     */
 
-    Direction startingDirection = RIGHT;
-
-
-    /*
-        Run A* ONCE
-    */
-
-    Path path =
-        astar(
-            map,
-            start,
-            target
-        );
+    route->checkpointCommand[0] = 0;
 
 
     /*
-        Check for path
-    */
+     * Calculate every section.
+     */
 
-    if (path.length == 0) {
+    for (uint8_t i = 0;
+         i < checkpoints->count - 1;
+         i++)
+    {
+        Direction newDirection;
 
-        printf("NO_PATH\n");
-    }
-
-    else {
 
         /*
-            Generate complete
-            movement sequence
-        */
+         * Calculate:
 
-        printCommands(
-            path,
-            startingDirection
-        );
+         *     Point i -> Point i+1
+         */
+
+        if (!AStarSegment(
+                map,
+                checkpoints->points[i],
+                checkpoints->points[i + 1],
+                currentDirection,
+                route,
+                &newDirection))
+        {
+            return false;
+        }
+
+
+        /*
+         * Robot's direction when it arrives
+         * at this checkpoint.
+         */
+
+        currentDirection =
+            newDirection;
+
+
+        /*
+         * Store the command index at which
+         * this checkpoint is reached.
+         */
+
+        route->checkpointCommand[i + 1] =
+            route->length;
     }
 
 
     /*
-        Free path
-    */
+     * Store final direction.
+     */
 
-    free(path.cells);
+    route->finalDirection =
+        currentDirection;
 
 
-    return 0;
+    return true;
 }
