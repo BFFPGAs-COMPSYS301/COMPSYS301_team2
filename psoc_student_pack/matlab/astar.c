@@ -1,494 +1,554 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include <stdbool.h>
-#include <limits.h>
+#include <math.h>
+
+
+#define ROWS 15
+#define COLS 19
+
 
 typedef struct {
     int row;
     int col;
 } Position;
 
+
+/*
+    Robot directions
+
+    0 = UP
+    1 = RIGHT
+    2 = DOWN
+    3 = LEFT
+*/
+typedef enum {
+    UP = 0,
+    RIGHT = 1,
+    DOWN = 2,
+    LEFT = 3
+} Direction;
+
+
+/*
+    Complete path
+*/
 typedef struct {
-    Position *data;
-    int size;
-    int capacity;
-} PositionList;
+    Position *cells;
+    int length;
+} Path;
 
-/* ---------------------------------------------------------
-   Dynamic list functions
-   --------------------------------------------------------- */
 
-void initList(PositionList *list, int capacity)
+/*
+    Manhattan distance
+*/
+int heuristic(Position a, Position b)
 {
-    list->data = malloc(capacity * sizeof(Position));
-    list->size = 0;
-    list->capacity = capacity;
+    return abs(a.row - b.row) +
+           abs(a.col - b.col);
 }
 
-void addPosition(PositionList *list, Position position)
-{
-    if (list->size >= list->capacity) {
-        list->capacity *= 2;
 
-        list->data = realloc(
-            list->data,
-            list->capacity * sizeof(Position)
-        );
-    }
-
-    list->data[list->size++] = position;
-}
-
-void removePosition(PositionList *list, int index)
-{
-    for (int i = index; i < list->size - 1; i++) {
-        list->data[i] = list->data[i + 1];
-    }
-
-    list->size--;
-}
-
-void freeList(PositionList *list)
-{
-    free(list->data);
-    list->data = NULL;
-    list->size = 0;
-    list->capacity = 0;
-}
-
-/* ---------------------------------------------------------
-   A* algorithm
-   --------------------------------------------------------- */
-
-void astar(
-    int **map,
-    int maprows,
-    int mapcols,
+/*
+    Run A*
+*/
+Path astar(
+    int map[ROWS][COLS],
     Position start,
-    Position target,
-    PositionList *retvisited,
-    PositionList *retsteps
+    Position target
 )
 {
+    double gScore[ROWS][COLS];
+    double fScore[ROWS][COLS];
+    bool visited[ROWS][COLS];
+    Position parent[ROWS][COLS];
+
+
     /*
-        gScore = cost from start to each cell
-        fScore = estimated total cost from start to target
+        Initialise arrays
     */
 
-    double **gScore = malloc(maprows * sizeof(double *));
-    double **fScore = malloc(maprows * sizeof(double *));
+    for (int r = 0; r < ROWS; r++) {
 
-    bool **visited = malloc(maprows * sizeof(bool *));
+        for (int c = 0; c < COLS; c++) {
 
-    Position **parent = malloc(maprows * sizeof(Position *));
-
-    for (int r = 0; r < maprows; r++) {
-        gScore[r] = malloc(mapcols * sizeof(double));
-        fScore[r] = malloc(mapcols * sizeof(double));
-        visited[r] = malloc(mapcols * sizeof(bool));
-        parent[r] = malloc(mapcols * sizeof(Position));
-
-        for (int c = 0; c < mapcols; c++) {
             gScore[r][c] = INFINITY;
             fScore[r][c] = INFINITY;
             visited[r][c] = false;
 
-            parent[r][c].row = -1;
-            parent[r][c].col = -1;
+            parent[r][c] =
+                (Position){-1, -1};
         }
     }
 
-    /*
-        Distance from start to itself is zero
-    */
-    gScore[start.row][start.col] = 0;
 
     /*
-        Manhattan distance heuristic
+        Starting cell
     */
+
+    gScore[start.row][start.col] = 0;
+
     fScore[start.row][start.col] =
-        abs(start.row - target.row) +
-        abs(start.col - target.col);
+        heuristic(start, target);
+
 
     /*
         Open set
     */
-    PositionList openSet;
-    initList(&openSet, 16);
 
-    addPosition(&openSet, start);
+    Position openSet[ROWS * COLS];
+
+    int openSize = 0;
+
+    openSet[openSize++] = start;
+
 
     /*
-        Directions:
-            up
-            down
-            left
-            right
+        Directions
+
+        UP
+        RIGHT
+        DOWN
+        LEFT
     */
+
     int directions[4][2] = {
+
         {-1,  0},
+        { 0,  1},
         { 1,  0},
-        { 0, -1},
-        { 0,  1}
+        { 0, -1}
     };
 
+
     /*
-        A* algorithm
+        A*
     */
-    while (openSet.size > 0) {
+
+    while (openSize > 0) {
 
         /*
-            Find the cell in openSet with the
-            smallest fScore
+            Find lowest fScore
         */
+
         int bestIndex = 0;
-        double bestScore = INFINITY;
 
-        for (int i = 0; i < openSet.size; i++) {
+        for (int i = 1; i < openSize; i++) {
 
-            int row = openSet.data[i].row;
-            int col = openSet.data[i].col;
+            Position p =
+                openSet[i];
 
-            if (fScore[row][col] < bestScore) {
-                bestScore = fScore[row][col];
+            Position best =
+                openSet[bestIndex];
+
+
+            if (fScore[p.row][p.col] <
+                fScore[best.row][best.col]) {
+
                 bestIndex = i;
             }
         }
 
-        /*
-            Get cell with smallest fScore
-        */
-        Position current = openSet.data[bestIndex];
+
+        Position current =
+            openSet[bestIndex];
+
 
         /*
-            Remove current from openSet
+            Remove current from open set
         */
-        removePosition(&openSet, bestIndex);
+
+        openSet[bestIndex] =
+            openSet[--openSize];
+
 
         /*
-            If already visited, skip it
+            Skip if already visited
         */
-        if (visited[current.row][current.col]) {
+
+        if (visited[current.row][current.col])
             continue;
-        }
 
-        /*
-            Mark current as visited
-        */
+
         visited[current.row][current.col] = true;
 
-        /*
-            Record visited cell
-        */
-        addPosition(retvisited, current);
 
         /*
-            Have we reached the target?
+            Target reached
         */
+
         if (current.row == target.row &&
             current.col == target.col) {
 
             break;
         }
 
-        /*
-            Check each neighbouring cell
-        */
-        for (int k = 0; k < 4; k++) {
 
-            int row = current.row + directions[k][0];
-            int col = current.col + directions[k][1];
+        /*
+            Check neighbours
+        */
+
+        for (int i = 0; i < 4; i++) {
+
+            int row =
+                current.row +
+                directions[i][0];
+
+            int col =
+                current.col +
+                directions[i][1];
+
 
             /*
-                Check that neighbour is inside map
+                Outside map
             */
-            if (row >= 0 && row < maprows &&
-                col >= 0 && col < mapcols) {
 
-                /*
-                    Check that neighbour is not a wall
+            if (row < 0 || row >= ROWS ||
+                col < 0 || col >= COLS)
 
-                    MATLAB:
-                        map(row,col) == 0
+                continue;
 
-                    C uses zero-based indexing.
-                */
-                if (map[row][col] == 0) {
 
-                    /*
-                        Ignore already visited cells
-                    */
-                    if (!visited[row][col]) {
+            /*
+                Wall
+            */
 
-                        /*
-                            Cost of moving to neighbour
-                        */
-                        double movementCost = 1.0;
+            if (map[row][col] == 1)
+                continue;
 
-                        /*
-                            Calculate new gScore
-                        */
-                        double newGScore =
-                            gScore[current.row][current.col]
-                            + movementCost;
 
-                        /*
-                            If this is a better route
-                        */
-                        if (newGScore < gScore[row][col]) {
+            /*
+                Already visited
+            */
 
-                            /*
-                                Store new cost
-                            */
-                            gScore[row][col] = newGScore;
+            if (visited[row][col])
+                continue;
 
-                            /*
-                                Store parent
-                            */
-                            parent[row][col] = current;
 
-                            /*
-                                Manhattan heuristic
-                            */
-                            int heuristic =
-                                abs(row - target.row) +
-                                abs(col - target.col);
+            /*
+                New cost
+            */
 
-                            /*
-                                Calculate fScore
-                            */
-                            fScore[row][col] =
-                                newGScore + heuristic;
+            double newGScore =
+                gScore[current.row][current.col]
+                + 1;
 
-                            /*
-                                Add neighbour to openSet
-                            */
-                            Position neighbour = {
-                                row,
-                                col
-                            };
 
-                            addPosition(&openSet, neighbour);
-                        }
-                    }
-                }
+            /*
+                Better path found
+            */
+
+            if (newGScore < gScore[row][col]) {
+
+                gScore[row][col] =
+                    newGScore;
+
+                parent[row][col] =
+                    current;
+
+                fScore[row][col] =
+                    newGScore +
+                    heuristic(
+                        (Position){row, col},
+                        target
+                    );
+
+
+                openSet[openSize++] =
+                    (Position){row, col};
             }
         }
     }
 
-    /*
-        Reconstruct path
-    */
 
     /*
-        Check whether target was reached
+        Create path
     */
-    if (gScore[target.row][target.col] != INFINITY) {
 
-        Position current = target;
+    Path path;
 
-        /*
-            Build path backwards.
+    path.cells = NULL;
+    path.length = 0;
 
-            We temporarily store the path backwards,
-            then reverse it.
-        */
-        PositionList reversePath;
-        initList(&reversePath, 16);
 
-        while (!(current.row == start.row &&
-                 current.col == start.col)) {
+    /*
+        No path
+    */
 
-            addPosition(&reversePath, current);
+    if (gScore[target.row][target.col] ==
+        INFINITY) {
 
-            current = parent[current.row][current.col];
-        }
-
-        /*
-            Add starting location
-        */
-        addPosition(&reversePath, start);
-
-        /*
-            Reverse path to get start -> target
-        */
-        for (int i = reversePath.size - 1; i >= 0; i--) {
-            addPosition(
-                retsteps,
-                reversePath.data[i]
-            );
-        }
-
-        freeList(&reversePath);
+        return path;
     }
 
-    /*
-        Free memory
-    */
-    freeList(&openSet);
 
-    for (int r = 0; r < maprows; r++) {
-        free(gScore[r]);
-        free(fScore[r]);
-        free(visited[r]);
-        free(parent[r]);
+    /*
+        Build path backwards
+    */
+
+    Position reversePath[ROWS * COLS];
+
+    int pathLength = 0;
+
+    Position current = target;
+
+
+    while (1) {
+
+        reversePath[pathLength++] =
+            current;
+
+
+        if (current.row == start.row &&
+            current.col == start.col) {
+
+            break;
+        }
+
+
+        current =
+            parent[current.row][current.col];
     }
 
-    free(gScore);
-    free(fScore);
-    free(visited);
-    free(parent);
+
+    /*
+        Allocate final path
+    */
+
+    path.cells =
+        malloc(pathLength *
+               sizeof(Position));
+
+    path.length =
+        pathLength;
+
+
+    /*
+        Reverse path
+
+        START -> TARGET
+    */
+
+    for (int i = 0; i < pathLength; i++) {
+
+        path.cells[i] =
+            reversePath[
+                pathLength - 1 - i
+            ];
+    }
+
+
+    return path;
 }
 
-/* ---------------------------------------------------------
-   Example
-   --------------------------------------------------------- */
 
-void printMap(
-    int **map,
-    int rows,
-    int cols,
-    PositionList *path
+/*
+    Determine direction between two cells
+*/
+Direction getDirection(
+    Position from,
+    Position to
 )
 {
-    for (int r = 0; r < rows; r++) {
+    if (to.row < from.row)
+        return UP;
 
-        for (int c = 0; c < cols; c++) {
+    if (to.col > from.col)
+        return RIGHT;
 
-            char character = map[r][c] ? '#' : '.';
+    if (to.row > from.row)
+        return DOWN;
 
-            /*
-                Check whether this cell is part of path
-            */
-            for (int i = 0; i < path->size; i++) {
+    return LEFT;
+}
 
-                if (path->data[i].row == r &&
-                    path->data[i].col == c) {
 
-                    character = '*';
-                    break;
-                }
-            }
+/*
+    Convert path into robot commands
+*/
+void printCommands(
+    Path path,
+    Direction startingDirection
+)
+{
+    Direction facing =
+        startingDirection;
 
-            printf("%c ", character);
+
+    for (int i = 1;
+         i < path.length;
+         i++) {
+
+        Direction required =
+            getDirection(
+                path.cells[i - 1],
+                path.cells[i]
+            );
+
+
+        /*
+            Calculate required turn
+
+            0 = straight
+            1 = right
+            2 = U-turn
+            3 = left
+        */
+
+        int turn =
+            (required - facing + 4) % 4;
+
+
+        if (turn == 1) {
+
+            printf("RIGHT\n");
         }
 
-        printf("\n");
+        else if (turn == 2) {
+
+            printf("RIGHT\n");
+            printf("RIGHT\n");
+        }
+
+        else if (turn == 3) {
+
+            printf("LEFT\n");
+        }
+
+
+        /*
+            Turning does NOT move.
+
+            FORWARD actually moves
+            into the next cell.
+        */
+
+        printf("FORWARD\n");
+
+
+        /*
+            Robot is now facing
+            the direction it moved.
+        */
+
+        facing = required;
     }
 }
+
 
 int main(void)
 {
     /*
-        Example map
-
-        0 = open
-        1 = wall
+        =========================================
+        PASTE YOUR MAP HERE
+        =========================================
     */
 
-    int rows = 10;
-    int cols = 10;
+    const char *mapInput[ROWS] = {
 
-    int mapData[10][10] = {
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,1,1,1,0,0,0,1,1,0},
-        {0,0,0,1,0,1,0,0,0,0},
-        {0,1,0,0,0,1,1,1,0,0},
-        {0,1,0,1,0,0,0,0,0,0},
-        {0,0,0,1,1,1,0,1,1,0},
-        {0,1,0,0,0,0,0,1,0,0},
-        {0,1,1,1,1,1,0,1,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0}
+        "1111111111111111111",
+        "1010001000001000001",
+        "1011101011101011101",
+        "1000100000100000101",
+        "1110111111111111101",
+        "1010000010000000001",
+        "1011111010111111101",
+        "1000001000100000101",
+        "1010101111101110101",
+        "1010101000101010101",
+        "1110101010101010101",
+        "1000101010001010101",
+        "1011111011111010101",
+        "1000000000000010001",
+        "1111111111111111111"
     };
 
+
     /*
-        Convert the 2D array into an array of pointers
-        so astar() can use map[row][col].
+        Convert text map into
+        integer map
     */
 
-    int **map = malloc(rows * sizeof(int *));
+    int map[ROWS][COLS];
 
-    for (int r = 0; r < rows; r++) {
-        map[r] = mapData[r];
+
+    for (int r = 0; r < ROWS; r++) {
+
+        for (int c = 0; c < COLS; c++) {
+
+            map[r][c] =
+                mapInput[r][c] - '0';
+        }
     }
 
-    /*
-        MATLAB uses 1-based coordinates.
-
-        C uses 0-based coordinates.
-
-        MATLAB:
-            startlocation = [1 1]
-
-        C:
-            start = {0, 0}
-    */
-
-    Position start = {0, 0};
-    Position target = {9, 9};
-
-    PositionList visited;
-    PositionList steps;
-
-    initList(&visited, 32);
-    initList(&steps, 32);
 
     /*
-        Run A*
+        =========================================
+        SET START AND TARGET HERE
+        =========================================
     */
-    astar(
-        map,
-        rows,
-        cols,
-        start,
-        target,
-        &visited,
-        &steps
-    );
+
+    Position start = {
+        1,
+        1
+    };
+
+    Position target = {
+        13,
+        17
+    };
+
 
     /*
-        Print visited cells
+        =========================================
+        SET INITIAL ROBOT DIRECTION HERE
+        =========================================
     */
-    printf("Visited cells:\n");
 
-    for (int i = 0; i < visited.size; i++) {
-        printf(
-            "(%d, %d)\n",
-            visited.data[i].row,
-            visited.data[i].col
+    Direction startingDirection = RIGHT;
+
+
+    /*
+        Run A* ONCE
+    */
+
+    Path path =
+        astar(
+            map,
+            start,
+            target
+        );
+
+
+    /*
+        Check for path
+    */
+
+    if (path.length == 0) {
+
+        printf("NO_PATH\n");
+    }
+
+    else {
+
+        /*
+            Generate complete
+            movement sequence
+        */
+
+        printCommands(
+            path,
+            startingDirection
         );
     }
 
-    /*
-        Print path
-    */
-    printf("\nPath:\n");
-
-    for (int i = 0; i < steps.size; i++) {
-        printf(
-            "(%d, %d)\n",
-            steps.data[i].row,
-            steps.data[i].col
-        );
-    }
 
     /*
-        Print map
+        Free path
     */
-    printf("\nMap:\n");
 
-    printMap(
-        map,
-        rows,
-        cols,
-        &steps
-    );
+    free(path.cells);
 
-    freeList(&visited);
-    freeList(&steps);
-    free(map);
 
     return 0;
 }
