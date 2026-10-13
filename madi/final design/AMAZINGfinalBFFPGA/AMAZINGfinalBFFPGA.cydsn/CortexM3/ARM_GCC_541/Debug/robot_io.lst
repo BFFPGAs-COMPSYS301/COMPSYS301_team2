@@ -1,0 +1,1599 @@
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"robot_io.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.IO_Sensors,"ax",%progbits
+  20              		.align	2
+  21              		.global	IO_Sensors
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	IO_Sensors, %function
+  25              	IO_Sensors:
+  26              	.LFB64:
+  27              		.file 1 "..\\..\\..\\..\\..\\maze_localization_starter\\maze_localization_starter\\robot_io.c"
+   1:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+   2:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** #include "project.h"
+   3:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** #include "robot_io.h"
+   4:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** #include <stdint.h>
+   5:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+   6:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** #define PWM_NEUTRAL 45u
+   7:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** #define PWM_FORWARD 23u
+   8:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** #define PWM_REVERSE 67u
+   9:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  10:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** void IO_Init(void)
+  11:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** {
+  12:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_1_Start();
+  13:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_2_Start();
+  14:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  15:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     VDAC8_1_Start();
+  16:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  17:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Timeout_1_Start();
+  18:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Timeout_2_Start();
+  19:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Timeout_3_Start();
+  20:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Timeout_4_Start();
+  21:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Timeout_5_Start();
+  22:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  23:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     QuadDec_1_Start();
+  24:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     QuadDec_2_Start();
+  25:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  26:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     IO_Stop();
+  27:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** }
+  28:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  29:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** Sensors IO_Sensors(void)
+  30:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** {
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 2
+
+
+  28              		.loc 1 30 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  37 0002 0446     		mov	r4, r0
+  31:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Sensors s;
+  32:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  33:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     s.fc = (LED1_Read() == 1);
+  38              		.loc 1 33 0
+  39 0004 FFF7FEFF 		bl	LED1_Read
+  40              	.LVL1:
+  41 0008 0128     		cmp	r0, #1
+  42 000a 14BF     		ite	ne
+  43 000c 0020     		movne	r0, #0
+  44 000e 0120     		moveq	r0, #1
+  45 0010 2070     		strb	r0, [r4]
+  34:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     s.rl = (LED2_Read() == 1);
+  46              		.loc 1 34 0
+  47 0012 FFF7FEFF 		bl	LED2_Read
+  48              	.LVL2:
+  49 0016 0128     		cmp	r0, #1
+  50 0018 14BF     		ite	ne
+  51 001a 0020     		movne	r0, #0
+  52 001c 0120     		moveq	r0, #1
+  53 001e E070     		strb	r0, [r4, #3]
+  35:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     s.rr = (LED3_Read() == 1);
+  54              		.loc 1 35 0
+  55 0020 FFF7FEFF 		bl	LED3_Read
+  56              	.LVL3:
+  57 0024 0128     		cmp	r0, #1
+  58 0026 14BF     		ite	ne
+  59 0028 0020     		movne	r0, #0
+  60 002a 0120     		moveq	r0, #1
+  61 002c 2071     		strb	r0, [r4, #4]
+  36:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     s.fr = (LED4_Read() == 1);
+  62              		.loc 1 36 0
+  63 002e FFF7FEFF 		bl	LED4_Read
+  64              	.LVL4:
+  65 0032 0128     		cmp	r0, #1
+  66 0034 14BF     		ite	ne
+  67 0036 0020     		movne	r0, #0
+  68 0038 0120     		moveq	r0, #1
+  69 003a A070     		strb	r0, [r4, #2]
+  37:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     s.fl = (LED5_Read() == 1);
+  70              		.loc 1 37 0
+  71 003c FFF7FEFF 		bl	LED5_Read
+  72              	.LVL5:
+  73 0040 0128     		cmp	r0, #1
+  74 0042 14BF     		ite	ne
+  75 0044 0020     		movne	r0, #0
+  76 0046 0120     		moveq	r0, #1
+  77 0048 6070     		strb	r0, [r4, #1]
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 3
+
+
+  38:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  39:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     return s;
+  40:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** }
+  78              		.loc 1 40 0
+  79 004a 2046     		mov	r0, r4
+  80 004c 10BD     		pop	{r4, pc}
+  81              		.cfi_endproc
+  82              	.LFE64:
+  83              		.size	IO_Sensors, .-IO_Sensors
+  84 004e 00BF     		.section	.text.IO_Encoders,"ax",%progbits
+  85              		.align	2
+  86              		.global	IO_Encoders
+  87              		.thumb
+  88              		.thumb_func
+  89              		.type	IO_Encoders, %function
+  90              	IO_Encoders:
+  91              	.LFB65:
+  41:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  42:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** bool IO_Encoders(EncoderPair *result)
+  43:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** {
+  92              		.loc 1 43 0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96              	.LVL6:
+  44:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     if (!result)
+  97              		.loc 1 44 0
+  98 0000 58B1     		cbz	r0, .L5
+  43:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     if (!result)
+  99              		.loc 1 43 0
+ 100 0002 10B5     		push	{r4, lr}
+ 101              		.cfi_def_cfa_offset 8
+ 102              		.cfi_offset 4, -8
+ 103              		.cfi_offset 14, -4
+ 104 0004 0446     		mov	r4, r0
+  45:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****         return false;
+  46:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  47:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     /*
+  48:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****      * Both encoders count down during forward motion.
+  49:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****      * Reverse the sign so forward movement is positive.
+  50:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****      *
+  51:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****      * Assumes QuadDec_1 = left wheel,
+  52:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****      * QuadDec_2 = right wheel.
+  53:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****      */
+  54:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     result->left =
+  55:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****         (int32_t)(0u - (uint32_t)QuadDec_1_GetCounter());
+ 105              		.loc 1 55 0
+ 106 0006 FFF7FEFF 		bl	QuadDec_1_GetCounter
+ 107              	.LVL7:
+ 108 000a 4042     		negs	r0, r0
+  54:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****         (int32_t)(0u - (uint32_t)QuadDec_1_GetCounter());
+ 109              		.loc 1 54 0
+ 110 000c 2060     		str	r0, [r4]
+  56:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  57:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     result->right =
+  58:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****         (int32_t)(0u - (uint32_t)QuadDec_2_GetCounter());
+ 111              		.loc 1 58 0
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 4
+
+
+ 112 000e FFF7FEFF 		bl	QuadDec_2_GetCounter
+ 113              	.LVL8:
+ 114 0012 4042     		negs	r0, r0
+  57:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****         (int32_t)(0u - (uint32_t)QuadDec_2_GetCounter());
+ 115              		.loc 1 57 0
+ 116 0014 6060     		str	r0, [r4, #4]
+  59:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  60:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     return true;
+ 117              		.loc 1 60 0
+ 118 0016 0120     		movs	r0, #1
+ 119 0018 10BD     		pop	{r4, pc}
+ 120              	.LVL9:
+ 121              	.L5:
+ 122              		.cfi_def_cfa_offset 0
+ 123              		.cfi_restore 4
+ 124              		.cfi_restore 14
+  45:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+ 125              		.loc 1 45 0
+ 126 001a 0020     		movs	r0, #0
+ 127              	.LVL10:
+ 128 001c 7047     		bx	lr
+ 129              		.cfi_endproc
+ 130              	.LFE65:
+ 131              		.size	IO_Encoders, .-IO_Encoders
+ 132 001e 00BF     		.section	.text.IO_Stop,"ax",%progbits
+ 133              		.align	2
+ 134              		.global	IO_Stop
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.type	IO_Stop, %function
+ 138              	IO_Stop:
+ 139              	.LFB66:
+  61:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** }
+  62:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  63:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** void IO_Stop(void)
+  64:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** {
+ 140              		.loc 1 64 0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144 0000 08B5     		push	{r3, lr}
+ 145              		.cfi_def_cfa_offset 8
+ 146              		.cfi_offset 3, -8
+ 147              		.cfi_offset 14, -4
+  65:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_1_WriteCompare(PWM_NEUTRAL);
+ 148              		.loc 1 65 0
+ 149 0002 2D20     		movs	r0, #45
+ 150 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 151              	.LVL11:
+  66:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_2_WriteCompare(PWM_NEUTRAL);
+ 152              		.loc 1 66 0
+ 153 0008 2D20     		movs	r0, #45
+ 154 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 155              	.LVL12:
+ 156 000e 08BD     		pop	{r3, pc}
+ 157              		.cfi_endproc
+ 158              	.LFE66:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 5
+
+
+ 159              		.size	IO_Stop, .-IO_Stop
+ 160              		.section	.text.IO_Init,"ax",%progbits
+ 161              		.align	2
+ 162              		.global	IO_Init
+ 163              		.thumb
+ 164              		.thumb_func
+ 165              		.type	IO_Init, %function
+ 166              	IO_Init:
+ 167              	.LFB63:
+  11:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_1_Start();
+ 168              		.loc 1 11 0
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172 0000 08B5     		push	{r3, lr}
+ 173              		.cfi_def_cfa_offset 8
+ 174              		.cfi_offset 3, -8
+ 175              		.cfi_offset 14, -4
+  12:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_2_Start();
+ 176              		.loc 1 12 0
+ 177 0002 FFF7FEFF 		bl	PWM_1_Start
+ 178              	.LVL13:
+  13:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+ 179              		.loc 1 13 0
+ 180 0006 FFF7FEFF 		bl	PWM_2_Start
+ 181              	.LVL14:
+  15:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+ 182              		.loc 1 15 0
+ 183 000a FFF7FEFF 		bl	VDAC8_1_Start
+ 184              	.LVL15:
+  17:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Timeout_2_Start();
+ 185              		.loc 1 17 0
+ 186 000e FFF7FEFF 		bl	Timeout_1_Start
+ 187              	.LVL16:
+  18:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Timeout_3_Start();
+ 188              		.loc 1 18 0
+ 189 0012 FFF7FEFF 		bl	Timeout_2_Start
+ 190              	.LVL17:
+  19:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Timeout_4_Start();
+ 191              		.loc 1 19 0
+ 192 0016 FFF7FEFF 		bl	Timeout_3_Start
+ 193              	.LVL18:
+  20:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     Timeout_5_Start();
+ 194              		.loc 1 20 0
+ 195 001a FFF7FEFF 		bl	Timeout_4_Start
+ 196              	.LVL19:
+  21:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+ 197              		.loc 1 21 0
+ 198 001e FFF7FEFF 		bl	Timeout_5_Start
+ 199              	.LVL20:
+  23:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     QuadDec_2_Start();
+ 200              		.loc 1 23 0
+ 201 0022 FFF7FEFF 		bl	QuadDec_1_Start
+ 202              	.LVL21:
+  24:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+ 203              		.loc 1 24 0
+ 204 0026 FFF7FEFF 		bl	QuadDec_2_Start
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 6
+
+
+ 205              	.LVL22:
+  26:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** }
+ 206              		.loc 1 26 0
+ 207 002a FFF7FEFF 		bl	IO_Stop
+ 208              	.LVL23:
+ 209 002e 08BD     		pop	{r3, pc}
+ 210              		.cfi_endproc
+ 211              	.LFE63:
+ 212              		.size	IO_Init, .-IO_Init
+ 213              		.section	.text.IO_Forward,"ax",%progbits
+ 214              		.align	2
+ 215              		.global	IO_Forward
+ 216              		.thumb
+ 217              		.thumb_func
+ 218              		.type	IO_Forward, %function
+ 219              	IO_Forward:
+ 220              	.LFB67:
+  67:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** }
+  68:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  69:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** void IO_Forward(void)
+  70:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** {
+ 221              		.loc 1 70 0
+ 222              		.cfi_startproc
+ 223              		@ args = 0, pretend = 0, frame = 0
+ 224              		@ frame_needed = 0, uses_anonymous_args = 0
+ 225 0000 08B5     		push	{r3, lr}
+ 226              		.cfi_def_cfa_offset 8
+ 227              		.cfi_offset 3, -8
+ 228              		.cfi_offset 14, -4
+  71:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_1_WriteCompare(PWM_FORWARD);
+ 229              		.loc 1 71 0
+ 230 0002 1720     		movs	r0, #23
+ 231 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 232              	.LVL24:
+  72:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_2_WriteCompare(PWM_FORWARD);
+ 233              		.loc 1 72 0
+ 234 0008 1720     		movs	r0, #23
+ 235 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 236              	.LVL25:
+ 237 000e 08BD     		pop	{r3, pc}
+ 238              		.cfi_endproc
+ 239              	.LFE67:
+ 240              		.size	IO_Forward, .-IO_Forward
+ 241              		.section	.text.IO_SpinLeft,"ax",%progbits
+ 242              		.align	2
+ 243              		.global	IO_SpinLeft
+ 244              		.thumb
+ 245              		.thumb_func
+ 246              		.type	IO_SpinLeft, %function
+ 247              	IO_SpinLeft:
+ 248              	.LFB68:
+  73:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** }
+  74:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  75:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** void IO_SpinLeft(void)
+  76:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** {
+ 249              		.loc 1 76 0
+ 250              		.cfi_startproc
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 7
+
+
+ 251              		@ args = 0, pretend = 0, frame = 0
+ 252              		@ frame_needed = 0, uses_anonymous_args = 0
+ 253 0000 08B5     		push	{r3, lr}
+ 254              		.cfi_def_cfa_offset 8
+ 255              		.cfi_offset 3, -8
+ 256              		.cfi_offset 14, -4
+  77:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_1_WriteCompare(PWM_REVERSE);
+ 257              		.loc 1 77 0
+ 258 0002 4320     		movs	r0, #67
+ 259 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 260              	.LVL26:
+  78:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_2_WriteCompare(PWM_FORWARD);
+ 261              		.loc 1 78 0
+ 262 0008 1720     		movs	r0, #23
+ 263 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 264              	.LVL27:
+ 265 000e 08BD     		pop	{r3, pc}
+ 266              		.cfi_endproc
+ 267              	.LFE68:
+ 268              		.size	IO_SpinLeft, .-IO_SpinLeft
+ 269              		.section	.text.IO_SpinRight,"ax",%progbits
+ 270              		.align	2
+ 271              		.global	IO_SpinRight
+ 272              		.thumb
+ 273              		.thumb_func
+ 274              		.type	IO_SpinRight, %function
+ 275              	IO_SpinRight:
+ 276              	.LFB69:
+  79:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** }
+  80:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** 
+  81:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** void IO_SpinRight(void)
+  82:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c **** {
+ 277              		.loc 1 82 0
+ 278              		.cfi_startproc
+ 279              		@ args = 0, pretend = 0, frame = 0
+ 280              		@ frame_needed = 0, uses_anonymous_args = 0
+ 281 0000 08B5     		push	{r3, lr}
+ 282              		.cfi_def_cfa_offset 8
+ 283              		.cfi_offset 3, -8
+ 284              		.cfi_offset 14, -4
+  83:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_1_WriteCompare(PWM_FORWARD);
+ 285              		.loc 1 83 0
+ 286 0002 1720     		movs	r0, #23
+ 287 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 288              	.LVL28:
+  84:..\..\..\..\..\maze_localization_starter\maze_localization_starter/robot_io.c ****     PWM_2_WriteCompare(PWM_REVERSE);
+ 289              		.loc 1 84 0
+ 290 0008 4320     		movs	r0, #67
+ 291 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 292              	.LVL29:
+ 293 000e 08BD     		pop	{r3, pc}
+ 294              		.cfi_endproc
+ 295              	.LFE69:
+ 296              		.size	IO_SpinRight, .-IO_SpinRight
+ 297              		.text
+ 298              	.Letext0:
+ 299              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 8
+
+
+ 300              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 301              		.file 4 "c:\\temp\\maze_localization_starter\\maze_localization_starter\\robot_io.h"
+ 302              		.file 5 "Generated_Source\\PSoC5/LED1.h"
+ 303              		.file 6 "Generated_Source\\PSoC5/LED2.h"
+ 304              		.file 7 "Generated_Source\\PSoC5/LED3.h"
+ 305              		.file 8 "Generated_Source\\PSoC5/LED4.h"
+ 306              		.file 9 "Generated_Source\\PSoC5/LED5.h"
+ 307              		.file 10 "Generated_Source\\PSoC5/QuadDec_1.h"
+ 308              		.file 11 "Generated_Source\\PSoC5/QuadDec_2.h"
+ 309              		.file 12 "Generated_Source\\PSoC5/PWM_1.h"
+ 310              		.file 13 "Generated_Source\\PSoC5/PWM_2.h"
+ 311              		.file 14 "Generated_Source\\PSoC5/VDAC8_1.h"
+ 312              		.file 15 "Generated_Source\\PSoC5/Timeout_1.h"
+ 313              		.file 16 "Generated_Source\\PSoC5/Timeout_2.h"
+ 314              		.file 17 "Generated_Source\\PSoC5/Timeout_3.h"
+ 315              		.file 18 "Generated_Source\\PSoC5/Timeout_4.h"
+ 316              		.file 19 "Generated_Source\\PSoC5/Timeout_5.h"
+ 317              		.file 20 "Generated_Source\\PSoC5/core_cm3.h"
+ 318              		.section	.debug_info,"",%progbits
+ 319              	.Ldebug_info0:
+ 320 0000 09040000 		.4byte	0x409
+ 321 0004 0400     		.2byte	0x4
+ 322 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 323 000a 04       		.byte	0x4
+ 324 000b 01       		.uleb128 0x1
+ 325 000c 47010000 		.4byte	.LASF49
+ 326 0010 0C       		.byte	0xc
+ 327 0011 1E000000 		.4byte	.LASF50
+ 328 0015 E8000000 		.4byte	.LASF51
+ 329 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 330 001d 00000000 		.4byte	0
+ 331 0021 00000000 		.4byte	.Ldebug_line0
+ 332 0025 02       		.uleb128 0x2
+ 333 0026 01       		.byte	0x1
+ 334 0027 06       		.byte	0x6
+ 335 0028 5F030000 		.4byte	.LASF0
+ 336 002c 02       		.uleb128 0x2
+ 337 002d 01       		.byte	0x1
+ 338 002e 08       		.byte	0x8
+ 339 002f 0B020000 		.4byte	.LASF1
+ 340 0033 02       		.uleb128 0x2
+ 341 0034 02       		.byte	0x2
+ 342 0035 05       		.byte	0x5
+ 343 0036 A1000000 		.4byte	.LASF2
+ 344 003a 02       		.uleb128 0x2
+ 345 003b 02       		.byte	0x2
+ 346 003c 07       		.byte	0x7
+ 347 003d 8E000000 		.4byte	.LASF3
+ 348 0041 03       		.uleb128 0x3
+ 349 0042 77000000 		.4byte	.LASF5
+ 350 0046 02       		.byte	0x2
+ 351 0047 3F       		.byte	0x3f
+ 352 0048 4C000000 		.4byte	0x4c
+ 353 004c 02       		.uleb128 0x2
+ 354 004d 04       		.byte	0x4
+ 355 004e 05       		.byte	0x5
+ 356 004f 3E030000 		.4byte	.LASF4
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 9
+
+
+ 357 0053 03       		.uleb128 0x3
+ 358 0054 C7000000 		.4byte	.LASF6
+ 359 0058 02       		.byte	0x2
+ 360 0059 41       		.byte	0x41
+ 361 005a 5E000000 		.4byte	0x5e
+ 362 005e 02       		.uleb128 0x2
+ 363 005f 04       		.byte	0x4
+ 364 0060 07       		.byte	0x7
+ 365 0061 37020000 		.4byte	.LASF7
+ 366 0065 02       		.uleb128 0x2
+ 367 0066 08       		.byte	0x8
+ 368 0067 05       		.byte	0x5
+ 369 0068 00000000 		.4byte	.LASF8
+ 370 006c 02       		.uleb128 0x2
+ 371 006d 08       		.byte	0x8
+ 372 006e 07       		.byte	0x7
+ 373 006f 99020000 		.4byte	.LASF9
+ 374 0073 04       		.uleb128 0x4
+ 375 0074 04       		.byte	0x4
+ 376 0075 05       		.byte	0x5
+ 377 0076 696E7400 		.ascii	"int\000"
+ 378 007a 02       		.uleb128 0x2
+ 379 007b 04       		.byte	0x4
+ 380 007c 07       		.byte	0x7
+ 381 007d 8C020000 		.4byte	.LASF10
+ 382 0081 03       		.uleb128 0x3
+ 383 0082 E3020000 		.4byte	.LASF11
+ 384 0086 03       		.byte	0x3
+ 385 0087 2C       		.byte	0x2c
+ 386 0088 41000000 		.4byte	0x41
+ 387 008c 03       		.uleb128 0x3
+ 388 008d 35030000 		.4byte	.LASF12
+ 389 0091 03       		.byte	0x3
+ 390 0092 30       		.byte	0x30
+ 391 0093 53000000 		.4byte	0x53
+ 392 0097 02       		.uleb128 0x2
+ 393 0098 04       		.byte	0x4
+ 394 0099 04       		.byte	0x4
+ 395 009a D2000000 		.4byte	.LASF13
+ 396 009e 02       		.uleb128 0x2
+ 397 009f 08       		.byte	0x8
+ 398 00a0 04       		.byte	0x4
+ 399 00a1 AB000000 		.4byte	.LASF14
+ 400 00a5 02       		.uleb128 0x2
+ 401 00a6 01       		.byte	0x1
+ 402 00a7 08       		.byte	0x8
+ 403 00a8 07030000 		.4byte	.LASF15
+ 404 00ac 02       		.uleb128 0x2
+ 405 00ad 08       		.byte	0x8
+ 406 00ae 04       		.byte	0x4
+ 407 00af 53030000 		.4byte	.LASF16
+ 408 00b3 02       		.uleb128 0x2
+ 409 00b4 04       		.byte	0x4
+ 410 00b5 07       		.byte	0x7
+ 411 00b6 EB020000 		.4byte	.LASF17
+ 412 00ba 05       		.uleb128 0x5
+ 413 00bb 05       		.byte	0x5
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 10
+
+
+ 414 00bc 04       		.byte	0x4
+ 415 00bd 05       		.byte	0x5
+ 416 00be FA000000 		.4byte	0xfa
+ 417 00c2 06       		.uleb128 0x6
+ 418 00c3 666300   		.ascii	"fc\000"
+ 419 00c6 04       		.byte	0x4
+ 420 00c7 05       		.byte	0x5
+ 421 00c8 FA000000 		.4byte	0xfa
+ 422 00cc 00       		.byte	0
+ 423 00cd 06       		.uleb128 0x6
+ 424 00ce 666C00   		.ascii	"fl\000"
+ 425 00d1 04       		.byte	0x4
+ 426 00d2 05       		.byte	0x5
+ 427 00d3 FA000000 		.4byte	0xfa
+ 428 00d7 01       		.byte	0x1
+ 429 00d8 06       		.uleb128 0x6
+ 430 00d9 667200   		.ascii	"fr\000"
+ 431 00dc 04       		.byte	0x4
+ 432 00dd 05       		.byte	0x5
+ 433 00de FA000000 		.4byte	0xfa
+ 434 00e2 02       		.byte	0x2
+ 435 00e3 06       		.uleb128 0x6
+ 436 00e4 726C00   		.ascii	"rl\000"
+ 437 00e7 04       		.byte	0x4
+ 438 00e8 05       		.byte	0x5
+ 439 00e9 FA000000 		.4byte	0xfa
+ 440 00ed 03       		.byte	0x3
+ 441 00ee 06       		.uleb128 0x6
+ 442 00ef 727200   		.ascii	"rr\000"
+ 443 00f2 04       		.byte	0x4
+ 444 00f3 05       		.byte	0x5
+ 445 00f4 FA000000 		.4byte	0xfa
+ 446 00f8 04       		.byte	0x4
+ 447 00f9 00       		.byte	0
+ 448 00fa 02       		.uleb128 0x2
+ 449 00fb 01       		.byte	0x1
+ 450 00fc 02       		.byte	0x2
+ 451 00fd 76030000 		.4byte	.LASF18
+ 452 0101 03       		.uleb128 0x3
+ 453 0102 49020000 		.4byte	.LASF19
+ 454 0106 04       		.byte	0x4
+ 455 0107 05       		.byte	0x5
+ 456 0108 BA000000 		.4byte	0xba
+ 457 010c 05       		.uleb128 0x5
+ 458 010d 08       		.byte	0x8
+ 459 010e 04       		.byte	0x4
+ 460 010f 06       		.byte	0x6
+ 461 0110 2D010000 		.4byte	0x12d
+ 462 0114 07       		.uleb128 0x7
+ 463 0115 81000000 		.4byte	.LASF20
+ 464 0119 04       		.byte	0x4
+ 465 011a 06       		.byte	0x6
+ 466 011b 81000000 		.4byte	0x81
+ 467 011f 00       		.byte	0
+ 468 0120 07       		.uleb128 0x7
+ 469 0121 DF010000 		.4byte	.LASF21
+ 470 0125 04       		.byte	0x4
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 11
+
+
+ 471 0126 06       		.byte	0x6
+ 472 0127 81000000 		.4byte	0x81
+ 473 012b 04       		.byte	0x4
+ 474 012c 00       		.byte	0
+ 475 012d 03       		.uleb128 0x3
+ 476 012e 80020000 		.4byte	.LASF22
+ 477 0132 04       		.byte	0x4
+ 478 0133 06       		.byte	0x6
+ 479 0134 0C010000 		.4byte	0x10c
+ 480 0138 08       		.uleb128 0x8
+ 481 0139 6C000000 		.4byte	.LASF23
+ 482 013d 01       		.byte	0x1
+ 483 013e 1D       		.byte	0x1d
+ 484 013f 01010000 		.4byte	0x101
+ 485 0143 00000000 		.4byte	.LFB64
+ 486 0147 4E000000 		.4byte	.LFE64-.LFB64
+ 487 014b 01       		.uleb128 0x1
+ 488 014c 9C       		.byte	0x9c
+ 489 014d 8C010000 		.4byte	0x18c
+ 490 0151 09       		.uleb128 0x9
+ 491 0152 7300     		.ascii	"s\000"
+ 492 0154 01       		.byte	0x1
+ 493 0155 1F       		.byte	0x1f
+ 494 0156 01010000 		.4byte	0x101
+ 495 015a 00000000 		.4byte	.LLST0
+ 496 015e 0A       		.uleb128 0xa
+ 497 015f 08000000 		.4byte	.LVL1
+ 498 0163 3B030000 		.4byte	0x33b
+ 499 0167 0A       		.uleb128 0xa
+ 500 0168 16000000 		.4byte	.LVL2
+ 501 016c 46030000 		.4byte	0x346
+ 502 0170 0A       		.uleb128 0xa
+ 503 0171 24000000 		.4byte	.LVL3
+ 504 0175 51030000 		.4byte	0x351
+ 505 0179 0A       		.uleb128 0xa
+ 506 017a 32000000 		.4byte	.LVL4
+ 507 017e 5C030000 		.4byte	0x35c
+ 508 0182 0A       		.uleb128 0xa
+ 509 0183 40000000 		.4byte	.LVL5
+ 510 0187 67030000 		.4byte	0x367
+ 511 018b 00       		.byte	0
+ 512 018c 08       		.uleb128 0x8
+ 513 018d 47030000 		.4byte	.LASF24
+ 514 0191 01       		.byte	0x1
+ 515 0192 2A       		.byte	0x2a
+ 516 0193 FA000000 		.4byte	0xfa
+ 517 0197 00000000 		.4byte	.LFB65
+ 518 019b 1E000000 		.4byte	.LFE65-.LFB65
+ 519 019f 01       		.uleb128 0x1
+ 520 01a0 9C       		.byte	0x9c
+ 521 01a1 C7010000 		.4byte	0x1c7
+ 522 01a5 0B       		.uleb128 0xb
+ 523 01a6 BA020000 		.4byte	.LASF52
+ 524 01aa 01       		.byte	0x1
+ 525 01ab 2A       		.byte	0x2a
+ 526 01ac C7010000 		.4byte	0x1c7
+ 527 01b0 20000000 		.4byte	.LLST1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 12
+
+
+ 528 01b4 0A       		.uleb128 0xa
+ 529 01b5 0A000000 		.4byte	.LVL7
+ 530 01b9 72030000 		.4byte	0x372
+ 531 01bd 0A       		.uleb128 0xa
+ 532 01be 12000000 		.4byte	.LVL8
+ 533 01c2 7D030000 		.4byte	0x37d
+ 534 01c6 00       		.byte	0
+ 535 01c7 0C       		.uleb128 0xc
+ 536 01c8 04       		.byte	0x4
+ 537 01c9 2D010000 		.4byte	0x12d
+ 538 01cd 0D       		.uleb128 0xd
+ 539 01ce 86000000 		.4byte	.LASF25
+ 540 01d2 01       		.byte	0x1
+ 541 01d3 3F       		.byte	0x3f
+ 542 01d4 00000000 		.4byte	.LFB66
+ 543 01d8 10000000 		.4byte	.LFE66-.LFB66
+ 544 01dc 01       		.uleb128 0x1
+ 545 01dd 9C       		.byte	0x9c
+ 546 01de 07020000 		.4byte	0x207
+ 547 01e2 0E       		.uleb128 0xe
+ 548 01e3 08000000 		.4byte	.LVL11
+ 549 01e7 88030000 		.4byte	0x388
+ 550 01eb F6010000 		.4byte	0x1f6
+ 551 01ef 0F       		.uleb128 0xf
+ 552 01f0 01       		.uleb128 0x1
+ 553 01f1 50       		.byte	0x50
+ 554 01f2 02       		.uleb128 0x2
+ 555 01f3 08       		.byte	0x8
+ 556 01f4 2D       		.byte	0x2d
+ 557 01f5 00       		.byte	0
+ 558 01f6 10       		.uleb128 0x10
+ 559 01f7 0E000000 		.4byte	.LVL12
+ 560 01fb 93030000 		.4byte	0x393
+ 561 01ff 0F       		.uleb128 0xf
+ 562 0200 01       		.uleb128 0x1
+ 563 0201 50       		.byte	0x50
+ 564 0202 02       		.uleb128 0x2
+ 565 0203 08       		.byte	0x8
+ 566 0204 2D       		.byte	0x2d
+ 567 0205 00       		.byte	0
+ 568 0206 00       		.byte	0
+ 569 0207 0D       		.uleb128 0xd
+ 570 0208 3F010000 		.4byte	.LASF26
+ 571 020c 01       		.byte	0x1
+ 572 020d 0A       		.byte	0xa
+ 573 020e 00000000 		.4byte	.LFB63
+ 574 0212 30000000 		.4byte	.LFE63-.LFB63
+ 575 0216 01       		.uleb128 0x1
+ 576 0217 9C       		.byte	0x9c
+ 577 0218 80020000 		.4byte	0x280
+ 578 021c 0A       		.uleb128 0xa
+ 579 021d 06000000 		.4byte	.LVL13
+ 580 0221 9E030000 		.4byte	0x39e
+ 581 0225 0A       		.uleb128 0xa
+ 582 0226 0A000000 		.4byte	.LVL14
+ 583 022a A9030000 		.4byte	0x3a9
+ 584 022e 0A       		.uleb128 0xa
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 13
+
+
+ 585 022f 0E000000 		.4byte	.LVL15
+ 586 0233 B4030000 		.4byte	0x3b4
+ 587 0237 0A       		.uleb128 0xa
+ 588 0238 12000000 		.4byte	.LVL16
+ 589 023c BF030000 		.4byte	0x3bf
+ 590 0240 0A       		.uleb128 0xa
+ 591 0241 16000000 		.4byte	.LVL17
+ 592 0245 CA030000 		.4byte	0x3ca
+ 593 0249 0A       		.uleb128 0xa
+ 594 024a 1A000000 		.4byte	.LVL18
+ 595 024e D5030000 		.4byte	0x3d5
+ 596 0252 0A       		.uleb128 0xa
+ 597 0253 1E000000 		.4byte	.LVL19
+ 598 0257 E0030000 		.4byte	0x3e0
+ 599 025b 0A       		.uleb128 0xa
+ 600 025c 22000000 		.4byte	.LVL20
+ 601 0260 EB030000 		.4byte	0x3eb
+ 602 0264 0A       		.uleb128 0xa
+ 603 0265 26000000 		.4byte	.LVL21
+ 604 0269 F6030000 		.4byte	0x3f6
+ 605 026d 0A       		.uleb128 0xa
+ 606 026e 2A000000 		.4byte	.LVL22
+ 607 0272 01040000 		.4byte	0x401
+ 608 0276 0A       		.uleb128 0xa
+ 609 0277 2E000000 		.4byte	.LVL23
+ 610 027b CD010000 		.4byte	0x1cd
+ 611 027f 00       		.byte	0
+ 612 0280 0D       		.uleb128 0xd
+ 613 0281 6B030000 		.4byte	.LASF27
+ 614 0285 01       		.byte	0x1
+ 615 0286 45       		.byte	0x45
+ 616 0287 00000000 		.4byte	.LFB67
+ 617 028b 10000000 		.4byte	.LFE67-.LFB67
+ 618 028f 01       		.uleb128 0x1
+ 619 0290 9C       		.byte	0x9c
+ 620 0291 B8020000 		.4byte	0x2b8
+ 621 0295 0E       		.uleb128 0xe
+ 622 0296 08000000 		.4byte	.LVL24
+ 623 029a 88030000 		.4byte	0x388
+ 624 029e A8020000 		.4byte	0x2a8
+ 625 02a2 0F       		.uleb128 0xf
+ 626 02a3 01       		.uleb128 0x1
+ 627 02a4 50       		.byte	0x50
+ 628 02a5 01       		.uleb128 0x1
+ 629 02a6 47       		.byte	0x47
+ 630 02a7 00       		.byte	0
+ 631 02a8 10       		.uleb128 0x10
+ 632 02a9 0E000000 		.4byte	.LVL25
+ 633 02ad 93030000 		.4byte	0x393
+ 634 02b1 0F       		.uleb128 0xf
+ 635 02b2 01       		.uleb128 0x1
+ 636 02b3 50       		.byte	0x50
+ 637 02b4 01       		.uleb128 0x1
+ 638 02b5 47       		.byte	0x47
+ 639 02b6 00       		.byte	0
+ 640 02b7 00       		.byte	0
+ 641 02b8 0D       		.uleb128 0xd
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 14
+
+
+ 642 02b9 29030000 		.4byte	.LASF28
+ 643 02bd 01       		.byte	0x1
+ 644 02be 4B       		.byte	0x4b
+ 645 02bf 00000000 		.4byte	.LFB68
+ 646 02c3 10000000 		.4byte	.LFE68-.LFB68
+ 647 02c7 01       		.uleb128 0x1
+ 648 02c8 9C       		.byte	0x9c
+ 649 02c9 F1020000 		.4byte	0x2f1
+ 650 02cd 0E       		.uleb128 0xe
+ 651 02ce 08000000 		.4byte	.LVL26
+ 652 02d2 88030000 		.4byte	0x388
+ 653 02d6 E1020000 		.4byte	0x2e1
+ 654 02da 0F       		.uleb128 0xf
+ 655 02db 01       		.uleb128 0x1
+ 656 02dc 50       		.byte	0x50
+ 657 02dd 02       		.uleb128 0x2
+ 658 02de 08       		.byte	0x8
+ 659 02df 43       		.byte	0x43
+ 660 02e0 00       		.byte	0
+ 661 02e1 10       		.uleb128 0x10
+ 662 02e2 0E000000 		.4byte	.LVL27
+ 663 02e6 93030000 		.4byte	0x393
+ 664 02ea 0F       		.uleb128 0xf
+ 665 02eb 01       		.uleb128 0x1
+ 666 02ec 50       		.byte	0x50
+ 667 02ed 01       		.uleb128 0x1
+ 668 02ee 47       		.byte	0x47
+ 669 02ef 00       		.byte	0
+ 670 02f0 00       		.byte	0
+ 671 02f1 0D       		.uleb128 0xd
+ 672 02f2 1C030000 		.4byte	.LASF29
+ 673 02f6 01       		.byte	0x1
+ 674 02f7 51       		.byte	0x51
+ 675 02f8 00000000 		.4byte	.LFB69
+ 676 02fc 10000000 		.4byte	.LFE69-.LFB69
+ 677 0300 01       		.uleb128 0x1
+ 678 0301 9C       		.byte	0x9c
+ 679 0302 2A030000 		.4byte	0x32a
+ 680 0306 0E       		.uleb128 0xe
+ 681 0307 08000000 		.4byte	.LVL28
+ 682 030b 88030000 		.4byte	0x388
+ 683 030f 19030000 		.4byte	0x319
+ 684 0313 0F       		.uleb128 0xf
+ 685 0314 01       		.uleb128 0x1
+ 686 0315 50       		.byte	0x50
+ 687 0316 01       		.uleb128 0x1
+ 688 0317 47       		.byte	0x47
+ 689 0318 00       		.byte	0
+ 690 0319 10       		.uleb128 0x10
+ 691 031a 0E000000 		.4byte	.LVL29
+ 692 031e 93030000 		.4byte	0x393
+ 693 0322 0F       		.uleb128 0xf
+ 694 0323 01       		.uleb128 0x1
+ 695 0324 50       		.byte	0x50
+ 696 0325 02       		.uleb128 0x2
+ 697 0326 08       		.byte	0x8
+ 698 0327 43       		.byte	0x43
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 15
+
+
+ 699 0328 00       		.byte	0
+ 700 0329 00       		.byte	0
+ 701 032a 11       		.uleb128 0x11
+ 702 032b D6020000 		.4byte	.LASF53
+ 703 032f 14       		.byte	0x14
+ 704 0330 1207     		.2byte	0x712
+ 705 0332 36030000 		.4byte	0x336
+ 706 0336 12       		.uleb128 0x12
+ 707 0337 81000000 		.4byte	0x81
+ 708 033b 13       		.uleb128 0x13
+ 709 033c F1010000 		.4byte	.LASF30
+ 710 0340 F1010000 		.4byte	.LASF30
+ 711 0344 05       		.byte	0x5
+ 712 0345 29       		.byte	0x29
+ 713 0346 13       		.uleb128 0x13
+ 714 0347 B0020000 		.4byte	.LASF31
+ 715 034b B0020000 		.4byte	.LASF31
+ 716 034f 06       		.byte	0x6
+ 717 0350 29       		.byte	0x29
+ 718 0351 13       		.uleb128 0x13
+ 719 0352 7C030000 		.4byte	.LASF32
+ 720 0356 7C030000 		.4byte	.LASF32
+ 721 035a 07       		.byte	0x7
+ 722 035b 29       		.byte	0x29
+ 723 035c 13       		.uleb128 0x13
+ 724 035d D5010000 		.4byte	.LASF33
+ 725 0361 D5010000 		.4byte	.LASF33
+ 726 0365 08       		.byte	0x8
+ 727 0366 29       		.byte	0x29
+ 728 0367 13       		.uleb128 0x13
+ 729 0368 86030000 		.4byte	.LASF34
+ 730 036c 86030000 		.4byte	.LASF34
+ 731 0370 09       		.byte	0x9
+ 732 0371 29       		.byte	0x29
+ 733 0372 13       		.uleb128 0x13
+ 734 0373 B2000000 		.4byte	.LASF35
+ 735 0377 B2000000 		.4byte	.LASF35
+ 736 037b 0A       		.byte	0xa
+ 737 037c 4E       		.byte	0x4e
+ 738 037d 13       		.uleb128 0x13
+ 739 037e C1020000 		.4byte	.LASF36
+ 740 0382 C1020000 		.4byte	.LASF36
+ 741 0386 0B       		.byte	0xb
+ 742 0387 4E       		.byte	0x4e
+ 743 0388 13       		.uleb128 0x13
+ 744 0389 F4020000 		.4byte	.LASF37
+ 745 038d F4020000 		.4byte	.LASF37
+ 746 0391 0C       		.byte	0xc
+ 747 0392 C3       		.byte	0xc3
+ 748 0393 13       		.uleb128 0x13
+ 749 0394 6D020000 		.4byte	.LASF38
+ 750 0398 6D020000 		.4byte	.LASF38
+ 751 039c 0D       		.byte	0xd
+ 752 039d C3       		.byte	0xc3
+ 753 039e 13       		.uleb128 0x13
+ 754 039f E5010000 		.4byte	.LASF39
+ 755 03a3 E5010000 		.4byte	.LASF39
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 16
+
+
+ 756 03a7 0C       		.byte	0xc
+ 757 03a8 92       		.byte	0x92
+ 758 03a9 13       		.uleb128 0x13
+ 759 03aa 51020000 		.4byte	.LASF40
+ 760 03ae 51020000 		.4byte	.LASF40
+ 761 03b2 0D       		.byte	0xd
+ 762 03b3 92       		.byte	0x92
+ 763 03b4 13       		.uleb128 0x13
+ 764 03b5 19020000 		.4byte	.LASF41
+ 765 03b9 19020000 		.4byte	.LASF41
+ 766 03bd 0E       		.byte	0xe
+ 767 03be 33       		.byte	0x33
+ 768 03bf 13       		.uleb128 0x13
+ 769 03c0 FB010000 		.4byte	.LASF42
+ 770 03c4 FB010000 		.4byte	.LASF42
+ 771 03c8 0F       		.byte	0xf
+ 772 03c9 5A       		.byte	0x5a
+ 773 03ca 13       		.uleb128 0x13
+ 774 03cb 5D020000 		.4byte	.LASF43
+ 775 03cf 5D020000 		.4byte	.LASF43
+ 776 03d3 10       		.byte	0x10
+ 777 03d4 5A       		.byte	0x5a
+ 778 03d5 13       		.uleb128 0x13
+ 779 03d6 0E000000 		.4byte	.LASF44
+ 780 03da 0E000000 		.4byte	.LASF44
+ 781 03de 11       		.byte	0x11
+ 782 03df 5A       		.byte	0x5a
+ 783 03e0 13       		.uleb128 0x13
+ 784 03e1 0C030000 		.4byte	.LASF45
+ 785 03e5 0C030000 		.4byte	.LASF45
+ 786 03e9 12       		.byte	0x12
+ 787 03ea 5A       		.byte	0x5a
+ 788 03eb 13       		.uleb128 0x13
+ 789 03ec 27020000 		.4byte	.LASF46
+ 790 03f0 27020000 		.4byte	.LASF46
+ 791 03f4 13       		.byte	0x13
+ 792 03f5 5A       		.byte	0x5a
+ 793 03f6 13       		.uleb128 0x13
+ 794 03f7 D8000000 		.4byte	.LASF47
+ 795 03fb D8000000 		.4byte	.LASF47
+ 796 03ff 0A       		.byte	0xa
+ 797 0400 48       		.byte	0x48
+ 798 0401 13       		.uleb128 0x13
+ 799 0402 90030000 		.4byte	.LASF48
+ 800 0406 90030000 		.4byte	.LASF48
+ 801 040a 0B       		.byte	0xb
+ 802 040b 48       		.byte	0x48
+ 803 040c 00       		.byte	0
+ 804              		.section	.debug_abbrev,"",%progbits
+ 805              	.Ldebug_abbrev0:
+ 806 0000 01       		.uleb128 0x1
+ 807 0001 11       		.uleb128 0x11
+ 808 0002 01       		.byte	0x1
+ 809 0003 25       		.uleb128 0x25
+ 810 0004 0E       		.uleb128 0xe
+ 811 0005 13       		.uleb128 0x13
+ 812 0006 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 17
+
+
+ 813 0007 03       		.uleb128 0x3
+ 814 0008 0E       		.uleb128 0xe
+ 815 0009 1B       		.uleb128 0x1b
+ 816 000a 0E       		.uleb128 0xe
+ 817 000b 55       		.uleb128 0x55
+ 818 000c 17       		.uleb128 0x17
+ 819 000d 11       		.uleb128 0x11
+ 820 000e 01       		.uleb128 0x1
+ 821 000f 10       		.uleb128 0x10
+ 822 0010 17       		.uleb128 0x17
+ 823 0011 00       		.byte	0
+ 824 0012 00       		.byte	0
+ 825 0013 02       		.uleb128 0x2
+ 826 0014 24       		.uleb128 0x24
+ 827 0015 00       		.byte	0
+ 828 0016 0B       		.uleb128 0xb
+ 829 0017 0B       		.uleb128 0xb
+ 830 0018 3E       		.uleb128 0x3e
+ 831 0019 0B       		.uleb128 0xb
+ 832 001a 03       		.uleb128 0x3
+ 833 001b 0E       		.uleb128 0xe
+ 834 001c 00       		.byte	0
+ 835 001d 00       		.byte	0
+ 836 001e 03       		.uleb128 0x3
+ 837 001f 16       		.uleb128 0x16
+ 838 0020 00       		.byte	0
+ 839 0021 03       		.uleb128 0x3
+ 840 0022 0E       		.uleb128 0xe
+ 841 0023 3A       		.uleb128 0x3a
+ 842 0024 0B       		.uleb128 0xb
+ 843 0025 3B       		.uleb128 0x3b
+ 844 0026 0B       		.uleb128 0xb
+ 845 0027 49       		.uleb128 0x49
+ 846 0028 13       		.uleb128 0x13
+ 847 0029 00       		.byte	0
+ 848 002a 00       		.byte	0
+ 849 002b 04       		.uleb128 0x4
+ 850 002c 24       		.uleb128 0x24
+ 851 002d 00       		.byte	0
+ 852 002e 0B       		.uleb128 0xb
+ 853 002f 0B       		.uleb128 0xb
+ 854 0030 3E       		.uleb128 0x3e
+ 855 0031 0B       		.uleb128 0xb
+ 856 0032 03       		.uleb128 0x3
+ 857 0033 08       		.uleb128 0x8
+ 858 0034 00       		.byte	0
+ 859 0035 00       		.byte	0
+ 860 0036 05       		.uleb128 0x5
+ 861 0037 13       		.uleb128 0x13
+ 862 0038 01       		.byte	0x1
+ 863 0039 0B       		.uleb128 0xb
+ 864 003a 0B       		.uleb128 0xb
+ 865 003b 3A       		.uleb128 0x3a
+ 866 003c 0B       		.uleb128 0xb
+ 867 003d 3B       		.uleb128 0x3b
+ 868 003e 0B       		.uleb128 0xb
+ 869 003f 01       		.uleb128 0x1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 18
+
+
+ 870 0040 13       		.uleb128 0x13
+ 871 0041 00       		.byte	0
+ 872 0042 00       		.byte	0
+ 873 0043 06       		.uleb128 0x6
+ 874 0044 0D       		.uleb128 0xd
+ 875 0045 00       		.byte	0
+ 876 0046 03       		.uleb128 0x3
+ 877 0047 08       		.uleb128 0x8
+ 878 0048 3A       		.uleb128 0x3a
+ 879 0049 0B       		.uleb128 0xb
+ 880 004a 3B       		.uleb128 0x3b
+ 881 004b 0B       		.uleb128 0xb
+ 882 004c 49       		.uleb128 0x49
+ 883 004d 13       		.uleb128 0x13
+ 884 004e 38       		.uleb128 0x38
+ 885 004f 0B       		.uleb128 0xb
+ 886 0050 00       		.byte	0
+ 887 0051 00       		.byte	0
+ 888 0052 07       		.uleb128 0x7
+ 889 0053 0D       		.uleb128 0xd
+ 890 0054 00       		.byte	0
+ 891 0055 03       		.uleb128 0x3
+ 892 0056 0E       		.uleb128 0xe
+ 893 0057 3A       		.uleb128 0x3a
+ 894 0058 0B       		.uleb128 0xb
+ 895 0059 3B       		.uleb128 0x3b
+ 896 005a 0B       		.uleb128 0xb
+ 897 005b 49       		.uleb128 0x49
+ 898 005c 13       		.uleb128 0x13
+ 899 005d 38       		.uleb128 0x38
+ 900 005e 0B       		.uleb128 0xb
+ 901 005f 00       		.byte	0
+ 902 0060 00       		.byte	0
+ 903 0061 08       		.uleb128 0x8
+ 904 0062 2E       		.uleb128 0x2e
+ 905 0063 01       		.byte	0x1
+ 906 0064 3F       		.uleb128 0x3f
+ 907 0065 19       		.uleb128 0x19
+ 908 0066 03       		.uleb128 0x3
+ 909 0067 0E       		.uleb128 0xe
+ 910 0068 3A       		.uleb128 0x3a
+ 911 0069 0B       		.uleb128 0xb
+ 912 006a 3B       		.uleb128 0x3b
+ 913 006b 0B       		.uleb128 0xb
+ 914 006c 27       		.uleb128 0x27
+ 915 006d 19       		.uleb128 0x19
+ 916 006e 49       		.uleb128 0x49
+ 917 006f 13       		.uleb128 0x13
+ 918 0070 11       		.uleb128 0x11
+ 919 0071 01       		.uleb128 0x1
+ 920 0072 12       		.uleb128 0x12
+ 921 0073 06       		.uleb128 0x6
+ 922 0074 40       		.uleb128 0x40
+ 923 0075 18       		.uleb128 0x18
+ 924 0076 9742     		.uleb128 0x2117
+ 925 0078 19       		.uleb128 0x19
+ 926 0079 01       		.uleb128 0x1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 19
+
+
+ 927 007a 13       		.uleb128 0x13
+ 928 007b 00       		.byte	0
+ 929 007c 00       		.byte	0
+ 930 007d 09       		.uleb128 0x9
+ 931 007e 34       		.uleb128 0x34
+ 932 007f 00       		.byte	0
+ 933 0080 03       		.uleb128 0x3
+ 934 0081 08       		.uleb128 0x8
+ 935 0082 3A       		.uleb128 0x3a
+ 936 0083 0B       		.uleb128 0xb
+ 937 0084 3B       		.uleb128 0x3b
+ 938 0085 0B       		.uleb128 0xb
+ 939 0086 49       		.uleb128 0x49
+ 940 0087 13       		.uleb128 0x13
+ 941 0088 02       		.uleb128 0x2
+ 942 0089 17       		.uleb128 0x17
+ 943 008a 00       		.byte	0
+ 944 008b 00       		.byte	0
+ 945 008c 0A       		.uleb128 0xa
+ 946 008d 898201   		.uleb128 0x4109
+ 947 0090 00       		.byte	0
+ 948 0091 11       		.uleb128 0x11
+ 949 0092 01       		.uleb128 0x1
+ 950 0093 31       		.uleb128 0x31
+ 951 0094 13       		.uleb128 0x13
+ 952 0095 00       		.byte	0
+ 953 0096 00       		.byte	0
+ 954 0097 0B       		.uleb128 0xb
+ 955 0098 05       		.uleb128 0x5
+ 956 0099 00       		.byte	0
+ 957 009a 03       		.uleb128 0x3
+ 958 009b 0E       		.uleb128 0xe
+ 959 009c 3A       		.uleb128 0x3a
+ 960 009d 0B       		.uleb128 0xb
+ 961 009e 3B       		.uleb128 0x3b
+ 962 009f 0B       		.uleb128 0xb
+ 963 00a0 49       		.uleb128 0x49
+ 964 00a1 13       		.uleb128 0x13
+ 965 00a2 02       		.uleb128 0x2
+ 966 00a3 17       		.uleb128 0x17
+ 967 00a4 00       		.byte	0
+ 968 00a5 00       		.byte	0
+ 969 00a6 0C       		.uleb128 0xc
+ 970 00a7 0F       		.uleb128 0xf
+ 971 00a8 00       		.byte	0
+ 972 00a9 0B       		.uleb128 0xb
+ 973 00aa 0B       		.uleb128 0xb
+ 974 00ab 49       		.uleb128 0x49
+ 975 00ac 13       		.uleb128 0x13
+ 976 00ad 00       		.byte	0
+ 977 00ae 00       		.byte	0
+ 978 00af 0D       		.uleb128 0xd
+ 979 00b0 2E       		.uleb128 0x2e
+ 980 00b1 01       		.byte	0x1
+ 981 00b2 3F       		.uleb128 0x3f
+ 982 00b3 19       		.uleb128 0x19
+ 983 00b4 03       		.uleb128 0x3
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 20
+
+
+ 984 00b5 0E       		.uleb128 0xe
+ 985 00b6 3A       		.uleb128 0x3a
+ 986 00b7 0B       		.uleb128 0xb
+ 987 00b8 3B       		.uleb128 0x3b
+ 988 00b9 0B       		.uleb128 0xb
+ 989 00ba 27       		.uleb128 0x27
+ 990 00bb 19       		.uleb128 0x19
+ 991 00bc 11       		.uleb128 0x11
+ 992 00bd 01       		.uleb128 0x1
+ 993 00be 12       		.uleb128 0x12
+ 994 00bf 06       		.uleb128 0x6
+ 995 00c0 40       		.uleb128 0x40
+ 996 00c1 18       		.uleb128 0x18
+ 997 00c2 9742     		.uleb128 0x2117
+ 998 00c4 19       		.uleb128 0x19
+ 999 00c5 01       		.uleb128 0x1
+ 1000 00c6 13       		.uleb128 0x13
+ 1001 00c7 00       		.byte	0
+ 1002 00c8 00       		.byte	0
+ 1003 00c9 0E       		.uleb128 0xe
+ 1004 00ca 898201   		.uleb128 0x4109
+ 1005 00cd 01       		.byte	0x1
+ 1006 00ce 11       		.uleb128 0x11
+ 1007 00cf 01       		.uleb128 0x1
+ 1008 00d0 31       		.uleb128 0x31
+ 1009 00d1 13       		.uleb128 0x13
+ 1010 00d2 01       		.uleb128 0x1
+ 1011 00d3 13       		.uleb128 0x13
+ 1012 00d4 00       		.byte	0
+ 1013 00d5 00       		.byte	0
+ 1014 00d6 0F       		.uleb128 0xf
+ 1015 00d7 8A8201   		.uleb128 0x410a
+ 1016 00da 00       		.byte	0
+ 1017 00db 02       		.uleb128 0x2
+ 1018 00dc 18       		.uleb128 0x18
+ 1019 00dd 9142     		.uleb128 0x2111
+ 1020 00df 18       		.uleb128 0x18
+ 1021 00e0 00       		.byte	0
+ 1022 00e1 00       		.byte	0
+ 1023 00e2 10       		.uleb128 0x10
+ 1024 00e3 898201   		.uleb128 0x4109
+ 1025 00e6 01       		.byte	0x1
+ 1026 00e7 11       		.uleb128 0x11
+ 1027 00e8 01       		.uleb128 0x1
+ 1028 00e9 31       		.uleb128 0x31
+ 1029 00ea 13       		.uleb128 0x13
+ 1030 00eb 00       		.byte	0
+ 1031 00ec 00       		.byte	0
+ 1032 00ed 11       		.uleb128 0x11
+ 1033 00ee 34       		.uleb128 0x34
+ 1034 00ef 00       		.byte	0
+ 1035 00f0 03       		.uleb128 0x3
+ 1036 00f1 0E       		.uleb128 0xe
+ 1037 00f2 3A       		.uleb128 0x3a
+ 1038 00f3 0B       		.uleb128 0xb
+ 1039 00f4 3B       		.uleb128 0x3b
+ 1040 00f5 05       		.uleb128 0x5
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 21
+
+
+ 1041 00f6 49       		.uleb128 0x49
+ 1042 00f7 13       		.uleb128 0x13
+ 1043 00f8 3F       		.uleb128 0x3f
+ 1044 00f9 19       		.uleb128 0x19
+ 1045 00fa 3C       		.uleb128 0x3c
+ 1046 00fb 19       		.uleb128 0x19
+ 1047 00fc 00       		.byte	0
+ 1048 00fd 00       		.byte	0
+ 1049 00fe 12       		.uleb128 0x12
+ 1050 00ff 35       		.uleb128 0x35
+ 1051 0100 00       		.byte	0
+ 1052 0101 49       		.uleb128 0x49
+ 1053 0102 13       		.uleb128 0x13
+ 1054 0103 00       		.byte	0
+ 1055 0104 00       		.byte	0
+ 1056 0105 13       		.uleb128 0x13
+ 1057 0106 2E       		.uleb128 0x2e
+ 1058 0107 00       		.byte	0
+ 1059 0108 3F       		.uleb128 0x3f
+ 1060 0109 19       		.uleb128 0x19
+ 1061 010a 3C       		.uleb128 0x3c
+ 1062 010b 19       		.uleb128 0x19
+ 1063 010c 6E       		.uleb128 0x6e
+ 1064 010d 0E       		.uleb128 0xe
+ 1065 010e 03       		.uleb128 0x3
+ 1066 010f 0E       		.uleb128 0xe
+ 1067 0110 3A       		.uleb128 0x3a
+ 1068 0111 0B       		.uleb128 0xb
+ 1069 0112 3B       		.uleb128 0x3b
+ 1070 0113 0B       		.uleb128 0xb
+ 1071 0114 00       		.byte	0
+ 1072 0115 00       		.byte	0
+ 1073 0116 00       		.byte	0
+ 1074              		.section	.debug_loc,"",%progbits
+ 1075              	.Ldebug_loc0:
+ 1076              	.LLST0:
+ 1077 0000 00000000 		.4byte	.LVL0
+ 1078 0004 07000000 		.4byte	.LVL1-1
+ 1079 0008 0200     		.2byte	0x2
+ 1080 000a 70       		.byte	0x70
+ 1081 000b 00       		.sleb128 0
+ 1082 000c 07000000 		.4byte	.LVL1-1
+ 1083 0010 4E000000 		.4byte	.LFE64
+ 1084 0014 0200     		.2byte	0x2
+ 1085 0016 74       		.byte	0x74
+ 1086 0017 00       		.sleb128 0
+ 1087 0018 00000000 		.4byte	0
+ 1088 001c 00000000 		.4byte	0
+ 1089              	.LLST1:
+ 1090 0020 00000000 		.4byte	.LVL6
+ 1091 0024 09000000 		.4byte	.LVL7-1
+ 1092 0028 0100     		.2byte	0x1
+ 1093 002a 50       		.byte	0x50
+ 1094 002b 09000000 		.4byte	.LVL7-1
+ 1095 002f 1A000000 		.4byte	.LVL9
+ 1096 0033 0100     		.2byte	0x1
+ 1097 0035 54       		.byte	0x54
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 22
+
+
+ 1098 0036 1A000000 		.4byte	.LVL9
+ 1099 003a 1C000000 		.4byte	.LVL10
+ 1100 003e 0100     		.2byte	0x1
+ 1101 0040 50       		.byte	0x50
+ 1102 0041 1C000000 		.4byte	.LVL10
+ 1103 0045 1E000000 		.4byte	.LFE65
+ 1104 0049 0400     		.2byte	0x4
+ 1105 004b F3       		.byte	0xf3
+ 1106 004c 01       		.uleb128 0x1
+ 1107 004d 50       		.byte	0x50
+ 1108 004e 9F       		.byte	0x9f
+ 1109 004f 00000000 		.4byte	0
+ 1110 0053 00000000 		.4byte	0
+ 1111              		.section	.debug_aranges,"",%progbits
+ 1112 0000 4C000000 		.4byte	0x4c
+ 1113 0004 0200     		.2byte	0x2
+ 1114 0006 00000000 		.4byte	.Ldebug_info0
+ 1115 000a 04       		.byte	0x4
+ 1116 000b 00       		.byte	0
+ 1117 000c 0000     		.2byte	0
+ 1118 000e 0000     		.2byte	0
+ 1119 0010 00000000 		.4byte	.LFB64
+ 1120 0014 4E000000 		.4byte	.LFE64-.LFB64
+ 1121 0018 00000000 		.4byte	.LFB65
+ 1122 001c 1E000000 		.4byte	.LFE65-.LFB65
+ 1123 0020 00000000 		.4byte	.LFB66
+ 1124 0024 10000000 		.4byte	.LFE66-.LFB66
+ 1125 0028 00000000 		.4byte	.LFB63
+ 1126 002c 30000000 		.4byte	.LFE63-.LFB63
+ 1127 0030 00000000 		.4byte	.LFB67
+ 1128 0034 10000000 		.4byte	.LFE67-.LFB67
+ 1129 0038 00000000 		.4byte	.LFB68
+ 1130 003c 10000000 		.4byte	.LFE68-.LFB68
+ 1131 0040 00000000 		.4byte	.LFB69
+ 1132 0044 10000000 		.4byte	.LFE69-.LFB69
+ 1133 0048 00000000 		.4byte	0
+ 1134 004c 00000000 		.4byte	0
+ 1135              		.section	.debug_ranges,"",%progbits
+ 1136              	.Ldebug_ranges0:
+ 1137 0000 00000000 		.4byte	.LFB64
+ 1138 0004 4E000000 		.4byte	.LFE64
+ 1139 0008 00000000 		.4byte	.LFB65
+ 1140 000c 1E000000 		.4byte	.LFE65
+ 1141 0010 00000000 		.4byte	.LFB66
+ 1142 0014 10000000 		.4byte	.LFE66
+ 1143 0018 00000000 		.4byte	.LFB63
+ 1144 001c 30000000 		.4byte	.LFE63
+ 1145 0020 00000000 		.4byte	.LFB67
+ 1146 0024 10000000 		.4byte	.LFE67
+ 1147 0028 00000000 		.4byte	.LFB68
+ 1148 002c 10000000 		.4byte	.LFE68
+ 1149 0030 00000000 		.4byte	.LFB69
+ 1150 0034 10000000 		.4byte	.LFE69
+ 1151 0038 00000000 		.4byte	0
+ 1152 003c 00000000 		.4byte	0
+ 1153              		.section	.debug_line,"",%progbits
+ 1154              	.Ldebug_line0:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 23
+
+
+ 1155 0000 25030000 		.section	.debug_str,"MS",%progbits,1
+ 1155      02008E02 
+ 1155      00000201 
+ 1155      FB0E0D00 
+ 1155      01010101 
+ 1156              	.LASF8:
+ 1157 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1157      206C6F6E 
+ 1157      6720696E 
+ 1157      7400
+ 1158              	.LASF44:
+ 1159 000e 54696D65 		.ascii	"Timeout_3_Start\000"
+ 1159      6F75745F 
+ 1159      335F5374 
+ 1159      61727400 
+ 1160              	.LASF50:
+ 1161 001e 2E2E5C2E 		.ascii	"..\\..\\..\\..\\..\\maze_localization_starter\\maze"
+ 1161      2E5C2E2E 
+ 1161      5C2E2E5C 
+ 1161      2E2E5C6D 
+ 1161      617A655F 
+ 1162 004b 5F6C6F63 		.ascii	"_localization_starter\\robot_io.c\000"
+ 1162      616C697A 
+ 1162      6174696F 
+ 1162      6E5F7374 
+ 1162      61727465 
+ 1163              	.LASF23:
+ 1164 006c 494F5F53 		.ascii	"IO_Sensors\000"
+ 1164      656E736F 
+ 1164      727300
+ 1165              	.LASF5:
+ 1166 0077 5F5F696E 		.ascii	"__int32_t\000"
+ 1166      7433325F 
+ 1166      7400
+ 1167              	.LASF20:
+ 1168 0081 6C656674 		.ascii	"left\000"
+ 1168      00
+ 1169              	.LASF25:
+ 1170 0086 494F5F53 		.ascii	"IO_Stop\000"
+ 1170      746F7000 
+ 1171              	.LASF3:
+ 1172 008e 73686F72 		.ascii	"short unsigned int\000"
+ 1172      7420756E 
+ 1172      7369676E 
+ 1172      65642069 
+ 1172      6E7400
+ 1173              	.LASF2:
+ 1174 00a1 73686F72 		.ascii	"short int\000"
+ 1174      7420696E 
+ 1174      7400
+ 1175              	.LASF14:
+ 1176 00ab 646F7562 		.ascii	"double\000"
+ 1176      6C6500
+ 1177              	.LASF35:
+ 1178 00b2 51756164 		.ascii	"QuadDec_1_GetCounter\000"
+ 1178      4465635F 
+ 1178      315F4765 
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 24
+
+
+ 1178      74436F75 
+ 1178      6E746572 
+ 1179              	.LASF6:
+ 1180 00c7 5F5F7569 		.ascii	"__uint32_t\000"
+ 1180      6E743332 
+ 1180      5F7400
+ 1181              	.LASF13:
+ 1182 00d2 666C6F61 		.ascii	"float\000"
+ 1182      7400
+ 1183              	.LASF47:
+ 1184 00d8 51756164 		.ascii	"QuadDec_1_Start\000"
+ 1184      4465635F 
+ 1184      315F5374 
+ 1184      61727400 
+ 1185              	.LASF51:
+ 1186 00e8 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\final design\\AMA"
+ 1186      454D505C 
+ 1186      434F4D50 
+ 1186      53595333 
+ 1186      30315F74 
+ 1187 0116 5A494E47 		.ascii	"ZINGfinalBFFPGA\\AMAZINGfinalBFFPGA.cydsn\000"
+ 1187      66696E61 
+ 1187      6C424646 
+ 1187      5047415C 
+ 1187      414D415A 
+ 1188              	.LASF26:
+ 1189 013f 494F5F49 		.ascii	"IO_Init\000"
+ 1189      6E697400 
+ 1190              	.LASF49:
+ 1191 0147 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1191      43313120 
+ 1191      352E342E 
+ 1191      31203230 
+ 1191      31363036 
+ 1192 017a 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1192      20726576 
+ 1192      6973696F 
+ 1192      6E203233 
+ 1192      37373135 
+ 1193 01ad 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1193      66756E63 
+ 1193      74696F6E 
+ 1193      2D736563 
+ 1193      74696F6E 
+ 1194              	.LASF33:
+ 1195 01d5 4C454434 		.ascii	"LED4_Read\000"
+ 1195      5F526561 
+ 1195      6400
+ 1196              	.LASF21:
+ 1197 01df 72696768 		.ascii	"right\000"
+ 1197      7400
+ 1198              	.LASF39:
+ 1199 01e5 50574D5F 		.ascii	"PWM_1_Start\000"
+ 1199      315F5374 
+ 1199      61727400 
+ 1200              	.LASF30:
+ 1201 01f1 4C454431 		.ascii	"LED1_Read\000"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 25
+
+
+ 1201      5F526561 
+ 1201      6400
+ 1202              	.LASF42:
+ 1203 01fb 54696D65 		.ascii	"Timeout_1_Start\000"
+ 1203      6F75745F 
+ 1203      315F5374 
+ 1203      61727400 
+ 1204              	.LASF1:
+ 1205 020b 756E7369 		.ascii	"unsigned char\000"
+ 1205      676E6564 
+ 1205      20636861 
+ 1205      7200
+ 1206              	.LASF41:
+ 1207 0219 56444143 		.ascii	"VDAC8_1_Start\000"
+ 1207      385F315F 
+ 1207      53746172 
+ 1207      7400
+ 1208              	.LASF46:
+ 1209 0227 54696D65 		.ascii	"Timeout_5_Start\000"
+ 1209      6F75745F 
+ 1209      355F5374 
+ 1209      61727400 
+ 1210              	.LASF7:
+ 1211 0237 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1211      20756E73 
+ 1211      69676E65 
+ 1211      6420696E 
+ 1211      7400
+ 1212              	.LASF19:
+ 1213 0249 53656E73 		.ascii	"Sensors\000"
+ 1213      6F727300 
+ 1214              	.LASF40:
+ 1215 0251 50574D5F 		.ascii	"PWM_2_Start\000"
+ 1215      325F5374 
+ 1215      61727400 
+ 1216              	.LASF43:
+ 1217 025d 54696D65 		.ascii	"Timeout_2_Start\000"
+ 1217      6F75745F 
+ 1217      325F5374 
+ 1217      61727400 
+ 1218              	.LASF38:
+ 1219 026d 50574D5F 		.ascii	"PWM_2_WriteCompare\000"
+ 1219      325F5772 
+ 1219      69746543 
+ 1219      6F6D7061 
+ 1219      726500
+ 1220              	.LASF22:
+ 1221 0280 456E636F 		.ascii	"EncoderPair\000"
+ 1221      64657250 
+ 1221      61697200 
+ 1222              	.LASF10:
+ 1223 028c 756E7369 		.ascii	"unsigned int\000"
+ 1223      676E6564 
+ 1223      20696E74 
+ 1223      00
+ 1224              	.LASF9:
+ 1225 0299 6C6F6E67 		.ascii	"long long unsigned int\000"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 26
+
+
+ 1225      206C6F6E 
+ 1225      6720756E 
+ 1225      7369676E 
+ 1225      65642069 
+ 1226              	.LASF31:
+ 1227 02b0 4C454432 		.ascii	"LED2_Read\000"
+ 1227      5F526561 
+ 1227      6400
+ 1228              	.LASF52:
+ 1229 02ba 72657375 		.ascii	"result\000"
+ 1229      6C7400
+ 1230              	.LASF36:
+ 1231 02c1 51756164 		.ascii	"QuadDec_2_GetCounter\000"
+ 1231      4465635F 
+ 1231      325F4765 
+ 1231      74436F75 
+ 1231      6E746572 
+ 1232              	.LASF53:
+ 1233 02d6 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1233      52784275 
+ 1233      66666572 
+ 1233      00
+ 1234              	.LASF11:
+ 1235 02e3 696E7433 		.ascii	"int32_t\000"
+ 1235      325F7400 
+ 1236              	.LASF17:
+ 1237 02eb 73697A65 		.ascii	"sizetype\000"
+ 1237      74797065 
+ 1237      00
+ 1238              	.LASF37:
+ 1239 02f4 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 1239      315F5772 
+ 1239      69746543 
+ 1239      6F6D7061 
+ 1239      726500
+ 1240              	.LASF15:
+ 1241 0307 63686172 		.ascii	"char\000"
+ 1241      00
+ 1242              	.LASF45:
+ 1243 030c 54696D65 		.ascii	"Timeout_4_Start\000"
+ 1243      6F75745F 
+ 1243      345F5374 
+ 1243      61727400 
+ 1244              	.LASF29:
+ 1245 031c 494F5F53 		.ascii	"IO_SpinRight\000"
+ 1245      70696E52 
+ 1245      69676874 
+ 1245      00
+ 1246              	.LASF28:
+ 1247 0329 494F5F53 		.ascii	"IO_SpinLeft\000"
+ 1247      70696E4C 
+ 1247      65667400 
+ 1248              	.LASF12:
+ 1249 0335 75696E74 		.ascii	"uint32_t\000"
+ 1249      33325F74 
+ 1249      00
+ 1250              	.LASF4:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccCiK9Xn.s 			page 27
+
+
+ 1251 033e 6C6F6E67 		.ascii	"long int\000"
+ 1251      20696E74 
+ 1251      00
+ 1252              	.LASF24:
+ 1253 0347 494F5F45 		.ascii	"IO_Encoders\000"
+ 1253      6E636F64 
+ 1253      65727300 
+ 1254              	.LASF16:
+ 1255 0353 6C6F6E67 		.ascii	"long double\000"
+ 1255      20646F75 
+ 1255      626C6500 
+ 1256              	.LASF0:
+ 1257 035f 7369676E 		.ascii	"signed char\000"
+ 1257      65642063 
+ 1257      68617200 
+ 1258              	.LASF27:
+ 1259 036b 494F5F46 		.ascii	"IO_Forward\000"
+ 1259      6F727761 
+ 1259      726400
+ 1260              	.LASF18:
+ 1261 0376 5F426F6F 		.ascii	"_Bool\000"
+ 1261      6C00
+ 1262              	.LASF32:
+ 1263 037c 4C454433 		.ascii	"LED3_Read\000"
+ 1263      5F526561 
+ 1263      6400
+ 1264              	.LASF34:
+ 1265 0386 4C454435 		.ascii	"LED5_Read\000"
+ 1265      5F526561 
+ 1265      6400
+ 1266              	.LASF48:
+ 1267 0390 51756164 		.ascii	"QuadDec_2_Start\000"
+ 1267      4465635F 
+ 1267      325F5374 
+ 1267      61727400 
+ 1268              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

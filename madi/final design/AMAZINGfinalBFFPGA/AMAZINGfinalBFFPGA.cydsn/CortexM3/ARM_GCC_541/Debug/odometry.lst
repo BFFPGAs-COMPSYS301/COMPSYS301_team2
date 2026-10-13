@@ -1,0 +1,1462 @@
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"odometry.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	__aeabi_fcmple
+  20              		.section	.text.Odom_Init,"ax",%progbits
+  21              		.align	2
+  22              		.global	Odom_Init
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	Odom_Init, %function
+  26              	Odom_Init:
+  27              	.LFB0:
+  28              		.file 1 "..\\..\\..\\..\\..\\maze_localization_starter\\maze_localization_starter\\odometry.c"
+   1:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+   2:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** #include "odometry.h"
+   3:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** #include <math.h>
+   4:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** #include <stdint.h>
+   5:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+   6:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** bool Odom_Init(Odometry *o, Pose2D start,
+   7:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****                EncoderPair initial,
+   8:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****                float l, float r, float b)
+   9:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** {
+  29              		.loc 1 9 0
+  30              		.cfi_startproc
+  31              		@ args = 20, pretend = 0, frame = 16
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              	.LVL0:
+  34 0000 10B5     		push	{r4, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  38 0002 84B0     		sub	sp, sp, #16
+  39              		.cfi_def_cfa_offset 24
+  40 0004 04AC     		add	r4, sp, #16
+  41 0006 04E90E00 		stmdb	r4, {r1, r2, r3}
+  10:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     if (!o || l <= 0.0f || r <= 0.0f || b <= 0.0f)
+  42              		.loc 1 10 0
+  43 000a 38B3     		cbz	r0, .L3
+  44 000c 0446     		mov	r4, r0
+  45              		.loc 1 10 0 is_stmt 0 discriminator 1
+  46 000e 0021     		movs	r1, #0
+  47 0010 0898     		ldr	r0, [sp, #32]	@ float
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 2
+
+
+  48              	.LVL1:
+  49 0012 FFF7FEFF 		bl	__aeabi_fcmple
+  50              	.LVL2:
+  51 0016 18BB     		cbnz	r0, .L4
+  52              		.loc 1 10 0 discriminator 2
+  53 0018 0021     		movs	r1, #0
+  54 001a 0998     		ldr	r0, [sp, #36]	@ float
+  55 001c FFF7FEFF 		bl	__aeabi_fcmple
+  56              	.LVL3:
+  57 0020 00BB     		cbnz	r0, .L5
+  58              		.loc 1 10 0 discriminator 3
+  59 0022 0021     		movs	r1, #0
+  60 0024 0A98     		ldr	r0, [sp, #40]	@ float
+  61 0026 FFF7FEFF 		bl	__aeabi_fcmple
+  62              	.LVL4:
+  63 002a E8B9     		cbnz	r0, .L6
+  11:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****         return false;
+  12:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  13:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->pose = start;
+  64              		.loc 1 13 0 is_stmt 1
+  65 002c 04AB     		add	r3, sp, #16
+  66 002e 13E90700 		ldmdb	r3, {r0, r1, r2}
+  67 0032 84E80700 		stmia	r4, {r0, r1, r2}
+  14:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->previous = initial;
+  68              		.loc 1 14 0
+  69 0036 04F10C03 		add	r3, r4, #12
+  70 003a 06AA     		add	r2, sp, #24
+  71              	.LVL5:
+  72 003c 92E80300 		ldmia	r2, {r0, r1}
+  73 0040 83E80300 		stmia	r3, {r0, r1}
+  15:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  16:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     /* Store calibration in the structure */
+  17:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->leftMmPerCount = l;
+  74              		.loc 1 17 0
+  75 0044 089B     		ldr	r3, [sp, #32]	@ float
+  76 0046 6361     		str	r3, [r4, #20]	@ float
+  18:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->rightMmPerCount = r;
+  77              		.loc 1 18 0
+  78 0048 099B     		ldr	r3, [sp, #36]	@ float
+  79 004a A361     		str	r3, [r4, #24]	@ float
+  19:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->wheelbaseMm = b;
+  80              		.loc 1 19 0
+  81 004c 0A9B     		ldr	r3, [sp, #40]	@ float
+  82 004e E361     		str	r3, [r4, #28]	@ float
+  20:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  21:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->travelledMm = 0.0f;
+  83              		.loc 1 21 0
+  84 0050 0023     		movs	r3, #0
+  85 0052 2362     		str	r3, [r4, #32]	@ float
+  22:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->ready = true;
+  86              		.loc 1 22 0
+  87 0054 0120     		movs	r0, #1
+  88 0056 84F82400 		strb	r0, [r4, #36]
+  23:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  24:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     return true;
+  89              		.loc 1 24 0
+  90 005a 06E0     		b	.L2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 3
+
+
+  91              	.LVL6:
+  92              	.L3:
+  11:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  93              		.loc 1 11 0
+  94 005c 0020     		movs	r0, #0
+  95              	.LVL7:
+  96 005e 04E0     		b	.L2
+  97              	.LVL8:
+  98              	.L4:
+  99 0060 0020     		movs	r0, #0
+ 100 0062 02E0     		b	.L2
+ 101              	.L5:
+ 102 0064 0020     		movs	r0, #0
+ 103 0066 00E0     		b	.L2
+ 104              	.L6:
+ 105 0068 0020     		movs	r0, #0
+ 106              	.LVL9:
+ 107              	.L2:
+  25:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** }
+ 108              		.loc 1 25 0
+ 109 006a 04B0     		add	sp, sp, #16
+ 110              		.cfi_def_cfa_offset 8
+ 111              		@ sp needed
+ 112 006c 10BD     		pop	{r4, pc}
+ 113              		.cfi_endproc
+ 114              	.LFE0:
+ 115              		.size	Odom_Init, .-Odom_Init
+ 116              		.global	__aeabi_i2f
+ 117              		.global	__aeabi_fmul
+ 118              		.global	__aeabi_fadd
+ 119              		.global	__aeabi_fsub
+ 120              		.global	__aeabi_fdiv
+ 121 006e 00BF     		.section	.text.Odom_Update,"ax",%progbits
+ 122              		.align	2
+ 123              		.global	Odom_Update
+ 124              		.thumb
+ 125              		.thumb_func
+ 126              		.type	Odom_Update, %function
+ 127              	Odom_Update:
+ 128              	.LFB1:
+  26:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  27:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** void Odom_Update(Odometry *o, EncoderPair now)
+  28:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** {
+ 129              		.loc 1 28 0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 8
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              	.LVL10:
+ 134 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 135              		.cfi_def_cfa_offset 24
+ 136              		.cfi_offset 4, -24
+ 137              		.cfi_offset 5, -20
+ 138              		.cfi_offset 6, -16
+ 139              		.cfi_offset 7, -12
+ 140              		.cfi_offset 8, -8
+ 141              		.cfi_offset 14, -4
+ 142 0004 82B0     		sub	sp, sp, #8
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 4
+
+
+ 143              		.cfi_def_cfa_offset 32
+ 144 0006 02AB     		add	r3, sp, #8
+ 145 0008 03E90600 		stmdb	r3, {r1, r2}
+  29:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     if (!o || !o->ready)
+ 146              		.loc 1 29 0
+ 147 000c 0028     		cmp	r0, #0
+ 148 000e 5BD0     		beq	.L8
+ 149 0010 0446     		mov	r4, r0
+ 150              		.loc 1 29 0 is_stmt 0 discriminator 1
+ 151 0012 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 152 0016 002B     		cmp	r3, #0
+ 153 0018 56D0     		beq	.L8
+  30:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****         return;
+  31:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  32:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     int32_t countL =
+  33:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****         (int32_t)((uint32_t)now.left -
+  34:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****                   (uint32_t)o->previous.left);
+ 154              		.loc 1 34 0 is_stmt 1
+ 155 001a C268     		ldr	r2, [r0, #12]
+ 156              	.LVL11:
+  35:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  36:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     int32_t countR =
+  37:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****         (int32_t)((uint32_t)now.right -
+  38:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****                   (uint32_t)o->previous.right);
+ 157              		.loc 1 38 0
+ 158 001c 0569     		ldr	r5, [r0, #16]
+  37:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****                   (uint32_t)o->previous.right);
+ 159              		.loc 1 37 0
+ 160 001e 019B     		ldr	r3, [sp, #4]
+ 161 0020 5D1B     		subs	r5, r3, r5
+ 162              	.LVL12:
+  39:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  40:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->previous = now;
+ 163              		.loc 1 40 0
+ 164 0022 00F10C03 		add	r3, r0, #12
+ 165 0026 02A9     		add	r1, sp, #8
+ 166 0028 11E90300 		ldmdb	r1, {r0, r1}
+ 167              	.LVL13:
+ 168 002c 83E80300 		stmia	r3, {r0, r1}
+  41:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  42:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     float dl = countL * o->leftMmPerCount;
+ 169              		.loc 1 42 0
+ 170 0030 0098     		ldr	r0, [sp]
+ 171 0032 801A     		subs	r0, r0, r2
+ 172              	.LVL14:
+ 173 0034 FFF7FEFF 		bl	__aeabi_i2f
+ 174              	.LVL15:
+ 175 0038 6169     		ldr	r1, [r4, #20]	@ float
+ 176 003a FFF7FEFF 		bl	__aeabi_fmul
+ 177              	.LVL16:
+ 178 003e 0746     		mov	r7, r0
+ 179              	.LVL17:
+  43:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     float dr = countR * o->rightMmPerCount;
+ 180              		.loc 1 43 0
+ 181 0040 2846     		mov	r0, r5
+ 182              	.LVL18:
+ 183 0042 FFF7FEFF 		bl	__aeabi_i2f
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 5
+
+
+ 184              	.LVL19:
+ 185 0046 A169     		ldr	r1, [r4, #24]	@ float
+ 186 0048 FFF7FEFF 		bl	__aeabi_fmul
+ 187              	.LVL20:
+ 188 004c 0646     		mov	r6, r0
+ 189              	.LVL21:
+  44:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  45:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     float ds = (dl + dr) * 0.5f;
+ 190              		.loc 1 45 0
+ 191 004e 0146     		mov	r1, r0
+ 192 0050 3846     		mov	r0, r7
+ 193              	.LVL22:
+ 194 0052 FFF7FEFF 		bl	__aeabi_fadd
+ 195              	.LVL23:
+ 196 0056 4FF07C51 		mov	r1, #1056964608
+ 197 005a FFF7FEFF 		bl	__aeabi_fmul
+ 198              	.LVL24:
+ 199 005e 0546     		mov	r5, r0
+ 200              	.LVL25:
+  46:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     float dTheta = (dr - dl) / o->wheelbaseMm;
+ 201              		.loc 1 46 0
+ 202 0060 3946     		mov	r1, r7
+ 203 0062 3046     		mov	r0, r6
+ 204              	.LVL26:
+ 205 0064 FFF7FEFF 		bl	__aeabi_fsub
+ 206              	.LVL27:
+ 207 0068 E169     		ldr	r1, [r4, #28]	@ float
+ 208 006a FFF7FEFF 		bl	__aeabi_fdiv
+ 209              	.LVL28:
+ 210 006e 0746     		mov	r7, r0
+ 211              	.LVL29:
+  47:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  48:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     float midpoint =
+  49:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****         o->pose.theta_rad + dTheta * 0.5f;
+ 212              		.loc 1 49 0
+ 213 0070 A668     		ldr	r6, [r4, #8]	@ float
+ 214              	.LVL30:
+ 215 0072 4FF07C51 		mov	r1, #1056964608
+ 216 0076 FFF7FEFF 		bl	__aeabi_fmul
+ 217              	.LVL31:
+  48:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****         o->pose.theta_rad + dTheta * 0.5f;
+ 218              		.loc 1 48 0
+ 219 007a 0146     		mov	r1, r0
+ 220 007c 3046     		mov	r0, r6
+ 221 007e FFF7FEFF 		bl	__aeabi_fadd
+ 222              	.LVL32:
+ 223 0082 8046     		mov	r8, r0
+ 224              	.LVL33:
+  50:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  51:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->pose.x_mm += ds * cosf(midpoint);
+ 225              		.loc 1 51 0
+ 226 0084 FFF7FEFF 		bl	cosf
+ 227              	.LVL34:
+ 228 0088 0146     		mov	r1, r0
+ 229 008a 2846     		mov	r0, r5
+ 230 008c FFF7FEFF 		bl	__aeabi_fmul
+ 231              	.LVL35:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 6
+
+
+ 232 0090 0146     		mov	r1, r0
+ 233 0092 2068     		ldr	r0, [r4]	@ float
+ 234 0094 FFF7FEFF 		bl	__aeabi_fadd
+ 235              	.LVL36:
+ 236 0098 2060     		str	r0, [r4]	@ float
+  52:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->pose.y_mm += ds * sinf(midpoint);
+ 237              		.loc 1 52 0
+ 238 009a 4046     		mov	r0, r8
+ 239 009c FFF7FEFF 		bl	sinf
+ 240              	.LVL37:
+ 241 00a0 0146     		mov	r1, r0
+ 242 00a2 2846     		mov	r0, r5
+ 243 00a4 FFF7FEFF 		bl	__aeabi_fmul
+ 244              	.LVL38:
+ 245 00a8 0146     		mov	r1, r0
+ 246 00aa 6068     		ldr	r0, [r4, #4]	@ float
+ 247 00ac FFF7FEFF 		bl	__aeabi_fadd
+ 248              	.LVL39:
+ 249 00b0 6060     		str	r0, [r4, #4]	@ float
+  53:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->pose.theta_rad += dTheta;
+ 250              		.loc 1 53 0
+ 251 00b2 3146     		mov	r1, r6
+ 252 00b4 3846     		mov	r0, r7
+ 253 00b6 FFF7FEFF 		bl	__aeabi_fadd
+ 254              	.LVL40:
+ 255 00ba A060     		str	r0, [r4, #8]	@ float
+  54:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** 
+  55:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c ****     o->travelledMm += fabsf(ds);
+ 256              		.loc 1 55 0
+ 257 00bc 25F00041 		bic	r1, r5, #-2147483648
+ 258 00c0 206A     		ldr	r0, [r4, #32]	@ float
+ 259 00c2 FFF7FEFF 		bl	__aeabi_fadd
+ 260              	.LVL41:
+ 261 00c6 2062     		str	r0, [r4, #32]	@ float
+ 262              	.LVL42:
+ 263              	.L8:
+  56:..\..\..\..\..\maze_localization_starter\maze_localization_starter/odometry.c **** }
+ 264              		.loc 1 56 0
+ 265 00c8 02B0     		add	sp, sp, #8
+ 266              		.cfi_def_cfa_offset 24
+ 267              		@ sp needed
+ 268 00ca BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 269              		.cfi_endproc
+ 270              	.LFE1:
+ 271              		.size	Odom_Update, .-Odom_Update
+ 272 00ce 00BF     		.text
+ 273              	.Letext0:
+ 274              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 275              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 276              		.file 4 "c:\\temp\\maze_localization_starter\\maze_localization_starter\\robot_io.h"
+ 277              		.file 5 "c:\\temp\\maze_localization_starter\\maze_localization_starter\\odometry.h"
+ 278              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 279              		.section	.debug_info,"",%progbits
+ 280              	.Ldebug_info0:
+ 281 0000 CF020000 		.4byte	0x2cf
+ 282 0004 0400     		.2byte	0x4
+ 283 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 7
+
+
+ 284 000a 04       		.byte	0x4
+ 285 000b 01       		.uleb128 0x1
+ 286 000c C3000000 		.4byte	.LASF42
+ 287 0010 0C       		.byte	0xc
+ 288 0011 76010000 		.4byte	.LASF43
+ 289 0015 5E000000 		.4byte	.LASF44
+ 290 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 291 001d 00000000 		.4byte	0
+ 292 0021 00000000 		.4byte	.Ldebug_line0
+ 293 0025 02       		.uleb128 0x2
+ 294 0026 04       		.byte	0x4
+ 295 0027 04       		.byte	0x4
+ 296 0028 51000000 		.4byte	.LASF0
+ 297 002c 02       		.uleb128 0x2
+ 298 002d 01       		.byte	0x1
+ 299 002e 06       		.byte	0x6
+ 300 002f AA020000 		.4byte	.LASF1
+ 301 0033 02       		.uleb128 0x2
+ 302 0034 01       		.byte	0x1
+ 303 0035 08       		.byte	0x8
+ 304 0036 B5000000 		.4byte	.LASF2
+ 305 003a 02       		.uleb128 0x2
+ 306 003b 02       		.byte	0x2
+ 307 003c 05       		.byte	0x5
+ 308 003d 68020000 		.4byte	.LASF3
+ 309 0041 02       		.uleb128 0x2
+ 310 0042 02       		.byte	0x2
+ 311 0043 07       		.byte	0x7
+ 312 0044 63010000 		.4byte	.LASF4
+ 313 0048 03       		.uleb128 0x3
+ 314 0049 1A000000 		.4byte	.LASF6
+ 315 004d 02       		.byte	0x2
+ 316 004e 3F       		.byte	0x3f
+ 317 004f 53000000 		.4byte	0x53
+ 318 0053 02       		.uleb128 0x2
+ 319 0054 04       		.byte	0x4
+ 320 0055 05       		.byte	0x5
+ 321 0056 8E020000 		.4byte	.LASF5
+ 322 005a 03       		.uleb128 0x3
+ 323 005b D9010000 		.4byte	.LASF7
+ 324 005f 02       		.byte	0x2
+ 325 0060 41       		.byte	0x41
+ 326 0061 65000000 		.4byte	0x65
+ 327 0065 02       		.uleb128 0x2
+ 328 0066 04       		.byte	0x4
+ 329 0067 07       		.byte	0x7
+ 330 0068 EC010000 		.4byte	.LASF8
+ 331 006c 02       		.uleb128 0x2
+ 332 006d 08       		.byte	0x8
+ 333 006e 05       		.byte	0x5
+ 334 006f 4B020000 		.4byte	.LASF9
+ 335 0073 02       		.uleb128 0x2
+ 336 0074 08       		.byte	0x8
+ 337 0075 07       		.byte	0x7
+ 338 0076 17020000 		.4byte	.LASF10
+ 339 007a 04       		.uleb128 0x4
+ 340 007b 04       		.byte	0x4
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 8
+
+
+ 341 007c 05       		.byte	0x5
+ 342 007d 696E7400 		.ascii	"int\000"
+ 343 0081 02       		.uleb128 0x2
+ 344 0082 04       		.byte	0x4
+ 345 0083 07       		.byte	0x7
+ 346 0084 FE010000 		.4byte	.LASF11
+ 347 0088 03       		.uleb128 0x3
+ 348 0089 2E020000 		.4byte	.LASF12
+ 349 008d 03       		.byte	0x3
+ 350 008e 2C       		.byte	0x2c
+ 351 008f 48000000 		.4byte	0x48
+ 352 0093 03       		.uleb128 0x3
+ 353 0094 85020000 		.4byte	.LASF13
+ 354 0098 03       		.byte	0x3
+ 355 0099 30       		.byte	0x30
+ 356 009a 5A000000 		.4byte	0x5a
+ 357 009e 02       		.uleb128 0x2
+ 358 009f 01       		.byte	0x1
+ 359 00a0 02       		.byte	0x2
+ 360 00a1 C2020000 		.4byte	.LASF14
+ 361 00a5 05       		.uleb128 0x5
+ 362 00a6 08       		.byte	0x8
+ 363 00a7 04       		.byte	0x4
+ 364 00a8 06       		.byte	0x6
+ 365 00a9 C6000000 		.4byte	0xc6
+ 366 00ad 06       		.uleb128 0x6
+ 367 00ae 15000000 		.4byte	.LASF15
+ 368 00b2 04       		.byte	0x4
+ 369 00b3 06       		.byte	0x6
+ 370 00b4 88000000 		.4byte	0x88
+ 371 00b8 00       		.byte	0
+ 372 00b9 06       		.uleb128 0x6
+ 373 00ba 5D010000 		.4byte	.LASF16
+ 374 00be 04       		.byte	0x4
+ 375 00bf 06       		.byte	0x6
+ 376 00c0 88000000 		.4byte	0x88
+ 377 00c4 04       		.byte	0x4
+ 378 00c5 00       		.byte	0
+ 379 00c6 03       		.uleb128 0x3
+ 380 00c7 00000000 		.4byte	.LASF17
+ 381 00cb 04       		.byte	0x4
+ 382 00cc 06       		.byte	0x6
+ 383 00cd A5000000 		.4byte	0xa5
+ 384 00d1 05       		.uleb128 0x5
+ 385 00d2 0C       		.byte	0xc
+ 386 00d3 05       		.byte	0x5
+ 387 00d4 04       		.byte	0x4
+ 388 00d5 FE000000 		.4byte	0xfe
+ 389 00d9 06       		.uleb128 0x6
+ 390 00da 4C000000 		.4byte	.LASF18
+ 391 00de 05       		.byte	0x5
+ 392 00df 04       		.byte	0x4
+ 393 00e0 25000000 		.4byte	0x25
+ 394 00e4 00       		.byte	0
+ 395 00e5 06       		.uleb128 0x6
+ 396 00e6 51010000 		.4byte	.LASF19
+ 397 00ea 05       		.byte	0x5
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 9
+
+
+ 398 00eb 04       		.byte	0x4
+ 399 00ec 25000000 		.4byte	0x25
+ 400 00f0 04       		.byte	0x4
+ 401 00f1 06       		.uleb128 0x6
+ 402 00f2 7B020000 		.4byte	.LASF20
+ 403 00f6 05       		.byte	0x5
+ 404 00f7 04       		.byte	0x4
+ 405 00f8 25000000 		.4byte	0x25
+ 406 00fc 08       		.byte	0x8
+ 407 00fd 00       		.byte	0
+ 408 00fe 03       		.uleb128 0x3
+ 409 00ff 97020000 		.4byte	.LASF21
+ 410 0103 05       		.byte	0x5
+ 411 0104 04       		.byte	0x4
+ 412 0105 D1000000 		.4byte	0xd1
+ 413 0109 05       		.uleb128 0x5
+ 414 010a 28       		.byte	0x28
+ 415 010b 05       		.byte	0x5
+ 416 010c 05       		.byte	0x5
+ 417 010d 66010000 		.4byte	0x166
+ 418 0111 06       		.uleb128 0x6
+ 419 0112 24000000 		.4byte	.LASF22
+ 420 0116 05       		.byte	0x5
+ 421 0117 06       		.byte	0x6
+ 422 0118 FE000000 		.4byte	0xfe
+ 423 011c 00       		.byte	0
+ 424 011d 06       		.uleb128 0x6
+ 425 011e D0010000 		.4byte	.LASF23
+ 426 0122 05       		.byte	0x5
+ 427 0123 07       		.byte	0x7
+ 428 0124 C6000000 		.4byte	0xc6
+ 429 0128 0C       		.byte	0xc
+ 430 0129 06       		.uleb128 0x6
+ 431 012a CD020000 		.4byte	.LASF24
+ 432 012e 05       		.byte	0x5
+ 433 012f 08       		.byte	0x8
+ 434 0130 25000000 		.4byte	0x25
+ 435 0134 14       		.byte	0x14
+ 436 0135 06       		.uleb128 0x6
+ 437 0136 30000000 		.4byte	.LASF25
+ 438 013a 05       		.byte	0x5
+ 439 013b 08       		.byte	0x8
+ 440 013c 25000000 		.4byte	0x25
+ 441 0140 18       		.byte	0x18
+ 442 0141 06       		.uleb128 0x6
+ 443 0142 40000000 		.4byte	.LASF26
+ 444 0146 05       		.byte	0x5
+ 445 0147 08       		.byte	0x8
+ 446 0148 25000000 		.4byte	0x25
+ 447 014c 1C       		.byte	0x1c
+ 448 014d 06       		.uleb128 0x6
+ 449 014e B6020000 		.4byte	.LASF27
+ 450 0152 05       		.byte	0x5
+ 451 0153 09       		.byte	0x9
+ 452 0154 25000000 		.4byte	0x25
+ 453 0158 20       		.byte	0x20
+ 454 0159 06       		.uleb128 0x6
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 10
+
+
+ 455 015a 11020000 		.4byte	.LASF28
+ 456 015e 05       		.byte	0x5
+ 457 015f 0A       		.byte	0xa
+ 458 0160 9E000000 		.4byte	0x9e
+ 459 0164 24       		.byte	0x24
+ 460 0165 00       		.byte	0
+ 461 0166 03       		.uleb128 0x3
+ 462 0167 72020000 		.4byte	.LASF29
+ 463 016b 05       		.byte	0x5
+ 464 016c 0B       		.byte	0xb
+ 465 016d 09010000 		.4byte	0x109
+ 466 0171 02       		.uleb128 0x2
+ 467 0172 08       		.byte	0x8
+ 468 0173 04       		.byte	0x4
+ 469 0174 9E020000 		.4byte	.LASF30
+ 470 0178 02       		.uleb128 0x2
+ 471 0179 04       		.byte	0x4
+ 472 017a 07       		.byte	0x7
+ 473 017b 36020000 		.4byte	.LASF31
+ 474 017f 02       		.uleb128 0x2
+ 475 0180 01       		.byte	0x1
+ 476 0181 08       		.byte	0x8
+ 477 0182 59020000 		.4byte	.LASF32
+ 478 0186 02       		.uleb128 0x2
+ 479 0187 08       		.byte	0x8
+ 480 0188 04       		.byte	0x4
+ 481 0189 C9010000 		.4byte	.LASF33
+ 482 018d 07       		.uleb128 0x7
+ 483 018e 5E020000 		.4byte	.LASF45
+ 484 0192 01       		.byte	0x1
+ 485 0193 06       		.byte	0x6
+ 486 0194 9E000000 		.4byte	0x9e
+ 487 0198 00000000 		.4byte	.LFB0
+ 488 019c 6E000000 		.4byte	.LFE0-.LFB0
+ 489 01a0 01       		.uleb128 0x1
+ 490 01a1 9C       		.byte	0x9c
+ 491 01a2 F7010000 		.4byte	0x1f7
+ 492 01a6 08       		.uleb128 0x8
+ 493 01a7 6F00     		.ascii	"o\000"
+ 494 01a9 01       		.byte	0x1
+ 495 01aa 06       		.byte	0x6
+ 496 01ab F7010000 		.4byte	0x1f7
+ 497 01af 00000000 		.4byte	.LLST0
+ 498 01b3 09       		.uleb128 0x9
+ 499 01b4 0B020000 		.4byte	.LASF34
+ 500 01b8 01       		.byte	0x1
+ 501 01b9 06       		.byte	0x6
+ 502 01ba FE000000 		.4byte	0xfe
+ 503 01be 02       		.uleb128 0x2
+ 504 01bf 91       		.byte	0x91
+ 505 01c0 6C       		.sleb128 -20
+ 506 01c1 09       		.uleb128 0x9
+ 507 01c2 E4010000 		.4byte	.LASF35
+ 508 01c6 01       		.byte	0x1
+ 509 01c7 07       		.byte	0x7
+ 510 01c8 C6000000 		.4byte	0xc6
+ 511 01cc 02       		.uleb128 0x2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 11
+
+
+ 512 01cd 91       		.byte	0x91
+ 513 01ce 00       		.sleb128 0
+ 514 01cf 08       		.uleb128 0x8
+ 515 01d0 6C00     		.ascii	"l\000"
+ 516 01d2 01       		.byte	0x1
+ 517 01d3 08       		.byte	0x8
+ 518 01d4 25000000 		.4byte	0x25
+ 519 01d8 50000000 		.4byte	.LLST1
+ 520 01dc 08       		.uleb128 0x8
+ 521 01dd 7200     		.ascii	"r\000"
+ 522 01df 01       		.byte	0x1
+ 523 01e0 08       		.byte	0x8
+ 524 01e1 25000000 		.4byte	0x25
+ 525 01e5 7C000000 		.4byte	.LLST2
+ 526 01e9 08       		.uleb128 0x8
+ 527 01ea 6200     		.ascii	"b\000"
+ 528 01ec 01       		.byte	0x1
+ 529 01ed 08       		.byte	0x8
+ 530 01ee 25000000 		.4byte	0x25
+ 531 01f2 A8000000 		.4byte	.LLST3
+ 532 01f6 00       		.byte	0
+ 533 01f7 0A       		.uleb128 0xa
+ 534 01f8 04       		.byte	0x4
+ 535 01f9 66010000 		.4byte	0x166
+ 536 01fd 0B       		.uleb128 0xb
+ 537 01fe 3F020000 		.4byte	.LASF46
+ 538 0202 01       		.byte	0x1
+ 539 0203 1B       		.byte	0x1b
+ 540 0204 00000000 		.4byte	.LFB1
+ 541 0208 CE000000 		.4byte	.LFE1-.LFB1
+ 542 020c 01       		.uleb128 0x1
+ 543 020d 9C       		.byte	0x9c
+ 544 020e BA020000 		.4byte	0x2ba
+ 545 0212 08       		.uleb128 0x8
+ 546 0213 6F00     		.ascii	"o\000"
+ 547 0215 01       		.byte	0x1
+ 548 0216 1B       		.byte	0x1b
+ 549 0217 F7010000 		.4byte	0x1f7
+ 550 021b D4000000 		.4byte	.LLST4
+ 551 021f 0C       		.uleb128 0xc
+ 552 0220 6E6F7700 		.ascii	"now\000"
+ 553 0224 01       		.byte	0x1
+ 554 0225 1B       		.byte	0x1b
+ 555 0226 C6000000 		.4byte	0xc6
+ 556 022a 02       		.uleb128 0x2
+ 557 022b 91       		.byte	0x91
+ 558 022c 60       		.sleb128 -32
+ 559 022d 0D       		.uleb128 0xd
+ 560 022e 57000000 		.4byte	.LASF36
+ 561 0232 01       		.byte	0x1
+ 562 0233 20       		.byte	0x20
+ 563 0234 88000000 		.4byte	0x88
+ 564 0238 00010000 		.4byte	.LLST5
+ 565 023c 0D       		.uleb128 0xd
+ 566 023d 29000000 		.4byte	.LASF37
+ 567 0241 01       		.byte	0x1
+ 568 0242 24       		.byte	0x24
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 12
+
+
+ 569 0243 88000000 		.4byte	0x88
+ 570 0247 24010000 		.4byte	.LLST6
+ 571 024b 0E       		.uleb128 0xe
+ 572 024c 646C00   		.ascii	"dl\000"
+ 573 024f 01       		.byte	0x1
+ 574 0250 2A       		.byte	0x2a
+ 575 0251 25000000 		.4byte	0x25
+ 576 0255 37010000 		.4byte	.LLST7
+ 577 0259 0E       		.uleb128 0xe
+ 578 025a 647200   		.ascii	"dr\000"
+ 579 025d 01       		.byte	0x1
+ 580 025e 2B       		.byte	0x2b
+ 581 025f 25000000 		.4byte	0x25
+ 582 0263 55010000 		.4byte	.LLST8
+ 583 0267 0E       		.uleb128 0xe
+ 584 0268 647300   		.ascii	"ds\000"
+ 585 026b 01       		.byte	0x1
+ 586 026c 2D       		.byte	0x2d
+ 587 026d 25000000 		.4byte	0x25
+ 588 0271 7E010000 		.4byte	.LLST9
+ 589 0275 0D       		.uleb128 0xd
+ 590 0276 56010000 		.4byte	.LASF38
+ 591 027a 01       		.byte	0x1
+ 592 027b 2E       		.byte	0x2e
+ 593 027c 25000000 		.4byte	0x25
+ 594 0280 9C010000 		.4byte	.LLST10
+ 595 0284 0D       		.uleb128 0xd
+ 596 0285 0C000000 		.4byte	.LASF39
+ 597 0289 01       		.byte	0x1
+ 598 028a 30       		.byte	0x30
+ 599 028b 25000000 		.4byte	0x25
+ 600 028f BA010000 		.4byte	.LLST11
+ 601 0293 0F       		.uleb128 0xf
+ 602 0294 88000000 		.4byte	.LVL34
+ 603 0298 BA020000 		.4byte	0x2ba
+ 604 029c A8020000 		.4byte	0x2a8
+ 605 02a0 10       		.uleb128 0x10
+ 606 02a1 01       		.uleb128 0x1
+ 607 02a2 50       		.byte	0x50
+ 608 02a3 03       		.uleb128 0x3
+ 609 02a4 F5       		.byte	0xf5
+ 610 02a5 08       		.uleb128 0x8
+ 611 02a6 25       		.uleb128 0x25
+ 612 02a7 00       		.byte	0
+ 613 02a8 11       		.uleb128 0x11
+ 614 02a9 A0000000 		.4byte	.LVL37
+ 615 02ad C6020000 		.4byte	0x2c6
+ 616 02b1 10       		.uleb128 0x10
+ 617 02b2 01       		.uleb128 0x1
+ 618 02b3 50       		.byte	0x50
+ 619 02b4 03       		.uleb128 0x3
+ 620 02b5 F5       		.byte	0xf5
+ 621 02b6 08       		.uleb128 0x8
+ 622 02b7 25       		.uleb128 0x25
+ 623 02b8 00       		.byte	0
+ 624 02b9 00       		.byte	0
+ 625 02ba 12       		.uleb128 0x12
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 13
+
+
+ 626 02bb C4010000 		.4byte	.LASF40
+ 627 02bf C4010000 		.4byte	.LASF40
+ 628 02c3 06       		.byte	0x6
+ 629 02c4 7001     		.2byte	0x170
+ 630 02c6 12       		.uleb128 0x12
+ 631 02c7 C8020000 		.4byte	.LASF41
+ 632 02cb C8020000 		.4byte	.LASF41
+ 633 02cf 06       		.byte	0x6
+ 634 02d0 7101     		.2byte	0x171
+ 635 02d2 00       		.byte	0
+ 636              		.section	.debug_abbrev,"",%progbits
+ 637              	.Ldebug_abbrev0:
+ 638 0000 01       		.uleb128 0x1
+ 639 0001 11       		.uleb128 0x11
+ 640 0002 01       		.byte	0x1
+ 641 0003 25       		.uleb128 0x25
+ 642 0004 0E       		.uleb128 0xe
+ 643 0005 13       		.uleb128 0x13
+ 644 0006 0B       		.uleb128 0xb
+ 645 0007 03       		.uleb128 0x3
+ 646 0008 0E       		.uleb128 0xe
+ 647 0009 1B       		.uleb128 0x1b
+ 648 000a 0E       		.uleb128 0xe
+ 649 000b 55       		.uleb128 0x55
+ 650 000c 17       		.uleb128 0x17
+ 651 000d 11       		.uleb128 0x11
+ 652 000e 01       		.uleb128 0x1
+ 653 000f 10       		.uleb128 0x10
+ 654 0010 17       		.uleb128 0x17
+ 655 0011 00       		.byte	0
+ 656 0012 00       		.byte	0
+ 657 0013 02       		.uleb128 0x2
+ 658 0014 24       		.uleb128 0x24
+ 659 0015 00       		.byte	0
+ 660 0016 0B       		.uleb128 0xb
+ 661 0017 0B       		.uleb128 0xb
+ 662 0018 3E       		.uleb128 0x3e
+ 663 0019 0B       		.uleb128 0xb
+ 664 001a 03       		.uleb128 0x3
+ 665 001b 0E       		.uleb128 0xe
+ 666 001c 00       		.byte	0
+ 667 001d 00       		.byte	0
+ 668 001e 03       		.uleb128 0x3
+ 669 001f 16       		.uleb128 0x16
+ 670 0020 00       		.byte	0
+ 671 0021 03       		.uleb128 0x3
+ 672 0022 0E       		.uleb128 0xe
+ 673 0023 3A       		.uleb128 0x3a
+ 674 0024 0B       		.uleb128 0xb
+ 675 0025 3B       		.uleb128 0x3b
+ 676 0026 0B       		.uleb128 0xb
+ 677 0027 49       		.uleb128 0x49
+ 678 0028 13       		.uleb128 0x13
+ 679 0029 00       		.byte	0
+ 680 002a 00       		.byte	0
+ 681 002b 04       		.uleb128 0x4
+ 682 002c 24       		.uleb128 0x24
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 14
+
+
+ 683 002d 00       		.byte	0
+ 684 002e 0B       		.uleb128 0xb
+ 685 002f 0B       		.uleb128 0xb
+ 686 0030 3E       		.uleb128 0x3e
+ 687 0031 0B       		.uleb128 0xb
+ 688 0032 03       		.uleb128 0x3
+ 689 0033 08       		.uleb128 0x8
+ 690 0034 00       		.byte	0
+ 691 0035 00       		.byte	0
+ 692 0036 05       		.uleb128 0x5
+ 693 0037 13       		.uleb128 0x13
+ 694 0038 01       		.byte	0x1
+ 695 0039 0B       		.uleb128 0xb
+ 696 003a 0B       		.uleb128 0xb
+ 697 003b 3A       		.uleb128 0x3a
+ 698 003c 0B       		.uleb128 0xb
+ 699 003d 3B       		.uleb128 0x3b
+ 700 003e 0B       		.uleb128 0xb
+ 701 003f 01       		.uleb128 0x1
+ 702 0040 13       		.uleb128 0x13
+ 703 0041 00       		.byte	0
+ 704 0042 00       		.byte	0
+ 705 0043 06       		.uleb128 0x6
+ 706 0044 0D       		.uleb128 0xd
+ 707 0045 00       		.byte	0
+ 708 0046 03       		.uleb128 0x3
+ 709 0047 0E       		.uleb128 0xe
+ 710 0048 3A       		.uleb128 0x3a
+ 711 0049 0B       		.uleb128 0xb
+ 712 004a 3B       		.uleb128 0x3b
+ 713 004b 0B       		.uleb128 0xb
+ 714 004c 49       		.uleb128 0x49
+ 715 004d 13       		.uleb128 0x13
+ 716 004e 38       		.uleb128 0x38
+ 717 004f 0B       		.uleb128 0xb
+ 718 0050 00       		.byte	0
+ 719 0051 00       		.byte	0
+ 720 0052 07       		.uleb128 0x7
+ 721 0053 2E       		.uleb128 0x2e
+ 722 0054 01       		.byte	0x1
+ 723 0055 3F       		.uleb128 0x3f
+ 724 0056 19       		.uleb128 0x19
+ 725 0057 03       		.uleb128 0x3
+ 726 0058 0E       		.uleb128 0xe
+ 727 0059 3A       		.uleb128 0x3a
+ 728 005a 0B       		.uleb128 0xb
+ 729 005b 3B       		.uleb128 0x3b
+ 730 005c 0B       		.uleb128 0xb
+ 731 005d 27       		.uleb128 0x27
+ 732 005e 19       		.uleb128 0x19
+ 733 005f 49       		.uleb128 0x49
+ 734 0060 13       		.uleb128 0x13
+ 735 0061 11       		.uleb128 0x11
+ 736 0062 01       		.uleb128 0x1
+ 737 0063 12       		.uleb128 0x12
+ 738 0064 06       		.uleb128 0x6
+ 739 0065 40       		.uleb128 0x40
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 15
+
+
+ 740 0066 18       		.uleb128 0x18
+ 741 0067 9642     		.uleb128 0x2116
+ 742 0069 19       		.uleb128 0x19
+ 743 006a 01       		.uleb128 0x1
+ 744 006b 13       		.uleb128 0x13
+ 745 006c 00       		.byte	0
+ 746 006d 00       		.byte	0
+ 747 006e 08       		.uleb128 0x8
+ 748 006f 05       		.uleb128 0x5
+ 749 0070 00       		.byte	0
+ 750 0071 03       		.uleb128 0x3
+ 751 0072 08       		.uleb128 0x8
+ 752 0073 3A       		.uleb128 0x3a
+ 753 0074 0B       		.uleb128 0xb
+ 754 0075 3B       		.uleb128 0x3b
+ 755 0076 0B       		.uleb128 0xb
+ 756 0077 49       		.uleb128 0x49
+ 757 0078 13       		.uleb128 0x13
+ 758 0079 02       		.uleb128 0x2
+ 759 007a 17       		.uleb128 0x17
+ 760 007b 00       		.byte	0
+ 761 007c 00       		.byte	0
+ 762 007d 09       		.uleb128 0x9
+ 763 007e 05       		.uleb128 0x5
+ 764 007f 00       		.byte	0
+ 765 0080 03       		.uleb128 0x3
+ 766 0081 0E       		.uleb128 0xe
+ 767 0082 3A       		.uleb128 0x3a
+ 768 0083 0B       		.uleb128 0xb
+ 769 0084 3B       		.uleb128 0x3b
+ 770 0085 0B       		.uleb128 0xb
+ 771 0086 49       		.uleb128 0x49
+ 772 0087 13       		.uleb128 0x13
+ 773 0088 02       		.uleb128 0x2
+ 774 0089 18       		.uleb128 0x18
+ 775 008a 00       		.byte	0
+ 776 008b 00       		.byte	0
+ 777 008c 0A       		.uleb128 0xa
+ 778 008d 0F       		.uleb128 0xf
+ 779 008e 00       		.byte	0
+ 780 008f 0B       		.uleb128 0xb
+ 781 0090 0B       		.uleb128 0xb
+ 782 0091 49       		.uleb128 0x49
+ 783 0092 13       		.uleb128 0x13
+ 784 0093 00       		.byte	0
+ 785 0094 00       		.byte	0
+ 786 0095 0B       		.uleb128 0xb
+ 787 0096 2E       		.uleb128 0x2e
+ 788 0097 01       		.byte	0x1
+ 789 0098 3F       		.uleb128 0x3f
+ 790 0099 19       		.uleb128 0x19
+ 791 009a 03       		.uleb128 0x3
+ 792 009b 0E       		.uleb128 0xe
+ 793 009c 3A       		.uleb128 0x3a
+ 794 009d 0B       		.uleb128 0xb
+ 795 009e 3B       		.uleb128 0x3b
+ 796 009f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 16
+
+
+ 797 00a0 27       		.uleb128 0x27
+ 798 00a1 19       		.uleb128 0x19
+ 799 00a2 11       		.uleb128 0x11
+ 800 00a3 01       		.uleb128 0x1
+ 801 00a4 12       		.uleb128 0x12
+ 802 00a5 06       		.uleb128 0x6
+ 803 00a6 40       		.uleb128 0x40
+ 804 00a7 18       		.uleb128 0x18
+ 805 00a8 9642     		.uleb128 0x2116
+ 806 00aa 19       		.uleb128 0x19
+ 807 00ab 01       		.uleb128 0x1
+ 808 00ac 13       		.uleb128 0x13
+ 809 00ad 00       		.byte	0
+ 810 00ae 00       		.byte	0
+ 811 00af 0C       		.uleb128 0xc
+ 812 00b0 05       		.uleb128 0x5
+ 813 00b1 00       		.byte	0
+ 814 00b2 03       		.uleb128 0x3
+ 815 00b3 08       		.uleb128 0x8
+ 816 00b4 3A       		.uleb128 0x3a
+ 817 00b5 0B       		.uleb128 0xb
+ 818 00b6 3B       		.uleb128 0x3b
+ 819 00b7 0B       		.uleb128 0xb
+ 820 00b8 49       		.uleb128 0x49
+ 821 00b9 13       		.uleb128 0x13
+ 822 00ba 02       		.uleb128 0x2
+ 823 00bb 18       		.uleb128 0x18
+ 824 00bc 00       		.byte	0
+ 825 00bd 00       		.byte	0
+ 826 00be 0D       		.uleb128 0xd
+ 827 00bf 34       		.uleb128 0x34
+ 828 00c0 00       		.byte	0
+ 829 00c1 03       		.uleb128 0x3
+ 830 00c2 0E       		.uleb128 0xe
+ 831 00c3 3A       		.uleb128 0x3a
+ 832 00c4 0B       		.uleb128 0xb
+ 833 00c5 3B       		.uleb128 0x3b
+ 834 00c6 0B       		.uleb128 0xb
+ 835 00c7 49       		.uleb128 0x49
+ 836 00c8 13       		.uleb128 0x13
+ 837 00c9 02       		.uleb128 0x2
+ 838 00ca 17       		.uleb128 0x17
+ 839 00cb 00       		.byte	0
+ 840 00cc 00       		.byte	0
+ 841 00cd 0E       		.uleb128 0xe
+ 842 00ce 34       		.uleb128 0x34
+ 843 00cf 00       		.byte	0
+ 844 00d0 03       		.uleb128 0x3
+ 845 00d1 08       		.uleb128 0x8
+ 846 00d2 3A       		.uleb128 0x3a
+ 847 00d3 0B       		.uleb128 0xb
+ 848 00d4 3B       		.uleb128 0x3b
+ 849 00d5 0B       		.uleb128 0xb
+ 850 00d6 49       		.uleb128 0x49
+ 851 00d7 13       		.uleb128 0x13
+ 852 00d8 02       		.uleb128 0x2
+ 853 00d9 17       		.uleb128 0x17
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 17
+
+
+ 854 00da 00       		.byte	0
+ 855 00db 00       		.byte	0
+ 856 00dc 0F       		.uleb128 0xf
+ 857 00dd 898201   		.uleb128 0x4109
+ 858 00e0 01       		.byte	0x1
+ 859 00e1 11       		.uleb128 0x11
+ 860 00e2 01       		.uleb128 0x1
+ 861 00e3 31       		.uleb128 0x31
+ 862 00e4 13       		.uleb128 0x13
+ 863 00e5 01       		.uleb128 0x1
+ 864 00e6 13       		.uleb128 0x13
+ 865 00e7 00       		.byte	0
+ 866 00e8 00       		.byte	0
+ 867 00e9 10       		.uleb128 0x10
+ 868 00ea 8A8201   		.uleb128 0x410a
+ 869 00ed 00       		.byte	0
+ 870 00ee 02       		.uleb128 0x2
+ 871 00ef 18       		.uleb128 0x18
+ 872 00f0 9142     		.uleb128 0x2111
+ 873 00f2 18       		.uleb128 0x18
+ 874 00f3 00       		.byte	0
+ 875 00f4 00       		.byte	0
+ 876 00f5 11       		.uleb128 0x11
+ 877 00f6 898201   		.uleb128 0x4109
+ 878 00f9 01       		.byte	0x1
+ 879 00fa 11       		.uleb128 0x11
+ 880 00fb 01       		.uleb128 0x1
+ 881 00fc 31       		.uleb128 0x31
+ 882 00fd 13       		.uleb128 0x13
+ 883 00fe 00       		.byte	0
+ 884 00ff 00       		.byte	0
+ 885 0100 12       		.uleb128 0x12
+ 886 0101 2E       		.uleb128 0x2e
+ 887 0102 00       		.byte	0
+ 888 0103 3F       		.uleb128 0x3f
+ 889 0104 19       		.uleb128 0x19
+ 890 0105 3C       		.uleb128 0x3c
+ 891 0106 19       		.uleb128 0x19
+ 892 0107 6E       		.uleb128 0x6e
+ 893 0108 0E       		.uleb128 0xe
+ 894 0109 03       		.uleb128 0x3
+ 895 010a 0E       		.uleb128 0xe
+ 896 010b 3A       		.uleb128 0x3a
+ 897 010c 0B       		.uleb128 0xb
+ 898 010d 3B       		.uleb128 0x3b
+ 899 010e 05       		.uleb128 0x5
+ 900 010f 00       		.byte	0
+ 901 0110 00       		.byte	0
+ 902 0111 00       		.byte	0
+ 903              		.section	.debug_loc,"",%progbits
+ 904              	.Ldebug_loc0:
+ 905              	.LLST0:
+ 906 0000 00000000 		.4byte	.LVL0
+ 907 0004 12000000 		.4byte	.LVL1
+ 908 0008 0100     		.2byte	0x1
+ 909 000a 50       		.byte	0x50
+ 910 000b 12000000 		.4byte	.LVL1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 18
+
+
+ 911 000f 5C000000 		.4byte	.LVL6
+ 912 0013 0100     		.2byte	0x1
+ 913 0015 54       		.byte	0x54
+ 914 0016 5C000000 		.4byte	.LVL6
+ 915 001a 5E000000 		.4byte	.LVL7
+ 916 001e 0100     		.2byte	0x1
+ 917 0020 50       		.byte	0x50
+ 918 0021 5E000000 		.4byte	.LVL7
+ 919 0025 60000000 		.4byte	.LVL8
+ 920 0029 0400     		.2byte	0x4
+ 921 002b F3       		.byte	0xf3
+ 922 002c 01       		.uleb128 0x1
+ 923 002d 50       		.byte	0x50
+ 924 002e 9F       		.byte	0x9f
+ 925 002f 60000000 		.4byte	.LVL8
+ 926 0033 6A000000 		.4byte	.LVL9
+ 927 0037 0100     		.2byte	0x1
+ 928 0039 54       		.byte	0x54
+ 929 003a 6A000000 		.4byte	.LVL9
+ 930 003e 6E000000 		.4byte	.LFE0
+ 931 0042 0400     		.2byte	0x4
+ 932 0044 F3       		.byte	0xf3
+ 933 0045 01       		.uleb128 0x1
+ 934 0046 50       		.byte	0x50
+ 935 0047 9F       		.byte	0x9f
+ 936 0048 00000000 		.4byte	0
+ 937 004c 00000000 		.4byte	0
+ 938              	.LLST1:
+ 939 0050 00000000 		.4byte	.LVL0
+ 940 0054 3C000000 		.4byte	.LVL5
+ 941 0058 0200     		.2byte	0x2
+ 942 005a 91       		.byte	0x91
+ 943 005b 08       		.sleb128 8
+ 944 005c 3C000000 		.4byte	.LVL5
+ 945 0060 5C000000 		.4byte	.LVL6
+ 946 0064 0200     		.2byte	0x2
+ 947 0066 72       		.byte	0x72
+ 948 0067 08       		.sleb128 8
+ 949 0068 5C000000 		.4byte	.LVL6
+ 950 006c 6E000000 		.4byte	.LFE0
+ 951 0070 0200     		.2byte	0x2
+ 952 0072 91       		.byte	0x91
+ 953 0073 08       		.sleb128 8
+ 954 0074 00000000 		.4byte	0
+ 955 0078 00000000 		.4byte	0
+ 956              	.LLST2:
+ 957 007c 00000000 		.4byte	.LVL0
+ 958 0080 3C000000 		.4byte	.LVL5
+ 959 0084 0200     		.2byte	0x2
+ 960 0086 91       		.byte	0x91
+ 961 0087 0C       		.sleb128 12
+ 962 0088 3C000000 		.4byte	.LVL5
+ 963 008c 5C000000 		.4byte	.LVL6
+ 964 0090 0200     		.2byte	0x2
+ 965 0092 72       		.byte	0x72
+ 966 0093 0C       		.sleb128 12
+ 967 0094 5C000000 		.4byte	.LVL6
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 19
+
+
+ 968 0098 6E000000 		.4byte	.LFE0
+ 969 009c 0200     		.2byte	0x2
+ 970 009e 91       		.byte	0x91
+ 971 009f 0C       		.sleb128 12
+ 972 00a0 00000000 		.4byte	0
+ 973 00a4 00000000 		.4byte	0
+ 974              	.LLST3:
+ 975 00a8 00000000 		.4byte	.LVL0
+ 976 00ac 3C000000 		.4byte	.LVL5
+ 977 00b0 0200     		.2byte	0x2
+ 978 00b2 91       		.byte	0x91
+ 979 00b3 10       		.sleb128 16
+ 980 00b4 3C000000 		.4byte	.LVL5
+ 981 00b8 5C000000 		.4byte	.LVL6
+ 982 00bc 0200     		.2byte	0x2
+ 983 00be 72       		.byte	0x72
+ 984 00bf 10       		.sleb128 16
+ 985 00c0 5C000000 		.4byte	.LVL6
+ 986 00c4 6E000000 		.4byte	.LFE0
+ 987 00c8 0200     		.2byte	0x2
+ 988 00ca 91       		.byte	0x91
+ 989 00cb 10       		.sleb128 16
+ 990 00cc 00000000 		.4byte	0
+ 991 00d0 00000000 		.4byte	0
+ 992              	.LLST4:
+ 993 00d4 00000000 		.4byte	.LVL10
+ 994 00d8 2C000000 		.4byte	.LVL13
+ 995 00dc 0100     		.2byte	0x1
+ 996 00de 50       		.byte	0x50
+ 997 00df 2C000000 		.4byte	.LVL13
+ 998 00e3 C8000000 		.4byte	.LVL42
+ 999 00e7 0100     		.2byte	0x1
+ 1000 00e9 54       		.byte	0x54
+ 1001 00ea C8000000 		.4byte	.LVL42
+ 1002 00ee CE000000 		.4byte	.LFE1
+ 1003 00f2 0400     		.2byte	0x4
+ 1004 00f4 F3       		.byte	0xf3
+ 1005 00f5 01       		.uleb128 0x1
+ 1006 00f6 50       		.byte	0x50
+ 1007 00f7 9F       		.byte	0x9f
+ 1008 00f8 00000000 		.4byte	0
+ 1009 00fc 00000000 		.4byte	0
+ 1010              	.LLST5:
+ 1011 0100 1C000000 		.4byte	.LVL11
+ 1012 0104 34000000 		.4byte	.LVL14
+ 1013 0108 0700     		.2byte	0x7
+ 1014 010a 7D       		.byte	0x7d
+ 1015 010b 00       		.sleb128 0
+ 1016 010c 06       		.byte	0x6
+ 1017 010d 72       		.byte	0x72
+ 1018 010e 00       		.sleb128 0
+ 1019 010f 1C       		.byte	0x1c
+ 1020 0110 9F       		.byte	0x9f
+ 1021 0111 34000000 		.4byte	.LVL14
+ 1022 0115 37000000 		.4byte	.LVL15-1
+ 1023 0119 0100     		.2byte	0x1
+ 1024 011b 50       		.byte	0x50
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 20
+
+
+ 1025 011c 00000000 		.4byte	0
+ 1026 0120 00000000 		.4byte	0
+ 1027              	.LLST6:
+ 1028 0124 22000000 		.4byte	.LVL12
+ 1029 0128 60000000 		.4byte	.LVL25
+ 1030 012c 0100     		.2byte	0x1
+ 1031 012e 55       		.byte	0x55
+ 1032 012f 00000000 		.4byte	0
+ 1033 0133 00000000 		.4byte	0
+ 1034              	.LLST7:
+ 1035 0137 40000000 		.4byte	.LVL17
+ 1036 013b 42000000 		.4byte	.LVL18
+ 1037 013f 0100     		.2byte	0x1
+ 1038 0141 50       		.byte	0x50
+ 1039 0142 42000000 		.4byte	.LVL18
+ 1040 0146 70000000 		.4byte	.LVL29
+ 1041 014a 0100     		.2byte	0x1
+ 1042 014c 57       		.byte	0x57
+ 1043 014d 00000000 		.4byte	0
+ 1044 0151 00000000 		.4byte	0
+ 1045              	.LLST8:
+ 1046 0155 4E000000 		.4byte	.LVL21
+ 1047 0159 52000000 		.4byte	.LVL22
+ 1048 015d 0100     		.2byte	0x1
+ 1049 015f 50       		.byte	0x50
+ 1050 0160 52000000 		.4byte	.LVL22
+ 1051 0164 55000000 		.4byte	.LVL23-1
+ 1052 0168 0100     		.2byte	0x1
+ 1053 016a 51       		.byte	0x51
+ 1054 016b 55000000 		.4byte	.LVL23-1
+ 1055 016f 72000000 		.4byte	.LVL30
+ 1056 0173 0100     		.2byte	0x1
+ 1057 0175 56       		.byte	0x56
+ 1058 0176 00000000 		.4byte	0
+ 1059 017a 00000000 		.4byte	0
+ 1060              	.LLST9:
+ 1061 017e 60000000 		.4byte	.LVL25
+ 1062 0182 64000000 		.4byte	.LVL26
+ 1063 0186 0100     		.2byte	0x1
+ 1064 0188 50       		.byte	0x50
+ 1065 0189 64000000 		.4byte	.LVL26
+ 1066 018d C8000000 		.4byte	.LVL42
+ 1067 0191 0100     		.2byte	0x1
+ 1068 0193 55       		.byte	0x55
+ 1069 0194 00000000 		.4byte	0
+ 1070 0198 00000000 		.4byte	0
+ 1071              	.LLST10:
+ 1072 019c 70000000 		.4byte	.LVL29
+ 1073 01a0 79000000 		.4byte	.LVL31-1
+ 1074 01a4 0100     		.2byte	0x1
+ 1075 01a6 50       		.byte	0x50
+ 1076 01a7 79000000 		.4byte	.LVL31-1
+ 1077 01ab C8000000 		.4byte	.LVL42
+ 1078 01af 0100     		.2byte	0x1
+ 1079 01b1 57       		.byte	0x57
+ 1080 01b2 00000000 		.4byte	0
+ 1081 01b6 00000000 		.4byte	0
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 21
+
+
+ 1082              	.LLST11:
+ 1083 01ba 84000000 		.4byte	.LVL33
+ 1084 01be 87000000 		.4byte	.LVL34-1
+ 1085 01c2 0100     		.2byte	0x1
+ 1086 01c4 50       		.byte	0x50
+ 1087 01c5 87000000 		.4byte	.LVL34-1
+ 1088 01c9 C8000000 		.4byte	.LVL42
+ 1089 01cd 0100     		.2byte	0x1
+ 1090 01cf 58       		.byte	0x58
+ 1091 01d0 00000000 		.4byte	0
+ 1092 01d4 00000000 		.4byte	0
+ 1093              		.section	.debug_aranges,"",%progbits
+ 1094 0000 24000000 		.4byte	0x24
+ 1095 0004 0200     		.2byte	0x2
+ 1096 0006 00000000 		.4byte	.Ldebug_info0
+ 1097 000a 04       		.byte	0x4
+ 1098 000b 00       		.byte	0
+ 1099 000c 0000     		.2byte	0
+ 1100 000e 0000     		.2byte	0
+ 1101 0010 00000000 		.4byte	.LFB0
+ 1102 0014 6E000000 		.4byte	.LFE0-.LFB0
+ 1103 0018 00000000 		.4byte	.LFB1
+ 1104 001c CE000000 		.4byte	.LFE1-.LFB1
+ 1105 0020 00000000 		.4byte	0
+ 1106 0024 00000000 		.4byte	0
+ 1107              		.section	.debug_ranges,"",%progbits
+ 1108              	.Ldebug_ranges0:
+ 1109 0000 00000000 		.4byte	.LFB0
+ 1110 0004 6E000000 		.4byte	.LFE0
+ 1111 0008 00000000 		.4byte	.LFB1
+ 1112 000c CE000000 		.4byte	.LFE1
+ 1113 0010 00000000 		.4byte	0
+ 1114 0014 00000000 		.4byte	0
+ 1115              		.section	.debug_line,"",%progbits
+ 1116              	.Ldebug_line0:
+ 1117 0000 84020000 		.section	.debug_str,"MS",%progbits,1
+ 1117      02002B02 
+ 1117      00000201 
+ 1117      FB0E0D00 
+ 1117      01010101 
+ 1118              	.LASF17:
+ 1119 0000 456E636F 		.ascii	"EncoderPair\000"
+ 1119      64657250 
+ 1119      61697200 
+ 1120              	.LASF39:
+ 1121 000c 6D696470 		.ascii	"midpoint\000"
+ 1121      6F696E74 
+ 1121      00
+ 1122              	.LASF15:
+ 1123 0015 6C656674 		.ascii	"left\000"
+ 1123      00
+ 1124              	.LASF6:
+ 1125 001a 5F5F696E 		.ascii	"__int32_t\000"
+ 1125      7433325F 
+ 1125      7400
+ 1126              	.LASF22:
+ 1127 0024 706F7365 		.ascii	"pose\000"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 22
+
+
+ 1127      00
+ 1128              	.LASF37:
+ 1129 0029 636F756E 		.ascii	"countR\000"
+ 1129      745200
+ 1130              	.LASF25:
+ 1131 0030 72696768 		.ascii	"rightMmPerCount\000"
+ 1131      744D6D50 
+ 1131      6572436F 
+ 1131      756E7400 
+ 1132              	.LASF26:
+ 1133 0040 77686565 		.ascii	"wheelbaseMm\000"
+ 1133      6C626173 
+ 1133      654D6D00 
+ 1134              	.LASF18:
+ 1135 004c 785F6D6D 		.ascii	"x_mm\000"
+ 1135      00
+ 1136              	.LASF0:
+ 1137 0051 666C6F61 		.ascii	"float\000"
+ 1137      7400
+ 1138              	.LASF36:
+ 1139 0057 636F756E 		.ascii	"countL\000"
+ 1139      744C00
+ 1140              	.LASF44:
+ 1141 005e 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\final design\\AMA"
+ 1141      454D505C 
+ 1141      434F4D50 
+ 1141      53595333 
+ 1141      30315F74 
+ 1142 008c 5A494E47 		.ascii	"ZINGfinalBFFPGA\\AMAZINGfinalBFFPGA.cydsn\000"
+ 1142      66696E61 
+ 1142      6C424646 
+ 1142      5047415C 
+ 1142      414D415A 
+ 1143              	.LASF2:
+ 1144 00b5 756E7369 		.ascii	"unsigned char\000"
+ 1144      676E6564 
+ 1144      20636861 
+ 1144      7200
+ 1145              	.LASF42:
+ 1146 00c3 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1146      43313120 
+ 1146      352E342E 
+ 1146      31203230 
+ 1146      31363036 
+ 1147 00f6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1147      20726576 
+ 1147      6973696F 
+ 1147      6E203233 
+ 1147      37373135 
+ 1148 0129 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1148      66756E63 
+ 1148      74696F6E 
+ 1148      2D736563 
+ 1148      74696F6E 
+ 1149              	.LASF19:
+ 1150 0151 795F6D6D 		.ascii	"y_mm\000"
+ 1150      00
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 23
+
+
+ 1151              	.LASF38:
+ 1152 0156 64546865 		.ascii	"dTheta\000"
+ 1152      746100
+ 1153              	.LASF16:
+ 1154 015d 72696768 		.ascii	"right\000"
+ 1154      7400
+ 1155              	.LASF4:
+ 1156 0163 73686F72 		.ascii	"short unsigned int\000"
+ 1156      7420756E 
+ 1156      7369676E 
+ 1156      65642069 
+ 1156      6E7400
+ 1157              	.LASF43:
+ 1158 0176 2E2E5C2E 		.ascii	"..\\..\\..\\..\\..\\maze_localization_starter\\maze"
+ 1158      2E5C2E2E 
+ 1158      5C2E2E5C 
+ 1158      2E2E5C6D 
+ 1158      617A655F 
+ 1159 01a3 5F6C6F63 		.ascii	"_localization_starter\\odometry.c\000"
+ 1159      616C697A 
+ 1159      6174696F 
+ 1159      6E5F7374 
+ 1159      61727465 
+ 1160              	.LASF40:
+ 1161 01c4 636F7366 		.ascii	"cosf\000"
+ 1161      00
+ 1162              	.LASF33:
+ 1163 01c9 646F7562 		.ascii	"double\000"
+ 1163      6C6500
+ 1164              	.LASF23:
+ 1165 01d0 70726576 		.ascii	"previous\000"
+ 1165      696F7573 
+ 1165      00
+ 1166              	.LASF7:
+ 1167 01d9 5F5F7569 		.ascii	"__uint32_t\000"
+ 1167      6E743332 
+ 1167      5F7400
+ 1168              	.LASF35:
+ 1169 01e4 696E6974 		.ascii	"initial\000"
+ 1169      69616C00 
+ 1170              	.LASF8:
+ 1171 01ec 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1171      20756E73 
+ 1171      69676E65 
+ 1171      6420696E 
+ 1171      7400
+ 1172              	.LASF11:
+ 1173 01fe 756E7369 		.ascii	"unsigned int\000"
+ 1173      676E6564 
+ 1173      20696E74 
+ 1173      00
+ 1174              	.LASF34:
+ 1175 020b 73746172 		.ascii	"start\000"
+ 1175      7400
+ 1176              	.LASF28:
+ 1177 0211 72656164 		.ascii	"ready\000"
+ 1177      7900
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 24
+
+
+ 1178              	.LASF10:
+ 1179 0217 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1179      206C6F6E 
+ 1179      6720756E 
+ 1179      7369676E 
+ 1179      65642069 
+ 1180              	.LASF12:
+ 1181 022e 696E7433 		.ascii	"int32_t\000"
+ 1181      325F7400 
+ 1182              	.LASF31:
+ 1183 0236 73697A65 		.ascii	"sizetype\000"
+ 1183      74797065 
+ 1183      00
+ 1184              	.LASF46:
+ 1185 023f 4F646F6D 		.ascii	"Odom_Update\000"
+ 1185      5F557064 
+ 1185      61746500 
+ 1186              	.LASF9:
+ 1187 024b 6C6F6E67 		.ascii	"long long int\000"
+ 1187      206C6F6E 
+ 1187      6720696E 
+ 1187      7400
+ 1188              	.LASF32:
+ 1189 0259 63686172 		.ascii	"char\000"
+ 1189      00
+ 1190              	.LASF45:
+ 1191 025e 4F646F6D 		.ascii	"Odom_Init\000"
+ 1191      5F496E69 
+ 1191      7400
+ 1192              	.LASF3:
+ 1193 0268 73686F72 		.ascii	"short int\000"
+ 1193      7420696E 
+ 1193      7400
+ 1194              	.LASF29:
+ 1195 0272 4F646F6D 		.ascii	"Odometry\000"
+ 1195      65747279 
+ 1195      00
+ 1196              	.LASF20:
+ 1197 027b 74686574 		.ascii	"theta_rad\000"
+ 1197      615F7261 
+ 1197      6400
+ 1198              	.LASF13:
+ 1199 0285 75696E74 		.ascii	"uint32_t\000"
+ 1199      33325F74 
+ 1199      00
+ 1200              	.LASF5:
+ 1201 028e 6C6F6E67 		.ascii	"long int\000"
+ 1201      20696E74 
+ 1201      00
+ 1202              	.LASF21:
+ 1203 0297 506F7365 		.ascii	"Pose2D\000"
+ 1203      324400
+ 1204              	.LASF30:
+ 1205 029e 6C6F6E67 		.ascii	"long double\000"
+ 1205      20646F75 
+ 1205      626C6500 
+ 1206              	.LASF1:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccd5JLPz.s 			page 25
+
+
+ 1207 02aa 7369676E 		.ascii	"signed char\000"
+ 1207      65642063 
+ 1207      68617200 
+ 1208              	.LASF27:
+ 1209 02b6 74726176 		.ascii	"travelledMm\000"
+ 1209      656C6C65 
+ 1209      644D6D00 
+ 1210              	.LASF14:
+ 1211 02c2 5F426F6F 		.ascii	"_Bool\000"
+ 1211      6C00
+ 1212              	.LASF41:
+ 1213 02c8 73696E66 		.ascii	"sinf\000"
+ 1213      00
+ 1214              	.LASF24:
+ 1215 02cd 6C656674 		.ascii	"leftMmPerCount\000"
+ 1215      4D6D5065 
+ 1215      72436F75 
+ 1215      6E7400
+ 1216              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
