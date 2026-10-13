@@ -1,0 +1,1643 @@
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"test_route.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB1:
+  27              		.file 1 "..\\..\\..\\..\\..\\maze_localization_starter\\maze_localization_starter\\test_route.c"
+   1:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c **** #include "astar.h"
+   2:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c **** #include "route_trace.h"
+   3:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c **** #include <assert.h>
+   4:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c **** #include <stdio.h>
+   5:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c **** int main(void) {
+  28              		.loc 1 5 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 1400
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36 0002 ADF5B06D 		sub	sp, sp, #1408
+  37              		.cfi_def_cfa_offset 1416
+   6:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     uint8_t map[MAP_ROWS][MAP_COLS];
+   7:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     Checkpoints cp={0};
+  38              		.loc 1 7 0
+  39 0006 2922     		movs	r2, #41
+  40 0008 0021     		movs	r1, #0
+  41 000a 0DF23440 		addw	r0, sp, #1076
+  42 000e FFF7FEFF 		bl	memset
+  43              	.LVL0:
+   8:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     Route route;
+   9:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     static TraceStep trace[MAX_COMMANDS];
+  10:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     int r,c;
+  11:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     for(r=0;r<MAP_ROWS;r++) for(c=0;c<MAP_COLS;c++) map[r][c]=1;
+  44              		.loc 1 11 0
+  45 0012 0021     		movs	r1, #0
+  46 0014 0EE0     		b	.L2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 2
+
+
+  47              	.LVL1:
+  48              	.L3:
+  49              		.loc 1 11 0 is_stmt 0 discriminator 4
+  50 0016 01EBC103 		add	r3, r1, r1, lsl #3
+  51 001a 01EB4303 		add	r3, r1, r3, lsl #1
+  52 001e 0DF58C60 		add	r0, sp, #1120
+  53 0022 0344     		add	r3, r3, r0
+  54 0024 0120     		movs	r0, #1
+  55 0026 9854     		strb	r0, [r3, r2]
+  56 0028 0244     		add	r2, r2, r0
+  57              	.LVL2:
+  58 002a 00E0     		b	.L4
+  59              	.LVL3:
+  60              	.L10:
+  61 002c 0022     		movs	r2, #0
+  62              	.L4:
+  63              	.LVL4:
+  64              		.loc 1 11 0 discriminator 2
+  65 002e 122A     		cmp	r2, #18
+  66 0030 F1DD     		ble	.L3
+  67              		.loc 1 11 0 discriminator 5
+  68 0032 0131     		adds	r1, r1, #1
+  69              	.LVL5:
+  70              	.L2:
+  71              		.loc 1 11 0 discriminator 6
+  72 0034 0E29     		cmp	r1, #14
+  73 0036 F9DD     		ble	.L10
+  12:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     /* L-shaped example: (3,3)->(1,3)->(1,5). */
+  13:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     map[3][3]=map[2][3]=map[1][3]=map[1][4]=map[1][5]=0;
+  74              		.loc 1 13 0 is_stmt 1
+  75 0038 0022     		movs	r2, #0
+  76 003a 8DF87824 		strb	r2, [sp, #1144]
+  77 003e 8DF87724 		strb	r2, [sp, #1143]
+  78 0042 8DF87624 		strb	r2, [sp, #1142]
+  79 0046 8DF88924 		strb	r2, [sp, #1161]
+  80 004a 8DF89C24 		strb	r2, [sp, #1180]
+  14:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     cp.count=2;
+  81              		.loc 1 14 0
+  82 004e 0223     		movs	r3, #2
+  83 0050 8DF85C34 		strb	r3, [sp, #1116]
+  15:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     cp.points[0].row=3; cp.points[0].col=3;
+  84              		.loc 1 15 0
+  85 0054 0323     		movs	r3, #3
+  86 0056 8DF83434 		strb	r3, [sp, #1076]
+  87 005a 8DF83534 		strb	r3, [sp, #1077]
+  16:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     cp.points[1].row=1; cp.points[1].col=5;
+  88              		.loc 1 16 0
+  89 005e 0123     		movs	r3, #1
+  90 0060 8DF83634 		strb	r3, [sp, #1078]
+  91 0064 0523     		movs	r3, #5
+  92 0066 8DF83734 		strb	r3, [sp, #1079]
+  17:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     assert(AStar_BuildRoute(map,&cp,DIR_UP,&route));
+  93              		.loc 1 17 0
+  94 006a 02AB     		add	r3, sp, #8
+  95 006c 0DF23441 		addw	r1, sp, #1076
+  96              	.LVL6:
+  97 0070 0DF58C60 		add	r0, sp, #1120
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 3
+
+
+  98 0074 FFF7FEFF 		bl	AStar_BuildRoute
+  99              	.LVL7:
+ 100 0078 28B9     		cbnz	r0, .L5
+ 101              		.loc 1 17 0 is_stmt 0 discriminator 1
+ 102 007a 264B     		ldr	r3, .L12
+ 103 007c 264A     		ldr	r2, .L12+4
+ 104 007e 1121     		movs	r1, #17
+ 105 0080 2648     		ldr	r0, .L12+8
+ 106 0082 FFF7FEFF 		bl	__assert_func
+ 107              	.LVL8:
+ 108              	.L5:
+  18:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     assert(RouteTrace_Build(&route,cp.points[0],DIR_UP,map,trace,MAX_COMMANDS));
+ 109              		.loc 1 18 0 is_stmt 1
+ 110 0086 4FF48063 		mov	r3, #1024
+ 111 008a 0193     		str	r3, [sp, #4]
+ 112 008c 244B     		ldr	r3, .L12+12
+ 113 008e 0093     		str	r3, [sp]
+ 114 0090 0DF58C63 		add	r3, sp, #1120
+ 115 0094 0022     		movs	r2, #0
+ 116 0096 DDF83414 		ldr	r1, [sp, #1076]
+ 117 009a 02A8     		add	r0, sp, #8
+ 118 009c FFF7FEFF 		bl	RouteTrace_Build
+ 119              	.LVL9:
+ 120 00a0 28B9     		cbnz	r0, .L6
+ 121              		.loc 1 18 0 is_stmt 0 discriminator 1
+ 122 00a2 204B     		ldr	r3, .L12+16
+ 123 00a4 1C4A     		ldr	r2, .L12+4
+ 124 00a6 1221     		movs	r1, #18
+ 125 00a8 1C48     		ldr	r0, .L12+8
+ 126 00aa FFF7FEFF 		bl	__assert_func
+ 127              	.LVL10:
+ 128              	.L6:
+  19:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     assert(trace[route.length-1].to.row==1);
+ 129              		.loc 1 19 0 is_stmt 1
+ 130 00ae BDF80814 		ldrh	r1, [sp, #1032]
+ 131 00b2 481E     		subs	r0, r1, #1
+ 132 00b4 C0EBC003 		rsb	r3, r0, r0, lsl #3
+ 133 00b8 194A     		ldr	r2, .L12+12
+ 134 00ba 1344     		add	r3, r3, r2
+ 135 00bc 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 136 00be 012A     		cmp	r2, #1
+ 137 00c0 05D0     		beq	.L7
+ 138              		.loc 1 19 0 is_stmt 0 discriminator 1
+ 139 00c2 194B     		ldr	r3, .L12+20
+ 140 00c4 144A     		ldr	r2, .L12+4
+ 141 00c6 1321     		movs	r1, #19
+ 142 00c8 1448     		ldr	r0, .L12+8
+ 143 00ca FFF7FEFF 		bl	__assert_func
+ 144              	.LVL11:
+ 145              	.L7:
+  20:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     assert(trace[route.length-1].to.col==5);
+ 146              		.loc 1 20 0 is_stmt 1
+ 147 00ce C0EBC003 		rsb	r3, r0, r0, lsl #3
+ 148 00d2 134C     		ldr	r4, .L12+12
+ 149 00d4 2344     		add	r3, r3, r4
+ 150 00d6 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 151 00d8 052B     		cmp	r3, #5
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 4
+
+
+ 152 00da 05D0     		beq	.L8
+ 153              		.loc 1 20 0 is_stmt 0 discriminator 1
+ 154 00dc 134B     		ldr	r3, .L12+24
+ 155 00de 0E4A     		ldr	r2, .L12+4
+ 156 00e0 1421     		movs	r1, #20
+ 157 00e2 0E48     		ldr	r0, .L12+8
+ 158 00e4 FFF7FEFF 		bl	__assert_func
+ 159              	.LVL12:
+ 160              	.L8:
+  21:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     assert(trace[route.length-1].headingAfter==DIR_RIGHT);
+ 161              		.loc 1 21 0 is_stmt 1
+ 162 00e8 C0EBC000 		rsb	r0, r0, r0, lsl #3
+ 163 00ec 0C4C     		ldr	r4, .L12+12
+ 164 00ee 2044     		add	r0, r0, r4
+ 165 00f0 4079     		ldrb	r0, [r0, #5]	@ zero_extendqisi2
+ 166 00f2 0128     		cmp	r0, #1
+ 167 00f4 05D0     		beq	.L9
+ 168              		.loc 1 21 0 is_stmt 0 discriminator 1
+ 169 00f6 0E4B     		ldr	r3, .L12+28
+ 170 00f8 074A     		ldr	r2, .L12+4
+ 171 00fa 1521     		movs	r1, #21
+ 172 00fc 0748     		ldr	r0, .L12+8
+ 173 00fe FFF7FEFF 		bl	__assert_func
+ 174              	.LVL13:
+ 175              	.L9:
+  22:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     printf("PASS: %u commands, final=(%u,%u) heading=%d\n",
+ 176              		.loc 1 22 0 is_stmt 1
+ 177 0102 0090     		str	r0, [sp]
+ 178 0104 0B48     		ldr	r0, .L12+32
+ 179 0106 FFF7FEFF 		bl	printf
+ 180              	.LVL14:
+  23:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****            route.length,(unsigned)trace[route.length-1].to.row,
+  24:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****            (unsigned)trace[route.length-1].to.col,
+  25:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****            trace[route.length-1].headingAfter);
+  26:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c ****     return 0;
+  27:..\..\..\..\..\maze_localization_starter\maze_localization_starter/test_route.c **** }
+ 181              		.loc 1 27 0
+ 182 010a 0020     		movs	r0, #0
+ 183 010c 0DF5B06D 		add	sp, sp, #1408
+ 184              		.cfi_def_cfa_offset 8
+ 185              		@ sp needed
+ 186 0110 10BD     		pop	{r4, pc}
+ 187              	.L13:
+ 188 0112 00BF     		.align	2
+ 189              	.L12:
+ 190 0114 00000000 		.word	.LC0
+ 191 0118 00000000 		.word	.LANCHOR0
+ 192 011c 28000000 		.word	.LC1
+ 193 0120 00000000 		.word	.LANCHOR1
+ 194 0124 78000000 		.word	.LC2
+ 195 0128 BC000000 		.word	.LC3
+ 196 012c DC000000 		.word	.LC4
+ 197 0130 FC000000 		.word	.LC5
+ 198 0134 2C010000 		.word	.LC6
+ 199              		.cfi_endproc
+ 200              	.LFE1:
+ 201              		.size	main, .-main
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 5
+
+
+ 202              		.section	.rodata
+ 203              		.align	2
+ 204              		.set	.LANCHOR0,. + 0
+ 205              		.type	__func__.5244, %object
+ 206              		.size	__func__.5244, 5
+ 207              	__func__.5244:
+ 208 0000 6D61696E 		.ascii	"main\000"
+ 208      00
+ 209              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 210              		.align	2
+ 211              	.LC0:
+ 212 0000 41537461 		.ascii	"AStar_BuildRoute(map,&cp,DIR_UP,&route)\000"
+ 212      725F4275 
+ 212      696C6452 
+ 212      6F757465 
+ 212      286D6170 
+ 213              	.LC1:
+ 214 0028 2E2E5C2E 		.ascii	"..\\..\\..\\..\\..\\maze_localization_starter\\maze"
+ 214      2E5C2E2E 
+ 214      5C2E2E5C 
+ 214      2E2E5C6D 
+ 214      617A655F 
+ 215 0055 5F6C6F63 		.ascii	"_localization_starter\\test_route.c\000"
+ 215      616C697A 
+ 215      6174696F 
+ 215      6E5F7374 
+ 215      61727465 
+ 216              	.LC2:
+ 217 0078 526F7574 		.ascii	"RouteTrace_Build(&route,cp.points[0],DIR_UP,map,tra"
+ 217      65547261 
+ 217      63655F42 
+ 217      75696C64 
+ 217      2826726F 
+ 218 00ab 63652C4D 		.ascii	"ce,MAX_COMMANDS)\000"
+ 218      41585F43 
+ 218      4F4D4D41 
+ 218      4E445329 
+ 218      00
+ 219              	.LC3:
+ 220 00bc 74726163 		.ascii	"trace[route.length-1].to.row==1\000"
+ 220      655B726F 
+ 220      7574652E 
+ 220      6C656E67 
+ 220      74682D31 
+ 221              	.LC4:
+ 222 00dc 74726163 		.ascii	"trace[route.length-1].to.col==5\000"
+ 222      655B726F 
+ 222      7574652E 
+ 222      6C656E67 
+ 222      74682D31 
+ 223              	.LC5:
+ 224 00fc 74726163 		.ascii	"trace[route.length-1].headingAfter==DIR_RIGHT\000"
+ 224      655B726F 
+ 224      7574652E 
+ 224      6C656E67 
+ 224      74682D31 
+ 225 012a 0000     		.space	2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 6
+
+
+ 226              	.LC6:
+ 227 012c 50415353 		.ascii	"PASS: %u commands, final=(%u,%u) heading=%d\012\000"
+ 227      3A202575 
+ 227      20636F6D 
+ 227      6D616E64 
+ 227      732C2066 
+ 228              		.bss
+ 229              		.align	2
+ 230              		.set	.LANCHOR1,. + 0
+ 231              		.type	trace.5235, %object
+ 232              		.size	trace.5235, 7168
+ 233              	trace.5235:
+ 234 0000 00000000 		.space	7168
+ 234      00000000 
+ 234      00000000 
+ 234      00000000 
+ 234      00000000 
+ 235              		.text
+ 236              	.Letext0:
+ 237              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 238              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 239              		.file 4 "c:\\temp\\maze_localization_starter\\maze_localization_starter\\astar.h"
+ 240              		.file 5 "c:\\temp\\maze_localization_starter\\maze_localization_starter\\route_trace.h"
+ 241              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 242              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 243              		.section	.debug_info,"",%progbits
+ 244              	.Ldebug_info0:
+ 245 0000 9A040000 		.4byte	0x49a
+ 246 0004 0400     		.2byte	0x4
+ 247 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 248 000a 04       		.byte	0x4
+ 249 000b 01       		.uleb128 0x1
+ 250 000c 99010000 		.4byte	.LASF46
+ 251 0010 0C       		.byte	0xc
+ 252 0011 27020000 		.4byte	.LASF47
+ 253 0015 78000000 		.4byte	.LASF48
+ 254 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 255 001d 00000000 		.4byte	0
+ 256 0021 00000000 		.4byte	.Ldebug_line0
+ 257 0025 02       		.uleb128 0x2
+ 258 0026 01       		.byte	0x1
+ 259 0027 06       		.byte	0x6
+ 260 0028 0F030000 		.4byte	.LASF0
+ 261 002c 03       		.uleb128 0x3
+ 262 002d 00000000 		.4byte	.LASF3
+ 263 0031 02       		.byte	0x2
+ 264 0032 1D       		.byte	0x1d
+ 265 0033 37000000 		.4byte	0x37
+ 266 0037 02       		.uleb128 0x2
+ 267 0038 01       		.byte	0x1
+ 268 0039 08       		.byte	0x8
+ 269 003a CF000000 		.4byte	.LASF1
+ 270 003e 02       		.uleb128 0x2
+ 271 003f 02       		.byte	0x2
+ 272 0040 05       		.byte	0x5
+ 273 0041 A6020000 		.4byte	.LASF2
+ 274 0045 03       		.uleb128 0x3
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 7
+
+
+ 275 0046 35010000 		.4byte	.LASF4
+ 276 004a 02       		.byte	0x2
+ 277 004b 2B       		.byte	0x2b
+ 278 004c 50000000 		.4byte	0x50
+ 279 0050 02       		.uleb128 0x2
+ 280 0051 02       		.byte	0x2
+ 281 0052 07       		.byte	0x7
+ 282 0053 FF000000 		.4byte	.LASF5
+ 283 0057 02       		.uleb128 0x2
+ 284 0058 04       		.byte	0x4
+ 285 0059 05       		.byte	0x5
+ 286 005a DF020000 		.4byte	.LASF6
+ 287 005e 02       		.uleb128 0x2
+ 288 005f 04       		.byte	0x4
+ 289 0060 07       		.byte	0x7
+ 290 0061 ED000000 		.4byte	.LASF7
+ 291 0065 02       		.uleb128 0x2
+ 292 0066 08       		.byte	0x8
+ 293 0067 05       		.byte	0x5
+ 294 0068 86020000 		.4byte	.LASF8
+ 295 006c 02       		.uleb128 0x2
+ 296 006d 08       		.byte	0x8
+ 297 006e 07       		.byte	0x7
+ 298 006f 6C010000 		.4byte	.LASF9
+ 299 0073 04       		.uleb128 0x4
+ 300 0074 04       		.byte	0x4
+ 301 0075 05       		.byte	0x5
+ 302 0076 696E7400 		.ascii	"int\000"
+ 303 007a 02       		.uleb128 0x2
+ 304 007b 04       		.byte	0x4
+ 305 007c 07       		.byte	0x7
+ 306 007d 62000000 		.4byte	.LASF10
+ 307 0081 03       		.uleb128 0x3
+ 308 0082 83010000 		.4byte	.LASF11
+ 309 0086 03       		.byte	0x3
+ 310 0087 18       		.byte	0x18
+ 311 0088 2C000000 		.4byte	0x2c
+ 312 008c 03       		.uleb128 0x3
+ 313 008d BD020000 		.4byte	.LASF12
+ 314 0091 03       		.byte	0x3
+ 315 0092 24       		.byte	0x24
+ 316 0093 45000000 		.4byte	0x45
+ 317 0097 05       		.uleb128 0x5
+ 318 0098 02       		.byte	0x2
+ 319 0099 04       		.byte	0x4
+ 320 009a 0A       		.byte	0xa
+ 321 009b B8000000 		.4byte	0xb8
+ 322 009f 06       		.uleb128 0x6
+ 323 00a0 726F7700 		.ascii	"row\000"
+ 324 00a4 04       		.byte	0x4
+ 325 00a5 0A       		.byte	0xa
+ 326 00a6 81000000 		.4byte	0x81
+ 327 00aa 00       		.byte	0
+ 328 00ab 06       		.uleb128 0x6
+ 329 00ac 636F6C00 		.ascii	"col\000"
+ 330 00b0 04       		.byte	0x4
+ 331 00b1 0A       		.byte	0xa
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 8
+
+
+ 332 00b2 81000000 		.4byte	0x81
+ 333 00b6 01       		.byte	0x1
+ 334 00b7 00       		.byte	0
+ 335 00b8 03       		.uleb128 0x3
+ 336 00b9 63010000 		.4byte	.LASF13
+ 337 00bd 04       		.byte	0x4
+ 338 00be 0A       		.byte	0xa
+ 339 00bf 97000000 		.4byte	0x97
+ 340 00c3 07       		.uleb128 0x7
+ 341 00c4 01       		.byte	0x1
+ 342 00c5 37000000 		.4byte	0x37
+ 343 00c9 04       		.byte	0x4
+ 344 00ca 0B       		.byte	0xb
+ 345 00cb E8000000 		.4byte	0xe8
+ 346 00cf 08       		.uleb128 0x8
+ 347 00d0 53010000 		.4byte	.LASF14
+ 348 00d4 00       		.byte	0
+ 349 00d5 08       		.uleb128 0x8
+ 350 00d6 24010000 		.4byte	.LASF15
+ 351 00da 01       		.byte	0x1
+ 352 00db 08       		.uleb128 0x8
+ 353 00dc 5A010000 		.4byte	.LASF16
+ 354 00e0 02       		.byte	0x2
+ 355 00e1 08       		.uleb128 0x8
+ 356 00e2 E8020000 		.4byte	.LASF17
+ 357 00e6 03       		.byte	0x3
+ 358 00e7 00       		.byte	0
+ 359 00e8 03       		.uleb128 0x3
+ 360 00e9 D5020000 		.4byte	.LASF18
+ 361 00ed 04       		.byte	0x4
+ 362 00ee 0B       		.byte	0xb
+ 363 00ef C3000000 		.4byte	0xc3
+ 364 00f3 07       		.uleb128 0x7
+ 365 00f4 01       		.byte	0x1
+ 366 00f5 37000000 		.4byte	0x37
+ 367 00f9 04       		.byte	0x4
+ 368 00fa 0C       		.byte	0xc
+ 369 00fb 12010000 		.4byte	0x112
+ 370 00ff 08       		.uleb128 0x8
+ 371 0100 1F000000 		.4byte	.LASF19
+ 372 0104 00       		.byte	0
+ 373 0105 08       		.uleb128 0x8
+ 374 0106 37030000 		.4byte	.LASF20
+ 375 010a 01       		.byte	0x1
+ 376 010b 08       		.uleb128 0x8
+ 377 010c 1A010000 		.4byte	.LASF21
+ 378 0110 02       		.byte	0x2
+ 379 0111 00       		.byte	0
+ 380 0112 03       		.uleb128 0x3
+ 381 0113 12010000 		.4byte	.LASF22
+ 382 0117 04       		.byte	0x4
+ 383 0118 0C       		.byte	0xc
+ 384 0119 F3000000 		.4byte	0xf3
+ 385 011d 05       		.uleb128 0x5
+ 386 011e 29       		.byte	0x29
+ 387 011f 04       		.byte	0x4
+ 388 0120 0D       		.byte	0xd
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 9
+
+
+ 389 0121 3E010000 		.4byte	0x13e
+ 390 0125 09       		.uleb128 0x9
+ 391 0126 53000000 		.4byte	.LASF23
+ 392 012a 04       		.byte	0x4
+ 393 012b 0D       		.byte	0xd
+ 394 012c 3E010000 		.4byte	0x13e
+ 395 0130 00       		.byte	0
+ 396 0131 09       		.uleb128 0x9
+ 397 0132 4D000000 		.4byte	.LASF24
+ 398 0136 04       		.byte	0x4
+ 399 0137 0D       		.byte	0xd
+ 400 0138 81000000 		.4byte	0x81
+ 401 013c 28       		.byte	0x28
+ 402 013d 00       		.byte	0
+ 403 013e 0A       		.uleb128 0xa
+ 404 013f B8000000 		.4byte	0xb8
+ 405 0143 4E010000 		.4byte	0x14e
+ 406 0147 0B       		.uleb128 0xb
+ 407 0148 4E010000 		.4byte	0x14e
+ 408 014c 13       		.byte	0x13
+ 409 014d 00       		.byte	0
+ 410 014e 02       		.uleb128 0x2
+ 411 014f 04       		.byte	0x4
+ 412 0150 07       		.byte	0x7
+ 413 0151 7D020000 		.4byte	.LASF25
+ 414 0155 03       		.uleb128 0x3
+ 415 0156 1B030000 		.4byte	.LASF26
+ 416 015a 04       		.byte	0x4
+ 417 015b 0D       		.byte	0xd
+ 418 015c 1D010000 		.4byte	0x11d
+ 419 0160 0C       		.uleb128 0xc
+ 420 0161 2C04     		.2byte	0x42c
+ 421 0163 04       		.byte	0x4
+ 422 0164 0E       		.byte	0xe
+ 423 0165 AA010000 		.4byte	0x1aa
+ 424 0169 09       		.uleb128 0x9
+ 425 016a 27030000 		.4byte	.LASF27
+ 426 016e 04       		.byte	0x4
+ 427 016f 0F       		.byte	0xf
+ 428 0170 AA010000 		.4byte	0x1aa
+ 429 0174 00       		.byte	0
+ 430 0175 0D       		.uleb128 0xd
+ 431 0176 30030000 		.4byte	.LASF28
+ 432 017a 04       		.byte	0x4
+ 433 017b 10       		.byte	0x10
+ 434 017c 8C000000 		.4byte	0x8c
+ 435 0180 0004     		.2byte	0x400
+ 436 0182 0D       		.uleb128 0xd
+ 437 0183 F1020000 		.4byte	.LASF29
+ 438 0187 04       		.byte	0x4
+ 439 0188 11       		.byte	0x11
+ 440 0189 BB010000 		.4byte	0x1bb
+ 441 018d 0204     		.2byte	0x402
+ 442 018f 0D       		.uleb128 0xd
+ 443 0190 0F000000 		.4byte	.LASF30
+ 444 0194 04       		.byte	0x4
+ 445 0195 12       		.byte	0x12
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 10
+
+
+ 446 0196 81000000 		.4byte	0x81
+ 447 019a 2A04     		.2byte	0x42a
+ 448 019c 0D       		.uleb128 0xd
+ 449 019d C6020000 		.4byte	.LASF31
+ 450 01a1 04       		.byte	0x4
+ 451 01a2 13       		.byte	0x13
+ 452 01a3 E8000000 		.4byte	0xe8
+ 453 01a7 2B04     		.2byte	0x42b
+ 454 01a9 00       		.byte	0
+ 455 01aa 0A       		.uleb128 0xa
+ 456 01ab 12010000 		.4byte	0x112
+ 457 01af BB010000 		.4byte	0x1bb
+ 458 01b3 0E       		.uleb128 0xe
+ 459 01b4 4E010000 		.4byte	0x14e
+ 460 01b8 FF03     		.2byte	0x3ff
+ 461 01ba 00       		.byte	0
+ 462 01bb 0A       		.uleb128 0xa
+ 463 01bc 8C000000 		.4byte	0x8c
+ 464 01c0 CB010000 		.4byte	0x1cb
+ 465 01c4 0B       		.uleb128 0xb
+ 466 01c5 4E010000 		.4byte	0x14e
+ 467 01c9 13       		.byte	0x13
+ 468 01ca 00       		.byte	0
+ 469 01cb 03       		.uleb128 0x3
+ 470 01cc E7000000 		.4byte	.LASF32
+ 471 01d0 04       		.byte	0x4
+ 472 01d1 14       		.byte	0x14
+ 473 01d2 60010000 		.4byte	0x160
+ 474 01d6 05       		.uleb128 0x5
+ 475 01d7 07       		.byte	0x7
+ 476 01d8 05       		.byte	0x5
+ 477 01d9 04       		.byte	0x4
+ 478 01da 1A020000 		.4byte	0x21a
+ 479 01de 09       		.uleb128 0x9
+ 480 01df 0A000000 		.4byte	.LASF33
+ 481 01e3 05       		.byte	0x5
+ 482 01e4 05       		.byte	0x5
+ 483 01e5 B8000000 		.4byte	0xb8
+ 484 01e9 00       		.byte	0
+ 485 01ea 06       		.uleb128 0x6
+ 486 01eb 746F00   		.ascii	"to\000"
+ 487 01ee 05       		.byte	0x5
+ 488 01ef 06       		.byte	0x6
+ 489 01f0 B8000000 		.4byte	0xb8
+ 490 01f4 02       		.byte	0x2
+ 491 01f5 09       		.uleb128 0x9
+ 492 01f6 8B010000 		.4byte	.LASF34
+ 493 01fa 05       		.byte	0x5
+ 494 01fb 07       		.byte	0x7
+ 495 01fc E8000000 		.4byte	0xe8
+ 496 0200 04       		.byte	0x4
+ 497 0201 09       		.uleb128 0x9
+ 498 0202 B0020000 		.4byte	.LASF35
+ 499 0206 05       		.byte	0x5
+ 500 0207 08       		.byte	0x8
+ 501 0208 E8000000 		.4byte	0xe8
+ 502 020c 05       		.byte	0x5
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 11
+
+
+ 503 020d 09       		.uleb128 0x9
+ 504 020e 5A000000 		.4byte	.LASF36
+ 505 0212 05       		.byte	0x5
+ 506 0213 09       		.byte	0x9
+ 507 0214 12010000 		.4byte	0x112
+ 508 0218 06       		.byte	0x6
+ 509 0219 00       		.byte	0
+ 510 021a 03       		.uleb128 0x3
+ 511 021b DD000000 		.4byte	.LASF37
+ 512 021f 05       		.byte	0x5
+ 513 0220 0A       		.byte	0xa
+ 514 0221 D6010000 		.4byte	0x1d6
+ 515 0225 02       		.uleb128 0x2
+ 516 0226 08       		.byte	0x8
+ 517 0227 04       		.byte	0x4
+ 518 0228 03030000 		.4byte	.LASF38
+ 519 022c 02       		.uleb128 0x2
+ 520 022d 01       		.byte	0x1
+ 521 022e 08       		.byte	0x8
+ 522 022f 9A020000 		.4byte	.LASF39
+ 523 0233 0F       		.uleb128 0xf
+ 524 0234 2C020000 		.4byte	0x22c
+ 525 0238 10       		.uleb128 0x10
+ 526 0239 40010000 		.4byte	.LASF49
+ 527 023d 01       		.byte	0x1
+ 528 023e 05       		.byte	0x5
+ 529 023f 73000000 		.4byte	0x73
+ 530 0243 00000000 		.4byte	.LFB1
+ 531 0247 38010000 		.4byte	.LFE1-.LFB1
+ 532 024b 01       		.uleb128 0x1
+ 533 024c 9C       		.byte	0x9c
+ 534 024d 2C040000 		.4byte	0x42c
+ 535 0251 11       		.uleb128 0x11
+ 536 0252 6D617000 		.ascii	"map\000"
+ 537 0256 01       		.byte	0x1
+ 538 0257 06       		.byte	0x6
+ 539 0258 2C040000 		.4byte	0x42c
+ 540 025c 03       		.uleb128 0x3
+ 541 025d 91       		.byte	0x91
+ 542 025e D87D     		.sleb128 -296
+ 543 0260 11       		.uleb128 0x11
+ 544 0261 637000   		.ascii	"cp\000"
+ 545 0264 01       		.byte	0x1
+ 546 0265 07       		.byte	0x7
+ 547 0266 55010000 		.4byte	0x155
+ 548 026a 03       		.uleb128 0x3
+ 549 026b 91       		.byte	0x91
+ 550 026c AC7D     		.sleb128 -340
+ 551 026e 12       		.uleb128 0x12
+ 552 026f 77020000 		.4byte	.LASF40
+ 553 0273 01       		.byte	0x1
+ 554 0274 08       		.byte	0x8
+ 555 0275 CB010000 		.4byte	0x1cb
+ 556 0279 03       		.uleb128 0x3
+ 557 027a 91       		.byte	0x91
+ 558 027b 8075     		.sleb128 -1408
+ 559 027d 12       		.uleb128 0x12
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 12
+
+
+ 560 027e 94020000 		.4byte	.LASF41
+ 561 0282 01       		.byte	0x1
+ 562 0283 09       		.byte	0x9
+ 563 0284 42040000 		.4byte	0x442
+ 564 0288 05       		.uleb128 0x5
+ 565 0289 03       		.byte	0x3
+ 566 028a 00000000 		.4byte	trace.5235
+ 567 028e 13       		.uleb128 0x13
+ 568 028f 7200     		.ascii	"r\000"
+ 569 0291 01       		.byte	0x1
+ 570 0292 0A       		.byte	0xa
+ 571 0293 73000000 		.4byte	0x73
+ 572 0297 00000000 		.4byte	.LLST0
+ 573 029b 13       		.uleb128 0x13
+ 574 029c 6300     		.ascii	"c\000"
+ 575 029e 01       		.byte	0x1
+ 576 029f 0A       		.byte	0xa
+ 577 02a0 73000000 		.4byte	0x73
+ 578 02a4 1F000000 		.4byte	.LLST1
+ 579 02a8 14       		.uleb128 0x14
+ 580 02a9 6F000000 		.4byte	.LASF50
+ 581 02ad 63040000 		.4byte	0x463
+ 582 02b1 05       		.uleb128 0x5
+ 583 02b2 03       		.byte	0x3
+ 584 02b3 00000000 		.4byte	__func__.5244
+ 585 02b7 15       		.uleb128 0x15
+ 586 02b8 12000000 		.4byte	.LVL0
+ 587 02bc 68040000 		.4byte	0x468
+ 588 02c0 D7020000 		.4byte	0x2d7
+ 589 02c4 16       		.uleb128 0x16
+ 590 02c5 01       		.uleb128 0x1
+ 591 02c6 50       		.byte	0x50
+ 592 02c7 03       		.uleb128 0x3
+ 593 02c8 91       		.byte	0x91
+ 594 02c9 AC7D     		.sleb128 -340
+ 595 02cb 16       		.uleb128 0x16
+ 596 02cc 01       		.uleb128 0x1
+ 597 02cd 51       		.byte	0x51
+ 598 02ce 01       		.uleb128 0x1
+ 599 02cf 30       		.byte	0x30
+ 600 02d0 16       		.uleb128 0x16
+ 601 02d1 01       		.uleb128 0x1
+ 602 02d2 52       		.byte	0x52
+ 603 02d3 02       		.uleb128 0x2
+ 604 02d4 08       		.byte	0x8
+ 605 02d5 29       		.byte	0x29
+ 606 02d6 00       		.byte	0
+ 607 02d7 15       		.uleb128 0x15
+ 608 02d8 78000000 		.4byte	.LVL7
+ 609 02dc 71040000 		.4byte	0x471
+ 610 02e0 FF020000 		.4byte	0x2ff
+ 611 02e4 16       		.uleb128 0x16
+ 612 02e5 01       		.uleb128 0x1
+ 613 02e6 50       		.byte	0x50
+ 614 02e7 03       		.uleb128 0x3
+ 615 02e8 91       		.byte	0x91
+ 616 02e9 D87D     		.sleb128 -296
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 13
+
+
+ 617 02eb 16       		.uleb128 0x16
+ 618 02ec 01       		.uleb128 0x1
+ 619 02ed 51       		.byte	0x51
+ 620 02ee 03       		.uleb128 0x3
+ 621 02ef 91       		.byte	0x91
+ 622 02f0 AC7D     		.sleb128 -340
+ 623 02f2 16       		.uleb128 0x16
+ 624 02f3 01       		.uleb128 0x1
+ 625 02f4 52       		.byte	0x52
+ 626 02f5 01       		.uleb128 0x1
+ 627 02f6 30       		.byte	0x30
+ 628 02f7 16       		.uleb128 0x16
+ 629 02f8 01       		.uleb128 0x1
+ 630 02f9 53       		.byte	0x53
+ 631 02fa 03       		.uleb128 0x3
+ 632 02fb 91       		.byte	0x91
+ 633 02fc 8075     		.sleb128 -1408
+ 634 02fe 00       		.byte	0
+ 635 02ff 15       		.uleb128 0x15
+ 636 0300 86000000 		.4byte	.LVL8
+ 637 0304 7C040000 		.4byte	0x47c
+ 638 0308 2D030000 		.4byte	0x32d
+ 639 030c 16       		.uleb128 0x16
+ 640 030d 01       		.uleb128 0x1
+ 641 030e 50       		.byte	0x50
+ 642 030f 05       		.uleb128 0x5
+ 643 0310 03       		.byte	0x3
+ 644 0311 28000000 		.4byte	.LC1
+ 645 0315 16       		.uleb128 0x16
+ 646 0316 01       		.uleb128 0x1
+ 647 0317 51       		.byte	0x51
+ 648 0318 01       		.uleb128 0x1
+ 649 0319 41       		.byte	0x41
+ 650 031a 16       		.uleb128 0x16
+ 651 031b 01       		.uleb128 0x1
+ 652 031c 52       		.byte	0x52
+ 653 031d 05       		.uleb128 0x5
+ 654 031e 03       		.byte	0x3
+ 655 031f 00000000 		.4byte	.LANCHOR0
+ 656 0323 16       		.uleb128 0x16
+ 657 0324 01       		.uleb128 0x1
+ 658 0325 53       		.byte	0x53
+ 659 0326 05       		.uleb128 0x5
+ 660 0327 03       		.byte	0x3
+ 661 0328 00000000 		.4byte	.LC0
+ 662 032c 00       		.byte	0
+ 663 032d 15       		.uleb128 0x15
+ 664 032e A0000000 		.4byte	.LVL9
+ 665 0332 87040000 		.4byte	0x487
+ 666 0336 60030000 		.4byte	0x360
+ 667 033a 16       		.uleb128 0x16
+ 668 033b 01       		.uleb128 0x1
+ 669 033c 50       		.byte	0x50
+ 670 033d 03       		.uleb128 0x3
+ 671 033e 91       		.byte	0x91
+ 672 033f 8075     		.sleb128 -1408
+ 673 0341 16       		.uleb128 0x16
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 14
+
+
+ 674 0342 01       		.uleb128 0x1
+ 675 0343 52       		.byte	0x52
+ 676 0344 01       		.uleb128 0x1
+ 677 0345 30       		.byte	0x30
+ 678 0346 16       		.uleb128 0x16
+ 679 0347 01       		.uleb128 0x1
+ 680 0348 53       		.byte	0x53
+ 681 0349 03       		.uleb128 0x3
+ 682 034a 91       		.byte	0x91
+ 683 034b D87D     		.sleb128 -296
+ 684 034d 16       		.uleb128 0x16
+ 685 034e 02       		.uleb128 0x2
+ 686 034f 7D       		.byte	0x7d
+ 687 0350 00       		.sleb128 0
+ 688 0351 05       		.uleb128 0x5
+ 689 0352 03       		.byte	0x3
+ 690 0353 00000000 		.4byte	.LANCHOR1
+ 691 0357 16       		.uleb128 0x16
+ 692 0358 02       		.uleb128 0x2
+ 693 0359 7D       		.byte	0x7d
+ 694 035a 04       		.sleb128 4
+ 695 035b 03       		.uleb128 0x3
+ 696 035c 0A       		.byte	0xa
+ 697 035d 0004     		.2byte	0x400
+ 698 035f 00       		.byte	0
+ 699 0360 15       		.uleb128 0x15
+ 700 0361 AE000000 		.4byte	.LVL10
+ 701 0365 7C040000 		.4byte	0x47c
+ 702 0369 8E030000 		.4byte	0x38e
+ 703 036d 16       		.uleb128 0x16
+ 704 036e 01       		.uleb128 0x1
+ 705 036f 50       		.byte	0x50
+ 706 0370 05       		.uleb128 0x5
+ 707 0371 03       		.byte	0x3
+ 708 0372 28000000 		.4byte	.LC1
+ 709 0376 16       		.uleb128 0x16
+ 710 0377 01       		.uleb128 0x1
+ 711 0378 51       		.byte	0x51
+ 712 0379 01       		.uleb128 0x1
+ 713 037a 42       		.byte	0x42
+ 714 037b 16       		.uleb128 0x16
+ 715 037c 01       		.uleb128 0x1
+ 716 037d 52       		.byte	0x52
+ 717 037e 05       		.uleb128 0x5
+ 718 037f 03       		.byte	0x3
+ 719 0380 00000000 		.4byte	.LANCHOR0
+ 720 0384 16       		.uleb128 0x16
+ 721 0385 01       		.uleb128 0x1
+ 722 0386 53       		.byte	0x53
+ 723 0387 05       		.uleb128 0x5
+ 724 0388 03       		.byte	0x3
+ 725 0389 78000000 		.4byte	.LC2
+ 726 038d 00       		.byte	0
+ 727 038e 15       		.uleb128 0x15
+ 728 038f CE000000 		.4byte	.LVL11
+ 729 0393 7C040000 		.4byte	0x47c
+ 730 0397 BC030000 		.4byte	0x3bc
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 15
+
+
+ 731 039b 16       		.uleb128 0x16
+ 732 039c 01       		.uleb128 0x1
+ 733 039d 50       		.byte	0x50
+ 734 039e 05       		.uleb128 0x5
+ 735 039f 03       		.byte	0x3
+ 736 03a0 28000000 		.4byte	.LC1
+ 737 03a4 16       		.uleb128 0x16
+ 738 03a5 01       		.uleb128 0x1
+ 739 03a6 51       		.byte	0x51
+ 740 03a7 01       		.uleb128 0x1
+ 741 03a8 43       		.byte	0x43
+ 742 03a9 16       		.uleb128 0x16
+ 743 03aa 01       		.uleb128 0x1
+ 744 03ab 52       		.byte	0x52
+ 745 03ac 05       		.uleb128 0x5
+ 746 03ad 03       		.byte	0x3
+ 747 03ae 00000000 		.4byte	.LANCHOR0
+ 748 03b2 16       		.uleb128 0x16
+ 749 03b3 01       		.uleb128 0x1
+ 750 03b4 53       		.byte	0x53
+ 751 03b5 05       		.uleb128 0x5
+ 752 03b6 03       		.byte	0x3
+ 753 03b7 BC000000 		.4byte	.LC3
+ 754 03bb 00       		.byte	0
+ 755 03bc 15       		.uleb128 0x15
+ 756 03bd E8000000 		.4byte	.LVL12
+ 757 03c1 7C040000 		.4byte	0x47c
+ 758 03c5 EA030000 		.4byte	0x3ea
+ 759 03c9 16       		.uleb128 0x16
+ 760 03ca 01       		.uleb128 0x1
+ 761 03cb 50       		.byte	0x50
+ 762 03cc 05       		.uleb128 0x5
+ 763 03cd 03       		.byte	0x3
+ 764 03ce 28000000 		.4byte	.LC1
+ 765 03d2 16       		.uleb128 0x16
+ 766 03d3 01       		.uleb128 0x1
+ 767 03d4 51       		.byte	0x51
+ 768 03d5 01       		.uleb128 0x1
+ 769 03d6 44       		.byte	0x44
+ 770 03d7 16       		.uleb128 0x16
+ 771 03d8 01       		.uleb128 0x1
+ 772 03d9 52       		.byte	0x52
+ 773 03da 05       		.uleb128 0x5
+ 774 03db 03       		.byte	0x3
+ 775 03dc 00000000 		.4byte	.LANCHOR0
+ 776 03e0 16       		.uleb128 0x16
+ 777 03e1 01       		.uleb128 0x1
+ 778 03e2 53       		.byte	0x53
+ 779 03e3 05       		.uleb128 0x5
+ 780 03e4 03       		.byte	0x3
+ 781 03e5 DC000000 		.4byte	.LC4
+ 782 03e9 00       		.byte	0
+ 783 03ea 15       		.uleb128 0x15
+ 784 03eb 02010000 		.4byte	.LVL13
+ 785 03ef 7C040000 		.4byte	0x47c
+ 786 03f3 18040000 		.4byte	0x418
+ 787 03f7 16       		.uleb128 0x16
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 16
+
+
+ 788 03f8 01       		.uleb128 0x1
+ 789 03f9 50       		.byte	0x50
+ 790 03fa 05       		.uleb128 0x5
+ 791 03fb 03       		.byte	0x3
+ 792 03fc 28000000 		.4byte	.LC1
+ 793 0400 16       		.uleb128 0x16
+ 794 0401 01       		.uleb128 0x1
+ 795 0402 51       		.byte	0x51
+ 796 0403 01       		.uleb128 0x1
+ 797 0404 45       		.byte	0x45
+ 798 0405 16       		.uleb128 0x16
+ 799 0406 01       		.uleb128 0x1
+ 800 0407 52       		.byte	0x52
+ 801 0408 05       		.uleb128 0x5
+ 802 0409 03       		.byte	0x3
+ 803 040a 00000000 		.4byte	.LANCHOR0
+ 804 040e 16       		.uleb128 0x16
+ 805 040f 01       		.uleb128 0x1
+ 806 0410 53       		.byte	0x53
+ 807 0411 05       		.uleb128 0x5
+ 808 0412 03       		.byte	0x3
+ 809 0413 FC000000 		.4byte	.LC5
+ 810 0417 00       		.byte	0
+ 811 0418 17       		.uleb128 0x17
+ 812 0419 0A010000 		.4byte	.LVL14
+ 813 041d 92040000 		.4byte	0x492
+ 814 0421 16       		.uleb128 0x16
+ 815 0422 01       		.uleb128 0x1
+ 816 0423 50       		.byte	0x50
+ 817 0424 05       		.uleb128 0x5
+ 818 0425 03       		.byte	0x3
+ 819 0426 2C010000 		.4byte	.LC6
+ 820 042a 00       		.byte	0
+ 821 042b 00       		.byte	0
+ 822 042c 0A       		.uleb128 0xa
+ 823 042d 81000000 		.4byte	0x81
+ 824 0431 42040000 		.4byte	0x442
+ 825 0435 0B       		.uleb128 0xb
+ 826 0436 4E010000 		.4byte	0x14e
+ 827 043a 0E       		.byte	0xe
+ 828 043b 0B       		.uleb128 0xb
+ 829 043c 4E010000 		.4byte	0x14e
+ 830 0440 12       		.byte	0x12
+ 831 0441 00       		.byte	0
+ 832 0442 0A       		.uleb128 0xa
+ 833 0443 1A020000 		.4byte	0x21a
+ 834 0447 53040000 		.4byte	0x453
+ 835 044b 0E       		.uleb128 0xe
+ 836 044c 4E010000 		.4byte	0x14e
+ 837 0450 FF03     		.2byte	0x3ff
+ 838 0452 00       		.byte	0
+ 839 0453 0A       		.uleb128 0xa
+ 840 0454 33020000 		.4byte	0x233
+ 841 0458 63040000 		.4byte	0x463
+ 842 045c 0B       		.uleb128 0xb
+ 843 045d 4E010000 		.4byte	0x14e
+ 844 0461 04       		.byte	0x4
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 17
+
+
+ 845 0462 00       		.byte	0
+ 846 0463 0F       		.uleb128 0xf
+ 847 0464 53040000 		.4byte	0x453
+ 848 0468 18       		.uleb128 0x18
+ 849 0469 2E010000 		.4byte	.LASF51
+ 850 046d 2E010000 		.4byte	.LASF51
+ 851 0471 19       		.uleb128 0x19
+ 852 0472 3C000000 		.4byte	.LASF42
+ 853 0476 3C000000 		.4byte	.LASF42
+ 854 047a 04       		.byte	0x4
+ 855 047b 15       		.byte	0x15
+ 856 047c 19       		.uleb128 0x19
+ 857 047d 45010000 		.4byte	.LASF43
+ 858 0481 45010000 		.4byte	.LASF43
+ 859 0485 06       		.byte	0x6
+ 860 0486 29       		.byte	0x29
+ 861 0487 19       		.uleb128 0x19
+ 862 0488 2B000000 		.4byte	.LASF44
+ 863 048c 2B000000 		.4byte	.LASF44
+ 864 0490 05       		.byte	0x5
+ 865 0491 0C       		.byte	0xc
+ 866 0492 19       		.uleb128 0x19
+ 867 0493 9F020000 		.4byte	.LASF45
+ 868 0497 9F020000 		.4byte	.LASF45
+ 869 049b 07       		.byte	0x7
+ 870 049c BB       		.byte	0xbb
+ 871 049d 00       		.byte	0
+ 872              		.section	.debug_abbrev,"",%progbits
+ 873              	.Ldebug_abbrev0:
+ 874 0000 01       		.uleb128 0x1
+ 875 0001 11       		.uleb128 0x11
+ 876 0002 01       		.byte	0x1
+ 877 0003 25       		.uleb128 0x25
+ 878 0004 0E       		.uleb128 0xe
+ 879 0005 13       		.uleb128 0x13
+ 880 0006 0B       		.uleb128 0xb
+ 881 0007 03       		.uleb128 0x3
+ 882 0008 0E       		.uleb128 0xe
+ 883 0009 1B       		.uleb128 0x1b
+ 884 000a 0E       		.uleb128 0xe
+ 885 000b 55       		.uleb128 0x55
+ 886 000c 17       		.uleb128 0x17
+ 887 000d 11       		.uleb128 0x11
+ 888 000e 01       		.uleb128 0x1
+ 889 000f 10       		.uleb128 0x10
+ 890 0010 17       		.uleb128 0x17
+ 891 0011 00       		.byte	0
+ 892 0012 00       		.byte	0
+ 893 0013 02       		.uleb128 0x2
+ 894 0014 24       		.uleb128 0x24
+ 895 0015 00       		.byte	0
+ 896 0016 0B       		.uleb128 0xb
+ 897 0017 0B       		.uleb128 0xb
+ 898 0018 3E       		.uleb128 0x3e
+ 899 0019 0B       		.uleb128 0xb
+ 900 001a 03       		.uleb128 0x3
+ 901 001b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 18
+
+
+ 902 001c 00       		.byte	0
+ 903 001d 00       		.byte	0
+ 904 001e 03       		.uleb128 0x3
+ 905 001f 16       		.uleb128 0x16
+ 906 0020 00       		.byte	0
+ 907 0021 03       		.uleb128 0x3
+ 908 0022 0E       		.uleb128 0xe
+ 909 0023 3A       		.uleb128 0x3a
+ 910 0024 0B       		.uleb128 0xb
+ 911 0025 3B       		.uleb128 0x3b
+ 912 0026 0B       		.uleb128 0xb
+ 913 0027 49       		.uleb128 0x49
+ 914 0028 13       		.uleb128 0x13
+ 915 0029 00       		.byte	0
+ 916 002a 00       		.byte	0
+ 917 002b 04       		.uleb128 0x4
+ 918 002c 24       		.uleb128 0x24
+ 919 002d 00       		.byte	0
+ 920 002e 0B       		.uleb128 0xb
+ 921 002f 0B       		.uleb128 0xb
+ 922 0030 3E       		.uleb128 0x3e
+ 923 0031 0B       		.uleb128 0xb
+ 924 0032 03       		.uleb128 0x3
+ 925 0033 08       		.uleb128 0x8
+ 926 0034 00       		.byte	0
+ 927 0035 00       		.byte	0
+ 928 0036 05       		.uleb128 0x5
+ 929 0037 13       		.uleb128 0x13
+ 930 0038 01       		.byte	0x1
+ 931 0039 0B       		.uleb128 0xb
+ 932 003a 0B       		.uleb128 0xb
+ 933 003b 3A       		.uleb128 0x3a
+ 934 003c 0B       		.uleb128 0xb
+ 935 003d 3B       		.uleb128 0x3b
+ 936 003e 0B       		.uleb128 0xb
+ 937 003f 01       		.uleb128 0x1
+ 938 0040 13       		.uleb128 0x13
+ 939 0041 00       		.byte	0
+ 940 0042 00       		.byte	0
+ 941 0043 06       		.uleb128 0x6
+ 942 0044 0D       		.uleb128 0xd
+ 943 0045 00       		.byte	0
+ 944 0046 03       		.uleb128 0x3
+ 945 0047 08       		.uleb128 0x8
+ 946 0048 3A       		.uleb128 0x3a
+ 947 0049 0B       		.uleb128 0xb
+ 948 004a 3B       		.uleb128 0x3b
+ 949 004b 0B       		.uleb128 0xb
+ 950 004c 49       		.uleb128 0x49
+ 951 004d 13       		.uleb128 0x13
+ 952 004e 38       		.uleb128 0x38
+ 953 004f 0B       		.uleb128 0xb
+ 954 0050 00       		.byte	0
+ 955 0051 00       		.byte	0
+ 956 0052 07       		.uleb128 0x7
+ 957 0053 04       		.uleb128 0x4
+ 958 0054 01       		.byte	0x1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 19
+
+
+ 959 0055 0B       		.uleb128 0xb
+ 960 0056 0B       		.uleb128 0xb
+ 961 0057 49       		.uleb128 0x49
+ 962 0058 13       		.uleb128 0x13
+ 963 0059 3A       		.uleb128 0x3a
+ 964 005a 0B       		.uleb128 0xb
+ 965 005b 3B       		.uleb128 0x3b
+ 966 005c 0B       		.uleb128 0xb
+ 967 005d 01       		.uleb128 0x1
+ 968 005e 13       		.uleb128 0x13
+ 969 005f 00       		.byte	0
+ 970 0060 00       		.byte	0
+ 971 0061 08       		.uleb128 0x8
+ 972 0062 28       		.uleb128 0x28
+ 973 0063 00       		.byte	0
+ 974 0064 03       		.uleb128 0x3
+ 975 0065 0E       		.uleb128 0xe
+ 976 0066 1C       		.uleb128 0x1c
+ 977 0067 0B       		.uleb128 0xb
+ 978 0068 00       		.byte	0
+ 979 0069 00       		.byte	0
+ 980 006a 09       		.uleb128 0x9
+ 981 006b 0D       		.uleb128 0xd
+ 982 006c 00       		.byte	0
+ 983 006d 03       		.uleb128 0x3
+ 984 006e 0E       		.uleb128 0xe
+ 985 006f 3A       		.uleb128 0x3a
+ 986 0070 0B       		.uleb128 0xb
+ 987 0071 3B       		.uleb128 0x3b
+ 988 0072 0B       		.uleb128 0xb
+ 989 0073 49       		.uleb128 0x49
+ 990 0074 13       		.uleb128 0x13
+ 991 0075 38       		.uleb128 0x38
+ 992 0076 0B       		.uleb128 0xb
+ 993 0077 00       		.byte	0
+ 994 0078 00       		.byte	0
+ 995 0079 0A       		.uleb128 0xa
+ 996 007a 01       		.uleb128 0x1
+ 997 007b 01       		.byte	0x1
+ 998 007c 49       		.uleb128 0x49
+ 999 007d 13       		.uleb128 0x13
+ 1000 007e 01       		.uleb128 0x1
+ 1001 007f 13       		.uleb128 0x13
+ 1002 0080 00       		.byte	0
+ 1003 0081 00       		.byte	0
+ 1004 0082 0B       		.uleb128 0xb
+ 1005 0083 21       		.uleb128 0x21
+ 1006 0084 00       		.byte	0
+ 1007 0085 49       		.uleb128 0x49
+ 1008 0086 13       		.uleb128 0x13
+ 1009 0087 2F       		.uleb128 0x2f
+ 1010 0088 0B       		.uleb128 0xb
+ 1011 0089 00       		.byte	0
+ 1012 008a 00       		.byte	0
+ 1013 008b 0C       		.uleb128 0xc
+ 1014 008c 13       		.uleb128 0x13
+ 1015 008d 01       		.byte	0x1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 20
+
+
+ 1016 008e 0B       		.uleb128 0xb
+ 1017 008f 05       		.uleb128 0x5
+ 1018 0090 3A       		.uleb128 0x3a
+ 1019 0091 0B       		.uleb128 0xb
+ 1020 0092 3B       		.uleb128 0x3b
+ 1021 0093 0B       		.uleb128 0xb
+ 1022 0094 01       		.uleb128 0x1
+ 1023 0095 13       		.uleb128 0x13
+ 1024 0096 00       		.byte	0
+ 1025 0097 00       		.byte	0
+ 1026 0098 0D       		.uleb128 0xd
+ 1027 0099 0D       		.uleb128 0xd
+ 1028 009a 00       		.byte	0
+ 1029 009b 03       		.uleb128 0x3
+ 1030 009c 0E       		.uleb128 0xe
+ 1031 009d 3A       		.uleb128 0x3a
+ 1032 009e 0B       		.uleb128 0xb
+ 1033 009f 3B       		.uleb128 0x3b
+ 1034 00a0 0B       		.uleb128 0xb
+ 1035 00a1 49       		.uleb128 0x49
+ 1036 00a2 13       		.uleb128 0x13
+ 1037 00a3 38       		.uleb128 0x38
+ 1038 00a4 05       		.uleb128 0x5
+ 1039 00a5 00       		.byte	0
+ 1040 00a6 00       		.byte	0
+ 1041 00a7 0E       		.uleb128 0xe
+ 1042 00a8 21       		.uleb128 0x21
+ 1043 00a9 00       		.byte	0
+ 1044 00aa 49       		.uleb128 0x49
+ 1045 00ab 13       		.uleb128 0x13
+ 1046 00ac 2F       		.uleb128 0x2f
+ 1047 00ad 05       		.uleb128 0x5
+ 1048 00ae 00       		.byte	0
+ 1049 00af 00       		.byte	0
+ 1050 00b0 0F       		.uleb128 0xf
+ 1051 00b1 26       		.uleb128 0x26
+ 1052 00b2 00       		.byte	0
+ 1053 00b3 49       		.uleb128 0x49
+ 1054 00b4 13       		.uleb128 0x13
+ 1055 00b5 00       		.byte	0
+ 1056 00b6 00       		.byte	0
+ 1057 00b7 10       		.uleb128 0x10
+ 1058 00b8 2E       		.uleb128 0x2e
+ 1059 00b9 01       		.byte	0x1
+ 1060 00ba 3F       		.uleb128 0x3f
+ 1061 00bb 19       		.uleb128 0x19
+ 1062 00bc 03       		.uleb128 0x3
+ 1063 00bd 0E       		.uleb128 0xe
+ 1064 00be 3A       		.uleb128 0x3a
+ 1065 00bf 0B       		.uleb128 0xb
+ 1066 00c0 3B       		.uleb128 0x3b
+ 1067 00c1 0B       		.uleb128 0xb
+ 1068 00c2 27       		.uleb128 0x27
+ 1069 00c3 19       		.uleb128 0x19
+ 1070 00c4 49       		.uleb128 0x49
+ 1071 00c5 13       		.uleb128 0x13
+ 1072 00c6 11       		.uleb128 0x11
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 21
+
+
+ 1073 00c7 01       		.uleb128 0x1
+ 1074 00c8 12       		.uleb128 0x12
+ 1075 00c9 06       		.uleb128 0x6
+ 1076 00ca 40       		.uleb128 0x40
+ 1077 00cb 18       		.uleb128 0x18
+ 1078 00cc 9742     		.uleb128 0x2117
+ 1079 00ce 19       		.uleb128 0x19
+ 1080 00cf 01       		.uleb128 0x1
+ 1081 00d0 13       		.uleb128 0x13
+ 1082 00d1 00       		.byte	0
+ 1083 00d2 00       		.byte	0
+ 1084 00d3 11       		.uleb128 0x11
+ 1085 00d4 34       		.uleb128 0x34
+ 1086 00d5 00       		.byte	0
+ 1087 00d6 03       		.uleb128 0x3
+ 1088 00d7 08       		.uleb128 0x8
+ 1089 00d8 3A       		.uleb128 0x3a
+ 1090 00d9 0B       		.uleb128 0xb
+ 1091 00da 3B       		.uleb128 0x3b
+ 1092 00db 0B       		.uleb128 0xb
+ 1093 00dc 49       		.uleb128 0x49
+ 1094 00dd 13       		.uleb128 0x13
+ 1095 00de 02       		.uleb128 0x2
+ 1096 00df 18       		.uleb128 0x18
+ 1097 00e0 00       		.byte	0
+ 1098 00e1 00       		.byte	0
+ 1099 00e2 12       		.uleb128 0x12
+ 1100 00e3 34       		.uleb128 0x34
+ 1101 00e4 00       		.byte	0
+ 1102 00e5 03       		.uleb128 0x3
+ 1103 00e6 0E       		.uleb128 0xe
+ 1104 00e7 3A       		.uleb128 0x3a
+ 1105 00e8 0B       		.uleb128 0xb
+ 1106 00e9 3B       		.uleb128 0x3b
+ 1107 00ea 0B       		.uleb128 0xb
+ 1108 00eb 49       		.uleb128 0x49
+ 1109 00ec 13       		.uleb128 0x13
+ 1110 00ed 02       		.uleb128 0x2
+ 1111 00ee 18       		.uleb128 0x18
+ 1112 00ef 00       		.byte	0
+ 1113 00f0 00       		.byte	0
+ 1114 00f1 13       		.uleb128 0x13
+ 1115 00f2 34       		.uleb128 0x34
+ 1116 00f3 00       		.byte	0
+ 1117 00f4 03       		.uleb128 0x3
+ 1118 00f5 08       		.uleb128 0x8
+ 1119 00f6 3A       		.uleb128 0x3a
+ 1120 00f7 0B       		.uleb128 0xb
+ 1121 00f8 3B       		.uleb128 0x3b
+ 1122 00f9 0B       		.uleb128 0xb
+ 1123 00fa 49       		.uleb128 0x49
+ 1124 00fb 13       		.uleb128 0x13
+ 1125 00fc 02       		.uleb128 0x2
+ 1126 00fd 17       		.uleb128 0x17
+ 1127 00fe 00       		.byte	0
+ 1128 00ff 00       		.byte	0
+ 1129 0100 14       		.uleb128 0x14
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 22
+
+
+ 1130 0101 34       		.uleb128 0x34
+ 1131 0102 00       		.byte	0
+ 1132 0103 03       		.uleb128 0x3
+ 1133 0104 0E       		.uleb128 0xe
+ 1134 0105 49       		.uleb128 0x49
+ 1135 0106 13       		.uleb128 0x13
+ 1136 0107 34       		.uleb128 0x34
+ 1137 0108 19       		.uleb128 0x19
+ 1138 0109 02       		.uleb128 0x2
+ 1139 010a 18       		.uleb128 0x18
+ 1140 010b 00       		.byte	0
+ 1141 010c 00       		.byte	0
+ 1142 010d 15       		.uleb128 0x15
+ 1143 010e 898201   		.uleb128 0x4109
+ 1144 0111 01       		.byte	0x1
+ 1145 0112 11       		.uleb128 0x11
+ 1146 0113 01       		.uleb128 0x1
+ 1147 0114 31       		.uleb128 0x31
+ 1148 0115 13       		.uleb128 0x13
+ 1149 0116 01       		.uleb128 0x1
+ 1150 0117 13       		.uleb128 0x13
+ 1151 0118 00       		.byte	0
+ 1152 0119 00       		.byte	0
+ 1153 011a 16       		.uleb128 0x16
+ 1154 011b 8A8201   		.uleb128 0x410a
+ 1155 011e 00       		.byte	0
+ 1156 011f 02       		.uleb128 0x2
+ 1157 0120 18       		.uleb128 0x18
+ 1158 0121 9142     		.uleb128 0x2111
+ 1159 0123 18       		.uleb128 0x18
+ 1160 0124 00       		.byte	0
+ 1161 0125 00       		.byte	0
+ 1162 0126 17       		.uleb128 0x17
+ 1163 0127 898201   		.uleb128 0x4109
+ 1164 012a 01       		.byte	0x1
+ 1165 012b 11       		.uleb128 0x11
+ 1166 012c 01       		.uleb128 0x1
+ 1167 012d 31       		.uleb128 0x31
+ 1168 012e 13       		.uleb128 0x13
+ 1169 012f 00       		.byte	0
+ 1170 0130 00       		.byte	0
+ 1171 0131 18       		.uleb128 0x18
+ 1172 0132 2E       		.uleb128 0x2e
+ 1173 0133 00       		.byte	0
+ 1174 0134 3F       		.uleb128 0x3f
+ 1175 0135 19       		.uleb128 0x19
+ 1176 0136 3C       		.uleb128 0x3c
+ 1177 0137 19       		.uleb128 0x19
+ 1178 0138 6E       		.uleb128 0x6e
+ 1179 0139 0E       		.uleb128 0xe
+ 1180 013a 03       		.uleb128 0x3
+ 1181 013b 0E       		.uleb128 0xe
+ 1182 013c 00       		.byte	0
+ 1183 013d 00       		.byte	0
+ 1184 013e 19       		.uleb128 0x19
+ 1185 013f 2E       		.uleb128 0x2e
+ 1186 0140 00       		.byte	0
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 23
+
+
+ 1187 0141 3F       		.uleb128 0x3f
+ 1188 0142 19       		.uleb128 0x19
+ 1189 0143 3C       		.uleb128 0x3c
+ 1190 0144 19       		.uleb128 0x19
+ 1191 0145 6E       		.uleb128 0x6e
+ 1192 0146 0E       		.uleb128 0xe
+ 1193 0147 03       		.uleb128 0x3
+ 1194 0148 0E       		.uleb128 0xe
+ 1195 0149 3A       		.uleb128 0x3a
+ 1196 014a 0B       		.uleb128 0xb
+ 1197 014b 3B       		.uleb128 0x3b
+ 1198 014c 0B       		.uleb128 0xb
+ 1199 014d 00       		.byte	0
+ 1200 014e 00       		.byte	0
+ 1201 014f 00       		.byte	0
+ 1202              		.section	.debug_loc,"",%progbits
+ 1203              	.Ldebug_loc0:
+ 1204              	.LLST0:
+ 1205 0000 12000000 		.4byte	.LVL0
+ 1206 0004 16000000 		.4byte	.LVL1
+ 1207 0008 0200     		.2byte	0x2
+ 1208 000a 30       		.byte	0x30
+ 1209 000b 9F       		.byte	0x9f
+ 1210 000c 16000000 		.4byte	.LVL1
+ 1211 0010 70000000 		.4byte	.LVL6
+ 1212 0014 0100     		.2byte	0x1
+ 1213 0016 51       		.byte	0x51
+ 1214 0017 00000000 		.4byte	0
+ 1215 001b 00000000 		.4byte	0
+ 1216              	.LLST1:
+ 1217 001f 16000000 		.4byte	.LVL1
+ 1218 0023 2C000000 		.4byte	.LVL3
+ 1219 0027 0100     		.2byte	0x1
+ 1220 0029 52       		.byte	0x52
+ 1221 002a 2E000000 		.4byte	.LVL4
+ 1222 002e 34000000 		.4byte	.LVL5
+ 1223 0032 0100     		.2byte	0x1
+ 1224 0034 52       		.byte	0x52
+ 1225 0035 00000000 		.4byte	0
+ 1226 0039 00000000 		.4byte	0
+ 1227              		.section	.debug_aranges,"",%progbits
+ 1228 0000 1C000000 		.4byte	0x1c
+ 1229 0004 0200     		.2byte	0x2
+ 1230 0006 00000000 		.4byte	.Ldebug_info0
+ 1231 000a 04       		.byte	0x4
+ 1232 000b 00       		.byte	0
+ 1233 000c 0000     		.2byte	0
+ 1234 000e 0000     		.2byte	0
+ 1235 0010 00000000 		.4byte	.LFB1
+ 1236 0014 38010000 		.4byte	.LFE1-.LFB1
+ 1237 0018 00000000 		.4byte	0
+ 1238 001c 00000000 		.4byte	0
+ 1239              		.section	.debug_ranges,"",%progbits
+ 1240              	.Ldebug_ranges0:
+ 1241 0000 00000000 		.4byte	.LFB1
+ 1242 0004 38010000 		.4byte	.LFE1
+ 1243 0008 00000000 		.4byte	0
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 24
+
+
+ 1244 000c 00000000 		.4byte	0
+ 1245              		.section	.debug_line,"",%progbits
+ 1246              	.Ldebug_line0:
+ 1247 0000 93020000 		.section	.debug_str,"MS",%progbits,1
+ 1247      02003A02 
+ 1247      00000201 
+ 1247      FB0E0D00 
+ 1247      01010101 
+ 1248              	.LASF3:
+ 1249 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1249      6E74385F 
+ 1249      7400
+ 1250              	.LASF33:
+ 1251 000a 66726F6D 		.ascii	"from\000"
+ 1251      00
+ 1252              	.LASF30:
+ 1253 000f 63686563 		.ascii	"checkpointCount\000"
+ 1253      6B706F69 
+ 1253      6E74436F 
+ 1253      756E7400 
+ 1254              	.LASF19:
+ 1255 001f 434D445F 		.ascii	"CMD_FORWARD\000"
+ 1255      464F5257 
+ 1255      41524400 
+ 1256              	.LASF44:
+ 1257 002b 526F7574 		.ascii	"RouteTrace_Build\000"
+ 1257      65547261 
+ 1257      63655F42 
+ 1257      75696C64 
+ 1257      00
+ 1258              	.LASF42:
+ 1259 003c 41537461 		.ascii	"AStar_BuildRoute\000"
+ 1259      725F4275 
+ 1259      696C6452 
+ 1259      6F757465 
+ 1259      00
+ 1260              	.LASF24:
+ 1261 004d 636F756E 		.ascii	"count\000"
+ 1261      7400
+ 1262              	.LASF23:
+ 1263 0053 706F696E 		.ascii	"points\000"
+ 1263      747300
+ 1264              	.LASF36:
+ 1265 005a 636F6D6D 		.ascii	"command\000"
+ 1265      616E6400 
+ 1266              	.LASF10:
+ 1267 0062 756E7369 		.ascii	"unsigned int\000"
+ 1267      676E6564 
+ 1267      20696E74 
+ 1267      00
+ 1268              	.LASF50:
+ 1269 006f 5F5F6675 		.ascii	"__func__\000"
+ 1269      6E635F5F 
+ 1269      00
+ 1270              	.LASF48:
+ 1271 0078 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\madi\\final design\\AMA"
+ 1271      454D505C 
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 25
+
+
+ 1271      434F4D50 
+ 1271      53595333 
+ 1271      30315F74 
+ 1272 00a6 5A494E47 		.ascii	"ZINGfinalBFFPGA\\AMAZINGfinalBFFPGA.cydsn\000"
+ 1272      66696E61 
+ 1272      6C424646 
+ 1272      5047415C 
+ 1272      414D415A 
+ 1273              	.LASF1:
+ 1274 00cf 756E7369 		.ascii	"unsigned char\000"
+ 1274      676E6564 
+ 1274      20636861 
+ 1274      7200
+ 1275              	.LASF37:
+ 1276 00dd 54726163 		.ascii	"TraceStep\000"
+ 1276      65537465 
+ 1276      7000
+ 1277              	.LASF32:
+ 1278 00e7 526F7574 		.ascii	"Route\000"
+ 1278      6500
+ 1279              	.LASF7:
+ 1280 00ed 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1280      20756E73 
+ 1280      69676E65 
+ 1280      6420696E 
+ 1280      7400
+ 1281              	.LASF5:
+ 1282 00ff 73686F72 		.ascii	"short unsigned int\000"
+ 1282      7420756E 
+ 1282      7369676E 
+ 1282      65642069 
+ 1282      6E7400
+ 1283              	.LASF22:
+ 1284 0112 436F6D6D 		.ascii	"Command\000"
+ 1284      616E6400 
+ 1285              	.LASF21:
+ 1286 011a 434D445F 		.ascii	"CMD_RIGHT\000"
+ 1286      52494748 
+ 1286      5400
+ 1287              	.LASF15:
+ 1288 0124 4449525F 		.ascii	"DIR_RIGHT\000"
+ 1288      52494748 
+ 1288      5400
+ 1289              	.LASF51:
+ 1290 012e 6D656D73 		.ascii	"memset\000"
+ 1290      657400
+ 1291              	.LASF4:
+ 1292 0135 5F5F7569 		.ascii	"__uint16_t\000"
+ 1292      6E743136 
+ 1292      5F7400
+ 1293              	.LASF49:
+ 1294 0140 6D61696E 		.ascii	"main\000"
+ 1294      00
+ 1295              	.LASF43:
+ 1296 0145 5F5F6173 		.ascii	"__assert_func\000"
+ 1296      73657274 
+ 1296      5F66756E 
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 26
+
+
+ 1296      6300
+ 1297              	.LASF14:
+ 1298 0153 4449525F 		.ascii	"DIR_UP\000"
+ 1298      555000
+ 1299              	.LASF16:
+ 1300 015a 4449525F 		.ascii	"DIR_DOWN\000"
+ 1300      444F574E 
+ 1300      00
+ 1301              	.LASF13:
+ 1302 0163 506F7369 		.ascii	"Position\000"
+ 1302      74696F6E 
+ 1302      00
+ 1303              	.LASF9:
+ 1304 016c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1304      206C6F6E 
+ 1304      6720756E 
+ 1304      7369676E 
+ 1304      65642069 
+ 1305              	.LASF11:
+ 1306 0183 75696E74 		.ascii	"uint8_t\000"
+ 1306      385F7400 
+ 1307              	.LASF34:
+ 1308 018b 68656164 		.ascii	"headingBefore\000"
+ 1308      696E6742 
+ 1308      65666F72 
+ 1308      6500
+ 1309              	.LASF46:
+ 1310 0199 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1310      43313120 
+ 1310      352E342E 
+ 1310      31203230 
+ 1310      31363036 
+ 1311 01cc 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1311      20726576 
+ 1311      6973696F 
+ 1311      6E203233 
+ 1311      37373135 
+ 1312 01ff 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1312      66756E63 
+ 1312      74696F6E 
+ 1312      2D736563 
+ 1312      74696F6E 
+ 1313              	.LASF47:
+ 1314 0227 2E2E5C2E 		.ascii	"..\\..\\..\\..\\..\\maze_localization_starter\\maze"
+ 1314      2E5C2E2E 
+ 1314      5C2E2E5C 
+ 1314      2E2E5C6D 
+ 1314      617A655F 
+ 1315 0254 5F6C6F63 		.ascii	"_localization_starter\\test_route.c\000"
+ 1315      616C697A 
+ 1315      6174696F 
+ 1315      6E5F7374 
+ 1315      61727465 
+ 1316              	.LASF40:
+ 1317 0277 726F7574 		.ascii	"route\000"
+ 1317      6500
+ 1318              	.LASF25:
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 27
+
+
+ 1319 027d 73697A65 		.ascii	"sizetype\000"
+ 1319      74797065 
+ 1319      00
+ 1320              	.LASF8:
+ 1321 0286 6C6F6E67 		.ascii	"long long int\000"
+ 1321      206C6F6E 
+ 1321      6720696E 
+ 1321      7400
+ 1322              	.LASF41:
+ 1323 0294 74726163 		.ascii	"trace\000"
+ 1323      6500
+ 1324              	.LASF39:
+ 1325 029a 63686172 		.ascii	"char\000"
+ 1325      00
+ 1326              	.LASF45:
+ 1327 029f 7072696E 		.ascii	"printf\000"
+ 1327      746600
+ 1328              	.LASF2:
+ 1329 02a6 73686F72 		.ascii	"short int\000"
+ 1329      7420696E 
+ 1329      7400
+ 1330              	.LASF35:
+ 1331 02b0 68656164 		.ascii	"headingAfter\000"
+ 1331      696E6741 
+ 1331      66746572 
+ 1331      00
+ 1332              	.LASF12:
+ 1333 02bd 75696E74 		.ascii	"uint16_t\000"
+ 1333      31365F74 
+ 1333      00
+ 1334              	.LASF31:
+ 1335 02c6 66696E61 		.ascii	"finalDirection\000"
+ 1335      6C446972 
+ 1335      65637469 
+ 1335      6F6E00
+ 1336              	.LASF18:
+ 1337 02d5 44697265 		.ascii	"Direction\000"
+ 1337      6374696F 
+ 1337      6E00
+ 1338              	.LASF6:
+ 1339 02df 6C6F6E67 		.ascii	"long int\000"
+ 1339      20696E74 
+ 1339      00
+ 1340              	.LASF17:
+ 1341 02e8 4449525F 		.ascii	"DIR_LEFT\000"
+ 1341      4C454654 
+ 1341      00
+ 1342              	.LASF29:
+ 1343 02f1 63686563 		.ascii	"checkpointCommand\000"
+ 1343      6B706F69 
+ 1343      6E74436F 
+ 1343      6D6D616E 
+ 1343      6400
+ 1344              	.LASF38:
+ 1345 0303 6C6F6E67 		.ascii	"long double\000"
+ 1345      20646F75 
+ 1345      626C6500 
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccbrcOU9.s 			page 28
+
+
+ 1346              	.LASF0:
+ 1347 030f 7369676E 		.ascii	"signed char\000"
+ 1347      65642063 
+ 1347      68617200 
+ 1348              	.LASF26:
+ 1349 031b 43686563 		.ascii	"Checkpoints\000"
+ 1349      6B706F69 
+ 1349      6E747300 
+ 1350              	.LASF27:
+ 1351 0327 636F6D6D 		.ascii	"commands\000"
+ 1351      616E6473 
+ 1351      00
+ 1352              	.LASF28:
+ 1353 0330 6C656E67 		.ascii	"length\000"
+ 1353      746800
+ 1354              	.LASF20:
+ 1355 0337 434D445F 		.ascii	"CMD_LEFT\000"
+ 1355      4C454654 
+ 1355      00
+ 1356              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
