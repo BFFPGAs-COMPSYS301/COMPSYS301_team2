@@ -1,0 +1,2178 @@
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"robot_controls.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Robot_Stop,"ax",%progbits
+  20              		.align	2
+  21              		.global	Robot_Stop
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Robot_Stop, %function
+  25              	Robot_Stop:
+  26              	.LFB64:
+  27              		.file 1 "robot_controls.c"
+   1:robot_controls.c **** 
+   2:robot_controls.c **** #include "robot_controls.h"
+   3:robot_controls.c **** 
+   4:robot_controls.c **** #define FORWARD_COMPARE 23
+   5:robot_controls.c **** #define PWM_PERIOD 90
+   6:robot_controls.c **** #define PWM_STOP 45
+   7:robot_controls.c **** 
+   8:robot_controls.c **** /* Maximum time allowed to find the new line */
+   9:robot_controls.c **** #define TURN_TIMEOUT_MS 2000u
+  10:robot_controls.c **** 
+  11:robot_controls.c **** static uint16 offLineCount = 0;
+  12:robot_controls.c **** static uint16 onLineCount = 0;
+  13:robot_controls.c **** static uint8 turnsComplete = 0;
+  14:robot_controls.c **** 
+  15:robot_controls.c **** static bool turnDetected = false;
+  16:robot_controls.c **** static bool onLine = false;
+  17:robot_controls.c **** static bool controlFault = false;
+  18:robot_controls.c **** 
+  19:robot_controls.c **** /* ========================================
+  20:robot_controls.c ****  * INITIALIZATION
+  21:robot_controls.c ****  * ======================================== */
+  22:robot_controls.c **** 
+  23:robot_controls.c **** void RobotControl_Init(void)
+  24:robot_controls.c **** {
+  25:robot_controls.c ****     offLineCount = 0;
+  26:robot_controls.c ****     onLineCount = 0;
+  27:robot_controls.c ****     turnsComplete = 0;
+  28:robot_controls.c **** 
+  29:robot_controls.c ****     turnDetected = false;
+  30:robot_controls.c ****     onLine = false;
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 2
+
+
+  31:robot_controls.c ****     controlFault = false;
+  32:robot_controls.c **** 
+  33:robot_controls.c ****     Robot_Stop();
+  34:robot_controls.c **** }
+  35:robot_controls.c **** 
+  36:robot_controls.c **** /* ========================================
+  37:robot_controls.c ****  * MOTOR CONTROL
+  38:robot_controls.c ****  * ======================================== */
+  39:robot_controls.c **** 
+  40:robot_controls.c **** void Robot_Stop(void)
+  41:robot_controls.c **** {
+  28              		.loc 1 41 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  42:robot_controls.c ****     PWM_1_WriteCompare(PWM_STOP);
+  36              		.loc 1 42 0
+  37 0002 2D20     		movs	r0, #45
+  38 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+  39              	.LVL0:
+  43:robot_controls.c ****     PWM_2_WriteCompare(PWM_STOP);
+  40              		.loc 1 43 0
+  41 0008 2D20     		movs	r0, #45
+  42 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+  43              	.LVL1:
+  44 000e 08BD     		pop	{r3, pc}
+  45              		.cfi_endproc
+  46              	.LFE64:
+  47              		.size	Robot_Stop, .-Robot_Stop
+  48              		.section	.text.RobotControl_Init,"ax",%progbits
+  49              		.align	2
+  50              		.global	RobotControl_Init
+  51              		.thumb
+  52              		.thumb_func
+  53              		.type	RobotControl_Init, %function
+  54              	RobotControl_Init:
+  55              	.LFB63:
+  24:robot_controls.c ****     offLineCount = 0;
+  56              		.loc 1 24 0
+  57              		.cfi_startproc
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60 0000 08B5     		push	{r3, lr}
+  61              		.cfi_def_cfa_offset 8
+  62              		.cfi_offset 3, -8
+  63              		.cfi_offset 14, -4
+  25:robot_controls.c ****     onLineCount = 0;
+  64              		.loc 1 25 0
+  65 0002 054B     		ldr	r3, .L5
+  66 0004 0022     		movs	r2, #0
+  67 0006 1A80     		strh	r2, [r3]	@ movhi
+  26:robot_controls.c ****     turnsComplete = 0;
+  68              		.loc 1 26 0
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 3
+
+
+  69 0008 5A80     		strh	r2, [r3, #2]	@ movhi
+  27:robot_controls.c **** 
+  70              		.loc 1 27 0
+  71 000a 1A71     		strb	r2, [r3, #4]
+  29:robot_controls.c ****     onLine = false;
+  72              		.loc 1 29 0
+  73 000c 5A71     		strb	r2, [r3, #5]
+  30:robot_controls.c ****     controlFault = false;
+  74              		.loc 1 30 0
+  75 000e 9A71     		strb	r2, [r3, #6]
+  31:robot_controls.c **** 
+  76              		.loc 1 31 0
+  77 0010 DA71     		strb	r2, [r3, #7]
+  33:robot_controls.c **** }
+  78              		.loc 1 33 0
+  79 0012 FFF7FEFF 		bl	Robot_Stop
+  80              	.LVL2:
+  81 0016 08BD     		pop	{r3, pc}
+  82              	.L6:
+  83              		.align	2
+  84              	.L5:
+  85 0018 00000000 		.word	.LANCHOR0
+  86              		.cfi_endproc
+  87              	.LFE63:
+  88              		.size	RobotControl_Init, .-RobotControl_Init
+  89              		.section	.text.Robot_Forward,"ax",%progbits
+  90              		.align	2
+  91              		.global	Robot_Forward
+  92              		.thumb
+  93              		.thumb_func
+  94              		.type	Robot_Forward, %function
+  95              	Robot_Forward:
+  96              	.LFB65:
+  44:robot_controls.c **** }
+  45:robot_controls.c **** 
+  46:robot_controls.c **** void Robot_Forward(void)
+  47:robot_controls.c **** {
+  97              		.loc 1 47 0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101 0000 08B5     		push	{r3, lr}
+ 102              		.cfi_def_cfa_offset 8
+ 103              		.cfi_offset 3, -8
+ 104              		.cfi_offset 14, -4
+  48:robot_controls.c ****     PWM_1_WriteCompare(FORWARD_COMPARE);
+ 105              		.loc 1 48 0
+ 106 0002 1720     		movs	r0, #23
+ 107 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 108              	.LVL3:
+  49:robot_controls.c ****     PWM_2_WriteCompare(FORWARD_COMPARE);
+ 109              		.loc 1 49 0
+ 110 0008 1720     		movs	r0, #23
+ 111 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 112              	.LVL4:
+ 113 000e 08BD     		pop	{r3, pc}
+ 114              		.cfi_endproc
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 4
+
+
+ 115              	.LFE65:
+ 116              		.size	Robot_Forward, .-Robot_Forward
+ 117              		.section	.text.Robot_ForwardSlow,"ax",%progbits
+ 118              		.align	2
+ 119              		.global	Robot_ForwardSlow
+ 120              		.thumb
+ 121              		.thumb_func
+ 122              		.type	Robot_ForwardSlow, %function
+ 123              	Robot_ForwardSlow:
+ 124              	.LFB66:
+  50:robot_controls.c **** }
+  51:robot_controls.c **** 
+  52:robot_controls.c **** void Robot_ForwardSlow(void)
+  53:robot_controls.c **** {
+ 125              		.loc 1 53 0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129 0000 08B5     		push	{r3, lr}
+ 130              		.cfi_def_cfa_offset 8
+ 131              		.cfi_offset 3, -8
+ 132              		.cfi_offset 14, -4
+  54:robot_controls.c ****     PWM_1_WriteCompare(23);
+ 133              		.loc 1 54 0
+ 134 0002 1720     		movs	r0, #23
+ 135 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 136              	.LVL5:
+  55:robot_controls.c ****     PWM_2_WriteCompare(23);
+ 137              		.loc 1 55 0
+ 138 0008 1720     		movs	r0, #23
+ 139 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 140              	.LVL6:
+ 141 000e 08BD     		pop	{r3, pc}
+ 142              		.cfi_endproc
+ 143              	.LFE66:
+ 144              		.size	Robot_ForwardSlow, .-Robot_ForwardSlow
+ 145              		.section	.text.Robot_LineForward,"ax",%progbits
+ 146              		.align	2
+ 147              		.global	Robot_LineForward
+ 148              		.thumb
+ 149              		.thumb_func
+ 150              		.type	Robot_LineForward, %function
+ 151              	Robot_LineForward:
+ 152              	.LFB67:
+  56:robot_controls.c **** }
+  57:robot_controls.c **** 
+  58:robot_controls.c **** void Robot_LineForward(void)
+  59:robot_controls.c **** {
+ 153              		.loc 1 59 0
+ 154              		.cfi_startproc
+ 155              		@ args = 0, pretend = 0, frame = 0
+ 156              		@ frame_needed = 0, uses_anonymous_args = 0
+ 157 0000 08B5     		push	{r3, lr}
+ 158              		.cfi_def_cfa_offset 8
+ 159              		.cfi_offset 3, -8
+ 160              		.cfi_offset 14, -4
+  60:robot_controls.c ****     PWM_1_WriteCompare(FORWARD_COMPARE - 2);
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 5
+
+
+ 161              		.loc 1 60 0
+ 162 0002 1520     		movs	r0, #21
+ 163 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 164              	.LVL7:
+  61:robot_controls.c ****     PWM_2_WriteCompare(FORWARD_COMPARE);
+ 165              		.loc 1 61 0
+ 166 0008 1720     		movs	r0, #23
+ 167 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 168              	.LVL8:
+ 169 000e 08BD     		pop	{r3, pc}
+ 170              		.cfi_endproc
+ 171              	.LFE67:
+ 172              		.size	Robot_LineForward, .-Robot_LineForward
+ 173              		.section	.text.Robot_LineCorrect,"ax",%progbits
+ 174              		.align	2
+ 175              		.global	Robot_LineCorrect
+ 176              		.thumb
+ 177              		.thumb_func
+ 178              		.type	Robot_LineCorrect, %function
+ 179              	Robot_LineCorrect:
+ 180              	.LFB68:
+  62:robot_controls.c **** }
+  63:robot_controls.c **** 
+  64:robot_controls.c **** void Robot_LineCorrect(void)
+  65:robot_controls.c **** {
+ 181              		.loc 1 65 0
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185 0000 08B5     		push	{r3, lr}
+ 186              		.cfi_def_cfa_offset 8
+ 187              		.cfi_offset 3, -8
+ 188              		.cfi_offset 14, -4
+  66:robot_controls.c ****     PWM_1_WriteCompare(PWM_PERIOD - 20);
+ 189              		.loc 1 66 0
+ 190 0002 4620     		movs	r0, #70
+ 191 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 192              	.LVL9:
+  67:robot_controls.c ****     PWM_2_WriteCompare(20);
+ 193              		.loc 1 67 0
+ 194 0008 1420     		movs	r0, #20
+ 195 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 196              	.LVL10:
+ 197 000e 08BD     		pop	{r3, pc}
+ 198              		.cfi_endproc
+ 199              	.LFE68:
+ 200              		.size	Robot_LineCorrect, .-Robot_LineCorrect
+ 201              		.section	.text.Robot_TurnLeft,"ax",%progbits
+ 202              		.align	2
+ 203              		.global	Robot_TurnLeft
+ 204              		.thumb
+ 205              		.thumb_func
+ 206              		.type	Robot_TurnLeft, %function
+ 207              	Robot_TurnLeft:
+ 208              	.LFB69:
+  68:robot_controls.c **** }
+  69:robot_controls.c **** 
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 6
+
+
+  70:robot_controls.c **** /* ========================================
+  71:robot_controls.c ****  * LEFT TURN
+  72:robot_controls.c ****  * ======================================== */
+  73:robot_controls.c **** 
+  74:robot_controls.c **** void Robot_TurnLeft(void)
+  75:robot_controls.c **** {
+ 209              		.loc 1 75 0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213 0000 10B5     		push	{r4, lr}
+ 214              		.cfi_def_cfa_offset 8
+ 215              		.cfi_offset 4, -8
+ 216              		.cfi_offset 14, -4
+ 217              	.LVL11:
+  76:robot_controls.c ****     uint16 elapsed = 0;
+  77:robot_controls.c **** 
+  78:robot_controls.c ****     onLineCount = 0;
+ 218              		.loc 1 78 0
+ 219 0002 1A4B     		ldr	r3, .L20
+ 220 0004 0024     		movs	r4, #0
+ 221 0006 5C80     		strh	r4, [r3, #2]	@ movhi
+  79:robot_controls.c ****     onLine = false;
+ 222              		.loc 1 79 0
+ 223 0008 9C71     		strb	r4, [r3, #6]
+  80:robot_controls.c ****     turnDetected = true;
+ 224              		.loc 1 80 0
+ 225 000a 0122     		movs	r2, #1
+ 226 000c 5A71     		strb	r2, [r3, #5]
+  81:robot_controls.c **** 
+  82:robot_controls.c ****     Robot_ForwardSlow();
+ 227              		.loc 1 82 0
+ 228 000e FFF7FEFF 		bl	Robot_ForwardSlow
+ 229              	.LVL12:
+  83:robot_controls.c ****     CyDelay(142);
+ 230              		.loc 1 83 0
+ 231 0012 8E20     		movs	r0, #142
+ 232 0014 FFF7FEFF 		bl	CyDelay
+ 233              	.LVL13:
+  84:robot_controls.c **** 
+  85:robot_controls.c ****     Robot_Stop();
+ 234              		.loc 1 85 0
+ 235 0018 FFF7FEFF 		bl	Robot_Stop
+ 236              	.LVL14:
+  86:robot_controls.c **** 
+  87:robot_controls.c ****     while (LED1_Read() == 1)
+ 237              		.loc 1 87 0
+ 238 001c 13E0     		b	.L16
+ 239              	.LVL15:
+ 240              	.L18:
+  88:robot_controls.c ****     {
+  89:robot_controls.c ****         PWM_1_WriteCompare(PWM_PERIOD - 25);
+ 241              		.loc 1 89 0
+ 242 001e 4120     		movs	r0, #65
+ 243 0020 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 244              	.LVL16:
+  90:robot_controls.c ****         PWM_2_WriteCompare(25);
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 7
+
+
+ 245              		.loc 1 90 0
+ 246 0024 1920     		movs	r0, #25
+ 247 0026 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 248              	.LVL17:
+  91:robot_controls.c **** 
+  92:robot_controls.c ****         CyDelay(1);
+ 249              		.loc 1 92 0
+ 250 002a 0120     		movs	r0, #1
+ 251 002c FFF7FEFF 		bl	CyDelay
+ 252              	.LVL18:
+  93:robot_controls.c ****         elapsed++;
+ 253              		.loc 1 93 0
+ 254 0030 0134     		adds	r4, r4, #1
+ 255              	.LVL19:
+ 256 0032 A4B2     		uxth	r4, r4
+ 257              	.LVL20:
+  94:robot_controls.c **** 
+  95:robot_controls.c ****         if (elapsed >= TURN_TIMEOUT_MS)
+ 258              		.loc 1 95 0
+ 259 0034 B4F5FA6F 		cmp	r4, #2000
+ 260 0038 05D3     		bcc	.L16
+  96:robot_controls.c ****         {
+  97:robot_controls.c ****             Robot_Stop();
+ 261              		.loc 1 97 0
+ 262 003a FFF7FEFF 		bl	Robot_Stop
+ 263              	.LVL21:
+  98:robot_controls.c ****             controlFault = true;
+ 264              		.loc 1 98 0
+ 265 003e 0122     		movs	r2, #1
+ 266 0040 0A4B     		ldr	r3, .L20
+ 267 0042 DA71     		strb	r2, [r3, #7]
+  99:robot_controls.c ****             return;
+ 268              		.loc 1 99 0
+ 269 0044 10BD     		pop	{r4, pc}
+ 270              	.LVL22:
+ 271              	.L16:
+  87:robot_controls.c ****     {
+ 272              		.loc 1 87 0
+ 273 0046 FFF7FEFF 		bl	LED1_Read
+ 274              	.LVL23:
+ 275 004a 0128     		cmp	r0, #1
+ 276 004c E7D0     		beq	.L18
+ 100:robot_controls.c ****         }
+ 101:robot_controls.c ****     }
+ 102:robot_controls.c **** 
+ 103:robot_controls.c ****     Robot_ForwardSlow();
+ 277              		.loc 1 103 0
+ 278 004e FFF7FEFF 		bl	Robot_ForwardSlow
+ 279              	.LVL24:
+ 104:robot_controls.c ****     CyDelay(10);
+ 280              		.loc 1 104 0
+ 281 0052 0A20     		movs	r0, #10
+ 282 0054 FFF7FEFF 		bl	CyDelay
+ 283              	.LVL25:
+ 105:robot_controls.c **** 
+ 106:robot_controls.c ****     PWM_1_WriteCompare(25);
+ 284              		.loc 1 106 0
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 8
+
+
+ 285 0058 1920     		movs	r0, #25
+ 286 005a FFF7FEFF 		bl	PWM_1_WriteCompare
+ 287              	.LVL26:
+ 107:robot_controls.c ****     PWM_2_WriteCompare(PWM_PERIOD - 25);
+ 288              		.loc 1 107 0
+ 289 005e 4120     		movs	r0, #65
+ 290 0060 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 291              	.LVL27:
+ 108:robot_controls.c ****     CyDelay(50);
+ 292              		.loc 1 108 0
+ 293 0064 3220     		movs	r0, #50
+ 294 0066 FFF7FEFF 		bl	CyDelay
+ 295              	.LVL28:
+ 296 006a 10BD     		pop	{r4, pc}
+ 297              	.LVL29:
+ 298              	.L21:
+ 299              		.align	2
+ 300              	.L20:
+ 301 006c 00000000 		.word	.LANCHOR0
+ 302              		.cfi_endproc
+ 303              	.LFE69:
+ 304              		.size	Robot_TurnLeft, .-Robot_TurnLeft
+ 305              		.section	.text.Robot_TurnRight,"ax",%progbits
+ 306              		.align	2
+ 307              		.global	Robot_TurnRight
+ 308              		.thumb
+ 309              		.thumb_func
+ 310              		.type	Robot_TurnRight, %function
+ 311              	Robot_TurnRight:
+ 312              	.LFB70:
+ 109:robot_controls.c **** }
+ 110:robot_controls.c **** 
+ 111:robot_controls.c **** /* ========================================
+ 112:robot_controls.c ****  * RIGHT TURN
+ 113:robot_controls.c ****  * ======================================== */
+ 114:robot_controls.c **** 
+ 115:robot_controls.c **** void Robot_TurnRight(void)
+ 116:robot_controls.c **** {
+ 313              		.loc 1 116 0
+ 314              		.cfi_startproc
+ 315              		@ args = 0, pretend = 0, frame = 0
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 317 0000 10B5     		push	{r4, lr}
+ 318              		.cfi_def_cfa_offset 8
+ 319              		.cfi_offset 4, -8
+ 320              		.cfi_offset 14, -4
+ 321              	.LVL30:
+ 117:robot_controls.c ****     uint16 elapsed = 0;
+ 118:robot_controls.c **** 
+ 119:robot_controls.c ****     onLineCount = 0;
+ 322              		.loc 1 119 0
+ 323 0002 164B     		ldr	r3, .L27
+ 324 0004 0024     		movs	r4, #0
+ 325 0006 5C80     		strh	r4, [r3, #2]	@ movhi
+ 120:robot_controls.c ****     onLine = false;
+ 326              		.loc 1 120 0
+ 327 0008 9C71     		strb	r4, [r3, #6]
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 9
+
+
+ 121:robot_controls.c ****     turnDetected = true;
+ 328              		.loc 1 121 0
+ 329 000a 0122     		movs	r2, #1
+ 330 000c 5A71     		strb	r2, [r3, #5]
+ 122:robot_controls.c **** 
+ 123:robot_controls.c ****     Robot_ForwardSlow();
+ 331              		.loc 1 123 0
+ 332 000e FFF7FEFF 		bl	Robot_ForwardSlow
+ 333              	.LVL31:
+ 124:robot_controls.c ****     CyDelay(146);
+ 334              		.loc 1 124 0
+ 335 0012 9220     		movs	r0, #146
+ 336 0014 FFF7FEFF 		bl	CyDelay
+ 337              	.LVL32:
+ 125:robot_controls.c **** 
+ 126:robot_controls.c ****     Robot_Stop();
+ 338              		.loc 1 126 0
+ 339 0018 FFF7FEFF 		bl	Robot_Stop
+ 340              	.LVL33:
+ 127:robot_controls.c **** 
+ 128:robot_controls.c ****     while (LED1_Read() == 1)
+ 341              		.loc 1 128 0
+ 342 001c 13E0     		b	.L23
+ 343              	.LVL34:
+ 344              	.L25:
+ 129:robot_controls.c ****     {
+ 130:robot_controls.c ****         PWM_1_WriteCompare(25);
+ 345              		.loc 1 130 0
+ 346 001e 1920     		movs	r0, #25
+ 347 0020 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 348              	.LVL35:
+ 131:robot_controls.c ****         PWM_2_WriteCompare(PWM_PERIOD - 25);
+ 349              		.loc 1 131 0
+ 350 0024 4120     		movs	r0, #65
+ 351 0026 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 352              	.LVL36:
+ 132:robot_controls.c **** 
+ 133:robot_controls.c ****         CyDelay(1);
+ 353              		.loc 1 133 0
+ 354 002a 0120     		movs	r0, #1
+ 355 002c FFF7FEFF 		bl	CyDelay
+ 356              	.LVL37:
+ 134:robot_controls.c ****         elapsed++;
+ 357              		.loc 1 134 0
+ 358 0030 0134     		adds	r4, r4, #1
+ 359              	.LVL38:
+ 360 0032 A4B2     		uxth	r4, r4
+ 361              	.LVL39:
+ 135:robot_controls.c **** 
+ 136:robot_controls.c ****         if (elapsed >= TURN_TIMEOUT_MS)
+ 362              		.loc 1 136 0
+ 363 0034 B4F5FA6F 		cmp	r4, #2000
+ 364 0038 05D3     		bcc	.L23
+ 137:robot_controls.c ****         {
+ 138:robot_controls.c ****             Robot_Stop();
+ 365              		.loc 1 138 0
+ 366 003a FFF7FEFF 		bl	Robot_Stop
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 10
+
+
+ 367              	.LVL40:
+ 139:robot_controls.c ****             controlFault = true;
+ 368              		.loc 1 139 0
+ 369 003e 0122     		movs	r2, #1
+ 370 0040 064B     		ldr	r3, .L27
+ 371 0042 DA71     		strb	r2, [r3, #7]
+ 140:robot_controls.c ****             return;
+ 372              		.loc 1 140 0
+ 373 0044 10BD     		pop	{r4, pc}
+ 374              	.LVL41:
+ 375              	.L23:
+ 128:robot_controls.c ****     {
+ 376              		.loc 1 128 0
+ 377 0046 FFF7FEFF 		bl	LED1_Read
+ 378              	.LVL42:
+ 379 004a 0128     		cmp	r0, #1
+ 380 004c E7D0     		beq	.L25
+ 141:robot_controls.c ****         }
+ 142:robot_controls.c ****     }
+ 143:robot_controls.c **** 
+ 144:robot_controls.c ****     Robot_ForwardSlow();
+ 381              		.loc 1 144 0
+ 382 004e FFF7FEFF 		bl	Robot_ForwardSlow
+ 383              	.LVL43:
+ 145:robot_controls.c ****     CyDelay(30);
+ 384              		.loc 1 145 0
+ 385 0052 1E20     		movs	r0, #30
+ 386 0054 FFF7FEFF 		bl	CyDelay
+ 387              	.LVL44:
+ 388 0058 10BD     		pop	{r4, pc}
+ 389              	.LVL45:
+ 390              	.L28:
+ 391 005a 00BF     		.align	2
+ 392              	.L27:
+ 393 005c 00000000 		.word	.LANCHOR0
+ 394              		.cfi_endproc
+ 395              	.LFE70:
+ 396              		.size	Robot_TurnRight, .-Robot_TurnRight
+ 397              		.section	.text.RobotControl_Update,"ax",%progbits
+ 398              		.align	2
+ 399              		.global	RobotControl_Update
+ 400              		.thumb
+ 401              		.thumb_func
+ 402              		.type	RobotControl_Update, %function
+ 403              	RobotControl_Update:
+ 404              	.LFB71:
+ 146:robot_controls.c **** }
+ 147:robot_controls.c **** 
+ 148:robot_controls.c **** /* ========================================
+ 149:robot_controls.c ****  * BENCHMARK LINE FOLLOWING
+ 150:robot_controls.c ****  * ======================================== */
+ 151:robot_controls.c **** 
+ 152:robot_controls.c **** void RobotControl_Update(void)
+ 153:robot_controls.c **** {
+ 405              		.loc 1 153 0
+ 406              		.cfi_startproc
+ 407              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 11
+
+
+ 408              		@ frame_needed = 0, uses_anonymous_args = 0
+ 409 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 410              		.cfi_def_cfa_offset 24
+ 411              		.cfi_offset 4, -24
+ 412              		.cfi_offset 5, -20
+ 413              		.cfi_offset 6, -16
+ 414              		.cfi_offset 7, -12
+ 415              		.cfi_offset 8, -8
+ 416              		.cfi_offset 14, -4
+ 154:robot_controls.c ****     if (controlFault)
+ 417              		.loc 1 154 0
+ 418 0004 304B     		ldr	r3, .L43
+ 419 0006 DB79     		ldrb	r3, [r3, #7]	@ zero_extendqisi2
+ 420 0008 1BB1     		cbz	r3, .L30
+ 155:robot_controls.c ****     {
+ 156:robot_controls.c ****         Robot_Stop();
+ 421              		.loc 1 156 0
+ 422 000a FFF7FEFF 		bl	Robot_Stop
+ 423              	.LVL46:
+ 157:robot_controls.c ****         return;
+ 424              		.loc 1 157 0
+ 425 000e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 426              	.L30:
+ 158:robot_controls.c ****     }
+ 159:robot_controls.c **** 
+ 160:robot_controls.c ****     uint8 front = LED1_Read();
+ 427              		.loc 1 160 0
+ 428 0012 FFF7FEFF 		bl	LED1_Read
+ 429              	.LVL47:
+ 430 0016 0446     		mov	r4, r0
+ 431              	.LVL48:
+ 161:robot_controls.c ****     uint8 rearLeft = LED2_Read();
+ 432              		.loc 1 161 0
+ 433 0018 FFF7FEFF 		bl	LED2_Read
+ 434              	.LVL49:
+ 435 001c 0546     		mov	r5, r0
+ 436              	.LVL50:
+ 162:robot_controls.c ****     uint8 rearRight = LED3_Read();
+ 437              		.loc 1 162 0
+ 438 001e FFF7FEFF 		bl	LED3_Read
+ 439              	.LVL51:
+ 440 0022 0646     		mov	r6, r0
+ 441              	.LVL52:
+ 163:robot_controls.c ****     uint8 frontRight = LED4_Read();
+ 442              		.loc 1 163 0
+ 443 0024 FFF7FEFF 		bl	LED4_Read
+ 444              	.LVL53:
+ 445 0028 8046     		mov	r8, r0
+ 446              	.LVL54:
+ 164:robot_controls.c ****     uint8 frontLeft = LED5_Read();
+ 447              		.loc 1 164 0
+ 448 002a FFF7FEFF 		bl	LED5_Read
+ 449              	.LVL55:
+ 450 002e 0746     		mov	r7, r0
+ 451              	.LVL56:
+ 165:robot_controls.c **** 
+ 166:robot_controls.c ****     if (front == 1)
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 12
+
+
+ 452              		.loc 1 166 0
+ 453 0030 012C     		cmp	r4, #1
+ 454 0032 25D1     		bne	.L32
+ 167:robot_controls.c ****     {
+ 168:robot_controls.c ****         /* Front sensor has lost the line */
+ 169:robot_controls.c **** 
+ 170:robot_controls.c ****         if (offLineCount < 15)
+ 455              		.loc 1 170 0
+ 456 0034 244B     		ldr	r3, .L43
+ 457 0036 1B88     		ldrh	r3, [r3]
+ 458 0038 0E2B     		cmp	r3, #14
+ 459 003a 02D8     		bhi	.L33
+ 171:robot_controls.c ****         {
+ 172:robot_controls.c ****             Robot_LineCorrect();
+ 460              		.loc 1 172 0
+ 461 003c FFF7FEFF 		bl	Robot_LineCorrect
+ 462              	.LVL57:
+ 463 0040 19E0     		b	.L34
+ 464              	.L33:
+ 173:robot_controls.c ****         }
+ 174:robot_controls.c ****         else if (offLineCount > 80)
+ 465              		.loc 1 174 0
+ 466 0042 502B     		cmp	r3, #80
+ 467 0044 06D9     		bls	.L35
+ 175:robot_controls.c ****         {
+ 176:robot_controls.c ****             Robot_Stop();
+ 468              		.loc 1 176 0
+ 469 0046 FFF7FEFF 		bl	Robot_Stop
+ 470              	.LVL58:
+ 177:robot_controls.c ****             controlFault = true;
+ 471              		.loc 1 177 0
+ 472 004a 0122     		movs	r2, #1
+ 473 004c 1E4B     		ldr	r3, .L43
+ 474 004e DA71     		strb	r2, [r3, #7]
+ 178:robot_controls.c ****             return;
+ 475              		.loc 1 178 0
+ 476 0050 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 477              	.LVL59:
+ 478              	.L35:
+ 179:robot_controls.c ****         }
+ 180:robot_controls.c ****         else
+ 181:robot_controls.c ****         {
+ 182:robot_controls.c ****             Robot_ForwardSlow();
+ 479              		.loc 1 182 0
+ 480 0054 FFF7FEFF 		bl	Robot_ForwardSlow
+ 481              	.LVL60:
+ 183:robot_controls.c ****             CyDelay(12);
+ 482              		.loc 1 183 0
+ 483 0058 0C20     		movs	r0, #12
+ 484 005a FFF7FEFF 		bl	CyDelay
+ 485              	.LVL61:
+ 184:robot_controls.c **** 
+ 185:robot_controls.c ****             if (frontLeft == 0)
+ 486              		.loc 1 185 0
+ 487 005e 17B9     		cbnz	r7, .L36
+ 186:robot_controls.c ****             {
+ 187:robot_controls.c ****                 Robot_TurnLeft();
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 13
+
+
+ 488              		.loc 1 187 0
+ 489 0060 FFF7FEFF 		bl	Robot_TurnLeft
+ 490              	.LVL62:
+ 491 0064 07E0     		b	.L34
+ 492              	.L36:
+ 188:robot_controls.c ****             }
+ 189:robot_controls.c ****             else if (frontRight == 0)
+ 493              		.loc 1 189 0
+ 494 0066 B8F1000F 		cmp	r8, #0
+ 495 006a 02D1     		bne	.L37
+ 190:robot_controls.c ****             {
+ 191:robot_controls.c ****                 Robot_TurnRight();
+ 496              		.loc 1 191 0
+ 497 006c FFF7FEFF 		bl	Robot_TurnRight
+ 498              	.LVL63:
+ 499 0070 01E0     		b	.L34
+ 500              	.L37:
+ 192:robot_controls.c ****             }
+ 193:robot_controls.c ****             else
+ 194:robot_controls.c ****             {
+ 195:robot_controls.c ****                 Robot_Stop();
+ 501              		.loc 1 195 0
+ 502 0072 FFF7FEFF 		bl	Robot_Stop
+ 503              	.LVL64:
+ 504              	.L34:
+ 196:robot_controls.c ****             }
+ 197:robot_controls.c ****         }
+ 198:robot_controls.c **** 
+ 199:robot_controls.c ****         offLineCount++;
+ 505              		.loc 1 199 0
+ 506 0076 144A     		ldr	r2, .L43
+ 507 0078 1388     		ldrh	r3, [r2]
+ 508 007a 0133     		adds	r3, r3, #1
+ 509 007c 1380     		strh	r3, [r2]	@ movhi
+ 510 007e 15E0     		b	.L38
+ 511              	.L32:
+ 200:robot_controls.c ****     }
+ 201:robot_controls.c ****     else
+ 202:robot_controls.c ****     {
+ 203:robot_controls.c ****         /* Front sensor is on the line */
+ 204:robot_controls.c **** 
+ 205:robot_controls.c ****         Robot_LineForward();
+ 512              		.loc 1 205 0
+ 513 0080 FFF7FEFF 		bl	Robot_LineForward
+ 514              	.LVL65:
+ 206:robot_controls.c ****         offLineCount = 0;
+ 515              		.loc 1 206 0
+ 516 0084 104B     		ldr	r3, .L43
+ 517 0086 0022     		movs	r2, #0
+ 518 0088 1A80     		strh	r2, [r3]	@ movhi
+ 207:robot_controls.c **** 
+ 208:robot_controls.c ****         if (onLineCount > 100 && !onLine)
+ 519              		.loc 1 208 0
+ 520 008a 5B88     		ldrh	r3, [r3, #2]
+ 521 008c 642B     		cmp	r3, #100
+ 522 008e 05D9     		bls	.L39
+ 523              		.loc 1 208 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 14
+
+
+ 524 0090 0D4A     		ldr	r2, .L43
+ 525 0092 9279     		ldrb	r2, [r2, #6]	@ zero_extendqisi2
+ 526 0094 12B9     		cbnz	r2, .L39
+ 209:robot_controls.c ****         {
+ 210:robot_controls.c ****             turnDetected = false;
+ 527              		.loc 1 210 0 is_stmt 1
+ 528 0096 0021     		movs	r1, #0
+ 529 0098 0B4A     		ldr	r2, .L43
+ 530 009a 5171     		strb	r1, [r2, #5]
+ 531              	.L39:
+ 211:robot_controls.c ****         }
+ 212:robot_controls.c **** 
+ 213:robot_controls.c ****         if (rearLeft == 0 || rearRight == 0)
+ 532              		.loc 1 213 0
+ 533 009c 05B1     		cbz	r5, .L40
+ 534              		.loc 1 213 0 is_stmt 0 discriminator 1
+ 535 009e 16B9     		cbnz	r6, .L41
+ 536              	.L40:
+ 214:robot_controls.c ****         {
+ 215:robot_controls.c ****             onLine = true;
+ 537              		.loc 1 215 0 is_stmt 1
+ 538 00a0 0121     		movs	r1, #1
+ 539 00a2 094A     		ldr	r2, .L43
+ 540 00a4 9171     		strb	r1, [r2, #6]
+ 541              	.L41:
+ 216:robot_controls.c ****         }
+ 217:robot_controls.c **** 
+ 218:robot_controls.c ****         onLineCount++;
+ 542              		.loc 1 218 0
+ 543 00a6 0133     		adds	r3, r3, #1
+ 544 00a8 074A     		ldr	r2, .L43
+ 545 00aa 5380     		strh	r3, [r2, #2]	@ movhi
+ 546              	.L38:
+ 219:robot_controls.c ****     }
+ 220:robot_controls.c **** 
+ 221:robot_controls.c ****     if (turnDetected && onLine)
+ 547              		.loc 1 221 0
+ 548 00ac 064B     		ldr	r3, .L43
+ 549 00ae 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 550 00b0 43B1     		cbz	r3, .L29
+ 551              		.loc 1 221 0 is_stmt 0 discriminator 1
+ 552 00b2 054B     		ldr	r3, .L43
+ 553 00b4 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 554 00b6 2BB1     		cbz	r3, .L29
+ 222:robot_controls.c ****     {
+ 223:robot_controls.c ****         turnsComplete++;
+ 555              		.loc 1 223 0 is_stmt 1
+ 556 00b8 034B     		ldr	r3, .L43
+ 557 00ba 1A79     		ldrb	r2, [r3, #4]	@ zero_extendqisi2
+ 558 00bc 0132     		adds	r2, r2, #1
+ 559 00be 1A71     		strb	r2, [r3, #4]
+ 224:robot_controls.c ****         turnDetected = false;
+ 560              		.loc 1 224 0
+ 561 00c0 0022     		movs	r2, #0
+ 562 00c2 5A71     		strb	r2, [r3, #5]
+ 563              	.L29:
+ 564 00c4 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 15
+
+
+ 565              	.LVL66:
+ 566              	.L44:
+ 567              		.align	2
+ 568              	.L43:
+ 569 00c8 00000000 		.word	.LANCHOR0
+ 570              		.cfi_endproc
+ 571              	.LFE71:
+ 572              		.size	RobotControl_Update, .-RobotControl_Update
+ 573              		.bss
+ 574              		.align	1
+ 575              		.set	.LANCHOR0,. + 0
+ 576              		.type	offLineCount, %object
+ 577              		.size	offLineCount, 2
+ 578              	offLineCount:
+ 579 0000 0000     		.space	2
+ 580              		.type	onLineCount, %object
+ 581              		.size	onLineCount, 2
+ 582              	onLineCount:
+ 583 0002 0000     		.space	2
+ 584              		.type	turnsComplete, %object
+ 585              		.size	turnsComplete, 1
+ 586              	turnsComplete:
+ 587 0004 00       		.space	1
+ 588              		.type	turnDetected, %object
+ 589              		.size	turnDetected, 1
+ 590              	turnDetected:
+ 591 0005 00       		.space	1
+ 592              		.type	onLine, %object
+ 593              		.size	onLine, 1
+ 594              	onLine:
+ 595 0006 00       		.space	1
+ 596              		.type	controlFault, %object
+ 597              		.size	controlFault, 1
+ 598              	controlFault:
+ 599 0007 00       		.space	1
+ 600              		.text
+ 601              	.Letext0:
+ 602              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 603              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 604              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 605              		.file 5 "Generated_Source\\PSoC5/PWM_1.h"
+ 606              		.file 6 "Generated_Source\\PSoC5/PWM_2.h"
+ 607              		.file 7 "Generated_Source\\PSoC5/CyLib.h"
+ 608              		.file 8 "Generated_Source\\PSoC5/LED1.h"
+ 609              		.file 9 "Generated_Source\\PSoC5/LED2.h"
+ 610              		.file 10 "Generated_Source\\PSoC5/LED3.h"
+ 611              		.file 11 "Generated_Source\\PSoC5/LED4.h"
+ 612              		.file 12 "Generated_Source\\PSoC5/LED5.h"
+ 613              		.file 13 "Generated_Source\\PSoC5/core_cm3.h"
+ 614              		.section	.debug_info,"",%progbits
+ 615              	.Ldebug_info0:
+ 616 0000 4B050000 		.4byte	0x54b
+ 617 0004 0400     		.2byte	0x4
+ 618 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 619 000a 04       		.byte	0x4
+ 620 000b 01       		.uleb128 0x1
+ 621 000c E7000000 		.4byte	.LASF48
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 16
+
+
+ 622 0010 0C       		.byte	0xc
+ 623 0011 66020000 		.4byte	.LASF49
+ 624 0015 79000000 		.4byte	.LASF50
+ 625 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 626 001d 00000000 		.4byte	0
+ 627 0021 00000000 		.4byte	.Ldebug_line0
+ 628 0025 02       		.uleb128 0x2
+ 629 0026 01       		.byte	0x1
+ 630 0027 06       		.byte	0x6
+ 631 0028 07030000 		.4byte	.LASF0
+ 632 002c 02       		.uleb128 0x2
+ 633 002d 01       		.byte	0x1
+ 634 002e 08       		.byte	0x8
+ 635 002f D9000000 		.4byte	.LASF1
+ 636 0033 02       		.uleb128 0x2
+ 637 0034 02       		.byte	0x2
+ 638 0035 05       		.byte	0x5
+ 639 0036 BB020000 		.4byte	.LASF2
+ 640 003a 02       		.uleb128 0x2
+ 641 003b 02       		.byte	0x2
+ 642 003c 07       		.byte	0x7
+ 643 003d 39000000 		.4byte	.LASF3
+ 644 0041 03       		.uleb128 0x3
+ 645 0042 25000000 		.4byte	.LASF9
+ 646 0046 02       		.byte	0x2
+ 647 0047 3F       		.byte	0x3f
+ 648 0048 4C000000 		.4byte	0x4c
+ 649 004c 02       		.uleb128 0x2
+ 650 004d 04       		.byte	0x4
+ 651 004e 05       		.byte	0x5
+ 652 004f ED020000 		.4byte	.LASF4
+ 653 0053 02       		.uleb128 0x2
+ 654 0054 04       		.byte	0x4
+ 655 0055 07       		.byte	0x7
+ 656 0056 7F010000 		.4byte	.LASF5
+ 657 005a 02       		.uleb128 0x2
+ 658 005b 08       		.byte	0x8
+ 659 005c 05       		.byte	0x5
+ 660 005d 9B020000 		.4byte	.LASF6
+ 661 0061 02       		.uleb128 0x2
+ 662 0062 08       		.byte	0x8
+ 663 0063 07       		.byte	0x7
+ 664 0064 35020000 		.4byte	.LASF7
+ 665 0068 04       		.uleb128 0x4
+ 666 0069 04       		.byte	0x4
+ 667 006a 05       		.byte	0x5
+ 668 006b 696E7400 		.ascii	"int\000"
+ 669 006f 02       		.uleb128 0x2
+ 670 0070 04       		.byte	0x4
+ 671 0071 07       		.byte	0x7
+ 672 0072 0D020000 		.4byte	.LASF8
+ 673 0076 03       		.uleb128 0x3
+ 674 0077 77020000 		.4byte	.LASF10
+ 675 007b 03       		.byte	0x3
+ 676 007c 2C       		.byte	0x2c
+ 677 007d 41000000 		.4byte	0x41
+ 678 0081 05       		.uleb128 0x5
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 17
+
+
+ 679 0082 CB020000 		.4byte	.LASF11
+ 680 0086 04       		.byte	0x4
+ 681 0087 E701     		.2byte	0x1e7
+ 682 0089 2C000000 		.4byte	0x2c
+ 683 008d 05       		.uleb128 0x5
+ 684 008e DF010000 		.4byte	.LASF12
+ 685 0092 04       		.byte	0x4
+ 686 0093 E801     		.2byte	0x1e8
+ 687 0095 3A000000 		.4byte	0x3a
+ 688 0099 02       		.uleb128 0x2
+ 689 009a 04       		.byte	0x4
+ 690 009b 04       		.byte	0x4
+ 691 009c C4000000 		.4byte	.LASF13
+ 692 00a0 02       		.uleb128 0x2
+ 693 00a1 08       		.byte	0x8
+ 694 00a2 04       		.byte	0x4
+ 695 00a3 CC010000 		.4byte	.LASF14
+ 696 00a7 02       		.uleb128 0x2
+ 697 00a8 01       		.byte	0x1
+ 698 00a9 08       		.byte	0x8
+ 699 00aa F6020000 		.4byte	.LASF15
+ 700 00ae 02       		.uleb128 0x2
+ 701 00af 08       		.byte	0x8
+ 702 00b0 04       		.byte	0x4
+ 703 00b1 FB020000 		.4byte	.LASF16
+ 704 00b5 02       		.uleb128 0x2
+ 705 00b6 04       		.byte	0x4
+ 706 00b7 07       		.byte	0x7
+ 707 00b8 7F020000 		.4byte	.LASF17
+ 708 00bc 06       		.uleb128 0x6
+ 709 00bd C1010000 		.4byte	.LASF18
+ 710 00c1 01       		.byte	0x1
+ 711 00c2 28       		.byte	0x28
+ 712 00c3 00000000 		.4byte	.LFB64
+ 713 00c7 10000000 		.4byte	.LFE64-.LFB64
+ 714 00cb 01       		.uleb128 0x1
+ 715 00cc 9C       		.byte	0x9c
+ 716 00cd F6000000 		.4byte	0xf6
+ 717 00d1 07       		.uleb128 0x7
+ 718 00d2 08000000 		.4byte	.LVL0
+ 719 00d6 F6040000 		.4byte	0x4f6
+ 720 00da E5000000 		.4byte	0xe5
+ 721 00de 08       		.uleb128 0x8
+ 722 00df 01       		.uleb128 0x1
+ 723 00e0 50       		.byte	0x50
+ 724 00e1 02       		.uleb128 0x2
+ 725 00e2 08       		.byte	0x8
+ 726 00e3 2D       		.byte	0x2d
+ 727 00e4 00       		.byte	0
+ 728 00e5 09       		.uleb128 0x9
+ 729 00e6 0E000000 		.4byte	.LVL1
+ 730 00ea 01050000 		.4byte	0x501
+ 731 00ee 08       		.uleb128 0x8
+ 732 00ef 01       		.uleb128 0x1
+ 733 00f0 50       		.byte	0x50
+ 734 00f1 02       		.uleb128 0x2
+ 735 00f2 08       		.byte	0x8
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 18
+
+
+ 736 00f3 2D       		.byte	0x2d
+ 737 00f4 00       		.byte	0
+ 738 00f5 00       		.byte	0
+ 739 00f6 06       		.uleb128 0x6
+ 740 00f7 A9020000 		.4byte	.LASF19
+ 741 00fb 01       		.byte	0x1
+ 742 00fc 17       		.byte	0x17
+ 743 00fd 00000000 		.4byte	.LFB63
+ 744 0101 1C000000 		.4byte	.LFE63-.LFB63
+ 745 0105 01       		.uleb128 0x1
+ 746 0106 9C       		.byte	0x9c
+ 747 0107 15010000 		.4byte	0x115
+ 748 010b 0A       		.uleb128 0xa
+ 749 010c 16000000 		.4byte	.LVL2
+ 750 0110 BC000000 		.4byte	0xbc
+ 751 0114 00       		.byte	0
+ 752 0115 06       		.uleb128 0x6
+ 753 0116 1A020000 		.4byte	.LASF20
+ 754 011a 01       		.byte	0x1
+ 755 011b 2E       		.byte	0x2e
+ 756 011c 00000000 		.4byte	.LFB65
+ 757 0120 10000000 		.4byte	.LFE65-.LFB65
+ 758 0124 01       		.uleb128 0x1
+ 759 0125 9C       		.byte	0x9c
+ 760 0126 4D010000 		.4byte	0x14d
+ 761 012a 07       		.uleb128 0x7
+ 762 012b 08000000 		.4byte	.LVL3
+ 763 012f F6040000 		.4byte	0x4f6
+ 764 0133 3D010000 		.4byte	0x13d
+ 765 0137 08       		.uleb128 0x8
+ 766 0138 01       		.uleb128 0x1
+ 767 0139 50       		.byte	0x50
+ 768 013a 01       		.uleb128 0x1
+ 769 013b 47       		.byte	0x47
+ 770 013c 00       		.byte	0
+ 771 013d 09       		.uleb128 0x9
+ 772 013e 0E000000 		.4byte	.LVL4
+ 773 0142 01050000 		.4byte	0x501
+ 774 0146 08       		.uleb128 0x8
+ 775 0147 01       		.uleb128 0x1
+ 776 0148 50       		.byte	0x50
+ 777 0149 01       		.uleb128 0x1
+ 778 014a 47       		.byte	0x47
+ 779 014b 00       		.byte	0
+ 780 014c 00       		.byte	0
+ 781 014d 06       		.uleb128 0x6
+ 782 014e A2010000 		.4byte	.LASF21
+ 783 0152 01       		.byte	0x1
+ 784 0153 34       		.byte	0x34
+ 785 0154 00000000 		.4byte	.LFB66
+ 786 0158 10000000 		.4byte	.LFE66-.LFB66
+ 787 015c 01       		.uleb128 0x1
+ 788 015d 9C       		.byte	0x9c
+ 789 015e 85010000 		.4byte	0x185
+ 790 0162 07       		.uleb128 0x7
+ 791 0163 08000000 		.4byte	.LVL5
+ 792 0167 F6040000 		.4byte	0x4f6
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 19
+
+
+ 793 016b 75010000 		.4byte	0x175
+ 794 016f 08       		.uleb128 0x8
+ 795 0170 01       		.uleb128 0x1
+ 796 0171 50       		.byte	0x50
+ 797 0172 01       		.uleb128 0x1
+ 798 0173 47       		.byte	0x47
+ 799 0174 00       		.byte	0
+ 800 0175 09       		.uleb128 0x9
+ 801 0176 0E000000 		.4byte	.LVL6
+ 802 017a 01050000 		.4byte	0x501
+ 803 017e 08       		.uleb128 0x8
+ 804 017f 01       		.uleb128 0x1
+ 805 0180 50       		.byte	0x50
+ 806 0181 01       		.uleb128 0x1
+ 807 0182 47       		.byte	0x47
+ 808 0183 00       		.byte	0
+ 809 0184 00       		.byte	0
+ 810 0185 06       		.uleb128 0x6
+ 811 0186 54020000 		.4byte	.LASF22
+ 812 018a 01       		.byte	0x1
+ 813 018b 3A       		.byte	0x3a
+ 814 018c 00000000 		.4byte	.LFB67
+ 815 0190 10000000 		.4byte	.LFE67-.LFB67
+ 816 0194 01       		.uleb128 0x1
+ 817 0195 9C       		.byte	0x9c
+ 818 0196 BD010000 		.4byte	0x1bd
+ 819 019a 07       		.uleb128 0x7
+ 820 019b 08000000 		.4byte	.LVL7
+ 821 019f F6040000 		.4byte	0x4f6
+ 822 01a3 AD010000 		.4byte	0x1ad
+ 823 01a7 08       		.uleb128 0x8
+ 824 01a8 01       		.uleb128 0x1
+ 825 01a9 50       		.byte	0x50
+ 826 01aa 01       		.uleb128 0x1
+ 827 01ab 45       		.byte	0x45
+ 828 01ac 00       		.byte	0
+ 829 01ad 09       		.uleb128 0x9
+ 830 01ae 0E000000 		.4byte	.LVL8
+ 831 01b2 01050000 		.4byte	0x501
+ 832 01b6 08       		.uleb128 0x8
+ 833 01b7 01       		.uleb128 0x1
+ 834 01b8 50       		.byte	0x50
+ 835 01b9 01       		.uleb128 0x1
+ 836 01ba 47       		.byte	0x47
+ 837 01bb 00       		.byte	0
+ 838 01bc 00       		.byte	0
+ 839 01bd 06       		.uleb128 0x6
+ 840 01be DB020000 		.4byte	.LASF23
+ 841 01c2 01       		.byte	0x1
+ 842 01c3 40       		.byte	0x40
+ 843 01c4 00000000 		.4byte	.LFB68
+ 844 01c8 10000000 		.4byte	.LFE68-.LFB68
+ 845 01cc 01       		.uleb128 0x1
+ 846 01cd 9C       		.byte	0x9c
+ 847 01ce F6010000 		.4byte	0x1f6
+ 848 01d2 07       		.uleb128 0x7
+ 849 01d3 08000000 		.4byte	.LVL9
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 20
+
+
+ 850 01d7 F6040000 		.4byte	0x4f6
+ 851 01db E6010000 		.4byte	0x1e6
+ 852 01df 08       		.uleb128 0x8
+ 853 01e0 01       		.uleb128 0x1
+ 854 01e1 50       		.byte	0x50
+ 855 01e2 02       		.uleb128 0x2
+ 856 01e3 08       		.byte	0x8
+ 857 01e4 46       		.byte	0x46
+ 858 01e5 00       		.byte	0
+ 859 01e6 09       		.uleb128 0x9
+ 860 01e7 0E000000 		.4byte	.LVL10
+ 861 01eb 01050000 		.4byte	0x501
+ 862 01ef 08       		.uleb128 0x8
+ 863 01f0 01       		.uleb128 0x1
+ 864 01f1 50       		.byte	0x50
+ 865 01f2 01       		.uleb128 0x1
+ 866 01f3 44       		.byte	0x44
+ 867 01f4 00       		.byte	0
+ 868 01f5 00       		.byte	0
+ 869 01f6 06       		.uleb128 0x6
+ 870 01f7 CA000000 		.4byte	.LASF24
+ 871 01fb 01       		.byte	0x1
+ 872 01fc 4A       		.byte	0x4a
+ 873 01fd 00000000 		.4byte	.LFB69
+ 874 0201 70000000 		.4byte	.LFE69-.LFB69
+ 875 0205 01       		.uleb128 0x1
+ 876 0206 9C       		.byte	0x9c
+ 877 0207 E0020000 		.4byte	0x2e0
+ 878 020b 0B       		.uleb128 0xb
+ 879 020c 4C020000 		.4byte	.LASF26
+ 880 0210 01       		.byte	0x1
+ 881 0211 4C       		.byte	0x4c
+ 882 0212 8D000000 		.4byte	0x8d
+ 883 0216 00000000 		.4byte	.LLST0
+ 884 021a 0A       		.uleb128 0xa
+ 885 021b 12000000 		.4byte	.LVL12
+ 886 021f 4D010000 		.4byte	0x14d
+ 887 0223 07       		.uleb128 0x7
+ 888 0224 18000000 		.4byte	.LVL13
+ 889 0228 0C050000 		.4byte	0x50c
+ 890 022c 37020000 		.4byte	0x237
+ 891 0230 08       		.uleb128 0x8
+ 892 0231 01       		.uleb128 0x1
+ 893 0232 50       		.byte	0x50
+ 894 0233 02       		.uleb128 0x2
+ 895 0234 08       		.byte	0x8
+ 896 0235 8E       		.byte	0x8e
+ 897 0236 00       		.byte	0
+ 898 0237 0A       		.uleb128 0xa
+ 899 0238 1C000000 		.4byte	.LVL14
+ 900 023c BC000000 		.4byte	0xbc
+ 901 0240 07       		.uleb128 0x7
+ 902 0241 24000000 		.4byte	.LVL16
+ 903 0245 F6040000 		.4byte	0x4f6
+ 904 0249 54020000 		.4byte	0x254
+ 905 024d 08       		.uleb128 0x8
+ 906 024e 01       		.uleb128 0x1
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 21
+
+
+ 907 024f 50       		.byte	0x50
+ 908 0250 02       		.uleb128 0x2
+ 909 0251 08       		.byte	0x8
+ 910 0252 41       		.byte	0x41
+ 911 0253 00       		.byte	0
+ 912 0254 07       		.uleb128 0x7
+ 913 0255 2A000000 		.4byte	.LVL17
+ 914 0259 01050000 		.4byte	0x501
+ 915 025d 67020000 		.4byte	0x267
+ 916 0261 08       		.uleb128 0x8
+ 917 0262 01       		.uleb128 0x1
+ 918 0263 50       		.byte	0x50
+ 919 0264 01       		.uleb128 0x1
+ 920 0265 49       		.byte	0x49
+ 921 0266 00       		.byte	0
+ 922 0267 07       		.uleb128 0x7
+ 923 0268 30000000 		.4byte	.LVL18
+ 924 026c 0C050000 		.4byte	0x50c
+ 925 0270 7A020000 		.4byte	0x27a
+ 926 0274 08       		.uleb128 0x8
+ 927 0275 01       		.uleb128 0x1
+ 928 0276 50       		.byte	0x50
+ 929 0277 01       		.uleb128 0x1
+ 930 0278 31       		.byte	0x31
+ 931 0279 00       		.byte	0
+ 932 027a 0A       		.uleb128 0xa
+ 933 027b 3E000000 		.4byte	.LVL21
+ 934 027f BC000000 		.4byte	0xbc
+ 935 0283 0A       		.uleb128 0xa
+ 936 0284 4A000000 		.4byte	.LVL23
+ 937 0288 17050000 		.4byte	0x517
+ 938 028c 0A       		.uleb128 0xa
+ 939 028d 52000000 		.4byte	.LVL24
+ 940 0291 4D010000 		.4byte	0x14d
+ 941 0295 07       		.uleb128 0x7
+ 942 0296 58000000 		.4byte	.LVL25
+ 943 029a 0C050000 		.4byte	0x50c
+ 944 029e A8020000 		.4byte	0x2a8
+ 945 02a2 08       		.uleb128 0x8
+ 946 02a3 01       		.uleb128 0x1
+ 947 02a4 50       		.byte	0x50
+ 948 02a5 01       		.uleb128 0x1
+ 949 02a6 3A       		.byte	0x3a
+ 950 02a7 00       		.byte	0
+ 951 02a8 07       		.uleb128 0x7
+ 952 02a9 5E000000 		.4byte	.LVL26
+ 953 02ad F6040000 		.4byte	0x4f6
+ 954 02b1 BB020000 		.4byte	0x2bb
+ 955 02b5 08       		.uleb128 0x8
+ 956 02b6 01       		.uleb128 0x1
+ 957 02b7 50       		.byte	0x50
+ 958 02b8 01       		.uleb128 0x1
+ 959 02b9 49       		.byte	0x49
+ 960 02ba 00       		.byte	0
+ 961 02bb 07       		.uleb128 0x7
+ 962 02bc 64000000 		.4byte	.LVL27
+ 963 02c0 01050000 		.4byte	0x501
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 22
+
+
+ 964 02c4 CF020000 		.4byte	0x2cf
+ 965 02c8 08       		.uleb128 0x8
+ 966 02c9 01       		.uleb128 0x1
+ 967 02ca 50       		.byte	0x50
+ 968 02cb 02       		.uleb128 0x2
+ 969 02cc 08       		.byte	0x8
+ 970 02cd 41       		.byte	0x41
+ 971 02ce 00       		.byte	0
+ 972 02cf 09       		.uleb128 0x9
+ 973 02d0 6A000000 		.4byte	.LVL28
+ 974 02d4 0C050000 		.4byte	0x50c
+ 975 02d8 08       		.uleb128 0x8
+ 976 02d9 01       		.uleb128 0x1
+ 977 02da 50       		.byte	0x50
+ 978 02db 02       		.uleb128 0x2
+ 979 02dc 08       		.byte	0x8
+ 980 02dd 32       		.byte	0x32
+ 981 02de 00       		.byte	0
+ 982 02df 00       		.byte	0
+ 983 02e0 06       		.uleb128 0x6
+ 984 02e1 4C000000 		.4byte	.LASF25
+ 985 02e5 01       		.byte	0x1
+ 986 02e6 73       		.byte	0x73
+ 987 02e7 00000000 		.4byte	.LFB70
+ 988 02eb 60000000 		.4byte	.LFE70-.LFB70
+ 989 02ef 01       		.uleb128 0x1
+ 990 02f0 9C       		.byte	0x9c
+ 991 02f1 8F030000 		.4byte	0x38f
+ 992 02f5 0B       		.uleb128 0xb
+ 993 02f6 4C020000 		.4byte	.LASF26
+ 994 02fa 01       		.byte	0x1
+ 995 02fb 75       		.byte	0x75
+ 996 02fc 8D000000 		.4byte	0x8d
+ 997 0300 2A000000 		.4byte	.LLST1
+ 998 0304 0A       		.uleb128 0xa
+ 999 0305 12000000 		.4byte	.LVL31
+ 1000 0309 4D010000 		.4byte	0x14d
+ 1001 030d 07       		.uleb128 0x7
+ 1002 030e 18000000 		.4byte	.LVL32
+ 1003 0312 0C050000 		.4byte	0x50c
+ 1004 0316 21030000 		.4byte	0x321
+ 1005 031a 08       		.uleb128 0x8
+ 1006 031b 01       		.uleb128 0x1
+ 1007 031c 50       		.byte	0x50
+ 1008 031d 02       		.uleb128 0x2
+ 1009 031e 08       		.byte	0x8
+ 1010 031f 92       		.byte	0x92
+ 1011 0320 00       		.byte	0
+ 1012 0321 0A       		.uleb128 0xa
+ 1013 0322 1C000000 		.4byte	.LVL33
+ 1014 0326 BC000000 		.4byte	0xbc
+ 1015 032a 07       		.uleb128 0x7
+ 1016 032b 24000000 		.4byte	.LVL35
+ 1017 032f F6040000 		.4byte	0x4f6
+ 1018 0333 3D030000 		.4byte	0x33d
+ 1019 0337 08       		.uleb128 0x8
+ 1020 0338 01       		.uleb128 0x1
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 23
+
+
+ 1021 0339 50       		.byte	0x50
+ 1022 033a 01       		.uleb128 0x1
+ 1023 033b 49       		.byte	0x49
+ 1024 033c 00       		.byte	0
+ 1025 033d 07       		.uleb128 0x7
+ 1026 033e 2A000000 		.4byte	.LVL36
+ 1027 0342 01050000 		.4byte	0x501
+ 1028 0346 51030000 		.4byte	0x351
+ 1029 034a 08       		.uleb128 0x8
+ 1030 034b 01       		.uleb128 0x1
+ 1031 034c 50       		.byte	0x50
+ 1032 034d 02       		.uleb128 0x2
+ 1033 034e 08       		.byte	0x8
+ 1034 034f 41       		.byte	0x41
+ 1035 0350 00       		.byte	0
+ 1036 0351 07       		.uleb128 0x7
+ 1037 0352 30000000 		.4byte	.LVL37
+ 1038 0356 0C050000 		.4byte	0x50c
+ 1039 035a 64030000 		.4byte	0x364
+ 1040 035e 08       		.uleb128 0x8
+ 1041 035f 01       		.uleb128 0x1
+ 1042 0360 50       		.byte	0x50
+ 1043 0361 01       		.uleb128 0x1
+ 1044 0362 31       		.byte	0x31
+ 1045 0363 00       		.byte	0
+ 1046 0364 0A       		.uleb128 0xa
+ 1047 0365 3E000000 		.4byte	.LVL40
+ 1048 0369 BC000000 		.4byte	0xbc
+ 1049 036d 0A       		.uleb128 0xa
+ 1050 036e 4A000000 		.4byte	.LVL42
+ 1051 0372 17050000 		.4byte	0x517
+ 1052 0376 0A       		.uleb128 0xa
+ 1053 0377 52000000 		.4byte	.LVL43
+ 1054 037b 4D010000 		.4byte	0x14d
+ 1055 037f 09       		.uleb128 0x9
+ 1056 0380 58000000 		.4byte	.LVL44
+ 1057 0384 0C050000 		.4byte	0x50c
+ 1058 0388 08       		.uleb128 0x8
+ 1059 0389 01       		.uleb128 0x1
+ 1060 038a 50       		.byte	0x50
+ 1061 038b 01       		.uleb128 0x1
+ 1062 038c 4E       		.byte	0x4e
+ 1063 038d 00       		.byte	0
+ 1064 038e 00       		.byte	0
+ 1065 038f 06       		.uleb128 0x6
+ 1066 0390 E6010000 		.4byte	.LASF27
+ 1067 0394 01       		.byte	0x1
+ 1068 0395 98       		.byte	0x98
+ 1069 0396 00000000 		.4byte	.LFB71
+ 1070 039a CC000000 		.4byte	.LFE71-.LFB71
+ 1071 039e 01       		.uleb128 0x1
+ 1072 039f 9C       		.byte	0x9c
+ 1073 03a0 78040000 		.4byte	0x478
+ 1074 03a4 0B       		.uleb128 0xb
+ 1075 03a5 C5020000 		.4byte	.LASF28
+ 1076 03a9 01       		.byte	0x1
+ 1077 03aa A0       		.byte	0xa0
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 24
+
+
+ 1078 03ab 81000000 		.4byte	0x81
+ 1079 03af 54000000 		.4byte	.LLST2
+ 1080 03b3 0B       		.uleb128 0xb
+ 1081 03b4 FA010000 		.4byte	.LASF29
+ 1082 03b8 01       		.byte	0x1
+ 1083 03b9 A1       		.byte	0xa1
+ 1084 03ba 81000000 		.4byte	0x81
+ 1085 03be 67000000 		.4byte	.LLST3
+ 1086 03c2 0B       		.uleb128 0xb
+ 1087 03c3 6F000000 		.4byte	.LASF30
+ 1088 03c7 01       		.byte	0x1
+ 1089 03c8 A2       		.byte	0xa2
+ 1090 03c9 81000000 		.4byte	0x81
+ 1091 03cd 7A000000 		.4byte	.LLST4
+ 1092 03d1 0B       		.uleb128 0xb
+ 1093 03d2 B9000000 		.4byte	.LASF31
+ 1094 03d6 01       		.byte	0x1
+ 1095 03d7 A3       		.byte	0xa3
+ 1096 03d8 81000000 		.4byte	0x81
+ 1097 03dc 8D000000 		.4byte	.LLST5
+ 1098 03e0 0B       		.uleb128 0xb
+ 1099 03e1 98010000 		.4byte	.LASF32
+ 1100 03e5 01       		.byte	0x1
+ 1101 03e6 A4       		.byte	0xa4
+ 1102 03e7 81000000 		.4byte	0x81
+ 1103 03eb A0000000 		.4byte	.LLST6
+ 1104 03ef 0A       		.uleb128 0xa
+ 1105 03f0 0E000000 		.4byte	.LVL46
+ 1106 03f4 BC000000 		.4byte	0xbc
+ 1107 03f8 0A       		.uleb128 0xa
+ 1108 03f9 16000000 		.4byte	.LVL47
+ 1109 03fd 17050000 		.4byte	0x517
+ 1110 0401 0A       		.uleb128 0xa
+ 1111 0402 1C000000 		.4byte	.LVL49
+ 1112 0406 22050000 		.4byte	0x522
+ 1113 040a 0A       		.uleb128 0xa
+ 1114 040b 22000000 		.4byte	.LVL51
+ 1115 040f 2D050000 		.4byte	0x52d
+ 1116 0413 0A       		.uleb128 0xa
+ 1117 0414 28000000 		.4byte	.LVL53
+ 1118 0418 38050000 		.4byte	0x538
+ 1119 041c 0A       		.uleb128 0xa
+ 1120 041d 2E000000 		.4byte	.LVL55
+ 1121 0421 43050000 		.4byte	0x543
+ 1122 0425 0A       		.uleb128 0xa
+ 1123 0426 40000000 		.4byte	.LVL57
+ 1124 042a BD010000 		.4byte	0x1bd
+ 1125 042e 0A       		.uleb128 0xa
+ 1126 042f 4A000000 		.4byte	.LVL58
+ 1127 0433 BC000000 		.4byte	0xbc
+ 1128 0437 0A       		.uleb128 0xa
+ 1129 0438 58000000 		.4byte	.LVL60
+ 1130 043c 4D010000 		.4byte	0x14d
+ 1131 0440 07       		.uleb128 0x7
+ 1132 0441 5E000000 		.4byte	.LVL61
+ 1133 0445 0C050000 		.4byte	0x50c
+ 1134 0449 53040000 		.4byte	0x453
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 25
+
+
+ 1135 044d 08       		.uleb128 0x8
+ 1136 044e 01       		.uleb128 0x1
+ 1137 044f 50       		.byte	0x50
+ 1138 0450 01       		.uleb128 0x1
+ 1139 0451 3C       		.byte	0x3c
+ 1140 0452 00       		.byte	0
+ 1141 0453 0A       		.uleb128 0xa
+ 1142 0454 64000000 		.4byte	.LVL62
+ 1143 0458 F6010000 		.4byte	0x1f6
+ 1144 045c 0A       		.uleb128 0xa
+ 1145 045d 70000000 		.4byte	.LVL63
+ 1146 0461 E0020000 		.4byte	0x2e0
+ 1147 0465 0A       		.uleb128 0xa
+ 1148 0466 76000000 		.4byte	.LVL64
+ 1149 046a BC000000 		.4byte	0xbc
+ 1150 046e 0A       		.uleb128 0xa
+ 1151 046f 84000000 		.4byte	.LVL65
+ 1152 0473 85010000 		.4byte	0x185
+ 1153 0477 00       		.byte	0
+ 1154 0478 0C       		.uleb128 0xc
+ 1155 0479 28020000 		.4byte	.LASF33
+ 1156 047d 01       		.byte	0x1
+ 1157 047e 0B       		.byte	0xb
+ 1158 047f 8D000000 		.4byte	0x8d
+ 1159 0483 05       		.uleb128 0x5
+ 1160 0484 03       		.byte	0x3
+ 1161 0485 00000000 		.4byte	offLineCount
+ 1162 0489 0C       		.uleb128 0xc
+ 1163 048a D3010000 		.4byte	.LASF34
+ 1164 048e 01       		.byte	0x1
+ 1165 048f 0C       		.byte	0xc
+ 1166 0490 8D000000 		.4byte	0x8d
+ 1167 0494 05       		.uleb128 0x5
+ 1168 0495 03       		.byte	0x3
+ 1169 0496 02000000 		.4byte	onLineCount
+ 1170 049a 0C       		.uleb128 0xc
+ 1171 049b 17000000 		.4byte	.LASF35
+ 1172 049f 01       		.byte	0x1
+ 1173 04a0 0D       		.byte	0xd
+ 1174 04a1 81000000 		.4byte	0x81
+ 1175 04a5 05       		.uleb128 0x5
+ 1176 04a6 03       		.byte	0x3
+ 1177 04a7 04000000 		.4byte	turnsComplete
+ 1178 04ab 0C       		.uleb128 0xc
+ 1179 04ac 13030000 		.4byte	.LASF36
+ 1180 04b0 01       		.byte	0x1
+ 1181 04b1 0F       		.byte	0xf
+ 1182 04b2 BC040000 		.4byte	0x4bc
+ 1183 04b6 05       		.uleb128 0x5
+ 1184 04b7 03       		.byte	0x3
+ 1185 04b8 05000000 		.4byte	turnDetected
+ 1186 04bc 02       		.uleb128 0x2
+ 1187 04bd 01       		.byte	0x1
+ 1188 04be 02       		.byte	0x2
+ 1189 04bf 20030000 		.4byte	.LASF37
+ 1190 04c3 0C       		.uleb128 0xc
+ 1191 04c4 91010000 		.4byte	.LASF38
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 26
+
+
+ 1192 04c8 01       		.byte	0x1
+ 1193 04c9 10       		.byte	0x10
+ 1194 04ca BC040000 		.4byte	0x4bc
+ 1195 04ce 05       		.uleb128 0x5
+ 1196 04cf 03       		.byte	0x3
+ 1197 04d0 06000000 		.4byte	onLine
+ 1198 04d4 0C       		.uleb128 0xc
+ 1199 04d5 00000000 		.4byte	.LASF39
+ 1200 04d9 01       		.byte	0x1
+ 1201 04da 11       		.byte	0x11
+ 1202 04db BC040000 		.4byte	0x4bc
+ 1203 04df 05       		.uleb128 0x5
+ 1204 04e0 03       		.byte	0x3
+ 1205 04e1 07000000 		.4byte	controlFault
+ 1206 04e5 0D       		.uleb128 0xd
+ 1207 04e6 B4010000 		.4byte	.LASF51
+ 1208 04ea 0D       		.byte	0xd
+ 1209 04eb 1207     		.2byte	0x712
+ 1210 04ed F1040000 		.4byte	0x4f1
+ 1211 04f1 0E       		.uleb128 0xe
+ 1212 04f2 76000000 		.4byte	0x76
+ 1213 04f6 0F       		.uleb128 0xf
+ 1214 04f7 88020000 		.4byte	.LASF40
+ 1215 04fb 88020000 		.4byte	.LASF40
+ 1216 04ff 05       		.byte	0x5
+ 1217 0500 C3       		.byte	0xc3
+ 1218 0501 0F       		.uleb128 0xf
+ 1219 0502 5C000000 		.4byte	.LASF41
+ 1220 0506 5C000000 		.4byte	.LASF41
+ 1221 050a 06       		.byte	0x6
+ 1222 050b C3       		.byte	0xc3
+ 1223 050c 0F       		.uleb128 0xf
+ 1224 050d 26030000 		.4byte	.LASF42
+ 1225 0511 26030000 		.4byte	.LASF42
+ 1226 0515 07       		.byte	0x7
+ 1227 0516 76       		.byte	0x76
+ 1228 0517 0F       		.uleb128 0xf
+ 1229 0518 2F000000 		.4byte	.LASF43
+ 1230 051c 2F000000 		.4byte	.LASF43
+ 1231 0520 08       		.byte	0x8
+ 1232 0521 29       		.byte	0x29
+ 1233 0522 0F       		.uleb128 0xf
+ 1234 0523 D1020000 		.4byte	.LASF44
+ 1235 0527 D1020000 		.4byte	.LASF44
+ 1236 052b 09       		.byte	0x9
+ 1237 052c 29       		.byte	0x29
+ 1238 052d 0F       		.uleb128 0xf
+ 1239 052e 0D000000 		.4byte	.LASF45
+ 1240 0532 0D000000 		.4byte	.LASF45
+ 1241 0536 0A       		.byte	0xa
+ 1242 0537 29       		.byte	0x29
+ 1243 0538 0F       		.uleb128 0xf
+ 1244 0539 75010000 		.4byte	.LASF46
+ 1245 053d 75010000 		.4byte	.LASF46
+ 1246 0541 0B       		.byte	0xb
+ 1247 0542 29       		.byte	0x29
+ 1248 0543 0F       		.uleb128 0xf
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 27
+
+
+ 1249 0544 03020000 		.4byte	.LASF47
+ 1250 0548 03020000 		.4byte	.LASF47
+ 1251 054c 0C       		.byte	0xc
+ 1252 054d 29       		.byte	0x29
+ 1253 054e 00       		.byte	0
+ 1254              		.section	.debug_abbrev,"",%progbits
+ 1255              	.Ldebug_abbrev0:
+ 1256 0000 01       		.uleb128 0x1
+ 1257 0001 11       		.uleb128 0x11
+ 1258 0002 01       		.byte	0x1
+ 1259 0003 25       		.uleb128 0x25
+ 1260 0004 0E       		.uleb128 0xe
+ 1261 0005 13       		.uleb128 0x13
+ 1262 0006 0B       		.uleb128 0xb
+ 1263 0007 03       		.uleb128 0x3
+ 1264 0008 0E       		.uleb128 0xe
+ 1265 0009 1B       		.uleb128 0x1b
+ 1266 000a 0E       		.uleb128 0xe
+ 1267 000b 55       		.uleb128 0x55
+ 1268 000c 17       		.uleb128 0x17
+ 1269 000d 11       		.uleb128 0x11
+ 1270 000e 01       		.uleb128 0x1
+ 1271 000f 10       		.uleb128 0x10
+ 1272 0010 17       		.uleb128 0x17
+ 1273 0011 00       		.byte	0
+ 1274 0012 00       		.byte	0
+ 1275 0013 02       		.uleb128 0x2
+ 1276 0014 24       		.uleb128 0x24
+ 1277 0015 00       		.byte	0
+ 1278 0016 0B       		.uleb128 0xb
+ 1279 0017 0B       		.uleb128 0xb
+ 1280 0018 3E       		.uleb128 0x3e
+ 1281 0019 0B       		.uleb128 0xb
+ 1282 001a 03       		.uleb128 0x3
+ 1283 001b 0E       		.uleb128 0xe
+ 1284 001c 00       		.byte	0
+ 1285 001d 00       		.byte	0
+ 1286 001e 03       		.uleb128 0x3
+ 1287 001f 16       		.uleb128 0x16
+ 1288 0020 00       		.byte	0
+ 1289 0021 03       		.uleb128 0x3
+ 1290 0022 0E       		.uleb128 0xe
+ 1291 0023 3A       		.uleb128 0x3a
+ 1292 0024 0B       		.uleb128 0xb
+ 1293 0025 3B       		.uleb128 0x3b
+ 1294 0026 0B       		.uleb128 0xb
+ 1295 0027 49       		.uleb128 0x49
+ 1296 0028 13       		.uleb128 0x13
+ 1297 0029 00       		.byte	0
+ 1298 002a 00       		.byte	0
+ 1299 002b 04       		.uleb128 0x4
+ 1300 002c 24       		.uleb128 0x24
+ 1301 002d 00       		.byte	0
+ 1302 002e 0B       		.uleb128 0xb
+ 1303 002f 0B       		.uleb128 0xb
+ 1304 0030 3E       		.uleb128 0x3e
+ 1305 0031 0B       		.uleb128 0xb
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 28
+
+
+ 1306 0032 03       		.uleb128 0x3
+ 1307 0033 08       		.uleb128 0x8
+ 1308 0034 00       		.byte	0
+ 1309 0035 00       		.byte	0
+ 1310 0036 05       		.uleb128 0x5
+ 1311 0037 16       		.uleb128 0x16
+ 1312 0038 00       		.byte	0
+ 1313 0039 03       		.uleb128 0x3
+ 1314 003a 0E       		.uleb128 0xe
+ 1315 003b 3A       		.uleb128 0x3a
+ 1316 003c 0B       		.uleb128 0xb
+ 1317 003d 3B       		.uleb128 0x3b
+ 1318 003e 05       		.uleb128 0x5
+ 1319 003f 49       		.uleb128 0x49
+ 1320 0040 13       		.uleb128 0x13
+ 1321 0041 00       		.byte	0
+ 1322 0042 00       		.byte	0
+ 1323 0043 06       		.uleb128 0x6
+ 1324 0044 2E       		.uleb128 0x2e
+ 1325 0045 01       		.byte	0x1
+ 1326 0046 3F       		.uleb128 0x3f
+ 1327 0047 19       		.uleb128 0x19
+ 1328 0048 03       		.uleb128 0x3
+ 1329 0049 0E       		.uleb128 0xe
+ 1330 004a 3A       		.uleb128 0x3a
+ 1331 004b 0B       		.uleb128 0xb
+ 1332 004c 3B       		.uleb128 0x3b
+ 1333 004d 0B       		.uleb128 0xb
+ 1334 004e 27       		.uleb128 0x27
+ 1335 004f 19       		.uleb128 0x19
+ 1336 0050 11       		.uleb128 0x11
+ 1337 0051 01       		.uleb128 0x1
+ 1338 0052 12       		.uleb128 0x12
+ 1339 0053 06       		.uleb128 0x6
+ 1340 0054 40       		.uleb128 0x40
+ 1341 0055 18       		.uleb128 0x18
+ 1342 0056 9742     		.uleb128 0x2117
+ 1343 0058 19       		.uleb128 0x19
+ 1344 0059 01       		.uleb128 0x1
+ 1345 005a 13       		.uleb128 0x13
+ 1346 005b 00       		.byte	0
+ 1347 005c 00       		.byte	0
+ 1348 005d 07       		.uleb128 0x7
+ 1349 005e 898201   		.uleb128 0x4109
+ 1350 0061 01       		.byte	0x1
+ 1351 0062 11       		.uleb128 0x11
+ 1352 0063 01       		.uleb128 0x1
+ 1353 0064 31       		.uleb128 0x31
+ 1354 0065 13       		.uleb128 0x13
+ 1355 0066 01       		.uleb128 0x1
+ 1356 0067 13       		.uleb128 0x13
+ 1357 0068 00       		.byte	0
+ 1358 0069 00       		.byte	0
+ 1359 006a 08       		.uleb128 0x8
+ 1360 006b 8A8201   		.uleb128 0x410a
+ 1361 006e 00       		.byte	0
+ 1362 006f 02       		.uleb128 0x2
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 29
+
+
+ 1363 0070 18       		.uleb128 0x18
+ 1364 0071 9142     		.uleb128 0x2111
+ 1365 0073 18       		.uleb128 0x18
+ 1366 0074 00       		.byte	0
+ 1367 0075 00       		.byte	0
+ 1368 0076 09       		.uleb128 0x9
+ 1369 0077 898201   		.uleb128 0x4109
+ 1370 007a 01       		.byte	0x1
+ 1371 007b 11       		.uleb128 0x11
+ 1372 007c 01       		.uleb128 0x1
+ 1373 007d 31       		.uleb128 0x31
+ 1374 007e 13       		.uleb128 0x13
+ 1375 007f 00       		.byte	0
+ 1376 0080 00       		.byte	0
+ 1377 0081 0A       		.uleb128 0xa
+ 1378 0082 898201   		.uleb128 0x4109
+ 1379 0085 00       		.byte	0
+ 1380 0086 11       		.uleb128 0x11
+ 1381 0087 01       		.uleb128 0x1
+ 1382 0088 31       		.uleb128 0x31
+ 1383 0089 13       		.uleb128 0x13
+ 1384 008a 00       		.byte	0
+ 1385 008b 00       		.byte	0
+ 1386 008c 0B       		.uleb128 0xb
+ 1387 008d 34       		.uleb128 0x34
+ 1388 008e 00       		.byte	0
+ 1389 008f 03       		.uleb128 0x3
+ 1390 0090 0E       		.uleb128 0xe
+ 1391 0091 3A       		.uleb128 0x3a
+ 1392 0092 0B       		.uleb128 0xb
+ 1393 0093 3B       		.uleb128 0x3b
+ 1394 0094 0B       		.uleb128 0xb
+ 1395 0095 49       		.uleb128 0x49
+ 1396 0096 13       		.uleb128 0x13
+ 1397 0097 02       		.uleb128 0x2
+ 1398 0098 17       		.uleb128 0x17
+ 1399 0099 00       		.byte	0
+ 1400 009a 00       		.byte	0
+ 1401 009b 0C       		.uleb128 0xc
+ 1402 009c 34       		.uleb128 0x34
+ 1403 009d 00       		.byte	0
+ 1404 009e 03       		.uleb128 0x3
+ 1405 009f 0E       		.uleb128 0xe
+ 1406 00a0 3A       		.uleb128 0x3a
+ 1407 00a1 0B       		.uleb128 0xb
+ 1408 00a2 3B       		.uleb128 0x3b
+ 1409 00a3 0B       		.uleb128 0xb
+ 1410 00a4 49       		.uleb128 0x49
+ 1411 00a5 13       		.uleb128 0x13
+ 1412 00a6 02       		.uleb128 0x2
+ 1413 00a7 18       		.uleb128 0x18
+ 1414 00a8 00       		.byte	0
+ 1415 00a9 00       		.byte	0
+ 1416 00aa 0D       		.uleb128 0xd
+ 1417 00ab 34       		.uleb128 0x34
+ 1418 00ac 00       		.byte	0
+ 1419 00ad 03       		.uleb128 0x3
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 30
+
+
+ 1420 00ae 0E       		.uleb128 0xe
+ 1421 00af 3A       		.uleb128 0x3a
+ 1422 00b0 0B       		.uleb128 0xb
+ 1423 00b1 3B       		.uleb128 0x3b
+ 1424 00b2 05       		.uleb128 0x5
+ 1425 00b3 49       		.uleb128 0x49
+ 1426 00b4 13       		.uleb128 0x13
+ 1427 00b5 3F       		.uleb128 0x3f
+ 1428 00b6 19       		.uleb128 0x19
+ 1429 00b7 3C       		.uleb128 0x3c
+ 1430 00b8 19       		.uleb128 0x19
+ 1431 00b9 00       		.byte	0
+ 1432 00ba 00       		.byte	0
+ 1433 00bb 0E       		.uleb128 0xe
+ 1434 00bc 35       		.uleb128 0x35
+ 1435 00bd 00       		.byte	0
+ 1436 00be 49       		.uleb128 0x49
+ 1437 00bf 13       		.uleb128 0x13
+ 1438 00c0 00       		.byte	0
+ 1439 00c1 00       		.byte	0
+ 1440 00c2 0F       		.uleb128 0xf
+ 1441 00c3 2E       		.uleb128 0x2e
+ 1442 00c4 00       		.byte	0
+ 1443 00c5 3F       		.uleb128 0x3f
+ 1444 00c6 19       		.uleb128 0x19
+ 1445 00c7 3C       		.uleb128 0x3c
+ 1446 00c8 19       		.uleb128 0x19
+ 1447 00c9 6E       		.uleb128 0x6e
+ 1448 00ca 0E       		.uleb128 0xe
+ 1449 00cb 03       		.uleb128 0x3
+ 1450 00cc 0E       		.uleb128 0xe
+ 1451 00cd 3A       		.uleb128 0x3a
+ 1452 00ce 0B       		.uleb128 0xb
+ 1453 00cf 3B       		.uleb128 0x3b
+ 1454 00d0 0B       		.uleb128 0xb
+ 1455 00d1 00       		.byte	0
+ 1456 00d2 00       		.byte	0
+ 1457 00d3 00       		.byte	0
+ 1458              		.section	.debug_loc,"",%progbits
+ 1459              	.Ldebug_loc0:
+ 1460              	.LLST0:
+ 1461 0000 02000000 		.4byte	.LVL11
+ 1462 0004 1E000000 		.4byte	.LVL15
+ 1463 0008 0200     		.2byte	0x2
+ 1464 000a 30       		.byte	0x30
+ 1465 000b 9F       		.byte	0x9f
+ 1466 000c 1E000000 		.4byte	.LVL15
+ 1467 0010 32000000 		.4byte	.LVL19
+ 1468 0014 0100     		.2byte	0x1
+ 1469 0016 54       		.byte	0x54
+ 1470 0017 34000000 		.4byte	.LVL20
+ 1471 001b 6C000000 		.4byte	.LVL29
+ 1472 001f 0100     		.2byte	0x1
+ 1473 0021 54       		.byte	0x54
+ 1474 0022 00000000 		.4byte	0
+ 1475 0026 00000000 		.4byte	0
+ 1476              	.LLST1:
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 31
+
+
+ 1477 002a 02000000 		.4byte	.LVL30
+ 1478 002e 1E000000 		.4byte	.LVL34
+ 1479 0032 0200     		.2byte	0x2
+ 1480 0034 30       		.byte	0x30
+ 1481 0035 9F       		.byte	0x9f
+ 1482 0036 1E000000 		.4byte	.LVL34
+ 1483 003a 32000000 		.4byte	.LVL38
+ 1484 003e 0100     		.2byte	0x1
+ 1485 0040 54       		.byte	0x54
+ 1486 0041 34000000 		.4byte	.LVL39
+ 1487 0045 5A000000 		.4byte	.LVL45
+ 1488 0049 0100     		.2byte	0x1
+ 1489 004b 54       		.byte	0x54
+ 1490 004c 00000000 		.4byte	0
+ 1491 0050 00000000 		.4byte	0
+ 1492              	.LLST2:
+ 1493 0054 18000000 		.4byte	.LVL48
+ 1494 0058 C8000000 		.4byte	.LVL66
+ 1495 005c 0100     		.2byte	0x1
+ 1496 005e 54       		.byte	0x54
+ 1497 005f 00000000 		.4byte	0
+ 1498 0063 00000000 		.4byte	0
+ 1499              	.LLST3:
+ 1500 0067 1E000000 		.4byte	.LVL50
+ 1501 006b C8000000 		.4byte	.LVL66
+ 1502 006f 0100     		.2byte	0x1
+ 1503 0071 55       		.byte	0x55
+ 1504 0072 00000000 		.4byte	0
+ 1505 0076 00000000 		.4byte	0
+ 1506              	.LLST4:
+ 1507 007a 24000000 		.4byte	.LVL52
+ 1508 007e C8000000 		.4byte	.LVL66
+ 1509 0082 0100     		.2byte	0x1
+ 1510 0084 56       		.byte	0x56
+ 1511 0085 00000000 		.4byte	0
+ 1512 0089 00000000 		.4byte	0
+ 1513              	.LLST5:
+ 1514 008d 2A000000 		.4byte	.LVL54
+ 1515 0091 C8000000 		.4byte	.LVL66
+ 1516 0095 0100     		.2byte	0x1
+ 1517 0097 58       		.byte	0x58
+ 1518 0098 00000000 		.4byte	0
+ 1519 009c 00000000 		.4byte	0
+ 1520              	.LLST6:
+ 1521 00a0 30000000 		.4byte	.LVL56
+ 1522 00a4 C8000000 		.4byte	.LVL66
+ 1523 00a8 0100     		.2byte	0x1
+ 1524 00aa 57       		.byte	0x57
+ 1525 00ab 00000000 		.4byte	0
+ 1526 00af 00000000 		.4byte	0
+ 1527              		.section	.debug_aranges,"",%progbits
+ 1528 0000 5C000000 		.4byte	0x5c
+ 1529 0004 0200     		.2byte	0x2
+ 1530 0006 00000000 		.4byte	.Ldebug_info0
+ 1531 000a 04       		.byte	0x4
+ 1532 000b 00       		.byte	0
+ 1533 000c 0000     		.2byte	0
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 32
+
+
+ 1534 000e 0000     		.2byte	0
+ 1535 0010 00000000 		.4byte	.LFB64
+ 1536 0014 10000000 		.4byte	.LFE64-.LFB64
+ 1537 0018 00000000 		.4byte	.LFB63
+ 1538 001c 1C000000 		.4byte	.LFE63-.LFB63
+ 1539 0020 00000000 		.4byte	.LFB65
+ 1540 0024 10000000 		.4byte	.LFE65-.LFB65
+ 1541 0028 00000000 		.4byte	.LFB66
+ 1542 002c 10000000 		.4byte	.LFE66-.LFB66
+ 1543 0030 00000000 		.4byte	.LFB67
+ 1544 0034 10000000 		.4byte	.LFE67-.LFB67
+ 1545 0038 00000000 		.4byte	.LFB68
+ 1546 003c 10000000 		.4byte	.LFE68-.LFB68
+ 1547 0040 00000000 		.4byte	.LFB69
+ 1548 0044 70000000 		.4byte	.LFE69-.LFB69
+ 1549 0048 00000000 		.4byte	.LFB70
+ 1550 004c 60000000 		.4byte	.LFE70-.LFB70
+ 1551 0050 00000000 		.4byte	.LFB71
+ 1552 0054 CC000000 		.4byte	.LFE71-.LFB71
+ 1553 0058 00000000 		.4byte	0
+ 1554 005c 00000000 		.4byte	0
+ 1555              		.section	.debug_ranges,"",%progbits
+ 1556              	.Ldebug_ranges0:
+ 1557 0000 00000000 		.4byte	.LFB64
+ 1558 0004 10000000 		.4byte	.LFE64
+ 1559 0008 00000000 		.4byte	.LFB63
+ 1560 000c 1C000000 		.4byte	.LFE63
+ 1561 0010 00000000 		.4byte	.LFB65
+ 1562 0014 10000000 		.4byte	.LFE65
+ 1563 0018 00000000 		.4byte	.LFB66
+ 1564 001c 10000000 		.4byte	.LFE66
+ 1565 0020 00000000 		.4byte	.LFB67
+ 1566 0024 10000000 		.4byte	.LFE67
+ 1567 0028 00000000 		.4byte	.LFB68
+ 1568 002c 10000000 		.4byte	.LFE68
+ 1569 0030 00000000 		.4byte	.LFB69
+ 1570 0034 70000000 		.4byte	.LFE69
+ 1571 0038 00000000 		.4byte	.LFB70
+ 1572 003c 60000000 		.4byte	.LFE70
+ 1573 0040 00000000 		.4byte	.LFB71
+ 1574 0044 CC000000 		.4byte	.LFE71
+ 1575 0048 00000000 		.4byte	0
+ 1576 004c 00000000 		.4byte	0
+ 1577              		.section	.debug_line,"",%progbits
+ 1578              	.Ldebug_line0:
+ 1579 0000 B0020000 		.section	.debug_str,"MS",%progbits,1
+ 1579      0200A901 
+ 1579      00000201 
+ 1579      FB0E0D00 
+ 1579      01010101 
+ 1580              	.LASF39:
+ 1581 0000 636F6E74 		.ascii	"controlFault\000"
+ 1581      726F6C46 
+ 1581      61756C74 
+ 1581      00
+ 1582              	.LASF45:
+ 1583 000d 4C454433 		.ascii	"LED3_Read\000"
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 33
+
+
+ 1583      5F526561 
+ 1583      6400
+ 1584              	.LASF35:
+ 1585 0017 7475726E 		.ascii	"turnsComplete\000"
+ 1585      73436F6D 
+ 1585      706C6574 
+ 1585      6500
+ 1586              	.LASF9:
+ 1587 0025 5F5F696E 		.ascii	"__int32_t\000"
+ 1587      7433325F 
+ 1587      7400
+ 1588              	.LASF43:
+ 1589 002f 4C454431 		.ascii	"LED1_Read\000"
+ 1589      5F526561 
+ 1589      6400
+ 1590              	.LASF3:
+ 1591 0039 73686F72 		.ascii	"short unsigned int\000"
+ 1591      7420756E 
+ 1591      7369676E 
+ 1591      65642069 
+ 1591      6E7400
+ 1592              	.LASF25:
+ 1593 004c 526F626F 		.ascii	"Robot_TurnRight\000"
+ 1593      745F5475 
+ 1593      726E5269 
+ 1593      67687400 
+ 1594              	.LASF41:
+ 1595 005c 50574D5F 		.ascii	"PWM_2_WriteCompare\000"
+ 1595      325F5772 
+ 1595      69746543 
+ 1595      6F6D7061 
+ 1595      726500
+ 1596              	.LASF30:
+ 1597 006f 72656172 		.ascii	"rearRight\000"
+ 1597      52696768 
+ 1597      7400
+ 1598              	.LASF50:
+ 1599 0079 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\khushman\\final_tushy\\"
+ 1599      454D505C 
+ 1599      434F4D50 
+ 1599      53595333 
+ 1599      30315F74 
+ 1600 00a7 66696E61 		.ascii	"final_tushy.cydsn\000"
+ 1600      6C5F7475 
+ 1600      7368792E 
+ 1600      63796473 
+ 1600      6E00
+ 1601              	.LASF31:
+ 1602 00b9 66726F6E 		.ascii	"frontRight\000"
+ 1602      74526967 
+ 1602      687400
+ 1603              	.LASF13:
+ 1604 00c4 666C6F61 		.ascii	"float\000"
+ 1604      7400
+ 1605              	.LASF24:
+ 1606 00ca 526F626F 		.ascii	"Robot_TurnLeft\000"
+ 1606      745F5475 
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 34
+
+
+ 1606      726E4C65 
+ 1606      667400
+ 1607              	.LASF1:
+ 1608 00d9 756E7369 		.ascii	"unsigned char\000"
+ 1608      676E6564 
+ 1608      20636861 
+ 1608      7200
+ 1609              	.LASF48:
+ 1610 00e7 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1610      43313120 
+ 1610      352E342E 
+ 1610      31203230 
+ 1610      31363036 
+ 1611 011a 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1611      20726576 
+ 1611      6973696F 
+ 1611      6E203233 
+ 1611      37373135 
+ 1612 014d 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1612      66756E63 
+ 1612      74696F6E 
+ 1612      2D736563 
+ 1612      74696F6E 
+ 1613              	.LASF46:
+ 1614 0175 4C454434 		.ascii	"LED4_Read\000"
+ 1614      5F526561 
+ 1614      6400
+ 1615              	.LASF5:
+ 1616 017f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1616      20756E73 
+ 1616      69676E65 
+ 1616      6420696E 
+ 1616      7400
+ 1617              	.LASF38:
+ 1618 0191 6F6E4C69 		.ascii	"onLine\000"
+ 1618      6E6500
+ 1619              	.LASF32:
+ 1620 0198 66726F6E 		.ascii	"frontLeft\000"
+ 1620      744C6566 
+ 1620      7400
+ 1621              	.LASF21:
+ 1622 01a2 526F626F 		.ascii	"Robot_ForwardSlow\000"
+ 1622      745F466F 
+ 1622      72776172 
+ 1622      64536C6F 
+ 1622      7700
+ 1623              	.LASF51:
+ 1624 01b4 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1624      52784275 
+ 1624      66666572 
+ 1624      00
+ 1625              	.LASF18:
+ 1626 01c1 526F626F 		.ascii	"Robot_Stop\000"
+ 1626      745F5374 
+ 1626      6F7000
+ 1627              	.LASF14:
+ 1628 01cc 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 35
+
+
+ 1628      6C6500
+ 1629              	.LASF34:
+ 1630 01d3 6F6E4C69 		.ascii	"onLineCount\000"
+ 1630      6E65436F 
+ 1630      756E7400 
+ 1631              	.LASF12:
+ 1632 01df 75696E74 		.ascii	"uint16\000"
+ 1632      313600
+ 1633              	.LASF27:
+ 1634 01e6 526F626F 		.ascii	"RobotControl_Update\000"
+ 1634      74436F6E 
+ 1634      74726F6C 
+ 1634      5F557064 
+ 1634      61746500 
+ 1635              	.LASF29:
+ 1636 01fa 72656172 		.ascii	"rearLeft\000"
+ 1636      4C656674 
+ 1636      00
+ 1637              	.LASF47:
+ 1638 0203 4C454435 		.ascii	"LED5_Read\000"
+ 1638      5F526561 
+ 1638      6400
+ 1639              	.LASF8:
+ 1640 020d 756E7369 		.ascii	"unsigned int\000"
+ 1640      676E6564 
+ 1640      20696E74 
+ 1640      00
+ 1641              	.LASF20:
+ 1642 021a 526F626F 		.ascii	"Robot_Forward\000"
+ 1642      745F466F 
+ 1642      72776172 
+ 1642      6400
+ 1643              	.LASF33:
+ 1644 0228 6F66664C 		.ascii	"offLineCount\000"
+ 1644      696E6543 
+ 1644      6F756E74 
+ 1644      00
+ 1645              	.LASF7:
+ 1646 0235 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1646      206C6F6E 
+ 1646      6720756E 
+ 1646      7369676E 
+ 1646      65642069 
+ 1647              	.LASF26:
+ 1648 024c 656C6170 		.ascii	"elapsed\000"
+ 1648      73656400 
+ 1649              	.LASF22:
+ 1650 0254 526F626F 		.ascii	"Robot_LineForward\000"
+ 1650      745F4C69 
+ 1650      6E65466F 
+ 1650      72776172 
+ 1650      6400
+ 1651              	.LASF49:
+ 1652 0266 726F626F 		.ascii	"robot_controls.c\000"
+ 1652      745F636F 
+ 1652      6E74726F 
+ 1652      6C732E63 
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 36
+
+
+ 1652      00
+ 1653              	.LASF10:
+ 1654 0277 696E7433 		.ascii	"int32_t\000"
+ 1654      325F7400 
+ 1655              	.LASF17:
+ 1656 027f 73697A65 		.ascii	"sizetype\000"
+ 1656      74797065 
+ 1656      00
+ 1657              	.LASF40:
+ 1658 0288 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 1658      315F5772 
+ 1658      69746543 
+ 1658      6F6D7061 
+ 1658      726500
+ 1659              	.LASF6:
+ 1660 029b 6C6F6E67 		.ascii	"long long int\000"
+ 1660      206C6F6E 
+ 1660      6720696E 
+ 1660      7400
+ 1661              	.LASF19:
+ 1662 02a9 526F626F 		.ascii	"RobotControl_Init\000"
+ 1662      74436F6E 
+ 1662      74726F6C 
+ 1662      5F496E69 
+ 1662      7400
+ 1663              	.LASF2:
+ 1664 02bb 73686F72 		.ascii	"short int\000"
+ 1664      7420696E 
+ 1664      7400
+ 1665              	.LASF28:
+ 1666 02c5 66726F6E 		.ascii	"front\000"
+ 1666      7400
+ 1667              	.LASF11:
+ 1668 02cb 75696E74 		.ascii	"uint8\000"
+ 1668      3800
+ 1669              	.LASF44:
+ 1670 02d1 4C454432 		.ascii	"LED2_Read\000"
+ 1670      5F526561 
+ 1670      6400
+ 1671              	.LASF23:
+ 1672 02db 526F626F 		.ascii	"Robot_LineCorrect\000"
+ 1672      745F4C69 
+ 1672      6E65436F 
+ 1672      72726563 
+ 1672      7400
+ 1673              	.LASF4:
+ 1674 02ed 6C6F6E67 		.ascii	"long int\000"
+ 1674      20696E74 
+ 1674      00
+ 1675              	.LASF15:
+ 1676 02f6 63686172 		.ascii	"char\000"
+ 1676      00
+ 1677              	.LASF16:
+ 1678 02fb 6C6F6E67 		.ascii	"long double\000"
+ 1678      20646F75 
+ 1678      626C6500 
+ 1679              	.LASF0:
+ARM GAS  C:\Users\ash004\AppData\Local\Temp\ccNjQA1O.s 			page 37
+
+
+ 1680 0307 7369676E 		.ascii	"signed char\000"
+ 1680      65642063 
+ 1680      68617200 
+ 1681              	.LASF36:
+ 1682 0313 7475726E 		.ascii	"turnDetected\000"
+ 1682      44657465 
+ 1682      63746564 
+ 1682      00
+ 1683              	.LASF37:
+ 1684 0320 5F426F6F 		.ascii	"_Bool\000"
+ 1684      6C00
+ 1685              	.LASF42:
+ 1686 0326 43794465 		.ascii	"CyDelay\000"
+ 1686      6C617900 
+ 1687              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

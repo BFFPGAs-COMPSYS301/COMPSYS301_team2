@@ -1,5 +1,5 @@
 -- Project:   AMAZINGfinalBFFPGA
--- Generated: 10/13/2026 18:05:59
+-- Generated: 10/14/2026 15:15:57
 -- PSoC Creator  4.2
 
 ENTITY AMAZINGfinalBFFPGA IS
@@ -548,11 +548,11 @@ ARCHITECTURE __DEFAULT__ OF AMAZINGfinalBFFPGA IS
     ATTRIBUTE Location OF \Timeout_5:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \Timeout_5:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell10";
     ATTRIBUTE Location OF \Timeout_5:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(0,1)";
-    ATTRIBUTE Location OF isr_1 : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
-    ATTRIBUTE Location OF isr_2 : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
     ATTRIBUTE Location OF isr_3 : LABEL IS "[IntrContainer=(0)][IntrId=(4)]";
-    ATTRIBUTE Location OF isr_4 : LABEL IS "[IntrContainer=(0)][IntrId=(5)]";
+    ATTRIBUTE Location OF isr_2 : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
     ATTRIBUTE Location OF isr_5 : LABEL IS "[IntrContainer=(0)][IntrId=(6)]";
+    ATTRIBUTE Location OF isr_1 : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
+    ATTRIBUTE Location OF isr_4 : LABEL IS "[IntrContainer=(0)][IntrId=(5)]";
     ATTRIBUTE Location OF \PWM_2:PWMHW\ : LABEL IS "F(Timer,1)";
     ATTRIBUTE Location OF \PWM_1:PWMHW\ : LABEL IS "F(Timer,0)";
     ATTRIBUTE Location OF \QuadDec_1:isr\ : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
@@ -3784,12 +3784,12 @@ BEGIN
             sor => \Timeout_5:TimerUDB:sT16:timerdp:u1.sor__sig\,
             cmsbo => \Timeout_5:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
 
-    isr_1:interrupt
+    isr_3:interrupt
         GENERIC MAP(
             int_type => "10",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_710,
+            interrupt => Net_777,
             clock => ClockBlock_BUS_CLK);
 
     isr_2:interrupt
@@ -3800,12 +3800,20 @@ BEGIN
             interrupt => Net_255,
             clock => ClockBlock_BUS_CLK);
 
-    isr_3:interrupt
+    isr_5:interrupt
         GENERIC MAP(
             int_type => "10",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_777,
+            interrupt => Net_438,
+            clock => ClockBlock_BUS_CLK);
+
+    isr_1:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_710,
             clock => ClockBlock_BUS_CLK);
 
     isr_4:interrupt
@@ -3814,14 +3822,6 @@ BEGIN
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_421,
-            clock => ClockBlock_BUS_CLK);
-
-    isr_5:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_438,
             clock => ClockBlock_BUS_CLK);
 
     \PWM_2:PWMHW\:timercell

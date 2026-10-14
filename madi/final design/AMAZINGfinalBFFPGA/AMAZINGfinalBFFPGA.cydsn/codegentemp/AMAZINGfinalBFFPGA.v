@@ -1,6 +1,6 @@
 // ======================================================================
 // AMAZINGfinalBFFPGA.v generated from TopDesign.cysch
-// 10/13/2026 at 18:05
+// 10/14/2026 at 15:15
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1397,6 +1397,7 @@ module top ;
           wire  Net_1301;
           wire [7:0] Net_2;
           wire  Net_1;
+          wire  Net_777;
           wire  Net_721;
           wire  Net_465;
           wire  Net_158;
@@ -1407,7 +1408,6 @@ module top ;
           wire  Net_94;
           wire  Net_438;
           wire  Net_421;
-          wire  Net_777;
           wire  Net_710;
           wire  Net_255;
           wire  Net_308;
@@ -2525,8 +2525,8 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
-		isr_1
-		 (.int_signal(Net_710));
+		isr_3
+		 (.int_signal(Net_777));
 
 
 
@@ -2539,8 +2539,15 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
-		isr_3
-		 (.int_signal(Net_777));
+		isr_5
+		 (.int_signal(Net_438));
+
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_1
+		 (.int_signal(Net_710));
 
 
 
@@ -2548,13 +2555,6 @@ module top ;
 		#(.int_type(2'b10))
 		isr_4
 		 (.int_signal(Net_421));
-
-
-
-	cy_isr_v1_0
-		#(.int_type(2'b10))
-		isr_5
-		 (.int_signal(Net_438));
 
 
 	wire [0:0] tmpOE__M2_IN1_1_net;

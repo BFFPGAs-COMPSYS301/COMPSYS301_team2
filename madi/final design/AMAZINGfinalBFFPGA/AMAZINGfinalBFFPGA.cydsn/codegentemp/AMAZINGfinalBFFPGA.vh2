@@ -2,7 +2,7 @@
 --	Conversion of AMAZINGfinalBFFPGA.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Oct 13 18:05:56 2026
+--	Wed Oct 14 15:15:54 2026
 --
 
 USE cypress.cypress.all;
@@ -3712,26 +3712,26 @@ timer_clock_4:cy_clock_v1_0
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-isr_1:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10",
-		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_710);
-isr_2:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10",
-		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_255);
 isr_3:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_777);
-isr_4:cy_isr_v1_0
+isr_2:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_421);
+	PORT MAP(int_signal=>Net_255);
 isr_5:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_438);
+isr_1:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_710);
+isr_4:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_421);
 M2_IN1_1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"911ec445-9f79-413f-97f2-d7f8b29129b1",
 		drive_mode=>"110",

@@ -1,5 +1,5 @@
 # AMAZINGfinalBFFPGA
-# 2026-10-13 05:05:59Z
+# 2026-10-14 02:15:57Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -73,11 +73,11 @@ set_location "\Timeout_5:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 0 1 6
 set_location "\Timeout_5:TimerUDB:rstSts:stsreg\" 0 1 4
 set_location "\Timeout_5:TimerUDB:sT16:timerdp:u0\" 1 1 2
 set_location "\Timeout_5:TimerUDB:sT16:timerdp:u1\" 0 1 2
-set_location "isr_1" interrupt -1 -1 2
-set_location "isr_2" interrupt -1 -1 3
 set_location "isr_3" interrupt -1 -1 4
-set_location "isr_4" interrupt -1 -1 5
+set_location "isr_2" interrupt -1 -1 3
 set_location "isr_5" interrupt -1 -1 6
+set_location "isr_1" interrupt -1 -1 2
+set_location "isr_4" interrupt -1 -1 5
 set_location "\PWM_2:PWMHW\" timercell -1 -1 1
 set_location "\PWM_1:PWMHW\" timercell -1 -1 0
 set_location "\QuadDec_1:isr\" interrupt -1 -1 0

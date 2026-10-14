@@ -1,5 +1,5 @@
 -- Project:   AMAZINGfinalBFFPGA
--- Generated: 10/13/2026 18:05:57
+-- Generated: 10/14/2026 15:15:55
 -- PSoC Creator  4.2
 
 ENTITY AMAZINGfinalBFFPGA IS
@@ -3613,12 +3613,12 @@ BEGIN
             sor => \Timeout_5:TimerUDB:sT16:timerdp:u1.sor__sig\,
             cmsbo => \Timeout_5:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
 
-    isr_1:interrupt
+    isr_3:interrupt
         GENERIC MAP(
             int_type => "10",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_710,
+            interrupt => Net_777,
             clock => ClockBlock_BUS_CLK);
 
     isr_2:interrupt
@@ -3629,12 +3629,20 @@ BEGIN
             interrupt => Net_255,
             clock => ClockBlock_BUS_CLK);
 
-    isr_3:interrupt
+    isr_5:interrupt
         GENERIC MAP(
             int_type => "10",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_777,
+            interrupt => Net_438,
+            clock => ClockBlock_BUS_CLK);
+
+    isr_1:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_710,
             clock => ClockBlock_BUS_CLK);
 
     isr_4:interrupt
@@ -3643,14 +3651,6 @@ BEGIN
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_421,
-            clock => ClockBlock_BUS_CLK);
-
-    isr_5:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_438,
             clock => ClockBlock_BUS_CLK);
 
     \PWM_2:PWMHW\:timercell
