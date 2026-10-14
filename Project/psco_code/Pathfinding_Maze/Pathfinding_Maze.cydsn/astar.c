@@ -1,10 +1,7 @@
 #include "astar.h"
 
 
-/* =========================================================
- * MANHATTAN DISTANCE
- * ========================================================= */
-
+// MANHATTAN DISTANCE
 static uint16_t Heuristic(
     Position a,
     Position b
@@ -30,10 +27,7 @@ static uint16_t Heuristic(
 }
 
 
-/* =========================================================
- * GET DIRECTION BETWEEN TWO ADJACENT CELLS
- * ========================================================= */
-
+// GET DIRECTION BETWEEN TWO ADJACENT CELLS
 static Direction GetDirection(
     Position from,
     Position to

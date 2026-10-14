@@ -1,16 +1,6 @@
+#include "project.h"
 #include "astar.h"
-#include "movements.c"
-
-/* =========================================================
- * MAZE
- *
- * Paste the maze here exactly as provided.
- *
- * 0 = open
- * 1 = wall
- *
- * The maze must be 15 rows x 19 columns.
- * ========================================================= */
+#include "movement.h"
 
 const char *mazeInput[MAP_ROWS] =
 {
@@ -31,29 +21,15 @@ const char *mazeInput[MAP_ROWS] =
     "1111111111111111111"
 };
 
-
-/* =========================================================
- * NUMERICAL MAP
- *
- * This is automatically created from mazeInput.
- * ========================================================= */
-
 uint8_t map[MAP_ROWS][MAP_COLS];
 
 
 /* =========================================================
  * CHECKPOINTS
  *
- * IMPORTANT:
- *
- * Coordinates are ZERO-BASED.
- *
  * Top-left cell = {0,0}
  *
  * The order here is the order the robot will visit.
- *
- * points[0] MUST be the starting position.
- * The final point is the final destination.
  * ========================================================= */
 
 Checkpoints checkpoints =
@@ -61,13 +37,15 @@ Checkpoints checkpoints =
     .points =
     {
         {1, 1},     /* START */
-        {3, 3},     /* CHECKPOINT 1 */
-        {5, 7},     /* CHECKPOINT 2 */
-        {7, 15},    /* CHECKPOINT 3 */
+        /*
+        {3, 3},     // CHECKPOINT 1
+        {5, 7},     // CHECKPOINT 2
+        {7, 15},    // CHECKPOINT 3
+        */
         {13, 17}    /* END */
     },
 
-    .count = 5
+    .count = 2
 };
 
 
@@ -151,77 +129,47 @@ void ExecuteNextCommand(void)
     if (commandIndex >= route.length)
     {
         //Robot has reached the final point. Add whatever you want to happen here.
-
         return;
     }
 
+    // Get next command.
 
-    /*
-     * Get next command.
-     */
+    command = route.commands[commandIndex];
 
-    command =
-        route.commands[commandIndex];
-
-
-    /*
-     * Execute it.
-     */
-
+    // Execute it.
     switch (command)
     {
         case CMD_FORWARD:
             // Move forward exactly one cell.
             MoveForwardOneCell();
-
             break;
-
 
         case CMD_LEFT:
             // Turn left only. Do NOT move forward.
             TurnLeft();
-
             break;
-
 
         case CMD_RIGHT:
             // Turn right only. Do NOT move forward.
             TurnRight();
-
             break;
     }
 
 
-    /*
-     * The command has now been executed.
-     */
-
+    // The command has now been executed.
     commandIndex++;
 
 
-    /* =====================================================
-     * CHECKPOINT
-     * ===================================================== */
-
+    // CHECKPOINT
     if (nextCheckpoint <
         route.checkpointCount)
     {
         if (commandIndex >=
             route.checkpointCommand[nextCheckpoint])
         {
-            /*
-             * The robot has reached the checkpoint.
-             *
-             * Wait 2 seconds.
-             */
-
+            // The robot has reached the checkpoint. Wait 2 seconds.
             CyDelay(2000);
-
-
-            /*
-             * Move to next checkpoint.
-             */
-
+            // Move to next checkpoint.
             nextCheckpoint++;
         }
     }
@@ -234,44 +182,27 @@ void ExecuteNextCommand(void)
 
 int main(void)
 {
-    /*
-     * Initialise PSoC hardware here.
-     */
+    CyGlobalIntEnable;
 
+    PWM_1_Start();
+    PWM_2_Start();
 
-    /*
-     * Calculate the ENTIRE route before
-     * starting the robot.
-     */
+    // Stop motors before doing anything else.
+    PWM_1_WriteCompare(45);
+    PWM_2_WriteCompare(45);
 
     if (!BuildRoute())
     {
-        /*
-         * No valid route was found.
-         *
-         * Handle the error here.
-         */
-
         while (1)
         {
-            /*
-             * Error state.
-             */
+            PWM_1_WriteCompare(45);
+            PWM_2_WriteCompare(45);
         }
     }
-
-
-    /*
-     * Route has now been calculated.
-     *
-     * Start robot movement.
-     */
 
     while (1)
     {
         ExecuteNextCommand();
     }
-
-
     return 0;
 }
