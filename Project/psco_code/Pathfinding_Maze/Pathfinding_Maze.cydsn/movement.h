@@ -14,6 +14,8 @@
     void MoveForwardOneCell(void);
     void TurnLeft(void);
     void TurnRight(void);
+    void stopMoving(void);
+    void oneSensorCorrect(void);
     
     void CyDelay();
     

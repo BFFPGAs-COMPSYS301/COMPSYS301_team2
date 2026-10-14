@@ -2,6 +2,16 @@
 #include "astar.h"
 #include "movement.h"
 
+/*
+    Each encoder count is ~0.9mm
+    Each cell is ~18.5cm
+    
+    one cell = 205 ecoder counts
+*/
+
+uint8_t distanceTravelled;
+uint8_t cellLength = 205;
+
 const char *mazeInput[MAP_ROWS] =
 {
     "1111111111111111111",
@@ -140,8 +150,18 @@ void ExecuteNextCommand(void)
     switch (command)
     {
         case CMD_FORWARD:
+            stopMoving();
+            QuadDec_1_SetCounter(0);
+            distanceTravelled = 0;
             // Move forward exactly one cell.
-            MoveForwardOneCell();
+            while(distanceTravelled < cellLength) {
+                if (LED1_Read() == 1) {
+                    MoveForwardOneCell();
+                } else {
+                    oneSensorCorrect();
+                }
+                distanceTravelled = QuadDec_1_GetCounter();
+            }
             break;
 
         case CMD_LEFT:

@@ -32,15 +32,20 @@ static void goBack() {
     MotorL_Back();
 }   
 
-static void stopMoving(){
+void stopMoving(){
     PWM_1_WriteCompare(45);
     PWM_2_WriteCompare(45);
 }
 
 void MoveForwardOneCell(void) {
-    goForward();
-    CyDelay(500);
+    PWM_1_WriteCompare(FORWARD_COMPARE - 1);
+    PWM_2_WriteCompare(FORWARD_COMPARE);
     stopMoving();
+}
+
+void oneSensorCorrect() {
+    PWM_1_WriteCompare(period - 20);
+    PWM_2_WriteCompare(20);
 }
 
 void TurnLeft(void) {
