@@ -5,32 +5,20 @@
 #include <stdbool.h>
 
 
-/* =========================================================
- * MAP SETTINGS
- * ========================================================= */
-
+// MAP SETTINGS
 #define MAP_ROWS 15
 #define MAP_COLS 19
 
 #define MAX_CELLS (MAP_ROWS * MAP_COLS)
 
-/*
- * Maximum number of checkpoints.
- *
- * This includes the START and END points.
- */
+// Maximum number of checkpoints. This includes the START and END points.
 #define MAX_CHECKPOINTS 20
 
-/*
- * Maximum number of movement commands that can
- * be stored in the complete route.
- */
+// Maximum number of movement commands that can be stored in the complete route.
 #define MAX_COMMANDS 1024
 
 
-/* =========================================================
- * POSITION
- * ========================================================= */
+// POSITION
 
 typedef struct
 {
@@ -40,10 +28,7 @@ typedef struct
 } Position;
 
 
-/* =========================================================
- * ROBOT DIRECTION
- * ========================================================= */
-
+// ROBOT DIRECTION
 typedef enum
 {
     DIR_UP = 0,

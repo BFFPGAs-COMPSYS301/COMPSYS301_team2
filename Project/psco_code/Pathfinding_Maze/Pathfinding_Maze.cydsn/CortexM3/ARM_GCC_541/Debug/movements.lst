@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccRrqbEv.s 			page 1
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 1
 
 
    1              		.syntax unified
@@ -19,41 +19,1317 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccRrqbEv.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              	.Letext0:
-  20              		.section	.debug_line,"",%progbits
-  21              	.Ldebug_line0:
-  22              		.section	.debug_str,"MS",%progbits,1
-  23              	.LASF0:
-  24 0000 433A5C55 		.ascii	"C:\\Users\\aale517\\Documents\\COMPSYS301_team2\\Pr"
-  24      73657273 
-  24      5C61616C 
-  24      65353137 
-  24      5C446F63 
-  25 002e 6F6A6563 		.ascii	"oject\\psco_code\\Pathfinding_Maze\\Pathfinding_Maz"
-  25      745C7073 
-  25      636F5F63 
-  25      6F64655C 
-  25      50617468 
-  26 005e 652E6379 		.ascii	"e.cydsn\000"
-  26      64736E00 
-  27              	.LASF1:
-  28 0066 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
-  28      43313120 
-  28      352E342E 
-  28      31203230 
-  28      31363036 
-  29 0099 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
-  29      20726576 
-  29      6973696F 
-  29      6E203233 
-  29      37373135 
-  30 00cc 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
-  30      66756E63 
-  30      74696F6E 
-  30      2D736563 
-  30      74696F6E 
-  31              	.LASF2:
-  32 00f4 6D6F7665 		.ascii	"movements.c\000"
-  32      6D656E74 
-  32      732E6300 
-  33              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+  19              		.section	.text.MotorL_Back,"ax",%progbits
+  20              		.align	2
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	MotorL_Back, %function
+  24              	MotorL_Back:
+  25              	.LFB3:
+  26              		.file 1 "movements.c"
+   1:movements.c   **** #include "movement.h"
+   2:movements.c   **** 
+   3:movements.c   **** uint16_t offLineCount = 0;
+   4:movements.c   **** uint16_t onLineCount = 0;
+   5:movements.c   **** uint8_t turnsComplete = 0;
+   6:movements.c   **** bool turnDetected = 0;
+   7:movements.c   **** bool onLine = 0;
+   8:movements.c   **** 
+   9:movements.c   **** void MotorL_Forward() {
+  10:movements.c   ****   PWM_1_WriteCompare(FORWARD_COMPARE);
+  11:movements.c   **** }
+  12:movements.c   **** 
+  13:movements.c   **** void MotorR_Forward() {
+  14:movements.c   ****    PWM_2_WriteCompare(FORWARD_COMPARE);
+  15:movements.c   **** }
+  16:movements.c   **** 
+  17:movements.c   **** static void MotorL_Back() {
+  27              		.loc 1 17 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  18:movements.c   ****   PWM_1_WriteCompare(period - FORWARD_COMPARE);
+  35              		.loc 1 18 0
+  36 0002 4320     		movs	r0, #67
+  37 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+  38              	.LVL0:
+  39 0008 08BD     		pop	{r3, pc}
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 2
+
+
+  40              		.cfi_endproc
+  41              	.LFE3:
+  42              		.size	MotorL_Back, .-MotorL_Back
+  43 000a 00BF     		.section	.text.MotorR_Back,"ax",%progbits
+  44              		.align	2
+  45              		.thumb
+  46              		.thumb_func
+  47              		.type	MotorR_Back, %function
+  48              	MotorR_Back:
+  49              	.LFB4:
+  19:movements.c   **** }
+  20:movements.c   **** 
+  21:movements.c   **** static void MotorR_Back() {
+  50              		.loc 1 21 0
+  51              		.cfi_startproc
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54 0000 08B5     		push	{r3, lr}
+  55              		.cfi_def_cfa_offset 8
+  56              		.cfi_offset 3, -8
+  57              		.cfi_offset 14, -4
+  22:movements.c   ****     PWM_2_WriteCompare(period - FORWARD_COMPARE);
+  58              		.loc 1 22 0
+  59 0002 4320     		movs	r0, #67
+  60 0004 FFF7FEFF 		bl	PWM_2_WriteCompare
+  61              	.LVL1:
+  62 0008 08BD     		pop	{r3, pc}
+  63              		.cfi_endproc
+  64              	.LFE4:
+  65              		.size	MotorR_Back, .-MotorR_Back
+  66 000a 00BF     		.section	.text.MotorL_Forward,"ax",%progbits
+  67              		.align	2
+  68              		.global	MotorL_Forward
+  69              		.thumb
+  70              		.thumb_func
+  71              		.type	MotorL_Forward, %function
+  72              	MotorL_Forward:
+  73              	.LFB1:
+   9:movements.c   ****   PWM_1_WriteCompare(FORWARD_COMPARE);
+  74              		.loc 1 9 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78 0000 08B5     		push	{r3, lr}
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 3, -8
+  81              		.cfi_offset 14, -4
+  10:movements.c   **** }
+  82              		.loc 1 10 0
+  83 0002 1720     		movs	r0, #23
+  84 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+  85              	.LVL2:
+  86 0008 08BD     		pop	{r3, pc}
+  87              		.cfi_endproc
+  88              	.LFE1:
+  89              		.size	MotorL_Forward, .-MotorL_Forward
+  90 000a 00BF     		.section	.text.MotorR_Forward,"ax",%progbits
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 3
+
+
+  91              		.align	2
+  92              		.global	MotorR_Forward
+  93              		.thumb
+  94              		.thumb_func
+  95              		.type	MotorR_Forward, %function
+  96              	MotorR_Forward:
+  97              	.LFB2:
+  13:movements.c   ****    PWM_2_WriteCompare(FORWARD_COMPARE);
+  98              		.loc 1 13 0
+  99              		.cfi_startproc
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102 0000 08B5     		push	{r3, lr}
+ 103              		.cfi_def_cfa_offset 8
+ 104              		.cfi_offset 3, -8
+ 105              		.cfi_offset 14, -4
+  14:movements.c   **** }
+ 106              		.loc 1 14 0
+ 107 0002 1720     		movs	r0, #23
+ 108 0004 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 109              	.LVL3:
+ 110 0008 08BD     		pop	{r3, pc}
+ 111              		.cfi_endproc
+ 112              	.LFE2:
+ 113              		.size	MotorR_Forward, .-MotorR_Forward
+ 114 000a 00BF     		.section	.text.stopMoving,"ax",%progbits
+ 115              		.align	2
+ 116              		.global	stopMoving
+ 117              		.thumb
+ 118              		.thumb_func
+ 119              		.type	stopMoving, %function
+ 120              	stopMoving:
+ 121              	.LFB7:
+  23:movements.c   **** }   
+  24:movements.c   **** 
+  25:movements.c   **** static void goForward() {
+  26:movements.c   ****     MotorR_Forward();
+  27:movements.c   ****     MotorL_Forward();
+  28:movements.c   **** }
+  29:movements.c   **** 
+  30:movements.c   **** static void goBack() {
+  31:movements.c   ****     MotorR_Back();
+  32:movements.c   ****     MotorL_Back();
+  33:movements.c   **** }   
+  34:movements.c   **** 
+  35:movements.c   **** void stopMoving(){
+ 122              		.loc 1 35 0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126 0000 08B5     		push	{r3, lr}
+ 127              		.cfi_def_cfa_offset 8
+ 128              		.cfi_offset 3, -8
+ 129              		.cfi_offset 14, -4
+  36:movements.c   ****     PWM_1_WriteCompare(45);
+ 130              		.loc 1 36 0
+ 131 0002 2D20     		movs	r0, #45
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 4
+
+
+ 132 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 133              	.LVL4:
+  37:movements.c   ****     PWM_2_WriteCompare(45);
+ 134              		.loc 1 37 0
+ 135 0008 2D20     		movs	r0, #45
+ 136 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 137              	.LVL5:
+ 138 000e 08BD     		pop	{r3, pc}
+ 139              		.cfi_endproc
+ 140              	.LFE7:
+ 141              		.size	stopMoving, .-stopMoving
+ 142              		.section	.text.MoveForwardOneCell,"ax",%progbits
+ 143              		.align	2
+ 144              		.global	MoveForwardOneCell
+ 145              		.thumb
+ 146              		.thumb_func
+ 147              		.type	MoveForwardOneCell, %function
+ 148              	MoveForwardOneCell:
+ 149              	.LFB8:
+  38:movements.c   **** }
+  39:movements.c   **** 
+  40:movements.c   **** void MoveForwardOneCell(void) {
+ 150              		.loc 1 40 0
+ 151              		.cfi_startproc
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154 0000 08B5     		push	{r3, lr}
+ 155              		.cfi_def_cfa_offset 8
+ 156              		.cfi_offset 3, -8
+ 157              		.cfi_offset 14, -4
+  41:movements.c   ****     PWM_1_WriteCompare(FORWARD_COMPARE - 1);
+ 158              		.loc 1 41 0
+ 159 0002 1620     		movs	r0, #22
+ 160 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 161              	.LVL6:
+  42:movements.c   ****     PWM_2_WriteCompare(FORWARD_COMPARE);
+ 162              		.loc 1 42 0
+ 163 0008 1720     		movs	r0, #23
+ 164 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 165              	.LVL7:
+  43:movements.c   ****     stopMoving();
+ 166              		.loc 1 43 0
+ 167 000e FFF7FEFF 		bl	stopMoving
+ 168              	.LVL8:
+ 169 0012 08BD     		pop	{r3, pc}
+ 170              		.cfi_endproc
+ 171              	.LFE8:
+ 172              		.size	MoveForwardOneCell, .-MoveForwardOneCell
+ 173              		.section	.text.oneSensorCorrect,"ax",%progbits
+ 174              		.align	2
+ 175              		.global	oneSensorCorrect
+ 176              		.thumb
+ 177              		.thumb_func
+ 178              		.type	oneSensorCorrect, %function
+ 179              	oneSensorCorrect:
+ 180              	.LFB9:
+  44:movements.c   **** }
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 5
+
+
+  45:movements.c   **** 
+  46:movements.c   **** void oneSensorCorrect() {
+ 181              		.loc 1 46 0
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185 0000 08B5     		push	{r3, lr}
+ 186              		.cfi_def_cfa_offset 8
+ 187              		.cfi_offset 3, -8
+ 188              		.cfi_offset 14, -4
+  47:movements.c   ****     PWM_1_WriteCompare(period - 20);
+ 189              		.loc 1 47 0
+ 190 0002 4620     		movs	r0, #70
+ 191 0004 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 192              	.LVL9:
+  48:movements.c   ****     PWM_2_WriteCompare(20);
+ 193              		.loc 1 48 0
+ 194 0008 1420     		movs	r0, #20
+ 195 000a FFF7FEFF 		bl	PWM_2_WriteCompare
+ 196              	.LVL10:
+ 197 000e 08BD     		pop	{r3, pc}
+ 198              		.cfi_endproc
+ 199              	.LFE9:
+ 200              		.size	oneSensorCorrect, .-oneSensorCorrect
+ 201              		.section	.text.TurnLeft,"ax",%progbits
+ 202              		.align	2
+ 203              		.global	TurnLeft
+ 204              		.thumb
+ 205              		.thumb_func
+ 206              		.type	TurnLeft, %function
+ 207              	TurnLeft:
+ 208              	.LFB10:
+  49:movements.c   **** }
+  50:movements.c   **** 
+  51:movements.c   **** void TurnLeft(void) {
+ 209              		.loc 1 51 0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213 0000 08B5     		push	{r3, lr}
+ 214              		.cfi_def_cfa_offset 8
+ 215              		.cfi_offset 3, -8
+ 216              		.cfi_offset 14, -4
+  52:movements.c   ****     MotorL_Back();
+ 217              		.loc 1 52 0
+ 218 0002 FFF7FEFF 		bl	MotorL_Back
+ 219              	.LVL11:
+  53:movements.c   ****     MotorR_Forward();
+ 220              		.loc 1 53 0
+ 221 0006 FFF7FEFF 		bl	MotorR_Forward
+ 222              	.LVL12:
+  54:movements.c   ****     CyDelay(500);
+ 223              		.loc 1 54 0
+ 224 000a 4FF4FA70 		mov	r0, #500
+ 225 000e FFF7FEFF 		bl	CyDelay
+ 226              	.LVL13:
+  55:movements.c   ****     stopMoving();
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 6
+
+
+ 227              		.loc 1 55 0
+ 228 0012 FFF7FEFF 		bl	stopMoving
+ 229              	.LVL14:
+ 230 0016 08BD     		pop	{r3, pc}
+ 231              		.cfi_endproc
+ 232              	.LFE10:
+ 233              		.size	TurnLeft, .-TurnLeft
+ 234              		.section	.text.TurnRight,"ax",%progbits
+ 235              		.align	2
+ 236              		.global	TurnRight
+ 237              		.thumb
+ 238              		.thumb_func
+ 239              		.type	TurnRight, %function
+ 240              	TurnRight:
+ 241              	.LFB11:
+  56:movements.c   **** }
+  57:movements.c   **** 
+  58:movements.c   **** void TurnRight(void) {
+ 242              		.loc 1 58 0
+ 243              		.cfi_startproc
+ 244              		@ args = 0, pretend = 0, frame = 0
+ 245              		@ frame_needed = 0, uses_anonymous_args = 0
+ 246 0000 08B5     		push	{r3, lr}
+ 247              		.cfi_def_cfa_offset 8
+ 248              		.cfi_offset 3, -8
+ 249              		.cfi_offset 14, -4
+  59:movements.c   ****     MotorL_Forward();
+ 250              		.loc 1 59 0
+ 251 0002 FFF7FEFF 		bl	MotorL_Forward
+ 252              	.LVL15:
+  60:movements.c   ****     MotorR_Back();
+ 253              		.loc 1 60 0
+ 254 0006 FFF7FEFF 		bl	MotorR_Back
+ 255              	.LVL16:
+  61:movements.c   ****     CyDelay(500);
+ 256              		.loc 1 61 0
+ 257 000a 4FF4FA70 		mov	r0, #500
+ 258 000e FFF7FEFF 		bl	CyDelay
+ 259              	.LVL17:
+  62:movements.c   ****     stopMoving();
+ 260              		.loc 1 62 0
+ 261 0012 FFF7FEFF 		bl	stopMoving
+ 262              	.LVL18:
+ 263 0016 08BD     		pop	{r3, pc}
+ 264              		.cfi_endproc
+ 265              	.LFE11:
+ 266              		.size	TurnRight, .-TurnRight
+ 267              		.global	onLine
+ 268              		.global	turnDetected
+ 269              		.global	turnsComplete
+ 270              		.global	onLineCount
+ 271              		.global	offLineCount
+ 272              		.bss
+ 273              		.align	1
+ 274              		.type	onLine, %object
+ 275              		.size	onLine, 1
+ 276              	onLine:
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 7
+
+
+ 277 0000 00       		.space	1
+ 278              		.type	turnDetected, %object
+ 279              		.size	turnDetected, 1
+ 280              	turnDetected:
+ 281 0001 00       		.space	1
+ 282              		.type	turnsComplete, %object
+ 283              		.size	turnsComplete, 1
+ 284              	turnsComplete:
+ 285 0002 00       		.space	1
+ 286 0003 00       		.space	1
+ 287              		.type	onLineCount, %object
+ 288              		.size	onLineCount, 2
+ 289              	onLineCount:
+ 290 0004 0000     		.space	2
+ 291              		.type	offLineCount, %object
+ 292              		.size	offLineCount, 2
+ 293              	offLineCount:
+ 294 0006 0000     		.space	2
+ 295              		.text
+ 296              	.Letext0:
+ 297              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 298              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 299              		.file 4 "movement.h"
+ 300              		.section	.debug_info,"",%progbits
+ 301              	.Ldebug_info0:
+ 302 0000 AA030000 		.4byte	0x3aa
+ 303 0004 0400     		.2byte	0x4
+ 304 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 305 000a 04       		.byte	0x4
+ 306 000b 01       		.uleb128 0x1
+ 307 000c C8000000 		.4byte	.LASF34
+ 308 0010 0C       		.byte	0xc
+ 309 0011 3A020000 		.4byte	.LASF35
+ 310 0015 2F000000 		.4byte	.LASF36
+ 311 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 312 001d 00000000 		.4byte	0
+ 313 0021 00000000 		.4byte	.Ldebug_line0
+ 314 0025 02       		.uleb128 0x2
+ 315 0026 01       		.byte	0x1
+ 316 0027 06       		.byte	0x6
+ 317 0028 78020000 		.4byte	.LASF0
+ 318 002c 03       		.uleb128 0x3
+ 319 002d 0B000000 		.4byte	.LASF3
+ 320 0031 02       		.byte	0x2
+ 321 0032 1D       		.byte	0x1d
+ 322 0033 37000000 		.4byte	0x37
+ 323 0037 02       		.uleb128 0x2
+ 324 0038 01       		.byte	0x1
+ 325 0039 08       		.byte	0x8
+ 326 003a BA000000 		.4byte	.LASF1
+ 327 003e 02       		.uleb128 0x2
+ 328 003f 02       		.byte	0x2
+ 329 0040 05       		.byte	0x5
+ 330 0041 46020000 		.4byte	.LASF2
+ 331 0045 03       		.uleb128 0x3
+ 332 0046 95000000 		.4byte	.LASF4
+ 333 004a 02       		.byte	0x2
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 8
+
+
+ 334 004b 2B       		.byte	0x2b
+ 335 004c 50000000 		.4byte	0x50
+ 336 0050 02       		.uleb128 0x2
+ 337 0051 02       		.byte	0x2
+ 338 0052 07       		.byte	0x7
+ 339 0053 77010000 		.4byte	.LASF5
+ 340 0057 02       		.uleb128 0x2
+ 341 0058 04       		.byte	0x4
+ 342 0059 05       		.byte	0x5
+ 343 005a 63020000 		.4byte	.LASF6
+ 344 005e 02       		.uleb128 0x2
+ 345 005f 04       		.byte	0x4
+ 346 0060 07       		.byte	0x7
+ 347 0061 56010000 		.4byte	.LASF7
+ 348 0065 02       		.uleb128 0x2
+ 349 0066 08       		.byte	0x8
+ 350 0067 05       		.byte	0x5
+ 351 0068 1E020000 		.4byte	.LASF8
+ 352 006c 02       		.uleb128 0x2
+ 353 006d 08       		.byte	0x8
+ 354 006e 07       		.byte	0x7
+ 355 006f C1010000 		.4byte	.LASF9
+ 356 0073 04       		.uleb128 0x4
+ 357 0074 04       		.byte	0x4
+ 358 0075 05       		.byte	0x5
+ 359 0076 696E7400 		.ascii	"int\000"
+ 360 007a 02       		.uleb128 0x2
+ 361 007b 04       		.byte	0x4
+ 362 007c 07       		.byte	0x7
+ 363 007d B4010000 		.4byte	.LASF10
+ 364 0081 03       		.uleb128 0x3
+ 365 0082 D8010000 		.4byte	.LASF11
+ 366 0086 03       		.byte	0x3
+ 367 0087 18       		.byte	0x18
+ 368 0088 2C000000 		.4byte	0x2c
+ 369 008c 03       		.uleb128 0x3
+ 370 008d 5A020000 		.4byte	.LASF12
+ 371 0091 03       		.byte	0x3
+ 372 0092 24       		.byte	0x24
+ 373 0093 45000000 		.4byte	0x45
+ 374 0097 02       		.uleb128 0x2
+ 375 0098 08       		.byte	0x8
+ 376 0099 04       		.byte	0x4
+ 377 009a 6C020000 		.4byte	.LASF13
+ 378 009e 02       		.uleb128 0x2
+ 379 009f 04       		.byte	0x4
+ 380 00a0 07       		.byte	0x7
+ 381 00a1 EF010000 		.4byte	.LASF14
+ 382 00a5 02       		.uleb128 0x2
+ 383 00a6 01       		.byte	0x1
+ 384 00a7 08       		.byte	0x8
+ 385 00a8 2C020000 		.4byte	.LASF15
+ 386 00ac 05       		.uleb128 0x5
+ 387 00ad 97020000 		.4byte	.LASF16
+ 388 00b1 01       		.byte	0x1
+ 389 00b2 11       		.byte	0x11
+ 390 00b3 00000000 		.4byte	.LFB3
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 9
+
+
+ 391 00b7 0A000000 		.4byte	.LFE3-.LFB3
+ 392 00bb 01       		.uleb128 0x1
+ 393 00bc 9C       		.byte	0x9c
+ 394 00bd E3000000 		.4byte	0xe3
+ 395 00c1 06       		.uleb128 0x6
+ 396 00c2 0B020000 		.4byte	.LASF18
+ 397 00c6 01       		.byte	0x1
+ 398 00c7 0A       		.byte	0xa
+ 399 00c8 73000000 		.4byte	0x73
+ 400 00cc D2000000 		.4byte	0xd2
+ 401 00d0 07       		.uleb128 0x7
+ 402 00d1 00       		.byte	0
+ 403 00d2 08       		.uleb128 0x8
+ 404 00d3 08000000 		.4byte	.LVL0
+ 405 00d7 8C030000 		.4byte	0x38c
+ 406 00db 09       		.uleb128 0x9
+ 407 00dc 01       		.uleb128 0x1
+ 408 00dd 50       		.byte	0x50
+ 409 00de 02       		.uleb128 0x2
+ 410 00df 08       		.byte	0x8
+ 411 00e0 43       		.byte	0x43
+ 412 00e1 00       		.byte	0
+ 413 00e2 00       		.byte	0
+ 414 00e3 05       		.uleb128 0x5
+ 415 00e4 15000000 		.4byte	.LASF17
+ 416 00e8 01       		.byte	0x1
+ 417 00e9 15       		.byte	0x15
+ 418 00ea 00000000 		.4byte	.LFB4
+ 419 00ee 0A000000 		.4byte	.LFE4-.LFB4
+ 420 00f2 01       		.uleb128 0x1
+ 421 00f3 9C       		.byte	0x9c
+ 422 00f4 1A010000 		.4byte	0x11a
+ 423 00f8 06       		.uleb128 0x6
+ 424 00f9 A0000000 		.4byte	.LASF19
+ 425 00fd 01       		.byte	0x1
+ 426 00fe 0E       		.byte	0xe
+ 427 00ff 73000000 		.4byte	0x73
+ 428 0103 09010000 		.4byte	0x109
+ 429 0107 07       		.uleb128 0x7
+ 430 0108 00       		.byte	0
+ 431 0109 08       		.uleb128 0x8
+ 432 010a 08000000 		.4byte	.LVL1
+ 433 010e 97030000 		.4byte	0x397
+ 434 0112 09       		.uleb128 0x9
+ 435 0113 01       		.uleb128 0x1
+ 436 0114 50       		.byte	0x50
+ 437 0115 02       		.uleb128 0x2
+ 438 0116 08       		.byte	0x8
+ 439 0117 43       		.byte	0x43
+ 440 0118 00       		.byte	0
+ 441 0119 00       		.byte	0
+ 442 011a 0A       		.uleb128 0xa
+ 443 011b 68010000 		.4byte	.LASF20
+ 444 011f 01       		.byte	0x1
+ 445 0120 09       		.byte	0x9
+ 446 0121 00000000 		.4byte	.LFB1
+ 447 0125 0A000000 		.4byte	.LFE1-.LFB1
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 10
+
+
+ 448 0129 01       		.uleb128 0x1
+ 449 012a 9C       		.byte	0x9c
+ 450 012b 50010000 		.4byte	0x150
+ 451 012f 06       		.uleb128 0x6
+ 452 0130 0B020000 		.4byte	.LASF18
+ 453 0134 01       		.byte	0x1
+ 454 0135 0A       		.byte	0xa
+ 455 0136 73000000 		.4byte	0x73
+ 456 013a 40010000 		.4byte	0x140
+ 457 013e 07       		.uleb128 0x7
+ 458 013f 00       		.byte	0
+ 459 0140 08       		.uleb128 0x8
+ 460 0141 08000000 		.4byte	.LVL2
+ 461 0145 8C030000 		.4byte	0x38c
+ 462 0149 09       		.uleb128 0x9
+ 463 014a 01       		.uleb128 0x1
+ 464 014b 50       		.byte	0x50
+ 465 014c 01       		.uleb128 0x1
+ 466 014d 47       		.byte	0x47
+ 467 014e 00       		.byte	0
+ 468 014f 00       		.byte	0
+ 469 0150 0A       		.uleb128 0xa
+ 470 0151 E0010000 		.4byte	.LASF21
+ 471 0155 01       		.byte	0x1
+ 472 0156 0D       		.byte	0xd
+ 473 0157 00000000 		.4byte	.LFB2
+ 474 015b 0A000000 		.4byte	.LFE2-.LFB2
+ 475 015f 01       		.uleb128 0x1
+ 476 0160 9C       		.byte	0x9c
+ 477 0161 86010000 		.4byte	0x186
+ 478 0165 06       		.uleb128 0x6
+ 479 0166 A0000000 		.4byte	.LASF19
+ 480 016a 01       		.byte	0x1
+ 481 016b 0E       		.byte	0xe
+ 482 016c 73000000 		.4byte	0x73
+ 483 0170 76010000 		.4byte	0x176
+ 484 0174 07       		.uleb128 0x7
+ 485 0175 00       		.byte	0
+ 486 0176 08       		.uleb128 0x8
+ 487 0177 08000000 		.4byte	.LVL3
+ 488 017b 97030000 		.4byte	0x397
+ 489 017f 09       		.uleb128 0x9
+ 490 0180 01       		.uleb128 0x1
+ 491 0181 50       		.byte	0x50
+ 492 0182 01       		.uleb128 0x1
+ 493 0183 47       		.byte	0x47
+ 494 0184 00       		.byte	0
+ 495 0185 00       		.byte	0
+ 496 0186 0A       		.uleb128 0xa
+ 497 0187 00000000 		.4byte	.LASF22
+ 498 018b 01       		.byte	0x1
+ 499 018c 23       		.byte	0x23
+ 500 018d 00000000 		.4byte	.LFB7
+ 501 0191 10000000 		.4byte	.LFE7-.LFB7
+ 502 0195 01       		.uleb128 0x1
+ 503 0196 9C       		.byte	0x9c
+ 504 0197 E2010000 		.4byte	0x1e2
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 11
+
+
+ 505 019b 06       		.uleb128 0x6
+ 506 019c 0B020000 		.4byte	.LASF18
+ 507 01a0 01       		.byte	0x1
+ 508 01a1 0A       		.byte	0xa
+ 509 01a2 73000000 		.4byte	0x73
+ 510 01a6 AC010000 		.4byte	0x1ac
+ 511 01aa 07       		.uleb128 0x7
+ 512 01ab 00       		.byte	0
+ 513 01ac 06       		.uleb128 0x6
+ 514 01ad A0000000 		.4byte	.LASF19
+ 515 01b1 01       		.byte	0x1
+ 516 01b2 0E       		.byte	0xe
+ 517 01b3 73000000 		.4byte	0x73
+ 518 01b7 BD010000 		.4byte	0x1bd
+ 519 01bb 07       		.uleb128 0x7
+ 520 01bc 00       		.byte	0
+ 521 01bd 0B       		.uleb128 0xb
+ 522 01be 08000000 		.4byte	.LVL4
+ 523 01c2 8C030000 		.4byte	0x38c
+ 524 01c6 D1010000 		.4byte	0x1d1
+ 525 01ca 09       		.uleb128 0x9
+ 526 01cb 01       		.uleb128 0x1
+ 527 01cc 50       		.byte	0x50
+ 528 01cd 02       		.uleb128 0x2
+ 529 01ce 08       		.byte	0x8
+ 530 01cf 2D       		.byte	0x2d
+ 531 01d0 00       		.byte	0
+ 532 01d1 08       		.uleb128 0x8
+ 533 01d2 0E000000 		.4byte	.LVL5
+ 534 01d6 97030000 		.4byte	0x397
+ 535 01da 09       		.uleb128 0x9
+ 536 01db 01       		.uleb128 0x1
+ 537 01dc 50       		.byte	0x50
+ 538 01dd 02       		.uleb128 0x2
+ 539 01de 08       		.byte	0x8
+ 540 01df 2D       		.byte	0x2d
+ 541 01e0 00       		.byte	0
+ 542 01e1 00       		.byte	0
+ 543 01e2 0A       		.uleb128 0xa
+ 544 01e3 F8010000 		.4byte	.LASF23
+ 545 01e7 01       		.byte	0x1
+ 546 01e8 28       		.byte	0x28
+ 547 01e9 00000000 		.4byte	.LFB8
+ 548 01ed 14000000 		.4byte	.LFE8-.LFB8
+ 549 01f1 01       		.uleb128 0x1
+ 550 01f2 9C       		.byte	0x9c
+ 551 01f3 49020000 		.4byte	0x249
+ 552 01f7 06       		.uleb128 0x6
+ 553 01f8 0B020000 		.4byte	.LASF18
+ 554 01fc 01       		.byte	0x1
+ 555 01fd 0A       		.byte	0xa
+ 556 01fe 73000000 		.4byte	0x73
+ 557 0202 08020000 		.4byte	0x208
+ 558 0206 07       		.uleb128 0x7
+ 559 0207 00       		.byte	0
+ 560 0208 06       		.uleb128 0x6
+ 561 0209 A0000000 		.4byte	.LASF19
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 12
+
+
+ 562 020d 01       		.byte	0x1
+ 563 020e 0E       		.byte	0xe
+ 564 020f 73000000 		.4byte	0x73
+ 565 0213 19020000 		.4byte	0x219
+ 566 0217 07       		.uleb128 0x7
+ 567 0218 00       		.byte	0
+ 568 0219 0B       		.uleb128 0xb
+ 569 021a 08000000 		.4byte	.LVL6
+ 570 021e 8C030000 		.4byte	0x38c
+ 571 0222 2C020000 		.4byte	0x22c
+ 572 0226 09       		.uleb128 0x9
+ 573 0227 01       		.uleb128 0x1
+ 574 0228 50       		.byte	0x50
+ 575 0229 01       		.uleb128 0x1
+ 576 022a 46       		.byte	0x46
+ 577 022b 00       		.byte	0
+ 578 022c 0B       		.uleb128 0xb
+ 579 022d 0E000000 		.4byte	.LVL7
+ 580 0231 97030000 		.4byte	0x397
+ 581 0235 3F020000 		.4byte	0x23f
+ 582 0239 09       		.uleb128 0x9
+ 583 023a 01       		.uleb128 0x1
+ 584 023b 50       		.byte	0x50
+ 585 023c 01       		.uleb128 0x1
+ 586 023d 47       		.byte	0x47
+ 587 023e 00       		.byte	0
+ 588 023f 0C       		.uleb128 0xc
+ 589 0240 12000000 		.4byte	.LVL8
+ 590 0244 86010000 		.4byte	0x186
+ 591 0248 00       		.byte	0
+ 592 0249 0A       		.uleb128 0xa
+ 593 024a 8A010000 		.4byte	.LASF24
+ 594 024e 01       		.byte	0x1
+ 595 024f 2E       		.byte	0x2e
+ 596 0250 00000000 		.4byte	.LFB9
+ 597 0254 10000000 		.4byte	.LFE9-.LFB9
+ 598 0258 01       		.uleb128 0x1
+ 599 0259 9C       		.byte	0x9c
+ 600 025a A4020000 		.4byte	0x2a4
+ 601 025e 06       		.uleb128 0x6
+ 602 025f 0B020000 		.4byte	.LASF18
+ 603 0263 01       		.byte	0x1
+ 604 0264 0A       		.byte	0xa
+ 605 0265 73000000 		.4byte	0x73
+ 606 0269 6F020000 		.4byte	0x26f
+ 607 026d 07       		.uleb128 0x7
+ 608 026e 00       		.byte	0
+ 609 026f 06       		.uleb128 0x6
+ 610 0270 A0000000 		.4byte	.LASF19
+ 611 0274 01       		.byte	0x1
+ 612 0275 0E       		.byte	0xe
+ 613 0276 73000000 		.4byte	0x73
+ 614 027a 80020000 		.4byte	0x280
+ 615 027e 07       		.uleb128 0x7
+ 616 027f 00       		.byte	0
+ 617 0280 0B       		.uleb128 0xb
+ 618 0281 08000000 		.4byte	.LVL9
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 13
+
+
+ 619 0285 8C030000 		.4byte	0x38c
+ 620 0289 94020000 		.4byte	0x294
+ 621 028d 09       		.uleb128 0x9
+ 622 028e 01       		.uleb128 0x1
+ 623 028f 50       		.byte	0x50
+ 624 0290 02       		.uleb128 0x2
+ 625 0291 08       		.byte	0x8
+ 626 0292 46       		.byte	0x46
+ 627 0293 00       		.byte	0
+ 628 0294 08       		.uleb128 0x8
+ 629 0295 0E000000 		.4byte	.LVL10
+ 630 0299 97030000 		.4byte	0x397
+ 631 029d 09       		.uleb128 0x9
+ 632 029e 01       		.uleb128 0x1
+ 633 029f 50       		.byte	0x50
+ 634 02a0 01       		.uleb128 0x1
+ 635 02a1 44       		.byte	0x44
+ 636 02a2 00       		.byte	0
+ 637 02a3 00       		.byte	0
+ 638 02a4 0A       		.uleb128 0xa
+ 639 02a5 31020000 		.4byte	.LASF25
+ 640 02a9 01       		.byte	0x1
+ 641 02aa 33       		.byte	0x33
+ 642 02ab 00000000 		.4byte	.LFB10
+ 643 02af 18000000 		.4byte	.LFE10-.LFB10
+ 644 02b3 01       		.uleb128 0x1
+ 645 02b4 9C       		.byte	0x9c
+ 646 02b5 EA020000 		.4byte	0x2ea
+ 647 02b9 0C       		.uleb128 0xc
+ 648 02ba 06000000 		.4byte	.LVL11
+ 649 02be AC000000 		.4byte	0xac
+ 650 02c2 0C       		.uleb128 0xc
+ 651 02c3 0A000000 		.4byte	.LVL12
+ 652 02c7 50010000 		.4byte	0x150
+ 653 02cb 0B       		.uleb128 0xb
+ 654 02cc 12000000 		.4byte	.LVL13
+ 655 02d0 A2030000 		.4byte	0x3a2
+ 656 02d4 E0020000 		.4byte	0x2e0
+ 657 02d8 09       		.uleb128 0x9
+ 658 02d9 01       		.uleb128 0x1
+ 659 02da 50       		.byte	0x50
+ 660 02db 03       		.uleb128 0x3
+ 661 02dc 0A       		.byte	0xa
+ 662 02dd F401     		.2byte	0x1f4
+ 663 02df 00       		.byte	0
+ 664 02e0 0C       		.uleb128 0xc
+ 665 02e1 16000000 		.4byte	.LVL14
+ 666 02e5 86010000 		.4byte	0x186
+ 667 02e9 00       		.byte	0
+ 668 02ea 0A       		.uleb128 0xa
+ 669 02eb 50020000 		.4byte	.LASF26
+ 670 02ef 01       		.byte	0x1
+ 671 02f0 3A       		.byte	0x3a
+ 672 02f1 00000000 		.4byte	.LFB11
+ 673 02f5 18000000 		.4byte	.LFE11-.LFB11
+ 674 02f9 01       		.uleb128 0x1
+ 675 02fa 9C       		.byte	0x9c
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 14
+
+
+ 676 02fb 30030000 		.4byte	0x330
+ 677 02ff 0C       		.uleb128 0xc
+ 678 0300 06000000 		.4byte	.LVL15
+ 679 0304 1A010000 		.4byte	0x11a
+ 680 0308 0C       		.uleb128 0xc
+ 681 0309 0A000000 		.4byte	.LVL16
+ 682 030d E3000000 		.4byte	0xe3
+ 683 0311 0B       		.uleb128 0xb
+ 684 0312 12000000 		.4byte	.LVL17
+ 685 0316 A2030000 		.4byte	0x3a2
+ 686 031a 26030000 		.4byte	0x326
+ 687 031e 09       		.uleb128 0x9
+ 688 031f 01       		.uleb128 0x1
+ 689 0320 50       		.byte	0x50
+ 690 0321 03       		.uleb128 0x3
+ 691 0322 0A       		.byte	0xa
+ 692 0323 F401     		.2byte	0x1f4
+ 693 0325 00       		.byte	0
+ 694 0326 0C       		.uleb128 0xc
+ 695 0327 16000000 		.4byte	.LVL18
+ 696 032b 86010000 		.4byte	0x186
+ 697 032f 00       		.byte	0
+ 698 0330 0D       		.uleb128 0xd
+ 699 0331 A7010000 		.4byte	.LASF27
+ 700 0335 01       		.byte	0x1
+ 701 0336 03       		.byte	0x3
+ 702 0337 8C000000 		.4byte	0x8c
+ 703 033b 05       		.uleb128 0x5
+ 704 033c 03       		.byte	0x3
+ 705 033d 00000000 		.4byte	offLineCount
+ 706 0341 0D       		.uleb128 0xd
+ 707 0342 9B010000 		.4byte	.LASF28
+ 708 0346 01       		.byte	0x1
+ 709 0347 04       		.byte	0x4
+ 710 0348 8C000000 		.4byte	0x8c
+ 711 034c 05       		.uleb128 0x5
+ 712 034d 03       		.byte	0x3
+ 713 034e 00000000 		.4byte	onLineCount
+ 714 0352 0D       		.uleb128 0xd
+ 715 0353 21000000 		.4byte	.LASF29
+ 716 0357 01       		.byte	0x1
+ 717 0358 05       		.byte	0x5
+ 718 0359 81000000 		.4byte	0x81
+ 719 035d 05       		.uleb128 0x5
+ 720 035e 03       		.byte	0x3
+ 721 035f 00000000 		.4byte	turnsComplete
+ 722 0363 0D       		.uleb128 0xd
+ 723 0364 84020000 		.4byte	.LASF30
+ 724 0368 01       		.byte	0x1
+ 725 0369 06       		.byte	0x6
+ 726 036a 74030000 		.4byte	0x374
+ 727 036e 05       		.uleb128 0x5
+ 728 036f 03       		.byte	0x3
+ 729 0370 00000000 		.4byte	turnDetected
+ 730 0374 02       		.uleb128 0x2
+ 731 0375 01       		.byte	0x1
+ 732 0376 02       		.byte	0x2
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 15
+
+
+ 733 0377 91020000 		.4byte	.LASF31
+ 734 037b 0D       		.uleb128 0xd
+ 735 037c B3000000 		.4byte	.LASF32
+ 736 0380 01       		.byte	0x1
+ 737 0381 07       		.byte	0x7
+ 738 0382 74030000 		.4byte	0x374
+ 739 0386 05       		.uleb128 0x5
+ 740 0387 03       		.byte	0x3
+ 741 0388 00000000 		.4byte	onLine
+ 742 038c 0E       		.uleb128 0xe
+ 743 038d 0B020000 		.4byte	.LASF18
+ 744 0391 0B020000 		.4byte	.LASF18
+ 745 0395 01       		.byte	0x1
+ 746 0396 0A       		.byte	0xa
+ 747 0397 0E       		.uleb128 0xe
+ 748 0398 A0000000 		.4byte	.LASF19
+ 749 039c A0000000 		.4byte	.LASF19
+ 750 03a0 01       		.byte	0x1
+ 751 03a1 0E       		.byte	0xe
+ 752 03a2 0E       		.uleb128 0xe
+ 753 03a3 A3020000 		.4byte	.LASF33
+ 754 03a7 A3020000 		.4byte	.LASF33
+ 755 03ab 04       		.byte	0x4
+ 756 03ac 14       		.byte	0x14
+ 757 03ad 00       		.byte	0
+ 758              		.section	.debug_abbrev,"",%progbits
+ 759              	.Ldebug_abbrev0:
+ 760 0000 01       		.uleb128 0x1
+ 761 0001 11       		.uleb128 0x11
+ 762 0002 01       		.byte	0x1
+ 763 0003 25       		.uleb128 0x25
+ 764 0004 0E       		.uleb128 0xe
+ 765 0005 13       		.uleb128 0x13
+ 766 0006 0B       		.uleb128 0xb
+ 767 0007 03       		.uleb128 0x3
+ 768 0008 0E       		.uleb128 0xe
+ 769 0009 1B       		.uleb128 0x1b
+ 770 000a 0E       		.uleb128 0xe
+ 771 000b 55       		.uleb128 0x55
+ 772 000c 17       		.uleb128 0x17
+ 773 000d 11       		.uleb128 0x11
+ 774 000e 01       		.uleb128 0x1
+ 775 000f 10       		.uleb128 0x10
+ 776 0010 17       		.uleb128 0x17
+ 777 0011 00       		.byte	0
+ 778 0012 00       		.byte	0
+ 779 0013 02       		.uleb128 0x2
+ 780 0014 24       		.uleb128 0x24
+ 781 0015 00       		.byte	0
+ 782 0016 0B       		.uleb128 0xb
+ 783 0017 0B       		.uleb128 0xb
+ 784 0018 3E       		.uleb128 0x3e
+ 785 0019 0B       		.uleb128 0xb
+ 786 001a 03       		.uleb128 0x3
+ 787 001b 0E       		.uleb128 0xe
+ 788 001c 00       		.byte	0
+ 789 001d 00       		.byte	0
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 16
+
+
+ 790 001e 03       		.uleb128 0x3
+ 791 001f 16       		.uleb128 0x16
+ 792 0020 00       		.byte	0
+ 793 0021 03       		.uleb128 0x3
+ 794 0022 0E       		.uleb128 0xe
+ 795 0023 3A       		.uleb128 0x3a
+ 796 0024 0B       		.uleb128 0xb
+ 797 0025 3B       		.uleb128 0x3b
+ 798 0026 0B       		.uleb128 0xb
+ 799 0027 49       		.uleb128 0x49
+ 800 0028 13       		.uleb128 0x13
+ 801 0029 00       		.byte	0
+ 802 002a 00       		.byte	0
+ 803 002b 04       		.uleb128 0x4
+ 804 002c 24       		.uleb128 0x24
+ 805 002d 00       		.byte	0
+ 806 002e 0B       		.uleb128 0xb
+ 807 002f 0B       		.uleb128 0xb
+ 808 0030 3E       		.uleb128 0x3e
+ 809 0031 0B       		.uleb128 0xb
+ 810 0032 03       		.uleb128 0x3
+ 811 0033 08       		.uleb128 0x8
+ 812 0034 00       		.byte	0
+ 813 0035 00       		.byte	0
+ 814 0036 05       		.uleb128 0x5
+ 815 0037 2E       		.uleb128 0x2e
+ 816 0038 01       		.byte	0x1
+ 817 0039 03       		.uleb128 0x3
+ 818 003a 0E       		.uleb128 0xe
+ 819 003b 3A       		.uleb128 0x3a
+ 820 003c 0B       		.uleb128 0xb
+ 821 003d 3B       		.uleb128 0x3b
+ 822 003e 0B       		.uleb128 0xb
+ 823 003f 11       		.uleb128 0x11
+ 824 0040 01       		.uleb128 0x1
+ 825 0041 12       		.uleb128 0x12
+ 826 0042 06       		.uleb128 0x6
+ 827 0043 40       		.uleb128 0x40
+ 828 0044 18       		.uleb128 0x18
+ 829 0045 9742     		.uleb128 0x2117
+ 830 0047 19       		.uleb128 0x19
+ 831 0048 01       		.uleb128 0x1
+ 832 0049 13       		.uleb128 0x13
+ 833 004a 00       		.byte	0
+ 834 004b 00       		.byte	0
+ 835 004c 06       		.uleb128 0x6
+ 836 004d 2E       		.uleb128 0x2e
+ 837 004e 01       		.byte	0x1
+ 838 004f 3F       		.uleb128 0x3f
+ 839 0050 19       		.uleb128 0x19
+ 840 0051 03       		.uleb128 0x3
+ 841 0052 0E       		.uleb128 0xe
+ 842 0053 3A       		.uleb128 0x3a
+ 843 0054 0B       		.uleb128 0xb
+ 844 0055 3B       		.uleb128 0x3b
+ 845 0056 0B       		.uleb128 0xb
+ 846 0057 49       		.uleb128 0x49
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 17
+
+
+ 847 0058 13       		.uleb128 0x13
+ 848 0059 3C       		.uleb128 0x3c
+ 849 005a 19       		.uleb128 0x19
+ 850 005b 01       		.uleb128 0x1
+ 851 005c 13       		.uleb128 0x13
+ 852 005d 00       		.byte	0
+ 853 005e 00       		.byte	0
+ 854 005f 07       		.uleb128 0x7
+ 855 0060 18       		.uleb128 0x18
+ 856 0061 00       		.byte	0
+ 857 0062 00       		.byte	0
+ 858 0063 00       		.byte	0
+ 859 0064 08       		.uleb128 0x8
+ 860 0065 898201   		.uleb128 0x4109
+ 861 0068 01       		.byte	0x1
+ 862 0069 11       		.uleb128 0x11
+ 863 006a 01       		.uleb128 0x1
+ 864 006b 31       		.uleb128 0x31
+ 865 006c 13       		.uleb128 0x13
+ 866 006d 00       		.byte	0
+ 867 006e 00       		.byte	0
+ 868 006f 09       		.uleb128 0x9
+ 869 0070 8A8201   		.uleb128 0x410a
+ 870 0073 00       		.byte	0
+ 871 0074 02       		.uleb128 0x2
+ 872 0075 18       		.uleb128 0x18
+ 873 0076 9142     		.uleb128 0x2111
+ 874 0078 18       		.uleb128 0x18
+ 875 0079 00       		.byte	0
+ 876 007a 00       		.byte	0
+ 877 007b 0A       		.uleb128 0xa
+ 878 007c 2E       		.uleb128 0x2e
+ 879 007d 01       		.byte	0x1
+ 880 007e 3F       		.uleb128 0x3f
+ 881 007f 19       		.uleb128 0x19
+ 882 0080 03       		.uleb128 0x3
+ 883 0081 0E       		.uleb128 0xe
+ 884 0082 3A       		.uleb128 0x3a
+ 885 0083 0B       		.uleb128 0xb
+ 886 0084 3B       		.uleb128 0x3b
+ 887 0085 0B       		.uleb128 0xb
+ 888 0086 27       		.uleb128 0x27
+ 889 0087 19       		.uleb128 0x19
+ 890 0088 11       		.uleb128 0x11
+ 891 0089 01       		.uleb128 0x1
+ 892 008a 12       		.uleb128 0x12
+ 893 008b 06       		.uleb128 0x6
+ 894 008c 40       		.uleb128 0x40
+ 895 008d 18       		.uleb128 0x18
+ 896 008e 9742     		.uleb128 0x2117
+ 897 0090 19       		.uleb128 0x19
+ 898 0091 01       		.uleb128 0x1
+ 899 0092 13       		.uleb128 0x13
+ 900 0093 00       		.byte	0
+ 901 0094 00       		.byte	0
+ 902 0095 0B       		.uleb128 0xb
+ 903 0096 898201   		.uleb128 0x4109
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 18
+
+
+ 904 0099 01       		.byte	0x1
+ 905 009a 11       		.uleb128 0x11
+ 906 009b 01       		.uleb128 0x1
+ 907 009c 31       		.uleb128 0x31
+ 908 009d 13       		.uleb128 0x13
+ 909 009e 01       		.uleb128 0x1
+ 910 009f 13       		.uleb128 0x13
+ 911 00a0 00       		.byte	0
+ 912 00a1 00       		.byte	0
+ 913 00a2 0C       		.uleb128 0xc
+ 914 00a3 898201   		.uleb128 0x4109
+ 915 00a6 00       		.byte	0
+ 916 00a7 11       		.uleb128 0x11
+ 917 00a8 01       		.uleb128 0x1
+ 918 00a9 31       		.uleb128 0x31
+ 919 00aa 13       		.uleb128 0x13
+ 920 00ab 00       		.byte	0
+ 921 00ac 00       		.byte	0
+ 922 00ad 0D       		.uleb128 0xd
+ 923 00ae 34       		.uleb128 0x34
+ 924 00af 00       		.byte	0
+ 925 00b0 03       		.uleb128 0x3
+ 926 00b1 0E       		.uleb128 0xe
+ 927 00b2 3A       		.uleb128 0x3a
+ 928 00b3 0B       		.uleb128 0xb
+ 929 00b4 3B       		.uleb128 0x3b
+ 930 00b5 0B       		.uleb128 0xb
+ 931 00b6 49       		.uleb128 0x49
+ 932 00b7 13       		.uleb128 0x13
+ 933 00b8 3F       		.uleb128 0x3f
+ 934 00b9 19       		.uleb128 0x19
+ 935 00ba 02       		.uleb128 0x2
+ 936 00bb 18       		.uleb128 0x18
+ 937 00bc 00       		.byte	0
+ 938 00bd 00       		.byte	0
+ 939 00be 0E       		.uleb128 0xe
+ 940 00bf 2E       		.uleb128 0x2e
+ 941 00c0 00       		.byte	0
+ 942 00c1 3F       		.uleb128 0x3f
+ 943 00c2 19       		.uleb128 0x19
+ 944 00c3 3C       		.uleb128 0x3c
+ 945 00c4 19       		.uleb128 0x19
+ 946 00c5 6E       		.uleb128 0x6e
+ 947 00c6 0E       		.uleb128 0xe
+ 948 00c7 03       		.uleb128 0x3
+ 949 00c8 0E       		.uleb128 0xe
+ 950 00c9 3A       		.uleb128 0x3a
+ 951 00ca 0B       		.uleb128 0xb
+ 952 00cb 3B       		.uleb128 0x3b
+ 953 00cc 0B       		.uleb128 0xb
+ 954 00cd 00       		.byte	0
+ 955 00ce 00       		.byte	0
+ 956 00cf 00       		.byte	0
+ 957              		.section	.debug_aranges,"",%progbits
+ 958 0000 5C000000 		.4byte	0x5c
+ 959 0004 0200     		.2byte	0x2
+ 960 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 19
+
+
+ 961 000a 04       		.byte	0x4
+ 962 000b 00       		.byte	0
+ 963 000c 0000     		.2byte	0
+ 964 000e 0000     		.2byte	0
+ 965 0010 00000000 		.4byte	.LFB3
+ 966 0014 0A000000 		.4byte	.LFE3-.LFB3
+ 967 0018 00000000 		.4byte	.LFB4
+ 968 001c 0A000000 		.4byte	.LFE4-.LFB4
+ 969 0020 00000000 		.4byte	.LFB1
+ 970 0024 0A000000 		.4byte	.LFE1-.LFB1
+ 971 0028 00000000 		.4byte	.LFB2
+ 972 002c 0A000000 		.4byte	.LFE2-.LFB2
+ 973 0030 00000000 		.4byte	.LFB7
+ 974 0034 10000000 		.4byte	.LFE7-.LFB7
+ 975 0038 00000000 		.4byte	.LFB8
+ 976 003c 14000000 		.4byte	.LFE8-.LFB8
+ 977 0040 00000000 		.4byte	.LFB9
+ 978 0044 10000000 		.4byte	.LFE9-.LFB9
+ 979 0048 00000000 		.4byte	.LFB10
+ 980 004c 18000000 		.4byte	.LFE10-.LFB10
+ 981 0050 00000000 		.4byte	.LFB11
+ 982 0054 18000000 		.4byte	.LFE11-.LFB11
+ 983 0058 00000000 		.4byte	0
+ 984 005c 00000000 		.4byte	0
+ 985              		.section	.debug_ranges,"",%progbits
+ 986              	.Ldebug_ranges0:
+ 987 0000 00000000 		.4byte	.LFB3
+ 988 0004 0A000000 		.4byte	.LFE3
+ 989 0008 00000000 		.4byte	.LFB4
+ 990 000c 0A000000 		.4byte	.LFE4
+ 991 0010 00000000 		.4byte	.LFB1
+ 992 0014 0A000000 		.4byte	.LFE1
+ 993 0018 00000000 		.4byte	.LFB2
+ 994 001c 0A000000 		.4byte	.LFE2
+ 995 0020 00000000 		.4byte	.LFB7
+ 996 0024 10000000 		.4byte	.LFE7
+ 997 0028 00000000 		.4byte	.LFB8
+ 998 002c 14000000 		.4byte	.LFE8
+ 999 0030 00000000 		.4byte	.LFB9
+ 1000 0034 10000000 		.4byte	.LFE9
+ 1001 0038 00000000 		.4byte	.LFB10
+ 1002 003c 18000000 		.4byte	.LFE10
+ 1003 0040 00000000 		.4byte	.LFB11
+ 1004 0044 18000000 		.4byte	.LFE11
+ 1005 0048 00000000 		.4byte	0
+ 1006 004c 00000000 		.4byte	0
+ 1007              		.section	.debug_line,"",%progbits
+ 1008              	.Ldebug_line0:
+ 1009 0000 CB010000 		.section	.debug_str,"MS",%progbits,1
+ 1009      02002D01 
+ 1009      00000201 
+ 1009      FB0E0D00 
+ 1009      01010101 
+ 1010              	.LASF22:
+ 1011 0000 73746F70 		.ascii	"stopMoving\000"
+ 1011      4D6F7669 
+ 1011      6E6700
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 20
+
+
+ 1012              	.LASF3:
+ 1013 000b 5F5F7569 		.ascii	"__uint8_t\000"
+ 1013      6E74385F 
+ 1013      7400
+ 1014              	.LASF17:
+ 1015 0015 4D6F746F 		.ascii	"MotorR_Back\000"
+ 1015      72525F42 
+ 1015      61636B00 
+ 1016              	.LASF29:
+ 1017 0021 7475726E 		.ascii	"turnsComplete\000"
+ 1017      73436F6D 
+ 1017      706C6574 
+ 1017      6500
+ 1018              	.LASF36:
+ 1019 002f 433A5C55 		.ascii	"C:\\Users\\aale517\\Documents\\COMPSYS301_team2\\Pr"
+ 1019      73657273 
+ 1019      5C61616C 
+ 1019      65353137 
+ 1019      5C446F63 
+ 1020 005d 6F6A6563 		.ascii	"oject\\psco_code\\Pathfinding_Maze\\Pathfinding_Maz"
+ 1020      745C7073 
+ 1020      636F5F63 
+ 1020      6F64655C 
+ 1020      50617468 
+ 1021 008d 652E6379 		.ascii	"e.cydsn\000"
+ 1021      64736E00 
+ 1022              	.LASF4:
+ 1023 0095 5F5F7569 		.ascii	"__uint16_t\000"
+ 1023      6E743136 
+ 1023      5F7400
+ 1024              	.LASF19:
+ 1025 00a0 50574D5F 		.ascii	"PWM_2_WriteCompare\000"
+ 1025      325F5772 
+ 1025      69746543 
+ 1025      6F6D7061 
+ 1025      726500
+ 1026              	.LASF32:
+ 1027 00b3 6F6E4C69 		.ascii	"onLine\000"
+ 1027      6E6500
+ 1028              	.LASF1:
+ 1029 00ba 756E7369 		.ascii	"unsigned char\000"
+ 1029      676E6564 
+ 1029      20636861 
+ 1029      7200
+ 1030              	.LASF34:
+ 1031 00c8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1031      43313120 
+ 1031      352E342E 
+ 1031      31203230 
+ 1031      31363036 
+ 1032 00fb 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1032      20726576 
+ 1032      6973696F 
+ 1032      6E203233 
+ 1032      37373135 
+ 1033 012e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1033      66756E63 
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 21
+
+
+ 1033      74696F6E 
+ 1033      2D736563 
+ 1033      74696F6E 
+ 1034              	.LASF7:
+ 1035 0156 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1035      20756E73 
+ 1035      69676E65 
+ 1035      6420696E 
+ 1035      7400
+ 1036              	.LASF20:
+ 1037 0168 4D6F746F 		.ascii	"MotorL_Forward\000"
+ 1037      724C5F46 
+ 1037      6F727761 
+ 1037      726400
+ 1038              	.LASF5:
+ 1039 0177 73686F72 		.ascii	"short unsigned int\000"
+ 1039      7420756E 
+ 1039      7369676E 
+ 1039      65642069 
+ 1039      6E7400
+ 1040              	.LASF24:
+ 1041 018a 6F6E6553 		.ascii	"oneSensorCorrect\000"
+ 1041      656E736F 
+ 1041      72436F72 
+ 1041      72656374 
+ 1041      00
+ 1042              	.LASF28:
+ 1043 019b 6F6E4C69 		.ascii	"onLineCount\000"
+ 1043      6E65436F 
+ 1043      756E7400 
+ 1044              	.LASF27:
+ 1045 01a7 6F66664C 		.ascii	"offLineCount\000"
+ 1045      696E6543 
+ 1045      6F756E74 
+ 1045      00
+ 1046              	.LASF10:
+ 1047 01b4 756E7369 		.ascii	"unsigned int\000"
+ 1047      676E6564 
+ 1047      20696E74 
+ 1047      00
+ 1048              	.LASF9:
+ 1049 01c1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1049      206C6F6E 
+ 1049      6720756E 
+ 1049      7369676E 
+ 1049      65642069 
+ 1050              	.LASF11:
+ 1051 01d8 75696E74 		.ascii	"uint8_t\000"
+ 1051      385F7400 
+ 1052              	.LASF21:
+ 1053 01e0 4D6F746F 		.ascii	"MotorR_Forward\000"
+ 1053      72525F46 
+ 1053      6F727761 
+ 1053      726400
+ 1054              	.LASF14:
+ 1055 01ef 73697A65 		.ascii	"sizetype\000"
+ 1055      74797065 
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 22
+
+
+ 1055      00
+ 1056              	.LASF23:
+ 1057 01f8 4D6F7665 		.ascii	"MoveForwardOneCell\000"
+ 1057      466F7277 
+ 1057      6172644F 
+ 1057      6E654365 
+ 1057      6C6C00
+ 1058              	.LASF18:
+ 1059 020b 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 1059      315F5772 
+ 1059      69746543 
+ 1059      6F6D7061 
+ 1059      726500
+ 1060              	.LASF8:
+ 1061 021e 6C6F6E67 		.ascii	"long long int\000"
+ 1061      206C6F6E 
+ 1061      6720696E 
+ 1061      7400
+ 1062              	.LASF15:
+ 1063 022c 63686172 		.ascii	"char\000"
+ 1063      00
+ 1064              	.LASF25:
+ 1065 0231 5475726E 		.ascii	"TurnLeft\000"
+ 1065      4C656674 
+ 1065      00
+ 1066              	.LASF35:
+ 1067 023a 6D6F7665 		.ascii	"movements.c\000"
+ 1067      6D656E74 
+ 1067      732E6300 
+ 1068              	.LASF2:
+ 1069 0246 73686F72 		.ascii	"short int\000"
+ 1069      7420696E 
+ 1069      7400
+ 1070              	.LASF26:
+ 1071 0250 5475726E 		.ascii	"TurnRight\000"
+ 1071      52696768 
+ 1071      7400
+ 1072              	.LASF12:
+ 1073 025a 75696E74 		.ascii	"uint16_t\000"
+ 1073      31365F74 
+ 1073      00
+ 1074              	.LASF6:
+ 1075 0263 6C6F6E67 		.ascii	"long int\000"
+ 1075      20696E74 
+ 1075      00
+ 1076              	.LASF13:
+ 1077 026c 6C6F6E67 		.ascii	"long double\000"
+ 1077      20646F75 
+ 1077      626C6500 
+ 1078              	.LASF0:
+ 1079 0278 7369676E 		.ascii	"signed char\000"
+ 1079      65642063 
+ 1079      68617200 
+ 1080              	.LASF30:
+ 1081 0284 7475726E 		.ascii	"turnDetected\000"
+ 1081      44657465 
+ 1081      63746564 
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccrTsVAo.s 			page 23
+
+
+ 1081      00
+ 1082              	.LASF31:
+ 1083 0291 5F426F6F 		.ascii	"_Bool\000"
+ 1083      6C00
+ 1084              	.LASF16:
+ 1085 0297 4D6F746F 		.ascii	"MotorL_Back\000"
+ 1085      724C5F42 
+ 1085      61636B00 
+ 1086              	.LASF33:
+ 1087 02a3 43794465 		.ascii	"CyDelay\000"
+ 1087      6C617900 
+ 1088              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

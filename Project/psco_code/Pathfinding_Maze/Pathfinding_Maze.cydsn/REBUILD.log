@@ -1,0 +1,78 @@
+--------------- Rebuild Started: 10/14/2026 16:27:11 Project: movements.c, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/movements.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c movements.c -o .\CortexM3\ARM_GCC_541\Debug\movements.o
+movements.c:6:1: error: unknown type name 'uint16'
+ uint16 offLineCount = 0;
+ ^
+movements.c:7:1: error: unknown type name 'uint16'
+ uint16 onLineCount = 0;
+ ^
+movements.c:8:1: error: unknown type name 'uint8'
+ uint8 turnsComplete = 0;
+ ^
+movements.c:12:1: warning: return type defaults to 'int' [-Wimplicit-int]
+ MotorL_Forward() {
+ ^
+movements.c:12:1: warning: conflicting types for 'MotorL_Forward'
+In file included from movements.c:1:0:
+movement.h:5:10: note: previous declaration of 'MotorL_Forward' was here
+     void MotorL_Forward(void);
+          ^
+movements.c: In function 'MotorL_Forward':
+movements.c:13:3: warning: implicit declaration of function 'PWM_1_WriteCompare' [-Wimplicit-function-declaration]
+   PWM_1_WriteCompare(FORWARD_COMPARE);
+   ^
+movements.c: At top level:
+The command 'arm-none-eabi-gcc.exe' failed with exit code '1'.
+movements.c:16:1: warning: return type defaults to 'int' [-Wimplicit-int]
+ MotorR_Forward() {
+ ^
+movements.c:16:1: warning: conflicting types for 'MotorR_Forward'
+In file included from movements.c:1:0:
+movement.h:6:10: note: previous declaration of 'MotorR_Forward' was here
+     void MotorR_Forward(void);
+          ^
+movements.c: In function 'MotorR_Forward':
+movements.c:17:4: warning: implicit declaration of function 'PWM_2_WriteCompare' [-Wimplicit-function-declaration]
+    PWM_2_WriteCompare(FORWARD_COMPARE);
+    ^
+movements.c: At top level:
+movements.c:43:13: error: static declaration of 'MoveForwardOneCell' follows non-static declaration
+ static void MoveForwardOneCell(void) {
+             ^
+In file included from movements.c:1:0:
+movement.h:7:10: note: previous declaration of 'MoveForwardOneCell' was here
+     void MoveForwardOneCell(void);
+          ^
+movements.c:46:13: error: static declaration of 'TurnLeft' follows non-static declaration
+ static void TurnLeft(void) {
+             ^
+In file included from movements.c:1:0:
+movement.h:8:10: note: previous declaration of 'TurnLeft' was here
+     void TurnLeft(void);
+          ^
+movements.c:49:13: error: static declaration of 'TurnRight' follows non-static declaration
+ static void TurnRight(void) {
+             ^
+In file included from movements.c:1:0:
+movement.h:9:10: note: previous declaration of 'TurnRight' was here
+     void TurnRight(void);
+          ^
+movements.c:28:13: warning: 'goForward' defined but not used [-Wunused-function]
+ static void goForward() {
+             ^
+movements.c:33:13: warning: 'goBack' defined but not used [-Wunused-function]
+ static void goBack() {
+             ^
+movements.c:38:13: warning: 'stopMoving' defined but not used [-Wunused-function]
+ static void stopMoving(){
+             ^
+movements.c:43:13: warning: 'MoveForwardOneCell' defined but not used [-Wunused-function]
+ static void MoveForwardOneCell(void) {
+             ^
+movements.c:46:13: warning: 'TurnLeft' defined but not used [-Wunused-function]
+ static void TurnLeft(void) {
+             ^
+movements.c:49:13: warning: 'TurnRight' defined but not used [-Wunused-function]
+ static void TurnRight(void) {
+             ^
+--------------- Rebuild Failed: 10/14/2026 16:27:11 ---------------
