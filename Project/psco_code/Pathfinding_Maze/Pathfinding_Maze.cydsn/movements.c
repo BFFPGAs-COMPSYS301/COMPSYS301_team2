@@ -4,8 +4,12 @@ void LED_3_Write();
 
 static void MoveForwardOneCell(void) {
     LED_1_Write(1);
+    PWM_1_WriteCompare(20);
+    PWM_2_WriteCompare(20);
     CyDelay(1000);
     LED_1_Write(0);
+    PWM_1_WriteCompare(45);
+    PWM_2_WriteCompare(45);
     CyDelay(1000);
 }
 

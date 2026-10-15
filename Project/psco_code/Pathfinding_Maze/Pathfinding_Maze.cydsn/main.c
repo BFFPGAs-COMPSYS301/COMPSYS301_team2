@@ -234,39 +234,27 @@ void ExecuteNextCommand(void)
 
 int main(void)
 {
-    /*
-     * Initialise PSoC hardware here.
-     */
-
-
-    /*
-     * Calculate the ENTIRE route before
-     * starting the robot.
-     */
+    PWM_1_Start();
+    PWM_2_Start();
+    
+    Timeout_1_Start();
+    Timeout_2_Start();
+    Timeout_3_Start();
+    Timeout_4_Start();
+    Timeout_5_Start();
+    
 
     if (!BuildRoute())
     {
-        /*
-         * No valid route was found.
-         *
-         * Handle the error here.
-         */
 
         while (1)
         {
-            /*
-             * Error state.
-             */
+            // Error state.
         }
     }
 
 
-    /*
-     * Route has now been calculated.
-     *
-     * Start robot movement.
-     */
-
+    // Route has now been calculated. Start robot movement.
     while (1)
     {
         ExecuteNextCommand();
