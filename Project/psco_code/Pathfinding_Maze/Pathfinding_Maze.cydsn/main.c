@@ -1,3 +1,5 @@
+
+#include "project.h"
 #include "astar.h"
 #include "movements.c"
 
@@ -46,13 +48,10 @@ Checkpoints checkpoints =
     .points =
     {
         {1, 1},     /* START */
-        {3, 3},     /* CHECKPOINT 1 */
-        {5, 7},     /* CHECKPOINT 2 */
-        {7, 15},    /* CHECKPOINT 3 */
         {13, 17}    /* END */
     },
 
-    .count = 5
+    .count = 2
 };
 
 
@@ -115,8 +114,10 @@ void ExecuteNextCommand(void)
 
     // Get next command.
     command = route.commands[commandIndex];
-    if (commandIndex < commandIndex-1) {
-        nextCommand = route.commands[commandIndex++];
+    if (commandIndex + 1 < route.length) {
+        nextCommand = route.commands[commandIndex + 1];
+    } else {
+        nextCommand = CMD_FORWARD; // No next command; use normal one-cell movement.
     }
         
 

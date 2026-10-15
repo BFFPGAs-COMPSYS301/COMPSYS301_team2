@@ -1,5 +1,5 @@
 -- Project:   Pathfinding_Maze
--- Generated: 10/15/2026 18:21:52
+-- Generated: 10/15/2026 21:04:06
 -- PSoC Creator  4.2
 
 ENTITY Pathfinding_Maze IS
@@ -7,8 +7,8 @@ ENTITY Pathfinding_Maze IS
         LED_1(0)_PAD : OUT std_ulogic;
         LED_2(0)_PAD : OUT std_ulogic;
         LED_3(0)_PAD : OUT std_ulogic;
-        LED_4(0)_PAD : OUT std_ulogic;
         LED_5(0)_PAD : OUT std_ulogic;
+        LED_4(0)_PAD : OUT std_ulogic;
         M1_IN2(0)_PAD : OUT std_ulogic;
         M1_IN1(0)_PAD : OUT std_ulogic;
         M2_IN2_1(0)_PAD : OUT std_ulogic;
@@ -19,7 +19,10 @@ ENTITY Pathfinding_Maze IS
         Vout4(0)_PAD : IN std_ulogic;
         Vout5(0)_PAD : IN std_ulogic;
         L_quad_a(0)_PAD : IN std_ulogic;
-        L_quad_b(0)_PAD : IN std_ulogic);
+        L_quad_b(0)_PAD : IN std_ulogic;
+        BackLSensor(0)_PAD : OUT std_ulogic;
+        FrontSensor(0)_PAD : OUT std_ulogic;
+        BackRSensor(0)_PAD : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -31,6 +34,8 @@ ENTITY Pathfinding_Maze IS
 END Pathfinding_Maze;
 
 ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
+    SIGNAL BackLSensor(0)__PA : bit;
+    SIGNAL BackRSensor(0)__PA : bit;
     SIGNAL ClockBlock_100k : bit;
     SIGNAL ClockBlock_1k : bit;
     SIGNAL ClockBlock_32k : bit;
@@ -44,6 +49,7 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
+    SIGNAL FrontSensor(0)__PA : bit;
     SIGNAL LED_1(0)__PA : bit;
     SIGNAL LED_2(0)__PA : bit;
     SIGNAL LED_3(0)__PA : bit;
@@ -59,20 +65,22 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL Net_166 : bit;
     ATTRIBUTE placement_force OF Net_166 : SIGNAL IS "U(3,0,B)0";
     SIGNAL Net_207 : bit;
-    ATTRIBUTE placement_force OF Net_207 : SIGNAL IS "U(2,1,A)0";
+    ATTRIBUTE placement_force OF Net_207 : SIGNAL IS "U(3,2,A)0";
     SIGNAL Net_233 : bit;
     SIGNAL Net_236 : bit;
     SIGNAL Net_237 : bit;
-    ATTRIBUTE placement_force OF Net_237 : SIGNAL IS "U(0,4,A)0";
+    ATTRIBUTE placement_force OF Net_237 : SIGNAL IS "U(1,5,A)0";
     SIGNAL Net_252 : bit;
     SIGNAL Net_253 : bit;
-    ATTRIBUTE placement_force OF Net_253 : SIGNAL IS "U(0,1,A)0";
+    ATTRIBUTE placement_force OF Net_253 : SIGNAL IS "U(1,1,A)0";
     SIGNAL Net_268 : bit;
     SIGNAL Net_269 : bit;
-    ATTRIBUTE placement_force OF Net_269 : SIGNAL IS "U(1,3,A)0";
+    ATTRIBUTE placement_force OF Net_269 : SIGNAL IS "U(0,4,A)0";
     SIGNAL Net_307 : bit;
     SIGNAL Net_308 : bit;
     ATTRIBUTE placement_force OF Net_308 : SIGNAL IS "U(3,0,A)0";
+    SIGNAL Net_421 : bit;
+    ATTRIBUTE placement_force OF Net_421 : SIGNAL IS "U(1,1,A)1";
     SIGNAL Net_76 : bit;
     SIGNAL Net_79 : bit;
     ATTRIBUTE udbclken_assigned OF Net_79 : SIGNAL IS "True";
@@ -81,8 +89,10 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL Net_876 : bit;
     SIGNAL Net_877 : bit;
     SIGNAL Net_880 : bit;
+    SIGNAL Net_888 : bit;
+    ATTRIBUTE placement_force OF Net_888 : SIGNAL IS "U(3,0,A)1";
     SIGNAL Net_94 : bit;
-    ATTRIBUTE placement_force OF Net_94 : SIGNAL IS "U(3,0,B)3";
+    ATTRIBUTE placement_force OF Net_94 : SIGNAL IS "U(3,0,A)3";
     SIGNAL Vout1(0)__PA : bit;
     SIGNAL Vout2(0)__PA : bit;
     SIGNAL Vout3(0)__PA : bit;
@@ -104,65 +114,65 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:control_6\ : bit;
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:control_7\ : bit;
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:count_enable\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:count_enable\ : SIGNAL IS "U(3,4,A)2";
+    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:count_enable\ : SIGNAL IS "U(3,3,B)1";
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:count_stored_i\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:count_stored_i\ : SIGNAL IS "U(3,4,A)3";
+    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:count_stored_i\ : SIGNAL IS "U(3,3,B)3";
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:overflow\ : bit;
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:overflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(3,5,B)3";
+    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(3,5,A)3";
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:prevCompare\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:prevCompare\ : SIGNAL IS "U(3,5,A)3";
+    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:prevCompare\ : SIGNAL IS "U(3,5,B)0";
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:reload\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:reload\ : SIGNAL IS "U(3,5,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:reload\ : SIGNAL IS "U(3,5,B)1";
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:status_0\ : bit;
     ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:status_0\ : SIGNAL IS "U(3,5,A)0";
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:status_1\ : bit;
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:status_2\ : bit;
     ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:status_2\ : SIGNAL IS "U(3,5,A)2";
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:status_3\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:status_3\ : SIGNAL IS "U(2,5,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:status_3\ : SIGNAL IS "U(3,5,A)1";
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:status_5\ : bit;
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:status_6\ : bit;
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:underflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:underflow_reg_i\ : SIGNAL IS "U(2,5,B)3";
+    ATTRIBUTE placement_force OF \QuadDec_1:Cnt16:CounterUDB:underflow_reg_i\ : SIGNAL IS "U(3,5,B)3";
     SIGNAL \QuadDec_1:Net_1203\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Net_1203\ : SIGNAL IS "U(2,4,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_1:Net_1203\ : SIGNAL IS "U(3,3,B)0";
     SIGNAL \QuadDec_1:Net_1203_split\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Net_1203_split\ : SIGNAL IS "U(2,4,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_1:Net_1203_split\ : SIGNAL IS "U(3,3,A)3";
     SIGNAL \QuadDec_1:Net_1251\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Net_1251\ : SIGNAL IS "U(3,3,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_1:Net_1251\ : SIGNAL IS "U(2,4,B)0";
     SIGNAL \QuadDec_1:Net_1251_split\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Net_1251_split\ : SIGNAL IS "U(3,4,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_1:Net_1251_split\ : SIGNAL IS "U(2,4,A)0";
     SIGNAL \QuadDec_1:Net_1260\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Net_1260\ : SIGNAL IS "U(3,3,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_1:Net_1260\ : SIGNAL IS "U(3,4,A)1";
     SIGNAL \QuadDec_1:Net_1275\ : bit;
     ATTRIBUTE placement_force OF \QuadDec_1:Net_1275\ : SIGNAL IS "U(3,5,B)2";
     SIGNAL \QuadDec_1:Net_530\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Net_530\ : SIGNAL IS "U(3,5,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_1:Net_530\ : SIGNAL IS "U(3,4,A)0";
     SIGNAL \QuadDec_1:Net_611\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:Net_611\ : SIGNAL IS "U(3,4,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_1:Net_611\ : SIGNAL IS "U(3,4,B)2";
     SIGNAL \QuadDec_1:bQuadDec:error\ : bit;
     ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:error\ : SIGNAL IS "U(2,3,A)0";
     SIGNAL \QuadDec_1:bQuadDec:quad_A_delayed_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_A_delayed_0\ : SIGNAL IS "U(3,3,A)2";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_A_delayed_0\ : SIGNAL IS "U(2,3,A)1";
     SIGNAL \QuadDec_1:bQuadDec:quad_A_delayed_1\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_A_delayed_1\ : SIGNAL IS "U(3,3,A)3";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_A_delayed_1\ : SIGNAL IS "U(2,3,B)3";
     SIGNAL \QuadDec_1:bQuadDec:quad_A_delayed_2\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_A_delayed_2\ : SIGNAL IS "U(3,3,B)3";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_A_delayed_2\ : SIGNAL IS "U(2,3,B)2";
     SIGNAL \QuadDec_1:bQuadDec:quad_A_filt\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_A_filt\ : SIGNAL IS "U(3,3,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_A_filt\ : SIGNAL IS "U(2,3,B)1";
     SIGNAL \QuadDec_1:bQuadDec:quad_B_delayed_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_B_delayed_0\ : SIGNAL IS "U(1,3,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_B_delayed_0\ : SIGNAL IS "U(3,2,B)3";
     SIGNAL \QuadDec_1:bQuadDec:quad_B_delayed_1\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_B_delayed_1\ : SIGNAL IS "U(2,3,B)2";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_B_delayed_1\ : SIGNAL IS "U(3,2,B)2";
     SIGNAL \QuadDec_1:bQuadDec:quad_B_delayed_2\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_B_delayed_2\ : SIGNAL IS "U(2,3,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_B_delayed_2\ : SIGNAL IS "U(3,2,B)1";
     SIGNAL \QuadDec_1:bQuadDec:quad_B_filt\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_B_filt\ : SIGNAL IS "U(2,3,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:quad_B_filt\ : SIGNAL IS "U(3,2,B)0";
     SIGNAL \QuadDec_1:bQuadDec:state_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:state_0\ : SIGNAL IS "U(2,3,B)3";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:state_0\ : SIGNAL IS "U(3,4,B)0";
     SIGNAL \QuadDec_1:bQuadDec:state_1\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:state_1\ : SIGNAL IS "U(3,4,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_1:bQuadDec:state_1\ : SIGNAL IS "U(2,3,B)0";
     SIGNAL \Timeout_1:TimerUDB:control_0\ : bit;
     SIGNAL \Timeout_1:TimerUDB:control_1\ : bit;
     SIGNAL \Timeout_1:TimerUDB:control_2\ : bit;
@@ -176,7 +186,7 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL \Timeout_1:TimerUDB:status_2\ : bit;
     SIGNAL \Timeout_1:TimerUDB:status_3\ : bit;
     SIGNAL \Timeout_1:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \Timeout_1:TimerUDB:status_tc\ : SIGNAL IS "U(2,1,A)2";
+    ATTRIBUTE placement_force OF \Timeout_1:TimerUDB:status_tc\ : SIGNAL IS "U(3,2,A)2";
     SIGNAL \Timeout_2:TimerUDB:control_0\ : bit;
     SIGNAL \Timeout_2:TimerUDB:control_1\ : bit;
     SIGNAL \Timeout_2:TimerUDB:control_2\ : bit;
@@ -190,7 +200,7 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL \Timeout_2:TimerUDB:status_2\ : bit;
     SIGNAL \Timeout_2:TimerUDB:status_3\ : bit;
     SIGNAL \Timeout_2:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \Timeout_2:TimerUDB:status_tc\ : SIGNAL IS "U(0,4,A)2";
+    ATTRIBUTE placement_force OF \Timeout_2:TimerUDB:status_tc\ : SIGNAL IS "U(1,5,A)2";
     SIGNAL \Timeout_3:TimerUDB:control_0\ : bit;
     SIGNAL \Timeout_3:TimerUDB:control_1\ : bit;
     SIGNAL \Timeout_3:TimerUDB:control_2\ : bit;
@@ -204,7 +214,7 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL \Timeout_3:TimerUDB:status_2\ : bit;
     SIGNAL \Timeout_3:TimerUDB:status_3\ : bit;
     SIGNAL \Timeout_3:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \Timeout_3:TimerUDB:status_tc\ : SIGNAL IS "U(1,3,A)2";
+    ATTRIBUTE placement_force OF \Timeout_3:TimerUDB:status_tc\ : SIGNAL IS "U(0,4,A)2";
     SIGNAL \Timeout_4:TimerUDB:control_0\ : bit;
     SIGNAL \Timeout_4:TimerUDB:control_1\ : bit;
     SIGNAL \Timeout_4:TimerUDB:control_2\ : bit;
@@ -218,7 +228,7 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL \Timeout_4:TimerUDB:status_2\ : bit;
     SIGNAL \Timeout_4:TimerUDB:status_3\ : bit;
     SIGNAL \Timeout_4:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \Timeout_4:TimerUDB:status_tc\ : SIGNAL IS "U(0,1,A)2";
+    ATTRIBUTE placement_force OF \Timeout_4:TimerUDB:status_tc\ : SIGNAL IS "U(1,1,A)2";
     SIGNAL \Timeout_5:TimerUDB:control_0\ : bit;
     SIGNAL \Timeout_5:TimerUDB:control_1\ : bit;
     SIGNAL \Timeout_5:TimerUDB:control_2\ : bit;
@@ -234,20 +244,16 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL \Timeout_5:TimerUDB:status_tc\ : bit;
     ATTRIBUTE placement_force OF \Timeout_5:TimerUDB:status_tc\ : SIGNAL IS "U(3,0,A)2";
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(2,2,B)1";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(2,4,A)1";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
     SIGNAL cy_srff_1 : bit;
-    ATTRIBUTE placement_force OF cy_srff_1 : SIGNAL IS "U(2,1,A)1";
+    ATTRIBUTE placement_force OF cy_srff_1 : SIGNAL IS "U(3,2,A)1";
     SIGNAL cy_srff_2 : bit;
-    ATTRIBUTE placement_force OF cy_srff_2 : SIGNAL IS "U(0,4,A)1";
-    SIGNAL cy_srff_3 : bit;
-    ATTRIBUTE placement_force OF cy_srff_3 : SIGNAL IS "U(0,1,A)1";
+    ATTRIBUTE placement_force OF cy_srff_2 : SIGNAL IS "U(1,5,A)1";
     SIGNAL cy_srff_4 : bit;
-    ATTRIBUTE placement_force OF cy_srff_4 : SIGNAL IS "U(1,3,A)1";
-    SIGNAL cy_srff_5 : bit;
-    ATTRIBUTE placement_force OF cy_srff_5 : SIGNAL IS "U(3,0,A)1";
+    ATTRIBUTE placement_force OF cy_srff_4 : SIGNAL IS "U(1,4,A)2";
     SIGNAL tmpOE__LED_1_net_0 : bit;
     ATTRIBUTE POWER OF tmpOE__LED_1_net_0 : SIGNAL IS true;
     SIGNAL zero : bit;
@@ -327,7 +333,7 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:sC16:counterdp:u1.sor__sig\ : bit;
     SIGNAL \QuadDec_1:Cnt16:CounterUDB:sC16:counterdp:u1.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF \QuadDec_1:Net_1203_split\ : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF \QuadDec_1:Net_1203_split\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \QuadDec_1:Net_1203_split\ : LABEL IS "U(3,3)";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF LED_1(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF LED_1(0) : LABEL IS "P0[6]";
@@ -335,10 +341,10 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     ATTRIBUTE Location OF LED_2(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF LED_3(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF LED_3(0) : LABEL IS "P0[1]";
-    ATTRIBUTE lib_model OF LED_4(0) : LABEL IS "iocell4";
-    ATTRIBUTE Location OF LED_4(0) : LABEL IS "P15[0]";
-    ATTRIBUTE lib_model OF LED_5(0) : LABEL IS "iocell5";
+    ATTRIBUTE lib_model OF LED_5(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF LED_5(0) : LABEL IS "P15[1]";
+    ATTRIBUTE lib_model OF LED_4(0) : LABEL IS "iocell5";
+    ATTRIBUTE Location OF LED_4(0) : LABEL IS "P15[0]";
     ATTRIBUTE lib_model OF M1_IN2(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF M1_IN2(0) : LABEL IS "P3[6]";
     ATTRIBUTE lib_model OF M1_IN1(0) : LABEL IS "iocell7";
@@ -362,21 +368,27 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     ATTRIBUTE lib_model OF Vout5(0) : LABEL IS "iocell16";
     ATTRIBUTE Location OF Vout5(0) : LABEL IS "P3[0]";
     ATTRIBUTE lib_model OF L_quad_a(0) : LABEL IS "iocell17";
-    ATTRIBUTE Location OF L_quad_a(0) : LABEL IS "P15[2]";
+    ATTRIBUTE Location OF L_quad_a(0) : LABEL IS "P15[5]";
     ATTRIBUTE lib_model OF L_quad_b(0) : LABEL IS "iocell18";
-    ATTRIBUTE Location OF L_quad_b(0) : LABEL IS "P15[5]";
+    ATTRIBUTE Location OF L_quad_b(0) : LABEL IS "P15[2]";
+    ATTRIBUTE lib_model OF BackLSensor(0) : LABEL IS "iocell19";
+    ATTRIBUTE Location OF BackLSensor(0) : LABEL IS "P0[2]";
+    ATTRIBUTE lib_model OF FrontSensor(0) : LABEL IS "iocell20";
+    ATTRIBUTE Location OF FrontSensor(0) : LABEL IS "P15[3]";
+    ATTRIBUTE lib_model OF BackRSensor(0) : LABEL IS "iocell21";
+    ATTRIBUTE Location OF BackRSensor(0) : LABEL IS "P0[3]";
     ATTRIBUTE lib_model OF Net_94 : LABEL IS "macrocell2";
     ATTRIBUTE Location OF Net_94 : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF Net_166 : LABEL IS "macrocell3";
     ATTRIBUTE Location OF Net_166 : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \Timeout_1:TimerUDB:status_tc\ : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF \Timeout_1:TimerUDB:status_tc\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \Timeout_1:TimerUDB:status_tc\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \Timeout_2:TimerUDB:status_tc\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \Timeout_2:TimerUDB:status_tc\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \Timeout_2:TimerUDB:status_tc\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \Timeout_4:TimerUDB:status_tc\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \Timeout_4:TimerUDB:status_tc\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \Timeout_4:TimerUDB:status_tc\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \Timeout_3:TimerUDB:status_tc\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \Timeout_3:TimerUDB:status_tc\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \Timeout_3:TimerUDB:status_tc\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \Timeout_5:TimerUDB:status_tc\ : LABEL IS "macrocell8";
     ATTRIBUTE Location OF \Timeout_5:TimerUDB:status_tc\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell9";
@@ -386,34 +398,34 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:status_2\ : LABEL IS "macrocell11";
     ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:status_2\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:status_3\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:status_3\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:status_3\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:count_enable\ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:count_enable\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:count_enable\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:Net_530\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \QuadDec_1:Net_530\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \QuadDec_1:Net_530\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \QuadDec_1:Net_611\ : LABEL IS "macrocell15";
     ATTRIBUTE Location OF \QuadDec_1:Net_611\ : LABEL IS "U(3,4)";
     ATTRIBUTE Location OF \PWM_1:PWMHW\ : LABEL IS "F(Timer,0)";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(2,4)";
     ATTRIBUTE Location OF \PWM_2:PWMHW\ : LABEL IS "F(Timer,1)";
     ATTRIBUTE Location OF \VDAC8_1:viDAC8\ : LABEL IS "F(VIDAC,1)";
     ATTRIBUTE lib_model OF \Timeout_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \Timeout_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \Timeout_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \Timeout_1:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \Timeout_1:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \Timeout_1:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \Timeout_1:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \Timeout_1:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \Timeout_1:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \Timeout_1:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell2";
-    ATTRIBUTE Location OF \Timeout_1:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \Timeout_1:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \Timeout_2:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \Timeout_2:TimerUDB:rstSts:stsreg\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \Timeout_2:TimerUDB:rstSts:stsreg\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \Timeout_2:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE Location OF \Timeout_2:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \Timeout_2:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \Timeout_2:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell4";
-    ATTRIBUTE Location OF \Timeout_2:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \Timeout_2:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \Timeout_4:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell3";
     ATTRIBUTE Location OF \Timeout_4:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \Timeout_4:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
@@ -423,15 +435,15 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     ATTRIBUTE lib_model OF \Timeout_4:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell6";
     ATTRIBUTE Location OF \Timeout_4:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \Timeout_3:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell4";
-    ATTRIBUTE Location OF \Timeout_3:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \Timeout_3:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \Timeout_3:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \Timeout_3:TimerUDB:rstSts:stsreg\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \Timeout_3:TimerUDB:rstSts:stsreg\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \Timeout_3:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell7";
-    ATTRIBUTE Location OF \Timeout_3:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \Timeout_3:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \Timeout_3:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell8";
-    ATTRIBUTE Location OF \Timeout_3:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \Timeout_3:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \Timeout_5:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell5";
-    ATTRIBUTE Location OF \Timeout_5:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \Timeout_5:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \Timeout_5:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell5";
     ATTRIBUTE Location OF \Timeout_5:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \Timeout_5:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell9";
@@ -441,11 +453,9 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     ATTRIBUTE Location OF isr_1 : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
     ATTRIBUTE Location OF isr_2 : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
     ATTRIBUTE Location OF isr_3 : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
-    ATTRIBUTE Location OF isr_4 : LABEL IS "[IntrContainer=(0)][IntrId=(4)]";
-    ATTRIBUTE Location OF isr_5 : LABEL IS "[IntrContainer=(0)][IntrId=(5)]";
     ATTRIBUTE Location OF \QuadDec_1:isr\ : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "controlcell6";
-    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "statusicell6";
     ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:sC16:counterdp:u0\ : LABEL IS "datapathcell11";
@@ -453,67 +463,67 @@ ARCHITECTURE __DEFAULT__ OF Pathfinding_Maze IS
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:sC16:counterdp:u1\ : LABEL IS "datapathcell12";
     ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:sC16:counterdp:u1\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:quad_A_delayed_0\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_A_delayed_0\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_A_delayed_0\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:quad_A_delayed_1\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_A_delayed_1\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_A_delayed_1\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:quad_A_delayed_2\ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_A_delayed_2\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_A_delayed_2\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:quad_B_delayed_0\ : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_B_delayed_0\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_B_delayed_0\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:quad_B_delayed_1\ : LABEL IS "macrocell21";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_B_delayed_1\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_B_delayed_1\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:quad_B_delayed_2\ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_B_delayed_2\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_B_delayed_2\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:Stsreg\ : LABEL IS "statusicell7";
     ATTRIBUTE Location OF \QuadDec_1:bQuadDec:Stsreg\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF cy_srff_1 : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF cy_srff_1 : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF cy_srff_1 : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF Net_207 : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF Net_207 : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF Net_207 : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF cy_srff_2 : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF cy_srff_2 : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF cy_srff_2 : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF Net_237 : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF Net_237 : LABEL IS "U(0,4)";
-    ATTRIBUTE lib_model OF cy_srff_3 : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF cy_srff_3 : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF Net_237 : LABEL IS "U(1,5)";
+    ATTRIBUTE lib_model OF Net_421 : LABEL IS "macrocell27";
+    ATTRIBUTE Location OF Net_421 : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF Net_253 : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF Net_253 : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF Net_253 : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF cy_srff_4 : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF cy_srff_4 : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF cy_srff_4 : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF Net_269 : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF Net_269 : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF cy_srff_5 : LABEL IS "macrocell31";
-    ATTRIBUTE Location OF cy_srff_5 : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF Net_269 : LABEL IS "U(0,4)";
+    ATTRIBUTE lib_model OF Net_888 : LABEL IS "macrocell31";
+    ATTRIBUTE Location OF Net_888 : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF Net_308 : LABEL IS "macrocell32";
     ATTRIBUTE Location OF Net_308 : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \QuadDec_1:Net_1251\ : LABEL IS "macrocell33";
-    ATTRIBUTE Location OF \QuadDec_1:Net_1251\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_1:Net_1251\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell34";
     ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "macrocell35";
-    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_1:Net_1275\ : LABEL IS "macrocell36";
     ATTRIBUTE Location OF \QuadDec_1:Net_1275\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:prevCompare\ : LABEL IS "macrocell37";
     ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:prevCompare\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_1:Net_1251_split\ : LABEL IS "macrocell38";
-    ATTRIBUTE Location OF \QuadDec_1:Net_1251_split\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_1:Net_1251_split\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \QuadDec_1:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "macrocell39";
-    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_1:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:Net_1203\ : LABEL IS "macrocell40";
-    ATTRIBUTE Location OF \QuadDec_1:Net_1203\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \QuadDec_1:Net_1203\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:quad_A_filt\ : LABEL IS "macrocell41";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_A_filt\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_A_filt\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:quad_B_filt\ : LABEL IS "macrocell42";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_B_filt\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:quad_B_filt\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \QuadDec_1:Net_1260\ : LABEL IS "macrocell43";
-    ATTRIBUTE Location OF \QuadDec_1:Net_1260\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_1:Net_1260\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:error\ : LABEL IS "macrocell44";
     ATTRIBUTE Location OF \QuadDec_1:bQuadDec:error\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:state_1\ : LABEL IS "macrocell45";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:state_1\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:state_1\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_1:bQuadDec:state_0\ : LABEL IS "macrocell46";
-    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:state_0\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \QuadDec_1:bQuadDec:state_0\ : LABEL IS "U(3,4)";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -1130,96 +1140,6 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    LED_4:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
-            ibuf_enabled => "1",
-            id => "e201efc1-17f6-44a6-b993-164576a7fb41",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "O",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    LED_4(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "LED_4",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => LED_4(0)__PA,
-            oe => open,
-            pad_in => LED_4(0)_PAD,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
     LED_5:logicalport
         GENERIC MAP(
             drive_mode => "110",
@@ -1244,7 +1164,7 @@ BEGIN
             oe_sync => "0",
             output_clk_en => 0,
             output_clock_mode => "0",
-            output_conn => "0",
+            output_conn => "1",
             output_mode => "0",
             output_reset => 0,
             output_sync => "0",
@@ -1298,11 +1218,105 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "LED_5",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
             pa_out => LED_5(0)__PA,
             oe => open,
+            pin_input => Net_888,
+            pad_out => LED_5(0)_PAD,
             pad_in => LED_5(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    LED_4:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "e201efc1-17f6-44a6-b993-164576a7fb41",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    LED_4(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "LED_4",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => LED_4(0)__PA,
+            oe => open,
+            pin_input => Net_421,
+            pad_out => LED_4(0)_PAD,
+            pad_in => LED_4(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -2493,6 +2507,282 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    BackLSensor:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "6705a850-f529-4dfc-8bd6-b2a91b4deb82",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    BackLSensor(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "BackLSensor",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => BackLSensor(0)__PA,
+            oe => open,
+            pin_input => cy_srff_2,
+            pad_out => BackLSensor(0)_PAD,
+            pad_in => BackLSensor(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    FrontSensor:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "5d81e409-b3c8-48a7-b843-bf117e5c561c",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    FrontSensor(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "FrontSensor",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => FrontSensor(0)__PA,
+            oe => open,
+            pin_input => cy_srff_1,
+            pad_out => FrontSensor(0)_PAD,
+            pad_in => FrontSensor(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    BackRSensor:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "70b5ee93-8d86-4e8e-bb8c-6cc6c028c5fe",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    BackRSensor(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "BackRSensor",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => BackRSensor(0)__PA,
+            oe => open,
+            pin_input => cy_srff_4,
+            pad_out => BackRSensor(0)_PAD,
+            pad_in => BackRSensor(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
     Net_94:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
@@ -3388,22 +3678,6 @@ BEGIN
             interrupt => cy_srff_4,
             clock => ClockBlock_BUS_CLK);
 
-    isr_4:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => cy_srff_3,
-            clock => ClockBlock_BUS_CLK);
-
-    isr_5:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => cy_srff_5,
-            clock => ClockBlock_BUS_CLK);
-
     \QuadDec_1:isr\:interrupt
         GENERIC MAP(
             int_type => "10",
@@ -3685,17 +3959,17 @@ BEGIN
             main_0 => \Timeout_2:TimerUDB:control_7\,
             main_1 => \Timeout_2:TimerUDB:per_zero\);
 
-    cy_srff_3:macrocell
+    Net_421:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_2) + (main_1 * !main_2)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => cy_srff_3,
+            q => Net_421,
             clock_0 => ClockBlock_BUS_CLK,
-            main_0 => Net_252,
-            main_1 => cy_srff_3,
+            main_0 => Net_421,
+            main_1 => Net_252,
             main_2 => Net_253);
 
     Net_253:macrocell
@@ -3735,17 +4009,17 @@ BEGIN
             main_0 => \Timeout_3:TimerUDB:control_7\,
             main_1 => \Timeout_3:TimerUDB:per_zero\);
 
-    cy_srff_5:macrocell
+    Net_888:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_2) + (main_1 * !main_2)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => cy_srff_5,
+            q => Net_888,
             clock_0 => ClockBlock_BUS_CLK,
-            main_0 => Net_307,
-            main_1 => cy_srff_5,
+            main_0 => Net_888,
+            main_1 => Net_307,
             main_2 => Net_308);
 
     Net_308:macrocell

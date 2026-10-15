@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
   28:Generated_Source\PSoC5/Timeout_2_PM.c **** * Summary:
   29:Generated_Source\PSoC5/Timeout_2_PM.c **** *     Save the current user configuration
   30:Generated_Source\PSoC5/Timeout_2_PM.c **** *
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 2
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 2
 
 
   31:Generated_Source\PSoC5/Timeout_2_PM.c **** * Parameters:
@@ -110,7 +110,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
   51              		.align	2
   52              	.L3:
   53 0018 00000000 		.word	.LANCHOR0
-  54 001c 8D640040 		.word	1073767565
+  54 001c 8F640040 		.word	1073767567
   55              		.cfi_endproc
   56              	.LFE0:
   57              		.size	Timeout_2_SaveConfig, .-Timeout_2_SaveConfig
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
   59              		.align	2
   60              		.global	Timeout_2_RestoreConfig
   61              		.thumb
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 3
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 3
 
 
   62              		.thumb_func
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
   87:Generated_Source\PSoC5/Timeout_2_PM.c ****         #if(!Timeout_2_UDB_CONTROL_REG_REMOVED)
   88:Generated_Source\PSoC5/Timeout_2_PM.c ****             Timeout_2_WriteControlRegister(Timeout_2_backup.TimerControlRegister);
   83              		.loc 1 88 0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 4
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 4
 
 
   84 0010 6079     		ldrb	r0, [r4, #5]	@ zero_extendqisi2
@@ -189,7 +189,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
   89              		.align	2
   90              	.L7:
   91 0018 00000000 		.word	.LANCHOR0
-  92 001c 8D640040 		.word	1073767565
+  92 001c 8F640040 		.word	1073767567
   93              		.cfi_endproc
   94              	.LFE1:
   95              		.size	Timeout_2_RestoreConfig, .-Timeout_2_RestoreConfig
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  115:Generated_Source\PSoC5/Timeout_2_PM.c ****         /* Save Counter's enable state */
  116:Generated_Source\PSoC5/Timeout_2_PM.c ****         if(Timeout_2_CTRL_ENABLE == (Timeout_2_CONTROL & Timeout_2_CTRL_ENABLE))
  112              		.loc 1 116 0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 5
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 5
 
 
  113 0002 084B     		ldr	r3, .L13
@@ -278,7 +278,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  135              	.L14:
  136              		.align	2
  137              	.L13:
- 138 0024 7D640040 		.word	1073767549
+ 138 0024 7F640040 		.word	1073767551
  139 0028 00000000 		.word	.LANCHOR0
  140              		.cfi_endproc
  141              	.LFE2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  133:Generated_Source\PSoC5/Timeout_2_PM.c **** * Function Name: Timeout_2_Wakeup
  134:Generated_Source\PSoC5/Timeout_2_PM.c **** ********************************************************************************
  135:Generated_Source\PSoC5/Timeout_2_PM.c **** *
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 6
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 6
 
 
  136:Generated_Source\PSoC5/Timeout_2_PM.c **** * Summary:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  184              	Timeout_2_backup:
  185 0000 00000000 		.space	6
  185      0000
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 7
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 7
 
 
  186              		.text
@@ -375,14 +375,14 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  197 000c C6000000 		.4byte	.LASF32
  198 0010 0C       		.byte	0xc
  199 0011 7C000000 		.4byte	.LASF33
- 200 0015 02020000 		.4byte	.LASF34
+ 200 0015 D5010000 		.4byte	.LASF34
  201 0019 00000000 		.4byte	.Ldebug_ranges0+0
  202 001d 00000000 		.4byte	0
  203 0021 00000000 		.4byte	.Ldebug_line0
  204 0025 02       		.uleb128 0x2
  205 0026 01       		.byte	0x1
  206 0027 06       		.byte	0x6
- 207 0028 D4020000 		.4byte	.LASF0
+ 207 0028 B1020000 		.4byte	.LASF0
  208 002c 02       		.uleb128 0x2
  209 002d 01       		.byte	0x1
  210 002e 08       		.byte	0x8
@@ -398,7 +398,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  220 0041 02       		.uleb128 0x2
  221 0042 04       		.byte	0x4
  222 0043 05       		.byte	0x5
- 223 0044 BA020000 		.4byte	.LASF4
+ 223 0044 97020000 		.4byte	.LASF4
  224 0048 02       		.uleb128 0x2
  225 0049 04       		.byte	0x4
  226 004a 07       		.byte	0x7
@@ -406,7 +406,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  228 004f 02       		.uleb128 0x2
  229 0050 08       		.byte	0x8
  230 0051 05       		.byte	0x5
- 231 0052 68020000 		.4byte	.LASF6
+ 231 0052 45020000 		.4byte	.LASF6
  232 0056 02       		.uleb128 0x2
  233 0057 08       		.byte	0x8
  234 0058 07       		.byte	0x7
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  240 0064 02       		.uleb128 0x2
  241 0065 04       		.byte	0x4
  242 0066 07       		.byte	0x7
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 8
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 8
 
 
  243 0067 B1010000 		.4byte	.LASF8
@@ -443,9 +443,9 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  262 0091 02       		.uleb128 0x2
  263 0092 01       		.byte	0x1
  264 0093 08       		.byte	0x8
- 265 0094 C3020000 		.4byte	.LASF13
+ 265 0094 A0020000 		.4byte	.LASF13
  266 0098 04       		.uleb128 0x4
- 267 0099 D5010000 		.4byte	.LASF14
+ 267 0099 18020000 		.4byte	.LASF14
  268 009d 02       		.byte	0x2
  269 009e 9102     		.2byte	0x291
  270 00a0 A4000000 		.4byte	0xa4
@@ -454,11 +454,11 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  273 00a9 02       		.uleb128 0x2
  274 00aa 08       		.byte	0x8
  275 00ab 04       		.byte	0x4
- 276 00ac C8020000 		.4byte	.LASF15
+ 276 00ac A5020000 		.4byte	.LASF15
  277 00b0 02       		.uleb128 0x2
  278 00b1 04       		.byte	0x4
  279 00b2 07       		.byte	0x7
- 280 00b3 F9010000 		.4byte	.LASF16
+ 280 00b3 3C020000 		.4byte	.LASF16
  281 00b7 06       		.uleb128 0x6
  282 00b8 06       		.byte	0x6
  283 00b9 03       		.byte	0x3
@@ -477,8 +477,8 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  296 00d2 77000000 		.4byte	0x77
  297 00d6 02       		.byte	0x2
  298 00d7 07       		.uleb128 0x7
- 299 00d8 F1020000 		.4byte	.LASF19
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 9
+ 299 00d8 CE020000 		.4byte	.LASF19
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 9
 
 
  300 00dc 03       		.byte	0x3
@@ -486,7 +486,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  302 00de 6B000000 		.4byte	0x6b
  303 00e2 04       		.byte	0x4
  304 00e3 07       		.uleb128 0x7
- 305 00e4 04030000 		.4byte	.LASF20
+ 305 00e4 E1020000 		.4byte	.LASF20
  306 00e8 03       		.byte	0x3
  307 00e9 4F       		.byte	0x4f
  308 00ea 6B000000 		.4byte	0x6b
@@ -498,7 +498,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  314 00f6 53       		.byte	0x53
  315 00f7 B7000000 		.4byte	0xb7
  316 00fb 09       		.uleb128 0x9
- 317 00fc 94020000 		.4byte	.LASF22
+ 317 00fc 71020000 		.4byte	.LASF22
  318 0100 01       		.byte	0x1
  319 0101 2B       		.byte	0x2b
  320 0102 00000000 		.4byte	.LFB0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  354 015a 01       		.uleb128 0x1
  355 015b 9C       		.byte	0x9c
  356 015c 73010000 		.4byte	0x173
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 10
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 10
 
 
  357 0160 0A       		.uleb128 0xa
@@ -549,7 +549,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  362 016e FB000000 		.4byte	0xfb
  363 0172 00       		.byte	0
  364 0173 09       		.uleb128 0x9
- 365 0174 A9020000 		.4byte	.LASF25
+ 365 0174 86020000 		.4byte	.LASF25
  366 0178 01       		.byte	0x1
  367 0179 96       		.byte	0x96
  368 017a 00000000 		.4byte	.LFB3
@@ -578,8 +578,8 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  391 01b5 03       		.byte	0x3
  392 01b6 69       		.byte	0x69
  393 01b7 0C       		.uleb128 0xc
- 394 01b8 76020000 		.4byte	.LASF27
- 395 01bc 76020000 		.4byte	.LASF27
+ 394 01b8 53020000 		.4byte	.LASF27
+ 395 01bc 53020000 		.4byte	.LASF27
  396 01c0 03       		.byte	0x3
  397 01c1 63       		.byte	0x63
  398 01c2 0C       		.uleb128 0xc
@@ -588,8 +588,8 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  401 01cb 03       		.byte	0x3
  402 01cc 6A       		.byte	0x6a
  403 01cd 0C       		.uleb128 0xc
- 404 01ce DA010000 		.4byte	.LASF29
- 405 01d2 DA010000 		.4byte	.LASF29
+ 404 01ce 1D020000 		.4byte	.LASF29
+ 405 01d2 1D020000 		.4byte	.LASF29
  406 01d6 03       		.byte	0x3
  407 01d7 64       		.byte	0x64
  408 01d8 0C       		.uleb128 0xc
@@ -598,11 +598,11 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  411 01e1 03       		.byte	0x3
  412 01e2 5B       		.byte	0x5b
  413 01e3 0C       		.uleb128 0xc
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 11
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 11
 
 
- 414 01e4 E0020000 		.4byte	.LASF31
- 415 01e8 E0020000 		.4byte	.LASF31
+ 414 01e4 BD020000 		.4byte	.LASF31
+ 415 01e8 BD020000 		.4byte	.LASF31
  416 01ec 03       		.byte	0x3
  417 01ed 8B       		.byte	0x8b
  418 01ee 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  468 002f 0B       		.uleb128 0xb
  469 0030 3B       		.uleb128 0x3b
  470 0031 05       		.uleb128 0x5
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 12
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 12
 
 
  471 0032 49       		.uleb128 0x49
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  525 0068 01       		.byte	0x1
  526 0069 3F       		.uleb128 0x3f
  527 006a 19       		.uleb128 0x19
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 13
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 13
 
 
  528 006b 03       		.uleb128 0x3
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  582 00a4 0E       		.uleb128 0xe
  583 00a5 3A       		.uleb128 0x3a
  584 00a6 0B       		.uleb128 0xb
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 14
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 14
 
 
  585 00a7 3B       		.uleb128 0x3b
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  627              	.LASF30:
  628 0028 54696D65 		.ascii	"Timeout_2_Stop\000"
  628      6F75745F 
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 15
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 15
 
 
  628      325F5374 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  648 012c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  648      66756E63 
  648      74696F6E 
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 16
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 16
 
 
  648      2D736563 
@@ -945,92 +945,90 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 1
  666      6720756E 
  666      7369676E 
  666      65642069 
- 667              	.LASF14:
- 668 01d5 72656738 		.ascii	"reg8\000"
- 668      00
- 669              	.LASF29:
- 670 01da 54696D65 		.ascii	"Timeout_2_WriteControlRegister\000"
- 670      6F75745F 
- 670      325F5772 
- 670      69746543 
- 670      6F6E7472 
- 671              	.LASF16:
- 672 01f9 73697A65 		.ascii	"sizetype\000"
- 672      74797065 
- 672      00
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 17
+ 667              	.LASF34:
+ 668 01d5 433A5C55 		.ascii	"C:\\Users\\mtay770\\Downloads\\Pathfinding_Maze\\Pa"
+ 668      73657273 
+ 668      5C6D7461 
+ 668      79373730 
+ 668      5C446F77 
+ 669 0203 74686669 		.ascii	"thfinding_Maze.cydsn\000"
+ 669      6E64696E 
+ 669      675F4D61 
+ 669      7A652E63 
+ 669      7964736E 
+ 670              	.LASF14:
+ 671 0218 72656738 		.ascii	"reg8\000"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 17
 
 
- 673              	.LASF34:
- 674 0202 433A5C55 		.ascii	"C:\\Users\\aale517\\Documents\\COMPSYS301_team2\\Pr"
- 674      73657273 
- 674      5C61616C 
- 674      65353137 
- 674      5C446F63 
- 675 0230 6F6A6563 		.ascii	"oject\\psco_code\\Pathfinding_Maze\\Pathfinding_Maz"
- 675      745C7073 
- 675      636F5F63 
- 675      6F64655C 
- 675      50617468 
- 676 0260 652E6379 		.ascii	"e.cydsn\000"
- 676      64736E00 
- 677              	.LASF6:
- 678 0268 6C6F6E67 		.ascii	"long long int\000"
- 678      206C6F6E 
- 678      6720696E 
- 678      7400
- 679              	.LASF27:
- 680 0276 54696D65 		.ascii	"Timeout_2_ReadControlRegister\000"
- 680      6F75745F 
- 680      325F5265 
- 680      6164436F 
- 680      6E74726F 
- 681              	.LASF22:
- 682 0294 54696D65 		.ascii	"Timeout_2_SaveConfig\000"
- 682      6F75745F 
- 682      325F5361 
- 682      7665436F 
- 682      6E666967 
- 683              	.LASF25:
- 684 02a9 54696D65 		.ascii	"Timeout_2_Wakeup\000"
- 684      6F75745F 
- 684      325F5761 
- 684      6B657570 
- 684      00
- 685              	.LASF4:
- 686 02ba 6C6F6E67 		.ascii	"long int\000"
- 686      20696E74 
- 686      00
- 687              	.LASF13:
- 688 02c3 63686172 		.ascii	"char\000"
- 688      00
- 689              	.LASF15:
- 690 02c8 6C6F6E67 		.ascii	"long double\000"
- 690      20646F75 
- 690      626C6500 
- 691              	.LASF0:
- 692 02d4 7369676E 		.ascii	"signed char\000"
- 692      65642063 
- 692      68617200 
- 693              	.LASF31:
- 694 02e0 54696D65 		.ascii	"Timeout_2_Enable\000"
- 694      6F75745F 
- 694      325F456E 
- 694      61626C65 
- 694      00
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccUkeTVb.s 			page 18
+ 671      00
+ 672              	.LASF29:
+ 673 021d 54696D65 		.ascii	"Timeout_2_WriteControlRegister\000"
+ 673      6F75745F 
+ 673      325F5772 
+ 673      69746543 
+ 673      6F6E7472 
+ 674              	.LASF16:
+ 675 023c 73697A65 		.ascii	"sizetype\000"
+ 675      74797065 
+ 675      00
+ 676              	.LASF6:
+ 677 0245 6C6F6E67 		.ascii	"long long int\000"
+ 677      206C6F6E 
+ 677      6720696E 
+ 677      7400
+ 678              	.LASF27:
+ 679 0253 54696D65 		.ascii	"Timeout_2_ReadControlRegister\000"
+ 679      6F75745F 
+ 679      325F5265 
+ 679      6164436F 
+ 679      6E74726F 
+ 680              	.LASF22:
+ 681 0271 54696D65 		.ascii	"Timeout_2_SaveConfig\000"
+ 681      6F75745F 
+ 681      325F5361 
+ 681      7665436F 
+ 681      6E666967 
+ 682              	.LASF25:
+ 683 0286 54696D65 		.ascii	"Timeout_2_Wakeup\000"
+ 683      6F75745F 
+ 683      325F5761 
+ 683      6B657570 
+ 683      00
+ 684              	.LASF4:
+ 685 0297 6C6F6E67 		.ascii	"long int\000"
+ 685      20696E74 
+ 685      00
+ 686              	.LASF13:
+ 687 02a0 63686172 		.ascii	"char\000"
+ 687      00
+ 688              	.LASF15:
+ 689 02a5 6C6F6E67 		.ascii	"long double\000"
+ 689      20646F75 
+ 689      626C6500 
+ 690              	.LASF0:
+ 691 02b1 7369676E 		.ascii	"signed char\000"
+ 691      65642063 
+ 691      68617200 
+ 692              	.LASF31:
+ 693 02bd 54696D65 		.ascii	"Timeout_2_Enable\000"
+ 693      6F75745F 
+ 693      325F456E 
+ 693      61626C65 
+ 693      00
+ 694              	.LASF19:
+ 695 02ce 496E7465 		.ascii	"InterruptMaskValue\000"
+ARM GAS  C:\Users\mtay770\AppData\Local\Temp\cceQpCyk.s 			page 18
 
 
- 695              	.LASF19:
- 696 02f1 496E7465 		.ascii	"InterruptMaskValue\000"
- 696      72727570 
- 696      744D6173 
- 696      6B56616C 
- 696      756500
- 697              	.LASF20:
- 698 0304 54696D65 		.ascii	"TimerControlRegister\000"
- 698      72436F6E 
- 698      74726F6C 
- 698      52656769 
- 698      73746572 
- 699              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 695      72727570 
+ 695      744D6173 
+ 695      6B56616C 
+ 695      756500
+ 696              	.LASF20:
+ 697 02e1 54696D65 		.ascii	"TimerControlRegister\000"
+ 697      72436F6E 
+ 697      74726F6C 
+ 697      52656769 
+ 697      73746572 
+ 698              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
