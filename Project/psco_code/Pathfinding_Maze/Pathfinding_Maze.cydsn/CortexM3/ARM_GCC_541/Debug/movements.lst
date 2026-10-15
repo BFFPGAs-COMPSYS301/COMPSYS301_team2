@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccE7zqSw.s 			page 1
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccMydvYE.s 			page 1
 
 
    1              		.syntax unified
@@ -19,41 +19,362 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccE7zqSw.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              	.Letext0:
-  20              		.section	.debug_line,"",%progbits
-  21              	.Ldebug_line0:
-  22              		.section	.debug_str,"MS",%progbits,1
-  23              	.LASF0:
-  24 0000 433A5C55 		.ascii	"C:\\Users\\aale517\\Documents\\COMPSYS301_team2\\Pr"
-  24      73657273 
-  24      5C61616C 
-  24      65353137 
-  24      5C446F63 
-  25 002e 6F6A6563 		.ascii	"oject\\psco_code\\Pathfinding_Maze\\Pathfinding_Maz"
-  25      745C7073 
-  25      636F5F63 
-  25      6F64655C 
-  25      50617468 
-  26 005e 652E6379 		.ascii	"e.cydsn\000"
-  26      64736E00 
-  27              	.LASF1:
-  28 0066 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
-  28      43313120 
-  28      352E342E 
-  28      31203230 
-  28      31363036 
-  29 0099 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
-  29      20726576 
-  29      6973696F 
-  29      6E203233 
-  29      37373135 
-  30 00cc 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
-  30      66756E63 
-  30      74696F6E 
-  30      2D736563 
-  30      74696F6E 
-  31              	.LASF2:
-  32 00f4 6D6F7665 		.ascii	"movements.c\000"
-  32      6D656E74 
-  32      732E6300 
-  33              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+  19              		.comm	nextCommand,1,1
+  20              		.global	travelled
+  21              		.bss
+  22              		.type	travelled, %object
+  23              		.size	travelled, 1
+  24              	travelled:
+  25 0000 00       		.space	1
+  26              		.text
+  27              	.Letext0:
+  28              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+  29              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+  30              		.file 3 "astar.h"
+  31              		.file 4 "movements.c"
+  32              		.section	.debug_info,"",%progbits
+  33              	.Ldebug_info0:
+  34 0000 C9000000 		.4byte	0xc9
+  35 0004 0400     		.2byte	0x4
+  36 0006 00000000 		.4byte	.Ldebug_abbrev0
+  37 000a 04       		.byte	0x4
+  38 000b 01       		.uleb128 0x1
+  39 000c AA000000 		.4byte	.LASF18
+  40 0010 0C       		.byte	0xc
+  41 0011 A8010000 		.4byte	.LASF19
+  42 0015 2A000000 		.4byte	.LASF20
+  43 0019 00000000 		.4byte	.Ldebug_line0
+  44 001d 02       		.uleb128 0x2
+  45 001e 01       		.byte	0x1
+  46 001f 06       		.byte	0x6
+  47 0020 C7010000 		.4byte	.LASF0
+  48 0024 03       		.uleb128 0x3
+  49 0025 0A000000 		.4byte	.LASF9
+  50 0029 01       		.byte	0x1
+  51 002a 1D       		.byte	0x1d
+  52 002b 2F000000 		.4byte	0x2f
+  53 002f 02       		.uleb128 0x2
+  54 0030 01       		.byte	0x1
+  55 0031 08       		.byte	0x8
+  56 0032 9C000000 		.4byte	.LASF1
+  57 0036 02       		.uleb128 0x2
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccMydvYE.s 			page 2
+
+
+  58 0037 02       		.byte	0x2
+  59 0038 05       		.byte	0x5
+  60 0039 B4010000 		.4byte	.LASF2
+  61 003d 02       		.uleb128 0x2
+  62 003e 02       		.byte	0x2
+  63 003f 07       		.byte	0x7
+  64 0040 4A010000 		.4byte	.LASF3
+  65 0044 02       		.uleb128 0x2
+  66 0045 04       		.byte	0x4
+  67 0046 05       		.byte	0x5
+  68 0047 BE010000 		.4byte	.LASF4
+  69 004b 02       		.uleb128 0x2
+  70 004c 04       		.byte	0x4
+  71 004d 07       		.byte	0x7
+  72 004e 38010000 		.4byte	.LASF5
+  73 0052 02       		.uleb128 0x2
+  74 0053 08       		.byte	0x8
+  75 0054 05       		.byte	0x5
+  76 0055 9A010000 		.4byte	.LASF6
+  77 0059 02       		.uleb128 0x2
+  78 005a 08       		.byte	0x8
+  79 005b 07       		.byte	0x7
+  80 005c 72010000 		.4byte	.LASF7
+  81 0060 04       		.uleb128 0x4
+  82 0061 04       		.byte	0x4
+  83 0062 05       		.byte	0x5
+  84 0063 696E7400 		.ascii	"int\000"
+  85 0067 02       		.uleb128 0x2
+  86 0068 04       		.byte	0x4
+  87 0069 07       		.byte	0x7
+  88 006a 65010000 		.4byte	.LASF8
+  89 006e 03       		.uleb128 0x3
+  90 006f 89010000 		.4byte	.LASF10
+  91 0073 02       		.byte	0x2
+  92 0074 18       		.byte	0x18
+  93 0075 24000000 		.4byte	0x24
+  94 0079 05       		.uleb128 0x5
+  95 007a 01       		.byte	0x1
+  96 007b 2F000000 		.4byte	0x2f
+  97 007f 03       		.byte	0x3
+  98 0080 41       		.byte	0x41
+  99 0081 98000000 		.4byte	0x98
+ 100 0085 06       		.uleb128 0x6
+ 101 0086 14000000 		.4byte	.LASF11
+ 102 008a 00       		.byte	0
+ 103 008b 06       		.uleb128 0x6
+ 104 008c D3010000 		.4byte	.LASF12
+ 105 0090 01       		.byte	0x1
+ 106 0091 06       		.uleb128 0x6
+ 107 0092 00000000 		.4byte	.LASF13
+ 108 0096 02       		.byte	0x2
+ 109 0097 00       		.byte	0
+ 110 0098 03       		.uleb128 0x3
+ 111 0099 5D010000 		.4byte	.LASF14
+ 112 009d 03       		.byte	0x3
+ 113 009e 46       		.byte	0x46
+ 114 009f 79000000 		.4byte	0x79
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccMydvYE.s 			page 3
+
+
+ 115 00a3 02       		.uleb128 0x2
+ 116 00a4 04       		.byte	0x4
+ 117 00a5 07       		.byte	0x7
+ 118 00a6 91010000 		.4byte	.LASF15
+ 119 00aa 07       		.uleb128 0x7
+ 120 00ab 20000000 		.4byte	.LASF16
+ 121 00af 04       		.byte	0x4
+ 122 00b0 0C       		.byte	0xc
+ 123 00b1 6E000000 		.4byte	0x6e
+ 124 00b5 05       		.uleb128 0x5
+ 125 00b6 03       		.byte	0x3
+ 126 00b7 00000000 		.4byte	travelled
+ 127 00bb 07       		.uleb128 0x7
+ 128 00bc 90000000 		.4byte	.LASF17
+ 129 00c0 04       		.byte	0x4
+ 130 00c1 0E       		.byte	0xe
+ 131 00c2 98000000 		.4byte	0x98
+ 132 00c6 05       		.uleb128 0x5
+ 133 00c7 03       		.byte	0x3
+ 134 00c8 00000000 		.4byte	nextCommand
+ 135 00cc 00       		.byte	0
+ 136              		.section	.debug_abbrev,"",%progbits
+ 137              	.Ldebug_abbrev0:
+ 138 0000 01       		.uleb128 0x1
+ 139 0001 11       		.uleb128 0x11
+ 140 0002 01       		.byte	0x1
+ 141 0003 25       		.uleb128 0x25
+ 142 0004 0E       		.uleb128 0xe
+ 143 0005 13       		.uleb128 0x13
+ 144 0006 0B       		.uleb128 0xb
+ 145 0007 03       		.uleb128 0x3
+ 146 0008 0E       		.uleb128 0xe
+ 147 0009 1B       		.uleb128 0x1b
+ 148 000a 0E       		.uleb128 0xe
+ 149 000b 10       		.uleb128 0x10
+ 150 000c 17       		.uleb128 0x17
+ 151 000d 00       		.byte	0
+ 152 000e 00       		.byte	0
+ 153 000f 02       		.uleb128 0x2
+ 154 0010 24       		.uleb128 0x24
+ 155 0011 00       		.byte	0
+ 156 0012 0B       		.uleb128 0xb
+ 157 0013 0B       		.uleb128 0xb
+ 158 0014 3E       		.uleb128 0x3e
+ 159 0015 0B       		.uleb128 0xb
+ 160 0016 03       		.uleb128 0x3
+ 161 0017 0E       		.uleb128 0xe
+ 162 0018 00       		.byte	0
+ 163 0019 00       		.byte	0
+ 164 001a 03       		.uleb128 0x3
+ 165 001b 16       		.uleb128 0x16
+ 166 001c 00       		.byte	0
+ 167 001d 03       		.uleb128 0x3
+ 168 001e 0E       		.uleb128 0xe
+ 169 001f 3A       		.uleb128 0x3a
+ 170 0020 0B       		.uleb128 0xb
+ 171 0021 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccMydvYE.s 			page 4
+
+
+ 172 0022 0B       		.uleb128 0xb
+ 173 0023 49       		.uleb128 0x49
+ 174 0024 13       		.uleb128 0x13
+ 175 0025 00       		.byte	0
+ 176 0026 00       		.byte	0
+ 177 0027 04       		.uleb128 0x4
+ 178 0028 24       		.uleb128 0x24
+ 179 0029 00       		.byte	0
+ 180 002a 0B       		.uleb128 0xb
+ 181 002b 0B       		.uleb128 0xb
+ 182 002c 3E       		.uleb128 0x3e
+ 183 002d 0B       		.uleb128 0xb
+ 184 002e 03       		.uleb128 0x3
+ 185 002f 08       		.uleb128 0x8
+ 186 0030 00       		.byte	0
+ 187 0031 00       		.byte	0
+ 188 0032 05       		.uleb128 0x5
+ 189 0033 04       		.uleb128 0x4
+ 190 0034 01       		.byte	0x1
+ 191 0035 0B       		.uleb128 0xb
+ 192 0036 0B       		.uleb128 0xb
+ 193 0037 49       		.uleb128 0x49
+ 194 0038 13       		.uleb128 0x13
+ 195 0039 3A       		.uleb128 0x3a
+ 196 003a 0B       		.uleb128 0xb
+ 197 003b 3B       		.uleb128 0x3b
+ 198 003c 0B       		.uleb128 0xb
+ 199 003d 01       		.uleb128 0x1
+ 200 003e 13       		.uleb128 0x13
+ 201 003f 00       		.byte	0
+ 202 0040 00       		.byte	0
+ 203 0041 06       		.uleb128 0x6
+ 204 0042 28       		.uleb128 0x28
+ 205 0043 00       		.byte	0
+ 206 0044 03       		.uleb128 0x3
+ 207 0045 0E       		.uleb128 0xe
+ 208 0046 1C       		.uleb128 0x1c
+ 209 0047 0B       		.uleb128 0xb
+ 210 0048 00       		.byte	0
+ 211 0049 00       		.byte	0
+ 212 004a 07       		.uleb128 0x7
+ 213 004b 34       		.uleb128 0x34
+ 214 004c 00       		.byte	0
+ 215 004d 03       		.uleb128 0x3
+ 216 004e 0E       		.uleb128 0xe
+ 217 004f 3A       		.uleb128 0x3a
+ 218 0050 0B       		.uleb128 0xb
+ 219 0051 3B       		.uleb128 0x3b
+ 220 0052 0B       		.uleb128 0xb
+ 221 0053 49       		.uleb128 0x49
+ 222 0054 13       		.uleb128 0x13
+ 223 0055 3F       		.uleb128 0x3f
+ 224 0056 19       		.uleb128 0x19
+ 225 0057 02       		.uleb128 0x2
+ 226 0058 18       		.uleb128 0x18
+ 227 0059 00       		.byte	0
+ 228 005a 00       		.byte	0
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccMydvYE.s 			page 5
+
+
+ 229 005b 00       		.byte	0
+ 230              		.section	.debug_aranges,"",%progbits
+ 231 0000 14000000 		.4byte	0x14
+ 232 0004 0200     		.2byte	0x2
+ 233 0006 00000000 		.4byte	.Ldebug_info0
+ 234 000a 04       		.byte	0x4
+ 235 000b 00       		.byte	0
+ 236 000c 0000     		.2byte	0
+ 237 000e 0000     		.2byte	0
+ 238 0010 00000000 		.4byte	0
+ 239 0014 00000000 		.4byte	0
+ 240              		.section	.debug_line,"",%progbits
+ 241              	.Ldebug_line0:
+ 242 0000 30010000 		.section	.debug_str,"MS",%progbits,1
+ 242      02002A01 
+ 242      00000201 
+ 242      FB0E0D00 
+ 242      01010101 
+ 243              	.LASF13:
+ 244 0000 434D445F 		.ascii	"CMD_RIGHT\000"
+ 244      52494748 
+ 244      5400
+ 245              	.LASF9:
+ 246 000a 5F5F7569 		.ascii	"__uint8_t\000"
+ 246      6E74385F 
+ 246      7400
+ 247              	.LASF11:
+ 248 0014 434D445F 		.ascii	"CMD_FORWARD\000"
+ 248      464F5257 
+ 248      41524400 
+ 249              	.LASF16:
+ 250 0020 74726176 		.ascii	"travelled\000"
+ 250      656C6C65 
+ 250      6400
+ 251              	.LASF20:
+ 252 002a 433A5C55 		.ascii	"C:\\Users\\aale517\\Documents\\COMPSYS301_team2\\Pr"
+ 252      73657273 
+ 252      5C61616C 
+ 252      65353137 
+ 252      5C446F63 
+ 253 0058 6F6A6563 		.ascii	"oject\\psco_code\\Pathfinding_Maze\\Pathfinding_Maz"
+ 253      745C7073 
+ 253      636F5F63 
+ 253      6F64655C 
+ 253      50617468 
+ 254 0088 652E6379 		.ascii	"e.cydsn\000"
+ 254      64736E00 
+ 255              	.LASF17:
+ 256 0090 6E657874 		.ascii	"nextCommand\000"
+ 256      436F6D6D 
+ 256      616E6400 
+ 257              	.LASF1:
+ 258 009c 756E7369 		.ascii	"unsigned char\000"
+ 258      676E6564 
+ 258      20636861 
+ 258      7200
+ 259              	.LASF18:
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccMydvYE.s 			page 6
+
+
+ 260 00aa 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 260      43313120 
+ 260      352E342E 
+ 260      31203230 
+ 260      31363036 
+ 261 00dd 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 261      20726576 
+ 261      6973696F 
+ 261      6E203233 
+ 261      37373135 
+ 262 0110 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 262      66756E63 
+ 262      74696F6E 
+ 262      2D736563 
+ 262      74696F6E 
+ 263              	.LASF5:
+ 264 0138 6C6F6E67 		.ascii	"long unsigned int\000"
+ 264      20756E73 
+ 264      69676E65 
+ 264      6420696E 
+ 264      7400
+ 265              	.LASF3:
+ 266 014a 73686F72 		.ascii	"short unsigned int\000"
+ 266      7420756E 
+ 266      7369676E 
+ 266      65642069 
+ 266      6E7400
+ 267              	.LASF14:
+ 268 015d 436F6D6D 		.ascii	"Command\000"
+ 268      616E6400 
+ 269              	.LASF8:
+ 270 0165 756E7369 		.ascii	"unsigned int\000"
+ 270      676E6564 
+ 270      20696E74 
+ 270      00
+ 271              	.LASF7:
+ 272 0172 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 272      206C6F6E 
+ 272      6720756E 
+ 272      7369676E 
+ 272      65642069 
+ 273              	.LASF10:
+ 274 0189 75696E74 		.ascii	"uint8_t\000"
+ 274      385F7400 
+ 275              	.LASF15:
+ 276 0191 73697A65 		.ascii	"sizetype\000"
+ 276      74797065 
+ 276      00
+ 277              	.LASF6:
+ 278 019a 6C6F6E67 		.ascii	"long long int\000"
+ 278      206C6F6E 
+ 278      6720696E 
+ 278      7400
+ 279              	.LASF19:
+ 280 01a8 6D6F7665 		.ascii	"movements.c\000"
+ 280      6D656E74 
+ 280      732E6300 
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccMydvYE.s 			page 7
+
+
+ 281              	.LASF2:
+ 282 01b4 73686F72 		.ascii	"short int\000"
+ 282      7420696E 
+ 282      7400
+ 283              	.LASF4:
+ 284 01be 6C6F6E67 		.ascii	"long int\000"
+ 284      20696E74 
+ 284      00
+ 285              	.LASF0:
+ 286 01c7 7369676E 		.ascii	"signed char\000"
+ 286      65642063 
+ 286      68617200 
+ 287              	.LASF12:
+ 288 01d3 434D445F 		.ascii	"CMD_LEFT\000"
+ 288      4C454654 
+ 288      00
+ 289              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
