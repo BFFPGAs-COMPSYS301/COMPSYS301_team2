@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 1
 
 
    1              		.syntax unified
@@ -36,8 +36,8 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
    7:movements.c   **** #include "project.h"
    8:movements.c   **** #include "astar.h"
    9:movements.c   **** 
-  10:movements.c   **** #define CELL_LENGTH 100
-  11:movements.c   **** #define CELL_LENGTH_SHORT 75
+  10:movements.c   **** #define CELL_LENGTH 85
+  11:movements.c   **** #define CELL_LENGTH_SHORT 65
   12:movements.c   **** #define INTERSECTION_TIMEOUT 5000
   13:movements.c   **** 
   14:movements.c   **** #define PERIOD 90
@@ -54,11 +54,11 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
   25:movements.c   ****     } else {
   26:movements.c   ****         PWM_1_WriteCompare(PERIOD - FORWARD_SPEED); // Drive left wheel backard to quickly pivot ri
   27:movements.c   ****         PWM_2_WriteCompare(45); 
-  28:movements.c   ****         CyDelay(180);
+  28:movements.c   ****         CyDelay(230);
   29:movements.c   ****     }
   30:movements.c   **** }
   31:movements.c   **** 
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 2
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 2
 
 
   32:movements.c   **** static void findCorner() {
@@ -70,7 +70,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
   38:movements.c   ****         if (offLineCount < 15) {
   39:movements.c   ****             PWM_1_WriteCompare(PERIOD - FORWARD_SPEED); // Drive left wheel backard to quickly pivo
   40:movements.c   ****             PWM_2_WriteCompare(45); 
-  41:movements.c   ****             CyDelay(2);
+  41:movements.c   ****             CyDelay(10);
   42:movements.c   ****         } else {
   43:movements.c   ****             goForwardSlow();
   44:movements.c   ****         }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
   55              		.cfi_startproc
   56              		@ args = 0, pretend = 0, frame = 0
   57              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 3
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 3
 
 
   58 0000 08B5     		push	{r3, lr}
@@ -177,8 +177,8 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  104 0016 4220     		movs	r0, #66
  105 0018 FFF7FEFF 		bl	PWM_1_WriteCompare
  106              	.LVL7:
-  27:movements.c   ****         CyDelay(180);
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 4
+  27:movements.c   ****         CyDelay(230);
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 4
 
 
  107              		.loc 1 27 0
@@ -187,7 +187,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  110              	.LVL8:
   28:movements.c   ****     }
  111              		.loc 1 28 0
- 112 0022 B420     		movs	r0, #180
+ 112 0022 E620     		movs	r0, #230
  113 0024 FFF7FEFF 		bl	CyDelay
  114              	.LVL9:
  115 0028 08BD     		pop	{r3, pc}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  154 001e 1B88     		ldrh	r3, [r3]
  155 0020 0E2B     		cmp	r3, #14
  156 0022 09D8     		bhi	.L12
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 5
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 5
 
 
   39:movements.c   ****             PWM_2_WriteCompare(45); 
@@ -246,14 +246,14 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  158 0024 4220     		movs	r0, #66
  159 0026 FFF7FEFF 		bl	PWM_1_WriteCompare
  160              	.LVL13:
-  40:movements.c   ****             CyDelay(2);
+  40:movements.c   ****             CyDelay(10);
  161              		.loc 1 40 0
  162 002a 2D20     		movs	r0, #45
  163 002c FFF7FEFF 		bl	PWM_2_WriteCompare
  164              	.LVL14:
   41:movements.c   ****         } else {
  165              		.loc 1 41 0
- 166 0030 0220     		movs	r0, #2
+ 166 0030 0A20     		movs	r0, #10
  167 0032 FFF7FEFF 		bl	CyDelay
  168              	.LVL15:
  169 0036 01E0     		b	.L13
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  202              		.cfi_offset 4, -8
  203              		.cfi_offset 14, -4
  204 0002 0446     		mov	r4, r0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 6
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 6
 
 
  205              	.LVL18:
@@ -350,7 +350,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  237              	.L18:
   70:movements.c   ****         {
  238              		.loc 1 70 0
- 239 0028 6328     		cmp	r0, #99
+ 239 0028 5428     		cmp	r0, #84
  240 002a F3DD     		ble	.L20
   75:movements.c   ****         }
   76:movements.c   ****         
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  241              		.loc 1 77 0
  242 002c FFF7FEFF 		bl	stopMoving
  243              	.LVL29:
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 7
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 7
 
 
  244 0030 26E0     		b	.L21
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  285 005e 07E0     		b	.L29
  286              	.LVL40:
  287              	.L26:
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 8
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 8
 
 
   89:movements.c   ****             while (FrontRSensor_Read() && timeout < INTERSECTION_TIMEOUT)
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  326 008e FFF7FEFF 		bl	LED_1_Write
  327              	.LVL51:
  103:movements.c   **** 
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 9
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 9
 
 
  104:movements.c   ****     CyDelay(1000);
@@ -536,82 +536,82 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  370 001c 1420     		movs	r0, #20
  371 001e FFF7FEFF 		bl	PWM_2_WriteCompare
  372              	.LVL58:
- 114:movements.c   ****     CyDelay(250);
+ 114:movements.c   ****     CyDelay(400);
  373              		.loc 1 114 0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 10
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 10
 
 
- 374 0022 FA20     		movs	r0, #250
- 375 0024 FFF7FEFF 		bl	CyDelay
+ 374 0022 4FF4C870 		mov	r0, #400
+ 375 0026 FFF7FEFF 		bl	CyDelay
  376              	.LVL59:
  115:movements.c   ****     while (FrontSensor_Read() == 1) {
  377              		.loc 1 115 0
- 378 0028 05E0     		b	.L34
+ 378 002a 05E0     		b	.L34
  379              	.L35:
  116:movements.c   ****         PWM_1_WriteCompare(PERIOD - 20);
  380              		.loc 1 116 0
- 381 002a 4620     		movs	r0, #70
- 382 002c FFF7FEFF 		bl	PWM_1_WriteCompare
+ 381 002c 4620     		movs	r0, #70
+ 382 002e FFF7FEFF 		bl	PWM_1_WriteCompare
  383              	.LVL60:
  117:movements.c   ****         PWM_2_WriteCompare(20);
  384              		.loc 1 117 0
- 385 0030 1420     		movs	r0, #20
- 386 0032 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 385 0032 1420     		movs	r0, #20
+ 386 0034 FFF7FEFF 		bl	PWM_2_WriteCompare
  387              	.LVL61:
  388              	.L34:
  115:movements.c   ****     while (FrontSensor_Read() == 1) {
  389              		.loc 1 115 0
- 390 0036 FFF7FEFF 		bl	FrontSensor_Read
+ 390 0038 FFF7FEFF 		bl	FrontSensor_Read
  391              	.LVL62:
- 392 003a 0128     		cmp	r0, #1
- 393 003c F5D0     		beq	.L35
+ 392 003c 0128     		cmp	r0, #1
+ 393 003e F5D0     		beq	.L35
  118:movements.c   ****     }
  119:movements.c   ****     goForwardSlow();
  394              		.loc 1 119 0
- 395 003e FFF7FEFF 		bl	goForwardSlow
+ 395 0040 FFF7FEFF 		bl	goForwardSlow
  396              	.LVL63:
  120:movements.c   ****     CyDelay(10);
  397              		.loc 1 120 0
- 398 0042 0A20     		movs	r0, #10
- 399 0044 FFF7FEFF 		bl	CyDelay
+ 398 0044 0A20     		movs	r0, #10
+ 399 0046 FFF7FEFF 		bl	CyDelay
  400              	.LVL64:
  121:movements.c   ****     PWM_1_WriteCompare(20);
  401              		.loc 1 121 0
- 402 0048 1420     		movs	r0, #20
- 403 004a FFF7FEFF 		bl	PWM_1_WriteCompare
+ 402 004a 1420     		movs	r0, #20
+ 403 004c FFF7FEFF 		bl	PWM_1_WriteCompare
  404              	.LVL65:
  122:movements.c   ****     PWM_2_WriteCompare(PERIOD - 20);
  405              		.loc 1 122 0
- 406 004e 4620     		movs	r0, #70
- 407 0050 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 406 0050 4620     		movs	r0, #70
+ 407 0052 FFF7FEFF 		bl	PWM_2_WriteCompare
  408              	.LVL66:
- 123:movements.c   ****     CyDelay(150);
+ 123:movements.c   ****     CyDelay(170);
  409              		.loc 1 123 0
- 410 0054 9620     		movs	r0, #150
- 411 0056 FFF7FEFF 		bl	CyDelay
+ 410 0056 AA20     		movs	r0, #170
+ 411 0058 FFF7FEFF 		bl	CyDelay
  412              	.LVL67:
  124:movements.c   ****     stopMoving();
  413              		.loc 1 124 0
- 414 005a FFF7FEFF 		bl	stopMoving
+ 414 005c FFF7FEFF 		bl	stopMoving
  415              	.LVL68:
  125:movements.c   ****     LED_2_Write(0);
  416              		.loc 1 125 0
- 417 005e 0020     		movs	r0, #0
- 418 0060 FFF7FEFF 		bl	LED_2_Write
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 11
+ 417 0060 0020     		movs	r0, #0
+ 418 0062 FFF7FEFF 		bl	LED_2_Write
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 11
 
 
  419              	.LVL69:
  126:movements.c   ****     CyDelay(1000);
  420              		.loc 1 126 0
- 421 0064 4FF47A70 		mov	r0, #1000
- 422 0068 FFF7FEFF 		bl	CyDelay
+ 421 0066 4FF47A70 		mov	r0, #1000
+ 422 006a FFF7FEFF 		bl	CyDelay
  423              	.LVL70:
- 424 006c 08BD     		pop	{r3, pc}
+ 424 006e 08BD     		pop	{r3, pc}
  425              		.cfi_endproc
  426              	.LFE68:
  427              		.size	TurnLeft, .-TurnLeft
- 428 006e 00BF     		.section	.text.TurnRight,"ax",%progbits
+ 428              		.section	.text.TurnRight,"ax",%progbits
  429              		.align	2
  430              		.thumb
  431              		.thumb_func
@@ -658,85 +658,85 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  463              	.LVL76:
  136:movements.c   ****     PWM_2_WriteCompare(PERIOD - 20);
  464              		.loc 1 136 0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 12
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 12
 
 
  465 0020 4620     		movs	r0, #70
  466 0022 FFF7FEFF 		bl	PWM_2_WriteCompare
  467              	.LVL77:
- 137:movements.c   ****     CyDelay(250);
+ 137:movements.c   ****     CyDelay(400);
  468              		.loc 1 137 0
- 469 0026 FA20     		movs	r0, #250
- 470 0028 FFF7FEFF 		bl	CyDelay
+ 469 0026 4FF4C870 		mov	r0, #400
+ 470 002a FFF7FEFF 		bl	CyDelay
  471              	.LVL78:
  138:movements.c   ****     while (FrontSensor_Read() == 1) {
  472              		.loc 1 138 0
- 473 002c 05E0     		b	.L38
+ 473 002e 05E0     		b	.L38
  474              	.L39:
  139:movements.c   ****         PWM_1_WriteCompare(21);
  475              		.loc 1 139 0
- 476 002e 1520     		movs	r0, #21
- 477 0030 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 476 0030 1520     		movs	r0, #21
+ 477 0032 FFF7FEFF 		bl	PWM_1_WriteCompare
  478              	.LVL79:
  140:movements.c   ****         PWM_2_WriteCompare(PERIOD - 21);
  479              		.loc 1 140 0
- 480 0034 4520     		movs	r0, #69
- 481 0036 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 480 0036 4520     		movs	r0, #69
+ 481 0038 FFF7FEFF 		bl	PWM_2_WriteCompare
  482              	.LVL80:
  483              	.L38:
  138:movements.c   ****     while (FrontSensor_Read() == 1) {
  484              		.loc 1 138 0
- 485 003a FFF7FEFF 		bl	FrontSensor_Read
+ 485 003c FFF7FEFF 		bl	FrontSensor_Read
  486              	.LVL81:
- 487 003e 0128     		cmp	r0, #1
- 488 0040 F5D0     		beq	.L39
+ 487 0040 0128     		cmp	r0, #1
+ 488 0042 F5D0     		beq	.L39
  141:movements.c   ****     }
  142:movements.c   ****     goForwardSlow();
  489              		.loc 1 142 0
- 490 0042 FFF7FEFF 		bl	goForwardSlow
+ 490 0044 FFF7FEFF 		bl	goForwardSlow
  491              	.LVL82:
  143:movements.c   ****     CyDelay(10);
  492              		.loc 1 143 0
- 493 0046 0A20     		movs	r0, #10
- 494 0048 FFF7FEFF 		bl	CyDelay
+ 493 0048 0A20     		movs	r0, #10
+ 494 004a FFF7FEFF 		bl	CyDelay
  495              	.LVL83:
  144:movements.c   ****     PWM_1_WriteCompare(PERIOD - 20);
  496              		.loc 1 144 0
- 497 004c 4620     		movs	r0, #70
- 498 004e FFF7FEFF 		bl	PWM_1_WriteCompare
+ 497 004e 4620     		movs	r0, #70
+ 498 0050 FFF7FEFF 		bl	PWM_1_WriteCompare
  499              	.LVL84:
  145:movements.c   ****     PWM_2_WriteCompare(20);
  500              		.loc 1 145 0
- 501 0052 1420     		movs	r0, #20
- 502 0054 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 501 0054 1420     		movs	r0, #20
+ 502 0056 FFF7FEFF 		bl	PWM_2_WriteCompare
  503              	.LVL85:
  146:movements.c   ****     CyDelay(60);
  504              		.loc 1 146 0
- 505 0058 3C20     		movs	r0, #60
- 506 005a FFF7FEFF 		bl	CyDelay
+ 505 005a 3C20     		movs	r0, #60
+ 506 005c FFF7FEFF 		bl	CyDelay
  507              	.LVL86:
  147:movements.c   ****     stopMoving();
  508              		.loc 1 147 0
- 509 005e FFF7FEFF 		bl	stopMoving
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 13
+ 509 0060 FFF7FEFF 		bl	stopMoving
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 13
 
 
  510              	.LVL87:
  148:movements.c   ****     LED_3_Write(0);
  511              		.loc 1 148 0
- 512 0062 0020     		movs	r0, #0
- 513 0064 FFF7FEFF 		bl	LED_3_Write
+ 512 0064 0020     		movs	r0, #0
+ 513 0066 FFF7FEFF 		bl	LED_3_Write
  514              	.LVL88:
  149:movements.c   ****     CyDelay(1000);
  515              		.loc 1 149 0
- 516 0068 4FF47A70 		mov	r0, #1000
- 517 006c FFF7FEFF 		bl	CyDelay
+ 516 006a 4FF47A70 		mov	r0, #1000
+ 517 006e FFF7FEFF 		bl	CyDelay
  518              	.LVL89:
- 519 0070 08BD     		pop	{r3, pc}
+ 519 0072 08BD     		pop	{r3, pc}
  520              		.cfi_endproc
  521              	.LFE69:
  522              		.size	TurnRight, .-TurnRight
- 523 0072 00BF     		.section	.text.LoadMap,"ax",%progbits
+ 523              		.section	.text.LoadMap,"ax",%progbits
  524              		.align	2
  525              		.global	LoadMap
  526              		.thumb
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
   31:main.c        **** 
   32:main.c        **** /* =========================================================
   33:main.c        ****  * CHECKPOINTS
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 14
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 14
 
 
   34:main.c        ****  *
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
   78:main.c        ****     for (uint8_t row = 0;
  542              		.loc 2 78 0
  543 0002 0021     		movs	r1, #0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 15
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 15
 
 
  544 0004 13E0     		b	.L42
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  584 0030 F8D9     		bls	.L45
  585              	.LBE2:
   88:main.c        ****         }
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 16
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 16
 
 
   89:main.c        ****     }
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  104:main.c        ****     );
  105:main.c        **** }
  625              		.loc 2 105 0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 17
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 17
 
 
  626 0012 08BD     		pop	{r3, pc}
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  121:main.c        ****     // Get next command.
  122:main.c        ****     command = route.commands[commandIndex];
  665              		.loc 2 122 0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 18
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 18
 
 
  666 0016 234A     		ldr	r2, .L67
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  700 003a FFF7FEFF 		bl	TurnLeft
  701              	.LVL107:
  143:main.c        **** 
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 19
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 19
 
 
  144:main.c        ****             break;
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  733              	.LVL110:
  734              	.L63:
  735              	.LBB5:
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 20
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 20
 
 
  165:main.c        ****         {
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  777              	.L68:
  778              		.align	2
  779              	.L67:
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 21
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 21
 
 
  780 00a4 00000000 		.word	route
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  820              	.LVL124:
  190:main.c        ****     Timeout_5_Start();
  821              		.loc 2 190 0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 22
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 22
 
 
  822 001a FFF7FEFF 		bl	Timeout_5_Start
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  857 0004 14000000 		.word	.LC1
  858 0008 28000000 		.word	.LC2
  859 000c 3C000000 		.word	.LC3
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 23
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 23
 
 
  860 0010 50000000 		.word	.LC4
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  895      30303030 
  895      31303100 
  896              	.LC4:
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 24
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 24
 
 
  897 0050 31313130 		.ascii	"1110111111111111101\000"
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  915 0104 31303030 		.ascii	"1000000000000010001\000"
  915      30303030 
  915      30303030 
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 25
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 25
 
 
  915      30303130 
@@ -1480,7 +1480,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  950              		.file 24 "Generated_Source\\PSoC5/VDAC8_1.h"
  951              		.section	.debug_info,"",%progbits
  952              	.Ldebug_info0:
- 953 0000 D50A0000 		.4byte	0xad5
+ 953 0000 D70A0000 		.4byte	0xad7
  954 0004 0400     		.2byte	0x4
  955 0006 00000000 		.4byte	.Ldebug_abbrev0
  956 000a 04       		.byte	0x4
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  968 0028 59020000 		.4byte	.LASF0
  969 002c 03       		.uleb128 0x3
  970 002d FE040000 		.4byte	.LASF3
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 26
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 26
 
 
  971 0031 03       		.byte	0x3
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1025 0097 03       		.uleb128 0x3
  1026 0098 EF020000 		.4byte	.LASF13
  1027 009c 04       		.byte	0x4
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 27
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 27
 
 
  1028 009d 24       		.byte	0x24
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1082 0108 636F6C00 		.ascii	"col\000"
  1083 010c 06       		.byte	0x6
  1084 010d 26       		.byte	0x26
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 28
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 28
 
 
  1085 010e 8C000000 		.4byte	0x8c
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1139 017a 29       		.byte	0x29
  1140 017b 06       		.byte	0x6
  1141 017c 53       		.byte	0x53
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 29
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 29
 
 
  1142 017d 9A010000 		.4byte	0x19a
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1196 01ef 2A04     		.2byte	0x42a
  1197 01f1 10       		.uleb128 0x10
  1198 01f2 CD010000 		.4byte	.LASF39
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 30
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 30
 
 
  1199 01f6 06       		.byte	0x6
@@ -1776,7 +1776,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1231 023c 65020000 		.4byte	0x265
  1232 0240 13       		.uleb128 0x13
  1233 0241 08000000 		.4byte	.LVL0
- 1234 0245 E6090000 		.4byte	0x9e6
+ 1234 0245 E8090000 		.4byte	0x9e8
  1235 0249 54020000 		.4byte	0x254
  1236 024d 14       		.uleb128 0x14
  1237 024e 01       		.uleb128 0x1
@@ -1787,7 +1787,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1242 0253 00       		.byte	0
  1243 0254 15       		.uleb128 0x15
  1244 0255 0E000000 		.4byte	.LVL1
- 1245 0259 F1090000 		.4byte	0x9f1
+ 1245 0259 F3090000 		.4byte	0x9f3
  1246 025d 14       		.uleb128 0x14
  1247 025e 01       		.uleb128 0x1
  1248 025f 50       		.byte	0x50
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1253 0264 00       		.byte	0
  1254 0265 16       		.uleb128 0x16
  1255 0266 BD030000 		.4byte	.LASF44
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 31
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 31
 
 
  1256 026a 01       		.byte	0x1
@@ -1810,7 +1810,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1262 0276 9D020000 		.4byte	0x29d
  1263 027a 13       		.uleb128 0x13
  1264 027b 08000000 		.4byte	.LVL2
- 1265 027f E6090000 		.4byte	0x9e6
+ 1265 027f E8090000 		.4byte	0x9e8
  1266 0283 8D020000 		.4byte	0x28d
  1267 0287 14       		.uleb128 0x14
  1268 0288 01       		.uleb128 0x1
@@ -1820,7 +1820,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1272 028c 00       		.byte	0
  1273 028d 15       		.uleb128 0x15
  1274 028e 0E000000 		.4byte	.LVL3
- 1275 0292 F1090000 		.4byte	0x9f1
+ 1275 0292 F3090000 		.4byte	0x9f3
  1276 0296 14       		.uleb128 0x14
  1277 0297 01       		.uleb128 0x1
  1278 0298 50       		.byte	0x50
@@ -1839,10 +1839,10 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1291 02ae 1A030000 		.4byte	0x31a
  1292 02b2 17       		.uleb128 0x17
  1293 02b3 06000000 		.4byte	.LVL4
- 1294 02b7 FC090000 		.4byte	0x9fc
+ 1294 02b7 FE090000 		.4byte	0x9fe
  1295 02bb 13       		.uleb128 0x13
  1296 02bc 0E000000 		.4byte	.LVL5
- 1297 02c0 E6090000 		.4byte	0x9e6
+ 1297 02c0 E8090000 		.4byte	0x9e8
  1298 02c4 CE020000 		.4byte	0x2ce
  1299 02c8 14       		.uleb128 0x14
  1300 02c9 01       		.uleb128 0x1
@@ -1852,20 +1852,20 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1304 02cd 00       		.byte	0
  1305 02ce 13       		.uleb128 0x13
  1306 02cf 14000000 		.4byte	.LVL6
- 1307 02d3 F1090000 		.4byte	0x9f1
+ 1307 02d3 F3090000 		.4byte	0x9f3
  1308 02d7 E1020000 		.4byte	0x2e1
  1309 02db 14       		.uleb128 0x14
  1310 02dc 01       		.uleb128 0x1
  1311 02dd 50       		.byte	0x50
  1312 02de 01       		.uleb128 0x1
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 32
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 32
 
 
  1313 02df 48       		.byte	0x48
  1314 02e0 00       		.byte	0
  1315 02e1 13       		.uleb128 0x13
  1316 02e2 1C000000 		.4byte	.LVL7
- 1317 02e6 E6090000 		.4byte	0x9e6
+ 1317 02e6 E8090000 		.4byte	0x9e8
  1318 02ea F5020000 		.4byte	0x2f5
  1319 02ee 14       		.uleb128 0x14
  1320 02ef 01       		.uleb128 0x1
@@ -1876,7 +1876,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1325 02f4 00       		.byte	0
  1326 02f5 13       		.uleb128 0x13
  1327 02f6 22000000 		.4byte	.LVL8
- 1328 02fa F1090000 		.4byte	0x9f1
+ 1328 02fa F3090000 		.4byte	0x9f3
  1329 02fe 09030000 		.4byte	0x309
  1330 0302 14       		.uleb128 0x14
  1331 0303 01       		.uleb128 0x1
@@ -1887,13 +1887,13 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1336 0308 00       		.byte	0
  1337 0309 15       		.uleb128 0x15
  1338 030a 28000000 		.4byte	.LVL9
- 1339 030e 070A0000 		.4byte	0xa07
+ 1339 030e 090A0000 		.4byte	0xa09
  1340 0312 14       		.uleb128 0x14
  1341 0313 01       		.uleb128 0x1
  1342 0314 50       		.byte	0x50
  1343 0315 02       		.uleb128 0x2
  1344 0316 08       		.byte	0x8
- 1345 0317 B4       		.byte	0xb4
+ 1345 0317 E6       		.byte	0xe6
  1346 0318 00       		.byte	0
  1347 0319 00       		.byte	0
  1348 031a 12       		.uleb128 0x12
@@ -1907,10 +1907,10 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1356 032b A3030000 		.4byte	0x3a3
  1357 032f 17       		.uleb128 0x17
  1358 0330 06000000 		.4byte	.LVL10
- 1359 0334 FC090000 		.4byte	0x9fc
+ 1359 0334 FE090000 		.4byte	0x9fe
  1360 0338 13       		.uleb128 0x13
  1361 0339 14000000 		.4byte	.LVL11
- 1362 033d E6090000 		.4byte	0x9e6
+ 1362 033d E8090000 		.4byte	0x9e8
  1363 0341 4B030000 		.4byte	0x34b
  1364 0345 14       		.uleb128 0x14
  1365 0346 01       		.uleb128 0x1
@@ -1918,12 +1918,12 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1367 0348 01       		.uleb128 0x1
  1368 0349 47       		.byte	0x47
  1369 034a 00       		.byte	0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 33
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 33
 
 
  1370 034b 13       		.uleb128 0x13
  1371 034c 1A000000 		.4byte	.LVL12
- 1372 0350 F1090000 		.4byte	0x9f1
+ 1372 0350 F3090000 		.4byte	0x9f3
  1373 0354 5E030000 		.4byte	0x35e
  1374 0358 14       		.uleb128 0x14
  1375 0359 01       		.uleb128 0x1
@@ -1933,7 +1933,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1379 035d 00       		.byte	0
  1380 035e 13       		.uleb128 0x13
  1381 035f 2A000000 		.4byte	.LVL13
- 1382 0363 E6090000 		.4byte	0x9e6
+ 1382 0363 E8090000 		.4byte	0x9e8
  1383 0367 72030000 		.4byte	0x372
  1384 036b 14       		.uleb128 0x14
  1385 036c 01       		.uleb128 0x1
@@ -1944,7 +1944,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1390 0371 00       		.byte	0
  1391 0372 13       		.uleb128 0x13
  1392 0373 30000000 		.4byte	.LVL14
- 1393 0377 F1090000 		.4byte	0x9f1
+ 1393 0377 F3090000 		.4byte	0x9f3
  1394 037b 86030000 		.4byte	0x386
  1395 037f 14       		.uleb128 0x14
  1396 0380 01       		.uleb128 0x1
@@ -1955,13 +1955,13 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1401 0385 00       		.byte	0
  1402 0386 13       		.uleb128 0x13
  1403 0387 36000000 		.4byte	.LVL15
- 1404 038b 070A0000 		.4byte	0xa07
+ 1404 038b 090A0000 		.4byte	0xa09
  1405 038f 99030000 		.4byte	0x399
  1406 0393 14       		.uleb128 0x14
  1407 0394 01       		.uleb128 0x1
  1408 0395 50       		.byte	0x50
  1409 0396 01       		.uleb128 0x1
- 1410 0397 32       		.byte	0x32
+ 1410 0397 3A       		.byte	0x3a
  1411 0398 00       		.byte	0
  1412 0399 17       		.uleb128 0x17
  1413 039a 3C000000 		.4byte	.LVL16
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1424 03b4 D0040000 		.4byte	0x4d0
  1425 03b8 18       		.uleb128 0x18
  1426 03b9 73010000 		.4byte	.LASF54
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 34
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 34
 
 
  1427 03bd 01       		.byte	0x1
@@ -1999,7 +1999,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1442 03e1 6E000000 		.4byte	.LLST2
  1443 03e5 13       		.uleb128 0x13
  1444 03e6 0A000000 		.4byte	.LVL20
- 1445 03ea 120A0000 		.4byte	0xa12
+ 1445 03ea 140A0000 		.4byte	0xa14
  1446 03ee F8030000 		.4byte	0x3f8
  1447 03f2 14       		.uleb128 0x14
  1448 03f3 01       		.uleb128 0x1
@@ -2009,7 +2009,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1452 03f7 00       		.byte	0
  1453 03f8 13       		.uleb128 0x13
  1454 03f9 10000000 		.4byte	.LVL21
- 1455 03fd 1D0A0000 		.4byte	0xa1d
+ 1455 03fd 1F0A0000 		.4byte	0xa1f
  1456 0401 0B040000 		.4byte	0x40b
  1457 0405 14       		.uleb128 0x14
  1458 0406 01       		.uleb128 0x1
@@ -2022,7 +2022,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1465 0410 9D020000 		.4byte	0x29d
  1466 0414 13       		.uleb128 0x13
  1467 0415 1E000000 		.4byte	.LVL24
- 1468 0419 070A0000 		.4byte	0xa07
+ 1468 0419 090A0000 		.4byte	0xa09
  1469 041d 27040000 		.4byte	0x427
  1470 0421 14       		.uleb128 0x14
  1471 0422 01       		.uleb128 0x1
@@ -2032,19 +2032,19 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1475 0426 00       		.byte	0
  1476 0427 17       		.uleb128 0x17
  1477 0428 22000000 		.4byte	.LVL25
- 1478 042c 280A0000 		.4byte	0xa28
+ 1478 042c 2A0A0000 		.4byte	0xa2a
  1479 0430 17       		.uleb128 0x17
  1480 0431 30000000 		.4byte	.LVL29
  1481 0435 2B020000 		.4byte	0x22b
  1482 0439 17       		.uleb128 0x17
  1483 043a 3C000000 		.4byte	.LVL32
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 35
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 35
 
 
  1484 043e 1A030000 		.4byte	0x31a
  1485 0442 13       		.uleb128 0x13
  1486 0443 42000000 		.4byte	.LVL33
- 1487 0447 070A0000 		.4byte	0xa07
+ 1487 0447 090A0000 		.4byte	0xa09
  1488 044b 55040000 		.4byte	0x455
  1489 044f 14       		.uleb128 0x14
  1490 0450 01       		.uleb128 0x1
@@ -2054,13 +2054,13 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1494 0454 00       		.byte	0
  1495 0455 17       		.uleb128 0x17
  1496 0456 4E000000 		.4byte	.LVL38
- 1497 045a 330A0000 		.4byte	0xa33
+ 1497 045a 350A0000 		.4byte	0xa35
  1498 045e 17       		.uleb128 0x17
  1499 045f 64000000 		.4byte	.LVL41
  1500 0463 1A030000 		.4byte	0x31a
  1501 0467 13       		.uleb128 0x13
  1502 0468 6A000000 		.4byte	.LVL42
- 1503 046c 070A0000 		.4byte	0xa07
+ 1503 046c 090A0000 		.4byte	0xa09
  1504 0470 7A040000 		.4byte	0x47a
  1505 0474 14       		.uleb128 0x14
  1506 0475 01       		.uleb128 0x1
@@ -2070,10 +2070,10 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1510 0479 00       		.byte	0
  1511 047a 17       		.uleb128 0x17
  1512 047b 76000000 		.4byte	.LVL47
- 1513 047f 3E0A0000 		.4byte	0xa3e
+ 1513 047f 400A0000 		.4byte	0xa40
  1514 0483 13       		.uleb128 0x13
  1515 0484 86000000 		.4byte	.LVL49
- 1516 0488 E6090000 		.4byte	0x9e6
+ 1516 0488 E8090000 		.4byte	0x9e8
  1517 048c 97040000 		.4byte	0x497
  1518 0490 14       		.uleb128 0x14
  1519 0491 01       		.uleb128 0x1
@@ -2084,7 +2084,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1524 0496 00       		.byte	0
  1525 0497 13       		.uleb128 0x13
  1526 0498 8C000000 		.4byte	.LVL50
- 1527 049c F1090000 		.4byte	0x9f1
+ 1527 049c F3090000 		.4byte	0x9f3
  1528 04a0 AB040000 		.4byte	0x4ab
  1529 04a4 14       		.uleb128 0x14
  1530 04a5 01       		.uleb128 0x1
@@ -2095,10 +2095,10 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1535 04aa 00       		.byte	0
  1536 04ab 13       		.uleb128 0x13
  1537 04ac 92000000 		.4byte	.LVL51
- 1538 04b0 120A0000 		.4byte	0xa12
+ 1538 04b0 140A0000 		.4byte	0xa14
  1539 04b4 BE040000 		.4byte	0x4be
  1540 04b8 14       		.uleb128 0x14
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 36
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 36
 
 
  1541 04b9 01       		.uleb128 0x1
@@ -2108,7 +2108,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1545 04bd 00       		.byte	0
  1546 04be 15       		.uleb128 0x15
  1547 04bf 9A000000 		.4byte	.LVL52
- 1548 04c3 070A0000 		.4byte	0xa07
+ 1548 04c3 090A0000 		.4byte	0xa09
  1549 04c7 14       		.uleb128 0x14
  1550 04c8 01       		.uleb128 0x1
  1551 04c9 50       		.byte	0x50
@@ -2122,13 +2122,13 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1559 04d5 01       		.byte	0x1
  1560 04d6 6B       		.byte	0x6b
  1561 04d7 00000000 		.4byte	.LFB68
- 1562 04db 6E000000 		.4byte	.LFE68-.LFB68
+ 1562 04db 70000000 		.4byte	.LFE68-.LFB68
  1563 04df 01       		.uleb128 0x1
  1564 04e0 9C       		.byte	0x9c
- 1565 04e1 0E060000 		.4byte	0x60e
+ 1565 04e1 0F060000 		.4byte	0x60f
  1566 04e5 13       		.uleb128 0x13
  1567 04e6 08000000 		.4byte	.LVL53
- 1568 04ea 490A0000 		.4byte	0xa49
+ 1568 04ea 4B0A0000 		.4byte	0xa4b
  1569 04ee F8040000 		.4byte	0x4f8
  1570 04f2 14       		.uleb128 0x14
  1571 04f3 01       		.uleb128 0x1
@@ -2141,7 +2141,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1578 04fd 65020000 		.4byte	0x265
  1579 0501 13       		.uleb128 0x13
  1580 0502 12000000 		.4byte	.LVL55
- 1581 0506 070A0000 		.4byte	0xa07
+ 1581 0506 090A0000 		.4byte	0xa09
  1582 050a 15050000 		.4byte	0x515
  1583 050e 14       		.uleb128 0x14
  1584 050f 01       		.uleb128 0x1
@@ -2155,10 +2155,10 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1592 051a 2B020000 		.4byte	0x22b
  1593 051e 13       		.uleb128 0x13
  1594 051f 1C000000 		.4byte	.LVL57
- 1595 0523 E6090000 		.4byte	0x9e6
+ 1595 0523 E8090000 		.4byte	0x9e8
  1596 0527 32050000 		.4byte	0x532
  1597 052b 14       		.uleb128 0x14
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 37
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 37
 
 
  1598 052c 01       		.uleb128 0x1
@@ -2169,7 +2169,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1603 0531 00       		.byte	0
  1604 0532 13       		.uleb128 0x13
  1605 0533 22000000 		.4byte	.LVL58
- 1606 0537 F1090000 		.4byte	0x9f1
+ 1606 0537 F3090000 		.4byte	0x9f3
  1607 053b 45050000 		.4byte	0x545
  1608 053f 14       		.uleb128 0x14
  1609 0540 01       		.uleb128 0x1
@@ -2178,718 +2178,718 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  1612 0543 44       		.byte	0x44
  1613 0544 00       		.byte	0
  1614 0545 13       		.uleb128 0x13
- 1615 0546 28000000 		.4byte	.LVL59
- 1616 054a 070A0000 		.4byte	0xa07
- 1617 054e 59050000 		.4byte	0x559
+ 1615 0546 2A000000 		.4byte	.LVL59
+ 1616 054a 090A0000 		.4byte	0xa09
+ 1617 054e 5A050000 		.4byte	0x55a
  1618 0552 14       		.uleb128 0x14
  1619 0553 01       		.uleb128 0x1
  1620 0554 50       		.byte	0x50
- 1621 0555 02       		.uleb128 0x2
- 1622 0556 08       		.byte	0x8
- 1623 0557 FA       		.byte	0xfa
- 1624 0558 00       		.byte	0
- 1625 0559 13       		.uleb128 0x13
- 1626 055a 30000000 		.4byte	.LVL60
- 1627 055e E6090000 		.4byte	0x9e6
- 1628 0562 6D050000 		.4byte	0x56d
- 1629 0566 14       		.uleb128 0x14
- 1630 0567 01       		.uleb128 0x1
- 1631 0568 50       		.byte	0x50
- 1632 0569 02       		.uleb128 0x2
- 1633 056a 08       		.byte	0x8
- 1634 056b 46       		.byte	0x46
- 1635 056c 00       		.byte	0
- 1636 056d 13       		.uleb128 0x13
- 1637 056e 36000000 		.4byte	.LVL61
- 1638 0572 F1090000 		.4byte	0x9f1
- 1639 0576 80050000 		.4byte	0x580
- 1640 057a 14       		.uleb128 0x14
- 1641 057b 01       		.uleb128 0x1
- 1642 057c 50       		.byte	0x50
- 1643 057d 01       		.uleb128 0x1
- 1644 057e 44       		.byte	0x44
- 1645 057f 00       		.byte	0
- 1646 0580 17       		.uleb128 0x17
- 1647 0581 3A000000 		.4byte	.LVL62
- 1648 0585 FC090000 		.4byte	0x9fc
- 1649 0589 17       		.uleb128 0x17
- 1650 058a 42000000 		.4byte	.LVL63
- 1651 058e 65020000 		.4byte	0x265
- 1652 0592 13       		.uleb128 0x13
- 1653 0593 48000000 		.4byte	.LVL64
- 1654 0597 070A0000 		.4byte	0xa07
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 38
+ 1621 0555 03       		.uleb128 0x3
+ 1622 0556 0A       		.byte	0xa
+ 1623 0557 9001     		.2byte	0x190
+ 1624 0559 00       		.byte	0
+ 1625 055a 13       		.uleb128 0x13
+ 1626 055b 32000000 		.4byte	.LVL60
+ 1627 055f E8090000 		.4byte	0x9e8
+ 1628 0563 6E050000 		.4byte	0x56e
+ 1629 0567 14       		.uleb128 0x14
+ 1630 0568 01       		.uleb128 0x1
+ 1631 0569 50       		.byte	0x50
+ 1632 056a 02       		.uleb128 0x2
+ 1633 056b 08       		.byte	0x8
+ 1634 056c 46       		.byte	0x46
+ 1635 056d 00       		.byte	0
+ 1636 056e 13       		.uleb128 0x13
+ 1637 056f 38000000 		.4byte	.LVL61
+ 1638 0573 F3090000 		.4byte	0x9f3
+ 1639 0577 81050000 		.4byte	0x581
+ 1640 057b 14       		.uleb128 0x14
+ 1641 057c 01       		.uleb128 0x1
+ 1642 057d 50       		.byte	0x50
+ 1643 057e 01       		.uleb128 0x1
+ 1644 057f 44       		.byte	0x44
+ 1645 0580 00       		.byte	0
+ 1646 0581 17       		.uleb128 0x17
+ 1647 0582 3C000000 		.4byte	.LVL62
+ 1648 0586 FE090000 		.4byte	0x9fe
+ 1649 058a 17       		.uleb128 0x17
+ 1650 058b 44000000 		.4byte	.LVL63
+ 1651 058f 65020000 		.4byte	0x265
+ 1652 0593 13       		.uleb128 0x13
+ 1653 0594 4A000000 		.4byte	.LVL64
+ 1654 0598 090A0000 		.4byte	0xa09
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 38
 
 
- 1655 059b A5050000 		.4byte	0x5a5
- 1656 059f 14       		.uleb128 0x14
- 1657 05a0 01       		.uleb128 0x1
- 1658 05a1 50       		.byte	0x50
- 1659 05a2 01       		.uleb128 0x1
- 1660 05a3 3A       		.byte	0x3a
- 1661 05a4 00       		.byte	0
- 1662 05a5 13       		.uleb128 0x13
- 1663 05a6 4E000000 		.4byte	.LVL65
- 1664 05aa E6090000 		.4byte	0x9e6
- 1665 05ae B8050000 		.4byte	0x5b8
- 1666 05b2 14       		.uleb128 0x14
- 1667 05b3 01       		.uleb128 0x1
- 1668 05b4 50       		.byte	0x50
- 1669 05b5 01       		.uleb128 0x1
- 1670 05b6 44       		.byte	0x44
- 1671 05b7 00       		.byte	0
- 1672 05b8 13       		.uleb128 0x13
- 1673 05b9 54000000 		.4byte	.LVL66
- 1674 05bd F1090000 		.4byte	0x9f1
- 1675 05c1 CC050000 		.4byte	0x5cc
- 1676 05c5 14       		.uleb128 0x14
- 1677 05c6 01       		.uleb128 0x1
- 1678 05c7 50       		.byte	0x50
- 1679 05c8 02       		.uleb128 0x2
- 1680 05c9 08       		.byte	0x8
- 1681 05ca 46       		.byte	0x46
- 1682 05cb 00       		.byte	0
- 1683 05cc 13       		.uleb128 0x13
- 1684 05cd 5A000000 		.4byte	.LVL67
- 1685 05d1 070A0000 		.4byte	0xa07
- 1686 05d5 E0050000 		.4byte	0x5e0
- 1687 05d9 14       		.uleb128 0x14
- 1688 05da 01       		.uleb128 0x1
- 1689 05db 50       		.byte	0x50
- 1690 05dc 02       		.uleb128 0x2
- 1691 05dd 08       		.byte	0x8
- 1692 05de 96       		.byte	0x96
- 1693 05df 00       		.byte	0
- 1694 05e0 17       		.uleb128 0x17
- 1695 05e1 5E000000 		.4byte	.LVL68
- 1696 05e5 2B020000 		.4byte	0x22b
- 1697 05e9 13       		.uleb128 0x13
- 1698 05ea 64000000 		.4byte	.LVL69
- 1699 05ee 490A0000 		.4byte	0xa49
- 1700 05f2 FC050000 		.4byte	0x5fc
- 1701 05f6 14       		.uleb128 0x14
- 1702 05f7 01       		.uleb128 0x1
- 1703 05f8 50       		.byte	0x50
- 1704 05f9 01       		.uleb128 0x1
- 1705 05fa 30       		.byte	0x30
- 1706 05fb 00       		.byte	0
- 1707 05fc 15       		.uleb128 0x15
- 1708 05fd 6C000000 		.4byte	.LVL70
- 1709 0601 070A0000 		.4byte	0xa07
- 1710 0605 14       		.uleb128 0x14
- 1711 0606 01       		.uleb128 0x1
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 39
+ 1655 059c A6050000 		.4byte	0x5a6
+ 1656 05a0 14       		.uleb128 0x14
+ 1657 05a1 01       		.uleb128 0x1
+ 1658 05a2 50       		.byte	0x50
+ 1659 05a3 01       		.uleb128 0x1
+ 1660 05a4 3A       		.byte	0x3a
+ 1661 05a5 00       		.byte	0
+ 1662 05a6 13       		.uleb128 0x13
+ 1663 05a7 50000000 		.4byte	.LVL65
+ 1664 05ab E8090000 		.4byte	0x9e8
+ 1665 05af B9050000 		.4byte	0x5b9
+ 1666 05b3 14       		.uleb128 0x14
+ 1667 05b4 01       		.uleb128 0x1
+ 1668 05b5 50       		.byte	0x50
+ 1669 05b6 01       		.uleb128 0x1
+ 1670 05b7 44       		.byte	0x44
+ 1671 05b8 00       		.byte	0
+ 1672 05b9 13       		.uleb128 0x13
+ 1673 05ba 56000000 		.4byte	.LVL66
+ 1674 05be F3090000 		.4byte	0x9f3
+ 1675 05c2 CD050000 		.4byte	0x5cd
+ 1676 05c6 14       		.uleb128 0x14
+ 1677 05c7 01       		.uleb128 0x1
+ 1678 05c8 50       		.byte	0x50
+ 1679 05c9 02       		.uleb128 0x2
+ 1680 05ca 08       		.byte	0x8
+ 1681 05cb 46       		.byte	0x46
+ 1682 05cc 00       		.byte	0
+ 1683 05cd 13       		.uleb128 0x13
+ 1684 05ce 5C000000 		.4byte	.LVL67
+ 1685 05d2 090A0000 		.4byte	0xa09
+ 1686 05d6 E1050000 		.4byte	0x5e1
+ 1687 05da 14       		.uleb128 0x14
+ 1688 05db 01       		.uleb128 0x1
+ 1689 05dc 50       		.byte	0x50
+ 1690 05dd 02       		.uleb128 0x2
+ 1691 05de 08       		.byte	0x8
+ 1692 05df AA       		.byte	0xaa
+ 1693 05e0 00       		.byte	0
+ 1694 05e1 17       		.uleb128 0x17
+ 1695 05e2 60000000 		.4byte	.LVL68
+ 1696 05e6 2B020000 		.4byte	0x22b
+ 1697 05ea 13       		.uleb128 0x13
+ 1698 05eb 66000000 		.4byte	.LVL69
+ 1699 05ef 4B0A0000 		.4byte	0xa4b
+ 1700 05f3 FD050000 		.4byte	0x5fd
+ 1701 05f7 14       		.uleb128 0x14
+ 1702 05f8 01       		.uleb128 0x1
+ 1703 05f9 50       		.byte	0x50
+ 1704 05fa 01       		.uleb128 0x1
+ 1705 05fb 30       		.byte	0x30
+ 1706 05fc 00       		.byte	0
+ 1707 05fd 15       		.uleb128 0x15
+ 1708 05fe 6E000000 		.4byte	.LVL70
+ 1709 0602 090A0000 		.4byte	0xa09
+ 1710 0606 14       		.uleb128 0x14
+ 1711 0607 01       		.uleb128 0x1
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 39
 
 
- 1712 0607 50       		.byte	0x50
- 1713 0608 03       		.uleb128 0x3
- 1714 0609 0A       		.byte	0xa
- 1715 060a E803     		.2byte	0x3e8
- 1716 060c 00       		.byte	0
- 1717 060d 00       		.byte	0
- 1718 060e 12       		.uleb128 0x12
- 1719 060f 7F030000 		.4byte	.LASF49
- 1720 0613 01       		.byte	0x1
- 1721 0614 81       		.byte	0x81
- 1722 0615 00000000 		.4byte	.LFB69
- 1723 0619 72000000 		.4byte	.LFE69-.LFB69
- 1724 061d 01       		.uleb128 0x1
- 1725 061e 9C       		.byte	0x9c
- 1726 061f 60070000 		.4byte	0x760
- 1727 0623 1A       		.uleb128 0x1a
- 1728 0624 5F000000 		.4byte	.LASF87
- 1729 0628 01       		.byte	0x1
- 1730 0629 83       		.byte	0x83
- 1731 062a AD000000 		.4byte	0xad
- 1732 062e 13       		.uleb128 0x13
- 1733 062f 08000000 		.4byte	.LVL71
- 1734 0633 540A0000 		.4byte	0xa54
- 1735 0637 41060000 		.4byte	0x641
- 1736 063b 14       		.uleb128 0x14
- 1737 063c 01       		.uleb128 0x1
- 1738 063d 50       		.byte	0x50
- 1739 063e 01       		.uleb128 0x1
- 1740 063f 31       		.byte	0x31
- 1741 0640 00       		.byte	0
- 1742 0641 17       		.uleb128 0x17
- 1743 0642 0C000000 		.4byte	.LVL72
- 1744 0646 FC090000 		.4byte	0x9fc
- 1745 064a 17       		.uleb128 0x17
- 1746 064b 10000000 		.4byte	.LVL73
- 1747 064f 65020000 		.4byte	0x265
- 1748 0653 13       		.uleb128 0x13
- 1749 0654 16000000 		.4byte	.LVL74
- 1750 0658 070A0000 		.4byte	0xa07
- 1751 065c 67060000 		.4byte	0x667
- 1752 0660 14       		.uleb128 0x14
- 1753 0661 01       		.uleb128 0x1
- 1754 0662 50       		.byte	0x50
- 1755 0663 02       		.uleb128 0x2
- 1756 0664 08       		.byte	0x8
- 1757 0665 92       		.byte	0x92
- 1758 0666 00       		.byte	0
- 1759 0667 17       		.uleb128 0x17
- 1760 0668 1A000000 		.4byte	.LVL75
- 1761 066c 2B020000 		.4byte	0x22b
- 1762 0670 13       		.uleb128 0x13
- 1763 0671 20000000 		.4byte	.LVL76
- 1764 0675 E6090000 		.4byte	0x9e6
- 1765 0679 83060000 		.4byte	0x683
- 1766 067d 14       		.uleb128 0x14
- 1767 067e 01       		.uleb128 0x1
- 1768 067f 50       		.byte	0x50
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 40
+ 1712 0608 50       		.byte	0x50
+ 1713 0609 03       		.uleb128 0x3
+ 1714 060a 0A       		.byte	0xa
+ 1715 060b E803     		.2byte	0x3e8
+ 1716 060d 00       		.byte	0
+ 1717 060e 00       		.byte	0
+ 1718 060f 12       		.uleb128 0x12
+ 1719 0610 7F030000 		.4byte	.LASF49
+ 1720 0614 01       		.byte	0x1
+ 1721 0615 81       		.byte	0x81
+ 1722 0616 00000000 		.4byte	.LFB69
+ 1723 061a 74000000 		.4byte	.LFE69-.LFB69
+ 1724 061e 01       		.uleb128 0x1
+ 1725 061f 9C       		.byte	0x9c
+ 1726 0620 62070000 		.4byte	0x762
+ 1727 0624 1A       		.uleb128 0x1a
+ 1728 0625 5F000000 		.4byte	.LASF87
+ 1729 0629 01       		.byte	0x1
+ 1730 062a 83       		.byte	0x83
+ 1731 062b AD000000 		.4byte	0xad
+ 1732 062f 13       		.uleb128 0x13
+ 1733 0630 08000000 		.4byte	.LVL71
+ 1734 0634 560A0000 		.4byte	0xa56
+ 1735 0638 42060000 		.4byte	0x642
+ 1736 063c 14       		.uleb128 0x14
+ 1737 063d 01       		.uleb128 0x1
+ 1738 063e 50       		.byte	0x50
+ 1739 063f 01       		.uleb128 0x1
+ 1740 0640 31       		.byte	0x31
+ 1741 0641 00       		.byte	0
+ 1742 0642 17       		.uleb128 0x17
+ 1743 0643 0C000000 		.4byte	.LVL72
+ 1744 0647 FE090000 		.4byte	0x9fe
+ 1745 064b 17       		.uleb128 0x17
+ 1746 064c 10000000 		.4byte	.LVL73
+ 1747 0650 65020000 		.4byte	0x265
+ 1748 0654 13       		.uleb128 0x13
+ 1749 0655 16000000 		.4byte	.LVL74
+ 1750 0659 090A0000 		.4byte	0xa09
+ 1751 065d 68060000 		.4byte	0x668
+ 1752 0661 14       		.uleb128 0x14
+ 1753 0662 01       		.uleb128 0x1
+ 1754 0663 50       		.byte	0x50
+ 1755 0664 02       		.uleb128 0x2
+ 1756 0665 08       		.byte	0x8
+ 1757 0666 92       		.byte	0x92
+ 1758 0667 00       		.byte	0
+ 1759 0668 17       		.uleb128 0x17
+ 1760 0669 1A000000 		.4byte	.LVL75
+ 1761 066d 2B020000 		.4byte	0x22b
+ 1762 0671 13       		.uleb128 0x13
+ 1763 0672 20000000 		.4byte	.LVL76
+ 1764 0676 E8090000 		.4byte	0x9e8
+ 1765 067a 84060000 		.4byte	0x684
+ 1766 067e 14       		.uleb128 0x14
+ 1767 067f 01       		.uleb128 0x1
+ 1768 0680 50       		.byte	0x50
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 40
 
 
- 1769 0680 01       		.uleb128 0x1
- 1770 0681 44       		.byte	0x44
- 1771 0682 00       		.byte	0
- 1772 0683 13       		.uleb128 0x13
- 1773 0684 26000000 		.4byte	.LVL77
- 1774 0688 F1090000 		.4byte	0x9f1
- 1775 068c 97060000 		.4byte	0x697
- 1776 0690 14       		.uleb128 0x14
- 1777 0691 01       		.uleb128 0x1
- 1778 0692 50       		.byte	0x50
- 1779 0693 02       		.uleb128 0x2
- 1780 0694 08       		.byte	0x8
- 1781 0695 46       		.byte	0x46
- 1782 0696 00       		.byte	0
- 1783 0697 13       		.uleb128 0x13
- 1784 0698 2C000000 		.4byte	.LVL78
- 1785 069c 070A0000 		.4byte	0xa07
- 1786 06a0 AB060000 		.4byte	0x6ab
- 1787 06a4 14       		.uleb128 0x14
- 1788 06a5 01       		.uleb128 0x1
- 1789 06a6 50       		.byte	0x50
- 1790 06a7 02       		.uleb128 0x2
- 1791 06a8 08       		.byte	0x8
- 1792 06a9 FA       		.byte	0xfa
- 1793 06aa 00       		.byte	0
- 1794 06ab 13       		.uleb128 0x13
- 1795 06ac 34000000 		.4byte	.LVL79
- 1796 06b0 E6090000 		.4byte	0x9e6
- 1797 06b4 BE060000 		.4byte	0x6be
- 1798 06b8 14       		.uleb128 0x14
- 1799 06b9 01       		.uleb128 0x1
- 1800 06ba 50       		.byte	0x50
- 1801 06bb 01       		.uleb128 0x1
- 1802 06bc 45       		.byte	0x45
- 1803 06bd 00       		.byte	0
- 1804 06be 13       		.uleb128 0x13
- 1805 06bf 3A000000 		.4byte	.LVL80
- 1806 06c3 F1090000 		.4byte	0x9f1
- 1807 06c7 D2060000 		.4byte	0x6d2
- 1808 06cb 14       		.uleb128 0x14
- 1809 06cc 01       		.uleb128 0x1
- 1810 06cd 50       		.byte	0x50
- 1811 06ce 02       		.uleb128 0x2
- 1812 06cf 08       		.byte	0x8
- 1813 06d0 45       		.byte	0x45
- 1814 06d1 00       		.byte	0
- 1815 06d2 17       		.uleb128 0x17
- 1816 06d3 3E000000 		.4byte	.LVL81
- 1817 06d7 FC090000 		.4byte	0x9fc
- 1818 06db 17       		.uleb128 0x17
- 1819 06dc 46000000 		.4byte	.LVL82
- 1820 06e0 65020000 		.4byte	0x265
- 1821 06e4 13       		.uleb128 0x13
- 1822 06e5 4C000000 		.4byte	.LVL83
- 1823 06e9 070A0000 		.4byte	0xa07
- 1824 06ed F7060000 		.4byte	0x6f7
- 1825 06f1 14       		.uleb128 0x14
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 41
+ 1769 0681 01       		.uleb128 0x1
+ 1770 0682 44       		.byte	0x44
+ 1771 0683 00       		.byte	0
+ 1772 0684 13       		.uleb128 0x13
+ 1773 0685 26000000 		.4byte	.LVL77
+ 1774 0689 F3090000 		.4byte	0x9f3
+ 1775 068d 98060000 		.4byte	0x698
+ 1776 0691 14       		.uleb128 0x14
+ 1777 0692 01       		.uleb128 0x1
+ 1778 0693 50       		.byte	0x50
+ 1779 0694 02       		.uleb128 0x2
+ 1780 0695 08       		.byte	0x8
+ 1781 0696 46       		.byte	0x46
+ 1782 0697 00       		.byte	0
+ 1783 0698 13       		.uleb128 0x13
+ 1784 0699 2E000000 		.4byte	.LVL78
+ 1785 069d 090A0000 		.4byte	0xa09
+ 1786 06a1 AD060000 		.4byte	0x6ad
+ 1787 06a5 14       		.uleb128 0x14
+ 1788 06a6 01       		.uleb128 0x1
+ 1789 06a7 50       		.byte	0x50
+ 1790 06a8 03       		.uleb128 0x3
+ 1791 06a9 0A       		.byte	0xa
+ 1792 06aa 9001     		.2byte	0x190
+ 1793 06ac 00       		.byte	0
+ 1794 06ad 13       		.uleb128 0x13
+ 1795 06ae 36000000 		.4byte	.LVL79
+ 1796 06b2 E8090000 		.4byte	0x9e8
+ 1797 06b6 C0060000 		.4byte	0x6c0
+ 1798 06ba 14       		.uleb128 0x14
+ 1799 06bb 01       		.uleb128 0x1
+ 1800 06bc 50       		.byte	0x50
+ 1801 06bd 01       		.uleb128 0x1
+ 1802 06be 45       		.byte	0x45
+ 1803 06bf 00       		.byte	0
+ 1804 06c0 13       		.uleb128 0x13
+ 1805 06c1 3C000000 		.4byte	.LVL80
+ 1806 06c5 F3090000 		.4byte	0x9f3
+ 1807 06c9 D4060000 		.4byte	0x6d4
+ 1808 06cd 14       		.uleb128 0x14
+ 1809 06ce 01       		.uleb128 0x1
+ 1810 06cf 50       		.byte	0x50
+ 1811 06d0 02       		.uleb128 0x2
+ 1812 06d1 08       		.byte	0x8
+ 1813 06d2 45       		.byte	0x45
+ 1814 06d3 00       		.byte	0
+ 1815 06d4 17       		.uleb128 0x17
+ 1816 06d5 40000000 		.4byte	.LVL81
+ 1817 06d9 FE090000 		.4byte	0x9fe
+ 1818 06dd 17       		.uleb128 0x17
+ 1819 06de 48000000 		.4byte	.LVL82
+ 1820 06e2 65020000 		.4byte	0x265
+ 1821 06e6 13       		.uleb128 0x13
+ 1822 06e7 4E000000 		.4byte	.LVL83
+ 1823 06eb 090A0000 		.4byte	0xa09
+ 1824 06ef F9060000 		.4byte	0x6f9
+ 1825 06f3 14       		.uleb128 0x14
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 41
 
 
- 1826 06f2 01       		.uleb128 0x1
- 1827 06f3 50       		.byte	0x50
- 1828 06f4 01       		.uleb128 0x1
- 1829 06f5 3A       		.byte	0x3a
- 1830 06f6 00       		.byte	0
- 1831 06f7 13       		.uleb128 0x13
- 1832 06f8 52000000 		.4byte	.LVL84
- 1833 06fc E6090000 		.4byte	0x9e6
- 1834 0700 0B070000 		.4byte	0x70b
- 1835 0704 14       		.uleb128 0x14
- 1836 0705 01       		.uleb128 0x1
- 1837 0706 50       		.byte	0x50
- 1838 0707 02       		.uleb128 0x2
- 1839 0708 08       		.byte	0x8
- 1840 0709 46       		.byte	0x46
- 1841 070a 00       		.byte	0
- 1842 070b 13       		.uleb128 0x13
- 1843 070c 58000000 		.4byte	.LVL85
- 1844 0710 F1090000 		.4byte	0x9f1
- 1845 0714 1E070000 		.4byte	0x71e
- 1846 0718 14       		.uleb128 0x14
- 1847 0719 01       		.uleb128 0x1
- 1848 071a 50       		.byte	0x50
- 1849 071b 01       		.uleb128 0x1
- 1850 071c 44       		.byte	0x44
- 1851 071d 00       		.byte	0
- 1852 071e 13       		.uleb128 0x13
- 1853 071f 5E000000 		.4byte	.LVL86
- 1854 0723 070A0000 		.4byte	0xa07
- 1855 0727 32070000 		.4byte	0x732
- 1856 072b 14       		.uleb128 0x14
- 1857 072c 01       		.uleb128 0x1
- 1858 072d 50       		.byte	0x50
- 1859 072e 02       		.uleb128 0x2
- 1860 072f 08       		.byte	0x8
- 1861 0730 3C       		.byte	0x3c
- 1862 0731 00       		.byte	0
- 1863 0732 17       		.uleb128 0x17
- 1864 0733 62000000 		.4byte	.LVL87
- 1865 0737 2B020000 		.4byte	0x22b
- 1866 073b 13       		.uleb128 0x13
- 1867 073c 68000000 		.4byte	.LVL88
- 1868 0740 540A0000 		.4byte	0xa54
- 1869 0744 4E070000 		.4byte	0x74e
- 1870 0748 14       		.uleb128 0x14
- 1871 0749 01       		.uleb128 0x1
- 1872 074a 50       		.byte	0x50
- 1873 074b 01       		.uleb128 0x1
- 1874 074c 30       		.byte	0x30
- 1875 074d 00       		.byte	0
- 1876 074e 15       		.uleb128 0x15
- 1877 074f 70000000 		.4byte	.LVL89
- 1878 0753 070A0000 		.4byte	0xa07
- 1879 0757 14       		.uleb128 0x14
- 1880 0758 01       		.uleb128 0x1
- 1881 0759 50       		.byte	0x50
- 1882 075a 03       		.uleb128 0x3
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 42
+ 1826 06f4 01       		.uleb128 0x1
+ 1827 06f5 50       		.byte	0x50
+ 1828 06f6 01       		.uleb128 0x1
+ 1829 06f7 3A       		.byte	0x3a
+ 1830 06f8 00       		.byte	0
+ 1831 06f9 13       		.uleb128 0x13
+ 1832 06fa 54000000 		.4byte	.LVL84
+ 1833 06fe E8090000 		.4byte	0x9e8
+ 1834 0702 0D070000 		.4byte	0x70d
+ 1835 0706 14       		.uleb128 0x14
+ 1836 0707 01       		.uleb128 0x1
+ 1837 0708 50       		.byte	0x50
+ 1838 0709 02       		.uleb128 0x2
+ 1839 070a 08       		.byte	0x8
+ 1840 070b 46       		.byte	0x46
+ 1841 070c 00       		.byte	0
+ 1842 070d 13       		.uleb128 0x13
+ 1843 070e 5A000000 		.4byte	.LVL85
+ 1844 0712 F3090000 		.4byte	0x9f3
+ 1845 0716 20070000 		.4byte	0x720
+ 1846 071a 14       		.uleb128 0x14
+ 1847 071b 01       		.uleb128 0x1
+ 1848 071c 50       		.byte	0x50
+ 1849 071d 01       		.uleb128 0x1
+ 1850 071e 44       		.byte	0x44
+ 1851 071f 00       		.byte	0
+ 1852 0720 13       		.uleb128 0x13
+ 1853 0721 60000000 		.4byte	.LVL86
+ 1854 0725 090A0000 		.4byte	0xa09
+ 1855 0729 34070000 		.4byte	0x734
+ 1856 072d 14       		.uleb128 0x14
+ 1857 072e 01       		.uleb128 0x1
+ 1858 072f 50       		.byte	0x50
+ 1859 0730 02       		.uleb128 0x2
+ 1860 0731 08       		.byte	0x8
+ 1861 0732 3C       		.byte	0x3c
+ 1862 0733 00       		.byte	0
+ 1863 0734 17       		.uleb128 0x17
+ 1864 0735 64000000 		.4byte	.LVL87
+ 1865 0739 2B020000 		.4byte	0x22b
+ 1866 073d 13       		.uleb128 0x13
+ 1867 073e 6A000000 		.4byte	.LVL88
+ 1868 0742 560A0000 		.4byte	0xa56
+ 1869 0746 50070000 		.4byte	0x750
+ 1870 074a 14       		.uleb128 0x14
+ 1871 074b 01       		.uleb128 0x1
+ 1872 074c 50       		.byte	0x50
+ 1873 074d 01       		.uleb128 0x1
+ 1874 074e 30       		.byte	0x30
+ 1875 074f 00       		.byte	0
+ 1876 0750 15       		.uleb128 0x15
+ 1877 0751 72000000 		.4byte	.LVL89
+ 1878 0755 090A0000 		.4byte	0xa09
+ 1879 0759 14       		.uleb128 0x14
+ 1880 075a 01       		.uleb128 0x1
+ 1881 075b 50       		.byte	0x50
+ 1882 075c 03       		.uleb128 0x3
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 42
 
 
- 1883 075b 0A       		.byte	0xa
- 1884 075c E803     		.2byte	0x3e8
- 1885 075e 00       		.byte	0
- 1886 075f 00       		.byte	0
- 1887 0760 1B       		.uleb128 0x1b
- 1888 0761 6B010000 		.4byte	.LASF51
- 1889 0765 02       		.byte	0x2
- 1890 0766 4C       		.byte	0x4c
- 1891 0767 00000000 		.4byte	.LFB70
- 1892 076b 40000000 		.4byte	.LFE70-.LFB70
- 1893 076f 01       		.uleb128 0x1
- 1894 0770 9C       		.byte	0x9c
- 1895 0771 A4070000 		.4byte	0x7a4
- 1896 0775 1C       		.uleb128 0x1c
- 1897 0776 02000000 		.4byte	.LBB2
- 1898 077a 30000000 		.4byte	.LBE2-.LBB2
- 1899 077e 1D       		.uleb128 0x1d
- 1900 077f 726F7700 		.ascii	"row\000"
- 1901 0783 02       		.byte	0x2
- 1902 0784 4E       		.byte	0x4e
- 1903 0785 8C000000 		.4byte	0x8c
- 1904 0789 E8000000 		.4byte	.LLST3
- 1905 078d 1E       		.uleb128 0x1e
- 1906 078e 00000000 		.4byte	.Ldebug_ranges0+0
- 1907 0792 1D       		.uleb128 0x1d
- 1908 0793 636F6C00 		.ascii	"col\000"
- 1909 0797 02       		.byte	0x2
- 1910 0798 52       		.byte	0x52
- 1911 0799 8C000000 		.4byte	0x8c
- 1912 079d 12010000 		.4byte	.LLST4
- 1913 07a1 00       		.byte	0
- 1914 07a2 00       		.byte	0
- 1915 07a3 00       		.byte	0
- 1916 07a4 1F       		.uleb128 0x1f
- 1917 07a5 21030000 		.4byte	.LASF88
- 1918 07a9 02       		.byte	0x2
- 1919 07aa 5E       		.byte	0x5e
- 1920 07ab F1070000 		.4byte	0x7f1
- 1921 07af 00000000 		.4byte	.LFB71
- 1922 07b3 20000000 		.4byte	.LFE71-.LFB71
- 1923 07b7 01       		.uleb128 0x1
- 1924 07b8 9C       		.byte	0x9c
- 1925 07b9 F1070000 		.4byte	0x7f1
- 1926 07bd 17       		.uleb128 0x17
- 1927 07be 06000000 		.4byte	.LVL98
- 1928 07c2 60070000 		.4byte	0x760
- 1929 07c6 15       		.uleb128 0x15
- 1930 07c7 12000000 		.4byte	.LVL99
- 1931 07cb 5F0A0000 		.4byte	0xa5f
- 1932 07cf 14       		.uleb128 0x14
- 1933 07d0 01       		.uleb128 0x1
- 1934 07d1 50       		.byte	0x50
- 1935 07d2 05       		.uleb128 0x5
- 1936 07d3 03       		.byte	0x3
- 1937 07d4 00000000 		.4byte	map
- 1938 07d8 14       		.uleb128 0x14
- 1939 07d9 01       		.uleb128 0x1
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 43
+ 1883 075d 0A       		.byte	0xa
+ 1884 075e E803     		.2byte	0x3e8
+ 1885 0760 00       		.byte	0
+ 1886 0761 00       		.byte	0
+ 1887 0762 1B       		.uleb128 0x1b
+ 1888 0763 6B010000 		.4byte	.LASF51
+ 1889 0767 02       		.byte	0x2
+ 1890 0768 4C       		.byte	0x4c
+ 1891 0769 00000000 		.4byte	.LFB70
+ 1892 076d 40000000 		.4byte	.LFE70-.LFB70
+ 1893 0771 01       		.uleb128 0x1
+ 1894 0772 9C       		.byte	0x9c
+ 1895 0773 A6070000 		.4byte	0x7a6
+ 1896 0777 1C       		.uleb128 0x1c
+ 1897 0778 02000000 		.4byte	.LBB2
+ 1898 077c 30000000 		.4byte	.LBE2-.LBB2
+ 1899 0780 1D       		.uleb128 0x1d
+ 1900 0781 726F7700 		.ascii	"row\000"
+ 1901 0785 02       		.byte	0x2
+ 1902 0786 4E       		.byte	0x4e
+ 1903 0787 8C000000 		.4byte	0x8c
+ 1904 078b E8000000 		.4byte	.LLST3
+ 1905 078f 1E       		.uleb128 0x1e
+ 1906 0790 00000000 		.4byte	.Ldebug_ranges0+0
+ 1907 0794 1D       		.uleb128 0x1d
+ 1908 0795 636F6C00 		.ascii	"col\000"
+ 1909 0799 02       		.byte	0x2
+ 1910 079a 52       		.byte	0x52
+ 1911 079b 8C000000 		.4byte	0x8c
+ 1912 079f 12010000 		.4byte	.LLST4
+ 1913 07a3 00       		.byte	0
+ 1914 07a4 00       		.byte	0
+ 1915 07a5 00       		.byte	0
+ 1916 07a6 1F       		.uleb128 0x1f
+ 1917 07a7 21030000 		.4byte	.LASF88
+ 1918 07ab 02       		.byte	0x2
+ 1919 07ac 5E       		.byte	0x5e
+ 1920 07ad F3070000 		.4byte	0x7f3
+ 1921 07b1 00000000 		.4byte	.LFB71
+ 1922 07b5 20000000 		.4byte	.LFE71-.LFB71
+ 1923 07b9 01       		.uleb128 0x1
+ 1924 07ba 9C       		.byte	0x9c
+ 1925 07bb F3070000 		.4byte	0x7f3
+ 1926 07bf 17       		.uleb128 0x17
+ 1927 07c0 06000000 		.4byte	.LVL98
+ 1928 07c4 62070000 		.4byte	0x762
+ 1929 07c8 15       		.uleb128 0x15
+ 1930 07c9 12000000 		.4byte	.LVL99
+ 1931 07cd 610A0000 		.4byte	0xa61
+ 1932 07d1 14       		.uleb128 0x14
+ 1933 07d2 01       		.uleb128 0x1
+ 1934 07d3 50       		.byte	0x50
+ 1935 07d4 05       		.uleb128 0x5
+ 1936 07d5 03       		.byte	0x3
+ 1937 07d6 00000000 		.4byte	map
+ 1938 07da 14       		.uleb128 0x14
+ 1939 07db 01       		.uleb128 0x1
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 43
 
 
- 1940 07da 51       		.byte	0x51
- 1941 07db 05       		.uleb128 0x5
- 1942 07dc 03       		.byte	0x3
- 1943 07dd 3C000000 		.4byte	.LANCHOR1+60
- 1944 07e1 14       		.uleb128 0x14
- 1945 07e2 01       		.uleb128 0x1
- 1946 07e3 52       		.byte	0x52
- 1947 07e4 01       		.uleb128 0x1
- 1948 07e5 33       		.byte	0x33
- 1949 07e6 14       		.uleb128 0x14
- 1950 07e7 01       		.uleb128 0x1
- 1951 07e8 53       		.byte	0x53
- 1952 07e9 05       		.uleb128 0x5
- 1953 07ea 03       		.byte	0x3
- 1954 07eb 00000000 		.4byte	route
- 1955 07ef 00       		.byte	0
- 1956 07f0 00       		.byte	0
- 1957 07f1 02       		.uleb128 0x2
- 1958 07f2 01       		.byte	0x1
- 1959 07f3 02       		.byte	0x2
- 1960 07f4 6F030000 		.4byte	.LASF50
- 1961 07f8 1B       		.uleb128 0x1b
- 1962 07f9 B0000000 		.4byte	.LASF52
- 1963 07fd 02       		.byte	0x2
- 1964 07fe 6C       		.byte	0x6c
- 1965 07ff 00000000 		.4byte	.LFB72
- 1966 0803 B0000000 		.4byte	.LFE72-.LFB72
- 1967 0807 01       		.uleb128 0x1
- 1968 0808 9C       		.byte	0x9c
- 1969 0809 BB080000 		.4byte	0x8bb
- 1970 080d 19       		.uleb128 0x19
- 1971 080e EE040000 		.4byte	.LASF53
- 1972 0812 02       		.byte	0x2
- 1973 0813 6E       		.byte	0x6e
- 1974 0814 6E010000 		.4byte	0x16e
- 1975 0818 3B010000 		.4byte	.LLST5
- 1976 081c 19       		.uleb128 0x19
- 1977 081d 73010000 		.4byte	.LASF54
- 1978 0821 02       		.byte	0x2
- 1979 0822 6F       		.byte	0x6f
- 1980 0823 6E010000 		.4byte	0x16e
- 1981 0827 64010000 		.4byte	.LLST6
- 1982 082b 20       		.uleb128 0x20
- 1983 082c 18000000 		.4byte	.Ldebug_ranges0+0x18
- 1984 0830 96080000 		.4byte	0x896
- 1985 0834 1D       		.uleb128 0x1d
- 1986 0835 6900     		.ascii	"i\000"
- 1987 0837 02       		.byte	0x2
- 1988 0838 A7       		.byte	0xa7
- 1989 0839 7E000000 		.4byte	0x7e
- 1990 083d 98010000 		.4byte	.LLST7
- 1991 0841 13       		.uleb128 0x13
- 1992 0842 78000000 		.4byte	.LVL111
- 1993 0846 6A0A0000 		.4byte	0xa6a
- 1994 084a 59080000 		.4byte	0x859
- 1995 084e 14       		.uleb128 0x14
- 1996 084f 01       		.uleb128 0x1
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 44
+ 1940 07dc 51       		.byte	0x51
+ 1941 07dd 05       		.uleb128 0x5
+ 1942 07de 03       		.byte	0x3
+ 1943 07df 3C000000 		.4byte	.LANCHOR1+60
+ 1944 07e3 14       		.uleb128 0x14
+ 1945 07e4 01       		.uleb128 0x1
+ 1946 07e5 52       		.byte	0x52
+ 1947 07e6 01       		.uleb128 0x1
+ 1948 07e7 33       		.byte	0x33
+ 1949 07e8 14       		.uleb128 0x14
+ 1950 07e9 01       		.uleb128 0x1
+ 1951 07ea 53       		.byte	0x53
+ 1952 07eb 05       		.uleb128 0x5
+ 1953 07ec 03       		.byte	0x3
+ 1954 07ed 00000000 		.4byte	route
+ 1955 07f1 00       		.byte	0
+ 1956 07f2 00       		.byte	0
+ 1957 07f3 02       		.uleb128 0x2
+ 1958 07f4 01       		.byte	0x1
+ 1959 07f5 02       		.byte	0x2
+ 1960 07f6 6F030000 		.4byte	.LASF50
+ 1961 07fa 1B       		.uleb128 0x1b
+ 1962 07fb B0000000 		.4byte	.LASF52
+ 1963 07ff 02       		.byte	0x2
+ 1964 0800 6C       		.byte	0x6c
+ 1965 0801 00000000 		.4byte	.LFB72
+ 1966 0805 B0000000 		.4byte	.LFE72-.LFB72
+ 1967 0809 01       		.uleb128 0x1
+ 1968 080a 9C       		.byte	0x9c
+ 1969 080b BD080000 		.4byte	0x8bd
+ 1970 080f 19       		.uleb128 0x19
+ 1971 0810 EE040000 		.4byte	.LASF53
+ 1972 0814 02       		.byte	0x2
+ 1973 0815 6E       		.byte	0x6e
+ 1974 0816 6E010000 		.4byte	0x16e
+ 1975 081a 3B010000 		.4byte	.LLST5
+ 1976 081e 19       		.uleb128 0x19
+ 1977 081f 73010000 		.4byte	.LASF54
+ 1978 0823 02       		.byte	0x2
+ 1979 0824 6F       		.byte	0x6f
+ 1980 0825 6E010000 		.4byte	0x16e
+ 1981 0829 64010000 		.4byte	.LLST6
+ 1982 082d 20       		.uleb128 0x20
+ 1983 082e 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 1984 0832 98080000 		.4byte	0x898
+ 1985 0836 1D       		.uleb128 0x1d
+ 1986 0837 6900     		.ascii	"i\000"
+ 1987 0839 02       		.byte	0x2
+ 1988 083a A7       		.byte	0xa7
+ 1989 083b 7E000000 		.4byte	0x7e
+ 1990 083f 98010000 		.4byte	.LLST7
+ 1991 0843 13       		.uleb128 0x13
+ 1992 0844 78000000 		.4byte	.LVL111
+ 1993 0848 6C0A0000 		.4byte	0xa6c
+ 1994 084c 5B080000 		.4byte	0x85b
+ 1995 0850 14       		.uleb128 0x14
+ 1996 0851 01       		.uleb128 0x1
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 44
 
 
- 1997 0850 50       		.byte	0x50
- 1998 0851 01       		.uleb128 0x1
- 1999 0852 48       		.byte	0x48
- 2000 0853 14       		.uleb128 0x14
- 2001 0854 01       		.uleb128 0x1
- 2002 0855 51       		.byte	0x51
- 2003 0856 01       		.uleb128 0x1
- 2004 0857 31       		.byte	0x31
- 2005 0858 00       		.byte	0
- 2006 0859 13       		.uleb128 0x13
- 2007 085a 7E000000 		.4byte	.LVL112
- 2008 085e 070A0000 		.4byte	0xa07
- 2009 0862 6D080000 		.4byte	0x86d
- 2010 0866 14       		.uleb128 0x14
- 2011 0867 01       		.uleb128 0x1
- 2012 0868 50       		.byte	0x50
- 2013 0869 02       		.uleb128 0x2
- 2014 086a 08       		.byte	0x8
- 2015 086b C8       		.byte	0xc8
- 2016 086c 00       		.byte	0
- 2017 086d 13       		.uleb128 0x13
- 2018 086e 86000000 		.4byte	.LVL113
- 2019 0872 6A0A0000 		.4byte	0xa6a
- 2020 0876 85080000 		.4byte	0x885
- 2021 087a 14       		.uleb128 0x14
- 2022 087b 01       		.uleb128 0x1
- 2023 087c 50       		.byte	0x50
- 2024 087d 01       		.uleb128 0x1
- 2025 087e 3C       		.byte	0x3c
- 2026 087f 14       		.uleb128 0x14
- 2027 0880 01       		.uleb128 0x1
- 2028 0881 51       		.byte	0x51
- 2029 0882 01       		.uleb128 0x1
- 2030 0883 31       		.byte	0x31
- 2031 0884 00       		.byte	0
- 2032 0885 15       		.uleb128 0x15
- 2033 0886 8C000000 		.4byte	.LVL114
- 2034 088a 070A0000 		.4byte	0xa07
- 2035 088e 14       		.uleb128 0x14
- 2036 088f 01       		.uleb128 0x1
- 2037 0890 50       		.byte	0x50
- 2038 0891 02       		.uleb128 0x2
- 2039 0892 08       		.byte	0x8
- 2040 0893 C8       		.byte	0xc8
- 2041 0894 00       		.byte	0
- 2042 0895 00       		.byte	0
- 2043 0896 17       		.uleb128 0x17
- 2044 0897 14000000 		.4byte	.LVL100
- 2045 089b 2B020000 		.4byte	0x22b
- 2046 089f 17       		.uleb128 0x17
- 2047 08a0 38000000 		.4byte	.LVL105
- 2048 08a4 A3030000 		.4byte	0x3a3
- 2049 08a8 17       		.uleb128 0x17
- 2050 08a9 3E000000 		.4byte	.LVL107
- 2051 08ad D0040000 		.4byte	0x4d0
- 2052 08b1 17       		.uleb128 0x17
- 2053 08b2 44000000 		.4byte	.LVL109
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 45
+ 1997 0852 50       		.byte	0x50
+ 1998 0853 01       		.uleb128 0x1
+ 1999 0854 48       		.byte	0x48
+ 2000 0855 14       		.uleb128 0x14
+ 2001 0856 01       		.uleb128 0x1
+ 2002 0857 51       		.byte	0x51
+ 2003 0858 01       		.uleb128 0x1
+ 2004 0859 31       		.byte	0x31
+ 2005 085a 00       		.byte	0
+ 2006 085b 13       		.uleb128 0x13
+ 2007 085c 7E000000 		.4byte	.LVL112
+ 2008 0860 090A0000 		.4byte	0xa09
+ 2009 0864 6F080000 		.4byte	0x86f
+ 2010 0868 14       		.uleb128 0x14
+ 2011 0869 01       		.uleb128 0x1
+ 2012 086a 50       		.byte	0x50
+ 2013 086b 02       		.uleb128 0x2
+ 2014 086c 08       		.byte	0x8
+ 2015 086d C8       		.byte	0xc8
+ 2016 086e 00       		.byte	0
+ 2017 086f 13       		.uleb128 0x13
+ 2018 0870 86000000 		.4byte	.LVL113
+ 2019 0874 6C0A0000 		.4byte	0xa6c
+ 2020 0878 87080000 		.4byte	0x887
+ 2021 087c 14       		.uleb128 0x14
+ 2022 087d 01       		.uleb128 0x1
+ 2023 087e 50       		.byte	0x50
+ 2024 087f 01       		.uleb128 0x1
+ 2025 0880 3C       		.byte	0x3c
+ 2026 0881 14       		.uleb128 0x14
+ 2027 0882 01       		.uleb128 0x1
+ 2028 0883 51       		.byte	0x51
+ 2029 0884 01       		.uleb128 0x1
+ 2030 0885 31       		.byte	0x31
+ 2031 0886 00       		.byte	0
+ 2032 0887 15       		.uleb128 0x15
+ 2033 0888 8C000000 		.4byte	.LVL114
+ 2034 088c 090A0000 		.4byte	0xa09
+ 2035 0890 14       		.uleb128 0x14
+ 2036 0891 01       		.uleb128 0x1
+ 2037 0892 50       		.byte	0x50
+ 2038 0893 02       		.uleb128 0x2
+ 2039 0894 08       		.byte	0x8
+ 2040 0895 C8       		.byte	0xc8
+ 2041 0896 00       		.byte	0
+ 2042 0897 00       		.byte	0
+ 2043 0898 17       		.uleb128 0x17
+ 2044 0899 14000000 		.4byte	.LVL100
+ 2045 089d 2B020000 		.4byte	0x22b
+ 2046 08a1 17       		.uleb128 0x17
+ 2047 08a2 38000000 		.4byte	.LVL105
+ 2048 08a6 A3030000 		.4byte	0x3a3
+ 2049 08aa 17       		.uleb128 0x17
+ 2050 08ab 3E000000 		.4byte	.LVL107
+ 2051 08af D0040000 		.4byte	0x4d0
+ 2052 08b3 17       		.uleb128 0x17
+ 2053 08b4 44000000 		.4byte	.LVL109
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 45
 
 
- 2054 08b6 0E060000 		.4byte	0x60e
- 2055 08ba 00       		.byte	0
- 2056 08bb 21       		.uleb128 0x21
- 2057 08bc C3000000 		.4byte	.LASF89
- 2058 08c0 02       		.byte	0x2
- 2059 08c1 B5       		.byte	0xb5
- 2060 08c2 7E000000 		.4byte	0x7e
- 2061 08c6 00000000 		.4byte	.LFB73
- 2062 08ca 34000000 		.4byte	.LFE73-.LFB73
- 2063 08ce 01       		.uleb128 0x1
- 2064 08cf 9C       		.byte	0x9c
- 2065 08d0 38090000 		.4byte	0x938
- 2066 08d4 17       		.uleb128 0x17
- 2067 08d5 06000000 		.4byte	.LVL119
- 2068 08d9 750A0000 		.4byte	0xa75
- 2069 08dd 17       		.uleb128 0x17
- 2070 08de 0A000000 		.4byte	.LVL120
- 2071 08e2 800A0000 		.4byte	0xa80
- 2072 08e6 17       		.uleb128 0x17
- 2073 08e7 0E000000 		.4byte	.LVL121
- 2074 08eb 8B0A0000 		.4byte	0xa8b
- 2075 08ef 17       		.uleb128 0x17
- 2076 08f0 12000000 		.4byte	.LVL122
- 2077 08f4 960A0000 		.4byte	0xa96
- 2078 08f8 17       		.uleb128 0x17
- 2079 08f9 16000000 		.4byte	.LVL123
- 2080 08fd A10A0000 		.4byte	0xaa1
- 2081 0901 17       		.uleb128 0x17
- 2082 0902 1A000000 		.4byte	.LVL124
- 2083 0906 AC0A0000 		.4byte	0xaac
- 2084 090a 17       		.uleb128 0x17
- 2085 090b 1E000000 		.4byte	.LVL125
- 2086 090f B70A0000 		.4byte	0xab7
- 2087 0913 17       		.uleb128 0x17
- 2088 0914 22000000 		.4byte	.LVL126
- 2089 0918 C20A0000 		.4byte	0xac2
- 2090 091c 17       		.uleb128 0x17
- 2091 091d 26000000 		.4byte	.LVL127
- 2092 0921 CD0A0000 		.4byte	0xacd
- 2093 0925 17       		.uleb128 0x17
- 2094 0926 2A000000 		.4byte	.LVL128
- 2095 092a A4070000 		.4byte	0x7a4
- 2096 092e 17       		.uleb128 0x17
- 2097 092f 32000000 		.4byte	.LVL129
- 2098 0933 F8070000 		.4byte	0x7f8
- 2099 0937 00       		.byte	0
- 2100 0938 22       		.uleb128 0x22
- 2101 0939 23000000 		.4byte	.LASF55
- 2102 093d 01       		.byte	0x1
- 2103 093e 11       		.byte	0x11
- 2104 093f 97000000 		.4byte	0x97
- 2105 0943 05       		.uleb128 0x5
- 2106 0944 03       		.byte	0x3
- 2107 0945 00000000 		.4byte	offLineCount
- 2108 0949 23       		.uleb128 0x23
- 2109 094a 17040000 		.4byte	.LASF56
- 2110 094e 07       		.byte	0x7
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 46
+ 2054 08b8 0F060000 		.4byte	0x60f
+ 2055 08bc 00       		.byte	0
+ 2056 08bd 21       		.uleb128 0x21
+ 2057 08be C3000000 		.4byte	.LASF89
+ 2058 08c2 02       		.byte	0x2
+ 2059 08c3 B5       		.byte	0xb5
+ 2060 08c4 7E000000 		.4byte	0x7e
+ 2061 08c8 00000000 		.4byte	.LFB73
+ 2062 08cc 34000000 		.4byte	.LFE73-.LFB73
+ 2063 08d0 01       		.uleb128 0x1
+ 2064 08d1 9C       		.byte	0x9c
+ 2065 08d2 3A090000 		.4byte	0x93a
+ 2066 08d6 17       		.uleb128 0x17
+ 2067 08d7 06000000 		.4byte	.LVL119
+ 2068 08db 770A0000 		.4byte	0xa77
+ 2069 08df 17       		.uleb128 0x17
+ 2070 08e0 0A000000 		.4byte	.LVL120
+ 2071 08e4 820A0000 		.4byte	0xa82
+ 2072 08e8 17       		.uleb128 0x17
+ 2073 08e9 0E000000 		.4byte	.LVL121
+ 2074 08ed 8D0A0000 		.4byte	0xa8d
+ 2075 08f1 17       		.uleb128 0x17
+ 2076 08f2 12000000 		.4byte	.LVL122
+ 2077 08f6 980A0000 		.4byte	0xa98
+ 2078 08fa 17       		.uleb128 0x17
+ 2079 08fb 16000000 		.4byte	.LVL123
+ 2080 08ff A30A0000 		.4byte	0xaa3
+ 2081 0903 17       		.uleb128 0x17
+ 2082 0904 1A000000 		.4byte	.LVL124
+ 2083 0908 AE0A0000 		.4byte	0xaae
+ 2084 090c 17       		.uleb128 0x17
+ 2085 090d 1E000000 		.4byte	.LVL125
+ 2086 0911 B90A0000 		.4byte	0xab9
+ 2087 0915 17       		.uleb128 0x17
+ 2088 0916 22000000 		.4byte	.LVL126
+ 2089 091a C40A0000 		.4byte	0xac4
+ 2090 091e 17       		.uleb128 0x17
+ 2091 091f 26000000 		.4byte	.LVL127
+ 2092 0923 CF0A0000 		.4byte	0xacf
+ 2093 0927 17       		.uleb128 0x17
+ 2094 0928 2A000000 		.4byte	.LVL128
+ 2095 092c A6070000 		.4byte	0x7a6
+ 2096 0930 17       		.uleb128 0x17
+ 2097 0931 32000000 		.4byte	.LVL129
+ 2098 0935 FA070000 		.4byte	0x7fa
+ 2099 0939 00       		.byte	0
+ 2100 093a 22       		.uleb128 0x22
+ 2101 093b 23000000 		.4byte	.LASF55
+ 2102 093f 01       		.byte	0x1
+ 2103 0940 11       		.byte	0x11
+ 2104 0941 97000000 		.4byte	0x97
+ 2105 0945 05       		.uleb128 0x5
+ 2106 0946 03       		.byte	0x3
+ 2107 0947 00000000 		.4byte	offLineCount
+ 2108 094b 23       		.uleb128 0x23
+ 2109 094c 17040000 		.4byte	.LASF56
+ 2110 0950 07       		.byte	0x7
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 46
 
 
- 2111 094f 1207     		.2byte	0x712
- 2112 0951 55090000 		.4byte	0x955
- 2113 0955 24       		.uleb128 0x24
- 2114 0956 A2000000 		.4byte	0xa2
- 2115 095a 0D       		.uleb128 0xd
- 2116 095b E8000000 		.4byte	0xe8
- 2117 095f 6A090000 		.4byte	0x96a
- 2118 0963 0E       		.uleb128 0xe
- 2119 0964 E1000000 		.4byte	0xe1
- 2120 0968 0E       		.byte	0xe
- 2121 0969 00       		.byte	0
- 2122 096a 25       		.uleb128 0x25
- 2123 096b 75030000 		.4byte	.LASF57
- 2124 096f 02       		.byte	0x2
- 2125 0970 08       		.byte	0x8
- 2126 0971 5A090000 		.4byte	0x95a
- 2127 0975 05       		.uleb128 0x5
- 2128 0976 03       		.byte	0x3
- 2129 0977 00000000 		.4byte	mazeInput
- 2130 097b 0D       		.uleb128 0xd
- 2131 097c 8C000000 		.4byte	0x8c
- 2132 0980 91090000 		.4byte	0x991
- 2133 0984 0E       		.uleb128 0xe
- 2134 0985 E1000000 		.4byte	0xe1
- 2135 0989 0E       		.byte	0xe
- 2136 098a 0E       		.uleb128 0xe
- 2137 098b E1000000 		.4byte	0xe1
- 2138 098f 12       		.byte	0x12
- 2139 0990 00       		.byte	0
- 2140 0991 26       		.uleb128 0x26
- 2141 0992 6D617000 		.ascii	"map\000"
- 2142 0996 02       		.byte	0x2
- 2143 0997 1D       		.byte	0x1d
- 2144 0998 7B090000 		.4byte	0x97b
- 2145 099c 05       		.uleb128 0x5
- 2146 099d 03       		.byte	0x3
- 2147 099e 00000000 		.4byte	map
- 2148 09a2 25       		.uleb128 0x25
- 2149 09a3 9B000000 		.4byte	.LASF58
- 2150 09a7 02       		.byte	0x2
- 2151 09a8 2F       		.byte	0x2f
- 2152 09a9 AA010000 		.4byte	0x1aa
- 2153 09ad 05       		.uleb128 0x5
- 2154 09ae 03       		.byte	0x3
- 2155 09af 00000000 		.4byte	checkpoints
- 2156 09b3 25       		.uleb128 0x25
- 2157 09b4 95000000 		.4byte	.LASF59
- 2158 09b8 02       		.byte	0x2
- 2159 09b9 40       		.byte	0x40
- 2160 09ba 20020000 		.4byte	0x220
- 2161 09be 05       		.uleb128 0x5
- 2162 09bf 03       		.byte	0x3
- 2163 09c0 00000000 		.4byte	route
- 2164 09c4 25       		.uleb128 0x25
- 2165 09c5 CC040000 		.4byte	.LASF60
- 2166 09c9 02       		.byte	0x2
- 2167 09ca 44       		.byte	0x44
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 47
+ 2111 0951 1207     		.2byte	0x712
+ 2112 0953 57090000 		.4byte	0x957
+ 2113 0957 24       		.uleb128 0x24
+ 2114 0958 A2000000 		.4byte	0xa2
+ 2115 095c 0D       		.uleb128 0xd
+ 2116 095d E8000000 		.4byte	0xe8
+ 2117 0961 6C090000 		.4byte	0x96c
+ 2118 0965 0E       		.uleb128 0xe
+ 2119 0966 E1000000 		.4byte	0xe1
+ 2120 096a 0E       		.byte	0xe
+ 2121 096b 00       		.byte	0
+ 2122 096c 25       		.uleb128 0x25
+ 2123 096d 75030000 		.4byte	.LASF57
+ 2124 0971 02       		.byte	0x2
+ 2125 0972 08       		.byte	0x8
+ 2126 0973 5C090000 		.4byte	0x95c
+ 2127 0977 05       		.uleb128 0x5
+ 2128 0978 03       		.byte	0x3
+ 2129 0979 00000000 		.4byte	mazeInput
+ 2130 097d 0D       		.uleb128 0xd
+ 2131 097e 8C000000 		.4byte	0x8c
+ 2132 0982 93090000 		.4byte	0x993
+ 2133 0986 0E       		.uleb128 0xe
+ 2134 0987 E1000000 		.4byte	0xe1
+ 2135 098b 0E       		.byte	0xe
+ 2136 098c 0E       		.uleb128 0xe
+ 2137 098d E1000000 		.4byte	0xe1
+ 2138 0991 12       		.byte	0x12
+ 2139 0992 00       		.byte	0
+ 2140 0993 26       		.uleb128 0x26
+ 2141 0994 6D617000 		.ascii	"map\000"
+ 2142 0998 02       		.byte	0x2
+ 2143 0999 1D       		.byte	0x1d
+ 2144 099a 7D090000 		.4byte	0x97d
+ 2145 099e 05       		.uleb128 0x5
+ 2146 099f 03       		.byte	0x3
+ 2147 09a0 00000000 		.4byte	map
+ 2148 09a4 25       		.uleb128 0x25
+ 2149 09a5 9B000000 		.4byte	.LASF58
+ 2150 09a9 02       		.byte	0x2
+ 2151 09aa 2F       		.byte	0x2f
+ 2152 09ab AA010000 		.4byte	0x1aa
+ 2153 09af 05       		.uleb128 0x5
+ 2154 09b0 03       		.byte	0x3
+ 2155 09b1 00000000 		.4byte	checkpoints
+ 2156 09b5 25       		.uleb128 0x25
+ 2157 09b6 95000000 		.4byte	.LASF59
+ 2158 09ba 02       		.byte	0x2
+ 2159 09bb 40       		.byte	0x40
+ 2160 09bc 20020000 		.4byte	0x220
+ 2161 09c0 05       		.uleb128 0x5
+ 2162 09c1 03       		.byte	0x3
+ 2163 09c2 00000000 		.4byte	route
+ 2164 09c6 25       		.uleb128 0x25
+ 2165 09c7 CC040000 		.4byte	.LASF60
+ 2166 09cb 02       		.byte	0x2
+ 2167 09cc 44       		.byte	0x44
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 47
 
 
- 2168 09cb 97000000 		.4byte	0x97
- 2169 09cf 05       		.uleb128 0x5
- 2170 09d0 03       		.byte	0x3
- 2171 09d1 00000000 		.4byte	commandIndex
- 2172 09d5 25       		.uleb128 0x25
- 2173 09d6 3C020000 		.4byte	.LASF61
- 2174 09da 02       		.byte	0x2
- 2175 09db 48       		.byte	0x48
- 2176 09dc 8C000000 		.4byte	0x8c
- 2177 09e0 05       		.uleb128 0x5
- 2178 09e1 03       		.byte	0x3
- 2179 09e2 00000000 		.4byte	nextCheckpoint
- 2180 09e6 27       		.uleb128 0x27
- 2181 09e7 1D020000 		.4byte	.LASF62
- 2182 09eb 1D020000 		.4byte	.LASF62
- 2183 09ef 08       		.byte	0x8
- 2184 09f0 C3       		.byte	0xc3
- 2185 09f1 27       		.uleb128 0x27
- 2186 09f2 38010000 		.4byte	.LASF63
- 2187 09f6 38010000 		.4byte	.LASF63
- 2188 09fa 09       		.byte	0x9
- 2189 09fb C3       		.byte	0xc3
- 2190 09fc 27       		.uleb128 0x27
- 2191 09fd AC030000 		.4byte	.LASF64
- 2192 0a01 AC030000 		.4byte	.LASF64
- 2193 0a05 0A       		.byte	0xa
- 2194 0a06 29       		.byte	0x29
- 2195 0a07 27       		.uleb128 0x27
- 2196 0a08 C4040000 		.4byte	.LASF65
- 2197 0a0c C4040000 		.4byte	.LASF65
- 2198 0a10 0B       		.byte	0xb
- 2199 0a11 76       		.byte	0x76
- 2200 0a12 27       		.uleb128 0x27
- 2201 0a13 51010000 		.4byte	.LASF66
- 2202 0a17 51010000 		.4byte	.LASF66
- 2203 0a1b 0C       		.byte	0xc
- 2204 0a1c 26       		.byte	0x26
- 2205 0a1d 27       		.uleb128 0x27
- 2206 0a1e D9040000 		.4byte	.LASF67
- 2207 0a22 D9040000 		.4byte	.LASF67
- 2208 0a26 0D       		.byte	0xd
- 2209 0a27 4F       		.byte	0x4f
- 2210 0a28 27       		.uleb128 0x27
- 2211 0a29 4C030000 		.4byte	.LASF68
- 2212 0a2d 4C030000 		.4byte	.LASF68
- 2213 0a31 0D       		.byte	0xd
- 2214 0a32 4E       		.byte	0x4e
- 2215 0a33 27       		.uleb128 0x27
- 2216 0a34 0B020000 		.4byte	.LASF69
- 2217 0a38 0B020000 		.4byte	.LASF69
- 2218 0a3c 0E       		.byte	0xe
- 2219 0a3d 29       		.byte	0x29
- 2220 0a3e 27       		.uleb128 0x27
- 2221 0a3f C8000000 		.4byte	.LASF70
- 2222 0a43 C8000000 		.4byte	.LASF70
- 2223 0a47 0F       		.byte	0xf
- 2224 0a48 29       		.byte	0x29
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 48
+ 2168 09cd 97000000 		.4byte	0x97
+ 2169 09d1 05       		.uleb128 0x5
+ 2170 09d2 03       		.byte	0x3
+ 2171 09d3 00000000 		.4byte	commandIndex
+ 2172 09d7 25       		.uleb128 0x25
+ 2173 09d8 3C020000 		.4byte	.LASF61
+ 2174 09dc 02       		.byte	0x2
+ 2175 09dd 48       		.byte	0x48
+ 2176 09de 8C000000 		.4byte	0x8c
+ 2177 09e2 05       		.uleb128 0x5
+ 2178 09e3 03       		.byte	0x3
+ 2179 09e4 00000000 		.4byte	nextCheckpoint
+ 2180 09e8 27       		.uleb128 0x27
+ 2181 09e9 1D020000 		.4byte	.LASF62
+ 2182 09ed 1D020000 		.4byte	.LASF62
+ 2183 09f1 08       		.byte	0x8
+ 2184 09f2 C3       		.byte	0xc3
+ 2185 09f3 27       		.uleb128 0x27
+ 2186 09f4 38010000 		.4byte	.LASF63
+ 2187 09f8 38010000 		.4byte	.LASF63
+ 2188 09fc 09       		.byte	0x9
+ 2189 09fd C3       		.byte	0xc3
+ 2190 09fe 27       		.uleb128 0x27
+ 2191 09ff AC030000 		.4byte	.LASF64
+ 2192 0a03 AC030000 		.4byte	.LASF64
+ 2193 0a07 0A       		.byte	0xa
+ 2194 0a08 29       		.byte	0x29
+ 2195 0a09 27       		.uleb128 0x27
+ 2196 0a0a C4040000 		.4byte	.LASF65
+ 2197 0a0e C4040000 		.4byte	.LASF65
+ 2198 0a12 0B       		.byte	0xb
+ 2199 0a13 76       		.byte	0x76
+ 2200 0a14 27       		.uleb128 0x27
+ 2201 0a15 51010000 		.4byte	.LASF66
+ 2202 0a19 51010000 		.4byte	.LASF66
+ 2203 0a1d 0C       		.byte	0xc
+ 2204 0a1e 26       		.byte	0x26
+ 2205 0a1f 27       		.uleb128 0x27
+ 2206 0a20 D9040000 		.4byte	.LASF67
+ 2207 0a24 D9040000 		.4byte	.LASF67
+ 2208 0a28 0D       		.byte	0xd
+ 2209 0a29 4F       		.byte	0x4f
+ 2210 0a2a 27       		.uleb128 0x27
+ 2211 0a2b 4C030000 		.4byte	.LASF68
+ 2212 0a2f 4C030000 		.4byte	.LASF68
+ 2213 0a33 0D       		.byte	0xd
+ 2214 0a34 4E       		.byte	0x4e
+ 2215 0a35 27       		.uleb128 0x27
+ 2216 0a36 0B020000 		.4byte	.LASF69
+ 2217 0a3a 0B020000 		.4byte	.LASF69
+ 2218 0a3e 0E       		.byte	0xe
+ 2219 0a3f 29       		.byte	0x29
+ 2220 0a40 27       		.uleb128 0x27
+ 2221 0a41 C8000000 		.4byte	.LASF70
+ 2222 0a45 C8000000 		.4byte	.LASF70
+ 2223 0a49 0F       		.byte	0xf
+ 2224 0a4a 29       		.byte	0x29
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 48
 
 
- 2225 0a49 27       		.uleb128 0x27
- 2226 0a4a F2030000 		.4byte	.LASF71
- 2227 0a4e F2030000 		.4byte	.LASF71
- 2228 0a52 10       		.byte	0x10
- 2229 0a53 26       		.byte	0x26
- 2230 0a54 27       		.uleb128 0x27
- 2231 0a55 DC010000 		.4byte	.LASF72
- 2232 0a59 DC010000 		.4byte	.LASF72
- 2233 0a5d 11       		.byte	0x11
- 2234 0a5e 26       		.byte	0x26
- 2235 0a5f 27       		.uleb128 0x27
- 2236 0a60 9F010000 		.4byte	.LASF73
- 2237 0a64 9F010000 		.4byte	.LASF73
- 2238 0a68 06       		.byte	0x6
- 2239 0a69 8E       		.byte	0x8e
- 2240 0a6a 27       		.uleb128 0x27
- 2241 0a6b B0010000 		.4byte	.LASF74
- 2242 0a6f B0010000 		.4byte	.LASF74
- 2243 0a73 12       		.byte	0x12
- 2244 0a74 2F       		.byte	0x2f
- 2245 0a75 27       		.uleb128 0x27
- 2246 0a76 3A000000 		.4byte	.LASF75
- 2247 0a7a 3A000000 		.4byte	.LASF75
- 2248 0a7e 08       		.byte	0x8
- 2249 0a7f 92       		.byte	0x92
- 2250 0a80 27       		.uleb128 0x27
- 2251 0a81 0A030000 		.4byte	.LASF76
- 2252 0a85 0A030000 		.4byte	.LASF76
- 2253 0a89 09       		.byte	0x9
- 2254 0a8a 92       		.byte	0x92
- 2255 0a8b 27       		.uleb128 0x27
- 2256 0a8c 21010000 		.4byte	.LASF77
- 2257 0a90 21010000 		.4byte	.LASF77
- 2258 0a94 13       		.byte	0x13
- 2259 0a95 5A       		.byte	0x5a
- 2260 0a96 27       		.uleb128 0x27
- 2261 0a97 E2030000 		.4byte	.LASF78
- 2262 0a9b E2030000 		.4byte	.LASF78
- 2263 0a9f 14       		.byte	0x14
- 2264 0aa0 5A       		.byte	0x5a
- 2265 0aa1 27       		.uleb128 0x27
- 2266 0aa2 FE030000 		.4byte	.LASF79
- 2267 0aa6 FE030000 		.4byte	.LASF79
- 2268 0aaa 15       		.byte	0x15
- 2269 0aab 5A       		.byte	0x5a
- 2270 0aac 27       		.uleb128 0x27
- 2271 0aad FB010000 		.4byte	.LASF80
- 2272 0ab1 FB010000 		.4byte	.LASF80
- 2273 0ab5 16       		.byte	0x16
- 2274 0ab6 5A       		.byte	0x5a
- 2275 0ab7 27       		.uleb128 0x27
- 2276 0ab8 4F000000 		.4byte	.LASF81
- 2277 0abc 4F000000 		.4byte	.LASF81
- 2278 0ac0 17       		.byte	0x17
- 2279 0ac1 5A       		.byte	0x5a
- 2280 0ac2 27       		.uleb128 0x27
- 2281 0ac3 DA000000 		.4byte	.LASF82
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 49
+ 2225 0a4b 27       		.uleb128 0x27
+ 2226 0a4c F2030000 		.4byte	.LASF71
+ 2227 0a50 F2030000 		.4byte	.LASF71
+ 2228 0a54 10       		.byte	0x10
+ 2229 0a55 26       		.byte	0x26
+ 2230 0a56 27       		.uleb128 0x27
+ 2231 0a57 DC010000 		.4byte	.LASF72
+ 2232 0a5b DC010000 		.4byte	.LASF72
+ 2233 0a5f 11       		.byte	0x11
+ 2234 0a60 26       		.byte	0x26
+ 2235 0a61 27       		.uleb128 0x27
+ 2236 0a62 9F010000 		.4byte	.LASF73
+ 2237 0a66 9F010000 		.4byte	.LASF73
+ 2238 0a6a 06       		.byte	0x6
+ 2239 0a6b 8E       		.byte	0x8e
+ 2240 0a6c 27       		.uleb128 0x27
+ 2241 0a6d B0010000 		.4byte	.LASF74
+ 2242 0a71 B0010000 		.4byte	.LASF74
+ 2243 0a75 12       		.byte	0x12
+ 2244 0a76 2F       		.byte	0x2f
+ 2245 0a77 27       		.uleb128 0x27
+ 2246 0a78 3A000000 		.4byte	.LASF75
+ 2247 0a7c 3A000000 		.4byte	.LASF75
+ 2248 0a80 08       		.byte	0x8
+ 2249 0a81 92       		.byte	0x92
+ 2250 0a82 27       		.uleb128 0x27
+ 2251 0a83 0A030000 		.4byte	.LASF76
+ 2252 0a87 0A030000 		.4byte	.LASF76
+ 2253 0a8b 09       		.byte	0x9
+ 2254 0a8c 92       		.byte	0x92
+ 2255 0a8d 27       		.uleb128 0x27
+ 2256 0a8e 21010000 		.4byte	.LASF77
+ 2257 0a92 21010000 		.4byte	.LASF77
+ 2258 0a96 13       		.byte	0x13
+ 2259 0a97 5A       		.byte	0x5a
+ 2260 0a98 27       		.uleb128 0x27
+ 2261 0a99 E2030000 		.4byte	.LASF78
+ 2262 0a9d E2030000 		.4byte	.LASF78
+ 2263 0aa1 14       		.byte	0x14
+ 2264 0aa2 5A       		.byte	0x5a
+ 2265 0aa3 27       		.uleb128 0x27
+ 2266 0aa4 FE030000 		.4byte	.LASF79
+ 2267 0aa8 FE030000 		.4byte	.LASF79
+ 2268 0aac 15       		.byte	0x15
+ 2269 0aad 5A       		.byte	0x5a
+ 2270 0aae 27       		.uleb128 0x27
+ 2271 0aaf FB010000 		.4byte	.LASF80
+ 2272 0ab3 FB010000 		.4byte	.LASF80
+ 2273 0ab7 16       		.byte	0x16
+ 2274 0ab8 5A       		.byte	0x5a
+ 2275 0ab9 27       		.uleb128 0x27
+ 2276 0aba 4F000000 		.4byte	.LASF81
+ 2277 0abe 4F000000 		.4byte	.LASF81
+ 2278 0ac2 17       		.byte	0x17
+ 2279 0ac3 5A       		.byte	0x5a
+ 2280 0ac4 27       		.uleb128 0x27
+ 2281 0ac5 DA000000 		.4byte	.LASF82
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 49
 
 
- 2282 0ac7 DA000000 		.4byte	.LASF82
- 2283 0acb 0D       		.byte	0xd
- 2284 0acc 48       		.byte	0x48
- 2285 0acd 27       		.uleb128 0x27
- 2286 0ace 08050000 		.4byte	.LASF83
- 2287 0ad2 08050000 		.4byte	.LASF83
- 2288 0ad6 18       		.byte	0x18
- 2289 0ad7 33       		.byte	0x33
- 2290 0ad8 00       		.byte	0
+ 2282 0ac9 DA000000 		.4byte	.LASF82
+ 2283 0acd 0D       		.byte	0xd
+ 2284 0ace 48       		.byte	0x48
+ 2285 0acf 27       		.uleb128 0x27
+ 2286 0ad0 08050000 		.4byte	.LASF83
+ 2287 0ad4 08050000 		.4byte	.LASF83
+ 2288 0ad8 18       		.byte	0x18
+ 2289 0ad9 33       		.byte	0x33
+ 2290 0ada 00       		.byte	0
  2291              		.section	.debug_abbrev,"",%progbits
  2292              	.Ldebug_abbrev0:
  2293 0000 01       		.uleb128 0x1
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2336 002b 04       		.uleb128 0x4
  2337 002c 24       		.uleb128 0x24
  2338 002d 00       		.byte	0
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 50
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 50
 
 
  2339 002e 0B       		.uleb128 0xb
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2393 0064 08       		.uleb128 0x8
  2394 0065 3A       		.uleb128 0x3a
  2395 0066 0B       		.uleb128 0xb
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 51
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 51
 
 
  2396 0067 3B       		.uleb128 0x3b
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2450 009d 00       		.byte	0
  2451 009e 00       		.byte	0
  2452 009f 0E       		.uleb128 0xe
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 52
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 52
 
 
  2453 00a0 21       		.uleb128 0x21
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2507 00d6 11       		.uleb128 0x11
  2508 00d7 01       		.uleb128 0x1
  2509 00d8 12       		.uleb128 0x12
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 53
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 53
 
 
  2510 00d9 06       		.uleb128 0x6
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2564 0117 18       		.uleb128 0x18
  2565 0118 9742     		.uleb128 0x2117
  2566 011a 19       		.uleb128 0x19
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 54
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 54
 
 
  2567 011b 01       		.uleb128 0x1
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2621 0153 00       		.byte	0
  2622 0154 00       		.byte	0
  2623 0155 1B       		.uleb128 0x1b
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 55
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 55
 
 
  2624 0156 2E       		.uleb128 0x2e
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2678 018d 00       		.byte	0
  2679 018e 1F       		.uleb128 0x1f
  2680 018f 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 56
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 56
 
 
  2681 0190 01       		.byte	0x1
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2735 01c8 06       		.uleb128 0x6
  2736 01c9 40       		.uleb128 0x40
  2737 01ca 18       		.uleb128 0x18
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 57
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 57
 
 
  2738 01cb 9742     		.uleb128 0x2117
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2792 0202 49       		.uleb128 0x49
  2793 0203 13       		.uleb128 0x13
  2794 0204 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 58
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 58
 
 
  2795 0205 19       		.uleb128 0x19
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2849 0019 00000000 		.4byte	0
  2850 001d 00000000 		.4byte	0
  2851              	.LLST1:
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 59
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 59
 
 
  2852 0021 04000000 		.4byte	.LVL18
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2906 00af 0200     		.2byte	0x2
  2907 00b1 30       		.byte	0x30
  2908 00b2 9F       		.byte	0x9f
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 60
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 60
 
 
  2909 00b3 60000000 		.4byte	.LVL40
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  2963 0145 52       		.byte	0x52
  2964 0146 3A000000 		.4byte	.LVL106
  2965 014a 3D000000 		.4byte	.LVL107-1
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 61
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 61
 
 
  2966 014e 0100     		.2byte	0x1
@@ -3658,12 +3658,12 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3020 0030 00000000 		.4byte	.LFB67
  3021 0034 9C000000 		.4byte	.LFE67-.LFB67
  3022 0038 00000000 		.4byte	.LFB68
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 62
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 62
 
 
- 3023 003c 6E000000 		.4byte	.LFE68-.LFB68
+ 3023 003c 70000000 		.4byte	.LFE68-.LFB68
  3024 0040 00000000 		.4byte	.LFB69
- 3025 0044 72000000 		.4byte	.LFE69-.LFB69
+ 3025 0044 74000000 		.4byte	.LFE69-.LFB69
  3026 0048 00000000 		.4byte	.LFB70
  3027 004c 40000000 		.4byte	.LFE70-.LFB70
  3028 0050 00000000 		.4byte	.LFB71
@@ -3699,9 +3699,9 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3058 0050 00000000 		.4byte	.LFB67
  3059 0054 9C000000 		.4byte	.LFE67
  3060 0058 00000000 		.4byte	.LFB68
- 3061 005c 6E000000 		.4byte	.LFE68
+ 3061 005c 70000000 		.4byte	.LFE68
  3062 0060 00000000 		.4byte	.LFB69
- 3063 0064 72000000 		.4byte	.LFE69
+ 3063 0064 74000000 		.4byte	.LFE69
  3064 0068 00000000 		.4byte	.LFB70
  3065 006c 40000000 		.4byte	.LFE70
  3066 0070 00000000 		.4byte	.LFB71
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3076      02005302 
  3076      00000201 
  3076      FB0E0D00 
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 63
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 63
 
 
  3076      01010101 
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3104 0084 666F7277 		.ascii	"forwardFollowing\000"
  3104      61726446 
  3104      6F6C6C6F 
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 64
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 64
 
 
  3104      77696E67 
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3130      00
  3131              	.LASF77:
  3132 0121 54696D65 		.ascii	"Timeout_1_Start\000"
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 65
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 65
 
 
  3132      6F75745F 
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3156      69646572 
  3157              	.LASF39:
  3158 01cd 66696E61 		.ascii	"finalDirection\000"
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 66
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 66
 
 
  3158      6C446972 
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3179 0293 6F6A6563 		.ascii	"oject\\psco_code\\Pathfinding_Maze\\Pathfinding_Maz"
  3179      745C7073 
  3179      636F5F63 
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 67
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 67
 
 
  3179      6F64655C 
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3202      6E746572 
  3203              	.LASF14:
  3204 0361 696E7433 		.ascii	"int32_t\000"
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 68
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 68
 
 
  3204      325F7400 
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3232      61727400 
  3233              	.LASF71:
  3234 03f2 4C45445F 		.ascii	"LED_2_Write\000"
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 69
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 69
 
 
  3234      325F5772 
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 1
  3254      616E6400 
  3255              	.LASF47:
  3256 04f6 74696D65 		.ascii	"timeout\000"
-ARM GAS  C:\Users\aale517\AppData\Local\Temp\cckcHwTg.s 			page 70
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccNSb5h3.s 			page 70
 
 
  3256      6F757400 

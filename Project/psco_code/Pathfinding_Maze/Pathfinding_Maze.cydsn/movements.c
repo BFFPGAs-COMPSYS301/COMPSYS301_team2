@@ -7,8 +7,8 @@
 #include "project.h"
 #include "astar.h"
 
-#define CELL_LENGTH 100
-#define CELL_LENGTH_SHORT 75
+#define CELL_LENGTH 85
+#define CELL_LENGTH_SHORT 65
 #define INTERSECTION_TIMEOUT 5000
 
 #define PERIOD 90
@@ -25,7 +25,7 @@ static void forwardFollowing() {
     } else {
         PWM_1_WriteCompare(PERIOD - FORWARD_SPEED); // Drive left wheel backard to quickly pivot right
         PWM_2_WriteCompare(45); 
-        CyDelay(180);
+        CyDelay(230);
     }
 }
 
@@ -38,7 +38,7 @@ static void findCorner() {
         if (offLineCount < 15) {
             PWM_1_WriteCompare(PERIOD - FORWARD_SPEED); // Drive left wheel backard to quickly pivot right
             PWM_2_WriteCompare(45); 
-            CyDelay(2);
+            CyDelay(10);
         } else {
             goForwardSlow();
         }
@@ -111,7 +111,7 @@ static void TurnLeft() {
     stopMoving();
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
-    CyDelay(250);
+    CyDelay(400);
     while (FrontSensor_Read() == 1) {
         PWM_1_WriteCompare(PERIOD - 20);
         PWM_2_WriteCompare(20);
@@ -120,7 +120,7 @@ static void TurnLeft() {
     CyDelay(10);
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
-    CyDelay(150);
+    CyDelay(170);
     stopMoving();
     LED_2_Write(0);
     CyDelay(1000);
@@ -134,7 +134,7 @@ static void TurnRight() {
     stopMoving();
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
-    CyDelay(250);
+    CyDelay(400);
     while (FrontSensor_Read() == 1) {
         PWM_1_WriteCompare(21);
         PWM_2_WriteCompare(PERIOD - 21);
