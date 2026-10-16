@@ -42,10 +42,18 @@ static void MoveForwardOneCell(Command nextCommand)
         }
 
         // Continue until the sensors detect the intersection.
-        while (LED_5_Read())
-        {
-            CyDelay(1);
-            timeout++;
+        if (nextCommand == CMD_LEFT) {
+            while (FrontLSensor_Read() && timeout < INTERSECTION_TIMEOUT)
+            {
+                CyDelay(1);
+                timeout++;
+            }
+        } else if (nextCommand == CMD_RIGHT) {
+            while (FrontRSensor_Read() && timeout < INTERSECTION_TIMEOUT)
+            {
+                CyDelay(1);
+                timeout++;
+            }
         }
     }
 

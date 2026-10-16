@@ -1,6 +1,6 @@
 // ======================================================================
 // Pathfinding_Maze.v generated from TopDesign.cysch
-// 10/15/2026 at 21:04
+// 10/16/2026 at 13:14
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -341,7 +341,7 @@ module PWM_v3_30_1 (
 
 endmodule
 
-// VDAC8_v1_90(Data_Source=0, Initial_Value=156, Strobe_Mode=0, VDAC_Range=4, VDAC_Speed=0, Voltage=2496, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=VDAC8_v1_90, CY_CONFIG_TITLE=VDAC8_1, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=VDAC8_1, CY_INSTANCE_SHORT_NAME=VDAC8_1, CY_MAJOR_VERSION=1, CY_MINOR_VERSION=90, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=VDAC8_1, )
+// VDAC8_v1_90(Data_Source=0, Initial_Value=181, Strobe_Mode=0, VDAC_Range=4, VDAC_Speed=0, Voltage=2896, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=VDAC8_v1_90, CY_CONFIG_TITLE=VDAC8_1, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=VDAC8_1, CY_INSTANCE_SHORT_NAME=VDAC8_1, CY_MAJOR_VERSION=1, CY_MINOR_VERSION=90, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=VDAC8_1, )
 module VDAC8_v1_90_2 (
     strobe,
     data,
@@ -352,7 +352,7 @@ module VDAC8_v1_90_2 (
     electrical  vOut;
 
     parameter Data_Source = 0;
-    parameter Initial_Value = 156;
+    parameter Initial_Value = 181;
     parameter Strobe_Mode = 0;
 
     electrical  Net_77;
@@ -1355,11 +1355,11 @@ module top ;
 
 	assign tmpOE__LED_3_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-	wire [0:0] tmpOE__LED_5_net;
-	wire [0:0] tmpFB_0__LED_5_net;
-	wire [0:0] tmpIO_0__LED_5_net;
-	wire [0:0] tmpINTERRUPT_0__LED_5_net;
-	electrical [0:0] tmpSIOVREF__LED_5_net;
+	wire [0:0] tmpOE__FrontLSensor_net;
+	wire [0:0] tmpFB_0__FrontLSensor_net;
+	wire [0:0] tmpIO_0__FrontLSensor_net;
+	wire [0:0] tmpINTERRUPT_0__FrontLSensor_net;
+	electrical [0:0] tmpSIOVREF__FrontLSensor_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("614ba16c-297f-4b92-a527-cb66b9cebac5"),
@@ -1414,13 +1414,13 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		LED_5
-		 (.oe(tmpOE__LED_5_net),
+		FrontLSensor
+		 (.oe(tmpOE__FrontLSensor_net),
 		  .y({Net_888}),
-		  .fb({tmpFB_0__LED_5_net[0:0]}),
-		  .io({tmpIO_0__LED_5_net[0:0]}),
-		  .siovref(tmpSIOVREF__LED_5_net),
-		  .interrupt({tmpINTERRUPT_0__LED_5_net[0:0]}),
+		  .fb({tmpFB_0__FrontLSensor_net[0:0]}),
+		  .io({tmpIO_0__FrontLSensor_net[0:0]}),
+		  .siovref(tmpSIOVREF__FrontLSensor_net),
+		  .interrupt({tmpINTERRUPT_0__FrontLSensor_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -1428,13 +1428,13 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__LED_5_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__FrontLSensor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-	wire [0:0] tmpOE__LED_4_net;
-	wire [0:0] tmpFB_0__LED_4_net;
-	wire [0:0] tmpIO_0__LED_4_net;
-	wire [0:0] tmpINTERRUPT_0__LED_4_net;
-	electrical [0:0] tmpSIOVREF__LED_4_net;
+	wire [0:0] tmpOE__FrontRSensor_net;
+	wire [0:0] tmpFB_0__FrontRSensor_net;
+	wire [0:0] tmpIO_0__FrontRSensor_net;
+	wire [0:0] tmpINTERRUPT_0__FrontRSensor_net;
+	electrical [0:0] tmpSIOVREF__FrontRSensor_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("e201efc1-17f6-44a6-b993-164576a7fb41"),
@@ -1489,13 +1489,13 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		LED_4
-		 (.oe(tmpOE__LED_4_net),
+		FrontRSensor
+		 (.oe(tmpOE__FrontRSensor_net),
 		  .y({Net_421}),
-		  .fb({tmpFB_0__LED_4_net[0:0]}),
-		  .io({tmpIO_0__LED_4_net[0:0]}),
-		  .siovref(tmpSIOVREF__LED_4_net),
-		  .interrupt({tmpINTERRUPT_0__LED_4_net[0:0]}),
+		  .fb({tmpFB_0__FrontRSensor_net[0:0]}),
+		  .io({tmpIO_0__FrontRSensor_net[0:0]}),
+		  .siovref(tmpSIOVREF__FrontRSensor_net),
+		  .interrupt({tmpINTERRUPT_0__FrontRSensor_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -1503,7 +1503,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__LED_4_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__FrontRSensor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
     PWM_v3_30_0 PWM_1 (
         .reset(1'b0),
@@ -1866,7 +1866,7 @@ module top ;
         .data(8'b00000000),
         .vOut(Net_63));
     defparam VDAC8_1.Data_Source = 0;
-    defparam VDAC8_1.Initial_Value = 156;
+    defparam VDAC8_1.Initial_Value = 181;
     defparam VDAC8_1.Strobe_Mode = 0;
 
 	wire [0:0] tmpOE__Vref_DAC1_net;

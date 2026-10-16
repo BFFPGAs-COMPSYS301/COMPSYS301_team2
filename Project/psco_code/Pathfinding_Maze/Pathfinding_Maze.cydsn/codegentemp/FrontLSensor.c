@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED_4.c  
+* File Name: FrontLSensor.c  
 * Version 2.20
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "LED_4.h"
+#include "FrontLSensor.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 LED_4__PORT == 15 && ((LED_4__MASK & 0xC0) != 0))
+	 FrontLSensor__PORT == 15 && ((FrontLSensor__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: LED_4_Write
+* Function Name: FrontLSensor_Write
 ****************************************************************************//**
 *
 * \brief Writes the value to the physical port (data output register), masking
@@ -52,17 +52,17 @@
 *  this function.
 *
 * \funcusage
-*  \snippet LED_4_SUT.c usage_LED_4_Write
+*  \snippet FrontLSensor_SUT.c usage_FrontLSensor_Write
 *******************************************************************************/
-void LED_4_Write(uint8 value)
+void FrontLSensor_Write(uint8 value)
 {
-    uint8 staticBits = (LED_4_DR & (uint8)(~LED_4_MASK));
-    LED_4_DR = staticBits | ((uint8)(value << LED_4_SHIFT) & LED_4_MASK);
+    uint8 staticBits = (FrontLSensor_DR & (uint8)(~FrontLSensor_MASK));
+    FrontLSensor_DR = staticBits | ((uint8)(value << FrontLSensor_SHIFT) & FrontLSensor_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: LED_4_SetDriveMode
+* Function Name: FrontLSensor_SetDriveMode
 ****************************************************************************//**
 *
 * \brief Sets the drive mode for each of the Pins component's pins.
@@ -85,16 +85,16 @@ void LED_4_Write(uint8 value)
 *  APIs (primary method) or disable interrupts around this function.
 *
 * \funcusage
-*  \snippet LED_4_SUT.c usage_LED_4_SetDriveMode
+*  \snippet FrontLSensor_SUT.c usage_FrontLSensor_SetDriveMode
 *******************************************************************************/
-void LED_4_SetDriveMode(uint8 mode)
+void FrontLSensor_SetDriveMode(uint8 mode)
 {
-	CyPins_SetPinDriveMode(LED_4_0, mode);
+	CyPins_SetPinDriveMode(FrontLSensor_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: LED_4_Read
+* Function Name: FrontLSensor_Read
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port (pin status register) and masks 
@@ -108,16 +108,16 @@ void LED_4_SetDriveMode(uint8 mode)
 *  The current value for the pins in the component as a right justified number.
 *
 * \funcusage
-*  \snippet LED_4_SUT.c usage_LED_4_Read  
+*  \snippet FrontLSensor_SUT.c usage_FrontLSensor_Read  
 *******************************************************************************/
-uint8 LED_4_Read(void)
+uint8 FrontLSensor_Read(void)
 {
-    return (LED_4_PS & LED_4_MASK) >> LED_4_SHIFT;
+    return (FrontLSensor_PS & FrontLSensor_MASK) >> FrontLSensor_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: LED_4_ReadDataReg
+* Function Name: FrontLSensor_ReadDataReg
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port's data output register and masks 
@@ -126,8 +126,8 @@ uint8 LED_4_Read(void)
 *
 * The data output register controls the signal applied to the physical pin in 
 * conjunction with the drive mode parameter. This is not the same as the 
-* preferred LED_4_Read() API because the 
-* LED_4_ReadDataReg() reads the data register instead of the status 
+* preferred FrontLSensor_Read() API because the 
+* FrontLSensor_ReadDataReg() reads the data register instead of the status 
 * register. For output pins this is a useful function to determine the value 
 * just written to the pin.
 *
@@ -136,19 +136,19 @@ uint8 LED_4_Read(void)
 *  justified number for the component instance.
 *
 * \funcusage
-*  \snippet LED_4_SUT.c usage_LED_4_ReadDataReg 
+*  \snippet FrontLSensor_SUT.c usage_FrontLSensor_ReadDataReg 
 *******************************************************************************/
-uint8 LED_4_ReadDataReg(void)
+uint8 FrontLSensor_ReadDataReg(void)
 {
-    return (LED_4_DR & LED_4_MASK) >> LED_4_SHIFT;
+    return (FrontLSensor_DR & FrontLSensor_MASK) >> FrontLSensor_SHIFT;
 }
 
 
 /* If interrupt is connected for this Pins component */ 
-#if defined(LED_4_INTSTAT) 
+#if defined(FrontLSensor_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: LED_4_SetInterruptMode
+    * Function Name: FrontLSensor_SetInterruptMode
     ****************************************************************************//**
     *
     * \brief Configures the interrupt mode for each of the Pins component's
@@ -161,12 +161,12 @@ uint8 LED_4_ReadDataReg(void)
     * \param position
     *  The pin position as listed in the Pins component. You may OR these to be 
     *  able to configure the interrupt mode of multiple pins within a Pins 
-    *  component. Or you may use LED_4_INTR_ALL to configure the
+    *  component. Or you may use FrontLSensor_INTR_ALL to configure the
     *  interrupt mode of all the pins in the Pins component.       
-    *  - LED_4_0_INTR       (First pin in the list)
-    *  - LED_4_1_INTR       (Second pin in the list)
+    *  - FrontLSensor_0_INTR       (First pin in the list)
+    *  - FrontLSensor_1_INTR       (Second pin in the list)
     *  - ...
-    *  - LED_4_INTR_ALL     (All pins in Pins component)
+    *  - FrontLSensor_INTR_ALL     (All pins in Pins component)
     *
     * \param mode
     *  Interrupt mode for the selected pins. Valid options are documented in
@@ -182,19 +182,19 @@ uint8 LED_4_ReadDataReg(void)
     *  port.
     *
     * \funcusage
-    *  \snippet LED_4_SUT.c usage_LED_4_SetInterruptMode
+    *  \snippet FrontLSensor_SUT.c usage_FrontLSensor_SetInterruptMode
     *******************************************************************************/
-    void LED_4_SetInterruptMode(uint16 position, uint16 mode)
+    void FrontLSensor_SetInterruptMode(uint16 position, uint16 mode)
     {
-		if((position & LED_4_0_INTR) != 0u) 
+		if((position & FrontLSensor_0_INTR) != 0u) 
 		{ 
-			 LED_4_0_INTTYPE_REG = (uint8)mode; 
+			 FrontLSensor_0_INTTYPE_REG = (uint8)mode; 
 		}
     }
     
     
     /*******************************************************************************
-    * Function Name: LED_4_ClearInterrupt
+    * Function Name: FrontLSensor_ClearInterrupt
     ****************************************************************************//**
     *
     * \brief Clears any active interrupts attached with the component and returns 
@@ -211,11 +211,11 @@ uint8 LED_4_ReadDataReg(void)
     *  those associated with the Pins component.
     *
     * \funcusage
-    *  \snippet LED_4_SUT.c usage_LED_4_ClearInterrupt
+    *  \snippet FrontLSensor_SUT.c usage_FrontLSensor_ClearInterrupt
     *******************************************************************************/
-    uint8 LED_4_ClearInterrupt(void)
+    uint8 FrontLSensor_ClearInterrupt(void)
     {
-        return (LED_4_INTSTAT & LED_4_MASK) >> LED_4_SHIFT;
+        return (FrontLSensor_INTSTAT & FrontLSensor_MASK) >> FrontLSensor_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

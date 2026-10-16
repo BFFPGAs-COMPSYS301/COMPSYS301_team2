@@ -25,10 +25,10 @@
 #include "LED_2.h"
 #include "LED_3_aliases.h"
 #include "LED_3.h"
-#include "LED_5_aliases.h"
-#include "LED_5.h"
-#include "LED_4_aliases.h"
-#include "LED_4.h"
+#include "FrontLSensor_aliases.h"
+#include "FrontLSensor.h"
+#include "FrontRSensor_aliases.h"
+#include "FrontRSensor.h"
 #include "PWM_1.h"
 #include "Clock_PWM.h"
 #include "M1_IN2_aliases.h"
@@ -77,6 +77,7 @@
 #include "BackRSensor.h"
 #include "QuadDec_1_isr.h"
 #include "QuadDec_1_Cnt16.h"
+#include "cy_em_eeprom.h"
 #include "core_cm3_psoc5.h"
 #include "CyDmac.h"
 #include "CyFlash.h"
@@ -85,7 +86,6 @@
 #include "cyPm.h"
 #include "CySpc.h"
 #include "cytypes.h"
-#include "cy_em_eeprom.h"
 
 /*[]*/
 

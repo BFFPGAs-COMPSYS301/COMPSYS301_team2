@@ -67,10 +67,12 @@ set_location "\QuadDec_1:Cnt16:CounterUDB:sC16:counterdp:u0\" datapathcell 2 5 2
 set_location "\Timeout_3:TimerUDB:sT16:timerdp:u1\" datapathcell 0 4 2 
 set_location "\Timeout_2:TimerUDB:sT16:timerdp:u1\" datapathcell 1 5 2 
 set_io "M1_IN2(0)" iocell 3 6
+# Note: port 15 is the logical name for port 8
+set_io "FrontLSensor(0)" iocell 15 1
 # Note: port 12 is the logical name for port 7
 set_io "M2_IN2_1(0)" iocell 12 0
 # Note: port 15 is the logical name for port 8
-set_io "LED_5(0)" iocell 15 1
+set_io "FrontRSensor(0)" iocell 15 0
 # Note: port 12 is the logical name for port 7
 set_io "M2_IN1_1(0)" iocell 12 1
 # Note: port 15 is the logical name for port 8
@@ -104,7 +106,5 @@ set_location "\Timeout_5:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" controlcell 2 0 6
 set_location "\Timeout_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" controlcell 2 2 6 
 set_location "\Timeout_2:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" controlcell 1 5 6 
 set_location "\Timeout_3:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" controlcell 1 4 6 
-# Note: port 15 is the logical name for port 8
-set_io "LED_4(0)" iocell 15 0
 # Note: port 15 is the logical name for port 8
 set_io "L_quad_a(0)" iocell 15 5

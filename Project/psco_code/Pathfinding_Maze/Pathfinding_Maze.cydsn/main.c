@@ -181,6 +181,7 @@ int main(void)
     
     QuadDec_1_Start();
     
+    VDAC8_1_Start();
 
     if (!BuildRoute())
     {

@@ -71,17 +71,17 @@ Vout5(0)_PAD     21300         CyBUS_CLK:R
                        3.2::Clock to Out
                        -----------------
 
-Port Name           Clock to Out  Clock Name:Phase             
-------------------  ------------  ---------------------------  
-BackLSensor(0)_PAD  27297         CyBUS_CLK:R                  
-BackRSensor(0)_PAD  25803         CyBUS_CLK:R                  
-FrontSensor(0)_PAD  23579         CyBUS_CLK:R                  
-LED_4(0)_PAD        23637         CyBUS_CLK:R                  
-LED_5(0)_PAD        22426         CyBUS_CLK:R                  
-M1_IN1(0)_PAD       21005         Clock_PWM(fixed-function):R  
-M1_IN2(0)_PAD       32450         Clock_PWM(fixed-function):R  
-M2_IN1_1(0)_PAD     21545         Clock_PWM(fixed-function):R  
-M2_IN2_1(0)_PAD     34087         Clock_PWM(fixed-function):R  
+Port Name            Clock to Out  Clock Name:Phase             
+-------------------  ------------  ---------------------------  
+BackLSensor(0)_PAD   27297         CyBUS_CLK:R                  
+BackRSensor(0)_PAD   25803         CyBUS_CLK:R                  
+FrontLSensor(0)_PAD  22426         CyBUS_CLK:R                  
+FrontRSensor(0)_PAD  23637         CyBUS_CLK:R                  
+FrontSensor(0)_PAD   23579         CyBUS_CLK:R                  
+M1_IN1(0)_PAD        21005         Clock_PWM(fixed-function):R  
+M1_IN2(0)_PAD        32450         Clock_PWM(fixed-function):R  
+M2_IN1_1(0)_PAD      21545         Clock_PWM(fixed-function):R  
+M2_IN2_1(0)_PAD      34087         Clock_PWM(fixed-function):R  
 
 
                          3.3::Pad to Pad

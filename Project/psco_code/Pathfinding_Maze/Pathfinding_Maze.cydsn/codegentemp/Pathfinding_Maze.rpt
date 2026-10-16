@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.196ms
+Loading plugins phase: Elapsed time ==> 0s.163ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -d CY8C5888LTI-LP097 -s C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -d CY8C5888LTI-LP097 -s C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 </CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.187ms
+Elaboration phase: Elapsed time ==> 1s.137ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.062ms
+HDL generation phase: Elapsed time ==> 0s.056ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -25,23 +25,23 @@ HDL generation phase: Elapsed time ==> 0s.062ms
 ======================================================================
 Compiling:  Pathfinding_Maze.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 Pathfinding_Maze.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 Pathfinding_Maze.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  Pathfinding_Maze.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 Pathfinding_Maze.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 Pathfinding_Maze.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  Pathfinding_Maze.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 -verilog Pathfinding_Maze.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 -verilog Pathfinding_Maze.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Thu Oct 15 21:04:03 2026
+Fri Oct 16 13:14:10 2026
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 Pathfinding_Maze.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Thu Oct 15 21:04:03 2026
+Fri Oct 16 13:14:10 2026
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\OneTerminal\OneTerminal.v'
@@ -94,11 +94,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  Pathfinding_Maze.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 -verilog Pathfinding_Maze.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 -verilog Pathfinding_Maze.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Thu Oct 15 21:04:03 2026
+Fri Oct 16 13:14:10 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -109,9 +109,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\codegentemp\Pathfinding_Maze.ctl'.
+Linking 'C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\codegentemp\Pathfinding_Maze.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\codegentemp\Pathfinding_Maze.v'.
+Linking 'C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\codegentemp\Pathfinding_Maze.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\OneTerminal\OneTerminal.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v'.
@@ -132,11 +132,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  Pathfinding_Maze.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 -verilog Pathfinding_Maze.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 -verilog Pathfinding_Maze.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Thu Oct 15 21:04:04 2026
+Fri Oct 16 13:14:11 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -147,9 +147,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\codegentemp\Pathfinding_Maze.ctl'.
+Linking 'C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\codegentemp\Pathfinding_Maze.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\codegentemp\Pathfinding_Maze.v'.
+Linking 'C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\codegentemp\Pathfinding_Maze.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\OneTerminal\OneTerminal.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v'.
@@ -259,8 +259,8 @@ Alias Detection
 Aliasing one to tmpOE__LED_1_net_0
 Aliasing tmpOE__LED_2_net_0 to tmpOE__LED_1_net_0
 Aliasing tmpOE__LED_3_net_0 to tmpOE__LED_1_net_0
-Aliasing tmpOE__LED_5_net_0 to tmpOE__LED_1_net_0
-Aliasing tmpOE__LED_4_net_0 to tmpOE__LED_1_net_0
+Aliasing tmpOE__FrontLSensor_net_0 to tmpOE__LED_1_net_0
+Aliasing tmpOE__FrontRSensor_net_0 to tmpOE__LED_1_net_0
 Aliasing \PWM_1:Net_113\ to tmpOE__LED_1_net_0
 Aliasing Net_465 to zero
 Aliasing tmpOE__M1_IN2_net_0 to tmpOE__LED_1_net_0
@@ -343,9 +343,9 @@ Aliasing \QuadDec_1:Cnt16:CounterUDB:cmp_out_reg_i\\D\ to \QuadDec_1:Cnt16:Count
 Removing Lhs of wire one[6] = tmpOE__LED_1_net_0[1]
 Removing Lhs of wire tmpOE__LED_2_net_0[9] = tmpOE__LED_1_net_0[1]
 Removing Lhs of wire tmpOE__LED_3_net_0[15] = tmpOE__LED_1_net_0[1]
-Removing Lhs of wire tmpOE__LED_5_net_0[21] = tmpOE__LED_1_net_0[1]
+Removing Lhs of wire tmpOE__FrontLSensor_net_0[21] = tmpOE__LED_1_net_0[1]
 Removing Rhs of wire Net_888[22] = cy_srff_5[701]
-Removing Lhs of wire tmpOE__LED_4_net_0[28] = tmpOE__LED_1_net_0[1]
+Removing Lhs of wire tmpOE__FrontRSensor_net_0[28] = tmpOE__LED_1_net_0[1]
 Removing Rhs of wire Net_421[29] = cy_srff_3[418]
 Removing Lhs of wire \PWM_1:Net_107\[36] = zero[2]
 Removing Lhs of wire \PWM_1:Net_113\[37] = tmpOE__LED_1_net_0[1]
@@ -684,16 +684,16 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\bin\warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 Pathfinding_Maze.v -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -dcpsoc3 Pathfinding_Maze.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.959ms
+Warp synthesis phase: Elapsed time ==> 0s.915ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.2.0.641, Family: PSoC3, Started at: Thursday, 15 October 2026 21:04:04
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\mtay770\Downloads\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -d CY8C5888LTI-LP097 Pathfinding_Maze.v -verilog
+cyp3fit: V4.2.0.641, Family: PSoC3, Started at: Friday, 16 October 2026 13:14:11
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\Pathfinding_Maze.cyprj -d CY8C5888LTI-LP097 Pathfinding_Maze.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.058ms
+Design parsing phase: Elapsed time ==> 0s.056ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -925,7 +925,7 @@ Design Equations
         {
         }
 
-    Pin : Name = LED_5(0)
+    Pin : Name = FrontLSensor(0)
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -958,14 +958,14 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => LED_5(0)__PA ,
+            pa_out => FrontLSensor(0)__PA ,
             pin_input => Net_888 ,
-            pad => LED_5(0)_PAD );
+            pad => FrontLSensor(0)_PAD );
         Properties:
         {
         }
 
-    Pin : Name = LED_4(0)
+    Pin : Name = FrontRSensor(0)
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -998,9 +998,9 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => LED_4(0)__PA ,
+            pa_out => FrontRSensor(0)__PA ,
             pin_input => Net_421 ,
-            pad => LED_4(0)_PAD );
+            pad => FrontRSensor(0)_PAD );
         Properties:
         {
         }
@@ -3085,19 +3085,19 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    1 :    3 :    4 : 25.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.217ms
-Tech Mapping phase: Elapsed time ==> 0s.312ms
+Technology Mapping: Elapsed time ==> 0s.224ms
+Tech Mapping phase: Elapsed time ==> 0s.317ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
 IO_2@[IOP=(0)][IoId=(2)] : BackLSensor(0) (fixed)
 IO_3@[IOP=(0)][IoId=(3)] : BackRSensor(0) (fixed)
+IO_1@[IOP=(15)][IoId=(1)] : FrontLSensor(0) (fixed)
+IO_0@[IOP=(15)][IoId=(0)] : FrontRSensor(0) (fixed)
 IO_3@[IOP=(15)][IoId=(3)] : FrontSensor(0) (fixed)
 IO_6@[IOP=(0)][IoId=(6)] : LED_1(0) (fixed)
 IO_0@[IOP=(0)][IoId=(0)] : LED_2(0) (fixed)
 IO_1@[IOP=(0)][IoId=(1)] : LED_3(0) (fixed)
-IO_0@[IOP=(15)][IoId=(0)] : LED_4(0) (fixed)
-IO_1@[IOP=(15)][IoId=(1)] : LED_5(0) (fixed)
 IO_5@[IOP=(15)][IoId=(5)] : L_quad_a(0) (fixed)
 IO_2@[IOP=(15)][IoId=(2)] : L_quad_b(0) (fixed)
 IO_7@[IOP=(3)][IoId=(7)] : M1_IN1(0) (fixed)
@@ -3116,12 +3116,12 @@ Log: apr.M0058: The analog placement iterative improvement is 44% done. (App=cyd
 Analog Placement Results:
 IO_2@[IOP=(0)][IoId=(2)] : BackLSensor(0) (fixed)
 IO_3@[IOP=(0)][IoId=(3)] : BackRSensor(0) (fixed)
+IO_1@[IOP=(15)][IoId=(1)] : FrontLSensor(0) (fixed)
+IO_0@[IOP=(15)][IoId=(0)] : FrontRSensor(0) (fixed)
 IO_3@[IOP=(15)][IoId=(3)] : FrontSensor(0) (fixed)
 IO_6@[IOP=(0)][IoId=(6)] : LED_1(0) (fixed)
 IO_0@[IOP=(0)][IoId=(0)] : LED_2(0) (fixed)
 IO_1@[IOP=(0)][IoId=(1)] : LED_3(0) (fixed)
-IO_0@[IOP=(15)][IoId=(0)] : LED_4(0) (fixed)
-IO_1@[IOP=(15)][IoId=(1)] : LED_5(0) (fixed)
 IO_5@[IOP=(15)][IoId=(5)] : L_quad_a(0) (fixed)
 IO_2@[IOP=(15)][IoId=(2)] : L_quad_b(0) (fixed)
 IO_7@[IOP=(3)][IoId=(7)] : M1_IN1(0) (fixed)
@@ -3137,7 +3137,7 @@ IO_3@[IOP=(2)][IoId=(3)] : Vref_DAC1(0) (fixed)
 IO_3@[IOP=(3)][IoId=(3)] : Vref_DAC2(0) (fixed)
 VIDAC[1]@[FFB(VIDAC,1)] : \VDAC8_1:viDAC8\
 
-Analog Placement phase: Elapsed time ==> 0s.394ms
+Analog Placement phase: Elapsed time ==> 0s.387ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.001ms
@@ -3177,7 +3177,7 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.127ms
+Analog Code Generation phase: Elapsed time ==> 0s.130ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
@@ -3212,7 +3212,7 @@ PLD Packing: Elapsed time ==> 0s.016ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.094ms
+Partitioning: Elapsed time ==> 0s.090ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -5507,7 +5507,7 @@ Pin : Name = M2_IN1_1(0)
 
 Port 15 contains the following IO cells:
 [IoId=0]: 
-Pin : Name = LED_4(0)
+Pin : Name = FrontRSensor(0)
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -5540,15 +5540,15 @@ Pin : Name = LED_4(0)
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => LED_4(0)__PA ,
+        pa_out => FrontRSensor(0)__PA ,
         pin_input => Net_421 ,
-        pad => LED_4(0)_PAD );
+        pad => FrontRSensor(0)_PAD );
     Properties:
     {
     }
 
 [IoId=1]: 
-Pin : Name = LED_5(0)
+Pin : Name = FrontLSensor(0)
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -5581,9 +5581,9 @@ Pin : Name = LED_5(0)
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => LED_5(0)__PA ,
+        pa_out => FrontLSensor(0)__PA ,
         pin_input => Net_888 ,
-        pad => LED_5(0)_PAD );
+        pad => FrontLSensor(0)_PAD );
     Properties:
     {
     }
@@ -5798,66 +5798,66 @@ PHUB group 0: empty
 ------------------------------------------------------------
 Port Configuration report
 ------------------------------------------------------------
-     |     |       | Interrupt |                  |                | 
-Port | Pin | Fixed |      Type |       Drive Mode |           Name | Connections
------+-----+-------+-----------+------------------+----------------+---------------
-   0 |   0 |     * |      NONE |         CMOS_OUT |       LED_2(0) | 
-     |   1 |     * |      NONE |         CMOS_OUT |       LED_3(0) | 
-     |   2 |     * |      NONE |         CMOS_OUT | BackLSensor(0) | In(cy_srff_2)
-     |   3 |     * |      NONE |         CMOS_OUT | BackRSensor(0) | In(cy_srff_4)
-     |   6 |     * |      NONE |         CMOS_OUT |       LED_1(0) | 
------+-----+-------+-----------+------------------+----------------+---------------
-   1 |   7 |     * |      NONE |     HI_Z_DIGITAL |       Vout4(0) | FB(Net_252)
------+-----+-------+-----------+------------------+----------------+---------------
-   2 |   1 |     * |      NONE |     HI_Z_DIGITAL |       Vout3(0) | FB(Net_268)
-     |   3 |     * |      NONE |      HI_Z_ANALOG |   Vref_DAC1(0) | Analog(Net_63)
-     |   5 |     * |      NONE |     HI_Z_DIGITAL |       Vout2(0) | FB(Net_236)
------+-----+-------+-----------+------------------+----------------+---------------
-   3 |   0 |     * |      NONE |     HI_Z_DIGITAL |       Vout5(0) | FB(Net_307)
-     |   1 |     * |      NONE |     HI_Z_DIGITAL |       Vout1(0) | FB(Net_233)
-     |   3 |     * |      NONE |      HI_Z_ANALOG |   Vref_DAC2(0) | Analog(Net_63)
-     |   6 |     * |      NONE |         CMOS_OUT |      M1_IN2(0) | In(Net_94)
-     |   7 |     * |      NONE |         CMOS_OUT |      M1_IN1(0) | In(Net_76)
------+-----+-------+-----------+------------------+----------------+---------------
-  12 |   0 |     * |      NONE |         CMOS_OUT |    M2_IN2_1(0) | In(Net_166)
-     |   1 |     * |      NONE |         CMOS_OUT |    M2_IN1_1(0) | In(Net_162)
------+-----+-------+-----------+------------------+----------------+---------------
-  15 |   0 |     * |      NONE |         CMOS_OUT |       LED_4(0) | In(Net_421)
-     |   1 |     * |      NONE |         CMOS_OUT |       LED_5(0) | In(Net_888)
-     |   2 |     * |      NONE |     HI_Z_DIGITAL |    L_quad_b(0) | FB(Net_877)
-     |   3 |     * |      NONE |         CMOS_OUT | FrontSensor(0) | In(cy_srff_1)
-     |   5 |     * |      NONE |     HI_Z_DIGITAL |    L_quad_a(0) | FB(Net_876)
------------------------------------------------------------------------------------
+     |     |       | Interrupt |                  |                 | 
+Port | Pin | Fixed |      Type |       Drive Mode |            Name | Connections
+-----+-----+-------+-----------+------------------+-----------------+---------------
+   0 |   0 |     * |      NONE |         CMOS_OUT |        LED_2(0) | 
+     |   1 |     * |      NONE |         CMOS_OUT |        LED_3(0) | 
+     |   2 |     * |      NONE |         CMOS_OUT |  BackLSensor(0) | In(cy_srff_2)
+     |   3 |     * |      NONE |         CMOS_OUT |  BackRSensor(0) | In(cy_srff_4)
+     |   6 |     * |      NONE |         CMOS_OUT |        LED_1(0) | 
+-----+-----+-------+-----------+------------------+-----------------+---------------
+   1 |   7 |     * |      NONE |     HI_Z_DIGITAL |        Vout4(0) | FB(Net_252)
+-----+-----+-------+-----------+------------------+-----------------+---------------
+   2 |   1 |     * |      NONE |     HI_Z_DIGITAL |        Vout3(0) | FB(Net_268)
+     |   3 |     * |      NONE |      HI_Z_ANALOG |    Vref_DAC1(0) | Analog(Net_63)
+     |   5 |     * |      NONE |     HI_Z_DIGITAL |        Vout2(0) | FB(Net_236)
+-----+-----+-------+-----------+------------------+-----------------+---------------
+   3 |   0 |     * |      NONE |     HI_Z_DIGITAL |        Vout5(0) | FB(Net_307)
+     |   1 |     * |      NONE |     HI_Z_DIGITAL |        Vout1(0) | FB(Net_233)
+     |   3 |     * |      NONE |      HI_Z_ANALOG |    Vref_DAC2(0) | Analog(Net_63)
+     |   6 |     * |      NONE |         CMOS_OUT |       M1_IN2(0) | In(Net_94)
+     |   7 |     * |      NONE |         CMOS_OUT |       M1_IN1(0) | In(Net_76)
+-----+-----+-------+-----------+------------------+-----------------+---------------
+  12 |   0 |     * |      NONE |         CMOS_OUT |     M2_IN2_1(0) | In(Net_166)
+     |   1 |     * |      NONE |         CMOS_OUT |     M2_IN1_1(0) | In(Net_162)
+-----+-----+-------+-----------+------------------+-----------------+---------------
+  15 |   0 |     * |      NONE |         CMOS_OUT | FrontRSensor(0) | In(Net_421)
+     |   1 |     * |      NONE |         CMOS_OUT | FrontLSensor(0) | In(Net_888)
+     |   2 |     * |      NONE |     HI_Z_DIGITAL |     L_quad_b(0) | FB(Net_877)
+     |   3 |     * |      NONE |         CMOS_OUT |  FrontSensor(0) | In(cy_srff_1)
+     |   5 |     * |      NONE |     HI_Z_DIGITAL |     L_quad_a(0) | FB(Net_876)
+------------------------------------------------------------------------------------
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.053ms
-Digital Placement phase: Elapsed time ==> 1s.061ms
+Digital component placer commit/Report: Elapsed time ==> 0s.054ms
+Digital Placement phase: Elapsed time ==> 1s.035ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\bin/sjrouter.exe" --xml-path "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata" --vh2-path "Pathfinding_Maze_r.vh2" --pcf-path "Pathfinding_Maze.pco" --des-name "Pathfinding_Maze" --dsf-path "Pathfinding_Maze.dsf" --sdc-path "Pathfinding_Maze.sdc" --lib-path "Pathfinding_Maze_r.lib"
 Routing successful.
-Digital Routing phase: Elapsed time ==> 0s.918ms
+Digital Routing phase: Elapsed time ==> 0s.879ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.209ms
+Bitstream Generation phase: Elapsed time ==> 0s.203ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.051ms
+Bitstream Verification phase: Elapsed time ==> 0s.050ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in Pathfinding_Maze_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.261ms
+Static timing analysis phase: Elapsed time ==> 0s.246ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
-Data reporting phase: Elapsed time ==> 0s.002ms
+Data reporting phase: Elapsed time ==> 0s.003ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.137ms
+Design database save phase: Elapsed time ==> 0s.143ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 3s.622ms
+cydsfit: Elapsed time ==> 3s.530ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 3s.628ms
-API generation phase: Elapsed time ==> 1s.416ms
-Dependency generation phase: Elapsed time ==> 0s.013ms
-Cleanup phase: Elapsed time ==> 0s.002ms
+Fitter phase: Elapsed time ==> 3s.535ms
+API generation phase: Elapsed time ==> 0s.864ms
+Dependency generation phase: Elapsed time ==> 0s.010ms
+Cleanup phase: Elapsed time ==> 0s.001ms

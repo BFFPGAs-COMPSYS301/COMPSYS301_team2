@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED_4.h  
+* File Name: FrontRSensor.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_LED_4_ALIASES_H) /* Pins LED_4_ALIASES_H */
-#define CY_PINS_LED_4_ALIASES_H
+#if !defined(CY_PINS_FrontRSensor_ALIASES_H) /* Pins FrontRSensor_ALIASES_H */
+#define CY_PINS_FrontRSensor_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define LED_4_0			(LED_4__0__PC)
-#define LED_4_0_INTR	((uint16)((uint16)0x0001u << LED_4__0__SHIFT))
+#define FrontRSensor_0			(FrontRSensor__0__PC)
+#define FrontRSensor_0_INTR	((uint16)((uint16)0x0001u << FrontRSensor__0__SHIFT))
 
-#define LED_4_INTR_ALL	 ((uint16)(LED_4_0_INTR))
+#define FrontRSensor_INTR_ALL	 ((uint16)(FrontRSensor_0_INTR))
 
-#endif /* End Pins LED_4_ALIASES_H */
+#endif /* End Pins FrontRSensor_ALIASES_H */
 
 
 /* [] END OF FILE */

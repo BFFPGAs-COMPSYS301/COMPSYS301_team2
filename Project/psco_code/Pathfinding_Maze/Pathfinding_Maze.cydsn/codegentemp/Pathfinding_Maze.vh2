@@ -2,7 +2,7 @@
 --	Conversion of Pathfinding_Maze.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Oct 15 21:04:04 2026
+--	Fri Oct 16 13:14:11 2026
 --
 
 USE cypress.cypress.all;
@@ -29,18 +29,18 @@ SIGNAL tmpFB_0__LED_3_net_0 : bit;
 SIGNAL tmpIO_0__LED_3_net_0 : bit;
 TERMINAL tmpSIOVREF__LED_3_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__LED_3_net_0 : bit;
-SIGNAL tmpOE__LED_5_net_0 : bit;
+SIGNAL tmpOE__FrontLSensor_net_0 : bit;
 SIGNAL Net_888 : bit;
-SIGNAL tmpFB_0__LED_5_net_0 : bit;
-SIGNAL tmpIO_0__LED_5_net_0 : bit;
-TERMINAL tmpSIOVREF__LED_5_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__LED_5_net_0 : bit;
-SIGNAL tmpOE__LED_4_net_0 : bit;
+SIGNAL tmpFB_0__FrontLSensor_net_0 : bit;
+SIGNAL tmpIO_0__FrontLSensor_net_0 : bit;
+TERMINAL tmpSIOVREF__FrontLSensor_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__FrontLSensor_net_0 : bit;
+SIGNAL tmpOE__FrontRSensor_net_0 : bit;
 SIGNAL Net_421 : bit;
-SIGNAL tmpFB_0__LED_4_net_0 : bit;
-SIGNAL tmpIO_0__LED_4_net_0 : bit;
-TERMINAL tmpSIOVREF__LED_4_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__LED_4_net_0 : bit;
+SIGNAL tmpFB_0__FrontRSensor_net_0 : bit;
+SIGNAL tmpIO_0__FrontRSensor_net_0 : bit;
+TERMINAL tmpSIOVREF__FrontRSensor_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__FrontRSensor_net_0 : bit;
 SIGNAL Net_79 : bit;
 SIGNAL \PWM_1:Net_107\ : bit;
 SIGNAL \PWM_1:Net_113\ : bit;
@@ -1695,7 +1695,7 @@ LED_3:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__LED_1_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__LED_3_net_0);
-LED_5:cy_psoc3_pins_v1_10
+FrontLSensor:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"614ba16c-297f-4b92-a527-cb66b9cebac5",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -1753,10 +1753,10 @@ LED_5:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__LED_1_net_0),
 		y=>Net_888,
-		fb=>(tmpFB_0__LED_5_net_0),
+		fb=>(tmpFB_0__FrontLSensor_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__LED_5_net_0),
-		siovref=>(tmpSIOVREF__LED_5_net_0),
+		io=>(tmpIO_0__FrontLSensor_net_0),
+		siovref=>(tmpSIOVREF__FrontLSensor_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__LED_1_net_0,
@@ -1764,8 +1764,8 @@ LED_5:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__LED_1_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__LED_5_net_0);
-LED_4:cy_psoc3_pins_v1_10
+		interrupt=>tmpINTERRUPT_0__FrontLSensor_net_0);
+FrontRSensor:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"e201efc1-17f6-44a6-b993-164576a7fb41",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -1823,10 +1823,10 @@ LED_4:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__LED_1_net_0),
 		y=>Net_421,
-		fb=>(tmpFB_0__LED_4_net_0),
+		fb=>(tmpFB_0__FrontRSensor_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__LED_4_net_0),
-		siovref=>(tmpSIOVREF__LED_4_net_0),
+		io=>(tmpIO_0__FrontRSensor_net_0),
+		siovref=>(tmpSIOVREF__FrontRSensor_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__LED_1_net_0,
@@ -1834,7 +1834,7 @@ LED_4:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__LED_1_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__LED_4_net_0);
+		interrupt=>tmpINTERRUPT_0__FrontRSensor_net_0);
 \PWM_1:PWMHW\:cy_psoc3_timer_v1_0
 	GENERIC MAP(cy_registers=>"")
 	PORT MAP(clock=>Net_79,

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED_5.h  
+* File Name: FrontLSensor.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_LED_5_ALIASES_H) /* Pins LED_5_ALIASES_H */
-#define CY_PINS_LED_5_ALIASES_H
+#if !defined(CY_PINS_FrontLSensor_ALIASES_H) /* Pins FrontLSensor_ALIASES_H */
+#define CY_PINS_FrontLSensor_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define LED_5_0			(LED_5__0__PC)
-#define LED_5_0_INTR	((uint16)((uint16)0x0001u << LED_5__0__SHIFT))
+#define FrontLSensor_0			(FrontLSensor__0__PC)
+#define FrontLSensor_0_INTR	((uint16)((uint16)0x0001u << FrontLSensor__0__SHIFT))
 
-#define LED_5_INTR_ALL	 ((uint16)(LED_5_0_INTR))
+#define FrontLSensor_INTR_ALL	 ((uint16)(FrontLSensor_0_INTR))
 
-#endif /* End Pins LED_5_ALIASES_H */
+#endif /* End Pins FrontLSensor_ALIASES_H */
 
 
 /* [] END OF FILE */
