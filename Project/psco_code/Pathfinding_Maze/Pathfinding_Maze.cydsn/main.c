@@ -49,11 +49,10 @@ Checkpoints checkpoints =
     .points =
     {
         {1, 1},     /* START */
-        {3, 3},
-        {3, 5}    /* END */
+        {3, 5}  /* END */
     },
 
-    .count = 3
+    .count = 2
 };
 
 
@@ -96,7 +95,7 @@ bool BuildRoute(void)
     return AStar_BuildRoute(
         map,
         &checkpoints,
-        STARTDIRECTION,
+        DIR_RIGHT,
         &route
     );
 }

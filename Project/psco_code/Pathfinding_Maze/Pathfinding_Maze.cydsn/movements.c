@@ -99,7 +99,7 @@ static void TurnLeft() {
     CyDelay(10);
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
-    CyDelay(50);
+    CyDelay(120);
     stopMoving();
     LED_2_Write(0);
     CyDelay(1000);
