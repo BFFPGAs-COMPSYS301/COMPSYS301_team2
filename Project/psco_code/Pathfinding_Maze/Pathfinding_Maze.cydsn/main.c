@@ -49,7 +49,7 @@ Checkpoints checkpoints =
     .points =
     {
         {1, 1},     /* START */
-        {3, 5}  /* END */
+        {4, 3}  /* END */
     },
 
     .count = 2
@@ -95,7 +95,7 @@ bool BuildRoute(void)
     return AStar_BuildRoute(
         map,
         &checkpoints,
-        DIR_RIGHT,
+        STARTDIRECTION,
         &route
     );
 }
@@ -109,8 +109,9 @@ void ExecuteNextCommand(void)
     // Check If we have reached the end
     if (commandIndex >= route.length)
     {
-        //Robot has reached the final point. Add whatever you want to happen here.
-        return;
+        while(1) {
+            stopMoving(); // Stop moving forevr once finished
+        }
     }
 
     // Get next command.
