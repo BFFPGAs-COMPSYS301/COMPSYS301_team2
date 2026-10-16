@@ -3,7 +3,7 @@
 #include "astar.h"
 #include "movements.c"
 
-#define STARTDIRECTION DIR_LEFT
+#define STARTDIRECTION DIR_UP
 
 const char *mazeInput[MAP_ROWS] =
 {
@@ -166,8 +166,14 @@ void ExecuteNextCommand(void)
             // The robot has reached the checkpoint. Wait 2 seconds.
             for (int i = 0; i < 10; i++) {
                 Clock_PWM_SetDivider(24);
+                LED_1_Write(1);
+                LED_2_Write(1);
+                LED_3_Write(1);
                 CyDelay(200);
                 Clock_PWM_SetDivider(12);
+                LED_1_Write(0);
+                LED_2_Write(0);
+                LED_3_Write(0);
                 CyDelay(200);
             }
 

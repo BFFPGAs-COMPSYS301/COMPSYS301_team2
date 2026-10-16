@@ -25,7 +25,7 @@ static void forwardFollowing() {
     } else {
         PWM_1_WriteCompare(PERIOD - FORWARD_SPEED); // Drive left wheel backard to quickly pivot right
         PWM_2_WriteCompare(45); 
-        CyDelay(230);
+        CyDelay(250);
     }
 }
 
@@ -143,7 +143,7 @@ static void TurnRight() {
     CyDelay(10);
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
-    CyDelay(60);
+    CyDelay(100);
     stopMoving();
     LED_3_Write(0);
     CyDelay(1000);
