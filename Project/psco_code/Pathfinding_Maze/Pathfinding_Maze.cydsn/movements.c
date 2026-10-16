@@ -12,7 +12,7 @@
 #define INTERSECTION_TIMEOUT 5000
 
 #define PERIOD 90
-#define FORWARD_SPEED 22 // 45 is stopped, go lower to drive forward, stay below 25 to ensure movement
+#define FORWARD_SPEED 24 // 45 is stopped, go lower to drive forward, stay below 25 to ensure movement
 
 static uint16_t offLineCount = 0;
 
@@ -38,7 +38,7 @@ static void findCorner() {
         if (offLineCount < 15) {
             PWM_1_WriteCompare(PERIOD - FORWARD_SPEED); // Drive left wheel backard to quickly pivot right
             PWM_2_WriteCompare(45); 
-            CyDelay(1);
+            CyDelay(2);
         } else {
             goForwardSlow();
         }
@@ -120,7 +120,7 @@ static void TurnLeft() {
     CyDelay(10);
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
-    CyDelay(120);
+    CyDelay(150);
     stopMoving();
     LED_2_Write(0);
     CyDelay(1000);

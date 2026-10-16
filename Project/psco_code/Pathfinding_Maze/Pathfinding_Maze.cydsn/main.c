@@ -3,7 +3,7 @@
 #include "astar.h"
 #include "movements.c"
 
-#define STARTDIRECTION DIR_DOWN
+#define STARTDIRECTION DIR_LEFT
 
 const char *mazeInput[MAP_ROWS] =
 {
@@ -48,11 +48,15 @@ Checkpoints checkpoints =
 {
     .points =
     {
-        {1, 1},     /* START */
-        {4, 3}  /* END */
+        /*
+        * NOTE: Co-ordinates are in format {Vertical, Horizontal}
+        */
+        {12, 16},     /* START */
+        {8, 8},
+        {4, 1}  /* END */
     },
 
-    .count = 2
+    .count = 3
 };
 
 
@@ -160,8 +164,12 @@ void ExecuteNextCommand(void)
             route.checkpointCommand[nextCheckpoint])
         {
             // The robot has reached the checkpoint. Wait 2 seconds.
-            CyDelay(2000);
-
+            for (int i = 0; i < 10; i++) {
+                Clock_PWM_SetDivider(24);
+                CyDelay(200);
+                Clock_PWM_SetDivider(12);
+                CyDelay(200);
+            }
 
             // Move to next checkpoint.
             nextCheckpoint++;

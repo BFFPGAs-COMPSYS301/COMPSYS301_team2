@@ -380,7 +380,7 @@ static bool AStarSegment(
              * 0 = open
              */
 
-            if (map[newRow][newCol] != 0)
+            if (map[newRow][newCol] != 1)
                 continue;
 
 

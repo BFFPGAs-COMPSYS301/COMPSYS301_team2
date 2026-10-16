@@ -2,7 +2,7 @@
 --	Conversion of Pathfinding_Maze.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Oct 16 15:38:52 2026
+--	Fri Oct 16 17:14:36 2026
 --
 
 USE cypress.cypress.all;
@@ -1848,9 +1848,9 @@ FrontRSensor:cy_psoc3_pins_v1_10
 Clock_PWM:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"0d611ffc-1031-48a4-b15f-e6fc1e83a304",
-		source_clock_id=>"",
-		divisor=>0,
-		period=>"500000000",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>12,
+		period=>"0",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_79,
