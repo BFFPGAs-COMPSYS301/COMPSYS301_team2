@@ -2,7 +2,7 @@
 --	Conversion of Pathfinding_Maze.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Oct 16 13:14:11 2026
+--	Fri Oct 16 13:53:32 2026
 --
 
 USE cypress.cypress.all;
@@ -1315,14 +1315,14 @@ SIGNAL \QuadDec_1:Net_1248\ : bit;
 SIGNAL \QuadDec_1:Net_1229\ : bit;
 SIGNAL \QuadDec_1:Net_1272\ : bit;
 SIGNAL \QuadDec_1:Net_1287\ : bit;
-SIGNAL tmpOE__L_quad_a_net_0 : bit;
-SIGNAL tmpIO_0__L_quad_a_net_0 : bit;
-TERMINAL tmpSIOVREF__L_quad_a_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__L_quad_a_net_0 : bit;
-SIGNAL tmpOE__L_quad_b_net_0 : bit;
-SIGNAL tmpIO_0__L_quad_b_net_0 : bit;
-TERMINAL tmpSIOVREF__L_quad_b_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__L_quad_b_net_0 : bit;
+SIGNAL tmpOE__R_quad_a_net_0 : bit;
+SIGNAL tmpIO_0__R_quad_a_net_0 : bit;
+TERMINAL tmpSIOVREF__R_quad_a_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__R_quad_a_net_0 : bit;
+SIGNAL tmpOE__R_quad_b_net_0 : bit;
+SIGNAL tmpIO_0__R_quad_b_net_0 : bit;
+TERMINAL tmpSIOVREF__R_quad_b_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__R_quad_b_net_0 : bit;
 SIGNAL tmpOE__BackLSensor_net_0 : bit;
 SIGNAL tmpFB_0__BackLSensor_net_0 : bit;
 SIGNAL tmpIO_0__BackLSensor_net_0 : bit;
@@ -3960,7 +3960,7 @@ isr_3:cy_isr_v1_0
 		status=>(zero, zero, zero, \QuadDec_1:bQuadDec:error\,
 			\QuadDec_1:Net_1260\, \QuadDec_1:Net_611\, \QuadDec_1:Net_530\),
 		interrupt=>Net_880);
-L_quad_a:cy_psoc3_pins_v1_10
+R_quad_a:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"b6600f06-d528-4dd0-b759-82c6246ce646",
 		drive_mode=>"001",
 		ibuf_enabled=>"1",
@@ -4020,8 +4020,8 @@ L_quad_a:cy_psoc3_pins_v1_10
 		y=>(zero),
 		fb=>Net_876,
 		analog=>(open),
-		io=>(tmpIO_0__L_quad_a_net_0),
-		siovref=>(tmpSIOVREF__L_quad_a_net_0),
+		io=>(tmpIO_0__R_quad_a_net_0),
+		siovref=>(tmpSIOVREF__R_quad_a_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__LED_1_net_0,
@@ -4029,8 +4029,8 @@ L_quad_a:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__LED_1_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__L_quad_a_net_0);
-L_quad_b:cy_psoc3_pins_v1_10
+		interrupt=>tmpINTERRUPT_0__R_quad_a_net_0);
+R_quad_b:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"f1bb6790-4be6-4f58-b85a-807c55906d57",
 		drive_mode=>"001",
 		ibuf_enabled=>"1",
@@ -4090,8 +4090,8 @@ L_quad_b:cy_psoc3_pins_v1_10
 		y=>(zero),
 		fb=>Net_877,
 		analog=>(open),
-		io=>(tmpIO_0__L_quad_b_net_0),
-		siovref=>(tmpSIOVREF__L_quad_b_net_0),
+		io=>(tmpIO_0__R_quad_b_net_0),
+		siovref=>(tmpSIOVREF__R_quad_b_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__LED_1_net_0,
@@ -4099,7 +4099,7 @@ L_quad_b:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__LED_1_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__L_quad_b_net_0);
+		interrupt=>tmpINTERRUPT_0__R_quad_b_net_0);
 BackLSensor:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"6705a850-f529-4dfc-8bd6-b2a91b4deb82",
 		drive_mode=>"110",

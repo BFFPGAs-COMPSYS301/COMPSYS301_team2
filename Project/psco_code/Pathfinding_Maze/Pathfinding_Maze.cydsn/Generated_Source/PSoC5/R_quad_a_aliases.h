@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: L_quad_b.h  
+* File Name: R_quad_a.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_L_quad_b_ALIASES_H) /* Pins L_quad_b_ALIASES_H */
-#define CY_PINS_L_quad_b_ALIASES_H
+#if !defined(CY_PINS_R_quad_a_ALIASES_H) /* Pins R_quad_a_ALIASES_H */
+#define CY_PINS_R_quad_a_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define L_quad_b_0			(L_quad_b__0__PC)
-#define L_quad_b_0_INTR	((uint16)((uint16)0x0001u << L_quad_b__0__SHIFT))
+#define R_quad_a_0			(R_quad_a__0__PC)
+#define R_quad_a_0_INTR	((uint16)((uint16)0x0001u << R_quad_a__0__SHIFT))
 
-#define L_quad_b_INTR_ALL	 ((uint16)(L_quad_b_0_INTR))
+#define R_quad_a_INTR_ALL	 ((uint16)(R_quad_a_0_INTR))
 
-#endif /* End Pins L_quad_b_ALIASES_H */
+#endif /* End Pins R_quad_a_ALIASES_H */
 
 
 /* [] END OF FILE */

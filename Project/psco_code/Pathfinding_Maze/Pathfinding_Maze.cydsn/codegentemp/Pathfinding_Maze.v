@@ -1,6 +1,6 @@
 // ======================================================================
 // Pathfinding_Maze.v generated from TopDesign.cysch
-// 10/16/2026 at 13:14
+// 10/16/2026 at 13:53
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -2612,10 +2612,10 @@ module top ;
     defparam QuadDec_1.UsingGlitchFiltering = 1;
     defparam QuadDec_1.UsingIndexInput = 0;
 
-	wire [0:0] tmpOE__L_quad_a_net;
-	wire [0:0] tmpIO_0__L_quad_a_net;
-	wire [0:0] tmpINTERRUPT_0__L_quad_a_net;
-	electrical [0:0] tmpSIOVREF__L_quad_a_net;
+	wire [0:0] tmpOE__R_quad_a_net;
+	wire [0:0] tmpIO_0__R_quad_a_net;
+	wire [0:0] tmpINTERRUPT_0__R_quad_a_net;
+	electrical [0:0] tmpSIOVREF__R_quad_a_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("b6600f06-d528-4dd0-b759-82c6246ce646"),
@@ -2670,13 +2670,13 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		L_quad_a
-		 (.oe(tmpOE__L_quad_a_net),
+		R_quad_a
+		 (.oe(tmpOE__R_quad_a_net),
 		  .y({1'b0}),
 		  .fb({Net_876}),
-		  .io({tmpIO_0__L_quad_a_net[0:0]}),
-		  .siovref(tmpSIOVREF__L_quad_a_net),
-		  .interrupt({tmpINTERRUPT_0__L_quad_a_net[0:0]}),
+		  .io({tmpIO_0__R_quad_a_net[0:0]}),
+		  .siovref(tmpSIOVREF__R_quad_a_net),
+		  .interrupt({tmpINTERRUPT_0__R_quad_a_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -2684,12 +2684,12 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__L_quad_a_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__R_quad_a_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-	wire [0:0] tmpOE__L_quad_b_net;
-	wire [0:0] tmpIO_0__L_quad_b_net;
-	wire [0:0] tmpINTERRUPT_0__L_quad_b_net;
-	electrical [0:0] tmpSIOVREF__L_quad_b_net;
+	wire [0:0] tmpOE__R_quad_b_net;
+	wire [0:0] tmpIO_0__R_quad_b_net;
+	wire [0:0] tmpINTERRUPT_0__R_quad_b_net;
+	electrical [0:0] tmpSIOVREF__R_quad_b_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("f1bb6790-4be6-4f58-b85a-807c55906d57"),
@@ -2744,13 +2744,13 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		L_quad_b
-		 (.oe(tmpOE__L_quad_b_net),
+		R_quad_b
+		 (.oe(tmpOE__R_quad_b_net),
 		  .y({1'b0}),
 		  .fb({Net_877}),
-		  .io({tmpIO_0__L_quad_b_net[0:0]}),
-		  .siovref(tmpSIOVREF__L_quad_b_net),
-		  .interrupt({tmpINTERRUPT_0__L_quad_b_net[0:0]}),
+		  .io({tmpIO_0__R_quad_b_net[0:0]}),
+		  .siovref(tmpSIOVREF__R_quad_b_net),
+		  .interrupt({tmpINTERRUPT_0__R_quad_b_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -2758,7 +2758,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__L_quad_b_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__R_quad_b_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 	wire [0:0] tmpOE__BackLSensor_net;
 	wire [0:0] tmpFB_0__BackLSensor_net;

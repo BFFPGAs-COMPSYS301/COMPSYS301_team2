@@ -1,5 +1,5 @@
 # Pathfinding_Maze
-# 2026-10-16 00:14:12Z
+# 2026-10-16 00:53:33Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -23,8 +23,8 @@ set_io "Vout2(0)" iocell 2 5
 set_io "Vout3(0)" iocell 2 1
 set_io "Vout4(0)" iocell 1 7
 set_io "Vout5(0)" iocell 3 0
-set_io "L_quad_a(0)" iocell 15 5
-set_io "L_quad_b(0)" iocell 15 2
+set_io "R_quad_a(0)" iocell 1 2
+set_io "R_quad_b(0)" iocell 1 5
 set_io "BackLSensor(0)" iocell 0 2
 set_io "FrontSensor(0)" iocell 15 3
 set_io "BackRSensor(0)" iocell 0 3

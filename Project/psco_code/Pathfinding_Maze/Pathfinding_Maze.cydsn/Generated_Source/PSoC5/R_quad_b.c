@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: L_quad_a.c  
+* File Name: R_quad_b.c  
 * Version 2.20
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "L_quad_a.h"
+#include "R_quad_b.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 L_quad_a__PORT == 15 && ((L_quad_a__MASK & 0xC0) != 0))
+	 R_quad_b__PORT == 15 && ((R_quad_b__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: L_quad_a_Write
+* Function Name: R_quad_b_Write
 ****************************************************************************//**
 *
 * \brief Writes the value to the physical port (data output register), masking
@@ -52,17 +52,17 @@
 *  this function.
 *
 * \funcusage
-*  \snippet L_quad_a_SUT.c usage_L_quad_a_Write
+*  \snippet R_quad_b_SUT.c usage_R_quad_b_Write
 *******************************************************************************/
-void L_quad_a_Write(uint8 value)
+void R_quad_b_Write(uint8 value)
 {
-    uint8 staticBits = (L_quad_a_DR & (uint8)(~L_quad_a_MASK));
-    L_quad_a_DR = staticBits | ((uint8)(value << L_quad_a_SHIFT) & L_quad_a_MASK);
+    uint8 staticBits = (R_quad_b_DR & (uint8)(~R_quad_b_MASK));
+    R_quad_b_DR = staticBits | ((uint8)(value << R_quad_b_SHIFT) & R_quad_b_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: L_quad_a_SetDriveMode
+* Function Name: R_quad_b_SetDriveMode
 ****************************************************************************//**
 *
 * \brief Sets the drive mode for each of the Pins component's pins.
@@ -85,16 +85,16 @@ void L_quad_a_Write(uint8 value)
 *  APIs (primary method) or disable interrupts around this function.
 *
 * \funcusage
-*  \snippet L_quad_a_SUT.c usage_L_quad_a_SetDriveMode
+*  \snippet R_quad_b_SUT.c usage_R_quad_b_SetDriveMode
 *******************************************************************************/
-void L_quad_a_SetDriveMode(uint8 mode)
+void R_quad_b_SetDriveMode(uint8 mode)
 {
-	CyPins_SetPinDriveMode(L_quad_a_0, mode);
+	CyPins_SetPinDriveMode(R_quad_b_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: L_quad_a_Read
+* Function Name: R_quad_b_Read
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port (pin status register) and masks 
@@ -108,16 +108,16 @@ void L_quad_a_SetDriveMode(uint8 mode)
 *  The current value for the pins in the component as a right justified number.
 *
 * \funcusage
-*  \snippet L_quad_a_SUT.c usage_L_quad_a_Read  
+*  \snippet R_quad_b_SUT.c usage_R_quad_b_Read  
 *******************************************************************************/
-uint8 L_quad_a_Read(void)
+uint8 R_quad_b_Read(void)
 {
-    return (L_quad_a_PS & L_quad_a_MASK) >> L_quad_a_SHIFT;
+    return (R_quad_b_PS & R_quad_b_MASK) >> R_quad_b_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: L_quad_a_ReadDataReg
+* Function Name: R_quad_b_ReadDataReg
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port's data output register and masks 
@@ -126,8 +126,8 @@ uint8 L_quad_a_Read(void)
 *
 * The data output register controls the signal applied to the physical pin in 
 * conjunction with the drive mode parameter. This is not the same as the 
-* preferred L_quad_a_Read() API because the 
-* L_quad_a_ReadDataReg() reads the data register instead of the status 
+* preferred R_quad_b_Read() API because the 
+* R_quad_b_ReadDataReg() reads the data register instead of the status 
 * register. For output pins this is a useful function to determine the value 
 * just written to the pin.
 *
@@ -136,19 +136,19 @@ uint8 L_quad_a_Read(void)
 *  justified number for the component instance.
 *
 * \funcusage
-*  \snippet L_quad_a_SUT.c usage_L_quad_a_ReadDataReg 
+*  \snippet R_quad_b_SUT.c usage_R_quad_b_ReadDataReg 
 *******************************************************************************/
-uint8 L_quad_a_ReadDataReg(void)
+uint8 R_quad_b_ReadDataReg(void)
 {
-    return (L_quad_a_DR & L_quad_a_MASK) >> L_quad_a_SHIFT;
+    return (R_quad_b_DR & R_quad_b_MASK) >> R_quad_b_SHIFT;
 }
 
 
 /* If interrupt is connected for this Pins component */ 
-#if defined(L_quad_a_INTSTAT) 
+#if defined(R_quad_b_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: L_quad_a_SetInterruptMode
+    * Function Name: R_quad_b_SetInterruptMode
     ****************************************************************************//**
     *
     * \brief Configures the interrupt mode for each of the Pins component's
@@ -161,12 +161,12 @@ uint8 L_quad_a_ReadDataReg(void)
     * \param position
     *  The pin position as listed in the Pins component. You may OR these to be 
     *  able to configure the interrupt mode of multiple pins within a Pins 
-    *  component. Or you may use L_quad_a_INTR_ALL to configure the
+    *  component. Or you may use R_quad_b_INTR_ALL to configure the
     *  interrupt mode of all the pins in the Pins component.       
-    *  - L_quad_a_0_INTR       (First pin in the list)
-    *  - L_quad_a_1_INTR       (Second pin in the list)
+    *  - R_quad_b_0_INTR       (First pin in the list)
+    *  - R_quad_b_1_INTR       (Second pin in the list)
     *  - ...
-    *  - L_quad_a_INTR_ALL     (All pins in Pins component)
+    *  - R_quad_b_INTR_ALL     (All pins in Pins component)
     *
     * \param mode
     *  Interrupt mode for the selected pins. Valid options are documented in
@@ -182,19 +182,19 @@ uint8 L_quad_a_ReadDataReg(void)
     *  port.
     *
     * \funcusage
-    *  \snippet L_quad_a_SUT.c usage_L_quad_a_SetInterruptMode
+    *  \snippet R_quad_b_SUT.c usage_R_quad_b_SetInterruptMode
     *******************************************************************************/
-    void L_quad_a_SetInterruptMode(uint16 position, uint16 mode)
+    void R_quad_b_SetInterruptMode(uint16 position, uint16 mode)
     {
-		if((position & L_quad_a_0_INTR) != 0u) 
+		if((position & R_quad_b_0_INTR) != 0u) 
 		{ 
-			 L_quad_a_0_INTTYPE_REG = (uint8)mode; 
+			 R_quad_b_0_INTTYPE_REG = (uint8)mode; 
 		}
     }
     
     
     /*******************************************************************************
-    * Function Name: L_quad_a_ClearInterrupt
+    * Function Name: R_quad_b_ClearInterrupt
     ****************************************************************************//**
     *
     * \brief Clears any active interrupts attached with the component and returns 
@@ -211,11 +211,11 @@ uint8 L_quad_a_ReadDataReg(void)
     *  those associated with the Pins component.
     *
     * \funcusage
-    *  \snippet L_quad_a_SUT.c usage_L_quad_a_ClearInterrupt
+    *  \snippet R_quad_b_SUT.c usage_R_quad_b_ClearInterrupt
     *******************************************************************************/
-    uint8 L_quad_a_ClearInterrupt(void)
+    uint8 R_quad_b_ClearInterrupt(void)
     {
-        return (L_quad_a_INTSTAT & L_quad_a_MASK) >> L_quad_a_SHIFT;
+        return (R_quad_b_INTSTAT & R_quad_b_MASK) >> R_quad_b_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

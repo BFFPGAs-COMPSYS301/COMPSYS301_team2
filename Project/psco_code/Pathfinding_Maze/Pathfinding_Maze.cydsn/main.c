@@ -3,6 +3,7 @@
 #include "astar.h"
 #include "movements.c"
 
+#define STARTDIRECTION DIR_DOWN
 
 const char *mazeInput[MAP_ROWS] =
 {
@@ -48,10 +49,11 @@ Checkpoints checkpoints =
     .points =
     {
         {1, 1},     /* START */
-        {13, 17}    /* END */
+        {3, 3},
+        {3, 5}    /* END */
     },
 
-    .count = 2
+    .count = 3
 };
 
 
@@ -94,7 +96,7 @@ bool BuildRoute(void)
     return AStar_BuildRoute(
         map,
         &checkpoints,
-        DIR_RIGHT,
+        STARTDIRECTION,
         &route
     );
 }
@@ -133,14 +135,14 @@ void ExecuteNextCommand(void)
 
         case CMD_LEFT:
             // Turn left only. Do NOT move forward.
-            TurnLeft(nextCommand);
+            TurnLeft();
 
             break;
 
 
         case CMD_RIGHT:
             // Turn right only. Do NOT move forward.
-            TurnRight(nextCommand);
+            TurnRight();
 
             break;
     }
