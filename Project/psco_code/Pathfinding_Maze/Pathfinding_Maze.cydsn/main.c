@@ -219,6 +219,7 @@ int main(void)
     while (1)
     {
         ExecuteNextCommand();
+        CyDelay(100);
     }
 
 

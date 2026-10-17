@@ -19,7 +19,6 @@ static uint16_t offLineCount = 0;
 static void goForwardSlow(void);
 static void rampingLeftBack();
 
-/*
 
 static void forwardFollowing() {
     if (FrontSensor_Read() == 0) {
@@ -244,11 +243,11 @@ static void LittleRight(void)
     LED_5_Write(0);
     CyDelay(1000);
 }
-*/
 
 
 
 
+/*
 static void MoveForwardOneCell(nextCommand){
     LED_1_Write(1);
     CyDelay(500);
@@ -286,4 +285,4 @@ static void LittleRight(){
     CyDelay(500);
     LED_5_Write(0);
     CyDelay(500);
-}
+}*/
