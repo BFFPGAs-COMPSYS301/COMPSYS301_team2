@@ -3,7 +3,7 @@
 #include "astar.h"
 #include "movements.c"
 
-#define STARTDIRECTION DIR_UP
+#define STARTDIRECTION DIR_LEFT
 
 const char *mazeInput[MAP_ROWS] =
 {
@@ -51,12 +51,13 @@ Checkpoints checkpoints =
         /*
         * NOTE: Co-ordinates are in format {Vertical, Horizontal}
         */
-        {12, 16},     /* START */
-        {8, 8},
-        {4, 1}  /* END */
+        {6, 6},     /* START */
+        {4, 2},
+        {8, 2},
+        {14, 7}/* END */
     },
 
-    .count = 3
+    .count = 4
 };
 
 
@@ -149,6 +150,12 @@ void ExecuteNextCommand(void)
             TurnRight();
 
             break;
+            
+        case CMD_UTURN:
+            // Perform a set 180 degree turn
+            UTurn();
+            break;
+            
     }
 
 

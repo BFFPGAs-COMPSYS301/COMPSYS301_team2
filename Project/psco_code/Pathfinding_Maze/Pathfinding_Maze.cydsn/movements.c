@@ -130,7 +130,7 @@ static void TurnLeft() {
     stopMoving();
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
-    CyDelay(400);
+    CyDelay(500);
     while (FrontSensor_Read() == 1) {
         PWM_1_WriteCompare(PERIOD - 21);
         PWM_2_WriteCompare(21);
@@ -149,11 +149,11 @@ static void TurnRight() {
     LED_3_Write(1);
     uint8 led_1 = FrontSensor_Read();
     goForwardSlow();
-    CyDelay(250);
+    CyDelay(220);
     stopMoving();
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
-    CyDelay(400);
+    CyDelay(500);
     while (FrontSensor_Read() == 1) {
         PWM_1_WriteCompare(21);
         PWM_2_WriteCompare(PERIOD - 21);
@@ -162,7 +162,35 @@ static void TurnRight() {
     CyDelay(10);
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
-    CyDelay(80);
+    CyDelay(100);
+    stopMoving();
+    LED_3_Write(0);
+    CyDelay(1000);
+}
+
+static void UTurn(void)
+{
+    LED_3_Write(1);
+    uint8 led_1 = FrontSensor_Read();
+    goForwardSlow();
+    CyDelay(500);
+    stopMoving();
+    PWM_2_WriteCompare(20);
+    PWM_1_WriteCompare(PERIOD - 18);
+    CyDelay(700);
+    while (FrontSensor_Read() == 1) {
+        PWM_2_WriteCompare(21);
+        PWM_1_WriteCompare(PERIOD - 19);
+    }
+    goForwardSlow();
+    CyDelay(10);
+    PWM_2_WriteCompare(PERIOD - 20);
+    PWM_1_WriteCompare(18);
+    CyDelay(100);
+    stopMoving();
+    PWM_1_WriteCompare(PERIOD - 20);
+    PWM_2_WriteCompare(PERIOD - 20);
+    CyDelay(200);
     stopMoving();
     LED_3_Write(0);
     CyDelay(1000);

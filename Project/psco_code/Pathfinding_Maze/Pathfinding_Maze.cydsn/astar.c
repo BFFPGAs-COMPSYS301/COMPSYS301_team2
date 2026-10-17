@@ -90,7 +90,6 @@ static bool AddTurn(
 {
     int turn;
 
-
     /*
      * Calculate clockwise difference.
      *
@@ -105,7 +104,6 @@ static bool AddTurn(
          (int)(*currentDirection) +
          4) % 4;
 
-
     /*
      * Already facing the correct direction.
      */
@@ -115,46 +113,29 @@ static bool AddTurn(
         return true;
     }
 
-
     /*
      * Right turn.
      */
 
     if (turn == 1)
     {
-        if (!AddCommand(
-                route,
-                CMD_RIGHT))
+        if (!AddCommand(route, CMD_RIGHT))
         {
             return false;
         }
     }
 
-
     /*
-     * U-turn.
-     *
-     * Two right turns.
+     * U-turn: add one dedicated command.
      */
 
     else if (turn == 2)
     {
-        if (!AddCommand(
-                route,
-                CMD_RIGHT))
-        {
-            return false;
-        }
-
-
-        if (!AddCommand(
-                route,
-                CMD_RIGHT))
+        if (!AddCommand(route, CMD_UTURN))
         {
             return false;
         }
     }
-
 
     /*
      * Left turn.
@@ -162,25 +143,18 @@ static bool AddTurn(
 
     else
     {
-        if (!AddCommand(
-                route,
-                CMD_LEFT))
+        if (!AddCommand(route, CMD_LEFT))
         {
             return false;
         }
     }
 
-
     /*
-     * Robot is now facing the required
-     * direction.
-
-     * It has not moved yet.
+     * Update the direction after the turn.
+     * The physical movement is performed later.
      */
 
-    *currentDirection =
-        requiredDirection;
-
+    *currentDirection = requiredDirection;
 
     return true;
 }
