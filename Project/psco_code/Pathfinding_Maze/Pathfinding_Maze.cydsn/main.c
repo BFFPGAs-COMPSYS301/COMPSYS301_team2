@@ -207,6 +207,8 @@ int main(void)
             // Error state.
         }
     }
+    
+    CyDelay(1000);
 
 
     // Route has now been calculated. Start robot movement.

@@ -7,12 +7,12 @@
 #include "project.h"
 #include "astar.h"
 
-#define CELL_LENGTH 85
-#define CELL_LENGTH_SHORT 65
+#define CELL_LENGTH 75
+#define CELL_LENGTH_SHORT 55
 #define INTERSECTION_TIMEOUT 5000
 
 #define PERIOD 90
-#define FORWARD_SPEED 24 // 45 is stopped, go lower to drive forward, stay below 25 to ensure movement
+#define FORWARD_SPEED 22 // 45 is stopped, go lower to drive forward, stay below 25 to ensure movement
 
 static uint16_t offLineCount = 0;
 
@@ -23,9 +23,17 @@ static void forwardFollowing() {
         PWM_1_WriteCompare(FORWARD_SPEED - 1);
         PWM_2_WriteCompare(FORWARD_SPEED); // Drive right motor slightly slower so it gradually turns to the right
     } else {
-        PWM_1_WriteCompare(PERIOD - FORWARD_SPEED); // Drive left wheel backard to quickly pivot right
-        PWM_2_WriteCompare(45); 
-        CyDelay(250);
+        PWM_2_WriteCompare(45);
+        PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 22); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
+        CyDelay(20);
+        PWM_1_WriteCompare(PERIOD - 22); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
     }
 }
 
@@ -35,10 +43,18 @@ static void findCorner() {
         PWM_1_WriteCompare(FORWARD_SPEED - 1);
         PWM_2_WriteCompare(FORWARD_SPEED); // Drive right motor slightly slower so it gradually turns to the right
     } else {
-        if (offLineCount < 15) {
-            PWM_1_WriteCompare(PERIOD - FORWARD_SPEED); // Drive left wheel backard to quickly pivot right
-            PWM_2_WriteCompare(45); 
-            CyDelay(10);
+        if (offLineCount < 10) {
+            PWM_2_WriteCompare(45);
+            PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
+            CyDelay(15);
+            PWM_1_WriteCompare(PERIOD - 22); // Drive left wheel backard to quickly pivot right
+            CyDelay(15);
+            PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
+            CyDelay(20);
+            PWM_1_WriteCompare(PERIOD - 22); // Drive left wheel backard to quickly pivot right
+            CyDelay(15);
+            PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
+            CyDelay(15);
         } else {
             goForwardSlow();
         }
@@ -47,8 +63,8 @@ static void findCorner() {
 }
 
 static void goForwardSlow() {
-    PWM_1_WriteCompare(20);
-    PWM_2_WriteCompare(20);
+    PWM_1_WriteCompare(22);
+    PWM_2_WriteCompare(21);
 }
 
 static void stopMoving() {
@@ -74,7 +90,7 @@ static void MoveForwardOneCell(Command nextCommand)
             travelled = QuadDec_1_GetCounter();
         }
         
-        stopMoving(); //Stop at end of cell for debugging, remove for final version
+       // stopMoving(); //Stop at end of cell for debugging, remove for final version
         
     } else {  // If turning next, approach the intersection first.
         // Continue until the sensors detect the intersection.
@@ -101,26 +117,26 @@ static void MoveForwardOneCell(Command nextCommand)
 
     LED_1_Write(0);
 
-    CyDelay(1000);
+    //CyDelay(1000);
 }
 
 static void TurnLeft() {
     LED_2_Write(1);
     goForwardSlow();
-    CyDelay(142);
+    CyDelay(330);
     stopMoving();
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
     CyDelay(400);
     while (FrontSensor_Read() == 1) {
-        PWM_1_WriteCompare(PERIOD - 20);
-        PWM_2_WriteCompare(20);
+        PWM_1_WriteCompare(PERIOD - 21);
+        PWM_2_WriteCompare(21);
     }
     goForwardSlow();
     CyDelay(10);
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
-    CyDelay(170);
+    CyDelay(82);
     stopMoving();
     LED_2_Write(0);
     CyDelay(1000);
@@ -130,7 +146,7 @@ static void TurnRight() {
     LED_3_Write(1);
     uint8 led_1 = FrontSensor_Read();
     goForwardSlow();
-    CyDelay(146);
+    CyDelay(260);
     stopMoving();
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
@@ -143,7 +159,7 @@ static void TurnRight() {
     CyDelay(10);
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
-    CyDelay(100);
+    CyDelay(80);
     stopMoving();
     LED_3_Write(0);
     CyDelay(1000);
