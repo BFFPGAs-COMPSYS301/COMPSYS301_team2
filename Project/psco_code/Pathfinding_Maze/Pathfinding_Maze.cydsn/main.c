@@ -3,25 +3,25 @@
 #include "astar.h"
 #include "movements.c"
 
-#define STARTDIRECTION DIR_LEFT
+#define STARTDIRECTION DIR_RIGHT
 
 const char *mazeInput[MAP_ROWS] =
 {
-    "1111111111111111111",
-    "1010001000001000001",
-    "1011101011101011101",
-    "1000100000100000101",
-    "1110111111111111101",
-    "1010000010000000001",
-    "1011111010111111101",
-    "1000001000100000101",
-    "1010101111101110101",
-    "1010101000101010101",
-    "1110101010101010101",
-    "1000101010001010101",
-    "1011111011111010101",
-    "1000000000000010001",
-    "1111111111111111111"
+    "1111100011111111111",
+    "1000100010010001001",
+    "1111111010011011111",
+    "1010101111011110001",
+    "1111100001001010000",
+    "0100101111111111111",
+    "0111100010000100000",
+    "0101011111111111111",
+    "1101001000100000010",
+    "1001101111000000011",
+    "1111001010011111110",
+    "0101111010110100011",
+    "0101101110100000001",
+    "1111011011111111111",
+    "0001110110010001010"
 };
 
 
@@ -51,13 +51,11 @@ Checkpoints checkpoints =
         /*
         * NOTE: Co-ordinates are in format {Vertical, Horizontal}
         */
-        {6, 6},     /* START */
-        {4, 2},
-        {8, 2},
-        {14, 7}/* END */
+        {13, 0},     /* START */
+        {12, 8}/* END */
     },
 
-    .count = 4
+    .count = 2
 };
 
 
@@ -129,33 +127,32 @@ void ExecuteNextCommand(void)
         
 
     // Execute it.
+    // Execute the next command.
     switch (command)
     {
         case CMD_FORWARD:
-            // Move forward exactly one cell.
             MoveForwardOneCell(nextCommand);
-
             break;
-
 
         case CMD_LEFT:
-            // Turn left only. Do NOT move forward.
             TurnLeft();
-
             break;
-
 
         case CMD_RIGHT:
-            // Turn right only. Do NOT move forward.
             TurnRight();
-
             break;
-            
+
         case CMD_UTURN:
-            // Perform a set 180 degree turn
             UTurn();
             break;
-            
+
+        case CMD_LEFT_SHORT:
+            LittleLeft();
+            break;
+
+        case CMD_RIGHT_SHORT:
+            LittleRight();
+            break; 
     }
 
 

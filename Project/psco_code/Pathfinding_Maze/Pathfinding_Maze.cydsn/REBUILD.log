@@ -1,4 +1,4 @@
---------------- Rebuild Started: 10/17/2026 13:10:07 Project: Pathfinding_Maze, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 10/17/2026 20:27:11 Project: Pathfinding_Maze, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\main.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\astar.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\movements.o"
@@ -60,6 +60,7 @@ Deleting file ".\CortexM3\ARM_GCC_541\Debug\FrontRSensor.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\FrontLSensor.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\R_quad_a.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\R_quad_b.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\LED5.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.hex"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.elf"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.map"
@@ -89,24 +90,41 @@ Cleanup...
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
 In file included from main.c:4:0:
 movements.c: In function 'TurnRight':
-movements.c:131:11: warning: unused variable 'led_1' [-Wunused-variable]
+movements.c:150:11: warning: unused variable 'led_1' [-Wunused-variable]
+     uint8 led_1 = FrontSensor_Read();
+           ^
+movements.c: In function 'UTurn':
+movements.c:174:11: warning: unused variable 'led_1' [-Wunused-variable]
      uint8 led_1 = FrontSensor_Read();
            ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/astar.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c astar.c -o .\CortexM3\ARM_GCC_541\Debug\astar.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/movements.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c movements.c -o .\CortexM3\ARM_GCC_541\Debug\movements.o
 movements.c: In function 'TurnRight':
-movements.c:131:11: warning: unused variable 'led_1' [-Wunused-variable]
+movements.c:150:11: warning: unused variable 'led_1' [-Wunused-variable]
+     uint8 led_1 = FrontSensor_Read();
+           ^
+movements.c: In function 'UTurn':
+movements.c:174:11: warning: unused variable 'led_1' [-Wunused-variable]
      uint8 led_1 = FrontSensor_Read();
            ^
 movements.c: At top level:
-movements.c:59:13: warning: 'MoveForwardOneCell' defined but not used [-Wunused-function]
+movements.c:78:13: warning: 'MoveForwardOneCell' defined but not used [-Wunused-function]
  static void MoveForwardOneCell(Command nextCommand)
              ^
-movements.c:107:13: warning: 'TurnLeft' defined but not used [-Wunused-function]
+movements.c:126:13: warning: 'TurnLeft' defined but not used [-Wunused-function]
  static void TurnLeft() {
              ^
-movements.c:129:13: warning: 'TurnRight' defined but not used [-Wunused-function]
+movements.c:148:13: warning: 'TurnRight' defined but not used [-Wunused-function]
  static void TurnRight() {
+             ^
+movements.c:171:13: warning: 'UTurn' defined but not used [-Wunused-function]
+ static void UTurn(void)
+             ^
+movements.c:199:13: warning: 'LittleLeft' defined but not used [-Wunused-function]
+ static void LittleLeft(void)
+             ^
+movements.c:204:13: warning: 'LittleRight' defined but not used [-Wunused-function]
+ static void LittleRight(void)
              ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cyfitter_cfg.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\cyfitter_cfg.c -o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cymetadata.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\cymetadata.c -o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
@@ -165,8 +183,9 @@ arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/FrontLSensor.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\FrontLSensor.c -o .\CortexM3\ARM_GCC_541\Debug\FrontLSensor.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/R_quad_a.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\R_quad_a.c -o .\CortexM3\ARM_GCC_541\Debug\R_quad_a.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/R_quad_b.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\R_quad_b.c -o .\CortexM3\ARM_GCC_541\Debug\R_quad_b.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/LED5.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\LED5.c -o .\CortexM3\ARM_GCC_541\Debug\LED5.o
 arm-none-eabi-as.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=.\CortexM3\ARM_GCC_541\Debug/CyBootAsmGnu.lst -g -W -o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o Generated_Source\PSoC5\CyBootAsmGnu.s
-arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\LED_1.o .\CortexM3\ARM_GCC_541\Debug\LED_2.o .\CortexM3\ARM_GCC_541\Debug\LED_3.o .\CortexM3\ARM_GCC_541\Debug\PWM_1.o .\CortexM3\ARM_GCC_541\Debug\PWM_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Clock_PWM.o .\CortexM3\ARM_GCC_541\Debug\M1_IN2.o .\CortexM3\ARM_GCC_541\Debug\M1_IN1.o .\CortexM3\ARM_GCC_541\Debug\PWM_2.o .\CortexM3\ARM_GCC_541\Debug\PWM_2_PM.o .\CortexM3\ARM_GCC_541\Debug\M2_IN2_1.o .\CortexM3\ARM_GCC_541\Debug\M2_IN1_1.o .\CortexM3\ARM_GCC_541\Debug\VDAC8_1.o .\CortexM3\ARM_GCC_541\Debug\VDAC8_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Vref_DAC1.o .\CortexM3\ARM_GCC_541\Debug\Vref_DAC2.o .\CortexM3\ARM_GCC_541\Debug\Vout1.o .\CortexM3\ARM_GCC_541\Debug\Vout2.o .\CortexM3\ARM_GCC_541\Debug\Vout3.o .\CortexM3\ARM_GCC_541\Debug\Vout4.o .\CortexM3\ARM_GCC_541\Debug\Vout5.o .\CortexM3\ARM_GCC_541\Debug\Timeout_1.o .\CortexM3\ARM_GCC_541\Debug\Timeout_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_2.o .\CortexM3\ARM_GCC_541\Debug\Timeout_2_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_4.o .\CortexM3\ARM_GCC_541\Debug\Timeout_4_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_3.o .\CortexM3\ARM_GCC_541\Debug\Timeout_3_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_5.o .\CortexM3\ARM_GCC_541\Debug\Timeout_5_PM.o .\CortexM3\ARM_GCC_541\Debug\isr_1.o .\CortexM3\ARM_GCC_541\Debug\isr_2.o .\CortexM3\ARM_GCC_541\Debug\isr_3.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_INT.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_PM.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_isr.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_Cnt16.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_Cnt16_PM.o .\CortexM3\ARM_GCC_541\Debug\BackLSensor.o .\CortexM3\ARM_GCC_541\Debug\FrontSensor.o .\CortexM3\ARM_GCC_541\Debug\BackRSensor.o .\CortexM3\ARM_GCC_541\Debug\FrontRSensor.o .\CortexM3\ARM_GCC_541\Debug\FrontLSensor.o .\CortexM3\ARM_GCC_541\Debug\R_quad_a.o .\CortexM3\ARM_GCC_541\Debug\R_quad_b.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\LED_1.o .\CortexM3\ARM_GCC_541\Debug\LED_2.o .\CortexM3\ARM_GCC_541\Debug\LED_3.o .\CortexM3\ARM_GCC_541\Debug\PWM_1.o .\CortexM3\ARM_GCC_541\Debug\PWM_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Clock_PWM.o .\CortexM3\ARM_GCC_541\Debug\M1_IN2.o .\CortexM3\ARM_GCC_541\Debug\M1_IN1.o .\CortexM3\ARM_GCC_541\Debug\PWM_2.o .\CortexM3\ARM_GCC_541\Debug\PWM_2_PM.o .\CortexM3\ARM_GCC_541\Debug\M2_IN2_1.o .\CortexM3\ARM_GCC_541\Debug\M2_IN1_1.o .\CortexM3\ARM_GCC_541\Debug\VDAC8_1.o .\CortexM3\ARM_GCC_541\Debug\VDAC8_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Vref_DAC1.o .\CortexM3\ARM_GCC_541\Debug\Vref_DAC2.o .\CortexM3\ARM_GCC_541\Debug\Vout1.o .\CortexM3\ARM_GCC_541\Debug\Vout2.o .\CortexM3\ARM_GCC_541\Debug\Vout3.o .\CortexM3\ARM_GCC_541\Debug\Vout4.o .\CortexM3\ARM_GCC_541\Debug\Vout5.o .\CortexM3\ARM_GCC_541\Debug\Timeout_1.o .\CortexM3\ARM_GCC_541\Debug\Timeout_1_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_2.o .\CortexM3\ARM_GCC_541\Debug\Timeout_2_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_4.o .\CortexM3\ARM_GCC_541\Debug\Timeout_4_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_3.o .\CortexM3\ARM_GCC_541\Debug\Timeout_3_PM.o .\CortexM3\ARM_GCC_541\Debug\Timeout_5.o .\CortexM3\ARM_GCC_541\Debug\Timeout_5_PM.o .\CortexM3\ARM_GCC_541\Debug\isr_1.o .\CortexM3\ARM_GCC_541\Debug\isr_2.o .\CortexM3\ARM_GCC_541\Debug\isr_3.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_INT.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_PM.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_isr.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_Cnt16.o .\CortexM3\ARM_GCC_541\Debug\QuadDec_1_Cnt16_PM.o .\CortexM3\ARM_GCC_541\Debug\BackLSensor.o .\CortexM3\ARM_GCC_541\Debug\FrontSensor.o .\CortexM3\ARM_GCC_541\Debug\BackRSensor.o .\CortexM3\ARM_GCC_541\Debug\FrontRSensor.o .\CortexM3\ARM_GCC_541\Debug\FrontLSensor.o .\CortexM3\ARM_GCC_541\Debug\R_quad_a.o .\CortexM3\ARM_GCC_541\Debug\R_quad_b.o .\CortexM3\ARM_GCC_541\Debug\LED5.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
 arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o C:\TEMP\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.elf .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\astar.o .\CortexM3\ARM_GCC_541\Debug\movements.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/Pathfinding_Maze.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
 cyelftool.exe -C C:\TEMP\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.elf --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
@@ -174,6 +193,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S C:\TEMP\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.elf
-Flash used: 6430 of 262144 bytes (2.5%).
+Flash used: 6758 of 262144 bytes (2.6%).
 SRAM used: 4001 of 65536 bytes (6.1%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 10/17/2026 13:10:41 ---------------
+--------------- Rebuild Succeeded: 10/17/2026 20:27:46 ---------------

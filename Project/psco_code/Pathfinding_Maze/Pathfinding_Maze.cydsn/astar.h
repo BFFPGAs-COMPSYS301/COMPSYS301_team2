@@ -66,7 +66,10 @@ typedef enum
     CMD_FORWARD = 0,
     CMD_LEFT = 1,
     CMD_RIGHT = 2,
-    CMD_UTURN = 3
+    CMD_UTURN = 3,
+    
+    CMD_LEFT_SHORT = 4,
+    CMD_RIGHT_SHORT = 5
 
 } Command;
 

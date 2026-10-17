@@ -195,3 +195,48 @@ static void UTurn(void)
     LED_3_Write(0);
     CyDelay(1000);
 }
+
+static void LittleLeft(void)
+{/*
+    goForwardSlow();
+    CyDelay(100);
+    stopMoving();
+    PWM_1_WriteCompare(PERIOD - 20);
+    PWM_2_WriteCompare(20);
+    CyDelay(500);
+    while (FrontSensor_Read() == 1) {
+        PWM_1_WriteCompare(PERIOD - 21);
+        PWM_2_WriteCompare(21);
+    }
+    goForwardSlow();
+    CyDelay(10);
+    PWM_1_WriteCompare(20);
+    PWM_2_WriteCompare(PERIOD - 20);
+    CyDelay(82);*/
+    stopMoving();
+    LED_2_Write(0);
+    CyDelay(1000);
+}
+
+static void LittleRight(void)
+{ /*
+    uint8 led_1 = FrontSensor_Read();
+    goForwardSlow();
+    CyDelay(100);
+    stopMoving();
+    PWM_1_WriteCompare(20);
+    PWM_2_WriteCompare(PERIOD - 20);
+    CyDelay(500);
+    while (FrontSensor_Read() == 1) {
+        PWM_1_WriteCompare(21);
+        PWM_2_WriteCompare(PERIOD - 21);
+    }
+    goForwardSlow();
+    CyDelay(10);
+    PWM_1_WriteCompare(PERIOD - 20);
+    PWM_2_WriteCompare(20);
+    CyDelay(100);*/
+    stopMoving();
+    LED_3_Write(0);
+    CyDelay(1000);
+}

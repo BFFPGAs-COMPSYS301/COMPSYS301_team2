@@ -159,19 +159,57 @@ static bool AddTurn(
     return true;
 }
 
-
 /* =========================================================
- * A* FOR ONE SECTION OF THE ROUTE
+ * IDENTIFY TURNS WITH A ONE-CELL STRAIGHT SECTION BETWEEN
+ * THEM.
  *
- * Calculates:
+ * LEFT, FORWARD, RIGHT
+ *     -> LEFT_SHORT, FORWARD, RIGHT_SHORT
  *
- *     start -> target
+ * RIGHT, FORWARD, LEFT
+ *     -> RIGHT_SHORT, FORWARD, LEFT_SHORT
  *
- * and appends the commands to route.
- *
- * finalDirection receives the direction the
- * robot is facing when it reaches target.
+ * No commands are removed or reordered.
  * ========================================================= */
+
+static void MarkShortTurnSequences(
+    Route *route,
+    uint16_t segmentStart
+)
+{
+    uint16_t i = segmentStart;
+
+    while (i + 2 < route->length)
+    {
+        Command first = route->commands[i];
+        Command middle = route->commands[i + 1];
+        Command last = route->commands[i + 2];
+
+        if (middle == CMD_FORWARD &&
+            first == CMD_LEFT &&
+            last == CMD_RIGHT)
+        {
+            route->commands[i] = CMD_LEFT_SHORT;
+            route->commands[i + 2] = CMD_RIGHT_SHORT;
+
+            i += 3;
+            continue;
+        }
+
+        if (middle == CMD_FORWARD &&
+            first == CMD_RIGHT &&
+            last == CMD_LEFT)
+        {
+            route->commands[i] = CMD_RIGHT_SHORT;
+            route->commands[i + 2] = CMD_LEFT_SHORT;
+
+            i += 3;
+            continue;
+        }
+
+        i++;
+    }
+}
 
 static bool AStarSegment(
     const uint8_t map[MAP_ROWS][MAP_COLS],
@@ -182,6 +220,7 @@ static bool AStarSegment(
     Direction *finalDirection
 )
 {
+    uint16_t segmentStart = route->length;
     uint16_t gScore[MAP_ROWS][MAP_COLS];
     uint16_t fScore[MAP_ROWS][MAP_COLS];
 
@@ -550,10 +589,9 @@ static bool AStarSegment(
      * Return the final direction.
      */
 
-    *finalDirection =
-        direction;
-
-
+    MarkShortTurnSequences(route, segmentStart);
+    *finalDirection = direction;
+    
     return true;
 }
 
