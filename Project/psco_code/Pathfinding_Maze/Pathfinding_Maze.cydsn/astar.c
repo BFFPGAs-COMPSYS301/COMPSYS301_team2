@@ -177,39 +177,45 @@ static void MarkShortTurnSequences(
     uint16_t segmentStart
 )
 {
-    uint16_t i = segmentStart;
+    uint16_t i;
 
-    while (i + 2 < route->length)
+    for (i = segmentStart;
+         i + 2 < route->length;
+         i++)
     {
         Command first = route->commands[i];
         Command middle = route->commands[i + 1];
         Command last = route->commands[i + 2];
 
-        if (middle == CMD_FORWARD &&
-            first == CMD_LEFT &&
-            last == CMD_RIGHT)
-        {
-            route->commands[i] = CMD_LEFT_SHORT;
-            route->commands[i + 2] = CMD_RIGHT_SHORT;
-
-            i += 3;
+        /*
+         * Exactly one FORWARD command separates
+         * the two turns.
+         */
+        if (middle != CMD_FORWARD)
             continue;
-        }
 
-        if (middle == CMD_FORWARD &&
-            first == CMD_RIGHT &&
-            last == CMD_LEFT)
+        /*
+         * Both turns must originally be normal
+         * left/right turns.
+         */
+        if ((first == CMD_LEFT ||
+             first == CMD_RIGHT) &&
+            (last == CMD_LEFT ||
+             last == CMD_RIGHT))
         {
-            route->commands[i] = CMD_RIGHT_SHORT;
-            route->commands[i + 2] = CMD_LEFT_SHORT;
+            route->commands[i] =
+                (first == CMD_LEFT)
+                ? CMD_LEFT_SHORT
+                : CMD_RIGHT_SHORT;
 
-            i += 3;
-            continue;
+            route->commands[i + 2] =
+                (last == CMD_LEFT)
+                ? CMD_LEFT_SHORT
+                : CMD_RIGHT_SHORT;
         }
-
-        i++;
     }
 }
+
 
 static bool AStarSegment(
     const uint8_t map[MAP_ROWS][MAP_COLS],
@@ -221,380 +227,226 @@ static bool AStarSegment(
 )
 {
     uint16_t segmentStart = route->length;
-    uint16_t gScore[MAP_ROWS][MAP_COLS];
-    uint16_t fScore[MAP_ROWS][MAP_COLS];
-
-    bool visited[MAP_ROWS][MAP_COLS];
-
-    Position parent[MAP_ROWS][MAP_COLS];
-
-    Position openSet[MAX_CELLS];
-
-    uint16_t openSize = 0;
-
 
     /*
-     * Initialise arrays.
-     */
-
-    for (uint8_t row = 0;
-         row < MAP_ROWS;
-         row++)
-    {
-        for (uint8_t col = 0;
-             col < MAP_COLS;
-             col++)
-        {
-            gScore[row][col] = 65535;
-            fScore[row][col] = 65535;
-
-            visited[row][col] = false;
-
-            parent[row][col].row = 255;
-            parent[row][col].col = 255;
-        }
-    }
-
-
-    /*
-     * Starting position.
-     */
-
-    gScore[start.row][start.col] = 0;
-
-    fScore[start.row][start.col] =
-        Heuristic(start, target);
-
-
-    openSet[openSize++] = start;
-
-
-    /*
-     * Directions:
+     * Search state includes BOTH the cell and the direction
+     * the robot is facing when it reaches that cell.
      *
-     * 0 = UP
-     * 1 = RIGHT
-     * 2 = DOWN
-     * 3 = LEFT
+     * Primary objective: fewest cells travelled.
+     * Secondary objective: fewest direction changes.
      */
+    uint16_t steps[MAP_ROWS][MAP_COLS][4];
+    uint16_t turns[MAP_ROWS][MAP_COLS][4];
+    bool visited[MAP_ROWS][MAP_COLS][4];
+
+    int16_t parentRow[MAP_ROWS][MAP_COLS][4];
+    int16_t parentCol[MAP_ROWS][MAP_COLS][4];
+    int8_t parentDir[MAP_ROWS][MAP_COLS][4];
 
     static const int8_t directions[4][2] =
     {
-        {-1,  0},
-        { 0,  1},
-        { 1,  0},
-        { 0, -1}
+        {-1,  0},  /* UP */
+        { 0,  1},  /* RIGHT */
+        { 1,  0},  /* DOWN */
+        { 0, -1}   /* LEFT */
     };
 
-
-    /* =====================================================
-     * A* SEARCH
-     * ===================================================== */
-
-    while (openSize > 0)
+    /* Initialise every search state. */
+    for (uint8_t r = 0; r < MAP_ROWS; r++)
     {
-        uint16_t bestIndex = 0;
-
-
-        /*
-         * Find the cell with the lowest fScore.
-         */
-
-        for (uint16_t i = 1;
-             i < openSize;
-             i++)
+        for (uint8_t c = 0; c < MAP_COLS; c++)
         {
-            Position a = openSet[i];
-            Position b = openSet[bestIndex];
-
-
-            if (fScore[a.row][a.col] <
-                fScore[b.row][b.col])
+            for (uint8_t d = 0; d < 4; d++)
             {
-                bestIndex = i;
-            }
-        }
+                steps[r][c][d] = 65535;
+                turns[r][c][d] = 65535;
+                visited[r][c][d] = false;
 
-
-        /*
-         * Get current cell.
-         */
-
-        Position current =
-            openSet[bestIndex];
-
-
-        /*
-         * Remove current cell from open set.
-         */
-
-        openSet[bestIndex] =
-            openSet[openSize - 1];
-
-        openSize--;
-
-
-        /*
-         * Ignore if already processed.
-         */
-
-        if (visited[current.row][current.col])
-            continue;
-
-
-        visited[current.row][current.col] = true;
-
-
-        /*
-         * Have we reached the target?
-         */
-
-        if (current.row == target.row &&
-            current.col == target.col)
-        {
-            break;
-        }
-
-
-        /*
-         * Check all four neighbouring cells.
-         */
-
-        for (uint8_t d = 0;
-             d < 4;
-             d++)
-        {
-            int16_t newRow =
-                current.row +
-                directions[d][0];
-
-            int16_t newCol =
-                current.col +
-                directions[d][1];
-
-
-            /*
-             * Check map boundaries.
-             */
-
-            if (newRow < 0 ||
-                newRow >= MAP_ROWS ||
-                newCol < 0 ||
-                newCol >= MAP_COLS)
-            {
-                continue;
-            }
-
-
-            /*
-             * Check for wall.
-             *
-             * 1 = wall
-             * 0 = open
-             */
-
-            if (map[newRow][newCol] != 1)
-                continue;
-
-
-            /*
-             * Already processed.
-             */
-
-            if (visited[newRow][newCol])
-                continue;
-
-
-            /*
-             * Every cell movement costs 1.
-             */
-
-            uint16_t newGScore =
-                gScore[current.row][current.col] + 1;
-
-
-            /*
-             * Is this a better path?
-             */
-
-            if (newGScore <
-                gScore[newRow][newCol])
-            {
-                Position neighbour;
-
-
-                neighbour.row = newRow;
-                neighbour.col = newCol;
-
-
-                gScore[newRow][newCol] =
-                    newGScore;
-
-
-                parent[newRow][newCol] =
-                    current;
-
-
-                fScore[newRow][newCol] =
-                    newGScore +
-                    Heuristic(
-                        neighbour,
-                        target
-                    );
-
-
-                /*
-                 * Add neighbour to open set.
-                 */
-
-                if (openSize >= MAX_CELLS)
-                    return false;
-
-
-                openSet[openSize++] =
-                    neighbour;
+                parentRow[r][c][d] = -1;
+                parentCol[r][c][d] = -1;
+                parentDir[r][c][d] = -1;
             }
         }
     }
 
+    /* Initial state: start cell, original robot direction. */
+    steps[start.row][start.col][startingDirection] = 0;
+    turns[start.row][start.col][startingDirection] = 0;
+
+    int16_t endRow = -1;
+    int16_t endCol = -1;
+    int8_t endDir = -1;
 
     /*
-     * If target was never visited,
-     * there is no route.
+     * Dijkstra search with lexicographic costs:
+     * compare steps first, then turns.
      */
+    while (true)
+    {
+        int16_t bestRow = -1;
+        int16_t bestCol = -1;
+        int8_t bestDir = -1;
 
-    if (!visited[target.row][target.col])
+        for (uint8_t r = 0; r < MAP_ROWS; r++)
+        {
+            for (uint8_t c = 0; c < MAP_COLS; c++)
+            {
+                for (uint8_t d = 0; d < 4; d++)
+                {
+                    if (visited[r][c][d] ||
+                        steps[r][c][d] == 65535)
+                    {
+                        continue;
+                    }
+
+                    if (bestRow == -1 ||
+                        steps[r][c][d] <
+                            steps[bestRow][bestCol][bestDir] ||
+                        (steps[r][c][d] ==
+                            steps[bestRow][bestCol][bestDir] &&
+                         turns[r][c][d] <
+                            turns[bestRow][bestCol][bestDir]))
+                    {
+                        bestRow = r;
+                        bestCol = c;
+                        bestDir = d;
+                    }
+                }
+            }
+        }
+
+        /* No reachable states remain. */
+        if (bestRow == -1)
+            return false;
+
+        visited[bestRow][bestCol][bestDir] = true;
+
+        /* The first target state selected is optimal. */
+        if (bestRow == target.row &&
+            bestCol == target.col)
+        {
+            endRow = bestRow;
+            endCol = bestCol;
+            endDir = bestDir;
+            break;
+        }
+
+        /* Explore all four possible next directions. */
+        for (uint8_t d = 0; d < 4; d++)
+        {
+            int16_t nr = bestRow + directions[d][0];
+            int16_t nc = bestCol + directions[d][1];
+
+            if (nr < 0 || nr >= MAP_ROWS ||
+                nc < 0 || nc >= MAP_COLS)
+            {
+                continue;
+            }
+
+            /* IMPORTANT: 1 = OPEN, 0 = WALL. */
+            if (map[nr][nc] != 1)
+                continue;
+
+            if (visited[nr][nc][d])
+                continue;
+
+            uint16_t newSteps =
+                steps[bestRow][bestCol][bestDir] + 1;
+
+            uint16_t newTurns =
+                turns[bestRow][bestCol][bestDir];
+
+            /* Changing direction adds one turn. */
+            if (d != bestDir)
+                newTurns++;
+
+            /*
+             * Prefer fewer steps.
+             * If steps tie, prefer fewer turns.
+             */
+            if (newSteps < steps[nr][nc][d] ||
+                (newSteps == steps[nr][nc][d] &&
+                 newTurns < turns[nr][nc][d]))
+            {
+                steps[nr][nc][d] = newSteps;
+                turns[nr][nc][d] = newTurns;
+
+                parentRow[nr][nc][d] = bestRow;
+                parentCol[nr][nc][d] = bestCol;
+                parentDir[nr][nc][d] = bestDir;
+            }
+        }
+    }
+
+    if (endRow == -1)
         return false;
 
-
-    /* =====================================================
-     * RECONSTRUCT PATH
-     *
-     * Initially creates:
-     *
-     *     TARGET
-     *     CELL
-     *     CELL
-     *     START
-     * ===================================================== */
-
+    /*
+     * Reconstruct the path backwards from the target.
+     */
     Position reversePath[MAX_CELLS];
-
     uint16_t pathLength = 0;
 
-    Position current = target;
+    int16_t r = endRow;
+    int16_t c = endCol;
+    int8_t d = endDir;
 
-
-    while (1)
+    while (true)
     {
         if (pathLength >= MAX_CELLS)
             return false;
 
+        reversePath[pathLength].row = (uint8_t)r;
+        reversePath[pathLength].col = (uint8_t)c;
+        pathLength++;
 
-        reversePath[pathLength++] =
-            current;
-
-
-        /*
-         * Reached start.
-         */
-
-        if (current.row == start.row &&
-            current.col == start.col)
+        /* Reached the original search state. */
+        if (r == start.row &&
+            c == start.col &&
+            d == startingDirection)
         {
             break;
         }
 
+        int16_t pr = parentRow[r][c][d];
+        int16_t pc = parentCol[r][c][d];
+        int8_t pd = parentDir[r][c][d];
 
-        current =
-            parent[current.row][current.col];
-
-
-        /*
-         * Invalid parent.
-         */
-
-        if (current.row == 255)
+        if (pr < 0 || pc < 0 || pd < 0)
             return false;
+
+        r = pr;
+        c = pc;
+        d = pd;
     }
 
-
-    /* =====================================================
-     * CONVERT PATH TO ROBOT COMMANDS
-     * ===================================================== */
-
-    Direction direction =
-        startingDirection;
-
-
     /*
-     * Walk backwards through reversePath
-     * so that we process:
-     *
-     *     START -> TARGET
+     * Convert the reconstructed path into robot commands,
+     * moving from START towards TARGET.
      */
+    Direction direction = startingDirection;
 
-    for (int16_t i = pathLength - 1;
-         i > 0;
-         i--)
+    for (int16_t i = (int16_t)pathLength - 1; i > 0; i--)
     {
-        Position from =
-            reversePath[i];
+        Position from = reversePath[i];
+        Position to = reversePath[i - 1];
 
-        Position to =
-            reversePath[i - 1];
+        Direction requiredDirection = GetDirection(from, to);
 
-
-        /*
-         * Direction required to move
-         * from this cell to the next.
-         */
-
-        Direction requiredDirection =
-            GetDirection(
-                from,
-                to
-            );
-
-
-        /*
-         * Turn if necessary.
-         *
-         * Turning does NOT move.
-         */
-
-        if (!AddTurn(
-                route,
-                &direction,
-                requiredDirection))
-        {
+        if (!AddTurn(route, &direction, requiredDirection))
             return false;
-        }
 
-
-        /*
-         * Move forward one cell.
-         */
-
-        if (!AddCommand(
-                route,
-                CMD_FORWARD))
-        {
+        if (!AddCommand(route, CMD_FORWARD))
             return false;
-        }
     }
 
-
-    /*
-     * Return the final direction.
-     */
-
+    /* Apply your existing short-turn rule to this segment. */
     MarkShortTurnSequences(route, segmentStart);
+
     *finalDirection = direction;
-    
+
     return true;
 }
-
 
 /* =========================================================
  * BUILD COMPLETE ROUTE
@@ -619,51 +471,51 @@ bool AStar_BuildRoute(
     Route *route
 )
 {
-    Direction currentDirection =
-        startingDirection;
+    Direction currentDirection = startingDirection;
 
-
-    /*
-     * Need at least two points:
-     *
-     * START -> END
-     */
-
-    if (checkpoints->count < 2)
-        return false;
-
-
-    /*
-     * Make sure checkpoint count is valid.
-     */
-
-    if (checkpoints->count >
-        MAX_CHECKPOINTS)
+    /* Validate pointers before dereferencing them. */
+    if (map == NULL ||
+        checkpoints == NULL ||
+        route == NULL)
     {
         return false;
     }
 
+    /* We need at least a start and destination. */
+    if (checkpoints->count < 2 ||
+        checkpoints->count > MAX_CHECKPOINTS)
+    {
+        return false;
+    }
 
-    /*
-     * Initialise route.
-     */
+    /* Validate every checkpoint before searching. */
+    for (uint8_t i = 0; i < checkpoints->count; i++)
+    {
+        Position p = checkpoints->points[i];
 
+        if (p.row >= MAP_ROWS ||
+            p.col >= MAP_COLS)
+        {
+            return false;
+        }
+
+        /* 1 = open; 0 = wall. */
+        if (map[p.row][p.col] != 1)
+        {
+            return false;
+        }
+    }
+
+    /* Initialize the complete route. */
     route->length = 0;
-
-    route->checkpointCount =
-        checkpoints->count;
-
-    route->finalDirection =
-        startingDirection;
-
+    route->checkpointCount = checkpoints->count;
+    route->finalDirection = startingDirection;
+    route->checkpointCommand[0] = 0;
 
     /*
-     * Starting point is checkpoint 0.
-     *
-     * No commands have been executed yet.
+     * Keep your existing AStarSegment loop here.
      */
 
-    route->checkpointCommand[0] = 0;
 
 
     /*

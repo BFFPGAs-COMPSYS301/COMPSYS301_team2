@@ -19,8 +19,8 @@ static uint16_t offLineCount = 0;
 static void goForwardSlow(void);
 static void rampingLeftBack();
 
-
 /*
+
 static void forwardFollowing() {
     if (FrontSensor_Read() == 0) {
         PWM_1_WriteCompare(FORWARD_SPEED - 1);
@@ -99,14 +99,14 @@ static void MoveForwardOneCell(Command nextCommand)
         
     } else {  // If turning next, approach the intersection first.
         // Continue until the sensors detect the intersection.
-        if (nextCommand == CMD_LEFT) {
+        if ((nextCommand == CMD_LEFT) || (nextCommand == CMD_LEFT_SHORT)) {
             while (FrontLSensor_Read() && timeout < INTERSECTION_TIMEOUT)
             {
                 findCorner();
                 CyDelay(1);
                 timeout++;
             }
-        } else if (nextCommand == CMD_RIGHT) {
+        } else if ((nextCommand == CMD_RIGHT) || (nextCommand == CMD_RIGHT_SHORT)) {
             while (FrontRSensor_Read() && timeout < INTERSECTION_TIMEOUT)
             {
                 findCorner();
@@ -200,8 +200,9 @@ static void UTurn(void)
 
 static void LittleLeft(void)
 {
+   LED_4_Write(1);
     goForwardSlow();
-    CyDelay(100);
+    CyDelay(10);
     stopMoving();
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
@@ -216,15 +217,16 @@ static void LittleLeft(void)
     PWM_2_WriteCompare(PERIOD - 20);
     CyDelay(82);
     stopMoving();
-    LED_2_Write(0);
+    LED_4_Write(0);
     CyDelay(1000);
 }
 
 static void LittleRight(void)
 { 
+    LED_5_Write(1);
     uint8 led_1 = FrontSensor_Read();
     goForwardSlow();
-    CyDelay(100);
+    CyDelay(10);
     stopMoving();
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
@@ -239,14 +241,14 @@ static void LittleRight(void)
     PWM_2_WriteCompare(20);
     CyDelay(100);
     stopMoving();
-    LED_3_Write(0);
+    LED_5_Write(0);
     CyDelay(1000);
 }
-
 */
 
 
-/*
+
+
 static void MoveForwardOneCell(nextCommand){
     LED_1_Write(1);
     CyDelay(500);
@@ -284,4 +286,4 @@ static void LittleRight(){
     CyDelay(500);
     LED_5_Write(0);
     CyDelay(500);
-}*/
+}
