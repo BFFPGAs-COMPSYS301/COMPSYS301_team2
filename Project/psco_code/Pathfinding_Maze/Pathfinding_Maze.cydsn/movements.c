@@ -17,31 +17,14 @@
 static uint16_t offLineCount = 0;
 
 static void goForwardSlow(void);
+static void rampingLeftBack();
 
 static void forwardFollowing() {
     if (FrontSensor_Read() == 0) {
         PWM_1_WriteCompare(FORWARD_SPEED - 1);
         PWM_2_WriteCompare(FORWARD_SPEED); // Drive right motor slightly slower so it gradually turns to the right
     } else {
-        PWM_2_WriteCompare(45);
-        PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
-        CyDelay(15);
-        PWM_1_WriteCompare(PERIOD - 23); // Drive left wheel backard to quickly pivot right
-        CyDelay(15);
-        PWM_1_WriteCompare(PERIOD - 21); // Drive left wheel backard to quickly pivot right
-        CyDelay(15);
-        PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
-        CyDelay(15);
-        PWM_1_WriteCompare(PERIOD - 18); // Drive left wheel backard to quickly pivot right
-        CyDelay(40);
-        PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
-        CyDelay(15);
-        PWM_1_WriteCompare(PERIOD - 21); // Drive left wheel backard to quickly pivot right
-        CyDelay(15);
-        PWM_1_WriteCompare(PERIOD - 23); // Drive left wheel backard to quickly pivot right
-        CyDelay(15);
-        PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
-        CyDelay(15);
+        rampingLeftBack();
     }
 }
 
@@ -51,7 +34,16 @@ static void findCorner() {
         PWM_1_WriteCompare(FORWARD_SPEED - 1);
         PWM_2_WriteCompare(FORWARD_SPEED); // Drive right motor slightly slower so it gradually turns to the right
     } else {
-        if (offLineCount < 5) {
+        if (offLineCount < 0) {
+            rampingLeftBack();
+        } else {
+            goForwardSlow();
+        }
+        offLineCount++;
+    }
+}
+
+static void rampingLeftBack(){
         PWM_2_WriteCompare(45);
         PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
         CyDelay(15);
@@ -71,11 +63,6 @@ static void findCorner() {
         CyDelay(15);
         PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
         CyDelay(15);
-        } else {
-            goForwardSlow();
-        }
-        offLineCount++;
-    }
 }
 
 static void goForwardSlow() {
