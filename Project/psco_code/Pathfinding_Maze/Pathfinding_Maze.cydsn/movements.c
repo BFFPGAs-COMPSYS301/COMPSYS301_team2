@@ -26,11 +26,19 @@ static void forwardFollowing() {
         PWM_2_WriteCompare(45);
         PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
         CyDelay(15);
-        PWM_1_WriteCompare(PERIOD - 22); // Drive left wheel backard to quickly pivot right
+        PWM_1_WriteCompare(PERIOD - 23); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 21); // Drive left wheel backard to quickly pivot right
         CyDelay(15);
         PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
-        CyDelay(20);
-        PWM_1_WriteCompare(PERIOD - 22); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 18); // Drive left wheel backard to quickly pivot right
+        CyDelay(40);
+        PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 21); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 23); // Drive left wheel backard to quickly pivot right
         CyDelay(15);
         PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
         CyDelay(15);
@@ -43,18 +51,26 @@ static void findCorner() {
         PWM_1_WriteCompare(FORWARD_SPEED - 1);
         PWM_2_WriteCompare(FORWARD_SPEED); // Drive right motor slightly slower so it gradually turns to the right
     } else {
-        if (offLineCount < 10) {
-            PWM_2_WriteCompare(45);
-            PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
-            CyDelay(15);
-            PWM_1_WriteCompare(PERIOD - 22); // Drive left wheel backard to quickly pivot right
-            CyDelay(15);
-            PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
-            CyDelay(20);
-            PWM_1_WriteCompare(PERIOD - 22); // Drive left wheel backard to quickly pivot right
-            CyDelay(15);
-            PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
-            CyDelay(15);
+        if (offLineCount < 5) {
+        PWM_2_WriteCompare(45);
+        PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 23); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 21); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 18); // Drive left wheel backard to quickly pivot right
+        CyDelay(40);
+        PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 21); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 23); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
+        PWM_1_WriteCompare(PERIOD - 25); // Drive left wheel backard to quickly pivot right
+        CyDelay(15);
         } else {
             goForwardSlow();
         }
@@ -64,7 +80,7 @@ static void findCorner() {
 
 static void goForwardSlow() {
     PWM_1_WriteCompare(22);
-    PWM_2_WriteCompare(21);
+    PWM_2_WriteCompare(22);
 }
 
 static void stopMoving() {
@@ -123,7 +139,7 @@ static void MoveForwardOneCell(Command nextCommand)
 static void TurnLeft() {
     LED_2_Write(1);
     goForwardSlow();
-    CyDelay(330);
+    CyDelay(250);
     stopMoving();
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
@@ -146,7 +162,7 @@ static void TurnRight() {
     LED_3_Write(1);
     uint8 led_1 = FrontSensor_Read();
     goForwardSlow();
-    CyDelay(260);
+    CyDelay(250);
     stopMoving();
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
