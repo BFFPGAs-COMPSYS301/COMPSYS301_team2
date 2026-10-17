@@ -403,6 +403,7 @@
       <Data key="f6397a50-03f4-4997-a855-b4bf01012283" value="timer_clock_2" />
     </Group>
     <Group key="Pin">
+      <Data key="2ef1393b-6edf-428e-9915-2f556e276ef3" value="LED_5" />
       <Data key="5d81e409-b3c8-48a7-b843-bf117e5c561c" value="FrontSensor" />
       <Data key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba" value="Vout1" />
       <Data key="8e07e505-e380-4e26-b856-162672454779" value="Vout5" />
@@ -421,6 +422,7 @@
       <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="Vref_DAC1" />
       <Data key="b6600f06-d528-4dd0-b759-82c6246ce646" value="R_quad_a" />
       <Data key="cf99c1b4-68b9-4c2b-b1a8-b58136e344d2" value="FrontLSensor" />
+      <Data key="d11813a3-ebec-4224-acba-fe58de548816" value="LED_4" />
       <Data key="e17bf98e-a25f-41ed-9033-4e3dbd52f5d4" value="Vref_DAC2" />
       <Data key="e201efc1-17f6-44a6-b993-164576a7fb41" value="FrontRSensor" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="LED_1" />
@@ -3513,6 +3515,11 @@
     </Group>
   </Group>
   <Group key="Pin2">
+    <Group key="2ef1393b-6edf-428e-9915-2f556e276ef3">
+      <Group key="0">
+        <Data key="Port Format" value="15,1" />
+      </Group>
+    </Group>
     <Group key="5d81e409-b3c8-48a7-b843-bf117e5c561c">
       <Group key="0">
         <Data key="Port Format" value="15,3" />
@@ -3603,6 +3610,11 @@
         <Data key="Port Format" value="12,3" />
       </Group>
     </Group>
+    <Group key="d11813a3-ebec-4224-acba-fe58de548816">
+      <Group key="0">
+        <Data key="Port Format" value="15,0" />
+      </Group>
+    </Group>
     <Group key="e17bf98e-a25f-41ed-9033-4e3dbd52f5d4">
       <Group key="0">
         <Data key="Port Format" value="3,3" />
@@ -3610,7 +3622,7 @@
     </Group>
     <Group key="e201efc1-17f6-44a6-b993-164576a7fb41">
       <Group key="0">
-        <Data key="Port Format" value="15,0" />
+        <Data key="Port Format" value="1,4" />
       </Group>
     </Group>
     <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">

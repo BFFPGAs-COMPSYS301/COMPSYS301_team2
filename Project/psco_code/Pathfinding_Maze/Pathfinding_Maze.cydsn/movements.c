@@ -19,6 +19,8 @@ static uint16_t offLineCount = 0;
 static void goForwardSlow(void);
 static void rampingLeftBack();
 
+
+/*
 static void forwardFollowing() {
     if (FrontSensor_Read() == 0) {
         PWM_1_WriteCompare(FORWARD_SPEED - 1);
@@ -197,7 +199,7 @@ static void UTurn(void)
 }
 
 static void LittleLeft(void)
-{/*
+{
     goForwardSlow();
     CyDelay(100);
     stopMoving();
@@ -212,14 +214,14 @@ static void LittleLeft(void)
     CyDelay(10);
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
-    CyDelay(82);*/
+    CyDelay(82);
     stopMoving();
     LED_2_Write(0);
     CyDelay(1000);
 }
 
 static void LittleRight(void)
-{ /*
+{ 
     uint8 led_1 = FrontSensor_Read();
     goForwardSlow();
     CyDelay(100);
@@ -235,8 +237,51 @@ static void LittleRight(void)
     CyDelay(10);
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
-    CyDelay(100);*/
+    CyDelay(100);
     stopMoving();
     LED_3_Write(0);
     CyDelay(1000);
 }
+
+*/
+
+
+/*
+static void MoveForwardOneCell(nextCommand){
+    LED_1_Write(1);
+    CyDelay(500);
+    LED_1_Write(0);
+    CyDelay(500);
+}
+
+static void TurnLeft() {
+    LED_2_Write(1);
+    CyDelay(500);
+    LED_2_Write(0);
+    CyDelay(500);
+}
+
+static void TurnRight(){
+    LED_3_Write(1);
+    CyDelay(500);
+    LED_3_Write(0);
+    CyDelay(500);
+}
+
+static void UTurn(){
+    ;
+}
+
+static void LittleLeft(){
+    LED_4_Write(1);
+    CyDelay(500);
+    LED_4_Write(0);
+    CyDelay(500);
+}
+
+static void LittleRight(){
+    LED_5_Write(1);
+    CyDelay(500);
+    LED_5_Write(0);
+    CyDelay(500);
+}*/

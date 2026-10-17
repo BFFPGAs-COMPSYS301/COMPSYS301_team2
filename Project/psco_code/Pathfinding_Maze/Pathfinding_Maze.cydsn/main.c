@@ -113,7 +113,7 @@ void ExecuteNextCommand(void)
     if (commandIndex >= route.length)
     {
         while(1) {
-            stopMoving(); // Stop moving forevr once finished
+            //stopMoving(); // Stop moving forevr once finished
         }
     }
 
