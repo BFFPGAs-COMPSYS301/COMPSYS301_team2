@@ -161,9 +161,10 @@ static void TurnRight() {
     }
     goForwardSlow();
     CyDelay(10);
+    /*
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
-    CyDelay(100);
+    CyDelay(30);*/
     stopMoving();
     LED_3_Write(0);
     CyDelay(1000);
@@ -205,7 +206,7 @@ static void LittleLeft(void)
     stopMoving();
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
-    CyDelay(500);
+    CyDelay(200);
     while (FrontSensor_Read() == 1) {
         PWM_1_WriteCompare(PERIOD - 21);
         PWM_2_WriteCompare(21);
@@ -229,16 +230,25 @@ static void LittleRight(void)
     stopMoving();
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
-    CyDelay(500);
+    CyDelay(200);
     while (FrontSensor_Read() == 1) {
-        PWM_1_WriteCompare(21);
+        PWM_1_WriteCompare(23);
         PWM_2_WriteCompare(PERIOD - 21);
     }
     goForwardSlow();
     CyDelay(10);
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
+    CyDelay(100);/*
+    while (FrontSensor_Read() == 0) {
+        PWM_1_WriteCompare(PERIOD - 21);
+        PWM_2_WriteCompare(PERIOD - 15);
+    }
     CyDelay(100);
+    while (FrontSensor_Read()) {
+        PWM_1_WriteCompare(20);
+        PWM_2_WriteCompare(20);
+    }*/
     stopMoving();
     LED_5_Write(0);
     CyDelay(1000);
