@@ -7,7 +7,7 @@
 #include "project.h"
 #include "astar.h"
 
-#define CELL_LENGTH 75
+#define CELL_LENGTH 65
 #define CELL_LENGTH_SHORT 55
 #define INTERSECTION_TIMEOUT 5000
 
@@ -200,21 +200,25 @@ static void UTurn(void)
 
 static void LittleLeft(void)
 {
-   LED_4_Write(1);
+    LED_4_Write(1);
     stopMoving();
-    PWM_1_WriteCompare(PERIOD - 20);
-    PWM_2_WriteCompare(20);
-    CyDelay(200);
-    while (FrontSensor_Read() == 1) {
-        PWM_1_WriteCompare(PERIOD - 19);
-        PWM_2_WriteCompare(21);
-    }
-    goForwardSlow();
-    CyDelay(10);
-    // PWM_1_WriteCompare(20);
-   // PWM_2_WriteCompare(PERIOD - 20);
-   // CyDelay(82);
     
+    PWM_1_WriteCompare(20);
+    PWM_2_WriteCompare(20);
+    CyDelay(400);
+    
+    stopMoving();
+    CyDelay(100);
+    
+    PWM_1_WriteCompare(PERIOD - 18);
+    PWM_2_WriteCompare(PERIOD - 24);
+    CyDelay(600);
+    
+    while (FrontSensor_Read()) {
+        PWM_1_WriteCompare(PERIOD - 18);
+        PWM_2_WriteCompare(PERIOD - 24);
+    }
+
     stopMoving();
     LED_4_Write(0);
     CyDelay(1000);
@@ -231,6 +235,10 @@ static void LittleRight(void)
     
     stopMoving();
     CyDelay(100);
+    
+    PWM_1_WriteCompare(PERIOD - 24);
+    PWM_2_WriteCompare(PERIOD - 18);
+    CyDelay(600);
     
     while (FrontSensor_Read()) {
         PWM_1_WriteCompare(PERIOD - 24);
