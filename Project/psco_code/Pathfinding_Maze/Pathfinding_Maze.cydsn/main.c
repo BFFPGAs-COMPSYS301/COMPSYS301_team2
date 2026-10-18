@@ -52,12 +52,11 @@ Checkpoints checkpoints =
         * NOTE: Co-ordinates are in format {Vertical, Horizontal}
         */     /* START */
         {13, 0},
-        {11, 5},
-        {13,6},
-        {14, 3}/* END */
+        {9, 4},
+        {4,4}/* END */
     },
 
-    .count = 4
+    .count = 3
 };
 
 

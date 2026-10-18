@@ -199,17 +199,21 @@ static void MarkShortTurnSequences(
          * left/right turns.
          */
         if ((first == CMD_LEFT || first == CMD_RIGHT || first == CMD_LEFT_SHORT || first == CMD_RIGHT_SHORT) &&
-            (last == CMD_LEFT || last == CMD_RIGHT || last == CMD_LEFT_SHORT || last == CMD_RIGHT_SHORT))
+            (last == CMD_LEFT || last == CMD_RIGHT || last == CMD_LEFT_SHORT || last == CMD_RIGHT_SHORT || last == CMD_UTURN))
         {
             route->commands[i] =
                 (first == CMD_LEFT || first == CMD_LEFT_SHORT)
                 ? CMD_LEFT_SHORT
                 : CMD_RIGHT_SHORT;
 
-            route->commands[i + 2] =
-                (last == CMD_RIGHT || last == CMD_RIGHT_SHORT)
-                ? CMD_RIGHT_SHORT
-                : CMD_LEFT_SHORT;
+       
+        if (last != CMD_UTURN)
+    {
+        route->commands[i + 2] =
+            (last == CMD_RIGHT || last == CMD_RIGHT_SHORT)
+            ? CMD_RIGHT_SHORT
+            : CMD_LEFT_SHORT;
+    }
         }
     }
 }
