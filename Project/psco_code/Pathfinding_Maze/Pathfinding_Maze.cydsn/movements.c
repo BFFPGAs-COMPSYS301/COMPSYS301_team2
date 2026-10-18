@@ -13,7 +13,7 @@
 
 #define PERIOD 90
 #define FORWARD_SPEED 22 // 45 is stopped, go lower to drive forward, stay below 25 to ensure movement
-/*
+
 static uint16_t offLineCount = 0;
 
 static void goForwardSlow(void);
@@ -164,7 +164,7 @@ static void TurnRight() {
     /*
     PWM_1_WriteCompare(PERIOD - 20);
     PWM_2_WriteCompare(20);
-    CyDelay(30);
+    CyDelay(30);*/
     stopMoving();
     LED_3_Write(0);
     CyDelay(1000);
@@ -175,7 +175,7 @@ static void UTurn(void)
     LED_3_Write(1);
     uint8 led_1 = FrontSensor_Read();
     goForwardSlow();
-    CyDelay(500);
+    CyDelay(750);
     stopMoving();
     PWM_2_WriteCompare(20);
     PWM_1_WriteCompare(PERIOD - 18);
@@ -252,8 +252,7 @@ static void LittleRight(void)
 
 
 
-*/
-
+/*
 static void MoveForwardOneCell(nextCommand){
     LED_1_Write(1);
     CyDelay(500);
@@ -297,4 +296,4 @@ static void LittleRight(){
     CyDelay(500);
     LED_5_Write(0);
     CyDelay(500);
-}
+}*/
