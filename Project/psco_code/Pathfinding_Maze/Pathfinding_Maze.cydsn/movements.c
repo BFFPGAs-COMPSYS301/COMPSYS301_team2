@@ -7,7 +7,7 @@
 #include "project.h"
 #include "astar.h"
 
-#define CELL_LENGTH 65
+#define CELL_LENGTH 70
 #define CELL_LENGTH_SHORT 55
 #define INTERSECTION_TIMEOUT 5000
 
