@@ -3,7 +3,7 @@
 #include "astar.h"
 #include "movements.c"
 
-#define STARTDIRECTION DIR_DOWN
+#define STARTDIRECTION DIR_RIGHT
 
 const char *mazeInput[MAP_ROWS] =
 {
@@ -51,12 +51,13 @@ Checkpoints checkpoints =
         /*
         * NOTE: Co-ordinates are in format {Vertical, Horizontal}
         */     /* START */
-        {11, 6},
-        {13, 5},
-        {14,3}/* END */
+        {13, 0},
+        {11, 5},
+        {13,6},
+        {14, 3}/* END */
     },
 
-    .count = 3
+    .count = 4
 };
 
 
