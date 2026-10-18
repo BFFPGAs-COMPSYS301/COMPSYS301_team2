@@ -198,20 +198,22 @@ static void MarkShortTurnSequences(
          * Both turns must originally be normal
          * left/right turns.
          */
-        if ((first == CMD_LEFT ||
-             first == CMD_RIGHT) &&
-            (last == CMD_LEFT ||
-             last == CMD_RIGHT))
+        if ((first == CMD_LEFT || first == CMD_RIGHT || first == CMD_LEFT_SHORT || first == CMD_RIGHT_SHORT) &&
+            (last == CMD_LEFT || last == CMD_RIGHT || last == CMD_LEFT_SHORT || last == CMD_RIGHT_SHORT || last == CMD_UTURN))
         {
             route->commands[i] =
-                (first == CMD_LEFT)
+                (first == CMD_LEFT || first == CMD_LEFT_SHORT)
                 ? CMD_LEFT_SHORT
                 : CMD_RIGHT_SHORT;
 
-            route->commands[i + 2] =
-                (last == CMD_LEFT)
-                ? CMD_LEFT_SHORT
-                : CMD_RIGHT_SHORT;
+       
+        if (last != CMD_UTURN)
+    {
+        route->commands[i + 2] =
+            (last == CMD_RIGHT || last == CMD_RIGHT_SHORT)
+            ? CMD_RIGHT_SHORT
+            : CMD_LEFT_SHORT;
+    }
         }
     }
 }
@@ -441,10 +443,10 @@ static bool AStarSegment(
     }
 
     /* Apply your existing short-turn rule to this segment. */
-    MarkShortTurnSequences(route, segmentStart);
+    //MarkShortTurnSequences(route, segmentStart);
 
     *finalDirection = direction;
-
+    
     return true;
 }
 
@@ -511,6 +513,8 @@ bool AStar_BuildRoute(
     route->checkpointCount = checkpoints->count;
     route->finalDirection = startingDirection;
     route->checkpointCommand[0] = 0;
+    
+    
 
     /*
      * Keep your existing AStarSegment loop here.
@@ -564,7 +568,8 @@ bool AStar_BuildRoute(
         route->checkpointCommand[i + 1] =
             route->length;
     }
-
+    
+    MarkShortTurnSequences(route, 0);
 
     /*
      * Store final direction.
@@ -572,7 +577,6 @@ bool AStar_BuildRoute(
 
     route->finalDirection =
         currentDirection;
-
-
+    
     return true;
 }

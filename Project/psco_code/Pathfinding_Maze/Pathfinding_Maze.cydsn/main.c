@@ -50,14 +50,13 @@ Checkpoints checkpoints =
     {
         /*
         * NOTE: Co-ordinates are in format {Vertical, Horizontal}
-        */
-        {13, 0},     /* START */
-        {11, 6},
-        {13,5},
-        {14,3}/* END */
+        */     /* START */
+        {13, 0},
+        {9, 4},
+        {4,4}/* END */
     },
 
-    .count = 4
+    .count = 3
 };
 
 
