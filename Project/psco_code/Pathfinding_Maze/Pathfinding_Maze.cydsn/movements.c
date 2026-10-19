@@ -7,7 +7,7 @@
 #include "project.h"
 #include "astar.h"
 
-#define CELL_LENGTH 70
+#define CELL_LENGTH 65
 #define CELL_LENGTH_SHORT 55
 #define INTERSECTION_TIMEOUT 5000
 
@@ -140,7 +140,7 @@ static void TurnLeft() {
     CyDelay(10);
     PWM_1_WriteCompare(20);
     PWM_2_WriteCompare(PERIOD - 20);
-    CyDelay(82);
+    CyDelay(78);
     stopMoving();
     LED_2_Write(0);
     CyDelay(1000);
@@ -179,7 +179,7 @@ static void UTurn(void)
     stopMoving();
     PWM_2_WriteCompare(20);
     PWM_1_WriteCompare(PERIOD - 18);
-    CyDelay(700);
+    CyDelay(750);
     while (FrontSensor_Read() == 1) {
         PWM_2_WriteCompare(21);
         PWM_1_WriteCompare(PERIOD - 19);
