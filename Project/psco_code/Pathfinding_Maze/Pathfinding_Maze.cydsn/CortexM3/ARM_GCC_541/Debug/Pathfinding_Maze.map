@@ -661,7 +661,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 [!provide]                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000     0x19f6
+.text           0x00000000     0x1a4e
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -716,428 +716,431 @@ END GROUP
  .text.AddTurn  0x00000610       0x58 .\CortexM3\ARM_GCC_541\Debug\astar.o
  .text.MarkShortTurnSequences
                 0x00000668       0x70 .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .text.ShortBeforeUturn
+                0x000006d8       0x50 .\CortexM3\ARM_GCC_541\Debug\astar.o
  .text.AStarSegment
-                0x000006d8      0x3cc .\CortexM3\ARM_GCC_541\Debug\astar.o
+                0x00000728      0x3cc .\CortexM3\ARM_GCC_541\Debug\astar.o
  .text.AStar_BuildRoute
-                0x00000aa4      0x100 .\CortexM3\ARM_GCC_541\Debug\astar.o
-                0x00000aa4                AStar_BuildRoute
+                0x00000af4      0x108 .\CortexM3\ARM_GCC_541\Debug\astar.o
+                0x00000af4                AStar_BuildRoute
  .text.CyClockStartupError
-                0x00000ba4        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000bfc        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cfg_write_bytes32
-                0x00000ba8       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000c00       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.AnalogSetDefault
-                0x00000bdc       0x40 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000c34       0x40 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYMEMZERO
-                0x00000c1c        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000c74        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.ClockSetup
-                0x00000c28       0xb8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000c80       0xb8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYCONFIGCPY
-                0x00000ce0        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000d38        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cyfitter_cfg
-                0x00000ce8      0x160 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                0x00000ce8                cyfitter_cfg
+                0x00000d40      0x160 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000d40                cyfitter_cfg
  .text.IntDefaultHandler
-                0x00000e48       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000e48                IntDefaultHandler
- .text.Start_c  0x00000e58       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000e58                Start_c
+                0x00000ea0       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000ea0                IntDefaultHandler
+ .text.Start_c  0x00000eb0       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000eb0                Start_c
  .text.initialize_psoc
-                0x00000ea4       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000ea4                initialize_psoc
- .text.CyHalt   0x00000f0c        0x4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
-                0x00000f0c                CyHalt
- .text.CyDelay  0x00000f10       0x2c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
-                0x00000f10                CyDelay
+                0x00000efc       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000efc                initialize_psoc
+ .text.CyHalt   0x00000f64        0x4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+                0x00000f64                CyHalt
+ .text.CyDelay  0x00000f68       0x2c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+                0x00000f68                CyDelay
  .text.CyIntSetVector
-                0x00000f3c       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
-                0x00000f3c                CyIntSetVector
+                0x00000f94       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+                0x00000f94                CyIntSetVector
  .text.CyIntSetPriority
-                0x00000f64       0x30 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
-                0x00000f64                CyIntSetPriority
+                0x00000fbc       0x30 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+                0x00000fbc                CyIntSetPriority
  .text.LED_1_Write
-                0x00000f94       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
-                0x00000f94                LED_1_Write
+                0x00000fec       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+                0x00000fec                LED_1_Write
  .text.LED_2_Write
-                0x00000fac       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
-                0x00000fac                LED_2_Write
+                0x00001004       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+                0x00001004                LED_2_Write
  .text.LED_3_Write
-                0x00000fc4       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
-                0x00000fc4                LED_3_Write
+                0x0000101c       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+                0x0000101c                LED_3_Write
  .text.LED_4_Write
-                0x00000fdc       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
-                0x00000fdc                LED_4_Write
+                0x00001034       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+                0x00001034                LED_4_Write
  .text.LED_5_Write
-                0x00000ff4       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
-                0x00000ff4                LED_5_Write
+                0x0000104c       0x18 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+                0x0000104c                LED_5_Write
  .text.PWM_1_Enable
-                0x0000100c       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
-                0x0000100c                PWM_1_Enable
+                0x00001064       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+                0x00001064                PWM_1_Enable
  .text.PWM_1_WritePeriod
-                0x00001034        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
-                0x00001034                PWM_1_WritePeriod
+                0x0000108c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+                0x0000108c                PWM_1_WritePeriod
  .text.PWM_1_WriteCompare
-                0x00001040        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
-                0x00001040                PWM_1_WriteCompare
+                0x00001098        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+                0x00001098                PWM_1_WriteCompare
  .text.PWM_1_SetInterruptMode
-                0x0000104c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
-                0x0000104c                PWM_1_SetInterruptMode
+                0x000010a4        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+                0x000010a4                PWM_1_SetInterruptMode
  .text.PWM_1_Init
-                0x00001058       0x74 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
-                0x00001058                PWM_1_Init
+                0x000010b0       0x74 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+                0x000010b0                PWM_1_Init
  .text.PWM_1_Start
-                0x000010cc       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
-                0x000010cc                PWM_1_Start
+                0x00001124       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+                0x00001124                PWM_1_Start
  .text.Clock_PWM_GetDividerRegister
-                0x000010e8        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
-                0x000010e8                Clock_PWM_GetDividerRegister
+                0x00001140        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+                0x00001140                Clock_PWM_GetDividerRegister
  .text.Clock_PWM_GetSourceRegister
-                0x000010f4       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
-                0x000010f4                Clock_PWM_GetSourceRegister
+                0x0000114c       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+                0x0000114c                Clock_PWM_GetSourceRegister
  .text.Clock_PWM_SetDividerRegister
-                0x00001104       0xd8 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
-                0x00001104                Clock_PWM_SetDividerRegister
+                0x0000115c       0xd8 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+                0x0000115c                Clock_PWM_SetDividerRegister
  .text.PWM_2_Enable
-                0x000011dc       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
-                0x000011dc                PWM_2_Enable
+                0x00001234       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+                0x00001234                PWM_2_Enable
  .text.PWM_2_WritePeriod
-                0x00001204        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
-                0x00001204                PWM_2_WritePeriod
+                0x0000125c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+                0x0000125c                PWM_2_WritePeriod
  .text.PWM_2_WriteCompare
-                0x00001210        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
-                0x00001210                PWM_2_WriteCompare
+                0x00001268        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+                0x00001268                PWM_2_WriteCompare
  .text.PWM_2_SetInterruptMode
-                0x0000121c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
-                0x0000121c                PWM_2_SetInterruptMode
+                0x00001274        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+                0x00001274                PWM_2_SetInterruptMode
  .text.PWM_2_Init
-                0x00001228       0x74 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
-                0x00001228                PWM_2_Init
+                0x00001280       0x74 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+                0x00001280                PWM_2_Init
  .text.PWM_2_Start
-                0x0000129c       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
-                0x0000129c                PWM_2_Start
+                0x000012f4       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+                0x000012f4                PWM_2_Start
  .text.VDAC8_1_Enable
-                0x000012b8       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
-                0x000012b8                VDAC8_1_Enable
+                0x00001310       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+                0x00001310                VDAC8_1_Enable
  .text.VDAC8_1_SetSpeed
-                0x000012d4       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
-                0x000012d4                VDAC8_1_SetSpeed
+                0x0000132c       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+                0x0000132c                VDAC8_1_SetSpeed
  .text.VDAC8_1_SetValue
-                0x000012f0        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
-                0x000012f0                VDAC8_1_SetValue
+                0x00001348        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+                0x00001348                VDAC8_1_SetValue
  .text.VDAC8_1_DacTrim
-                0x000012fc       0x24 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
-                0x000012fc                VDAC8_1_DacTrim
+                0x00001354       0x24 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+                0x00001354                VDAC8_1_DacTrim
  .text.VDAC8_1_SetRange
-                0x00001320       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
-                0x00001320                VDAC8_1_SetRange
+                0x00001378       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+                0x00001378                VDAC8_1_SetRange
  .text.VDAC8_1_Init
-                0x00001340       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
-                0x00001340                VDAC8_1_Init
+                0x00001398       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+                0x00001398                VDAC8_1_Init
  .text.VDAC8_1_Start
-                0x00001360       0x24 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
-                0x00001360                VDAC8_1_Start
+                0x000013b8       0x24 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+                0x000013b8                VDAC8_1_Start
  .text.Timeout_1_Enable
-                0x00001384       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
-                0x00001384                Timeout_1_Enable
+                0x000013dc       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x000013dc                Timeout_1_Enable
  .text.Timeout_1_SetInterruptMode
-                0x00001394        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
-                0x00001394                Timeout_1_SetInterruptMode
+                0x000013ec        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x000013ec                Timeout_1_SetInterruptMode
  .text.Timeout_1_ReadStatusRegister
-                0x000013a0        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
-                0x000013a0                Timeout_1_ReadStatusRegister
+                0x000013f8        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x000013f8                Timeout_1_ReadStatusRegister
  .text.Timeout_1_WritePeriod
-                0x000013ac        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
-                0x000013ac                Timeout_1_WritePeriod
+                0x00001404        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x00001404                Timeout_1_WritePeriod
  .text.Timeout_1_ReadCapture
-                0x000013b8        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
-                0x000013b8                Timeout_1_ReadCapture
+                0x00001410        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x00001410                Timeout_1_ReadCapture
  .text.Timeout_1_WriteCounter
-                0x000013c4        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
-                0x000013c4                Timeout_1_WriteCounter
+                0x0000141c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x0000141c                Timeout_1_WriteCounter
  .text.Timeout_1_ClearFIFO
-                0x000013d0       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
-                0x000013d0                Timeout_1_ClearFIFO
+                0x00001428       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x00001428                Timeout_1_ClearFIFO
  .text.Timeout_1_Init
-                0x000013e4       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
-                0x000013e4                Timeout_1_Init
+                0x0000143c       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x0000143c                Timeout_1_Init
  .text.Timeout_1_Start
-                0x00001418       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
-                0x00001418                Timeout_1_Start
+                0x00001470       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x00001470                Timeout_1_Start
  .text.Timeout_2_Enable
-                0x00001434       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
-                0x00001434                Timeout_2_Enable
+                0x0000148c       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x0000148c                Timeout_2_Enable
  .text.Timeout_2_SetInterruptMode
-                0x00001444        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
-                0x00001444                Timeout_2_SetInterruptMode
+                0x0000149c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x0000149c                Timeout_2_SetInterruptMode
  .text.Timeout_2_ReadStatusRegister
-                0x00001450        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
-                0x00001450                Timeout_2_ReadStatusRegister
+                0x000014a8        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x000014a8                Timeout_2_ReadStatusRegister
  .text.Timeout_2_WritePeriod
-                0x0000145c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
-                0x0000145c                Timeout_2_WritePeriod
+                0x000014b4        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x000014b4                Timeout_2_WritePeriod
  .text.Timeout_2_ReadCapture
-                0x00001468        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
-                0x00001468                Timeout_2_ReadCapture
+                0x000014c0        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x000014c0                Timeout_2_ReadCapture
  .text.Timeout_2_WriteCounter
-                0x00001474        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
-                0x00001474                Timeout_2_WriteCounter
+                0x000014cc        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x000014cc                Timeout_2_WriteCounter
  .text.Timeout_2_ClearFIFO
-                0x00001480       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
-                0x00001480                Timeout_2_ClearFIFO
+                0x000014d8       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x000014d8                Timeout_2_ClearFIFO
  .text.Timeout_2_Init
-                0x00001494       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
-                0x00001494                Timeout_2_Init
+                0x000014ec       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x000014ec                Timeout_2_Init
  .text.Timeout_2_Start
-                0x000014c8       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
-                0x000014c8                Timeout_2_Start
+                0x00001520       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x00001520                Timeout_2_Start
  .text.Timeout_4_Enable
-                0x000014e4       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
-                0x000014e4                Timeout_4_Enable
+                0x0000153c       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x0000153c                Timeout_4_Enable
  .text.Timeout_4_SetInterruptMode
-                0x000014f4        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
-                0x000014f4                Timeout_4_SetInterruptMode
+                0x0000154c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x0000154c                Timeout_4_SetInterruptMode
  .text.Timeout_4_ReadStatusRegister
-                0x00001500        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
-                0x00001500                Timeout_4_ReadStatusRegister
+                0x00001558        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x00001558                Timeout_4_ReadStatusRegister
  .text.Timeout_4_WritePeriod
-                0x0000150c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
-                0x0000150c                Timeout_4_WritePeriod
+                0x00001564        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x00001564                Timeout_4_WritePeriod
  .text.Timeout_4_ReadCapture
-                0x00001518        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
-                0x00001518                Timeout_4_ReadCapture
+                0x00001570        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x00001570                Timeout_4_ReadCapture
  .text.Timeout_4_WriteCounter
-                0x00001524        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
-                0x00001524                Timeout_4_WriteCounter
+                0x0000157c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x0000157c                Timeout_4_WriteCounter
  .text.Timeout_4_ClearFIFO
-                0x00001530       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
-                0x00001530                Timeout_4_ClearFIFO
+                0x00001588       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x00001588                Timeout_4_ClearFIFO
  .text.Timeout_4_Init
-                0x00001544       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
-                0x00001544                Timeout_4_Init
+                0x0000159c       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x0000159c                Timeout_4_Init
  .text.Timeout_4_Start
-                0x00001578       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
-                0x00001578                Timeout_4_Start
+                0x000015d0       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x000015d0                Timeout_4_Start
  .text.Timeout_3_Enable
-                0x00001594       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
-                0x00001594                Timeout_3_Enable
+                0x000015ec       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x000015ec                Timeout_3_Enable
  .text.Timeout_3_SetInterruptMode
-                0x000015a4        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
-                0x000015a4                Timeout_3_SetInterruptMode
+                0x000015fc        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x000015fc                Timeout_3_SetInterruptMode
  .text.Timeout_3_ReadStatusRegister
-                0x000015b0        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
-                0x000015b0                Timeout_3_ReadStatusRegister
+                0x00001608        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x00001608                Timeout_3_ReadStatusRegister
  .text.Timeout_3_WritePeriod
-                0x000015bc        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
-                0x000015bc                Timeout_3_WritePeriod
+                0x00001614        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x00001614                Timeout_3_WritePeriod
  .text.Timeout_3_ReadCapture
-                0x000015c8        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
-                0x000015c8                Timeout_3_ReadCapture
+                0x00001620        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x00001620                Timeout_3_ReadCapture
  .text.Timeout_3_WriteCounter
-                0x000015d4        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
-                0x000015d4                Timeout_3_WriteCounter
+                0x0000162c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x0000162c                Timeout_3_WriteCounter
  .text.Timeout_3_ClearFIFO
-                0x000015e0       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
-                0x000015e0                Timeout_3_ClearFIFO
+                0x00001638       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x00001638                Timeout_3_ClearFIFO
  .text.Timeout_3_Init
-                0x000015f4       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
-                0x000015f4                Timeout_3_Init
+                0x0000164c       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x0000164c                Timeout_3_Init
  .text.Timeout_3_Start
-                0x00001628       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
-                0x00001628                Timeout_3_Start
+                0x00001680       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x00001680                Timeout_3_Start
  .text.Timeout_5_Enable
-                0x00001644       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
-                0x00001644                Timeout_5_Enable
+                0x0000169c       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x0000169c                Timeout_5_Enable
  .text.Timeout_5_SetInterruptMode
-                0x00001654        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
-                0x00001654                Timeout_5_SetInterruptMode
+                0x000016ac        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x000016ac                Timeout_5_SetInterruptMode
  .text.Timeout_5_ReadStatusRegister
-                0x00001660        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
-                0x00001660                Timeout_5_ReadStatusRegister
+                0x000016b8        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x000016b8                Timeout_5_ReadStatusRegister
  .text.Timeout_5_WritePeriod
-                0x0000166c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
-                0x0000166c                Timeout_5_WritePeriod
+                0x000016c4        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x000016c4                Timeout_5_WritePeriod
  .text.Timeout_5_ReadCapture
-                0x00001678        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
-                0x00001678                Timeout_5_ReadCapture
+                0x000016d0        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x000016d0                Timeout_5_ReadCapture
  .text.Timeout_5_WriteCounter
-                0x00001684        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
-                0x00001684                Timeout_5_WriteCounter
+                0x000016dc        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x000016dc                Timeout_5_WriteCounter
  .text.Timeout_5_ClearFIFO
-                0x00001690       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
-                0x00001690                Timeout_5_ClearFIFO
+                0x000016e8       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x000016e8                Timeout_5_ClearFIFO
  .text.Timeout_5_Init
-                0x000016a4       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
-                0x000016a4                Timeout_5_Init
+                0x000016fc       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x000016fc                Timeout_5_Init
  .text.Timeout_5_Start
-                0x000016d8       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
-                0x000016d8                Timeout_5_Start
+                0x00001730       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x00001730                Timeout_5_Start
  .text.QuadDec_1_Init
-                0x000016f4       0x24 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
-                0x000016f4                QuadDec_1_Init
+                0x0000174c       0x24 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+                0x0000174c                QuadDec_1_Init
  .text.QuadDec_1_GetCounter
-                0x00001718       0x2c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
-                0x00001718                QuadDec_1_GetCounter
+                0x00001770       0x2c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+                0x00001770                QuadDec_1_GetCounter
  .text.QuadDec_1_SetCounter
-                0x00001744       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
-                0x00001744                QuadDec_1_SetCounter
+                0x0000179c       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+                0x0000179c                QuadDec_1_SetCounter
  .text.QuadDec_1_GetEvents
-                0x0000176c       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
-                0x0000176c                QuadDec_1_GetEvents
+                0x000017c4       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+                0x000017c4                QuadDec_1_GetEvents
  .text.QuadDec_1_SetInterruptMask
-                0x0000177c       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
-                0x0000177c                QuadDec_1_SetInterruptMask
+                0x000017d4       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+                0x000017d4                QuadDec_1_SetInterruptMask
  .text.QuadDec_1_Enable
-                0x0000178c       0x30 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
-                0x0000178c                QuadDec_1_Enable
+                0x000017e4       0x30 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+                0x000017e4                QuadDec_1_Enable
  .text.QuadDec_1_Start
-                0x000017bc       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
-                0x000017bc                QuadDec_1_Start
+                0x00001814       0x34 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+                0x00001814                QuadDec_1_Start
  .text.QuadDec_1_ISR
-                0x000017f0       0x40 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
-                0x000017f0                QuadDec_1_ISR
+                0x00001848       0x40 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+                0x00001848                QuadDec_1_ISR
  .text.QuadDec_1_Cnt16_Enable
-                0x00001830       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x00001830                QuadDec_1_Cnt16_Enable
+                0x00001888       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x00001888                QuadDec_1_Cnt16_Enable
  .text.QuadDec_1_Cnt16_SetInterruptMode
-                0x00001840        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x00001840                QuadDec_1_Cnt16_SetInterruptMode
+                0x00001898        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x00001898                QuadDec_1_Cnt16_SetInterruptMode
  .text.QuadDec_1_Cnt16_ReadStatusRegister
-                0x0000184c        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x0000184c                QuadDec_1_Cnt16_ReadStatusRegister
+                0x000018a4        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x000018a4                QuadDec_1_Cnt16_ReadStatusRegister
  .text.QuadDec_1_Cnt16_WriteCounter
-                0x00001858        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x00001858                QuadDec_1_Cnt16_WriteCounter
+                0x000018b0        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x000018b0                QuadDec_1_Cnt16_WriteCounter
  .text.QuadDec_1_Cnt16_ReadCounter
-                0x00001864       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x00001864                QuadDec_1_Cnt16_ReadCounter
+                0x000018bc       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x000018bc                QuadDec_1_Cnt16_ReadCounter
  .text.QuadDec_1_Cnt16_ReadCapture
-                0x00001878        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x00001878                QuadDec_1_Cnt16_ReadCapture
+                0x000018d0        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x000018d0                QuadDec_1_Cnt16_ReadCapture
  .text.QuadDec_1_Cnt16_WritePeriod
-                0x00001884        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x00001884                QuadDec_1_Cnt16_WritePeriod
+                0x000018dc        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x000018dc                QuadDec_1_Cnt16_WritePeriod
  .text.QuadDec_1_Cnt16_WriteCompare
-                0x00001890        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x00001890                QuadDec_1_Cnt16_WriteCompare
+                0x000018e8        0xc .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x000018e8                QuadDec_1_Cnt16_WriteCompare
  .text.QuadDec_1_Cnt16_ClearFIFO
-                0x0000189c       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x0000189c                QuadDec_1_Cnt16_ClearFIFO
+                0x000018f4       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x000018f4                QuadDec_1_Cnt16_ClearFIFO
  .text.QuadDec_1_Cnt16_Init
-                0x000018b0       0x58 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x000018b0                QuadDec_1_Cnt16_Init
+                0x00001908       0x58 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x00001908                QuadDec_1_Cnt16_Init
  .text.QuadDec_1_Cnt16_Start
-                0x00001908       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
-                0x00001908                QuadDec_1_Cnt16_Start
+                0x00001960       0x1c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x00001960                QuadDec_1_Cnt16_Start
  .text.FrontSensor_Read
-                0x00001924       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
-                0x00001924                FrontSensor_Read
+                0x0000197c       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+                0x0000197c                FrontSensor_Read
  .text.FrontRSensor_Read
-                0x00001934       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
-                0x00001934                FrontRSensor_Read
+                0x0000198c       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+                0x0000198c                FrontRSensor_Read
  .text.FrontLSensor_Read
-                0x00001944       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
-                0x00001944                FrontLSensor_Read
- *fill*         0x00001954        0x4 
- .text          0x00001958       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
-                0x00001958                CyDelayCycles
-                0x00001968                CyEnterCriticalSection
-                0x00001970                CyExitCriticalSection
- .text.__errno  0x00001978        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
-                0x00001978                __errno
+                0x0000199c       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+                0x0000199c                FrontLSensor_Read
+ *fill*         0x000019ac        0x4 
+ .text          0x000019b0       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
+                0x000019b0                CyDelayCycles
+                0x000019c0                CyEnterCriticalSection
+                0x000019c8                CyExitCriticalSection
+ .text.__errno  0x000019d0        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x000019d0                __errno
  .text.__libc_init_array
-                0x00001984       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x00001984                __libc_init_array
- .text.memcpy   0x000019d0       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x000019d0                memcpy
- .text.memset   0x000019e6       0x10 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x000019e6                memset
+                0x000019dc       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x000019dc                __libc_init_array
+ .text.memcpy   0x00001a28       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x00001a28                memcpy
+ .text.memset   0x00001a3e       0x10 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00001a3e                memset
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x000019f6        0x0 linker stubs
+ .glue_7t       0x00001a4e        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x000019f6        0x0 linker stubs
+ .glue_7        0x00001a4e        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x000019f6        0x0 linker stubs
+ .vfp11_veneer  0x00001a4e        0x0 linker stubs
  *(.bootloader)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x000019f8        0x0
- .v4_bx         0x000019f8        0x0 linker stubs
+.v4_bx          0x00001a50        0x0
+ .v4_bx         0x00001a50        0x0 linker stubs
 
-.iplt           0x000019f8        0x0
- .iplt          0x000019f8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.iplt           0x00001a50        0x0
+ .iplt          0x00001a50        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x000019f8        0x4
+.eh_frame       0x00001a50        0x4
  *(.eh_frame)
- .eh_frame      0x000019f8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .eh_frame      0x000019f8        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .eh_frame      0x00001a50        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .eh_frame      0x00001a50        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
                 [!provide]                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000019fc                __exidx_end = .
+                0x00001a54                __exidx_end = .
 
-.rodata         0x000019fc      0x194
+.rodata         0x00001a54      0x184
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x000019fc      0x12c .\CortexM3\ARM_GCC_541\Debug\main.o
- .rodata        0x00001b28        0x8 .\CortexM3\ARM_GCC_541\Debug\astar.o
- .rodata        0x00001b30       0x2a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00001a54      0x118 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .rodata        0x00001b6c        0x8 .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .rodata        0x00001b74       0x2a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .rodata.str1.1
-                0x00001b5a        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x00001b5c                . = ALIGN (0x4)
+                0x00001b9e        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00001ba0                . = ALIGN (0x4)
  *(.init)
- .init          0x00001b5c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00001b5c                _init
- .init          0x00001b60        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00001b68                . = ALIGN (0x4)
-                0x00001b68                __preinit_array_start = .
+ .init          0x00001ba0        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00001ba0                _init
+ .init          0x00001ba4        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00001bac                . = ALIGN (0x4)
+                0x00001bac                __preinit_array_start = .
  *(.preinit_array)
-                0x00001b68                __preinit_array_end = .
-                0x00001b68                . = ALIGN (0x4)
-                0x00001b68                __init_array_start = .
+                0x00001bac                __preinit_array_end = .
+                0x00001bac                . = ALIGN (0x4)
+                0x00001bac                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00001b68        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .init_array    0x00001b6c        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00001b70                __init_array_end = .
-                0x00001b70                . = ALIGN (0x4)
+ .init_array    0x00001bac        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x00001bb0        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00001bb4                __init_array_end = .
+                0x00001bb4                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00001b70        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00001b70                _fini
- .fini          0x00001b74        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00001b7c                . = ALIGN (0x4)
-                0x00001b7c                __fini_array_start = .
+ .fini          0x00001bb4        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00001bb4                _fini
+ .fini          0x00001bb8        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00001bc0                . = ALIGN (0x4)
+                0x00001bc0                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00001b7c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .fini_array    0x00001bc0        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00001b80                __fini_array_end = .
-                0x00001b80                . = ALIGN (0x4)
+                0x00001bc4                __fini_array_end = .
+                0x00001bc4                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00001b80                . = ALIGN (0x4)
+                0x00001bc4                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00001b80                . = ALIGN (0x4)
-                0x00001b80                __cy_regions = .
-                0x00001b80        0x4 LONG 0x1b90 __cy_region_init_ram
-                0x00001b84        0x4 LONG 0x1fff80c8 __cy_region_start_data
-                0x00001b88        0x4 LONG 0xe0 __cy_region_init_size_ram
-                0x00001b8c        0x4 LONG 0x580 __cy_region_zero_size_ram
-                0x00001b90                __cy_regions_end = .
-                0x00001b90                . = ALIGN (0x8)
-                0x00001b90                _etext = .
+                0x00001bc4                . = ALIGN (0x4)
+                0x00001bc4                __cy_regions = .
+                0x00001bc4        0x4 LONG 0x1bd8 __cy_region_init_ram
+                0x00001bc8        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x00001bcc        0x4 LONG 0xe0 __cy_region_init_size_ram
+                0x00001bd0        0x4 LONG 0x580 __cy_region_zero_size_ram
+                0x00001bd4                __cy_regions_end = .
+                0x00001bd8                . = ALIGN (0x8)
+ *fill*         0x00001bd4        0x4 
+                0x00001bd8                _etext = .
 
 .cy_checksum_exclude
-                0x00001b90        0x0
+                0x00001bd8        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000       0xc0
@@ -1151,7 +1154,7 @@ END GROUP
  .noinit        0x1fff80c0        0x1 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
                 0x1fff80c0                CyResetStatus
 
-.data           0x1fff80c8       0xe0 load address 0x00001b90
+.data           0x1fff80c8       0xe0 load address 0x00001bd8
                 0x1fff80c8                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff80c8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
@@ -1179,10 +1182,10 @@ END GROUP
  *(.ram)
                 0x1fff81a8                _edata = .
 
-.igot.plt       0x1fff81a8        0x0 load address 0x00001c70
+.igot.plt       0x1fff81a8        0x0 load address 0x00001cb8
  .igot.plt      0x1fff81a8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
-.bss            0x1fff81a8      0x580 load address 0x00001c70
+.bss            0x1fff81a8      0x580 load address 0x00001cb8
                 0x1fff81a8                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -1223,11 +1226,11 @@ END GROUP
                 0x1fff8728                __end = .
                 0x1fff8728                PROVIDE (end, .)
                 0x1fff8728                PROVIDE (__bss_end__, .)
-                0x00001b90                __cy_region_init_ram = LOADADDR (.data)
+                0x00001bd8                __cy_region_init_ram = LOADADDR (.data)
                 0x000000e0                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00000580                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8728       0x80 load address 0x00001c70
+.heap           0x1fff8728       0x80 load address 0x00001cb8
                 0x1fff8728                . = _end
                 0x1fff87a8                . = (. + 0x80)
  *fill*         0x1fff8728       0x80 
@@ -1278,8 +1281,8 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x00001c70        0x0 load address 0x9050000c
- .rel.iplt      0x00001c70        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.rel.dyn        0x00001cb8        0x0 load address 0x9050000c
+ .rel.iplt      0x00001cb8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .stab
  *(.stab)
@@ -1299,339 +1302,339 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0xd68
+.debug_aranges  0x00000000      0xd70
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x90 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_aranges
-                0x00000090       0x48 .\CortexM3\ARM_GCC_541\Debug\astar.o
+                0x00000090       0x50 .\CortexM3\ARM_GCC_541\Debug\astar.o
  .debug_aranges
-                0x000000d8       0x18 .\CortexM3\ARM_GCC_541\Debug\movements.o
+                0x000000e0       0x18 .\CortexM3\ARM_GCC_541\Debug\movements.o
  .debug_aranges
-                0x000000f0       0x58 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000000f8       0x58 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .debug_aranges
-                0x00000148       0x18 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x00000150       0x18 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
  .debug_aranges
-                0x00000160       0x48 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000168       0x48 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
  .debug_aranges
-                0x000001a8      0x2a0 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+                0x000001b0      0x2a0 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
  .debug_aranges
-                0x00000448       0x98 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+                0x00000450       0x98 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
  .debug_aranges
-                0x000004e0       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+                0x000004e8       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
  .debug_aranges
-                0x00000518       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+                0x00000520       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
  .debug_aranges
-                0x00000550       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+                0x00000558       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
  .debug_aranges
-                0x00000588       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+                0x00000590       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
  .debug_aranges
-                0x000005c0       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+                0x000005c8       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
  .debug_aranges
-                0x000005f8       0x78 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+                0x00000600       0x78 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
  .debug_aranges
-                0x00000670       0x70 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+                0x00000678       0x70 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
  .debug_aranges
-                0x000006e0       0x78 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+                0x000006e8       0x78 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
  .debug_aranges
-                0x00000758       0x58 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+                0x00000760       0x58 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
  .debug_aranges
-                0x000007b0       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+                0x000007b8       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
  .debug_aranges
-                0x00000840       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+                0x00000848       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
  .debug_aranges
-                0x000008d0       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+                0x000008d8       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
  .debug_aranges
-                0x00000960       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+                0x00000968       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
  .debug_aranges
-                0x000009f0       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+                0x000009f8       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
  .debug_aranges
-                0x00000a80       0x60 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+                0x00000a88       0x60 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
  .debug_aranges
-                0x00000ae0       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+                0x00000ae8       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
  .debug_aranges
-                0x00000b00       0x98 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+                0x00000b08       0x98 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
  .debug_aranges
-                0x00000b98       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+                0x00000ba0       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
  .debug_aranges
-                0x00000bd0       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+                0x00000bd8       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
  .debug_aranges
-                0x00000c08       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+                0x00000c10       0x38 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
  .debug_aranges
-                0x00000c40       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
+                0x00000c48       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
  .debug_aranges
-                0x00000c60       0x88 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+                0x00000c68       0x88 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
  .debug_aranges
-                0x00000ce8       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+                0x00000cf0       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x76eb
+.debug_info     0x00000000     0x7798
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x105d .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_info    0x0000105d      0x900 .\CortexM3\ARM_GCC_541\Debug\astar.o
- .debug_info    0x0000195d       0xd0 .\CortexM3\ARM_GCC_541\Debug\movements.o
- .debug_info    0x00001a2d      0x549 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x00001f76      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x000020af      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_info    0x0000246a     0x1374 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
- .debug_info    0x000037de      0xa2a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
- .debug_info    0x00004208      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
- .debug_info    0x00004327      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
- .debug_info    0x00004446      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
- .debug_info    0x00004565      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
- .debug_info    0x00004684      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
- .debug_info    0x000047a3      0x27f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
- .debug_info    0x00004a22      0x283 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
- .debug_info    0x00004ca5      0x27f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
- .debug_info    0x00004f24      0x1df .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
- .debug_info    0x00005103      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
- .debug_info    0x000053f1      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
- .debug_info    0x000056df      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
- .debug_info    0x000059cd      0x2f0 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
- .debug_info    0x00005cbd      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
- .debug_info    0x00005fab      0x357 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
- .debug_info    0x00006302       0xf3 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
- .debug_info    0x000063f5      0x348 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
- .debug_info    0x0000673d      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
- .debug_info    0x0000685c      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
- .debug_info    0x0000697b      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
- .debug_info    0x00006a9a       0xb4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
- .debug_info    0x00006b4e      0x64d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
- .debug_info    0x0000719b      0x550 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+ .debug_info    0x0000105d      0x9ad .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .debug_info    0x00001a0a       0xd0 .\CortexM3\ARM_GCC_541\Debug\movements.o
+ .debug_info    0x00001ada      0x549 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00002023      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x0000215c      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x00002517     0x1374 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+ .debug_info    0x0000388b      0xa2a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+ .debug_info    0x000042b5      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+ .debug_info    0x000043d4      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+ .debug_info    0x000044f3      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+ .debug_info    0x00004612      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+ .debug_info    0x00004731      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+ .debug_info    0x00004850      0x27f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+ .debug_info    0x00004acf      0x283 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+ .debug_info    0x00004d52      0x27f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+ .debug_info    0x00004fd1      0x1df .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+ .debug_info    0x000051b0      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+ .debug_info    0x0000549e      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+ .debug_info    0x0000578c      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+ .debug_info    0x00005a7a      0x2f0 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+ .debug_info    0x00005d6a      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+ .debug_info    0x00006058      0x357 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+ .debug_info    0x000063af       0xf3 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+ .debug_info    0x000064a2      0x348 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+ .debug_info    0x000067ea      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+ .debug_info    0x00006909      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+ .debug_info    0x00006a28      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+ .debug_info    0x00006b47       0xb4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
+ .debug_info    0x00006bfb      0x64d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+ .debug_info    0x00007248      0x550 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
 
-.debug_abbrev   0x00000000     0x2207
+.debug_abbrev   0x00000000     0x2212
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x22d .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_abbrev  0x0000022d      0x23d .\CortexM3\ARM_GCC_541\Debug\astar.o
- .debug_abbrev  0x0000046a       0x5a .\CortexM3\ARM_GCC_541\Debug\movements.o
- .debug_abbrev  0x000004c4      0x1fe .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_abbrev  0x000006c2       0x77 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_abbrev  0x00000739      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_abbrev  0x00000921      0x254 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
- .debug_abbrev  0x00000b75      0x1ab .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
- .debug_abbrev  0x00000d20       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
- .debug_abbrev  0x00000db0       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
- .debug_abbrev  0x00000e40       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
- .debug_abbrev  0x00000ed0       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
- .debug_abbrev  0x00000f60       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
- .debug_abbrev  0x00000ff0      0x12d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
- .debug_abbrev  0x0000111d      0x139 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
- .debug_abbrev  0x00001256      0x12d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
- .debug_abbrev  0x00001383       0xf7 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
- .debug_abbrev  0x0000147a      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
- .debug_abbrev  0x000015a5      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
- .debug_abbrev  0x000016d0      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
- .debug_abbrev  0x000017fb      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
- .debug_abbrev  0x00001926      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
- .debug_abbrev  0x00001a51      0x128 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
- .debug_abbrev  0x00001b79       0x78 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
- .debug_abbrev  0x00001bf1      0x117 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
- .debug_abbrev  0x00001d08       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
- .debug_abbrev  0x00001d98       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
- .debug_abbrev  0x00001e28       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
- .debug_abbrev  0x00001eb8       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
- .debug_abbrev  0x00001ecc      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
- .debug_abbrev  0x00002073      0x194 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+ .debug_abbrev  0x0000022d      0x248 .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .debug_abbrev  0x00000475       0x5a .\CortexM3\ARM_GCC_541\Debug\movements.o
+ .debug_abbrev  0x000004cf      0x1fe .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x000006cd       0x77 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x00000744      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_abbrev  0x0000092c      0x254 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+ .debug_abbrev  0x00000b80      0x1ab .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+ .debug_abbrev  0x00000d2b       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+ .debug_abbrev  0x00000dbb       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+ .debug_abbrev  0x00000e4b       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+ .debug_abbrev  0x00000edb       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+ .debug_abbrev  0x00000f6b       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+ .debug_abbrev  0x00000ffb      0x12d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+ .debug_abbrev  0x00001128      0x139 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+ .debug_abbrev  0x00001261      0x12d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+ .debug_abbrev  0x0000138e       0xf7 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+ .debug_abbrev  0x00001485      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+ .debug_abbrev  0x000015b0      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+ .debug_abbrev  0x000016db      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+ .debug_abbrev  0x00001806      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+ .debug_abbrev  0x00001931      0x12b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+ .debug_abbrev  0x00001a5c      0x128 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+ .debug_abbrev  0x00001b84       0x78 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+ .debug_abbrev  0x00001bfc      0x117 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+ .debug_abbrev  0x00001d13       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+ .debug_abbrev  0x00001da3       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+ .debug_abbrev  0x00001e33       0x90 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+ .debug_abbrev  0x00001ec3       0x14 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00001ed7      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+ .debug_abbrev  0x0000207e      0x194 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
 
-.debug_line     0x00000000     0x334c
+.debug_line     0x00000000     0x3396
  *(.debug_line)
  .debug_line    0x00000000      0x4a5 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_line    0x000004a5      0x3c1 .\CortexM3\ARM_GCC_541\Debug\astar.o
- .debug_line    0x00000866      0x14e .\CortexM3\ARM_GCC_541\Debug\movements.o
- .debug_line    0x000009b4      0x1e4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x00000b98      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x00000cd9      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_line    0x00000f0d      0x816 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
- .debug_line    0x00001723      0x367 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
- .debug_line    0x00001a8a       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
- .debug_line    0x00001b1c       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
- .debug_line    0x00001bae       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
- .debug_line    0x00001c40       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
- .debug_line    0x00001cd2       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
- .debug_line    0x00001d64      0x133 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
- .debug_line    0x00001e97      0x178 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
- .debug_line    0x0000200f      0x133 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
- .debug_line    0x00002142       0xe4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
- .debug_line    0x00002226      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
- .debug_line    0x0000239a      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
- .debug_line    0x0000250e      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
- .debug_line    0x00002682      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
- .debug_line    0x000027f6      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
- .debug_line    0x0000296a      0x13d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
- .debug_line    0x00002aa7       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
- .debug_line    0x00002b13      0x18f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
- .debug_line    0x00002ca2       0x98 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
- .debug_line    0x00002d3a       0x99 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
- .debug_line    0x00002dd3       0x99 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
- .debug_line    0x00002e6c       0x66 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
- .debug_line    0x00002ed2      0x21a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
- .debug_line    0x000030ec      0x260 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+ .debug_line    0x000004a5      0x40b .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .debug_line    0x000008b0      0x14e .\CortexM3\ARM_GCC_541\Debug\movements.o
+ .debug_line    0x000009fe      0x1e4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00000be2      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00000d23      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x00000f57      0x816 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+ .debug_line    0x0000176d      0x367 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+ .debug_line    0x00001ad4       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+ .debug_line    0x00001b66       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+ .debug_line    0x00001bf8       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+ .debug_line    0x00001c8a       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+ .debug_line    0x00001d1c       0x92 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+ .debug_line    0x00001dae      0x133 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+ .debug_line    0x00001ee1      0x178 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+ .debug_line    0x00002059      0x133 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+ .debug_line    0x0000218c       0xe4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+ .debug_line    0x00002270      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+ .debug_line    0x000023e4      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+ .debug_line    0x00002558      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+ .debug_line    0x000026cc      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+ .debug_line    0x00002840      0x174 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+ .debug_line    0x000029b4      0x13d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+ .debug_line    0x00002af1       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+ .debug_line    0x00002b5d      0x18f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+ .debug_line    0x00002cec       0x98 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+ .debug_line    0x00002d84       0x99 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+ .debug_line    0x00002e1d       0x99 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+ .debug_line    0x00002eb6       0x66 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
+ .debug_line    0x00002f1c      0x21a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+ .debug_line    0x00003136      0x260 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
 
-.debug_frame    0x00000000     0x1f3c
+.debug_frame    0x00000000     0x1f64
  *(.debug_frame)
  .debug_frame   0x00000000      0x1b4 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_frame   0x000001b4      0x114 .\CortexM3\ARM_GCC_541\Debug\astar.o
- .debug_frame   0x000002c8       0xe4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_frame   0x000003ac       0xb8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_frame   0x00000464      0x738 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
- .debug_frame   0x00000b9c      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
- .debug_frame   0x00000d94       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
- .debug_frame   0x00000de4       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
- .debug_frame   0x00000e34       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
- .debug_frame   0x00000e84       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
- .debug_frame   0x00000ed4       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
- .debug_frame   0x00000f24       0xe8 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
- .debug_frame   0x0000100c       0xe0 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
- .debug_frame   0x000010ec       0xe8 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
- .debug_frame   0x000011d4       0xb4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
- .debug_frame   0x00001288      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
- .debug_frame   0x000013ac      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
- .debug_frame   0x000014d0      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
- .debug_frame   0x000015f4      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
- .debug_frame   0x00001718      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
- .debug_frame   0x0000183c       0xec .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
- .debug_frame   0x00001928       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
- .debug_frame   0x00001948      0x134 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
- .debug_frame   0x00001a7c       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
- .debug_frame   0x00001acc       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
- .debug_frame   0x00001b1c       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
- .debug_frame   0x00001b6c      0x194 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
- .debug_frame   0x00001d00      0x180 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
- .debug_frame   0x00001e80       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00001ea0       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00001ec8       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
- .debug_frame   0x00001ef4       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x00001f1c       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x000001b4      0x13c .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .debug_frame   0x000002f0       0xe4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_frame   0x000003d4       0xb8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_frame   0x0000048c      0x738 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+ .debug_frame   0x00000bc4      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+ .debug_frame   0x00000dbc       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+ .debug_frame   0x00000e0c       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+ .debug_frame   0x00000e5c       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+ .debug_frame   0x00000eac       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+ .debug_frame   0x00000efc       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+ .debug_frame   0x00000f4c       0xe8 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+ .debug_frame   0x00001034       0xe0 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+ .debug_frame   0x00001114       0xe8 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+ .debug_frame   0x000011fc       0xb4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+ .debug_frame   0x000012b0      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+ .debug_frame   0x000013d4      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+ .debug_frame   0x000014f8      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+ .debug_frame   0x0000161c      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+ .debug_frame   0x00001740      0x124 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+ .debug_frame   0x00001864       0xec .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+ .debug_frame   0x00001950       0x20 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+ .debug_frame   0x00001970      0x134 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+ .debug_frame   0x00001aa4       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+ .debug_frame   0x00001af4       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+ .debug_frame   0x00001b44       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+ .debug_frame   0x00001b94      0x194 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+ .debug_frame   0x00001d28      0x180 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+ .debug_frame   0x00001ea8       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00001ec8       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00001ef0       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00001f1c       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00001f44       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x29bb
+.debug_str      0x00000000     0x29d7
  *(.debug_str)
  .debug_str     0x00000000      0x4fb .\CortexM3\ARM_GCC_541\Debug\main.o
                                 0x584 (size before relaxing)
- .debug_str     0x000004fb      0x16e .\CortexM3\ARM_GCC_541\Debug\astar.o
-                                0x47e (size before relaxing)
- .debug_str     0x00000669        0xc .\CortexM3\ARM_GCC_541\Debug\movements.o
+ .debug_str     0x000004fb      0x18a .\CortexM3\ARM_GCC_541\Debug\astar.o
+                                0x49f (size before relaxing)
+ .debug_str     0x00000685        0xc .\CortexM3\ARM_GCC_541\Debug\movements.o
                                 0x1eb (size before relaxing)
- .debug_str     0x00000675      0x179 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_str     0x00000691      0x179 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x339 (size before relaxing)
- .debug_str     0x000007ee       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_str     0x0000080a       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                                 0x208 (size before relaxing)
- .debug_str     0x00000863      0x13e .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_str     0x0000087f      0x13e .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
                                 0x32e (size before relaxing)
- .debug_str     0x000009a1      0x83d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+ .debug_str     0x000009bd      0x83d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
                                 0xa6b (size before relaxing)
- .debug_str     0x000011de      0x365 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+ .debug_str     0x000011fa      0x365 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
                                 0x757 (size before relaxing)
- .debug_str     0x00001543       0x5a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+ .debug_str     0x0000155f       0x5a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
                                 0x206 (size before relaxing)
- .debug_str     0x0000159d       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+ .debug_str     0x000015b9       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
                                 0x206 (size before relaxing)
- .debug_str     0x000015ec       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+ .debug_str     0x00001608       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
                                 0x206 (size before relaxing)
- .debug_str     0x0000163b       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+ .debug_str     0x00001657       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
                                 0x206 (size before relaxing)
- .debug_str     0x0000168a       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+ .debug_str     0x000016a6       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
                                 0x206 (size before relaxing)
- .debug_str     0x000016d9      0x11b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+ .debug_str     0x000016f5      0x11b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
                                 0x2f1 (size before relaxing)
- .debug_str     0x000017f4      0x15d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+ .debug_str     0x00001810      0x15d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
                                 0x32a (size before relaxing)
- .debug_str     0x00001951       0xea .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+ .debug_str     0x0000196d       0xea .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
                                 0x2f1 (size before relaxing)
- .debug_str     0x00001a3b       0xa9 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+ .debug_str     0x00001a57       0xa9 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
                                 0x257 (size before relaxing)
- .debug_str     0x00001ae4      0x196 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+ .debug_str     0x00001b00      0x196 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
                                 0x3a7 (size before relaxing)
- .debug_str     0x00001c7a      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+ .debug_str     0x00001c96      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
                                 0x3a7 (size before relaxing)
- .debug_str     0x00001e08      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+ .debug_str     0x00001e24      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
                                 0x3a7 (size before relaxing)
- .debug_str     0x00001f96      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+ .debug_str     0x00001fb2      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
                                 0x3a7 (size before relaxing)
- .debug_str     0x00002124      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+ .debug_str     0x00002140      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
                                 0x3a7 (size before relaxing)
- .debug_str     0x000022b2      0x14c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+ .debug_str     0x000022ce      0x14c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
                                 0x3ae (size before relaxing)
- .debug_str     0x000023fe       0x48 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+ .debug_str     0x0000241a       0x48 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
                                 0x212 (size before relaxing)
- .debug_str     0x00002446      0x1ce .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+ .debug_str     0x00002462      0x1ce .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
                                 0x43a (size before relaxing)
- .debug_str     0x00002614       0x68 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+ .debug_str     0x00002630       0x68 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
                                 0x224 (size before relaxing)
- .debug_str     0x0000267c       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+ .debug_str     0x00002698       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
                                 0x229 (size before relaxing)
- .debug_str     0x000026e8       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+ .debug_str     0x00002704       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
                                 0x229 (size before relaxing)
- .debug_str     0x00002754      0x1bb .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+ .debug_str     0x00002770      0x1bb .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
                                 0x3e4 (size before relaxing)
- .debug_str     0x0000290f       0xac .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+ .debug_str     0x0000292b       0xac .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
                                 0x35c (size before relaxing)
 
-.debug_loc      0x00000000     0x2a8c
+.debug_loc      0x00000000     0x2b71
  *(.debug_loc)
  .debug_loc     0x00000000      0x1f8 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_loc     0x000001f8      0x98a .\CortexM3\ARM_GCC_541\Debug\astar.o
- .debug_loc     0x00000b82      0x1d7 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_loc     0x00000d59      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_loc     0x00000e9d      0xa11 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
- .debug_loc     0x000018ae      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
- .debug_loc     0x00001a92       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
- .debug_loc     0x00001ad4       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
- .debug_loc     0x00001b16       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
- .debug_loc     0x00001b58       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
- .debug_loc     0x00001b9a       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
- .debug_loc     0x00001bdc       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
- .debug_loc     0x00001bef      0x12c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
- .debug_loc     0x00001d1b       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
- .debug_loc     0x00001d2e       0x79 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
- .debug_loc     0x00001da7       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
- .debug_loc     0x00001dba       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
- .debug_loc     0x00001dcd       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
- .debug_loc     0x00001de0       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
- .debug_loc     0x00001df3       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
- .debug_loc     0x00001e06       0xb9 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
- .debug_loc     0x00001ebf       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
- .debug_loc     0x00001ed2       0x3d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
- .debug_loc     0x00001f0f       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
- .debug_loc     0x00001f51       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
- .debug_loc     0x00001f93       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
- .debug_loc     0x00001fd5      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
- .debug_loc     0x00002387      0x705 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+ .debug_loc     0x000001f8      0xa6f .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .debug_loc     0x00000c67      0x1d7 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x00000e3e      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_loc     0x00000f82      0xa11 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+ .debug_loc     0x00001993      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+ .debug_loc     0x00001b77       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+ .debug_loc     0x00001bb9       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+ .debug_loc     0x00001bfb       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+ .debug_loc     0x00001c3d       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+ .debug_loc     0x00001c7f       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+ .debug_loc     0x00001cc1       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+ .debug_loc     0x00001cd4      0x12c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+ .debug_loc     0x00001e00       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+ .debug_loc     0x00001e13       0x79 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+ .debug_loc     0x00001e8c       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+ .debug_loc     0x00001e9f       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+ .debug_loc     0x00001eb2       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+ .debug_loc     0x00001ec5       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+ .debug_loc     0x00001ed8       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+ .debug_loc     0x00001eeb       0xb9 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+ .debug_loc     0x00001fa4       0x13 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+ .debug_loc     0x00001fb7       0x3d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+ .debug_loc     0x00001ff4       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+ .debug_loc     0x00002036       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+ .debug_loc     0x00002078       0x42 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+ .debug_loc     0x000020ba      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+ .debug_loc     0x0000246c      0x705 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0xc80
+.debug_ranges   0x00000000      0xc88
  *(.debug_ranges)
  .debug_ranges  0x00000000       0xb0 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_ranges  0x000000b0      0x130 .\CortexM3\ARM_GCC_541\Debug\astar.o
- .debug_ranges  0x000001e0       0x48 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_ranges  0x00000228       0x38 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_ranges  0x00000260      0x290 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
- .debug_ranges  0x000004f0       0x88 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
- .debug_ranges  0x00000578       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
- .debug_ranges  0x000005a0       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
- .debug_ranges  0x000005c8       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
- .debug_ranges  0x000005f0       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
- .debug_ranges  0x00000618       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
- .debug_ranges  0x00000640       0x68 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
- .debug_ranges  0x000006a8       0x60 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
- .debug_ranges  0x00000708       0x68 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
- .debug_ranges  0x00000770       0x48 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
- .debug_ranges  0x000007b8       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
- .debug_ranges  0x00000838       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
- .debug_ranges  0x000008b8       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
- .debug_ranges  0x00000938       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
- .debug_ranges  0x000009b8       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
- .debug_ranges  0x00000a38       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
- .debug_ranges  0x00000a88       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
- .debug_ranges  0x00000a98       0x88 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
- .debug_ranges  0x00000b20       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
- .debug_ranges  0x00000b48       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
- .debug_ranges  0x00000b70       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
- .debug_ranges  0x00000b98       0x78 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
- .debug_ranges  0x00000c10       0x70 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+ .debug_ranges  0x000000b0      0x138 .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .debug_ranges  0x000001e8       0x48 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_ranges  0x00000230       0x38 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_ranges  0x00000268      0x290 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+ .debug_ranges  0x000004f8       0x88 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+ .debug_ranges  0x00000580       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+ .debug_ranges  0x000005a8       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+ .debug_ranges  0x000005d0       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+ .debug_ranges  0x000005f8       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+ .debug_ranges  0x00000620       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+ .debug_ranges  0x00000648       0x68 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+ .debug_ranges  0x000006b0       0x60 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+ .debug_ranges  0x00000710       0x68 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+ .debug_ranges  0x00000778       0x48 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+ .debug_ranges  0x000007c0       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+ .debug_ranges  0x00000840       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+ .debug_ranges  0x000008c0       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+ .debug_ranges  0x00000940       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+ .debug_ranges  0x000009c0       0x80 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+ .debug_ranges  0x00000a40       0x50 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+ .debug_ranges  0x00000a90       0x10 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+ .debug_ranges  0x00000aa0       0x88 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+ .debug_ranges  0x00000b28       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+ .debug_ranges  0x00000b50       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+ .debug_ranges  0x00000b78       0x28 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+ .debug_ranges  0x00000ba0       0x78 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+ .debug_ranges  0x00000c18       0x70 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
 
 .comment        0x00000000       0x6e
  .comment       0x00000000       0x6e .\CortexM3\ARM_GCC_541\Debug\main.o

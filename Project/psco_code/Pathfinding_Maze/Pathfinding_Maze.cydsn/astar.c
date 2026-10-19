@@ -218,6 +218,44 @@ static void MarkShortTurnSequences(
     }
 }
 
+static void ShortBeforeUturn(
+    Route *route,
+    uint16_t segmentStart
+)
+{
+    uint16_t i;
+
+    for (i = segmentStart;
+         i + 3 < route->length;
+         i++)
+    {
+        Command first = route->commands[i];
+        Command middle1 = route->commands[i + 1];
+        Command middle2 = route->commands[i + 2];
+        Command last = route->commands[i + 3];
+
+        /*
+         * Exactly two FORWARD command separates
+         * the two turns.
+         */
+        if (middle1 != CMD_FORWARD || middle2 != CMD_FORWARD)
+            continue;
+
+        /*
+         * Both turns must originally be normal
+         * left/right turns.
+         */
+        if ((first == CMD_LEFT || first == CMD_RIGHT || first == CMD_LEFT_SHORT || first == CMD_RIGHT_SHORT) &&
+            (last == CMD_UTURN))
+        {
+            route->commands[i] =
+                (first == CMD_LEFT || first == CMD_LEFT_SHORT)
+                ? CMD_LEFT_SHORT
+                : CMD_RIGHT_SHORT;
+        }
+    }
+}
+
 
 static bool AStarSegment(
     const uint8_t map[MAP_ROWS][MAP_COLS],
@@ -570,6 +608,7 @@ bool AStar_BuildRoute(
     }
     
     MarkShortTurnSequences(route, 0);
+    ShortBeforeUturn(route, 0);
 
     /*
      * Store final direction.
