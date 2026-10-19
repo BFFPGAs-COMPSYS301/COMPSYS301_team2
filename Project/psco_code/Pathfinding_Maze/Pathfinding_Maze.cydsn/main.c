@@ -3,47 +3,30 @@
 #include "astar.h"
 #include "movements.c"
 
-#define STARTDIRECTION DIR_RIGHT
+#define STARTDIRECTION DIR_UP
 
 const char *mazeInput[MAP_ROWS] =
 {
-    "1111111111111111111",
-    "1010001000001000001",
-    "1011101011101011101",
-    "1000100000100000101",
-    "1110111111111111101",
-    "1010000010000000001",
-    "1011111010111111101",
-    "1000001000100000101",
-    "1010101111101110101",
-    "1010101000101010101",
-    "1110101010101010101",
-    "1000101010001010101",
-    "1011111011111010101",
-    "1000000000000010001",
-    "1111111111111111111"
-
+    "1111100011111111111",
+    "1000100010010001001",
+    "1111111010011011111",
+    "1010101111011110001",
+    "1111100001001010000",
+    "0100101111111111111",
+    "0111100010000100000",
+    "0101011111111111111",
+    "1101001000100000010",
+    "1001101111000000011",
+    "1111001010011111110",
+    "0101111010110100011",
+    "0101101110100000001",
+    "1111011011111111111",
+    "0001110110010001010"
 };
 
 
 // NUMERICAL MAP This is automatically created from mazeInput.
 uint8_t map[MAP_ROWS][MAP_COLS];
-
-
-/* =========================================================
- * CHECKPOINTS
- *
- * IMPORTANT:
- *
- * Coordinates are ZERO-BASED.
- *
- * Top-left cell = {0,0}
- *
- * The order here is the order the robot will visit.
- *
- * points[0] MUST be the starting position.
- * The final point is the final destination.
- * ========================================================= */
 
 Checkpoints checkpoints =
 {
@@ -51,14 +34,15 @@ Checkpoints checkpoints =
     {
         /*
         * NOTE: Co-ordinates are in format {Vertical, Horizontal}
-        */     /* START */
-        {0, 0},
-        {2, 6},
-        {4, 10},
-        {6,0}/* END */
+        */
+        {3, 18},
+        {0, 11},
+        {3, 13},
+        {5,6},
+        {5, 17}
     },
 
-    .count = 4
+    .count = 5
 };
 
 
@@ -214,14 +198,15 @@ int main(void)
             // Error state.
         }
     }
-    
-    CyDelay(1000);
 
 
     // Route has now been calculated. Start robot movement.
     while (1)
     {
         ExecuteNextCommand();
+        //PWM_1_WriteCompare(15);
+        //PWM_2_WriteCompare(15);
+        //goForwardSlow();
         CyDelay(100);
     }
 

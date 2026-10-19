@@ -3,10 +3,7 @@
 #include "astar.h"
 
 
-/* =========================================================
- * MANHATTAN DISTANCE
- * ========================================================= */
-
+// Manhatten Distance
 static uint16_t Heuristic(
     Position a,
     Position b
@@ -32,10 +29,7 @@ static uint16_t Heuristic(
 }
 
 
-/* =========================================================
- * GET DIRECTION BETWEEN TWO ADJACENT CELLS
- * ========================================================= */
-
+// GET DIRECTION BETWEEN TWO ADJACENT CELLS
 static Direction GetDirection(
     Position from,
     Position to
@@ -54,10 +48,7 @@ static Direction GetDirection(
 }
 
 
-/* =========================================================
- * ADD COMMAND TO ROUTE
- * ========================================================= */
-
+// ADD COMMAND TO ROUTE
 static bool AddCommand(
     Route *route,
     Command command
@@ -76,12 +67,7 @@ static bool AddCommand(
 }
 
 
-/* =========================================================
- * ADD TURN TO ROUTE
- *
- * Turning does NOT move the robot.
- * ========================================================= */
-
+// ADD TURN TO ROUTE
 static bool AddTurn(
     Route *route,
     Direction *currentDirection,
@@ -104,19 +90,13 @@ static bool AddTurn(
          (int)(*currentDirection) +
          4) % 4;
 
-    /*
-     * Already facing the correct direction.
-     */
-
+    // Already facing the correct direction.
     if (turn == 0)
     {
         return true;
     }
 
-    /*
-     * Right turn.
-     */
-
+    // Right turn.
     if (turn == 1)
     {
         if (!AddCommand(route, CMD_RIGHT))
@@ -125,10 +105,7 @@ static bool AddTurn(
         }
     }
 
-    /*
-     * U-turn: add one dedicated command.
-     */
-
+    // U-turn: add one dedicated command.
     else if (turn == 2)
     {
         if (!AddCommand(route, CMD_UTURN))
@@ -137,10 +114,7 @@ static bool AddTurn(
         }
     }
 
-    /*
-     * Left turn.
-     */
-
+    // Left turn.
     else
     {
         if (!AddCommand(route, CMD_LEFT))
@@ -149,29 +123,13 @@ static bool AddTurn(
         }
     }
 
-    /*
-     * Update the direction after the turn.
-     * The physical movement is performed later.
-     */
-
+    // Update the direction after the turn
     *currentDirection = requiredDirection;
 
     return true;
 }
 
-/* =========================================================
- * IDENTIFY TURNS WITH A ONE-CELL STRAIGHT SECTION BETWEEN
- * THEM.
- *
- * LEFT, FORWARD, RIGHT
- *     -> LEFT_SHORT, FORWARD, RIGHT_SHORT
- *
- * RIGHT, FORWARD, LEFT
- *     -> RIGHT_SHORT, FORWARD, LEFT_SHORT
- *
- * No commands are removed or reordered.
- * ========================================================= */
-
+// Identify short turns
 static void MarkShortTurnSequences(
     Route *route,
     uint16_t segmentStart
@@ -187,17 +145,9 @@ static void MarkShortTurnSequences(
         Command middle = route->commands[i + 1];
         Command last = route->commands[i + 2];
 
-        /*
-         * Exactly one FORWARD command separates
-         * the two turns.
-         */
         if (middle != CMD_FORWARD)
             continue;
 
-        /*
-         * Both turns must originally be normal
-         * left/right turns.
-         */
         if ((first == CMD_LEFT || first == CMD_RIGHT || first == CMD_LEFT_SHORT || first == CMD_RIGHT_SHORT) &&
             (last == CMD_LEFT || last == CMD_RIGHT || last == CMD_LEFT_SHORT || last == CMD_RIGHT_SHORT || last == CMD_UTURN))
         {
@@ -234,17 +184,10 @@ static void ShortBeforeUturn(
         Command middle2 = route->commands[i + 2];
         Command last = route->commands[i + 3];
 
-        /*
-         * Exactly two FORWARD command separates
-         * the two turns.
-         */
+
         if (middle1 != CMD_FORWARD || middle2 != CMD_FORWARD)
             continue;
 
-        /*
-         * Both turns must originally be normal
-         * left/right turns.
-         */
         if ((first == CMD_LEFT || first == CMD_RIGHT || first == CMD_LEFT_SHORT || first == CMD_RIGHT_SHORT) &&
             (last == CMD_UTURN))
         {
@@ -268,13 +211,6 @@ static bool AStarSegment(
 {
     uint16_t segmentStart = route->length;
 
-    /*
-     * Search state includes BOTH the cell and the direction
-     * the robot is facing when it reaches that cell.
-     *
-     * Primary objective: fewest cells travelled.
-     * Secondary objective: fewest direction changes.
-     */
     uint16_t steps[MAP_ROWS][MAP_COLS][4];
     uint16_t turns[MAP_ROWS][MAP_COLS][4];
     bool visited[MAP_ROWS][MAP_COLS][4];
@@ -291,7 +227,7 @@ static bool AStarSegment(
         { 0, -1}   /* LEFT */
     };
 
-    /* Initialise every search state. */
+    // Initialise every search state.
     for (uint8_t r = 0; r < MAP_ROWS; r++)
     {
         for (uint8_t c = 0; c < MAP_COLS; c++)
@@ -317,10 +253,7 @@ static bool AStarSegment(
     int16_t endCol = -1;
     int8_t endDir = -1;
 
-    /*
-     * Dijkstra search with lexicographic costs:
-     * compare steps first, then turns.
-     */
+    // Dijkstra search with costs: compare steps first, then turns.
     while (true)
     {
         int16_t bestRow = -1;
@@ -355,7 +288,7 @@ static bool AStarSegment(
             }
         }
 
-        /* No reachable states remain. */
+        // No reachable states remain.
         if (bestRow == -1)
             return false;
 
@@ -383,7 +316,7 @@ static bool AStarSegment(
                 continue;
             }
 
-            /* IMPORTANT: 1 = OPEN, 0 = WALL. */
+            /* 1 = Path, 0 = Wall. */
             if (map[nr][nc] != 1)
                 continue;
 
@@ -396,14 +329,11 @@ static bool AStarSegment(
             uint16_t newTurns =
                 turns[bestRow][bestCol][bestDir];
 
-            /* Changing direction adds one turn. */
+            // Changing direction adds one turn.
             if (d != bestDir)
                 newTurns++;
 
-            /*
-             * Prefer fewer steps.
-             * If steps tie, prefer fewer turns.
-             */
+            // Prefer fewer steps. If steps tie, prefer fewer turns.
             if (newSteps < steps[nr][nc][d] ||
                 (newSteps == steps[nr][nc][d] &&
                  newTurns < turns[nr][nc][d]))
@@ -421,9 +351,7 @@ static bool AStarSegment(
     if (endRow == -1)
         return false;
 
-    /*
-     * Reconstruct the path backwards from the target.
-     */
+    // Reconstruct the path backwards from the target.
     Position reversePath[MAX_CELLS];
     uint16_t pathLength = 0;
 
@@ -440,7 +368,7 @@ static bool AStarSegment(
         reversePath[pathLength].col = (uint8_t)c;
         pathLength++;
 
-        /* Reached the original search state. */
+        // Reached the original search state.
         if (r == start.row &&
             c == start.col &&
             d == startingDirection)
@@ -460,10 +388,7 @@ static bool AStarSegment(
         d = pd;
     }
 
-    /*
-     * Convert the reconstructed path into robot commands,
-     * moving from START towards TARGET.
-     */
+    // Convert the reconstructed path into robot commands, moving from START towards TARGET.
     Direction direction = startingDirection;
 
     for (int16_t i = (int16_t)pathLength - 1; i > 0; i--)
@@ -480,30 +405,12 @@ static bool AStarSegment(
             return false;
     }
 
-    /* Apply your existing short-turn rule to this segment. */
-    //MarkShortTurnSequences(route, segmentStart);
-
     *finalDirection = direction;
     
     return true;
 }
 
-/* =========================================================
- * BUILD COMPLETE ROUTE
- *
- * Runs A* once for every pair of checkpoints.
- *
- * Example:
- *
- *     Point 0 -> Point 1
- *     Point 1 -> Point 2
- *     Point 2 -> Point 3
- *     Point 3 -> Point 4
- *
- * The resulting commands are combined into
- * one complete command array.
- * ========================================================= */
-
+// Build complete route, running A* once for every pair of checkpoints.
 bool AStar_BuildRoute(
     const uint8_t map[MAP_ROWS][MAP_COLS],
     const Checkpoints *checkpoints,
@@ -513,7 +420,7 @@ bool AStar_BuildRoute(
 {
     Direction currentDirection = startingDirection;
 
-    /* Validate pointers before dereferencing them. */
+    // Validate pointers before dereferencing them.
     if (map == NULL ||
         checkpoints == NULL ||
         route == NULL)
@@ -521,14 +428,14 @@ bool AStar_BuildRoute(
         return false;
     }
 
-    /* We need at least a start and destination. */
+    // We need at least a start and destination.
     if (checkpoints->count < 2 ||
         checkpoints->count > MAX_CHECKPOINTS)
     {
         return false;
     }
 
-    /* Validate every checkpoint before searching. */
+    // Validate every checkpoint before searching.
     for (uint8_t i = 0; i < checkpoints->count; i++)
     {
         Position p = checkpoints->points[i];
@@ -539,31 +446,22 @@ bool AStar_BuildRoute(
             return false;
         }
 
-        /* 1 = open; 0 = wall. */
+        // 1 = open; 0 = wall.
         if (map[p.row][p.col] != 1)
         {
             return false;
         }
     }
 
-    /* Initialize the complete route. */
+    // Initialize the complete route.
     route->length = 0;
     route->checkpointCount = checkpoints->count;
     route->finalDirection = startingDirection;
     route->checkpointCommand[0] = 0;
-    
-    
-
-    /*
-     * Keep your existing AStarSegment loop here.
-     */
 
 
 
-    /*
-     * Calculate every section.
-     */
-
+    // Calculate every section.
     for (uint8_t i = 0;
          i < checkpoints->count - 1;
          i++)
@@ -571,11 +469,7 @@ bool AStar_BuildRoute(
         Direction newDirection;
 
 
-        /*
-         * Calculate:
-
-         *     Point i -> Point i+1
-         */
+        // Calculate:  Point i -> Point i+1
 
         if (!AStarSegment(
                 map,
@@ -589,20 +483,12 @@ bool AStar_BuildRoute(
         }
 
 
-        /*
-         * Robot's direction when it arrives
-         * at this checkpoint.
-         */
-
+        // Robot's direction when it arrives at this checkpoint.
         currentDirection =
             newDirection;
 
 
-        /*
-         * Store the command index at which
-         * this checkpoint is reached.
-         */
-
+        // Store the command index at which this checkpoint is reached.
         route->checkpointCommand[i + 1] =
             route->length;
     }
@@ -610,10 +496,7 @@ bool AStar_BuildRoute(
     MarkShortTurnSequences(route, 0);
     ShortBeforeUturn(route, 0);
 
-    /*
-     * Store final direction.
-     */
-
+    // Store final direction.
     route->finalDirection =
         currentDirection;
     

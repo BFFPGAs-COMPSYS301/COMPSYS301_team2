@@ -5,33 +5,20 @@
 #include <stdbool.h>
 
 
-/* =========================================================
- * MAP SETTINGS
- * ========================================================= */
-
+// Map Settings
 #define MAP_ROWS 15
 #define MAP_COLS 19
 
 #define MAX_CELLS (MAP_ROWS * MAP_COLS)
 
-/*
- * Maximum number of checkpoints.
- *
- * This includes the START and END points.
- */
+// Maximum number of checkpoints. includes the START and END points.
 #define MAX_CHECKPOINTS 20
 
-/*
- * Maximum number of movement commands that can
- * be stored in the complete route.
- */
+// Maximum number of movement commands that can be stored in the complete route.
 #define MAX_COMMANDS 1024
 
 
-/* =========================================================
- * POSITION
- * ========================================================= */
-
+// Position
 typedef struct
 {
     uint8_t row;
@@ -40,10 +27,7 @@ typedef struct
 } Position;
 
 
-/* =========================================================
- * ROBOT DIRECTION
- * ========================================================= */
-
+// Robot Direction
 typedef enum
 {
     DIR_UP = 0,
@@ -53,13 +37,6 @@ typedef enum
 
 } Direction;
 
-
-/* =========================================================
- * ROBOT COMMANDS
- *
- * Turning does NOT move the robot.
- * CMD_FORWARD moves one cell.
- * ========================================================= */
 
 typedef enum
 {
@@ -74,16 +51,7 @@ typedef enum
 } Command;
 
 
-/* =========================================================
- * CHECKPOINTS
- *
- * points[0] = starting position
- * points[1] = checkpoint 1
- * points[2] = checkpoint 2
- * ...
- * points[count - 1] = final position
- * ========================================================= */
-
+// CHECKPOINTS
 typedef struct
 {
     Position points[MAX_CHECKPOINTS];
@@ -93,56 +61,28 @@ typedef struct
 } Checkpoints;
 
 
-/* =========================================================
- * COMPLETE ROUTE
- * ========================================================= */
-
+// COMPLETE ROUTE
 typedef struct
 {
-    /*
-     * Complete list of robot commands.
-     */
+    // Complete list of robot commands.
     Command commands[MAX_COMMANDS];
 
-    /*
-     * Number of commands in the route.
-     */
+    // Number of commands in the route.
     uint16_t length;
 
-    /*
-     * Command index at which each checkpoint
-     * is reached.
-     *
-     * checkpointCommand[0] = starting point
-     * checkpointCommand[1] = checkpoint 1
-     * etc.
-     */
+    // Command index at which each checkpoint is reached.
     uint16_t checkpointCommand[MAX_CHECKPOINTS];
 
-    /*
-     * Number of checkpoints.
-     */
+    // Number of checkpoints.
     uint8_t checkpointCount;
 
-    /*
-     * Direction the robot is facing when
-     * the route is complete.
-     */
+    // Direction the robot is facing when the route is complete.
     Direction finalDirection;
 
 } Route;
 
 
-/* =========================================================
- * BUILD COMPLETE ROUTE
- *
- * Calculates the route through all checkpoints:
- *
- * Point 0 -> Point 1 -> Point 2 -> ... -> Point N
- *
- * Returns true if a route was successfully found.
- * ========================================================= */
-
+// Calculates the route through all checkpoints, returns true if a route was successfully found.
 bool AStar_BuildRoute(
     const uint8_t map[MAP_ROWS][MAP_COLS],
     const Checkpoints *checkpoints,
