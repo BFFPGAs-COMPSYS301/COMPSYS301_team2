@@ -7,7 +7,7 @@
 #include "project.h"
 #include "astar.h"
 
-#define CELL_LENGTH 70
+#define CELL_LENGTH 80
 #define CELL_LENGTH_SHORT 55
 #define INTERSECTION_TIMEOUT 5000
 
@@ -55,7 +55,7 @@ static void rampingLeftBack(){
         PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
         CyDelay(15);
         PWM_1_WriteCompare(PERIOD - 18); // Drive left wheel backard to quickly pivot right
-        CyDelay(40);
+        CyDelay(30);
         PWM_1_WriteCompare(PERIOD - 20); // Drive left wheel backard to quickly pivot right
         CyDelay(15);
         PWM_1_WriteCompare(PERIOD - 21); // Drive left wheel backard to quickly pivot right
@@ -161,10 +161,10 @@ static void TurnRight() {
     }
     goForwardSlow();
     CyDelay(10);
-    /*
-    PWM_1_WriteCompare(PERIOD - 20);
-    PWM_2_WriteCompare(20);
-    CyDelay(30);*/
+    
+    //PWM_1_WriteCompare(PERIOD - 20);
+    //PWM_2_WriteCompare(20);
+    //CyDelay(30);
     stopMoving();
     LED_3_Write(0);
     CyDelay(1000);

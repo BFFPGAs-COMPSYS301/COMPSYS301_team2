@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
   29:astar.c       **** 
   30:astar.c       **** 
   31:astar.c       ****     return rowDistance + colDistance;
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 2
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 2
 
 
   32:astar.c       **** }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
   59 002c 00E0     		b	.L2
   60              	.L5:
   52:astar.c       **** 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 3
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 3
 
 
   53:astar.c       ****     return DIR_LEFT;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
   74:astar.c       **** 
   75:astar.c       ****     return true;
   94              		.loc 1 75 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 4
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 4
 
 
   95 0012 0120     		movs	r0, #1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
   98:astar.c       ****      * 2 = U-turn
   99:astar.c       ****      * 3 = left
  100:astar.c       ****      */
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 5
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 5
 
 
  101:astar.c       **** 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  156              	.LVL8:
  157              	.L13:
  123:astar.c       ****         {
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 6
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 6
 
 
  124:astar.c       ****             return false;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  157:astar.c       ****     *currentDirection = requiredDirection;
  179              		.loc 1 157 0
  180 0046 2570     		strb	r5, [r4]
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 7
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 7
 
 
  158:astar.c       **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  212              	.LVL16:
  213 0000 70B4     		push	{r4, r5, r6}
  214              		.cfi_def_cfa_offset 12
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 8
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 8
 
 
  215              		.cfi_offset 4, -12
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  247 001c 1ED1     		bne	.L22
  248              	.L23:
  202:astar.c       ****             (last == CMD_LEFT || last == CMD_RIGHT || last == CMD_LEFT_SHORT || last == CMD_RIGHT_S
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 9
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 9
 
 
  249              		.loc 1 202 0 is_stmt 1 discriminator 5
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  290 004a 03D0     		beq	.L30
  213:astar.c       ****             (last == CMD_RIGHT || last == CMD_RIGHT_SHORT)
  291              		.loc 1 213 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 10
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 10
 
 
  292 004c 052A     		cmp	r2, #5
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  335              	AStarSegment:
  336              	.LFB68:
  220:astar.c       **** 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 11
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 11
 
 
  221:astar.c       **** 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  249:astar.c       ****     {
  250:astar.c       ****         {-1,  0},  /* UP */
  251:astar.c       ****         { 0,  1},  /* RIGHT */
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 12
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 12
 
 
  252:astar.c       ****         { 1,  0},  /* DOWN */
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  261:astar.c       ****             {
  399              		.loc 1 261 0 discriminator 3
  400 0060 0132     		adds	r2, r2, #1
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 13
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 13
 
 
  401              	.LVL32:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  444 0080 9DF81C30 		ldrb	r3, [sp, #28]	@ zero_extendqisi2
  445 0084 0293     		str	r3, [sp, #8]
  446 0086 9DF81D20 		ldrb	r2, [sp, #29]	@ zero_extendqisi2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 14
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 14
 
 
  447 008a 1146     		mov	r1, r2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  293:astar.c       ****         {
  294:astar.c       ****             for (uint8_t c = 0; c < MAP_COLS; c++)
  295:astar.c       ****             {
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 15
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 15
 
 
  296:astar.c       ****                 for (uint8_t d = 0; d < 4; d++)
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  308:astar.c       ****                             steps[bestRow][bestCol][bestDir] &&
  309:astar.c       ****                          turns[r][c][d] <
  522              		.loc 1 309 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 16
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 16
 
 
  523 0128 0DF5E950 		add	r0, sp, #7456
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  568              	.LVL51:
  569 016c C9B2     		uxtb	r1, r1
  570              	.LVL52:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 17
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 17
 
 
  571 016e 00E0     		b	.L43
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  327:astar.c       ****         if (bestRow == target.row &&
  610              		.loc 1 327 0
  611 01a8 9DF81830 		ldrb	r3, [sp, #24]	@ zero_extendqisi2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 18
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 18
 
 
  612 01ac 9F42     		cmp	r7, r3
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  371:astar.c       ****                  newTurns < turns[nr][nc][d]))
  372:astar.c       ****             {
  373:astar.c       ****                 steps[nr][nc][d] = newSteps;
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 19
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 19
 
 
  374:astar.c       ****                 turns[nr][nc][d] = newTurns;
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  660 01fc E45C     		ldrb	r4, [r4, r3]	@ zero_extendqisi2
  661 01fe 012C     		cmp	r4, #1
  662 0200 5CD1     		bne	.L47
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 20
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 20
 
 
  352:astar.c       ****                 continue;
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  709 0266 29D1     		bne	.L47
  371:astar.c       ****             {
  710              		.loc 1 371 0 is_stmt 1
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 21
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 21
 
 
  711 0268 02EBC208 		add	r8, r2, r2, lsl #3
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  758              	.L62:
  759              	.LBE15:
  760 02c2 0021     		movs	r1, #0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 22
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 22
 
 
  761 02c4 00E0     		b	.L45
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  791 02ea 0298     		ldr	r0, [sp, #8]
  792 02ec B842     		cmp	r0, r7
  793 02ee 05D1     		bne	.L52
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 23
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 23
 
 
  794              		.loc 1 406 0 is_stmt 0 discriminator 1
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  836 033e 019B     		ldr	r3, [sp, #4]
  837              	.LBE19:
  418:astar.c       ****             return false;
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 24
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 24
 
 
  419:astar.c       **** 
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  440:astar.c       **** 
  441:astar.c       ****         if (!AddCommand(route, CMD_FORWARD))
  871              		.loc 1 441 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 25
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 25
 
 
  872 0378 0021     		movs	r1, #0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  913              	.L64:
  914              	.LBE23:
  384:astar.c       **** 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 26
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 26
 
 
  915              		.loc 1 384 0
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  459:astar.c       ****  *
  460:astar.c       ****  *     Point 0 -> Point 1
  461:astar.c       ****  *     Point 1 -> Point 2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 27
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 27
 
 
  462:astar.c       ****  *     Point 2 -> Point 3
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  485:astar.c       **** 
  486:astar.c       ****     /* We need at least a start and destination. */
  487:astar.c       ****     if (checkpoints->count < 2 ||
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 28
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 28
 
 
  989              		.loc 1 487 0
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1023              		.loc 1 494 0
  1024 0054 0132     		adds	r2, r2, #1
  1025              	.LVL100:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 29
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 29
 
 
  1026 0056 D2B2     		uxtb	r2, r2
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1054 007a 27E0     		b	.L77
  1055              	.LVL104:
  1056              	.L79:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 30
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 30
 
 
  1057              	.LBB29:
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1080              	.LVL106:
  560:astar.c       ****             newDirection;
  561:astar.c       **** 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 31
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 31
 
 
  562:astar.c       **** 
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1111              	.LVL110:
  1112              	.L80:
  1113              		.cfi_def_cfa_offset 0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 32
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 32
 
 
  1114              		.cfi_restore 4
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1164              		.type	directions.6418, %object
  1165              		.size	directions.6418, 8
  1166              	directions.6418:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 33
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 33
 
 
  1167 0000 FF       		.byte	-1
@@ -1942,15 +1942,15 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1185 0006 00000000 		.4byte	.Ldebug_abbrev0
  1186 000a 04       		.byte	0x4
  1187 000b 01       		.uleb128 0x1
- 1188 000c 79030000 		.4byte	.LASF84
+ 1188 000c 8C030000 		.4byte	.LASF84
  1189 0010 0C       		.byte	0xc
- 1190 0011 61020000 		.4byte	.LASF85
- 1191 0015 00020000 		.4byte	.LASF86
+ 1190 0011 74020000 		.4byte	.LASF85
+ 1191 0015 88010000 		.4byte	.LASF86
  1192 0019 F8000000 		.4byte	.Ldebug_ranges0+0xf8
  1193 001d 00000000 		.4byte	0
  1194 0021 00000000 		.4byte	.Ldebug_line0
  1195 0025 02       		.uleb128 0x2
- 1196 0026 53020000 		.4byte	.LASF0
+ 1196 0026 66020000 		.4byte	.LASF0
  1197 002a 02       		.byte	0x2
  1198 002b 1B       		.byte	0x1b
  1199 002c 30000000 		.4byte	0x30
@@ -1959,7 +1959,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1202 0032 06       		.byte	0x6
  1203 0033 D2000000 		.4byte	.LASF2
  1204 0037 02       		.uleb128 0x2
- 1205 0038 51040000 		.4byte	.LASF1
+ 1205 0038 64040000 		.4byte	.LASF1
  1206 003c 02       		.byte	0x2
  1207 003d 1D       		.byte	0x1d
  1208 003e 42000000 		.4byte	0x42
@@ -1968,7 +1968,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1211 0044 08       		.byte	0x8
  1212 0045 4B010000 		.4byte	.LASF3
  1213 0049 02       		.uleb128 0x2
- 1214 004a 28030000 		.4byte	.LASF4
+ 1214 004a 3B030000 		.4byte	.LASF4
  1215 004e 02       		.byte	0x2
  1216 004f 29       		.byte	0x29
  1217 0050 54000000 		.4byte	0x54
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1221 0057 2D000000 		.4byte	.LASF5
  1222 005b 02       		.uleb128 0x2
  1223 005c 7E000000 		.4byte	.LASF6
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 34
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 34
 
 
  1224 0060 02       		.byte	0x2
@@ -1987,9 +1987,9 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1227 0066 03       		.uleb128 0x3
  1228 0067 02       		.byte	0x2
  1229 0068 07       		.byte	0x7
- 1230 0069 ED010000 		.4byte	.LASF7
+ 1230 0069 4B020000 		.4byte	.LASF7
  1231 006d 02       		.uleb128 0x2
- 1232 006e 13030000 		.4byte	.LASF8
+ 1232 006e 26030000 		.4byte	.LASF8
  1233 0072 02       		.byte	0x2
  1234 0073 3F       		.byte	0x3f
  1235 0074 78000000 		.4byte	0x78
@@ -2000,7 +2000,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1240 007f 03       		.uleb128 0x3
  1241 0080 04       		.byte	0x4
  1242 0081 07       		.byte	0x7
- 1243 0082 DC020000 		.4byte	.LASF10
+ 1243 0082 EF020000 		.4byte	.LASF10
  1244 0086 03       		.uleb128 0x3
  1245 0087 08       		.byte	0x8
  1246 0088 05       		.byte	0x5
@@ -2008,7 +2008,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1248 008d 03       		.uleb128 0x3
  1249 008e 08       		.byte	0x8
  1250 008f 07       		.byte	0x7
- 1251 0090 88010000 		.4byte	.LASF12
+ 1251 0090 EE010000 		.4byte	.LASF12
  1252 0094 04       		.uleb128 0x4
  1253 0095 04       		.byte	0x4
  1254 0096 05       		.byte	0x5
@@ -2016,7 +2016,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1256 009b 03       		.uleb128 0x3
  1257 009c 04       		.byte	0x4
  1258 009d 07       		.byte	0x7
- 1259 009e AD010000 		.4byte	.LASF13
+ 1259 009e 0B020000 		.4byte	.LASF13
  1260 00a2 02       		.uleb128 0x2
  1261 00a3 13000000 		.4byte	.LASF14
  1262 00a7 03       		.byte	0x3
@@ -2028,20 +2028,20 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1268 00b3 18       		.byte	0x18
  1269 00b4 37000000 		.4byte	0x37
  1270 00b8 02       		.uleb128 0x2
- 1271 00b9 7E020000 		.4byte	.LASF16
+ 1271 00b9 91020000 		.4byte	.LASF16
  1272 00bd 03       		.byte	0x3
  1273 00be 20       		.byte	0x20
  1274 00bf 49000000 		.4byte	0x49
  1275 00c3 02       		.uleb128 0x2
- 1276 00c4 BA010000 		.4byte	.LASF17
+ 1276 00c4 18020000 		.4byte	.LASF17
  1277 00c8 03       		.byte	0x3
  1278 00c9 24       		.byte	0x24
  1279 00ca 5B000000 		.4byte	0x5b
  1280 00ce 02       		.uleb128 0x2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 35
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 35
 
 
- 1281 00cf 69020000 		.4byte	.LASF18
+ 1281 00cf 7C020000 		.4byte	.LASF18
  1282 00d3 03       		.byte	0x3
  1283 00d4 2C       		.byte	0x2c
  1284 00d5 6D000000 		.4byte	0x6d
@@ -2052,11 +2052,11 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1289 00e0 03       		.uleb128 0x3
  1290 00e1 08       		.byte	0x8
  1291 00e2 04       		.byte	0x4
- 1292 00e3 EE020000 		.4byte	.LASF20
+ 1292 00e3 01030000 		.4byte	.LASF20
  1293 00e7 03       		.uleb128 0x3
  1294 00e8 01       		.byte	0x1
  1295 00e9 08       		.byte	0x8
- 1296 00ea 5C020000 		.4byte	.LASF21
+ 1296 00ea 6F020000 		.4byte	.LASF21
  1297 00ee 03       		.uleb128 0x3
  1298 00ef 08       		.byte	0x8
  1299 00f0 04       		.byte	0x4
@@ -2084,7 +2084,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1321 011b 01       		.byte	0x1
  1322 011c 00       		.byte	0
  1323 011d 02       		.uleb128 0x2
- 1324 011e 58030000 		.4byte	.LASF24
+ 1324 011e 6B030000 		.4byte	.LASF24
  1325 0122 04       		.byte	0x4
  1326 0123 28       		.byte	0x28
  1327 0124 FC000000 		.4byte	0xfc
@@ -2095,10 +2095,10 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1332 012f 30       		.byte	0x30
  1333 0130 4D010000 		.4byte	0x14d
  1334 0134 08       		.uleb128 0x8
- 1335 0135 BD020000 		.4byte	.LASF25
+ 1335 0135 D0020000 		.4byte	.LASF25
  1336 0139 00       		.byte	0
  1337 013a 08       		.uleb128 0x8
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 36
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 36
 
 
  1338 013b 00000000 		.4byte	.LASF26
@@ -2128,20 +2128,20 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1362 016b 0A000000 		.4byte	.LASF31
  1363 016f 01       		.byte	0x1
  1364 0170 08       		.uleb128 0x8
- 1365 0171 D2020000 		.4byte	.LASF32
+ 1365 0171 E5020000 		.4byte	.LASF32
  1366 0175 02       		.byte	0x2
  1367 0176 08       		.uleb128 0x8
- 1368 0177 C3010000 		.4byte	.LASF33
+ 1368 0177 21020000 		.4byte	.LASF33
  1369 017b 03       		.byte	0x3
  1370 017c 08       		.uleb128 0x8
- 1371 017d FE020000 		.4byte	.LASF34
+ 1371 017d 11030000 		.4byte	.LASF34
  1372 0181 04       		.byte	0x4
  1373 0182 08       		.uleb128 0x8
  1374 0183 6C010000 		.4byte	.LASF35
  1375 0187 05       		.byte	0x5
  1376 0188 00       		.byte	0
  1377 0189 02       		.uleb128 0x2
- 1378 018a A5010000 		.4byte	.LASF36
+ 1378 018a 5E020000 		.4byte	.LASF36
  1379 018e 04       		.byte	0x4
  1380 018f 4A       		.byte	0x4a
  1381 0190 58010000 		.4byte	0x158
@@ -2157,8 +2157,8 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1391 01a3 B5010000 		.4byte	0x1b5
  1392 01a7 00       		.byte	0
  1393 01a8 09       		.uleb128 0x9
- 1394 01a9 0D030000 		.4byte	.LASF38
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 37
+ 1394 01a9 20030000 		.4byte	.LASF38
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 37
 
 
  1395 01ad 04       		.byte	0x4
@@ -2196,13 +2196,13 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1427 01ec C3000000 		.4byte	0xc3
  1428 01f0 0004     		.2byte	0x400
  1429 01f2 0D       		.uleb128 0xd
- 1430 01f3 07040000 		.4byte	.LASF42
+ 1430 01f3 1A040000 		.4byte	.LASF42
  1431 01f7 04       		.byte	0x4
  1432 01f8 78       		.byte	0x78
  1433 01f9 2B020000 		.4byte	0x22b
  1434 01fd 0204     		.2byte	0x402
  1435 01ff 0D       		.uleb128 0xd
- 1436 0200 D2010000 		.4byte	.LASF43
+ 1436 0200 30020000 		.4byte	.LASF43
  1437 0204 04       		.byte	0x4
  1438 0205 7D       		.byte	0x7d
  1439 0206 AD000000 		.4byte	0xad
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1449 021b 89010000 		.4byte	0x189
  1450 021f 2B020000 		.4byte	0x22b
  1451 0223 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 38
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 38
 
 
  1452 0224 F5000000 		.4byte	0xf5
@@ -2237,7 +2237,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1465 0241 85       		.byte	0x85
  1466 0242 D0010000 		.4byte	0x1d0
  1467 0246 0F       		.uleb128 0xf
- 1468 0247 19040000 		.4byte	.LASF47
+ 1468 0247 2C040000 		.4byte	.LASF47
  1469 024b 01       		.byte	0x1
  1470 024c 27       		.byte	0x27
  1471 024d 4D010000 		.4byte	0x14d
@@ -2247,7 +2247,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1475 025a 9C       		.byte	0x9c
  1476 025b 7B020000 		.4byte	0x27b
  1477 025f 10       		.uleb128 0x10
- 1478 0260 4C040000 		.4byte	.LASF46
+ 1478 0260 5F040000 		.4byte	.LASF46
  1479 0264 01       		.byte	0x1
  1480 0265 28       		.byte	0x28
  1481 0266 1D010000 		.4byte	0x11d
@@ -2264,7 +2264,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1492 0279 78       		.sleb128 -8
  1493 027a 00       		.byte	0
  1494 027b 0F       		.uleb128 0xf
- 1495 027c 61030000 		.4byte	.LASF48
+ 1495 027c 74030000 		.4byte	.LASF48
  1496 0280 01       		.byte	0x1
  1497 0281 3D       		.byte	0x3d
  1498 0282 B1020000 		.4byte	0x2b1
@@ -2278,12 +2278,12 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1506 0299 01       		.byte	0x1
  1507 029a 3E       		.byte	0x3e
  1508 029b B8020000 		.4byte	0x2b8
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 39
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 39
 
 
  1509 029f 00000000 		.4byte	.LLST0
  1510 02a3 10       		.uleb128 0x10
- 1511 02a4 44040000 		.4byte	.LASF50
+ 1511 02a4 57040000 		.4byte	.LASF50
  1512 02a8 01       		.byte	0x1
  1513 02a9 3F       		.byte	0x3f
  1514 02aa 89010000 		.4byte	0x189
@@ -2293,7 +2293,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1518 02b1 03       		.uleb128 0x3
  1519 02b2 01       		.byte	0x1
  1520 02b3 02       		.byte	0x2
- 1521 02b4 8E020000 		.4byte	.LASF51
+ 1521 02b4 A1020000 		.4byte	.LASF51
  1522 02b8 13       		.uleb128 0x13
  1523 02b9 04       		.byte	0x4
  1524 02ba 3B020000 		.4byte	0x23b
@@ -2314,19 +2314,19 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1539 02de B8020000 		.4byte	0x2b8
  1540 02e2 3A000000 		.4byte	.LLST1
  1541 02e6 12       		.uleb128 0x12
- 1542 02e7 2C040000 		.4byte	.LASF53
+ 1542 02e7 3F040000 		.4byte	.LASF53
  1543 02eb 01       		.byte	0x1
  1544 02ec 57       		.byte	0x57
  1545 02ed 49030000 		.4byte	0x349
  1546 02f1 A6000000 		.4byte	.LLST2
  1547 02f5 12       		.uleb128 0x12
- 1548 02f6 AB020000 		.4byte	.LASF54
+ 1548 02f6 BE020000 		.4byte	.LASF54
  1549 02fa 01       		.byte	0x1
  1550 02fb 58       		.byte	0x58
  1551 02fc 4D010000 		.4byte	0x14d
  1552 0300 09010000 		.4byte	.LLST3
  1553 0304 14       		.uleb128 0x14
- 1554 0305 CD010000 		.4byte	.LASF56
+ 1554 0305 2B020000 		.4byte	.LASF56
  1555 0309 01       		.byte	0x1
  1556 030a 5B       		.byte	0x5b
  1557 030b 94000000 		.4byte	0x94
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1563 0320 16       		.uleb128 0x16
  1564 0321 01       		.uleb128 0x1
  1565 0322 51       		.byte	0x51
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 40
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 40
 
 
  1566 0323 01       		.uleb128 0x1
@@ -2368,7 +2368,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1590 034a 04       		.byte	0x4
  1591 034b 4D010000 		.4byte	0x14d
  1592 034f 18       		.uleb128 0x18
- 1593 0350 94020000 		.4byte	.LASF87
+ 1593 0350 A7020000 		.4byte	.LASF87
  1594 0354 01       		.byte	0x1
  1595 0355 AF       		.byte	0xaf
  1596 0356 00000000 		.4byte	.LFB67
@@ -2384,7 +2384,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1606 036f 01       		.uleb128 0x1
  1607 0370 50       		.byte	0x50
  1608 0371 12       		.uleb128 0x12
- 1609 0372 71020000 		.4byte	.LASF55
+ 1609 0372 84020000 		.4byte	.LASF55
  1610 0376 01       		.byte	0x1
  1611 0377 B1       		.byte	0xb1
  1612 0378 C3000000 		.4byte	0xc3
@@ -2398,23 +2398,23 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1620 038d 1A       		.uleb128 0x1a
  1621 038e 04000000 		.4byte	.LBB2
  1622 0392 58000000 		.4byte	.LBE2-.LBB2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 41
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 41
 
 
  1623 0396 14       		.uleb128 0x14
- 1624 0397 26040000 		.4byte	.LASF57
+ 1624 0397 39040000 		.4byte	.LASF57
  1625 039b 01       		.byte	0x1
  1626 039c BA       		.byte	0xba
  1627 039d 89010000 		.4byte	0x189
  1628 03a1 E8010000 		.4byte	.LLST7
  1629 03a5 14       		.uleb128 0x14
- 1630 03a6 3D040000 		.4byte	.LASF58
+ 1630 03a6 50040000 		.4byte	.LASF58
  1631 03aa 01       		.byte	0x1
  1632 03ab BB       		.byte	0xbb
  1633 03ac 89010000 		.4byte	0x189
  1634 03b0 24020000 		.4byte	.LLST8
  1635 03b4 14       		.uleb128 0x14
- 1636 03b5 E2010000 		.4byte	.LASF59
+ 1636 03b5 40020000 		.4byte	.LASF59
  1637 03b9 01       		.byte	0x1
  1638 03ba BC       		.byte	0xbc
  1639 03bb 89010000 		.4byte	0x189
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1677 0412 01       		.byte	0x1
  1678 0413 E2       		.byte	0xe2
  1679 0414 4D010000 		.4byte	0x14d
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 42
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 42
 
 
  1680 0418 8A020000 		.4byte	.LLST11
@@ -2475,13 +2475,13 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1691 0432 49030000 		.4byte	0x349
  1692 0436 CB020000 		.4byte	.LLST13
  1693 043a 14       		.uleb128 0x14
- 1694 043b 71020000 		.4byte	.LASF55
+ 1694 043b 84020000 		.4byte	.LASF55
  1695 043f 01       		.byte	0x1
  1696 0440 E7       		.byte	0xe7
  1697 0441 C3000000 		.4byte	0xc3
  1698 0445 EB020000 		.4byte	.LLST14
  1699 0449 1C       		.uleb128 0x1c
- 1700 044a E7010000 		.4byte	.LASF64
+ 1700 044a 45020000 		.4byte	.LASF64
  1701 044e 01       		.byte	0x1
  1702 044f F0       		.byte	0xf0
  1703 0450 3A070000 		.4byte	0x73a
@@ -2489,7 +2489,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1705 0455 91       		.byte	0x91
  1706 0456 F06D     		.sleb128 -2320
  1707 0458 1C       		.uleb128 0x1c
- 1708 0459 9F010000 		.4byte	.LASF65
+ 1708 0459 05020000 		.4byte	.LASF65
  1709 045d 01       		.byte	0x1
  1710 045e F1       		.byte	0xf1
  1711 045f 3A070000 		.4byte	0x73a
@@ -2505,7 +2505,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1721 0473 91       		.byte	0x91
  1722 0474 9453     		.sleb128 -5740
  1723 0476 1C       		.uleb128 0x1c
- 1724 0477 4E030000 		.4byte	.LASF67
+ 1724 0477 61030000 		.4byte	.LASF67
  1725 047b 01       		.byte	0x1
  1726 047c F4       		.byte	0xf4
  1727 047d 72070000 		.4byte	0x772
@@ -2518,13 +2518,13 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1734 048b F5       		.byte	0xf5
  1735 048c 72070000 		.4byte	0x772
  1736 0490 04       		.uleb128 0x4
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 43
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 43
 
 
  1737 0491 91       		.byte	0x91
  1738 0492 C4AF7F   		.sleb128 -10300
  1739 0495 1C       		.uleb128 0x1c
- 1740 0496 44030000 		.4byte	.LASF69
+ 1740 0496 57030000 		.4byte	.LASF69
  1741 049a 01       		.byte	0x1
  1742 049b F6       		.byte	0xf6
  1743 049c 8E070000 		.4byte	0x78e
@@ -2532,7 +2532,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1745 04a1 91       		.byte	0x91
  1746 04a2 D0A67F   		.sleb128 -11440
  1747 04a5 1C       		.uleb128 0x1c
- 1748 04a6 1D030000 		.4byte	.LASF70
+ 1748 04a6 30030000 		.4byte	.LASF70
  1749 04aa 01       		.byte	0x1
  1750 04ab F8       		.byte	0xf8
  1751 04ac C5070000 		.4byte	0x7c5
@@ -2540,19 +2540,19 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1753 04b1 03       		.byte	0x3
  1754 04b2 00000000 		.4byte	directions.6418
  1755 04b6 1D       		.uleb128 0x1d
- 1756 04b7 CB020000 		.4byte	.LASF71
+ 1756 04b7 DE020000 		.4byte	.LASF71
  1757 04bb 01       		.byte	0x1
  1758 04bc 1601     		.2byte	0x116
  1759 04be B8000000 		.4byte	0xb8
  1760 04c2 13030000 		.4byte	.LLST15
  1761 04c6 1D       		.uleb128 0x1d
- 1762 04c7 32030000 		.4byte	.LASF72
+ 1762 04c7 45030000 		.4byte	.LASF72
  1763 04cb 01       		.byte	0x1
  1764 04cc 1701     		.2byte	0x117
  1765 04ce B8000000 		.4byte	0xb8
  1766 04d2 58030000 		.4byte	.LLST16
  1767 04d6 1D       		.uleb128 0x1d
- 1768 04d7 C4020000 		.4byte	.LASF73
+ 1768 04d7 D7020000 		.4byte	.LASF73
  1769 04db 01       		.byte	0x1
  1770 04dc 1801     		.2byte	0x118
  1771 04de A2000000 		.4byte	0xa2
@@ -2566,7 +2566,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1779 04f3 91       		.byte	0x91
  1780 04f4 94A27F   		.sleb128 -12012
  1781 04f7 1D       		.uleb128 0x1d
- 1782 04f8 39030000 		.4byte	.LASF75
+ 1782 04f8 4C030000 		.4byte	.LASF75
  1783 04fc 01       		.byte	0x1
  1784 04fd 8601     		.2byte	0x186
  1785 04ff C3000000 		.4byte	0xc3
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1791 050d B8000000 		.4byte	0xb8
  1792 0511 16040000 		.4byte	.LLST19
  1793 0515 1F       		.uleb128 0x1f
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 44
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 44
 
 
  1794 0516 6300     		.ascii	"c\000"
@@ -2633,22 +2633,22 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1843 0587 30000000 		.4byte	.Ldebug_ranges0+0x30
  1844 058b 5C060000 		.4byte	0x65c
  1845 058f 1D       		.uleb128 0x1d
- 1846 0590 63040000 		.4byte	.LASF77
+ 1846 0590 76040000 		.4byte	.LASF77
  1847 0594 01       		.byte	0x1
  1848 0595 2001     		.2byte	0x120
  1849 0597 B8000000 		.4byte	0xb8
  1850 059b 0D050000 		.4byte	.LLST25
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 45
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 45
 
 
  1851 059f 1D       		.uleb128 0x1d
- 1852 05a0 86020000 		.4byte	.LASF78
+ 1852 05a0 99020000 		.4byte	.LASF78
  1853 05a4 01       		.byte	0x1
  1854 05a5 2101     		.2byte	0x121
  1855 05a7 B8000000 		.4byte	0xb8
  1856 05ab 38050000 		.4byte	.LLST26
  1857 05af 1D       		.uleb128 0x1d
- 1858 05b0 5B040000 		.4byte	.LASF79
+ 1858 05b0 6E040000 		.4byte	.LASF79
  1859 05b4 01       		.byte	0x1
  1860 05b5 2201     		.2byte	0x122
  1861 05b7 A2000000 		.4byte	0xa2
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1905 0620 5301     		.2byte	0x153
  1906 0622 B8000000 		.4byte	0xb8
  1907 0626 3E060000 		.4byte	.LLST32
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 46
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 46
 
 
  1908 062a 1F       		.uleb128 0x1f
@@ -2708,7 +2708,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1912 0631 B8000000 		.4byte	0xb8
  1913 0635 6F060000 		.4byte	.LLST33
  1914 0639 1D       		.uleb128 0x1d
- 1915 063a F5020000 		.4byte	.LASF80
+ 1915 063a 08030000 		.4byte	.LASF80
  1916 063e 01       		.byte	0x1
  1917 063f 6301     		.2byte	0x163
  1918 0641 C3000000 		.4byte	0xc3
@@ -2756,9 +2756,9 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1960 06aa 21       		.uleb128 0x21
  1961 06ab C8000000 		.4byte	.Ldebug_ranges0+0xc8
  1962 06af 1E       		.uleb128 0x1e
- 1963 06b0 4C040000 		.4byte	.LASF46
+ 1963 06b0 5F040000 		.4byte	.LASF46
  1964 06b4 01       		.byte	0x1
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 47
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 47
 
 
  1965 06b5 B101     		.2byte	0x1b1
@@ -2775,7 +2775,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  1976 06cc 91       		.byte	0x91
  1977 06cd 90A27F   		.sleb128 -12016
  1978 06d0 1D       		.uleb128 0x1d
- 1979 06d1 AB020000 		.4byte	.LASF54
+ 1979 06d1 BE020000 		.4byte	.LASF54
  1980 06d5 01       		.byte	0x1
  1981 06d6 B401     		.2byte	0x1b4
  1982 06d8 4D010000 		.4byte	0x14d
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2019 071a 30       		.byte	0x30
  2020 071b 00       		.byte	0
  2021 071c 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 48
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 48
 
 
  2022 071d 00       		.byte	0
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2076 078f A2000000 		.4byte	0xa2
  2077 0793 AA070000 		.4byte	0x7aa
  2078 0797 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 49
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 49
 
 
  2079 0798 F5000000 		.4byte	0xf5
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2133 081a 01       		.byte	0x1
  2134 081b D801     		.2byte	0x1d8
  2135 081d 4D010000 		.4byte	0x14d
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 50
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 50
 
 
  2136 0821 6E080000 		.4byte	.LLST43
@@ -2949,7 +2949,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2141 082d B8020000 		.4byte	0x2b8
  2142 0831 A8080000 		.4byte	.LLST44
  2143 0835 1D       		.uleb128 0x1d
- 2144 0836 2C040000 		.4byte	.LASF53
+ 2144 0836 3F040000 		.4byte	.LASF53
  2145 083a 01       		.byte	0x1
  2146 083b DC01     		.2byte	0x1dc
  2147 083d 4D010000 		.4byte	0x14d
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2190 08a5 91       		.byte	0x91
  2191 08a6 5C       		.sleb128 -36
  2192 08a7 17       		.uleb128 0x17
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 51
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 51
 
 
  2193 08a8 AC000000 		.4byte	.LVL105
@@ -3054,11 +3054,11 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2243 08e9 25       		.uleb128 0x25
  2244 08ea C5010000 		.4byte	0x1c5
  2245 08ee 29       		.uleb128 0x29
- 2246 08ef 6C030000 		.4byte	.LASF89
+ 2246 08ef 7F030000 		.4byte	.LASF89
  2247 08f3 05       		.byte	0x5
  2248 08f4 1207     		.2byte	0x712
  2249 08f6 FA080000 		.4byte	0x8fa
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 52
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 52
 
 
  2250 08fa 2A       		.uleb128 0x2a
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2304 0031 0B       		.uleb128 0xb
  2305 0032 03       		.uleb128 0x3
  2306 0033 08       		.uleb128 0x8
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 53
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 53
 
 
  2307 0034 00       		.byte	0
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2361 006a 09       		.uleb128 0x9
  2362 006b 0D       		.uleb128 0xd
  2363 006c 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 54
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 54
 
 
  2364 006d 03       		.uleb128 0x3
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2418 00a3 38       		.uleb128 0x38
  2419 00a4 05       		.uleb128 0x5
  2420 00a5 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 55
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 55
 
 
  2421 00a6 00       		.byte	0
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2475 00dd 08       		.uleb128 0x8
  2476 00de 3A       		.uleb128 0x3a
  2477 00df 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 56
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 56
 
 
  2478 00e0 3B       		.uleb128 0x3b
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2532 0118 01       		.uleb128 0x1
  2533 0119 13       		.uleb128 0x13
  2534 011a 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 57
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 57
 
 
  2535 011b 00       		.byte	0
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2589 0157 17       		.uleb128 0x17
  2590 0158 00       		.byte	0
  2591 0159 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 58
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 58
 
 
  2592 015a 1A       		.uleb128 0x1a
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2646 0190 1E       		.uleb128 0x1e
  2647 0191 34       		.uleb128 0x34
  2648 0192 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 59
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 59
 
 
  2649 0193 03       		.uleb128 0x3
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2703 01c9 23       		.uleb128 0x23
  2704 01ca 34       		.uleb128 0x34
  2705 01cb 00       		.byte	0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 60
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 60
 
 
  2706 01cc 03       		.uleb128 0x3
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2760 0205 00       		.byte	0
  2761 0206 27       		.uleb128 0x27
  2762 0207 05       		.uleb128 0x5
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 61
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 61
 
 
  2763 0208 00       		.byte	0
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2817              	.Ldebug_loc0:
  2818              	.LLST0:
  2819 0000 00000000 		.4byte	.LVL0
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 62
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 62
 
 
  2820 0004 14000000 		.4byte	.LVL1
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2874 0082 01       		.uleb128 0x1
  2875 0083 50       		.byte	0x50
  2876 0084 9F       		.byte	0x9f
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 63
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 63
 
 
  2877 0085 4C000000 		.4byte	.LVL14
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2931 0111 0100     		.2byte	0x1
  2932 0113 52       		.byte	0x52
  2933 0114 25000000 		.4byte	.LVL7-1
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 64
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 64
 
 
  2934 0118 2C000000 		.4byte	.LVL8
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  2988 0196 4C000000 		.4byte	.LVL14
  2989 019a 4E000000 		.4byte	.LVL15
  2990 019e 0100     		.2byte	0x1
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 65
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 65
 
 
  2991 01a0 53       		.byte	0x53
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3045 0220 00000000 		.4byte	0
  3046              	.LLST8:
  3047 0224 0A000000 		.4byte	.LVL20
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 66
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 66
 
 
  3048 0228 10000000 		.4byte	.LVL22
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3102 02ab 00000000 		.4byte	.LVL29
  3103 02af C8030000 		.4byte	.LVL95
  3104 02b3 0200     		.2byte	0x2
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 67
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 67
 
 
  3105 02b5 91       		.byte	0x91
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3159 0333 0300     		.2byte	0x3
  3160 0335 09       		.byte	0x9
  3161 0336 FF       		.byte	0xff
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 68
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 68
 
 
  3162 0337 9F       		.byte	0x9f
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3216 03b9 D0020000 		.4byte	.LVL76
  3217 03bd 0300     		.2byte	0x3
  3218 03bf 09       		.byte	0x9
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 69
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 69
 
 
  3219 03c0 FF       		.byte	0xff
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3273 044e A8030000 		.4byte	.LVL90
  3274 0452 0100     		.2byte	0x1
  3275 0454 5A       		.byte	0x5a
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 70
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 70
 
 
  3276 0455 B0030000 		.4byte	.LVL92
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3330 04e8 62000000 		.4byte	.LVL32
  3331 04ec 0100     		.2byte	0x1
  3332 04ee 52       		.byte	0x52
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 71
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 71
 
 
  3333 04ef 64000000 		.4byte	.LVL33
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3387 057a 9F       		.byte	0x9f
  3388 057b C2000000 		.4byte	.LVL43
  3389 057f C8030000 		.4byte	.LVL95
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 72
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 72
 
 
  3390 0583 0100     		.2byte	0x1
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3444              	.LLST31:
  3445 0615 CA010000 		.4byte	.LVL59
  3446 0619 BE020000 		.4byte	.LVL72
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 73
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 73
 
 
  3447 061d 0100     		.2byte	0x1
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3501 068e 94       		.byte	0x94
  3502 068f 01       		.byte	0x1
  3503 0690 48       		.byte	0x48
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 74
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 74
 
 
  3504 0691 24       		.byte	0x24
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3558 06eb 00       		.sleb128 0
  3559 06ec 22       		.byte	0x22
  3560 06ed 40       		.byte	0x40
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 75
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 75
 
 
  3561 06ee 24       		.byte	0x24
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3615 072a 31       		.byte	0x31
  3616 072b 24       		.byte	0x24
  3617 072c 78       		.byte	0x78
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 76
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 76
 
 
  3618 072d 00       		.sleb128 0
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3672              	.LLST39:
  3673 07bc 46030000 		.4byte	.LVL82
  3674 07c0 8A030000 		.4byte	.LVL88
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 77
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 77
 
 
  3675 07c4 0100     		.2byte	0x1
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3729 0850 E6000000 		.4byte	.LVL110
  3730 0854 F6000000 		.4byte	.LVL117
  3731 0858 0100     		.2byte	0x1
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 78
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 78
 
 
  3732 085a 51       		.byte	0x51
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3786 08df 0100     		.2byte	0x1
  3787 08e1 53       		.byte	0x53
  3788 08e2 EE000000 		.4byte	.LVL114
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 79
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 79
 
 
  3789 08e6 F0000000 		.4byte	.LVL115
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3843 0974 0100     		.2byte	0x1
  3844 0976 58       		.byte	0x58
  3845 0977 CC000000 		.4byte	.LVL108
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 80
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 80
 
 
  3846 097b E6000000 		.4byte	.LVL110
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3900 0064 00000000 		.4byte	0
  3901 0068 C2000000 		.4byte	.LBB10
  3902 006c 70010000 		.4byte	.LBE10
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 81
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 81
 
 
  3903 0070 72010000 		.4byte	.LBB13
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3953      01010101 
  3954              	.LASF26:
  3955 0000 4449525F 		.ascii	"DIR_RIGHT\000"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 82
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 82
 
 
  3955      52494748 
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  3983      74696E67 
  3983      44697265 
  3983      6374696F 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 83
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 83
 
 
  3983      6E00
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  4013      725F4275 
  4013      696C6452 
  4013      6F757465 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 84
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 84
 
 
  4013      00
@@ -5016,240 +5016,242 @@ ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 1
  4029 017c 72657665 		.ascii	"reversePath\000"
  4029      72736550 
  4029      61746800 
- 4030              	.LASF12:
- 4031 0188 6C6F6E67 		.ascii	"long long unsigned int\000"
- 4031      206C6F6E 
- 4031      6720756E 
- 4031      7369676E 
- 4031      65642069 
- 4032              	.LASF65:
- 4033 019f 7475726E 		.ascii	"turns\000"
- 4033      7300
- 4034              	.LASF36:
- 4035 01a5 436F6D6D 		.ascii	"Command\000"
- 4035      616E6400 
- 4036              	.LASF13:
- 4037 01ad 756E7369 		.ascii	"unsigned int\000"
- 4037      676E6564 
- 4037      20696E74 
- 4037      00
- 4038              	.LASF17:
- 4039 01ba 75696E74 		.ascii	"uint16_t\000"
- 4039      31365F74 
+ 4030              	.LASF86:
+ 4031 0188 433A5C55 		.ascii	"C:\\Users\\aale517\\Documents\\COMPSYS301_team2\\Pr"
+ 4031      73657273 
+ 4031      5C61616C 
+ 4031      65353137 
+ 4031      5C446F63 
+ 4032 01b6 6F6A6563 		.ascii	"oject\\psco_code\\Pathfinding_Maze\\Pathfinding_Maz"
+ 4032      745C7073 
+ 4032      636F5F63 
+ 4032      6F64655C 
+ 4032      50617468 
+ 4033 01e6 652E6379 		.ascii	"e.cydsn\000"
+ 4033      64736E00 
+ 4034              	.LASF12:
+ 4035 01ee 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 4035      206C6F6E 
+ 4035      6720756E 
+ 4035      7369676E 
+ 4035      65642069 
+ 4036              	.LASF65:
+ 4037 0205 7475726E 		.ascii	"turns\000"
+ 4037      7300
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 85
+
+
+ 4038              	.LASF13:
+ 4039 020b 756E7369 		.ascii	"unsigned int\000"
+ 4039      676E6564 
+ 4039      20696E74 
  4039      00
- 4040              	.LASF33:
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 85
+ 4040              	.LASF17:
+ 4041 0218 75696E74 		.ascii	"uint16_t\000"
+ 4041      31365F74 
+ 4041      00
+ 4042              	.LASF33:
+ 4043 0221 434D445F 		.ascii	"CMD_UTURN\000"
+ 4043      55545552 
+ 4043      4E00
+ 4044              	.LASF56:
+ 4045 022b 7475726E 		.ascii	"turn\000"
+ 4045      00
+ 4046              	.LASF43:
+ 4047 0230 63686563 		.ascii	"checkpointCount\000"
+ 4047      6B706F69 
+ 4047      6E74436F 
+ 4047      756E7400 
+ 4048              	.LASF59:
+ 4049 0240 6C617374 		.ascii	"last\000"
+ 4049      00
+ 4050              	.LASF64:
+ 4051 0245 73746570 		.ascii	"steps\000"
+ 4051      7300
+ 4052              	.LASF7:
+ 4053 024b 73686F72 		.ascii	"short unsigned int\000"
+ 4053      7420756E 
+ 4053      7369676E 
+ 4053      65642069 
+ 4053      6E7400
+ 4054              	.LASF36:
+ 4055 025e 436F6D6D 		.ascii	"Command\000"
+ 4055      616E6400 
+ 4056              	.LASF0:
+ 4057 0266 5F5F696E 		.ascii	"__int8_t\000"
+ 4057      74385F74 
+ 4057      00
+ 4058              	.LASF21:
+ 4059 026f 63686172 		.ascii	"char\000"
+ 4059      00
+ 4060              	.LASF85:
+ 4061 0274 61737461 		.ascii	"astar.c\000"
+ 4061      722E6300 
+ 4062              	.LASF18:
+ 4063 027c 696E7433 		.ascii	"int32_t\000"
+ 4063      325F7400 
+ 4064              	.LASF55:
+ 4065 0284 7365676D 		.ascii	"segmentStart\000"
+ 4065      656E7453 
+ 4065      74617274 
+ 4065      00
+ 4066              	.LASF16:
+ 4067 0291 696E7431 		.ascii	"int16_t\000"
+ 4067      365F7400 
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 86
 
 
- 4041 01c3 434D445F 		.ascii	"CMD_UTURN\000"
- 4041      55545552 
- 4041      4E00
- 4042              	.LASF56:
- 4043 01cd 7475726E 		.ascii	"turn\000"
- 4043      00
- 4044              	.LASF43:
- 4045 01d2 63686563 		.ascii	"checkpointCount\000"
- 4045      6B706F69 
- 4045      6E74436F 
- 4045      756E7400 
- 4046              	.LASF59:
- 4047 01e2 6C617374 		.ascii	"last\000"
- 4047      00
- 4048              	.LASF64:
- 4049 01e7 73746570 		.ascii	"steps\000"
- 4049      7300
- 4050              	.LASF7:
- 4051 01ed 73686F72 		.ascii	"short unsigned int\000"
- 4051      7420756E 
- 4051      7369676E 
- 4051      65642069 
- 4051      6E7400
- 4052              	.LASF86:
- 4053 0200 433A5C54 		.ascii	"C:\\TEMP\\COMPSYS301_team2\\Project\\psco_code\\Pat"
- 4053      454D505C 
- 4053      434F4D50 
- 4053      53595333 
- 4053      30315F74 
- 4054 022e 6866696E 		.ascii	"hfinding_Maze\\Pathfinding_Maze.cydsn\000"
- 4054      64696E67 
- 4054      5F4D617A 
- 4054      655C5061 
- 4054      74686669 
- 4055              	.LASF0:
- 4056 0253 5F5F696E 		.ascii	"__int8_t\000"
- 4056      74385F74 
- 4056      00
- 4057              	.LASF21:
- 4058 025c 63686172 		.ascii	"char\000"
- 4058      00
- 4059              	.LASF85:
- 4060 0261 61737461 		.ascii	"astar.c\000"
- 4060      722E6300 
- 4061              	.LASF18:
- 4062 0269 696E7433 		.ascii	"int32_t\000"
- 4062      325F7400 
- 4063              	.LASF55:
- 4064 0271 7365676D 		.ascii	"segmentStart\000"
- 4064      656E7453 
- 4064      74617274 
- 4064      00
- 4065              	.LASF16:
- 4066 027e 696E7431 		.ascii	"int16_t\000"
- 4066      365F7400 
- 4067              	.LASF78:
- 4068 0286 62657374 		.ascii	"bestCol\000"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 86
+ 4068              	.LASF78:
+ 4069 0299 62657374 		.ascii	"bestCol\000"
+ 4069      436F6C00 
+ 4070              	.LASF51:
+ 4071 02a1 5F426F6F 		.ascii	"_Bool\000"
+ 4071      6C00
+ 4072              	.LASF87:
+ 4073 02a7 4D61726B 		.ascii	"MarkShortTurnSequences\000"
+ 4073      53686F72 
+ 4073      74547572 
+ 4073      6E536571 
+ 4073      75656E63 
+ 4074              	.LASF54:
+ 4075 02be 72657175 		.ascii	"requiredDirection\000"
+ 4075      69726564 
+ 4075      44697265 
+ 4075      6374696F 
+ 4075      6E00
+ 4076              	.LASF25:
+ 4077 02d0 4449525F 		.ascii	"DIR_UP\000"
+ 4077      555000
+ 4078              	.LASF73:
+ 4079 02d7 656E6444 		.ascii	"endDir\000"
+ 4079      697200
+ 4080              	.LASF71:
+ 4081 02de 656E6452 		.ascii	"endRow\000"
+ 4081      6F7700
+ 4082              	.LASF32:
+ 4083 02e5 434D445F 		.ascii	"CMD_RIGHT\000"
+ 4083      52494748 
+ 4083      5400
+ 4084              	.LASF10:
+ 4085 02ef 6C6F6E67 		.ascii	"long unsigned int\000"
+ 4085      20756E73 
+ 4085      69676E65 
+ 4085      6420696E 
+ 4085      7400
+ 4086              	.LASF20:
+ 4087 0301 646F7562 		.ascii	"double\000"
+ 4087      6C6500
+ 4088              	.LASF80:
+ 4089 0308 6E657753 		.ascii	"newSteps\000"
+ 4089      74657073 
+ 4089      00
+ 4090              	.LASF34:
+ 4091 0311 434D445F 		.ascii	"CMD_LEFT_SHORT\000"
+ 4091      4C454654 
+ 4091      5F53484F 
+ 4091      525400
+ 4092              	.LASF38:
+ 4093 0320 636F756E 		.ascii	"count\000"
+ 4093      7400
+ 4094              	.LASF8:
+ 4095 0326 5F5F696E 		.ascii	"__int32_t\000"
+ 4095      7433325F 
+ 4095      7400
+ 4096              	.LASF70:
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 87
 
 
- 4068      436F6C00 
- 4069              	.LASF51:
- 4070 028e 5F426F6F 		.ascii	"_Bool\000"
- 4070      6C00
- 4071              	.LASF87:
- 4072 0294 4D61726B 		.ascii	"MarkShortTurnSequences\000"
- 4072      53686F72 
- 4072      74547572 
- 4072      6E536571 
- 4072      75656E63 
- 4073              	.LASF54:
- 4074 02ab 72657175 		.ascii	"requiredDirection\000"
- 4074      69726564 
- 4074      44697265 
- 4074      6374696F 
- 4074      6E00
- 4075              	.LASF25:
- 4076 02bd 4449525F 		.ascii	"DIR_UP\000"
- 4076      555000
- 4077              	.LASF73:
- 4078 02c4 656E6444 		.ascii	"endDir\000"
- 4078      697200
- 4079              	.LASF71:
- 4080 02cb 656E6452 		.ascii	"endRow\000"
- 4080      6F7700
- 4081              	.LASF32:
- 4082 02d2 434D445F 		.ascii	"CMD_RIGHT\000"
- 4082      52494748 
- 4082      5400
- 4083              	.LASF10:
- 4084 02dc 6C6F6E67 		.ascii	"long unsigned int\000"
- 4084      20756E73 
- 4084      69676E65 
- 4084      6420696E 
- 4084      7400
- 4085              	.LASF20:
- 4086 02ee 646F7562 		.ascii	"double\000"
- 4086      6C6500
- 4087              	.LASF80:
- 4088 02f5 6E657753 		.ascii	"newSteps\000"
- 4088      74657073 
- 4088      00
- 4089              	.LASF34:
- 4090 02fe 434D445F 		.ascii	"CMD_LEFT_SHORT\000"
- 4090      4C454654 
- 4090      5F53484F 
- 4090      525400
- 4091              	.LASF38:
- 4092 030d 636F756E 		.ascii	"count\000"
- 4092      7400
- 4093              	.LASF8:
- 4094 0313 5F5F696E 		.ascii	"__int32_t\000"
- 4094      7433325F 
- 4094      7400
- 4095              	.LASF70:
- 4096 031d 64697265 		.ascii	"directions\000"
- 4096      6374696F 
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 87
+ 4097 0330 64697265 		.ascii	"directions\000"
+ 4097      6374696F 
+ 4097      6E7300
+ 4098              	.LASF4:
+ 4099 033b 5F5F696E 		.ascii	"__int16_t\000"
+ 4099      7431365F 
+ 4099      7400
+ 4100              	.LASF72:
+ 4101 0345 656E6443 		.ascii	"endCol\000"
+ 4101      6F6C00
+ 4102              	.LASF75:
+ 4103 034c 70617468 		.ascii	"pathLength\000"
+ 4103      4C656E67 
+ 4103      746800
+ 4104              	.LASF69:
+ 4105 0357 70617265 		.ascii	"parentDir\000"
+ 4105      6E744469 
+ 4105      7200
+ 4106              	.LASF67:
+ 4107 0361 70617265 		.ascii	"parentRow\000"
+ 4107      6E74526F 
+ 4107      7700
+ 4108              	.LASF24:
+ 4109 036b 506F7369 		.ascii	"Position\000"
+ 4109      74696F6E 
+ 4109      00
+ 4110              	.LASF48:
+ 4111 0374 41646443 		.ascii	"AddCommand\000"
+ 4111      6F6D6D61 
+ 4111      6E6400
+ 4112              	.LASF89:
+ 4113 037f 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 4113      52784275 
+ 4113      66666572 
+ 4113      00
+ 4114              	.LASF84:
+ 4115 038c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 4115      43313120 
+ 4115      352E342E 
+ 4115      31203230 
+ 4115      31363036 
+ 4116 03bf 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 4116      20726576 
+ 4116      6973696F 
+ 4116      6E203233 
+ 4116      37373135 
+ 4117 03f2 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 4117      66756E63 
+ 4117      74696F6E 
+ 4117      2D736563 
+ 4117      74696F6E 
+ 4118              	.LASF42:
+ 4119 041a 63686563 		.ascii	"checkpointCommand\000"
+ 4119      6B706F69 
+ 4119      6E74436F 
+ 4119      6D6D616E 
+ 4119      6400
+ARM GAS  C:\Users\aale517\AppData\Local\Temp\ccaR3fFd.s 			page 88
 
 
- 4096      6E7300
- 4097              	.LASF4:
- 4098 0328 5F5F696E 		.ascii	"__int16_t\000"
- 4098      7431365F 
- 4098      7400
- 4099              	.LASF72:
- 4100 0332 656E6443 		.ascii	"endCol\000"
- 4100      6F6C00
- 4101              	.LASF75:
- 4102 0339 70617468 		.ascii	"pathLength\000"
- 4102      4C656E67 
- 4102      746800
- 4103              	.LASF69:
- 4104 0344 70617265 		.ascii	"parentDir\000"
- 4104      6E744469 
- 4104      7200
- 4105              	.LASF67:
- 4106 034e 70617265 		.ascii	"parentRow\000"
- 4106      6E74526F 
- 4106      7700
- 4107              	.LASF24:
- 4108 0358 506F7369 		.ascii	"Position\000"
- 4108      74696F6E 
- 4108      00
- 4109              	.LASF48:
- 4110 0361 41646443 		.ascii	"AddCommand\000"
- 4110      6F6D6D61 
- 4110      6E6400
- 4111              	.LASF89:
- 4112 036c 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 4112      52784275 
- 4112      66666572 
- 4112      00
- 4113              	.LASF84:
- 4114 0379 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 4114      43313120 
- 4114      352E342E 
- 4114      31203230 
- 4114      31363036 
- 4115 03ac 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 4115      20726576 
- 4115      6973696F 
- 4115      6E203233 
- 4115      37373135 
- 4116 03df 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 4116      66756E63 
- 4116      74696F6E 
- 4116      2D736563 
- 4116      74696F6E 
- 4117              	.LASF42:
- 4118 0407 63686563 		.ascii	"checkpointCommand\000"
- 4118      6B706F69 
- 4118      6E74436F 
- 4118      6D6D616E 
- 4118      6400
- 4119              	.LASF47:
- 4120 0419 47657444 		.ascii	"GetDirection\000"
-ARM GAS  C:\Users\mtay770\AppData\Local\Temp\ccUZib6v.s 			page 88
-
-
- 4120      69726563 
- 4120      74696F6E 
- 4120      00
- 4121              	.LASF57:
- 4122 0426 66697273 		.ascii	"first\000"
- 4122      7400
- 4123              	.LASF53:
- 4124 042c 63757272 		.ascii	"currentDirection\000"
- 4124      656E7444 
- 4124      69726563 
- 4124      74696F6E 
- 4124      00
- 4125              	.LASF58:
- 4126 043d 6D696464 		.ascii	"middle\000"
- 4126      6C6500
- 4127              	.LASF50:
- 4128 0444 636F6D6D 		.ascii	"command\000"
- 4128      616E6400 
- 4129              	.LASF46:
- 4130 044c 66726F6D 		.ascii	"from\000"
- 4130      00
- 4131              	.LASF1:
- 4132 0451 5F5F7569 		.ascii	"__uint8_t\000"
- 4132      6E74385F 
- 4132      7400
- 4133              	.LASF79:
- 4134 045b 62657374 		.ascii	"bestDir\000"
- 4134      44697200 
- 4135              	.LASF77:
- 4136 0463 62657374 		.ascii	"bestRow\000"
- 4136      526F7700 
- 4137              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 4120              	.LASF47:
+ 4121 042c 47657444 		.ascii	"GetDirection\000"
+ 4121      69726563 
+ 4121      74696F6E 
+ 4121      00
+ 4122              	.LASF57:
+ 4123 0439 66697273 		.ascii	"first\000"
+ 4123      7400
+ 4124              	.LASF53:
+ 4125 043f 63757272 		.ascii	"currentDirection\000"
+ 4125      656E7444 
+ 4125      69726563 
+ 4125      74696F6E 
+ 4125      00
+ 4126              	.LASF58:
+ 4127 0450 6D696464 		.ascii	"middle\000"
+ 4127      6C6500
+ 4128              	.LASF50:
+ 4129 0457 636F6D6D 		.ascii	"command\000"
+ 4129      616E6400 
+ 4130              	.LASF46:
+ 4131 045f 66726F6D 		.ascii	"from\000"
+ 4131      00
+ 4132              	.LASF1:
+ 4133 0464 5F5F7569 		.ascii	"__uint8_t\000"
+ 4133      6E74385F 
+ 4133      7400
+ 4134              	.LASF79:
+ 4135 046e 62657374 		.ascii	"bestDir\000"
+ 4135      44697200 
+ 4136              	.LASF77:
+ 4137 0476 62657374 		.ascii	"bestRow\000"
+ 4137      526F7700 
+ 4138              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

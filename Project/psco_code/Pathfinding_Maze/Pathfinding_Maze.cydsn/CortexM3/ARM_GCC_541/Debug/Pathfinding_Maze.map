@@ -1081,63 +1081,64 @@ END GROUP
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
                 0x000019fc                __exidx_end = .
 
-.rodata         0x000019fc      0x194
+.rodata         0x000019fc      0x184
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x000019fc      0x12c .\CortexM3\ARM_GCC_541\Debug\main.o
- .rodata        0x00001b28        0x8 .\CortexM3\ARM_GCC_541\Debug\astar.o
- .rodata        0x00001b30       0x2a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000019fc      0x118 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .rodata        0x00001b14        0x8 .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .rodata        0x00001b1c       0x2a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .rodata.str1.1
-                0x00001b5a        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x00001b5c                . = ALIGN (0x4)
+                0x00001b46        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00001b48                . = ALIGN (0x4)
  *(.init)
- .init          0x00001b5c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00001b5c                _init
- .init          0x00001b60        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00001b68                . = ALIGN (0x4)
-                0x00001b68                __preinit_array_start = .
+ .init          0x00001b48        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00001b48                _init
+ .init          0x00001b4c        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00001b54                . = ALIGN (0x4)
+                0x00001b54                __preinit_array_start = .
  *(.preinit_array)
-                0x00001b68                __preinit_array_end = .
-                0x00001b68                . = ALIGN (0x4)
-                0x00001b68                __init_array_start = .
+                0x00001b54                __preinit_array_end = .
+                0x00001b54                . = ALIGN (0x4)
+                0x00001b54                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00001b68        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .init_array    0x00001b6c        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00001b70                __init_array_end = .
-                0x00001b70                . = ALIGN (0x4)
+ .init_array    0x00001b54        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x00001b58        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00001b5c                __init_array_end = .
+                0x00001b5c                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00001b70        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00001b70                _fini
- .fini          0x00001b74        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00001b7c                . = ALIGN (0x4)
-                0x00001b7c                __fini_array_start = .
+ .fini          0x00001b5c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00001b5c                _fini
+ .fini          0x00001b60        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00001b68                . = ALIGN (0x4)
+                0x00001b68                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00001b7c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .fini_array    0x00001b68        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00001b80                __fini_array_end = .
-                0x00001b80                . = ALIGN (0x4)
+                0x00001b6c                __fini_array_end = .
+                0x00001b6c                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00001b80                . = ALIGN (0x4)
+                0x00001b6c                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00001b80                . = ALIGN (0x4)
-                0x00001b80                __cy_regions = .
-                0x00001b80        0x4 LONG 0x1b90 __cy_region_init_ram
-                0x00001b84        0x4 LONG 0x1fff80c8 __cy_region_start_data
-                0x00001b88        0x4 LONG 0xe0 __cy_region_init_size_ram
-                0x00001b8c        0x4 LONG 0x580 __cy_region_zero_size_ram
-                0x00001b90                __cy_regions_end = .
-                0x00001b90                . = ALIGN (0x8)
-                0x00001b90                _etext = .
+                0x00001b6c                . = ALIGN (0x4)
+                0x00001b6c                __cy_regions = .
+                0x00001b6c        0x4 LONG 0x1b80 __cy_region_init_ram
+                0x00001b70        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x00001b74        0x4 LONG 0xe0 __cy_region_init_size_ram
+                0x00001b78        0x4 LONG 0x580 __cy_region_zero_size_ram
+                0x00001b7c                __cy_regions_end = .
+                0x00001b80                . = ALIGN (0x8)
+ *fill*         0x00001b7c        0x4 
+                0x00001b80                _etext = .
 
 .cy_checksum_exclude
-                0x00001b90        0x0
+                0x00001b80        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000       0xc0
@@ -1151,7 +1152,7 @@ END GROUP
  .noinit        0x1fff80c0        0x1 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
                 0x1fff80c0                CyResetStatus
 
-.data           0x1fff80c8       0xe0 load address 0x00001b90
+.data           0x1fff80c8       0xe0 load address 0x00001b80
                 0x1fff80c8                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff80c8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
@@ -1179,10 +1180,10 @@ END GROUP
  *(.ram)
                 0x1fff81a8                _edata = .
 
-.igot.plt       0x1fff81a8        0x0 load address 0x00001c70
+.igot.plt       0x1fff81a8        0x0 load address 0x00001c60
  .igot.plt      0x1fff81a8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
-.bss            0x1fff81a8      0x580 load address 0x00001c70
+.bss            0x1fff81a8      0x580 load address 0x00001c60
                 0x1fff81a8                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -1223,11 +1224,11 @@ END GROUP
                 0x1fff8728                __end = .
                 0x1fff8728                PROVIDE (end, .)
                 0x1fff8728                PROVIDE (__bss_end__, .)
-                0x00001b90                __cy_region_init_ram = LOADADDR (.data)
+                0x00001b80                __cy_region_init_ram = LOADADDR (.data)
                 0x000000e0                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00000580                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8728       0x80 load address 0x00001c70
+.heap           0x1fff8728       0x80 load address 0x00001c60
                 0x1fff8728                . = _end
                 0x1fff87a8                . = (. + 0x80)
  *fill*         0x1fff8728       0x80 
@@ -1278,8 +1279,8 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x00001c70        0x0 load address 0x9050000c
- .rel.iplt      0x00001c70        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.rel.dyn        0x00001c60        0x0 load address 0x9050000c
+ .rel.iplt      0x00001c60        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .stab
  *(.stab)
@@ -1367,39 +1368,39 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x76d8
+.debug_info     0x00000000     0x76d7
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000     0x105d .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_info    0x0000105d      0x900 .\CortexM3\ARM_GCC_541\Debug\astar.o
- .debug_info    0x0000195d       0xd0 .\CortexM3\ARM_GCC_541\Debug\movements.o
- .debug_info    0x00001a2d      0x549 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x00001f76      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x000020af      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_info    0x0000246a     0x1374 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
- .debug_info    0x000037de      0xa2a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
- .debug_info    0x00004208      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
- .debug_info    0x00004327      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
- .debug_info    0x00004446      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
- .debug_info    0x00004565      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
- .debug_info    0x00004684      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
- .debug_info    0x000047a3      0x27f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
- .debug_info    0x00004a22      0x283 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
- .debug_info    0x00004ca5      0x27f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
- .debug_info    0x00004f24      0x1df .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
- .debug_info    0x00005103      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
- .debug_info    0x000053f1      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
- .debug_info    0x000056df      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
- .debug_info    0x000059cd      0x2f0 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
- .debug_info    0x00005cbd      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
- .debug_info    0x00005fab      0x357 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
- .debug_info    0x00006302       0xf3 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
- .debug_info    0x000063f5      0x348 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
- .debug_info    0x0000673d      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
- .debug_info    0x0000685c      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
- .debug_info    0x0000697b      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
- .debug_info    0x00006a9a       0xa1 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
- .debug_info    0x00006b3b      0x64d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
- .debug_info    0x00007188      0x550 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+ .debug_info    0x00000000     0x105c .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_info    0x0000105c      0x900 .\CortexM3\ARM_GCC_541\Debug\astar.o
+ .debug_info    0x0000195c       0xd0 .\CortexM3\ARM_GCC_541\Debug\movements.o
+ .debug_info    0x00001a2c      0x549 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00001f75      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x000020ae      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x00002469     0x1374 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+ .debug_info    0x000037dd      0xa2a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+ .debug_info    0x00004207      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+ .debug_info    0x00004326      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+ .debug_info    0x00004445      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+ .debug_info    0x00004564      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+ .debug_info    0x00004683      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+ .debug_info    0x000047a2      0x27f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+ .debug_info    0x00004a21      0x283 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+ .debug_info    0x00004ca4      0x27f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+ .debug_info    0x00004f23      0x1df .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+ .debug_info    0x00005102      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+ .debug_info    0x000053f0      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+ .debug_info    0x000056de      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+ .debug_info    0x000059cc      0x2f0 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+ .debug_info    0x00005cbc      0x2ee .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+ .debug_info    0x00005faa      0x357 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+ .debug_info    0x00006301       0xf3 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+ .debug_info    0x000063f4      0x348 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+ .debug_info    0x0000673c      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+ .debug_info    0x0000685b      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+ .debug_info    0x0000697a      0x11f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+ .debug_info    0x00006a99       0xa1 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyBootAsmGnu.o)
+ .debug_info    0x00006b3a      0x64d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+ .debug_info    0x00007187      0x550 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
 
 .debug_abbrev   0x00000000     0x2207
  *(.debug_abbrev)
@@ -1505,67 +1506,67 @@ END GROUP
  .debug_frame   0x00001ef4       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
  .debug_frame   0x00001f1c       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x29a8
+.debug_str      0x00000000     0x2a0e
  *(.debug_str)
- .debug_str     0x00000000      0x4e8 .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x571 (size before relaxing)
- .debug_str     0x000004e8      0x16e .\CortexM3\ARM_GCC_541\Debug\astar.o
-                                0x46b (size before relaxing)
- .debug_str     0x00000656        0xc .\CortexM3\ARM_GCC_541\Debug\movements.o
-                                0x1d8 (size before relaxing)
- .debug_str     0x00000662      0x179 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_str     0x00000000      0x4fb .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x584 (size before relaxing)
+ .debug_str     0x000004fb      0x16e .\CortexM3\ARM_GCC_541\Debug\astar.o
+                                0x47e (size before relaxing)
+ .debug_str     0x00000669        0xc .\CortexM3\ARM_GCC_541\Debug\movements.o
+                                0x1eb (size before relaxing)
+ .debug_str     0x00000675      0x1cc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x326 (size before relaxing)
- .debug_str     0x000007db       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_str     0x00000841       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                                 0x1f5 (size before relaxing)
- .debug_str     0x00000850      0x13e .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_str     0x000008b6      0x13e .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
                                 0x31b (size before relaxing)
- .debug_str     0x0000098e      0x83d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
+ .debug_str     0x000009f4      0x83d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyLib.o)
                                 0xa58 (size before relaxing)
- .debug_str     0x000011cb      0x365 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
+ .debug_str     0x00001231      0x365 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(cyPm.o)
                                 0x744 (size before relaxing)
- .debug_str     0x00001530       0x5a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
+ .debug_str     0x00001596       0x5a .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_1.o)
                                 0x1f3 (size before relaxing)
- .debug_str     0x0000158a       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
+ .debug_str     0x000015f0       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_2.o)
                                 0x1f3 (size before relaxing)
- .debug_str     0x000015d9       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
+ .debug_str     0x0000163f       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_3.o)
                                 0x1f3 (size before relaxing)
- .debug_str     0x00001628       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
+ .debug_str     0x0000168e       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_4.o)
                                 0x1f3 (size before relaxing)
- .debug_str     0x00001677       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
+ .debug_str     0x000016dd       0x4f .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(LED_5.o)
                                 0x1f3 (size before relaxing)
- .debug_str     0x000016c6      0x11b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
+ .debug_str     0x0000172c      0x11b .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_1.o)
                                 0x2de (size before relaxing)
- .debug_str     0x000017e1      0x15d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
+ .debug_str     0x00001847      0x15d .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Clock_PWM.o)
                                 0x317 (size before relaxing)
- .debug_str     0x0000193e       0xea .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
+ .debug_str     0x000019a4       0xea .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(PWM_2.o)
                                 0x2de (size before relaxing)
- .debug_str     0x00001a28       0xa9 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
+ .debug_str     0x00001a8e       0xa9 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(VDAC8_1.o)
                                 0x244 (size before relaxing)
- .debug_str     0x00001ad1      0x196 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
+ .debug_str     0x00001b37      0x196 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_1.o)
                                 0x394 (size before relaxing)
- .debug_str     0x00001c67      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
+ .debug_str     0x00001ccd      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_2.o)
                                 0x394 (size before relaxing)
- .debug_str     0x00001df5      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
+ .debug_str     0x00001e5b      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_4.o)
                                 0x394 (size before relaxing)
- .debug_str     0x00001f83      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
+ .debug_str     0x00001fe9      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_3.o)
                                 0x394 (size before relaxing)
- .debug_str     0x00002111      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
+ .debug_str     0x00002177      0x18e .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(Timeout_5.o)
                                 0x394 (size before relaxing)
- .debug_str     0x0000229f      0x14c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
+ .debug_str     0x00002305      0x14c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1.o)
                                 0x39b (size before relaxing)
- .debug_str     0x000023eb       0x48 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
+ .debug_str     0x00002451       0x48 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_INT.o)
                                 0x1ff (size before relaxing)
- .debug_str     0x00002433      0x1ce .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
+ .debug_str     0x00002499      0x1ce .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(QuadDec_1_Cnt16.o)
                                 0x427 (size before relaxing)
- .debug_str     0x00002601       0x68 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
+ .debug_str     0x00002667       0x68 .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontSensor.o)
                                 0x211 (size before relaxing)
- .debug_str     0x00002669       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
+ .debug_str     0x000026cf       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontRSensor.o)
                                 0x216 (size before relaxing)
- .debug_str     0x000026d5       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
+ .debug_str     0x0000273b       0x6c .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(FrontLSensor.o)
                                 0x216 (size before relaxing)
- .debug_str     0x00002741      0x1bb .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
+ .debug_str     0x000027a7      0x1bb .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CyFlash.o)
                                 0x3d1 (size before relaxing)
- .debug_str     0x000028fc       0xac .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
+ .debug_str     0x00002962       0xac .\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.a(CySpc.o)
                                 0x349 (size before relaxing)
 
 .debug_loc      0x00000000     0x2a8c
@@ -1771,4 +1772,4 @@ END GROUP
 
 /DISCARD/
  *(.note.GNU-stack)
-OUTPUT(C:\TEMP\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.elf elf32-littlearm)
+OUTPUT(C:\Users\aale517\Documents\COMPSYS301_team2\Project\psco_code\Pathfinding_Maze\Pathfinding_Maze.cydsn\CortexM3\ARM_GCC_541\Debug\Pathfinding_Maze.elf elf32-littlearm)
