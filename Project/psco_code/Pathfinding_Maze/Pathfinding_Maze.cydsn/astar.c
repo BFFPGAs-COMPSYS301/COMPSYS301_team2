@@ -490,7 +490,7 @@ bool AStar_BuildRoute(
 
         // Store the command index at which this checkpoint is reached.
         route->checkpointCommand[i + 1] =
-            route->length;
+            route->length+1;
     }
     
     MarkShortTurnSequences(route, 0);

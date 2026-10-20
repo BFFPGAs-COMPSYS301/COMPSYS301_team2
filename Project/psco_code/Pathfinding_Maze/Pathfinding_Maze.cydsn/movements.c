@@ -7,7 +7,7 @@
 #include "project.h"
 #include "astar.h"
 
-#define CELL_LENGTH 75
+#define CELL_LENGTH 85
 #define CELL_LENGTH_SHORT 55
 #define INTERSECTION_TIMEOUT 5000
 
@@ -15,6 +15,7 @@
 #define FORWARD_SPEED 22 // 45 is stopped, go lower to drive forward, stay below 25 to ensure movement
 
 static uint16_t offLineCount = 0;
+static int16 travelled = 0;
 
 static void goForwardSlow(void);
 static void rampingLeftBack();
@@ -78,8 +79,8 @@ static void stopMoving() {
 
 static void MoveForwardOneCell(Command nextCommand)
 {
-    int16 travelled = 0;
     int16 timeout = 0;
+    travelled = 0;
 
     LED_1_Write(1);
     QuadDec_1_SetCounter(0);
@@ -133,17 +134,21 @@ static void TurnLeft() {
     PWM_2_WriteCompare(20);
     CyDelay(550);
     while (FrontSensor_Read() == 1) {
-        PWM_1_WriteCompare(PERIOD - 21);
-        PWM_2_WriteCompare(21);
+        PWM_1_WriteCompare(PERIOD - 22);
+        PWM_2_WriteCompare(22);
     }
     goForwardSlow();
     CyDelay(10);
+    PWM_1_WriteCompare(24);
+    PWM_2_WriteCompare(PERIOD - 24);
+    CyDelay(50);
     PWM_1_WriteCompare(22);
     PWM_2_WriteCompare(PERIOD - 22);
-    CyDelay(190);
+    CyDelay(150);
     stopMoving();
     LED_2_Write(0);
     CyDelay(1000);
+    travelled = 0;
 }
 
 static void TurnRight() {
@@ -161,13 +166,13 @@ static void TurnRight() {
     }
     goForwardSlow();
     CyDelay(10);
-    /*
-    PWM_1_WriteCompare(PERIOD - 20);
-    PWM_2_WriteCompare(20);
-    CyDelay(30);*/
+    //PWM_1_WriteCompare(PERIOD - 20);
+    //PWM_2_WriteCompare(20);
+    //CyDelay(30);
     stopMoving();
     LED_3_Write(0);
     CyDelay(1000);
+    travelled = 0;
 }
 
 static void UTurn(void)
@@ -175,11 +180,11 @@ static void UTurn(void)
     LED_3_Write(1);
     uint8 led_1 = FrontSensor_Read();
     goForwardSlow();
-    CyDelay(750);
+    CyDelay(790);
     stopMoving();
     PWM_2_WriteCompare(20);
     PWM_1_WriteCompare(PERIOD - 18);
-    CyDelay(750);
+    CyDelay(835);
     while (FrontSensor_Read() == 1) {
         PWM_2_WriteCompare(21);
         PWM_1_WriteCompare(PERIOD - 19);
@@ -196,6 +201,7 @@ static void UTurn(void)
     stopMoving();
     LED_3_Write(0);
     CyDelay(1000);
+    travelled = 0;
 }
 
 static void LittleLeft(void)
@@ -212,7 +218,7 @@ static void LittleLeft(void)
     
     PWM_1_WriteCompare(PERIOD - 18);
     PWM_2_WriteCompare(PERIOD - 24);
-    CyDelay(600);
+    CyDelay(610);
     
     while (FrontSensor_Read()) {
         PWM_1_WriteCompare(PERIOD - 18);
@@ -222,6 +228,7 @@ static void LittleLeft(void)
     stopMoving();
     LED_4_Write(0);
     CyDelay(1000);
+    travelled = 0;
 }
 
 static void LittleRight(void)
@@ -238,7 +245,7 @@ static void LittleRight(void)
     
     PWM_1_WriteCompare(PERIOD - 24);
     PWM_2_WriteCompare(PERIOD - 18);
-    CyDelay(600);
+    CyDelay(610);
     
     while (FrontSensor_Read()) {
         PWM_1_WriteCompare(PERIOD - 24);
@@ -248,6 +255,7 @@ static void LittleRight(void)
     stopMoving();
     LED_5_Write(0);
     CyDelay(1000);
+    travelled = 0;
 } 
 
 
