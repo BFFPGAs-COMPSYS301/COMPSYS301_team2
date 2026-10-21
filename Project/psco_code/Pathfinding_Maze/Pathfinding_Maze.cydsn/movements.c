@@ -180,7 +180,7 @@ static void UTurn(void)
     LED_3_Write(1);
     uint8 led_1 = FrontSensor_Read();
     goForwardSlow();
-    CyDelay(790);
+    CyDelay(500);
     stopMoving();
     PWM_2_WriteCompare(20);
     PWM_1_WriteCompare(PERIOD - 18);
